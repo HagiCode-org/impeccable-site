@@ -2,8 +2,8 @@
 import { render } from 'astro:content';
 
 import DocsLayout from '@/layouts/DocsLayout.astro';
+import type { SiteLocale } from '@/i18n/locale-metadata';
 import {
-  getAllCommands,
   getCommandAlternateLocalePaths,
   getCommandPath,
   getCommandRecord,
@@ -12,22 +12,20 @@ import {
   getCommandSections,
   getLocalizedCommandContent,
 } from '@/lib/catalog/command-catalog';
-import type { CommandCatalogRecord } from '@/lib/vendor/impeccable-source';
 import { getLocalizedCommandEntry } from '@/lib/content/command-content';
 import { t } from '@/lib/i18n/ui';
+import type { CommandCatalogRecord } from '@/lib/vendor/impeccable-source';
 
-export function getStaticPaths() {
-  return getAllCommands().map((command) => ({
-    params: { slug: getLocalizedCommandContent(command, 'zh-CN').routeSlug },
-  }));
+interface Props {
+  locale: SiteLocale;
+  slug: string;
 }
 
-const locale = 'zh-CN';
-const routeSlug = Astro.params.slug ?? '';
-const command = getCommandRecordByLocaleRoute(locale, routeSlug) ?? getCommandRecord(routeSlug);
+const { locale, slug } = Astro.props;
+const command = getCommandRecordByLocaleRoute(locale, slug) ?? getCommandRecord(slug);
 
 if (!command) {
-  throw new Error(`Unknown command slug: ${routeSlug}`);
+  throw new Error(`Unknown command slug: ${slug}`);
 }
 
 const entry = await getLocalizedCommandEntry(locale, command.slug);
@@ -77,7 +75,7 @@ const description = localized.seoDescription ?? localized.summary;
 
     {relatedCommands.length > 0 && (
       <section class="detail-related">
-        <h2>相关命令</h2>
+        <h2>{t(locale, 'docs', 'detail.related')}</h2>
         <div class="related-links">
           {relatedCommands.map((relatedCommand) => (
             <a class="related-links__item" href={getCommandPath(relatedCommand, locale)}>

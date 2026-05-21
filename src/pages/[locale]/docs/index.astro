@@ -1,0 +1,12 @@
+---
+import { getNonDefaultSiteLocales, resolveSiteLocale } from '@/i18n/locale-metadata';
+import DocsOverviewPage from '@/page-templates/DocsOverviewPage.astro';
+
+export function getStaticPaths() {
+  return getNonDefaultSiteLocales().map((locale) => ({ params: { locale } }));
+}
+
+const locale = resolveSiteLocale(Astro.params.locale);
+---
+
+<DocsOverviewPage locale={locale} />

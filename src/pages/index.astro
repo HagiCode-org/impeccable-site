@@ -1,4 +1,6 @@
 ---
+import { SUPPORTED_SITE_LOCALES } from '@/i18n/locale-metadata';
+import { getAbsoluteSiteUrl } from '@/lib/i18n/locale-routing';
 import '@/styles/global.css';
 ---
 
@@ -10,8 +12,11 @@ import '@/styles/global.css';
     <title>Impeccable Commands</title>
     <meta http-equiv="refresh" content="0; url=/docs/" />
     <link rel="canonical" href="https://impeccable.hagicode.com/docs/" />
-    <link rel="alternate" hreflang="en-US" href="https://impeccable.hagicode.com/docs/" />
-    <link rel="alternate" hreflang="zh-CN" href="https://impeccable.hagicode.com/zh-CN/docs/" />
+    {
+      SUPPORTED_SITE_LOCALES.map((locale) => (
+        <link rel="alternate" hreflang={locale} href={getAbsoluteSiteUrl('/docs/', locale, 'https://impeccable.hagicode.com')} />
+      ))
+    }
     <link rel="alternate" hreflang="x-default" href="https://impeccable.hagicode.com/docs/" />
   </head>
   <body class="landing-page">
@@ -19,6 +24,11 @@ import '@/styles/global.css';
       <p>Redirecting to the command overview…</p>
       <a href="/docs/">Continue to the docs</a>
     </main>
+
+    <script>
+      import { redirectRootEntryToPreferredLocale } from '@/scripts/entry-locale-routing';
+
+      redirectRootEntryToPreferredLocale();
+    </script>
   </body>
 </html>
-

@@ -1,0 +1,21 @@
+---
+import { getNonDefaultSiteLocales, resolveSiteLocale } from '@/i18n/locale-metadata';
+import { getAllCommands, getLocalizedCommandContent } from '@/lib/catalog/command-catalog';
+import DocsCommandPage from '@/page-templates/DocsCommandPage.astro';
+
+export function getStaticPaths() {
+  return getNonDefaultSiteLocales().flatMap((locale) =>
+    getAllCommands().map((command) => ({
+      params: {
+        locale,
+        slug: getLocalizedCommandContent(command, locale).routeSlug,
+      },
+    })),
+  );
+}
+
+const locale = resolveSiteLocale(Astro.params.locale);
+const routeSlug = Astro.params.slug ?? '';
+---
+
+<DocsCommandPage locale={locale} slug={routeSlug} />

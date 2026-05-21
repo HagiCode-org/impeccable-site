@@ -1,20 +1,6 @@
 ---
-import { render } from 'astro:content';
-
-import DocsLayout from '@/layouts/DocsLayout.astro';
-import {
-  getAllCommands,
-  getCommandAlternateLocalePaths,
-  getCommandPath,
-  getCommandRecord,
-  getCommandRecordByLocaleRoute,
-  getCommandRouteKey,
-  getCommandSections,
-  getLocalizedCommandContent,
-} from '@/lib/catalog/command-catalog';
-import type { CommandCatalogRecord } from '@/lib/vendor/impeccable-source';
-import { getLocalizedCommandEntry } from '@/lib/content/command-content';
-import { t } from '@/lib/i18n/ui';
+import { getAllCommands, getLocalizedCommandContent } from '@/lib/catalog/command-catalog';
+import DocsCommandPage from '@/page-templates/DocsCommandPage.astro';
 
 export function getStaticPaths() {
   return getAllCommands().map((command) => ({
@@ -22,70 +8,7 @@ export function getStaticPaths() {
   }));
 }
 
-const locale = 'en-US';
 const routeSlug = Astro.params.slug ?? '';
-const command = getCommandRecordByLocaleRoute(locale, routeSlug) ?? getCommandRecord(routeSlug);
-
-if (!command) {
-  throw new Error(`Unknown command slug: ${routeSlug}`);
-}
-
-const entry = await getLocalizedCommandEntry(locale, command.slug);
-
-if (!entry) {
-  throw new Error(`Missing localized entry for ${locale}/${command.slug}`);
-}
-
-const localized = getLocalizedCommandContent(command, locale);
-const { Content } = await render(entry);
-const sections = getCommandSections(locale);
-const relatedSlugs = localized.relatedCommandIds.length
-  ? localized.relatedCommandIds
-  : [
-      ...(command.relationships.leadsTo ?? []),
-      ...(command.relationships.combinesWith ?? []),
-      ...(command.relationships.pairs ? [command.relationships.pairs] : []),
-    ].slice(0, 3);
-const relatedCommands = relatedSlugs
-  .map((candidate) => getCommandRecord(candidate))
-  .filter((candidate): candidate is CommandCatalogRecord => Boolean(candidate));
-const title = `${localized.title} | ${t(locale, 'common', 'site.name')}`;
-const description = localized.seoDescription ?? localized.summary;
 ---
 
-<DocsLayout
-  locale={locale}
-  title={title}
-  description={description}
-  routeKey={getCommandRouteKey(command, locale)}
-  alternateLocalePaths={getCommandAlternateLocalePaths(command)}
-  activeSlug={command.slug}
-  sections={sections}
->
-  <article class="command-detail">
-    <header class="command-detail__hero">
-      <p class="command-detail__command">{command.commandName}</p>
-      <h1>{localized.title}</h1>
-      <p class="command-detail__summary">{localized.summary}</p>
-    </header>
-
-    <section class="detail-body">
-      <div class="prose-shell">
-        <Content />
-      </div>
-    </section>
-
-    {relatedCommands.length > 0 && (
-      <section class="detail-related">
-        <h2>Related commands</h2>
-        <div class="related-links">
-          {relatedCommands.map((relatedCommand) => (
-            <a class="related-links__item" href={getCommandPath(relatedCommand, locale)}>
-              <span>{getLocalizedCommandContent(relatedCommand, locale).title}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
-  </article>
-</DocsLayout>
+<DocsCommandPage locale="en-US" slug={routeSlug} />
