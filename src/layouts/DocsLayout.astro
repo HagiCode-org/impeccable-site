@@ -1,0 +1,82 @@
+---
+import Sidebar from '@/components/docs/Sidebar.astro';
+import LanguageSwitcher from '@/components/docs/LanguageSwitcher.astro';
+import { SUPPORTED_SITE_LOCALES, type SiteLocale } from '@/i18n/locale-metadata';
+import type { CommandSection } from '@/lib/catalog/command-catalog';
+import { getAbsoluteSiteUrl, getLocalizedPath } from '@/lib/i18n/locale-routing';
+import { t } from '@/lib/i18n/ui';
+import '@/styles/global.css';
+
+interface Props {
+  locale: SiteLocale;
+  title: string;
+  description: string;
+  routeKey: string;
+  activeSlug?: string;
+  sections: CommandSection[];
+}
+
+const { locale, title, description, routeKey, activeSlug, sections } = Astro.props;
+const siteUrl = Astro.site?.toString() ?? 'https://impeccable.hagicode.com';
+const canonicalUrl = getAbsoluteSiteUrl(routeKey, locale, siteUrl);
+const alternateUrls = Object.fromEntries(
+  SUPPORTED_SITE_LOCALES.map((candidate) => [candidate, getAbsoluteSiteUrl(routeKey, candidate, siteUrl)]),
+);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f26f45" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      SUPPORTED_SITE_LOCALES.map((candidate) => (
+        <link rel="alternate" hreflang={candidate} href={alternateUrls[candidate]} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={alternateUrls['en-US']} />
+  </head>
+  <body class="docs-page">
+    <div class="page-backdrop page-backdrop--glow"></div>
+    <div class="page-backdrop page-backdrop--grid"></div>
+    <header class="site-header">
+      <a class="brand-lockup" href={getLocalizedPath('/docs/', locale)}>
+        <span class="brand-lockup__eyebrow">{t(locale, 'common', 'site.eyebrow')}</span>
+        <strong>{t(locale, 'common', 'site.name')}</strong>
+      </a>
+      <div class="site-header__actions">
+        <a class="text-link" href="https://github.com/pbakaus/impeccable" rel="noreferrer" target="_blank">
+          {t(locale, 'common', 'navigation.source')}
+        </a>
+        <LanguageSwitcher locale={locale} routeKey={routeKey} />
+      </div>
+    </header>
+
+    <div class="docs-shell">
+      <aside class="docs-shell__sidebar">
+        <Sidebar locale={locale} sections={sections} activeSlug={activeSlug} />
+      </aside>
+
+      <main class="docs-shell__main">
+        <details class="docs-mobile-nav">
+          <summary>{t(locale, 'docs', 'sidebar.mobileTitle')}</summary>
+          <Sidebar locale={locale} sections={sections} activeSlug={activeSlug} />
+        </details>
+
+        <slot />
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>{t(locale, 'docs', 'footer.note')}</p>
+    </footer>
+  </body>
+</html>

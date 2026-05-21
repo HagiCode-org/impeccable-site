@@ -1,0 +1,54 @@
+---
+import CommandCard from '@/components/docs/CommandCard.astro';
+import DocsLayout from '@/layouts/DocsLayout.astro';
+import { getCommandCatalog, getCommandSections, getOverviewRouteKey } from '@/lib/catalog/command-catalog';
+import { t } from '@/lib/i18n/ui';
+
+const locale = 'en-US';
+const catalog = getCommandCatalog();
+const sections = getCommandSections(locale);
+const title = `${t(locale, 'docs', 'index.title')} | ${t(locale, 'common', 'site.name')}`;
+const description = t(locale, 'docs', 'index.description');
+---
+
+<DocsLayout locale={locale} title={title} description={description} routeKey={getOverviewRouteKey()} sections={sections}>
+  <section class="hero-panel">
+    <div class="hero-panel__badge">{t(locale, 'docs', 'hero.badge')}</div>
+    <h1>{t(locale, 'docs', 'hero.title')}</h1>
+    <p>{t(locale, 'docs', 'hero.summary')}</p>
+    <div class="hero-stats">
+      <div>
+        <span>{t(locale, 'docs', 'index.categoriesLabel')}</span>
+        <strong>{catalog.categoryOrder.length}</strong>
+      </div>
+      <div>
+        <span>{t(locale, 'docs', 'index.commandsLabel')}</span>
+        <strong>{catalog.commands.length}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="section-heading">
+      <p>{t(locale, 'docs', 'index.sectionLabel')}</p>
+      <h2>{t(locale, 'docs', 'index.title')}</h2>
+    </div>
+
+    <div class="category-grid">
+      {
+        sections.map((section) => (
+          <section class="category-panel">
+            <header class="category-panel__header">
+              <h3>{catalog.categoryLabels[section.categoryId]}</h3>
+              <p>{catalog.categoryDescriptions[section.categoryId]}</p>
+            </header>
+            <div class="category-panel__cards">
+              {section.commands.map((command) => <CommandCard locale={locale} command={command} />)}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</DocsLayout>
+

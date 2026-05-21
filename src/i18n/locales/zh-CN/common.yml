@@ -1,0 +1,15 @@
+site:
+  name: Impeccable 命令文档
+  eyebrow: HagiCode 命令站点
+navigation:
+  overview: 总览
+  commands: 命令
+  source: 上游源码
+language:
+  label: 语言
+  en-US: English
+  zh-CN: 简体中文
+actions:
+  browseDocs: 浏览命令
+  viewSource: 查看上游仓库
+

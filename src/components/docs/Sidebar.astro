@@ -1,0 +1,47 @@
+---
+import { getCommandCatalog } from '@/lib/catalog/command-catalog';
+import type { CommandSection } from '@/lib/catalog/command-catalog';
+import type { SiteLocale } from '@/i18n/locale-metadata';
+import { getLocalizedPath } from '@/lib/i18n/locale-routing';
+import { t } from '@/lib/i18n/ui';
+
+interface Props {
+  locale: SiteLocale;
+  sections: CommandSection[];
+  activeSlug?: string;
+}
+
+const { locale, sections, activeSlug } = Astro.props as Props;
+const catalog = getCommandCatalog();
+---
+
+<div class="sidebar-shell">
+  <div class="sidebar-intro">
+    <p class="sidebar-kicker">{t(locale, 'docs', 'sidebar.title')}</p>
+    <p class="sidebar-summary">{t(locale, 'docs', 'sidebar.summary')}</p>
+  </div>
+
+  {
+    sections.map((section) => (
+      <section class="sidebar-section">
+        <div class="sidebar-section__header">
+          <h2>{catalog.categoryLabels[section.categoryId]}</h2>
+          <p>{catalog.categoryDescriptions[section.categoryId]}</p>
+        </div>
+        <ul class="sidebar-command-list">
+          {section.commands.map((command) => (
+            <li>
+              <a
+                href={getLocalizedPath(`/docs/${command.slug}/`, locale)}
+                class:list={['sidebar-command-link', { 'is-active': command.slug === activeSlug }]}
+              >
+                <span class="sidebar-command-link__command">{command.commandName}</span>
+                <span class="sidebar-command-link__title">{command.localized.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</div>

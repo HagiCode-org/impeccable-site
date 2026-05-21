@@ -1,0 +1,15 @@
+site:
+  name: Impeccable Commands
+  eyebrow: HagiCode command docs
+navigation:
+  overview: Overview
+  commands: Commands
+  source: Upstream source
+language:
+  label: Language
+  en-US: English
+  zh-CN: 简体中文
+actions:
+  browseDocs: Browse commands
+  viewSource: View upstream repository
+

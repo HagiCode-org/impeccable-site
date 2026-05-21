@@ -1,0 +1,26 @@
+hero:
+  badge: Vendor-pinned reference
+  title: Command docs for the impeccable workflow
+  summary: Pinned upstream metadata, local bilingual guides, and an Astro docs shell built for browsing commands instead of digging through a mixed product repository.
+index:
+  title: Command overview
+  description: Browse the full command surface grouped by workflow phase. The order stays aligned with the upstream catalog while this site owns the localized explanations.
+  sectionLabel: Workflow map
+  categoriesLabel: Categories
+  commandsLabel: Commands
+  openCommand: Open command
+detail:
+  whatItDoes: What it does
+  highlights: Good fit
+  argumentHint: Argument hint
+  sourceReference: Upstream reference
+  related: Related commands
+  body: Guide
+  noArgumentHint: No extra argument hint is required.
+sidebar:
+  title: Command map
+  mobileTitle: Browse commands
+  summary: Stable ordering and categories come from the pinned upstream source. Local body copy stays in this repository.
+footer:
+  note: Vendor metadata is sourced from pbakaus/impeccable. Localized guides are maintained in this repository.
+

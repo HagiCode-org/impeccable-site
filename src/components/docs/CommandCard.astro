@@ -1,0 +1,17 @@
+---
+import { getLocalizedPath } from '@/lib/i18n/locale-routing';
+import { t } from '@/lib/i18n/ui';
+
+const { locale, command } = Astro.props;
+---
+
+<a class="command-card" href={getLocalizedPath(`/docs/${command.slug}/`, locale)}>
+  <div class="command-card__topline">
+    <span class="command-card__command">{command.commandName}</span>
+    <span class="command-card__cta">{t(locale, 'docs', 'index.openCommand')}</span>
+  </div>
+  <h3>{command.localized.title}</h3>
+  <p>{command.localized.summary}</p>
+  <span class="command-card__tagline">{command.tagline}</span>
+</a>
+

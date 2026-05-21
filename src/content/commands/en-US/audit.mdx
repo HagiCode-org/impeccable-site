@@ -1,0 +1,26 @@
+---
+slug: audit
+title: Audit
+summary: Run the technical design-quality pass for accessibility, responsiveness, theming, performance, and anti-pattern detection.
+highlights:
+  - You need concrete issues and severity, not only taste-based feedback.
+  - You are preparing a feature for merge or release.
+  - You suspect hidden breakage on mobile, in dark themes, or under assistive needs.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+## When to use it
+
+Choose `audit` when the work already exists and you need a defensible quality review grounded in checks rather than preference.
+
+## What it surfaces
+
+The command should call out concrete risks such as contrast failures, layout regressions, poor scaling, and performance or theming gaps.
+
+## Expected next step
+
+Findings usually feed into `harden`, `optimize`, `adapt`, or `clarify`.
+

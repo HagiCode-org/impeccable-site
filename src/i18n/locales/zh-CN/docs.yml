@@ -1,0 +1,26 @@
+hero:
+  badge: 已锁定上游参考
+  title: impeccable 工作流命令文档
+  summary: 站点以锁定 commit 的上游元数据为基线，在本仓库维护双语说明，并用独立 Astro 文档壳把命令浏览体验做成稳定入口。
+index:
+  title: 命令总览
+  description: 按工作阶段浏览完整命令面。命令顺序与分类保持和上游目录一致，而本地站点负责双语解释与维护。
+  sectionLabel: 工作流地图
+  categoriesLabel: 分类
+  commandsLabel: 命令
+  openCommand: 打开命令
+detail:
+  whatItDoes: 命令作用
+  highlights: 适用场景
+  argumentHint: 参数提示
+  sourceReference: 上游参考
+  related: 相关命令
+  body: 使用说明
+  noArgumentHint: 这个命令不需要额外参数提示。
+sidebar:
+  title: 命令地图
+  mobileTitle: 浏览命令
+  summary: 分类和顺序来自锁定的上游目录，正文说明由当前仓库本地维护。
+footer:
+  note: Vendor 元数据来自 pbakaus/impeccable，本仓库负责维护本地化命令说明。
+

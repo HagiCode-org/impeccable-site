@@ -1,0 +1,26 @@
+---
+slug: harden
+title: Harden
+summary: Make a feature robust enough for production by addressing edge cases, resilience, overflow, i18n, and state handling.
+highlights:
+  - The happy path works, but real-world states still look fragile.
+  - You need to close shipping gaps before release.
+  - Error handling and resilience matter more than adding new flair.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Best fit
+
+Use `harden` when the work exists, but confidence in real-world behavior is still low.
+
+## Areas it should cover
+
+Expect attention on edge states, loading, empty content, text overflow, and other reliability gaps that show up outside demos.
+
+## Success condition
+
+The feature should still read clearly when data, locale, or network conditions are messy.
+
