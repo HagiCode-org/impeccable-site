@@ -2,6 +2,9 @@ export const VENDOR_SOURCE_ROOT = 'vendor/impeccable';
 export const VENDOR_COMMAND_CONTENT_ROOT = `${VENDOR_SOURCE_ROOT}/site/content/skills`;
 export const VENDOR_CATEGORY_DATA_PATH = `${VENDOR_SOURCE_ROOT}/site/data/sub-pages-data.ts`;
 export const VENDOR_COMMAND_METADATA_PATH = `${VENDOR_SOURCE_ROOT}/skill/scripts/command-metadata.json`;
+export const SUPPORTED_COMMAND_LOCALES = ['en-US', 'zh-CN'] as const;
+
+export type CommandLocale = typeof SUPPORTED_COMMAND_LOCALES[number];
 
 export type CommandCategoryId =
   | 'create'
@@ -33,18 +36,25 @@ export interface LocalizedCommandSummary {
   summary: string;
   seoTitle?: string;
   seoDescription?: string;
+  routeSlug: string;
+  routePath: string;
+  alternateLocalePaths: Record<CommandLocale, string>;
   highlights: string[];
-  related: string[];
+  relatedCommandIds: string[];
   contentPath: string;
+  sourcePath: string;
 }
 
 export interface CommandCatalogRecord extends VendorCommandRecord {
-  locales: Record<string, LocalizedCommandSummary>;
+  canonicalId: string;
+  localeRouteSlugs: Record<CommandLocale, string>;
+  localePaths: Record<CommandLocale, string>;
+  locales: Record<CommandLocale, LocalizedCommandSummary>;
 }
 
 export interface GeneratedCommandCatalog {
   generatedAt: string;
-  locales: string[];
+  locales: CommandLocale[];
   categoryOrder: CommandCategoryId[];
   categoryLabels: Record<CommandCategoryId, string>;
   categoryDescriptions: Record<CommandCategoryId, string>;

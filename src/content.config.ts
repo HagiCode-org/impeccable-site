@@ -6,10 +6,11 @@ const commandSchema = z.object({
   slug: z.string().min(1),
   title: z.string().min(1),
   summary: z.string().min(1),
-  seoTitle: z.string().optional(),
-  seoDescription: z.string().optional(),
-  highlights: z.array(z.string()).default([]),
-  related: z.array(z.string()).default([]),
+  seoTitle: z.string().min(1).optional(),
+  seoDescription: z.string().min(1).optional(),
+  routeSlug: z.string().min(1).optional(),
+  highlights: z.array(z.string().min(1)).default([]),
+  related: z.array(z.string().min(1)).default([]),
 });
 
 const commandsEnUs = defineCollection({

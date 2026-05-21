@@ -42,6 +42,10 @@ function stripMarkdown(value) {
     .trim();
 }
 
+function normalizeStringArray(value) {
+  return Array.isArray(value) ? value.map((item) => String(item)) : [];
+}
+
 function readExportLiteral(sourceText, exportName) {
   const exportIndex = sourceText.indexOf(`export const ${exportName}`);
   assert(exportIndex >= 0, `Could not find export ${exportName} in ${path.relative(siteRoot, vendorCategoryDataPath)}`);
@@ -106,6 +110,10 @@ async function readVendorSkillFiles() {
     .sort();
 }
 
+function getLocalizedCommandPath(routeSlug, locale) {
+  return locale === 'en-US' ? `/docs/${routeSlug}/` : `/${locale}/docs/${routeSlug}/`;
+}
+
 async function readVendorCommandSource() {
   await Promise.all([
     assertPathExists(vendorCategoryDataPath),
@@ -157,72 +165,136 @@ async function readVendorCommandSource() {
   };
 }
 
-async function readLocalizedCommandEntries(locale) {
-  const localeDirectory = path.join(localContentRoot, locale);
-  await assertPathExists(localeDirectory);
-  const entries = await fs.readdir(localeDirectory, { withFileTypes: true });
-  const files = entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.mdx'))
-    .map((entry) => entry.name)
-    .sort();
-  const localizedEntries = new Map();
+async function readLocalizedCommandEntry(locale, slug) {
+  const contentPath = path.join(localContentRoot, locale, `${slug}.mdx`);
+  await assertPathExists(contentPath);
 
-  for (const fileName of files) {
-    const sourcePath = path.join(localeDirectory, fileName);
-    const sourceText = await fs.readFile(sourcePath, 'utf8');
-    const slugFromFile = fileName.replace(/\.mdx$/u, '');
-    const { frontmatter, body } = parseFrontmatter(sourceText, path.relative(siteRoot, sourcePath));
-    const slug = String(frontmatter.slug ?? slugFromFile);
+  const contentSource = await fs.readFile(contentPath, 'utf8');
+  const { frontmatter, body } = parseFrontmatter(contentSource, path.relative(siteRoot, contentPath));
+  const routeSlug = String(frontmatter.routeSlug ?? slug);
+  const relatedCommandIds = normalizeStringArray(frontmatter.related ?? frontmatter.relatedCommandIds);
 
-    assert.equal(slug, slugFromFile, `${path.relative(siteRoot, sourcePath)} slug must match the filename`);
-    assert(body.length > 0, `${path.relative(siteRoot, sourcePath)} must include body content`);
+  assert(frontmatter.title, `Missing title for ${locale}/${slug}`);
+  assert(frontmatter.summary, `Missing summary for ${locale}/${slug}`);
+  assert(body.length > 0, `${path.relative(siteRoot, contentPath)} must include body content`);
+  assert.equal(String(frontmatter.slug ?? slug), slug, `${path.relative(siteRoot, contentPath)} slug must match canonical id ${slug}`);
 
-    localizedEntries.set(slug, {
-      slug,
-      title: String(frontmatter.title ?? ''),
-      summary: String(frontmatter.summary ?? ''),
-      seoTitle: frontmatter.seoTitle ? String(frontmatter.seoTitle) : undefined,
-      seoDescription: frontmatter.seoDescription ? String(frontmatter.seoDescription) : undefined,
-      highlights: Array.isArray(frontmatter.highlights) ? frontmatter.highlights.map(String) : [],
-      related: Array.isArray(frontmatter.related) ? frontmatter.related.map(String) : [],
-      contentPath: path.relative(siteRoot, sourcePath),
-    });
-  }
-
-  return localizedEntries;
+  return {
+    title: String(frontmatter.title),
+    summary: String(frontmatter.summary),
+    ...(frontmatter.seoTitle ? { seoTitle: String(frontmatter.seoTitle) } : {}),
+    ...(frontmatter.seoDescription ? { seoDescription: String(frontmatter.seoDescription) } : {}),
+    routeSlug,
+    highlights: normalizeStringArray(frontmatter.highlights),
+    relatedCommandIds,
+    contentPath: path.relative(siteRoot, contentPath),
+    sourcePath: path.relative(siteRoot, contentPath),
+  };
 }
 
-export async function buildCommandCatalog(options = {}) {
-  const vendorSource = await readVendorCommandSource();
-  const localizedEntriesByLocale = Object.fromEntries(
-    await Promise.all(
-      supportedLocales.map(async (locale) => [locale, await readLocalizedCommandEntries(locale)]),
-    ),
-  );
+async function readLocalizedCommandSource(vendorCommands) {
+  const commands = {};
 
-  for (const locale of supportedLocales) {
-    for (const slug of localizedEntriesByLocale[locale].keys()) {
-      assert(
-        vendorSource.commands.some((command) => command.slug === slug),
-        `Unmatched local slug ${slug} in ${locale}`,
-      );
-    }
-  }
-
-  const commands = vendorSource.commands.map((command) => {
+  for (const command of vendorCommands) {
     const locales = {};
 
     for (const locale of supportedLocales) {
-      const localizedEntry = localizedEntriesByLocale[locale].get(command.slug);
-      assert(localizedEntry, `Missing command entry for ${locale}/${command.slug}`);
-      locales[locale] = localizedEntry;
+      locales[locale] = await readLocalizedCommandEntry(locale, command.slug);
     }
 
-    return {
+    commands[command.slug] = locales;
+  }
+
+  return {
+    locales: supportedLocales,
+    commands,
+  };
+}
+
+export async function buildCommandCatalog(options = {}) {
+  const vendorSource = options.vendorSource ?? await readVendorCommandSource();
+  const localizedContent = options.localizedContent ?? await readLocalizedCommandSource(vendorSource.commands);
+
+  assert.deepEqual(localizedContent.locales, supportedLocales, 'Localized command locales must match supported locales');
+
+  const vendorCommandsById = new Map(vendorSource.commands.map((command) => [command.slug, command]));
+  const localizedCommands = localizedContent.commands ?? {};
+
+  for (const commandId of Object.keys(localizedCommands)) {
+    assert(vendorCommandsById.has(commandId), `Unmatched localized command id ${commandId}`);
+  }
+
+  const localeRouteOwners = new Map();
+  const commands = [];
+
+  for (const command of vendorSource.commands) {
+    const localizedRecord = localizedCommands[command.slug];
+    assert(localizedRecord, `Missing localized command record for ${command.slug}`);
+
+    const localeRouteSlugs = {};
+    const localePaths = {};
+    const locales = {};
+    const validatedLocalizedEntries = {};
+
+    for (const locale of supportedLocales) {
+      const localizedEntry = localizedRecord[locale];
+      assert(localizedEntry, `Missing command entry for ${locale}/${command.slug}`);
+      validatedLocalizedEntries[locale] = localizedEntry;
+    }
+
+    for (const locale of supportedLocales) {
+      const localizedEntry = validatedLocalizedEntries[locale];
+      const relatedCommandIds = Array.isArray(localizedEntry.relatedCommandIds)
+        ? localizedEntry.relatedCommandIds.map(String)
+        : [];
+
+      for (const relatedCommandId of relatedCommandIds) {
+        assert(vendorCommandsById.has(relatedCommandId), `Unknown related command id ${relatedCommandId} for ${locale}/${command.slug}`);
+      }
+
+      const routePath = getLocalizedCommandPath(String(localizedEntry.routeSlug), locale);
+      const routeOwnerKey = `${locale}:${localizedEntry.routeSlug}`;
+      const existingOwner = localeRouteOwners.get(routeOwnerKey);
+      assert(
+        !existingOwner || existingOwner === command.slug,
+        `Route collision for ${locale}/${localizedEntry.routeSlug}: ${existingOwner} and ${command.slug}`,
+      );
+      localeRouteOwners.set(routeOwnerKey, command.slug);
+
+      localeRouteSlugs[locale] = String(localizedEntry.routeSlug);
+      localePaths[locale] = routePath;
+      locales[locale] = {
+        slug: command.slug,
+        title: String(localizedEntry.title),
+        summary: String(localizedEntry.summary),
+        ...(localizedEntry.seoTitle ? { seoTitle: String(localizedEntry.seoTitle) } : {}),
+        ...(localizedEntry.seoDescription ? { seoDescription: String(localizedEntry.seoDescription) } : {}),
+        routeSlug: String(localizedEntry.routeSlug),
+        routePath,
+        alternateLocalePaths: Object.fromEntries(
+          supportedLocales.map((candidateLocale) => [
+            candidateLocale,
+            getLocalizedCommandPath(
+              String(validatedLocalizedEntries[candidateLocale].routeSlug),
+              candidateLocale,
+            ),
+          ]),
+        ),
+        highlights: Array.isArray(localizedEntry.highlights) ? localizedEntry.highlights.map(String) : [],
+        relatedCommandIds,
+        contentPath: String(localizedEntry.contentPath),
+        sourcePath: String(localizedEntry.sourcePath ?? localizedEntry.contentPath),
+      };
+    }
+
+    commands.push({
       ...command,
+      canonicalId: command.slug,
+      localeRouteSlugs,
+      localePaths,
       locales,
-    };
-  });
+    });
+  }
 
   return {
     generatedAt: options.generatedAt ?? new Date().toISOString(),
