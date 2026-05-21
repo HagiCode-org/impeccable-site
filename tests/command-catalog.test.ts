@@ -11,7 +11,7 @@ import {
 import { buildCommandCatalog } from '../scripts/build-command-catalog.mjs';
 
 describe('command catalog', () => {
-  it('contains both supported locales for every command', () => {
+  it('contains both source locales for every command', () => {
     for (const command of commandCatalog.commands) {
       expect(command.locales['en-US']).toBeTruthy();
       expect(command.locales['zh-CN']).toBeTruthy();
@@ -26,19 +26,26 @@ describe('command catalog', () => {
     for (const command of commandCatalog.commands) {
       expect(getCommandRecordByLocaleRoute('en-US', command.locales['en-US'].routeSlug)?.canonicalId).toBe(command.canonicalId);
       expect(getCommandRecordByLocaleRoute('zh-CN', command.locales['zh-CN'].routeSlug)?.canonicalId).toBe(command.canonicalId);
+      expect(getCommandRecordByLocaleRoute('fr-FR', command.locales['en-US'].routeSlug)?.canonicalId).toBe(command.canonicalId);
+      expect(getCommandRecordByLocaleRoute('zh-Hant', command.locales['zh-CN'].routeSlug)?.canonicalId).toBe(command.canonicalId);
     }
   });
 
-  it('exposes alternate locale paths for command pages', () => {
+  it('exposes alternate locale paths and fallback content for command pages', () => {
     const command = getCommandRecord(commandCatalog.commands[0].canonicalId);
     expect(command).toBeTruthy();
     if (!command) {
       return;
     }
 
+    const alternatePaths = getCommandAlternateLocalePaths(command.canonicalId);
+
     expect(getCommandPath(command.canonicalId, 'en-US')).toBe(command.locales['en-US'].routePath);
-    expect(getCommandAlternateLocalePaths(command.canonicalId)).toEqual(command.localePaths);
-    expect(getLocalizedCommandContent(command, 'zh-CN').alternateLocalePaths['en-US']).toBe(command.localePaths['en-US']);
+    expect(getCommandPath(command.canonicalId, 'fr-FR')).toBe(`/fr-FR/docs/${command.locales['en-US'].routeSlug}/`);
+    expect(getLocalizedCommandContent(command, 'zh-Hant').title).toBe(command.locales['zh-CN'].title);
+    expect(alternatePaths['en-US']).toBe(command.locales['en-US'].routePath);
+    expect(alternatePaths['fr-FR']).toBe(`/fr-FR/docs/${command.locales['en-US'].routeSlug}/`);
+    expect(Object.keys(alternatePaths)).toHaveLength(29);
   });
 
   it('fails generation on per-locale route collisions', async () => {
