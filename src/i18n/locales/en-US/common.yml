@@ -9,7 +9,46 @@ language:
   label: Language
   en-US: English
   zh-CN: 简体中文
+languageSwitcher:
+  label: Language
+  dialogTitle: Select language
+  currentLocaleLabel: Current language
+  close: Close language chooser
+  selectedState: Current
 actions:
   browseDocs: Browse commands
   viewSource: View upstream repository
-
+entry:
+  redirecting: Redirecting to the command overview…
+  continue: Continue to the docs
+footer:
+  eyebrow: Warm paper, pinned source
+  title: Command reference with local ownership
+  summary: This site keeps the upstream command surface pinned while the navigation shell, localized body copy, and editorial framing stay maintained here.
+  copyright: © {year} HagiCode. Command semantics remain attributed to the upstream impeccable project.
+  sections:
+    relatedSites: Related Sites
+    quickLinks: Quick Links
+    community: Community
+  visitPage: Visit {title} page
+  icpLabel: View ICP filing information
+  gonganLabel: View public security filing information
+  links:
+    downloadClient: Download Client
+    productDocs: Product Docs
+    blogPosts: Blog Posts
+    rssSubscribe: RSS Subscribe
+    github: GitHub
+    discord: Discord Community
+    issueFeedback: Issue Feedback
+    contactEmail: Contact Email
+    qqGroup: QQ Group 610394020
+    costCalculator: AI Replacement Calculator
+    steam: Steam
+promote:
+  badgeFallback: Promoted
+  closeLabel: Dismiss promotion
+  ariaLabel: Promotion
+  title: Move from reference to the full HagiCode workflow
+  summary: Bring command-driven work into OpenSpec, multi-agent execution, and the broader HagiCode runtime.
+  cta: Open hagicode.com

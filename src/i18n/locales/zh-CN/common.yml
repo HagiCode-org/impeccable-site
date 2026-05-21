@@ -9,7 +9,46 @@ language:
   label: 语言
   en-US: English
   zh-CN: 简体中文
+languageSwitcher:
+  label: 语言
+  dialogTitle: 选择语言
+  currentLocaleLabel: 当前语言
+  close: 关闭语言选择器
+  selectedState: 当前
 actions:
   browseDocs: 浏览命令
   viewSource: 查看上游仓库
-
+entry:
+  redirecting: 正在跳转到命令总览…
+  continue: 继续前往文档
+footer:
+  eyebrow: 暖纸质感，锁定来源
+  title: 命令参考由这里维护体验
+  summary: 站点锁定上游命令语义，同时把导航外壳、本地化正文和编辑式呈现方式留在当前仓库独立维护。
+  copyright: © {year} HagiCode。命令语义归属上游 impeccable 项目。
+  sections:
+    relatedSites: 生态站点
+    quickLinks: 快速链接
+    community: 社区
+  visitPage: 访问 {title} 页面
+  icpLabel: 查看 ICP 备案信息
+  gonganLabel: 查看公安备案信息
+  links:
+    downloadClient: 下载客户端
+    productDocs: 产品文档
+    blogPosts: 博客文章
+    rssSubscribe: RSS 订阅
+    github: GitHub
+    discord: Discord 社区
+    issueFeedback: 问题反馈
+    contactEmail: 联系邮箱
+    qqGroup: QQ 群 610394020
+    costCalculator: 算一算，AI会不会淘汰我
+    steam: Steam
+promote:
+  badgeFallback: 推荐
+  closeLabel: 关闭推广信息
+  ariaLabel: 推广信息
+  title: 从命令参考继续进入完整 HagiCode 工作流
+  summary: 把命令驱动的工作接进 OpenSpec、多 Agent 执行，以及更完整的 HagiCode 运行环境。
+  cta: 打开 hagicode.com
