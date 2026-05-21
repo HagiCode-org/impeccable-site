@@ -1,7 +1,10 @@
 import {
+  getSiteLocaleFallbackChain,
   resolveSiteLocale,
+  SUPPORTED_SITE_LOCALES,
   type SiteLocale,
 } from '@/i18n/locale-metadata';
+import { getLocalizedPath } from '@/lib/i18n/locale-routing';
 import type {
   CommandCatalogRecord,
   CommandLocale,
@@ -13,6 +16,7 @@ import commandCatalogData from '@/lib/generated/command-catalog.json';
 const commandCatalog = commandCatalogData as GeneratedCommandCatalog;
 const commandByCanonicalId = new Map(commandCatalog.commands.map((command) => [command.canonicalId, command]));
 const commandByLocaleRoute = new Map<string, CommandCatalogRecord>();
+const commandSourceLocales = new Set<CommandLocale>(commandCatalog.locales);
 
 for (const command of commandCatalog.commands) {
   for (const locale of commandCatalog.locales) {
@@ -20,8 +24,29 @@ for (const command of commandCatalog.commands) {
   }
 }
 
+function resolveCommandSourceLocale(localeInput: SiteLocale | string | null | undefined): CommandLocale {
+  const locale = resolveSiteLocale(localeInput);
+  const lookupChain = [locale, ...getSiteLocaleFallbackChain(locale)];
+
+  for (const candidate of lookupChain) {
+    if (commandSourceLocales.has(candidate as CommandLocale)) {
+      return candidate as CommandLocale;
+    }
+  }
+
+  return 'en-US';
+}
+
+function getLocalizedCommandRoutePath(routeSlug: string, locale: SiteLocale): string {
+  return getLocalizedPath(`/docs/${routeSlug}/`, locale);
+}
+
+export interface ResolvedLocalizedCommandSummary extends LocalizedCommandSummary {
+  alternateLocalePaths: Record<SiteLocale, string>;
+}
+
 export interface CommandSectionCommand extends CommandCatalogRecord {
-  localized: LocalizedCommandSummary;
+  localized: ResolvedLocalizedCommandSummary;
   path: string;
 }
 
@@ -46,22 +71,40 @@ export function getCommandRecordByLocaleRoute(
   localeInput: SiteLocale | string | null | undefined,
   routeSlug: string,
 ): CommandCatalogRecord | undefined {
-  const locale = resolveSiteLocale(localeInput);
-  return commandByLocaleRoute.get(`${locale}:${routeSlug}`);
+  const sourceLocale = resolveCommandSourceLocale(localeInput);
+  return commandByLocaleRoute.get(`${sourceLocale}:${routeSlug}`);
+}
+
+export function getCommandAlternateLocalePaths(
+  commandOrId: CommandCatalogRecord | string,
+): Record<SiteLocale, string> {
+  const command = resolveCommand(commandOrId);
+
+  return Object.fromEntries(
+    SUPPORTED_SITE_LOCALES.map((locale) => {
+      const sourceLocale = resolveCommandSourceLocale(locale);
+      return [locale, getLocalizedCommandRoutePath(command.locales[sourceLocale].routeSlug, locale)];
+    }),
+  ) as Record<SiteLocale, string>;
 }
 
 export function getLocalizedCommandContent(
   command: CommandCatalogRecord,
   localeInput: SiteLocale | string | null | undefined,
-): LocalizedCommandSummary {
+): ResolvedLocalizedCommandSummary {
   const locale = resolveSiteLocale(localeInput);
-  const localized = command.locales[locale];
+  const sourceLocale = resolveCommandSourceLocale(locale);
+  const localized = command.locales[sourceLocale];
 
   if (!localized) {
-    throw new Error(`Missing localized command content for ${command.slug} (${locale})`);
+    throw new Error(`Missing localized command content for ${command.slug} (${sourceLocale})`);
   }
 
-  return localized;
+  return {
+    ...localized,
+    routePath: getLocalizedCommandRoutePath(localized.routeSlug, locale),
+    alternateLocalePaths: getCommandAlternateLocalePaths(command),
+  };
 }
 
 function resolveCommand(commandOrId: CommandCatalogRecord | string): CommandCatalogRecord {
@@ -83,14 +126,9 @@ export function getCommandPath(
   localeInput: SiteLocale | string | null | undefined,
 ): string {
   const locale = resolveSiteLocale(localeInput);
-  return getLocalizedCommandContent(resolveCommand(commandOrId), locale).routePath;
-}
-
-export function getCommandAlternateLocalePaths(
-  commandOrId: CommandCatalogRecord | string,
-): Record<CommandLocale, string> {
   const command = resolveCommand(commandOrId);
-  return command.localePaths;
+  const sourceLocale = resolveCommandSourceLocale(locale);
+  return getLocalizedCommandRoutePath(command.locales[sourceLocale].routeSlug, locale);
 }
 
 export function getCommandSections(localeInput: SiteLocale | string | null | undefined): CommandSection[] {
