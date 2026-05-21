@@ -1,7 +1,7 @@
 ---
 slug: live
 title: Live
-summary: 当你需要在真实浏览器里直接比较视觉变体，而不是继续抽象讨论时，用 `live` 做现场迭代。
+summary: 在浏览器里迭代 UI。选中元素、写下注释，得到三个变体。接受一个后直接回写源码。
 highlights:
   - 开发服务器已经在运行。
   - 你想在真实 UI 上比选方案。
@@ -12,15 +12,85 @@ related:
   - delight
 ---
 
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">想看它实际运行的样子，以及带动画的演示，请访问 <a href="/live-mode">/live-mode</a>。这个页面本身就是命令运行时会被 AI harness 读取的参考文档。</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>状态：alpha。</strong> Live Mode 已经可以端到端工作，也值得现在就试，但它还需要更多真实仓库和框架配置下的测试。不常见的 setup 仍然可能有粗糙边角，遇到问题请直接报告。</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">一张来自编辑的明信片，大约每月一次。没有跟踪像素，也没有“只是来问候一下”。</p>
+        <button class="docs-viz-live-btn" type="button">给我寄一张</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">接受</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">这是 Live Mode 进行到一半的状态：picker 描出你选中的元素，context bar 显示当前变体编号，global bar 固定在底部。接受当前这个，就会把 Variant 2 回写进源码。</p>
+</div>
+
 ## 什么时候用
 
-当最有价值的反馈回路就在浏览器本身，而不是在对话里想象时，用 `live`。
+当你想像在设计工具里那样做视觉迭代，但最终产物仍然是生产代码时，就该用 <code>/impeccable live</code>。它提供的是一种接近 Figma 的画布式流程，但不需要再经历一次“从设计稿回到实现”的往返。
 
-## 它能带来什么
+它适合：
 
-命令会帮助你快速生成、比较并接受多个视觉方向，再把选中的结果写回源码。
+- **在真实元素上探索方向。** Hero、newsletter card、pricing tier。三种真正不同的方案，会直接出现在真实页面和真实上下文里。
+- **打磨一个已经差不多对了的 UI。** 你知道哪里不顺，但说不太清。选中它，写一句 “更 playful 一点”，或者直接用笔划掉让你不舒服的部分，然后点 Go。
+- **团队内部快速比较两个方向。** 先生成变体，不一定要接受。重点是拿来对比，而不是立即落地。
 
-## 优势
+它**不适合**从零做新功能（那是 <code>/impeccable craft</code> 的工作），也不适合整页重设计（那更适合 <code>/impeccable</code> 或某个 refine 类命令）。
 
-它尤其适合已有方向之后的快速试错与定稿。
+## 工作方式
 
+一条命令会在运行中的 dev server 上拉起 picker overlay。你选中任意元素，旁边会出现一条 context bar。你可以直接输入自由描述，也可以点 action chip：<code>bolder</code>、<code>quieter</code>、<code>distill</code>、<code>polish</code>、<code>typeset</code>、<code>colorize</code>、<code>layout</code>、<code>animate</code>、<code>delight</code>、<code>overdrive</code>。如果愿意，还可以先在元素上落评论 pin 或手绘笔触，技能会把这些都当成意图输入。
+
+点击 Go 后，系统会生成三个 **production-quality 变体**。它们会锚定在真正不同的设计原型上，而不是“同一个方案换三种颜色”，并通过你当前框架的 HMR 直接热替换进页面。你可以用方向键切换。接受其中一个，它就回写源码；三个都不要，原版保持不变。
+
+它支持 Vite、Next.js（包括 monorepo）、SvelteKit、Astro、Nuxt，以及纯静态 HTML。如果你的 dev server 带严格的 CSP，首次运行会先检测出来，并给出一次性、仅开发态的补丁建议，确保 picker 能加载。视觉决策以 <code>DESIGN.md</code> 为准，语气决策以 <code>PRODUCT.md</code> 为准；两者都在时，生成的变体会自动保持品牌一致，而不需要你再额外交代。
+
+## 试试看
+
+~~~
+/impeccable live
+~~~
+
+打开你的 dev server，选中 newsletter signup card，点一下 <code>delight</code> chip，再按 Go。你会拿到三个在“性格维度”上不同的方案：可能是邮票与明信片感、强调排版惊喜的版本，或者带插画点缀的版本，而不是同一套 treatment 的三次轻微变化。
+
+或者你也可以选中 hero，输入 “more editorial, less SaaS”，再按 Go。那三个变体会分别锚定在不同的 editorial archetype 上，例如报头式 masthead、目录式规格行、超大字形海报感，而不是同一路子换三种深浅。
+
+用完后，直接说 “stop live mode”、关掉浏览器标签，或点 picker bar 上的退出按钮都可以结束。
+
+## 常见陷阱
+
+- **页面本身还只写了一半就开始跑。** Live 变体生成需要上下文。如果元素还是 placeholder copy、Lorem ipsum，或者样式表都还没上齐，出来的变体也会继承这种半成品气质。先把内容补全。
+- **指望它替你做宏观决策。** Live mode 只迭代一个被选中的元素。像“重做整张 pricing page”这种任务，应该去用 <code>/impeccable</code> 或 <code>/impeccable craft</code>。
+- **忽略 fallback 提示。** 如果元素来自生成文件（编译产物、构建输出），picker 会明确说出来，并引导你把接受结果写回真正的源码。不要硬把结果写进生成文件，下次构建会把它抹掉。
+- **在你非常关心品牌贴合度时，却没有 PRODUCT.md 或 DESIGN.md。** Live 仍然能生成，但结果会更偏 generic default。真要贴近你的产品，先跑 <code>/impeccable teach</code> 和 <code>/impeccable document</code>。

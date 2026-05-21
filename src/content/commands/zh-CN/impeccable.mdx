@@ -1,7 +1,7 @@
 ---
 slug: impeccable
 title: Impeccable
-summary: 当需求跨越排版、布局、色彩、动效与信息结构时，用根命令作为统一入口，而不是先猜某个单一子命令。
+summary: 每个命令背后的设计智能。
 highlights:
   - 你需要一个同时覆盖多个设计维度的入口。
   - 方向还不够明确，希望 skill 先判断合适的工作流。
@@ -12,15 +12,73 @@ related:
   - polish
 ---
 
-## 适用场景
+## 什么时候用
 
-`/impeccable` 是最宽的命令入口，适合问题明确但处理路径还没收敛的时候。
+<code>/impeccable</code> 是总入口命令。你想做自由形态的设计工作，又不想先挑一个专门命令时，直接调用它就对了。它会带着整本 guidebook 进入工作，而不是只加载某一个窄技能。当那 23 个 specialist（<code>audit</code>、<code>polish</code>、<code>critique</code> 等等）都无法精确套住你的需求时，就该退回到它。
 
-## 需要提供什么
+适合这些场景：
 
-尽量说明当前页面、目标用户和质量要求。如果项目已经有 `PRODUCT.md` 与 `DESIGN.md`，它会直接以这些上下文为锚点。
+- **你不确定该用哪个命令。** 直接用自然语言描述需求，让技能自己选路径。
+- **这件事跨了多个维度。** 比如“把这个 hero 全部重做”，它同时涉及布局、排版、色彩和动效，单一命令很难独占。
+- **你要的是完整设计 intelligence，而不是受限的一条工作流。** 所有参考都加载，所有反模式都检查，不预设操作顺序。
 
-## 理想结果
+如果你想走结构化流程，就从侧栏里的专用命令开始。新项目最好先跑 <code>/impeccable teach</code>，先建立 <code>PRODUCT.md</code> 和 <code>DESIGN.md</code>。<code>/impeccable craft</code> 会把 discovery 访谈接到完整构建和视觉迭代上；<code>/impeccable shape</code> 只产出 design brief，不动代码；<code>/impeccable live</code> 会给你浏览器里的元素选择器，每个元素出三个变体。评估与细修类命令（<code>audit</code>、<code>critique</code>、<code>polish</code>、<code>typeset</code>、<code>layout</code>、<code>colorize</code> 等）则各自负责一块明确切面。
 
-这条命令应该帮助你先收敛方向，再决定直接实施或转到更具体的子命令。
+## 工作方式
 
+大多数 AI 生成 UI 会以同样的方式失败：泛泛的字体、紫色渐变、卡片套卡片、到处玻璃拟态。<code>/impeccable</code> 给你的 AI 一个强立场。它会加载一份带明显偏好的设计手册和一长串反模式清单，然后逼模型在写第一行代码前，就先承诺一个明确的审美方向。
+
+项目根目录下的两个文件，会决定它的全部表现：
+
+- **<code>PRODUCT.md</code>**：定义 register（brand 还是 product）、目标用户、品牌气质、反参考、设计原则。回答的是“谁、做什么、为什么”。
+- **<code>DESIGN.md</code>**：定义颜色、排版、层次、组件，以及 do / don't，采用六段式 Google Stitch 格式。回答的是“长什么样”。
+
+每个命令生成前都会先读这两个文件。**Register** 决定默认值加载哪一套。Brand（marketing、landing、portfolio，设计本身就是产品）和 product（应用界面、dashboard、工具，设计服务于任务）在排版、动效、色彩和密度上的默认策略完全不同。只要在 PRODUCT.md 里写一次，<code>/impeccable typeset</code> 就不会把 editorial-magazine 风格字体推到 dashboard 上，也不会把 product 默认味道推到 campaign page 上。两者的区别可以参考 [brand vs product tutorial](/tutorials/brand-vs-product)。
+
+第一次在一个项目里使用时，技能会自动跑一遍 <code>teach</code> 流程：做一个简短访谈，写出 PRODUCT.md，然后委托 <code>/impeccable document</code> 产出 DESIGN.md。之后的命令就不再重复问，而是直接读取这些上下文文件。
+
+## 试试看
+
+~~~
+/impeccable redo this hero section
+~~~
+
+~~~
+/impeccable build me a pricing page for a developer tool
+~~~
+
+这两个提示都故意很含糊。<code>/impeccable</code> 会自己选择一个符合 register 的明确审美方向，承诺非默认字体，避开 AI 默认调色盘，并做出那种真正的设计师才会做的具体决定。你不用先选命令，也不用手动跑一条条工作流。
+
+如果你更想在浏览器里做视觉迭代，而不是在聊天里来回：
+
+~~~
+/impeccable live
+~~~
+
+在运行中的 dev server 上随便选一个元素，写下注释或画一笔。系统会热替换出三个 production-quality 变体。接受一个，它就回写源码。
+
+## 把命令 pin 回快捷方式
+
+v3.0 把原来 18 个独立技能合并进了一个 <code>/impeccable</code>，并扩展成 23 个子命令。如果你怀念某个命令的短写法，可以把它 pin 回来：
+
+~~~
+/impeccable pin critique
+~~~
+
+之后，<code>/critique</code> 就会直接代理到 <code>/impeccable critique</code>。它会生成一个轻量重定向技能，把调用转回父技能，因此以后父技能更新时，你不用重新 pin。
+
+常见的 pin：
+
+- <code>/impeccable pin polish</code>，用于最后一轮细修
+- <code>/impeccable pin audit</code>，用于确定性的 a11y / perf 检查
+- <code>/impeccable pin live</code>，用于浏览器迭代流程
+- <code>/impeccable pin critique</code>，用于设计评审
+
+移除方式：<code>/impeccable unpin critique</code>。这些 pin 会以 <code>i-</code> 前缀目录存在于你的 harness skills 目录里（例如 <code>.claude/skills/i-critique/</code>、<code>.cursor/skills/i-critique/</code>），所以也可以直接手删。
+
+## 常见陷阱
+
+- **把它当成 style guide。** 它是一个有立场的设计搭档，不是 linter。默认值是为了抬高下限，不是为了压过你的判断。如果你有真正的理由反驳它（品牌规范、可访问性约束、用户研究），就明确说出理由，它会跟你协作。真正会把结果做差的，是没有理由地忽视它的立场。
+- **指望它修现有代码。** <code>/impeccable</code> 更偏向创建。细修场景请直接用 <code>/impeccable polish</code>、<code>/impeccable distill</code> 或 <code>/impeccable critique</code>。
+- **在 <code>teach</code> 还没来得及保存上下文前就急着跑。** 新项目里它会在中途访谈你，这当然也能工作，只是更慢一点。第一条命令先显式跑 <code>/impeccable teach</code>，通常更顺。
+- **跳过 register。** Brand 和 product 的默认值分歧足够大，跑错 register 会让结果微妙地不对味。如果 <code>PRODUCT.md</code> 里还没有 <code>## Register</code>（旧格式），就重新跑一次 <code>/impeccable teach</code> 补上。

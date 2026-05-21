@@ -1,7 +1,7 @@
 ---
 slug: extract
 title: Extract
-summary: 当重复模式已经在代码里扩散并形成维护成本时，用 `extract` 把它们收敛成更清晰的设计系统部件。
+summary: 把可复用的组件、令牌和模式抽进设计系统。
 highlights:
   - 多个组件在重复解决同一个问题。
   - token 和模式需要集中管理。
@@ -12,15 +12,63 @@ related:
   - harden
 ---
 
-## 最适合的时机
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">发现漂移</span>
+      <span class="docs-viz-flow-hint">重复的 hex、按钮变体、间距尺度、文字样式。</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">提出原语</span>
+      <span class="docs-viz-flow-hint">token 名称、带 variant 与 size 的组件 API、文字样式。</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">迁移调用点</span>
+      <span class="docs-viz-flow-hint">把重复 CSS 换成新原语，不留孤儿代码。</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">这个技能只提取“同样意图下重复三次以上”的东西。两次还不算模式，而且迁移必须在同一轮里完成。</p>
+</div>
 
-当不一致已经不只是偶然，而是真正拖慢维护效率时，用 `extract`。
+## 什么时候用
 
-## 它会抽出什么
+<code>/impeccable extract</code> 适合代码库在无意间长成设计系统的那一刻。12 个地方有重复按钮样式，三种看起来差不多的卡片，hex 颜色散落一地，手写间距不小心长成了一套比例。你想把这些漂移收敛成可复用原语时，就该用它。
 
-常见对象包括间距规则、排版体系、控件模式和重复布局结构。
+最好在产品已经做出足够多功能、模式开始自己显形之后再用。太早抽象，只会得到不贴合现实的 abstraction。
 
-## 目标
+## 工作方式
 
-让后续设计实现不再依赖一次次临时决定。
+它会先识别设计系统结构，再找值得提取的机会：
 
+1. **Token**：找重复字面量（颜色、间距、圆角、阴影、字号），提出 token 名称，写进 token 系统，并替换使用点。
+2. **组件**：找只存在轻微差异的重复 UI 模式（按钮、卡片、输入框、模态框），提成一个带 variant 的组件，并迁移调用方。
+3. **组合模式**：找重复出现的布局或交互模式（表单行、工具栏组、空状态），提炼成组合级原语。
+4. **字样式**：找重复的字号 + 字重 + 行高组合，提取为文本样式。
+5. **动画模式**：找重复的缓动、时长、关键帧组合，抽成 motion token。
+
+它很谨慎。只有在“同样意图下重复三次以上”时才会提取。不会因为“也许将来能复用”就先抽一层。过早抽象往往比重复更糟。
+
+## 试试看
+
+~~~
+/impeccable extract the button styles
+~~~
+
+预期输出：
+
+- 在 8 个文件里发现 14 个按钮实例
+- 一共 4 种变体：primary（实心 accent）、secondary（描边）、ghost（纯文字）、destructive（实心红色）
+- 4 种变体共享同一套尺寸尺度（small、default、large）
+- 提炼成 <code>&lt;Button variant="primary" size="default"&gt;</code>，样式全部由 token 驱动
+- 迁移 14 个调用点，删除约 180 行重复 CSS
+- 新增 3 个缺失 token：<code>--button-radius</code>、<code>--button-padding-y</code>、<code>--button-padding-x</code>
+
+## 常见陷阱
+
+- **抽得太早。** 两次还不算模式，三次才有点像。等模式自己变明显。
+- **过度泛化。** 提出来的组件应该贴住当前用例，而不是试图提前覆盖所有未来可能。以后再加 variant 也不迟。
+- **只抽取，不迁移。** 抽完不迁移，老代码还在，就会变成第三种做法。必须同一轮一起迁。
+- **把不同意图的东西硬抽成一个。** 两个看起来像按钮的东西，如果语义不同（主操作 vs 看起来像按钮的链接），往往就不该强行合并。

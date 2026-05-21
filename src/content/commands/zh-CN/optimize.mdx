@@ -1,7 +1,7 @@
 ---
 slug: optimize
 title: Optimize
-summary: 当渲染、加载、资源体积或动效成本已经影响到真实体验时，用 `optimize` 处理 UI 性能问题。
+summary: 从 LCP 到 bundle 体积，诊断并修复 UI 性能。
 highlights:
   - 界面明显发慢、掉帧或过重。
   - 你希望降成本，但不想把设计抽空。
@@ -14,13 +14,53 @@ related:
 
 ## 什么时候用
 
-当问题主要体现在速度、响应和资源成本，而不是纯审美判断时，优先用 `optimize`。
+<code>/impeccable optimize</code> 适合那些“感觉很慢”的界面。首屏迟迟不出，滚动卡顿，图片姗姗来迟，交互发黏，bundle 一口气发了 800KB JavaScript。Web Vitals 已经不好，或者用户已经开始抱怨系统发沉时，就该用它。
 
-## 可能动作
+不要把它当成过早优化。如果 LCP 只有 1.1s，INP 是 80ms，那就停。此时设计工作的价值更高。
 
-它会减少高成本效果、改善加载策略或简化渲染路径，同时尽量保住设计意图。
+## 工作方式
 
-## 目标
+这个技能会沿着五个性能维度工作：
 
-界面应该更快，但不要因此失去原本的识别度。
+1. **加载与 Web Vitals**：LCP、INP、CLS。谁在阻塞首屏，谁在拖慢响应，谁在制造布局跳动。
+2. **渲染**：不必要的 re-render、缺失的 memoization、昂贵的 reconciliation、循环里的 layout thrash。
+3. **动画**：有没有在动画布局属性，是否只触碰 transform 和 opacity，<code>will-change</code> 在这里到底是帮忙还是捣乱。
+4. **图片与资源**：lazy loading、响应式图片（<code>srcset</code>、<code>sizes</code>）、现代格式（WebP、AVIF）、是否提前设置尺寸防止 CLS。
+5. **Bundle 体积**：未使用的 import、过大的依赖、缺失的 code-splitting、死代码。
 
+它会测前后数据。每个修复都要有量化结果。如果一个改动没有带来指标变化，它就应该被回滚。
+
+## 试试看
+
+~~~
+/impeccable optimize the homepage
+~~~
+
+预期结果大致像这样：
+
+~~~
+LCP: 3.2s → 1.4s
+  - Hero 图片预加载（-800ms）
+  - 移除阻塞渲染的字体样式表（-240ms）
+  - 延后 analytics 脚本（-180ms）
+
+INP: 240ms → 90ms
+  - 给 scroll handler 做 debounce
+  - 对昂贵列表渲染做 memoize
+  - 移除事件循环里的同步 layout 读取
+
+CLS: 0.18 → 0.02
+  - 为 hero 图片和 logo 设置尺寸
+  - 给异步 header badge 预留空间
+
+Bundle: 340KB → 180KB
+  - 删除未使用的 lodash 引用（52KB）
+  - 对 playground route 做 code split（78KB）
+  - 移除废弃图标集（30KB）
+~~~
+
+## 常见陷阱
+
+- **不测就开始优化。** 没有基线指标，你根本不知道什么真的有用。Optimize 要带着具体 Web Vitals 数字来跑，不是靠感觉。
+- **追逐微小胜利。** 花一周换来 20ms 的 INP 改善，通常不值得。优化会很快进入收益递减，要知道什么时候停。
+- **每次改完不重测。** 构建链或别的改动可能让结果比预期更差。一定要验证。

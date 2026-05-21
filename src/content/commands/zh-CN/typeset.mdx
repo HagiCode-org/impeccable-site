@@ -1,7 +1,7 @@
 ---
 slug: typeset
 title: Typeset
-summary: 当字体选择、层级关系、字距行距或阅读节奏显得普通且不稳定时，用 `typeset` 修正排版。
+summary: 修正显得普通、不一致或像偶然拼出来的排版。
 highlights:
   - 文本可读，但不够有说服力。
   - 标题和正文缺少明确层级。
@@ -12,15 +12,41 @@ related:
   - polish
 ---
 
-## 适合的场景
+## 什么时候用
 
-当页面文本很多，或排版已经成为整体观感的主要瓶颈时，`typeset` 最有价值。
+当页面上的文字看起来像默认排版，而不是被认真设计过的排版时，就该用 <code>/impeccable typeset</code>。层级发糊，三个字号看上去没差，正文只有 14px，所谓的 display font 其实只是 Inter Bold，标题字距毫无照顾，这些都属于典型触发点。
 
-## 典型改动
+常见判断语： “层级太平”、 “可读性不对”、 “字体看起来太普通”。
 
-它会调整字号梯度、字重、行长、间距与字体搭配，让界面看起来像有人真正排过。
+## 工作方式
 
-## 底线
+这个技能会从五个维度评估排版：
 
-目标不是为了新奇，而是为了更清晰、更有意图。
+1. **字体选择**：是不是在用看不见的默认项（Inter、Roboto、Arial、Open Sans），字体和品牌是否匹配，家族数量有没有超过 2 到 3 个。
+2. **层级**：标题、正文、说明文字能不能一眼区分开，各级大小反差是否至少 1.25x，字重反差是否清楚。
+3. **字号与尺度**：有没有一致的 type scale，正文是否至少达到 16px，应用界面该用 fixed rem，营销和内容页面该用 fluid clamp。
+4. **可读性**：行长是否在 45 到 75 字符之间，行高是否匹配字体与场景，对比度是否合格。
+5. **一致性**：同一种元素在所有地方是否使用同一种处理方式，是否到处散落一次性的字号覆盖。
 
+然后它会实际修：挑更有辨识度的字体，建立模块化 type scale，拉开层级反差，设置正确的行长和 leading。
+
+## 试试看
+
+~~~
+/impeccable typeset the article layout
+~~~
+
+预期 diff：
+
+- 展示字体从 Inter 700 改成真正的 display face
+- type scale 重建为 3rem / 2rem / 1.25rem / 1rem / 0.875rem，比例 1.333
+- 正文字号从 14px 提到 16px
+- 文章列行长被限制到 68ch
+- 正文行高 1.6，展示标题 1.1
+- 删除散落在组件样式里的 4 个一次性 <code>font-size</code>
+
+## 常见陷阱
+
+- **没上下文就直接要新字体。** Typeset 会依据 <code>PRODUCT.md</code> 的品牌语气来选。如果你还没跑 <code>/impeccable teach</code>，建议通常会偏 generic。
+- **问题其实在布局，却去跑 typeset。** 如果段落本身没问题，只是页面太挤，那你要的是 <code>/impeccable layout</code>。
+- **指望 app UI 也用 fluid clamp。** Typeset 对应用界面默认使用 fixed rem scale。Fluid typography 更适合 line length 变化更大的 marketing 和内容页。

@@ -1,7 +1,7 @@
 ---
 slug: overdrive
 title: Overdrive
-summary: 当目标就是做出明显 wow factor，而技术野心本身也是产品价值的一部分时，用 `overdrive`。
+summary: 把界面推过常规上限，着色器、物理、60fps、电影化转场。
 highlights:
   - 你要的是非常规、强表现力的体验。
   - 动效或渲染本身就是卖点。
@@ -12,15 +12,29 @@ related:
   - colorize
 ---
 
-## 什么时候值得用
+## 什么时候用
 
-适合 hero、展示页或品牌型场景，在这些地方“技术表现”本身就是叙事的一部分。
+<code>/impeccable overdrive</code> 适合那些你就是想让人“哇”一声的时刻。一个用了 WebGL 的 hero，一张能扛百万行的表，一个从触发按钮变形长出来的对话框，一个带实时流式反馈的表单，一次电影感十足的页面转场。当项目预算允许技术野心，且结果必须显得非常特别时，就该用它。
 
-## 代价
+不要把它用在 operator tool、dashboard，或者任何“可靠性比奇观更重要”的场景。Overdrive 会为了效果消耗复杂度，这个代价只值在关键时刻花。
 
-`overdrive` 会主动提高实现复杂度，因此只该用在真正配得上这笔成本的地方。
+## 工作方式
 
-## 结果要求
+它会先挑出**一个**值得做得不寻常的时刻，而不是把精力摊满整个界面。然后它会动用大多数 AI 生成 UI 根本碰不到的技术：WebGL shader、弹簧物理、Scroll Timeline、View Transitions、canvas 动画、GPU 加速滤镜。所有效果都要预算、profile，并以 60fps 为目标测试，同时带上 reduced-motion fallback。
 
-最后仍然要像设计作品，而不是一个特效样片。
+Overdrive 的输出会以 <code>──── ⚡ OVERDRIVE ────</code> 开头，提醒你现在进入了更激进的模式。你应该预期更大的 diff、新依赖，以及比其他技能更深的实现复杂度。
 
+## 试试看
+
+~~~
+/impeccable overdrive the landing hero
+~~~
+
+一次具体运行，可能会把静态 hero 换成：一个跟随鼠标位置变化的 WebGL shader 背景；一个使用 Scroll Timeline API、滚动时通过遮罩揭示的 display headline；以及一个点击 CTA 后通过 View Transition 变形进入下一页的过渡。与此同时，还会提供 reduced-motion fallback，把这些全部换成干净的静态构图。
+
+## 常见陷阱
+
+- **到处都用。** Overdrive 之所以成立，就是因为它稀有。如果每个页面都有电影化时刻，那就没有一个页面真的电影化。
+- **不带 reduced-motion fallback 就上线。** 这点不可谈判。Overdrive 会自动加，你不要删。
+- **忽视性能。** 再惊艳的时刻，也得稳住 60fps。掉帧就削，或者继续优化。卡顿的奇观比简单而顺滑更差。
+- **基础界面还不稳就先 overdrive。** 在坏底子上加 spectacle，只会显得像转移注意力，不会像 delight。

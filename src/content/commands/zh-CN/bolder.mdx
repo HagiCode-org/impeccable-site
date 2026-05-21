@@ -1,7 +1,7 @@
 ---
 slug: bolder
 title: Bolder
-summary: 当设计太安全、太像默认模板、缺少立场时，用 `bolder` 提高视觉决断力。
+summary: 把过于安全的设计推向更强的存在感，同时避免滑向混乱。
 highlights:
   - 你需要更强冲击力，但不想失控。
   - 页面看起来像“没有意见”。
@@ -12,15 +12,39 @@ related:
   - delight
 ---
 
-## 最适合什么情况
+## 什么时候用
 
-当设计功能上没问题，但整体过于胆小，`bolder` 最能发挥价值。
+当一个界面看起来和别的界面没什么区别时，就该用 <code>/impeccable bolder</code>。通用无衬线，中等字重，柔和阴影，保守点缀色，合理但毫无记忆点的间距。它不是错，只是太安全。项目承受得住存在感，而当前版本又毫无态度时，就该用 bolder。
 
-## 常见变化
+不要把它用在用户要盯几个小时的 dashboard 上。Boldness 适合 marketing page、hero moment 和内容型页面，不适合 operator tools。
 
-它会加强层级、排版或配色的力度，让页面更有中心、更有个性。
+## 工作方式
 
-## 配套命令
+这个技能会在不破坏可用性的前提下，放大四个轴：
 
-如果结果开始过冲，可以再用 `quieter` 或 `distill` 回收。
+1. **尺度**：展示级标题会被推到 clamp(3rem, 6vw, 6rem) 甚至更大。不是点到为止，而是真正占住视口。
+2. **字重反差**：用 300 对 800，而不是 medium 对 regular。要有真正的张力，不是随手调一下。
+3. **色彩承诺**：点缀色以完整力度出现，而不是被稀释。背景也可以有明确立场（墨色、点缀色、纸色），而不是永远一片中性。
+4. **构图自信**：非对称、越网格、拉引语、悬挂标点、尺度跳变。布局要有声音。
 
+它不是“再加一点”，而是把已经存在的东西放大。如果设计里本来有三种颜色，bolder 不会加第四种，而是更坚决地使用这三种。
+
+## 试试看
+
+~~~
+/impeccable bolder the landing page hero
+~~~
+
+预期变化：
+
+- Hero 标题从 3rem 提到 clamp(3.5rem, 7vw, 6.5rem)，使用 display 字体，字重 700
+- 副标题从 regular 改成 1.5rem italic，并在视觉上向左轻拉 8px 对齐标题
+- 背景从纯纸色改成 cream-to-paper 渐变，让容器更有温度
+- CTA 按钮改为实心，去掉投影，减小圆角，hover 时做反色
+- 辅助图片略微越出网格，用负的 top margin 制造非对称
+
+## 常见陷阱
+
+- **用错页面。** 产品 dashboard、设置页和表单不该 bold，它们应该清楚可读。那种场景更适合 <code>/impeccable layout</code> 或 <code>/impeccable polish</code>。
+- **把 bold 和 loud 混为一谈。** Bold 是坚定、有立场。Loud 是吵。Bolder 要的是前者。如果结果显得有攻击性，接着跑 <code>/impeccable quieter</code>。
+- **同一轮里和 <code>/impeccable delight</code> 一起用。** Delight 最适合在稳定的视觉基线之上再加。先 bold，稳住，再 delight。

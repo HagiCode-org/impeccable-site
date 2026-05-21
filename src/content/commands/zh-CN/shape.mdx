@@ -1,7 +1,7 @@
 ---
 slug: shape
 title: Shape
-summary: 在写代码前先产出任务级设计 brief，让实现受目标约束，而不是受默认模板驱动。
+summary: 在动手前先思考，通过发现过程产出设计 brief，而不是靠猜。
 highlights:
   - 你现在要的是规划，不是实现。
   - 正确的布局或语气还不清楚。
@@ -12,15 +12,72 @@ related:
   - document
 ---
 
-## 适用时机
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">/impeccable shape 的输出</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">目标</span>
+        <span class="docs-viz-file-v">让已经订阅的用户调整接收内容，而不是把他们逼到退订。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">用户</span>
+        <span class="docs-viz-file-v">很赶、正在用手机、夹在会议之间。读得快，耐心低。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">内容</span>
+        <span class="docs-viz-file-v">4 种摘要类型，2 个频率选项，底部有一个全部退订入口。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">感受</span>
+        <span class="docs-viz-file-v">平静、可信，不耍暗黑模式。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">约束</span>
+        <span class="docs-viz-file-v">移动优先。WCAG AA 对比度。单列，不用模态框。</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">把这份 brief 交给 <code>/impeccable</code>、<code>/impeccable craft</code>，或任何实现流程。</div>
+  </div>
+  <p class="docs-viz-caption">Shape brief 是指南针，不是规格书。它捕捉的是意图，不是 UI。实现类技能会在写代码前先读它。</p>
+</div>
 
-当缺的是思考而不是代码时，用 `shape`。它适合规划一个页面、一个流程或一次明显的改版。
+## 什么时候用
 
-## 预期流程
+<code>/impeccable shape</code> 是功能开始之前的那一步。在任何人写代码之前，在任何人争论 hero 应该怎么做之前，在任何人开始挑字体之前，用它先把 discovery 对话做完：目的、用户、内容、约束。然后把结果收成一份实现类技能可以依赖的 design brief。
 
-命令会围绕目的、用户、内容、限制与视觉方向收集上下文，再把这些信息转成可执行 brief。
+只要有这些情况，就该先跑它：一个功能准备开始，一张 ticket 写得很虚，或者你发现自己已经开始写 JSX，只是为了想清楚产品到底应该是什么。
 
-## 输出要求
+## 工作方式
 
-brief 必须足够具体，后续实现步骤能够明确追溯到这些设计决策。
+大多数 AI 生成 UI 失败，不是因为代码差，而是因为思考被跳过了。模型会直接跳到“这里放一排卡片”，却没有先问“用户到底想完成什么”。<code>/impeccable shape</code> 就是把顺序倒过来。
 
+这个技能会在对话里进行一轮结构化 discovery interview，而且在这个阶段**不会写代码**。问题会覆盖：
+
+- **目的与上下文**：这个功能是给谁用的，处在什么情境和心态里
+- **内容与数据**：会展示什么，真实数据范围多大，边界情况有哪些，哪些内容是动态的
+- **设计目标**：最重要的那一件事是什么，希望传达什么感觉，有没有参考对象
+- **约束**：技术、内容、可访问性、本地化
+
+你只需要自然作答，技能会继续追问，而不是甩给你一张表。最后它会产出一份 design brief，一个结构化产物，你可以直接交给 <code>/impeccable</code> 或别的实现技能。
+
+如果你想要的是完整流程，也就是 discovery 完直接进入构建，请改用 <code>/impeccable craft</code>。它会先内置跑完 <code>/impeccable shape</code>，然后继续实现和视觉迭代。单独使用 <code>/impeccable shape</code>，则适合你只想要 brief，然后把实现交给别的方法。
+
+## 试试看
+
+~~~
+/impeccable shape a daily digest email preferences page
+~~~
+
+预期是一轮 5 到 10 个问题的对话。技能会问你诸如“打开这个页面的人已经是忠诚订阅者，还是还在犹豫的人”，以及“当用户已经全部退订时，这个功能应该隐藏还是要明确展示”这类问题。你回答之后，一份 brief 会逐步成形。
+
+之后你可以把这份 brief 交给 <code>/impeccable</code>、<code>/impeccable craft</code> 或任何别的技能，也可以只是拿着它手工实现。
+
+## 常见陷阱
+
+- **因为它看起来慢，就跳过。** 访谈大约 5 分钟，能省掉的返工常常是按小时算的。
+- **把 brief 当成规格书。** 它是指南针，不是 checklist。它描述意图，不描述 UI。
+- **回答时只说“标准”或“正常”。** 具体性就是这一步的全部价值。如果用户是“很赶、在手机上、夹在会议之间”，就直接说出来。这会改变后面的一切。

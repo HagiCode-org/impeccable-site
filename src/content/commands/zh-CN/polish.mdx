@@ -1,7 +1,7 @@
 ---
 slug: polish
 title: Polish
-summary: 当设计方向已经正确，但细节仍然粗糙、松散、不统一时，用 `polish` 做最后一轮打磨。
+summary: 把一个好功能推到真正可交付的最后一道细修。
 highlights:
   - 对齐、间距和微观决策还不够稳。
   - 功能已经接近可发布状态。
@@ -12,15 +12,45 @@ related:
   - harden
 ---
 
-## 最佳时机
+## 什么时候用
 
-`polish` 适合在后期使用，也就是结构和大方向已经成立之后。
+<code>/impeccable polish</code> 是上线前最后要跑的一步。它会去抓那些把“已经能交付”和“真的 polished”分开的微小细节：半像素偏差、不一致的间距、忘记做的 focus state、闪一下的 loading transition、语气漂移的文案。它也会把功能重新和设计系统对齐：把硬编码值换成 token，用共享组件替掉临时自定义实现，修回偏离既有模式的部分。
 
-## 它会提升什么
+当一个功能在功能上已经完成、没有坏掉，但你总觉得还有哪里不顺时，就该用它。如果一个功能逐渐偏离了设计系统，也该用 polish 把它拉回去。
 
-重点会落在间距、对齐、强调方式和其他微观细节上，把“不错”推到“可发”。
+## 工作方式
 
-## 注意
+Polish 会先识别设计系统（token、间距尺度、共享组件），然后沿着六个维度细修：
 
-如果底层结构还错着，就先别急着抛光。
+1. **视觉对齐与间距**：贴网格、间距尺度一致、图标的光学对齐。
+2. **排版**：层级是否一致，行长，widow / orphan，标题字距。
+3. **颜色与对比度**：token 使用、主题一致性、WCAG 比例、focus 指示器。
+4. **交互状态**：hover、focus、active、disabled、loading、error、success。每个状态都要有交代。
+5. **转场与动效**：缓动顺滑、没有布局抖动、尊重 <code>prefers-reduced-motion</code>。
+6. **文案**：语气一致、时态统一、没有 placeholder，也没有 stray TODO。
 
+它有一个态度非常明确：polish 是最后一步，不是第一步。如果功能还没完成，先 polish 就是在浪费时间。
+
+## 试试看
+
+~~~
+/impeccable polish the pricing page
+~~~
+
+一次健康的运行通常长这样：
+
+~~~
+视觉对齐：修正 3 个脱离 8px 基线的元素
+排版：收紧 h1 字距，修掉 testimonial 里的 widow
+交互：给 FAQ 项补上 hover，给邮箱输入框补上 focus ring
+动效：柔化 modal entrance，加入 reduced-motion fallback
+文案：删除一个残留的 Lorem ipsum，统一按钮语气
+~~~
+
+五个小修，不重做页面。这就是一轮好 polish 的形状。
+
+## 常见陷阱
+
+- **功能还没做完就开始 polish。** 如果代码里还有 TODO，那你还没到这一步。<code>/impeccable polish</code> 只服务于已完成的功能。
+- **把 polish 当成 redesign。** Polish 修的是现有东西。如果你发现自己在重构整个布局，那其实你需要的是 <code>/impeccable critique</code> 或 <code>/impeccable layout</code>。
+- **只跑 polish，不先跑 <code>/impeccable audit</code>。** Polish 擅长抓“感觉不对”的问题，Audit 擅长抓可测的问题。两者一起用。

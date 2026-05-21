@@ -1,7 +1,7 @@
 ---
 slug: craft
 title: Craft
-summary: 当一个新功能既需要前置设计发现，又需要直接落地实现时，用 `craft` 跑完整的确认 brief 到构建流程。
+summary: 先塑形，再构建，在一条流程里完成。
 highlights:
   - 你正在从零开始一个新功能。
   - 你希望把发现、实现、视觉迭代放进同一条命令。
@@ -12,15 +12,67 @@ related:
   - live
 ---
 
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">发现式访谈，目的、用户、约束、方向。</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">加载参考</span>
+      <span class="docs-viz-flow-hint">空间、排版、动效、色彩、交互。</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">构建</span>
+      <span class="docs-viz-flow-hint">结构、层级、字体、颜色、状态、动效、响应式。</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">视觉迭代</span>
+      <span class="docs-viz-flow-hint">在浏览器里核对结果，直到它真正贴合 brief。</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">每个阶段都不能跳。大多数 AI 产出失败，就失败在第一步：等代码已经写出来，思路也就锁死了。</p>
+</div>
+
 ## 什么时候用
 
-`craft` 适合方向尚未定型的新工作。它先支付思考成本，再开始写代码。
+<code>/impeccable craft</code> 是端到端的构建命令。给它一个功能描述，它会把整条流水线都跑完：结构化 discovery、参考加载、实现、视觉迭代。适合从零开始做一个新功能，同时希望整条流程一口气完成的时候。
 
-## 它会改变什么
+适合这些场景：
 
-流程会先问清需求与约束，锁定 brief，再围绕 brief 构建并做视觉迭代，而不是停在“能跑起来”。
+- **你在做一个全新的功能，希望整套流程都带上。** 不想自己拆步骤来管。
+- **你知道要做什么，但不知道它应该长什么样。** Discovery 阶段会强迫你先把设计思考做完，再进入实现。
+- **你默认就想要视觉迭代。** <code>craft</code> 不会在第一个能跑的版本上收工，而是会进浏览器对照 brief 继续打磨。
 
-## 结果标准
+如果你只想先把思路想清，不想写代码，请单独用 <code>/impeccable shape</code>。如果你已经非常清楚自己要什么，只想直接做，直接调用 <code>/impeccable</code> 即可。<code>craft</code> 介于两者之间：更结构化、更完整，也更有主张。
 
-最终产物应该看起来像“被设计过”，而不是“被拼出来”。
+## 工作方式
 
+<code>craft</code> 会按顺序跑四个阶段：
+
+1. **先塑形。** 内部先跑 <code>/impeccable shape</code>，进行一段简短 discovery，对齐目标、用户、内容、约束和成功标准。产出是一份你可以阅读、也可以反驳的 design brief。
+2. **加载参考。** 根据 brief 把对的参考文件拉进来：空间、排版、动效、色彩、交互、响应式、UX writing，让模型在写代码前先把原则装进上下文。
+3. **构建。** 按有意识的顺序实现：先结构，再间距与层级，再字体与颜色，再状态，再动效，再响应式。每个决定都回溯到 brief。
+4. **视觉迭代。** 在浏览器里打开结果，对照 brief 和反模式目录检查，然后不断收敛，直到贴合意图。这个阶段非常关键。第一个能工作的版本，从来不该直接上线。
+
+Discovery 阶段不能跳，这正是它的价值。大多数 AI 生成 UI 失败，不是因为 JSX 写得差，而是因为没人先问“用户到底想完成什么”。<code>craft</code> 反过来处理这件事。
+
+## 试试看
+
+~~~
+/impeccable craft a pricing page for a developer tool
+~~~
+
+你会先经历一轮 5 到 10 个问题的 discovery 访谈：受众是谁、产品气质如何、希望传达什么情绪、反参考是什么、有哪些约束。之后会产出 brief，再进入实现，并在每个阶段配合浏览器检查。视觉打磨通常会有不止一轮迭代。
+
+整次运行会比普通命令更长，因为它把思考、构建和细修都包进来了。代价是前期更重，回报是后期返工更少。
+
+## 常见陷阱
+
+- **拿它处理小改动。** <code>craft</code> 适合新功能，不适合 touch-up。已有代码请改用 <code>/impeccable polish</code>、<code>/impeccable critique</code> 或某个更具体的 refine 命令。
+- **在 discovery 阶段着急。** 它看起来比“直接开写”慢，但其实不是。问题答得越认真，brief 越尖锐，构建越稳，返工越少。
+- **跳过视觉迭代。** 这个阶段存在是有原因的。从“技术上能跑”到“感觉上对了”，靠的是视觉打磨，不是 code review。让它跑完。

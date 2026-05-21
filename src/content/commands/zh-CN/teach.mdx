@@ -1,7 +1,7 @@
 ---
 slug: teach
 title: Teach
-summary: 当项目还没有稳定设计上下文时，用 `teach` 把 `PRODUCT.md` 与 `DESIGN.md` 建起来，避免每次都从零开始。
+summary: 在每个项目里做一次，让 Impeccable 真正理解你的产品是给谁用的。
 highlights:
   - 项目还没有设计上下文文件。
   - 多个协作者需要共用一份事实来源。
@@ -12,15 +12,69 @@ related:
   - impeccable
 ---
 
-## 最佳时机
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">每个命令都会读取</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product，设计服务于任务。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">值班中的 SRE，读得快，经常在黑暗环境里工作。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">平静、临床感、没有 hype。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">紫色渐变、玻璃拟态、“提升你的生产力”。</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">每个命令在写第一行代码前，都会先读它。</div>
+  </div>
+  <p class="docs-viz-caption">这是一个完成态的 PRODUCT.md。只记录策略：谁、做什么、为什么。不写颜色，不写字体，也不写像素值，那些都属于 DESIGN.md。</p>
+</div>
 
-适合在项目初期，或当现有设计上下文分散在多次对话与零散文档里的时候使用。
+## 什么时候用
 
-## 它会产出什么
+在一个项目刚开始时，先跑一次 <code>/impeccable teach</code>。它就是入口坡道。没有它，其他命令虽然也能给出“技术上还行”的设计，但语气会很 generic：默认 SaaS 腔、保守字体、AI 调色盘。有了它，后续每条命令在生成前都会先读你的答案。
 
-命令会把 register、用户、目的、原则，以及后续的视觉系统说明沉淀下来，供之后所有命令复用。
+适合这些场景：
 
-## 为什么重要
+- **你刚在新项目里安装了 Impeccable。** 这是第一条该跑的命令。要是你跳过，别的命令大概率也会把你引回来。
+- **项目的品牌方向变了。** 新定位、新受众、新语气。重新跑一遍 teach，更新后的上下文就会流进后续所有命令。
+- **另一个命令提示 “no design context found”。** 这就是信号：先跑 teach，再回来继续原任务。
 
-稳定上下文会直接抬高后续所有设计工作的下限。
+## 工作方式
 
+Teach 会在项目根目录写两个互补文件：
+
+- **<code>PRODUCT.md</code>** 是战略文件，定义 register（brand 或 product）、目标用户、产品目的、品牌气质、反参考、设计原则、可访问性需求。回答“谁、做什么、为什么”。
+- **<code>DESIGN.md</code>** 是视觉文件，定义颜色、排版、层次、组件，以及 do / don't。它回答“长什么样”，并由 teach 在结尾委托 <code>/impeccable document</code> 来生成。
+
+这个流程会先扫描代码库（README、package.json、组件、token、品牌资产），形成一个 **register 假设**：brand（landing、marketing、portfolio，设计本身就是产品）还是 product（app UI、dashboard、工具，设计服务于任务）。Register 会成为第一个问题，因为它会影响后面所有默认值：默认字体、动效强度、色彩策略，以及像 <code>/impeccable typeset</code> 这样的命令会拉哪一套参考。确认 register 之后，teach 只问那些它无法从代码里推断出来的部分：用户是谁、三个真实的性格词、参考与反参考、可访问性要求。
+
+PRODUCT.md 只负责战略，不负责视觉。不要在里面写颜色、字体或像素值，那些应该放到 DESIGN.md。把两个文件分开，是为了让战略保持稳定，同时允许视觉系统继续演化。
+
+## 试试看
+
+~~~
+/impeccable teach
+~~~
+
+预期是一轮 5 到 8 分钟的访谈。第一个问题通常就是 register；后面的问题都比较短。Teach 会先把它从代码里推测到的东西说给你听，比如 “从这些路由来看，这更像是一个 product surface，对吗？” 也就是说，你更多是在确认，而不是从零填空。
+
+最后，teach 会询问你是否继续跑 <code>/impeccable document</code>。除非你有明确理由要先停，否则一般都应该答应。真正的 DESIGN.md，才是让后续变体、polish 和 audit 不跑偏的关键。
+
+## 常见陷阱
+
+- **为了“先随便试个命令”而跳过它。** 其他命令照样会在半路访谈你。先跑 teach 实际上更快。
+- **回答得太泛。** “现代、干净”没有意义；“温暖、机械、有主见”才有意义。要具体，也要敢于反对安全默认值。
+- **把 PRODUCT.md 当成不可改动的神谕。** 这是你的文件。如果 teach 写进去的某个点不够对，就直接改。后续每个命令读的都是当前文件，而不是历史版本。
+- **参考只给形容词，不给对象。** 参考应该是品牌、产品、印刷物这类可指认的东西，例如 “Klim Type Foundry 的 specimen pages”，而不是 “technical and clean”。反参考也一样，越具体越有用。

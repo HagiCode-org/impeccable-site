@@ -1,7 +1,7 @@
 ---
 slug: document
 title: Document
-summary: 当代码库里已经形成真实的视觉系统时，用 `document` 把它整理成可复用的 `DESIGN.md`。
+summary: 生成符合规范的 DESIGN.md，把视觉系统沉淀下来，让所有 AI 代理都能保持品牌一致。
 highlights:
   - 现有代码里已经有明确设计语言。
   - 你需要一份可迁移的颜色、排版、间距和组件摘要。
@@ -12,15 +12,113 @@ related:
   - polish
 ---
 
-## 最适合什么情况
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch 格式</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">概览</span>
+      </div>
+      <p class="docs-viz-designmd-note">创意北极星：<em>“The Editorial Sanctuary”</em>。安静的字、充裕的留白、一个有承诺的强调色。</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">颜色</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">排版</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">层次与浮起</span>
+      </div>
+      <p class="docs-viz-designmd-note">默认保持平面，只有在状态变化需要时才使用阴影。</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">组件</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">订阅</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's 与 Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">让中性色轻微朝强调色相偏染。</span>
+        <span class="docs-viz-designmd-dont">用渐变文字来强调重点。</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">这六个部分是固定的，顺序固定，名字也固定。同时会生成机器可读的 <code>DESIGN.json</code> 作为 sidecar，供 Live Mode 里的设计面板使用。</p>
+</div>
 
-当项目已经有足够多的 UI，可以被观察和总结，而不只是凭空设想时，用 `document`。
+## 什么时候用
 
-## 预期结果
+当你的视觉系统已经有足够多真实内容可以被记录下来时，就该跑 <code>/impeccable document</code>：颜色、排版，至少一个按钮和一个卡片。这个命令会扫描代码库，提取它能找到的 token 和组件模式，然后在项目根目录写出一个符合 [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/design-md/format/) 的 <code>DESIGN.md</code>。它有固定的六个部分、固定顺序，也能被其他理解 DESIGN.md 的工具直接消费。
 
-输出应当概括设计 token 与反复出现的组件模式，供后续命令持续沿用。
+适合这些场景：
 
-## 下一步
+- **你刚跑完 <code>/impeccable teach</code>。** 现在 <code>PRODUCT.md</code> 已经有了，document 就是和它配套的视觉侧文件。
+- **某个命令提醒你该先补它。** live、craft 和 polish 都会读取 DESIGN.md。缺了它，技能通常会先建议你跑 document。
+- **设计已经偏离旧 DESIGN.md。** 文件再也描述不了当前系统时，就该重建。
+- **大改版之前。** 先把当前状态写下来，作为下一轮方向的参考。
 
-文档化之后，再做 `extract` 会更稳。
+对于还没有代码的全新项目，也有 seed 模式：<code>/impeccable document --seed</code> 会问 5 个简短的策略问题（色彩策略、排版方向、动效强度、参考、反参考），生成一个脚手架。等真正有代码后，再用扫描模式重跑一次。
 
+## 工作方式
+
+扫描阶段会按优先级寻找设计资产：CSS 自定义属性、Tailwind 配置、CSS-in-JS 主题、设计 token 文件、组件源码、全局样式，最后才是浏览器可用时的计算样式。能自动提取的都自动提取，剩下需要创意判断的部分，只会集中问一轮：**Creative North Star**（整个系统的一句命名隐喻，比如 “The Editorial Sanctuary”）、颜色的描述性命名、层次哲学，以及组件性格。
+
+输出会是一个严格六段式的 DESIGN.md：Overview、Colors、Typography、Elevation、Components、Do's and Don'ts。标题必须逐字固定，这样其他工具才能稳定解析。与此同时，还会写出一个机器可读的 <code>DESIGN.json</code>。Live Mode 的设计面板正是用它来渲染“这个项目真实的按钮、输入框、导航和卡片”，而不是一个泛化近似物。
+
+之后的每个命令都会在启动时读取 DESIGN.md。无论是 variant、polish、audit，还是新功能构建，都会继承这套视觉系统，而不用你重复解释。
+
+## 试试看
+
+~~~
+/impeccable document
+~~~
+
+在已经有 token 的项目里，整个过程大约两分钟：扫描会找到你的调色板和字族，你从 2 到 3 个 North Star 候选里选一个，确认颜色命名（比如 “Deep Muted Teal-Navy”，而不是 “blue-800”），然后文件就落在项目根目录。
+
+在一个全新项目里：
+
+~~~
+/impeccable document --seed
+~~~
+
+五个问题，大约五分钟。生成的文件会带上 <code>&lt;!-- SEED --&gt;</code> 注释，明确说明它还只是脚手架。等真正把 token 实现出来后，再不带参数重跑一次。
+
+## 常见陷阱
+
+- **跑得太早。** 如果项目里还没有真实 token，那 seed 模式才是对的。不要捏造一个代码根本支撑不了的完整规范。假的 DESIGN.md 比没有还糟。
+- **把 DESIGN.md 当成只给人看的文档。** 它主要是给 AI 读的。其他命令都会读它。规范里那种强势语气（“never”、“always”、命名规则）是故意的。
+- **自作主张加 Layout / Motion / Responsive 一级章节。** 规范只有六个一级部分，顺序和名字都固定。布局或动效内容，要么写进 Overview（哲学层规则），要么写进 Components（组件层行为）。
+- **默默覆盖现有 DESIGN.md。** Document 本来就应该先确认。如果你真想重来，要么先手动挪开旧文件，要么明确告诉技能覆盖。

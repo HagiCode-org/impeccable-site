@@ -1,26 +1,50 @@
 ---
 slug: animate
 title: Animate
-summary: 当状态切换、层级变化或交互反馈显得生硬无生命时，用 `animate` 补上有目的的动效。
+summary: 用真正传达状态的动效，而不是装饰性的动画。
 highlights:
-  - 交互能用，但界面显得僵。
-  - 动效能帮助解释状态变化。
-  - 你要的是有用的运动，而不是纯装饰。
+  - 界面在状态切换之间显得生硬、没有生命力。
+  - 加载、反馈或视图切换需要能解释“正在发生什么”的动效。
+  - 你要的是有纪律、带 reduced-motion 回退的动画。
 related:
   - delight
-  - overdrive
-  - polish
 ---
 
-## 合适时机
+## 什么时候用
 
-静态结构已经成立后再用 `animate`，效果最好。动效应该强化已经正确的结构，而不是掩盖错误。
+<code>/impeccable animate</code> 适用于那些显得没有生命力的界面：状态切换又硬又突兀，加载只是突然冒出来，用户甚至不太确定自己的点击有没有被接收到。它的目标是补上那些真正传达状态的小动作：进入、退出、反馈，以及不同状态之间的过渡。
 
-## 关注点
+不要为了“更有活力”去加弹跳或弹簧动画。那是装饰，这个技能不会给你这种东西。
 
-好的动效会帮助理解、控制节奏并提供反馈，不应只是“因为可以动所以让它动”。
+## 工作方式
 
-## 底线
+这个技能会先识别哪些静态瞬间真的值得加入运动，再非常克制地落地：
 
-目的性永远比数量更重要。
+1. **进入与退出**：元素以 200 到 300ms 的淡入淡出，配合轻微的 Y 轴位移或缩放出现和离开，绝不动画布局属性。
+2. **状态反馈**：hover、active、focus、loading、success 都通过动效来传达，而不是突然切换。
+3. **视图切换**：适合时用 shared-element transition，否则使用 fade-through。
+4. **进度与加载**：skeleton、确定性进度条，以及能明确表达“还在工作中”的运动。
+5. **减少动态**：每一段动画都必须有 <code>prefers-reduced-motion</code> 回退。
 
+缓动一律使用指数型（ease-out-quart、quint 或 expo），因为真实物体会平滑减速。除了进度指示器，不允许 bounce、elastic，也不允许线性缓动。
+
+这个技能只会动画化 <code>transform</code> 和 <code>opacity</code>。如果你发现自己在动画 <code>width</code>、<code>height</code>、<code>top</code> 或 <code>left</code>，那就是做错了。高度过渡请用 <code>grid-template-rows</code>。
+
+## 试试看
+
+~~~
+/impeccable animate the sign-up flow
+~~~
+
+典型会加入这些内容：
+
+- 邮箱输入框在 <code>focus-visible</code> 时出现 focus glow（opacity + shadow，180ms）
+- 提交按钮在 loading 状态时，把 spinner 放在按钮内部，而不是额外放一个独立 spinner
+- 成功界面以 opacity + <code>translateY(8px)</code> 进入，260ms，ease-out-quart
+- 错误信息通过 <code>grid-template-rows</code> 下滑展开，而不是直接动画 <code>height</code>，220ms
+- 每个过渡都提供 <code>@media (prefers-reduced-motion: reduce)</code> 回退
+
+## 常见陷阱
+
+- **要求“更多动画”。** Animate 不是一个强度旋钮。它只会在动效真正传达状态的地方加动画，而不是到处都动。
+- **删除 reduced-motion 回退。** 这个技能会自动加上，它对可访问性来说是不可谈判的。
