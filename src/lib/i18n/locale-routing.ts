@@ -1,5 +1,6 @@
 import {
   DEFAULT_LOCALE,
+  normalizeSiteLocale,
   SUPPORTED_SITE_LOCALES,
   type SiteLocale,
 } from '@/i18n/locale-metadata';
@@ -26,16 +27,41 @@ export function ensureTrailingSlash(pathname: string): string {
   return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
-export function stripLocalePrefix(pathname: string): string {
+function getLeadingSegment(pathname: string): string | null {
   const normalized = normalizePathname(pathname);
-  for (const locale of SUPPORTED_SITE_LOCALES) {
-    if (normalized === `/${locale}` || normalized.startsWith(`/${locale}/`)) {
-      const withoutPrefix = normalized.slice(locale.length + 1);
-      return withoutPrefix ? ensureTrailingSlash(withoutPrefix.startsWith('/') ? withoutPrefix : `/${withoutPrefix}`) : '/';
-    }
+  if (normalized === '/') {
+    return null;
   }
 
-  return ensureTrailingSlash(normalized === '/' ? '/' : normalized);
+  const [, leadingSegment] = normalized.split('/');
+  return leadingSegment || null;
+}
+
+export function getCanonicalLocalePrefix(pathname: string): SiteLocale | null {
+  const leadingSegment = getLeadingSegment(pathname);
+  return leadingSegment ? normalizeSiteLocale(leadingSegment) : null;
+}
+
+export function hasExplicitLocalePrefix(pathname: string): boolean {
+  return getCanonicalLocalePrefix(pathname) !== null;
+}
+
+export function resolveLocaleFromPathname(pathname: string): SiteLocale {
+  return getCanonicalLocalePrefix(pathname) ?? DEFAULT_LOCALE;
+}
+
+export function stripLocalePrefix(pathname: string): string {
+  const normalized = normalizePathname(pathname);
+  if (!hasExplicitLocalePrefix(normalized)) {
+    return ensureTrailingSlash(normalized === '/' ? '/' : normalized);
+  }
+
+  const withoutPrefix = normalized.replace(/^\/[^/]+(?=\/|$)/u, '');
+  if (!withoutPrefix) {
+    return '/';
+  }
+
+  return ensureTrailingSlash(withoutPrefix.startsWith('/') ? withoutPrefix : `/${withoutPrefix}`);
 }
 
 export function getLocalizedPath(routePath: string, locale: SiteLocale): string {
@@ -55,10 +81,30 @@ export function getAlternateLocalePaths(routePath: string): Record<SiteLocale, s
   ) as Record<SiteLocale, string>;
 }
 
-export function getAbsoluteSiteUrl(
-  routePath: string,
-  locale: SiteLocale,
-  site: string,
-): string {
+export function getAbsoluteSiteUrl(routePath: string, locale: SiteLocale, site: string): string {
   return new URL(getLocalizedPath(routePath, locale), site).toString();
+}
+
+function normalizeSearch(search = ''): string {
+  if (!search) {
+    return '';
+  }
+
+  return search.startsWith('?') ? search : `?${search}`;
+}
+
+function normalizeHash(hash = ''): string {
+  if (!hash) {
+    return '';
+  }
+
+  return hash.startsWith('#') ? hash : `#${hash}`;
+}
+
+export function getLocaleSwitchPath(
+  locale: SiteLocale,
+  options: { pathname: string; search?: string; hash?: string },
+): string {
+  const localizedPath = getLocalizedPath(options.pathname, locale);
+  return `${localizedPath}${normalizeSearch(options.search)}${normalizeHash(options.hash)}`;
 }

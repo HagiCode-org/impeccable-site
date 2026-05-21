@@ -1,4 +1,5 @@
 import {
+  getSiteLocaleFallbackChain,
   resolveSiteLocale,
   type SiteLocale,
 } from '@/i18n/locale-metadata';
@@ -37,6 +38,10 @@ function getNestedValue(input: TranslationValue | undefined, segments: readonly 
   return current;
 }
 
+function getLookupLocales(locale: SiteLocale): readonly SiteLocale[] {
+  return [locale, ...getSiteLocaleFallbackChain(locale).filter((candidate) => candidate !== locale)];
+}
+
 export function getLocaleResourceValue(
   localeInput: SiteLocale | string | null | undefined,
   namespace: SiteI18nNamespace,
@@ -44,7 +49,16 @@ export function getLocaleResourceValue(
 ): TranslationValue | undefined {
   const locale = resolveSiteLocale(localeInput);
   const resources = getServerTranslationResources();
-  return getNestedValue(resources[locale]?.[namespace] as TranslationValue | undefined, key.split('.'));
+  const pathSegments = key.split('.');
+
+  for (const candidate of getLookupLocales(locale)) {
+    const value = getNestedValue(resources[candidate]?.[namespace] as TranslationValue | undefined, pathSegments);
+    if (value !== undefined) {
+      return value;
+    }
+  }
+
+  return undefined;
 }
 
 export function t(
