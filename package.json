@@ -22,6 +22,7 @@
     "i18n:prune:write": "hagi18n prune --config hagi18n.yaml --from en-US --write",
     "i18n:generate": "node scripts/generate-i18n-resources.mjs",
     "i18n:check": "npm run i18n:audit && npm run i18n:doctor && npm run i18n:generate && node scripts/generate-i18n-resources.mjs --check",
+    "content:sync:vendor": "node scripts/sync-vendor-command-content.mjs",
     "catalog:generate": "node scripts/build-command-catalog.mjs",
     "catalog:check": "npm run catalog:generate && node scripts/build-command-catalog.mjs --check"
   },

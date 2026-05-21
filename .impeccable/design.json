@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-21T00:00:00Z",
+  "title": "Design System: impeccable-site",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#F5EFE4",
+        "description": "Default page background.",
+        "tonalRamp": [
+          "#2A211B",
+          "#4A3A30",
+          "#6B554B",
+          "#8E7668",
+          "#B8A999",
+          "#D7CCBF",
+          "#E7DDCF",
+          "#F5EFE4"
+        ]
+      },
+      "bg-deep": {
+        "role": "neutral",
+        "displayName": "Deep Paper",
+        "canonical": "#E7DDCF",
+        "description": "Lower background gradient stop and quiet depth tone."
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Vellum Surface",
+        "canonical": "#FFF9F1DB",
+        "description": "Main translucent panel material."
+      },
+      "surface-strong": {
+        "role": "neutral",
+        "displayName": "Pressed Vellum",
+        "canonical": "#FFF8EEF5",
+        "description": "Stronger panel tone for cards and inner blocks."
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline Seam",
+        "canonical": "#482E2224",
+        "description": "Default border tone."
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Seam",
+        "canonical": "#482E2247",
+        "description": "Higher-contrast border tone."
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Brown Ink",
+        "canonical": "#251814",
+        "description": "Primary text color and active pill fill."
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#6B554B",
+        "description": "Secondary copy and metadata."
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Ember Accent",
+        "canonical": "#F26F45",
+        "description": "Primary emphasis, active state, and hover cue.",
+        "tonalRamp": [
+          "#47241A",
+          "#7A3820",
+          "#A94A28",
+          "#C85A34",
+          "#F26F45",
+          "#F59A79",
+          "#F9C7B6",
+          "#FDEAE2"
+        ]
+      },
+      "accent-soft": {
+        "role": "accent",
+        "displayName": "Ember Mist",
+        "canonical": "#F26F4529",
+        "description": "Soft tint used behind inline code and subtle emphasis."
+      },
+      "accent-strong": {
+        "role": "primary",
+        "displayName": "Burnt Ember",
+        "canonical": "#C24D2A",
+        "description": "Sharper accent for links and badges."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page hero titles and command detail headings."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and panel titles that need high scanning value."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card-level titles and medium hierarchy moments."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default reading text across summaries and guides."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Introductory copy under hero titles."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase metadata and eyebrow text."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Command identifiers, inline code, and route-like metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "Shell Shadow",
+        "value": "0 22px 60px rgba(78, 42, 28, 0.12)",
+        "purpose": "Default ambient depth on framed surfaces."
+      },
+      {
+        "name": "Card Hover Lift",
+        "value": "0 18px 36px rgba(78, 42, 28, 0.12)",
+        "purpose": "Hover-only lift on command cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "nav-shift",
+        "value": "160ms ease",
+        "purpose": "Sidebar link hover, border, and background transitions."
+      },
+      {
+        "name": "card-lift",
+        "value": "180ms ease",
+        "purpose": "Command card hover transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet-collapse",
+        "value": "980px"
+      },
+      {
+        "name": "compact-mobile",
+        "value": "720px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Language Switcher",
+      "kind": "nav",
+      "refersTo": "language-switcher",
+      "description": "Capsule language selector with dark active state.",
+      "html": "<nav class=\"ds-language\"><a href=\"#\" class=\"ds-language__item is-active\">English</a><a href=\"#\" class=\"ds-language__item\">简体中文</a></nav>",
+      "css": ".ds-language { display: inline-flex; gap: 0; padding: 4px; border: 1px solid rgba(72,46,34,0.14); border-radius: 999px; background: rgba(255,255,255,0.56); backdrop-filter: blur(14px); } .ds-language__item { padding: 8px 14px; border-radius: 999px; font: 400 0.92rem/1.2 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif; color: #6B554B; text-decoration: none; } .ds-language__item.is-active { background: #251814; color: #FFF8F1; }"
+    },
+    {
+      "name": "Sidebar Command Link",
+      "kind": "nav",
+      "description": "Primary navigation atom inside the docs sidebar.",
+      "html": "<a href=\"#\" class=\"ds-sidebar-link\"><span class=\"ds-sidebar-link__command\">/impeccable audit</span><span class=\"ds-sidebar-link__title\">Audit a target</span></a>",
+      "css": ".ds-sidebar-link { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid transparent; border-radius: 14px; background: rgba(255,255,255,0.55); text-decoration: none; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; } .ds-sidebar-link:hover { transform: translateX(4px); border-color: rgba(242,111,69,0.34); background: rgba(255,249,242,0.96); } .ds-sidebar-link__command { font: 400 0.78rem/1.4 'IBM Plex Mono', 'SFMono-Regular', 'Consolas', monospace; color: #6B554B; } .ds-sidebar-link__title { font: 700 1rem/1.25 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif; color: #251814; }"
+    },
+    {
+      "name": "Command Card",
+      "kind": "card",
+      "refersTo": "command-card",
+      "description": "Overview card for a single command entry.",
+      "html": "<article class=\"ds-command-card\"><div class=\"ds-command-card__top\"><span class=\"ds-command-card__command\">/impeccable polish</span><span class=\"ds-command-card__cta\">Open command</span></div><h3>Polish a target</h3><p>Sweep a UI for hierarchy, spacing, and clarity issues.</p><span class=\"ds-command-card__tagline\">Final quality pass before shipping</span></article>",
+      "css": ".ds-command-card { display: grid; gap: 12px; padding: 18px; border: 1px solid rgba(72,46,34,0.14); border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,247,239,0.92)); box-shadow: 0 22px 60px rgba(78,42,28,0.12); transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; } .ds-command-card:hover { transform: translateY(-4px); border-color: rgba(242,111,69,0.38); box-shadow: 0 18px 36px rgba(78,42,28,0.12); } .ds-command-card__top { display: flex; justify-content: space-between; gap: 12px; } .ds-command-card__command { font: 400 0.78rem/1.4 'IBM Plex Mono', 'SFMono-Regular', 'Consolas', monospace; color: #251814; } .ds-command-card__cta, .ds-command-card__tagline, .ds-command-card p { font: 400 0.92rem/1.6 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif; color: #6B554B; } .ds-command-card h3 { margin: 0; font: 700 1.18rem/1.25 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif; color: #251814; }"
+    },
+    {
+      "name": "Detail Panel",
+      "kind": "card",
+      "refersTo": "docs-panel",
+      "description": "Large command detail shell.",
+      "html": "<section class=\"ds-detail\"><p class=\"ds-detail__command\">/impeccable document</p><h1>Generate DESIGN.md</h1><p class=\"ds-detail__summary\">Document this site's visual system so later UI work stays on-brand.</p></section>",
+      "css": ".ds-detail { display: grid; gap: 14px; padding: 32px; border: 1px solid rgba(72,46,34,0.14); border-radius: 28px; background: rgba(255,249,241,0.86); backdrop-filter: blur(18px); box-shadow: 0 22px 60px rgba(78,42,28,0.12); } .ds-detail__command { margin: 0; font: 700 0.78rem/1.2 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #C24D2A; } .ds-detail h1 { margin: 0; font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif; font-size: clamp(2.2rem, 4vw, 4.4rem); line-height: 0.96; letter-spacing: -0.03em; color: #251814; } .ds-detail__summary { margin: 0; max-width: 64ch; font: 400 clamp(1rem,1.2vw,1.12rem)/1.6 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif; color: #6B554B; }"
+    },
+    {
+      "name": "Inline Code Chip",
+      "kind": "chip",
+      "refersTo": "code-chip",
+      "description": "Inline code token used in prose.",
+      "html": "<code class=\"ds-code-chip\">npm run validate</code>",
+      "css": ".ds-code-chip { display: inline-block; padding: 0.15rem 0.35rem; border-radius: 6px; background: rgba(242,111,69,0.16); color: #251814; font: 400 0.92em/1.4 'IBM Plex Mono', 'SFMono-Regular', 'Consolas', monospace; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Field Manual on Warm Paper",
+    "overview": "A warm editorial command reference with static-site discipline. Typography carries hierarchy, translucent panels provide material, and the ember accent is reserved for intent rather than decoration. Canonical upstream data supplies command structure only; the visual language is owned locally by this site.",
+    "keyCharacteristics": [
+      "Warm paper neutrals instead of cold default docs colors.",
+      "Serif display voice paired with practical sans-serif reading text.",
+      "Mono reserved for commands and code-like metadata.",
+      "Translucent framed surfaces with one consistent ambient shadow.",
+      "Sidebar-first catalog browsing on desktop, collapsible map on mobile."
+    ],
+    "rules": [
+      {
+        "name": "The Warm-First Rule",
+        "section": "colors",
+        "body": "The page never falls back to cold white or neutral gray. Stay in the warm paper family."
+      },
+      {
+        "name": "The Ember-Is-Intent Rule",
+        "section": "colors",
+        "body": "Accent color marks interaction or emphasis. Do not spread it across large surfaces."
+      },
+      {
+        "name": "The Source-Is-Structural Rule",
+        "section": "colors",
+        "body": "Upstream canonical data defines command slugs, ordering, and relationships. It does not define this site's visual language."
+      },
+      {
+        "name": "The Serif-Stays-Structural Rule",
+        "section": "typography",
+        "body": "Use serif for hierarchy and brand voice, not for body copy blocks."
+      },
+      {
+        "name": "The Command-Strings-Stay-Mono Rule",
+        "section": "typography",
+        "body": "Command identifiers and code tokens switch to mono instead of relying on color alone."
+      },
+      {
+        "name": "The Blur-Belongs-to-Surfaces Rule",
+        "section": "elevation",
+        "body": "Backdrop blur is reserved for translucent shells that already read as material."
+      },
+      {
+        "name": "The Hover-Moves-a-Little Rule",
+        "section": "elevation",
+        "body": "Transforms stay small and directional, usually 2px to 4px."
+      }
+    ],
+    "dos": [
+      "Do keep the background anchored to #F5EFE4 and #E7DDCF.",
+      "Do use the ember accent for active state, hover emphasis, and links.",
+      "Do keep command names in IBM Plex Mono.",
+      "Do preserve the desktop sidebar as the primary catalog scan path.",
+      "Do treat upstream metadata as structural input, not as a visual design constraint.",
+      "Do keep motion short and stateful."
+    ],
+    "donts": [
+      "Don't introduce dark mode with purple gradients, neon accents, or glowing particles.",
+      "Don't let the docs shell collapse into a generic theme look.",
+      "Don't import marketing-page metric blocks or repetitive feature-grid clichés.",
+      "Don't flatten hierarchy into one sans-serif voice.",
+      "Don't hide navigation behind unclear mobile affordances.",
+      "Don't copy upstream visual styling just because command semantics come from upstream."
+    ]
+  }
+}
