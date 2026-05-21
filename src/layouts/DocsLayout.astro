@@ -1,6 +1,8 @@
 ---
-import Sidebar from '@/components/docs/Sidebar.astro';
+import Footer from '@/components/docs/Footer.astro';
 import LanguageSwitcher from '@/components/docs/LanguageSwitcher.astro';
+import PromoteCard from '@/components/docs/PromoteCard.astro';
+import Sidebar from '@/components/docs/Sidebar.astro';
 import { SUPPORTED_SITE_LOCALES, type SiteLocale } from '@/i18n/locale-metadata';
 import type { CommandSection } from '@/lib/catalog/command-catalog';
 import { getAbsoluteSiteUrl, getLocalizedPath } from '@/lib/i18n/locale-routing';
@@ -77,8 +79,10 @@ const alternateUrls = Object.fromEntries(
       </main>
     </div>
 
-    <footer class="site-footer">
-      <p>{t(locale, 'docs', 'footer.note')}</p>
+    <PromoteCard locale={locale} />
+
+    <footer class="site-footer" data-footer-root>
+      <Footer locale={locale} />
     </footer>
   </body>
 </html>

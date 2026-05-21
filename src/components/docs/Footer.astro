@@ -1,0 +1,356 @@
+---
+import type { SiteLocale } from '@/i18n/locale-metadata';
+import { getLocalizedPath } from '@/lib/i18n/locale-routing';
+import { t } from '@/lib/i18n/ui';
+
+interface Props {
+  locale: SiteLocale;
+}
+
+type FooterLink = {
+  href: string;
+  label: string;
+  description?: string;
+  external?: boolean;
+};
+
+const { locale } = Astro.props;
+const currentYear = new Date().getFullYear();
+const isZh = locale.startsWith('zh');
+
+const hagicodeCompliance = {
+  icp: {
+    label: '闽ICP备2026004153号-1',
+    href: 'https://beian.miit.gov.cn/',
+  },
+  publicSecurity: {
+    label: '闽公网安备35011102351148号',
+    href: 'http://www.beian.gov.cn/portal/registerSystemInfo',
+  },
+} as const;
+
+const docsLocaleMap: Partial<Record<SiteLocale, string>> = {
+  'zh-CN': '',
+  'zh-Hant': 'zh-Hant',
+  'en-US': 'en-US',
+  'ja-JP': 'ja-JP',
+  'ko-KR': 'ko-KR',
+  'de-DE': 'de-DE',
+  'fr-FR': 'fr-FR',
+  'es-ES': 'es-ES',
+  'es-419': 'es-ES',
+  'pt-BR': 'pt-BR',
+  'pt-PT': 'pt-BR',
+  'ru-RU': 'ru-RU',
+};
+
+function getHagicodeUrl(pathname = '/') {
+  return `https://hagicode.com${getLocalizedPath(pathname, locale)}`;
+}
+
+function getDocsUrl(pathname = '/') {
+  const docsLocale = docsLocaleMap[locale] ?? 'en-US';
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+
+  if (!docsLocale) {
+    return `https://docs.hagicode.com${normalizedPath}`;
+  }
+
+  return `https://docs.hagicode.com/${docsLocale}${normalizedPath}`;
+}
+
+function getRssUrl() {
+  return isZh
+    ? 'https://docs.hagicode.com/blog/rss.zh-CN.xml'
+    : 'https://docs.hagicode.com/blog/rss.en-US.xml';
+}
+
+const relatedSites: FooterLink[] = [
+  {
+    href: 'https://hagicode.com/',
+    label: 'HagiCode Main Site',
+    description: isZh ? '产品官网与主要入口。' : 'Primary product entry.',
+    external: true,
+  },
+  {
+    href: 'https://docs.hagicode.com/',
+    label: 'HagiCode Docs',
+    description: isZh ? '官方指南与参考文档。' : 'Official guides and references.',
+    external: true,
+  },
+  {
+    href: 'https://newbe.hagicode.com/',
+    label: 'newbe',
+    description: isZh ? '作者博客。' : 'Author blog.',
+    external: true,
+  },
+  {
+    href: 'https://index.hagicode.com/data/',
+    label: 'Index Data Mirror',
+    description: isZh ? '公开数据镜像。' : 'Public data mirror.',
+    external: true,
+  },
+  {
+    href: 'https://builder.hagicode.com/',
+    label: 'Docker Compose Builder',
+    description: isZh ? '通过 Docker 部署 HagiCode。' : 'Deploy HagiCode with Docker.',
+    external: true,
+  },
+  {
+    href: 'https://cost.hagicode.com/',
+    label: 'AI Replacement Calculator',
+    description: isZh ? '算一算，AI 会不会淘汰我。' : 'What if AI replaces me?!',
+    external: true,
+  },
+  {
+    href: 'https://status.hagicode.com/',
+    label: 'HagiCode Status',
+    description: isZh ? '服务状态页面。' : 'Service status.',
+    external: true,
+  },
+  {
+    href: 'https://design.hagicode.com/',
+    label: 'Awesome Design MD',
+    description: isZh ? '超酷的 AI Web 设计画廊。' : 'A gallery of standout AI web design work.',
+    external: true,
+  },
+  {
+    href: 'https://soul.hagicode.com/',
+    label: 'Soul Builder',
+    description: isZh ? 'Agent 之魂。' : 'Define the soul of an agent.',
+    external: true,
+  },
+  {
+    href: 'https://trait.hagicode.com/',
+    label: 'Trait Builder',
+    description: isZh ? 'Agent 之能。' : 'Shape what an agent can do.',
+    external: true,
+  },
+];
+
+const quickLinks: FooterLink[] = [
+  {
+    href: getHagicodeUrl('/desktop/'),
+    label: t(locale, 'common', 'footer.links.downloadClient'),
+    external: true,
+  },
+  {
+    href: getDocsUrl('/product-overview/'),
+    label: t(locale, 'common', 'footer.links.productDocs'),
+    external: true,
+  },
+  {
+    href: getDocsUrl('/blog/'),
+    label: t(locale, 'common', 'footer.links.blogPosts'),
+    external: true,
+  },
+  {
+    href: getRssUrl(),
+    label: t(locale, 'common', 'footer.links.rssSubscribe'),
+    external: true,
+  },
+];
+
+const communityLinks: FooterLink[] = [
+  {
+    href: 'https://github.com/HagiCode-org/site',
+    label: t(locale, 'common', 'footer.links.github'),
+    external: true,
+  },
+  {
+    href: 'https://discord.gg/qY662sJK',
+    label: t(locale, 'common', 'footer.links.discord'),
+    external: true,
+  },
+  {
+    href: 'https://github.com/HagiCode-org/site/issues',
+    label: t(locale, 'common', 'footer.links.issueFeedback'),
+    external: true,
+  },
+  {
+    href: 'mailto:support@hagicode.com',
+    label: t(locale, 'common', 'footer.links.contactEmail'),
+    external: true,
+  },
+  {
+    href: 'https://qm.qq.com/q/Fwb0o094kw',
+    label: t(locale, 'common', 'footer.links.qqGroup'),
+    external: true,
+  },
+  {
+    href: 'https://cost.hagicode.com/',
+    label: t(locale, 'common', 'footer.links.costCalculator'),
+    external: true,
+  },
+  {
+    href: 'https://store.steampowered.com/app/4625540/Hagicode/',
+    label: t(locale, 'common', 'footer.links.steam'),
+    external: true,
+  },
+];
+---
+
+<div class="docs-footer">
+  <div class="docs-footer__intro">
+    <p class="docs-footer__eyebrow">{t(locale, 'common', 'footer.eyebrow')}</p>
+    <h2>{t(locale, 'common', 'footer.title')}</h2>
+    <p>{t(locale, 'common', 'footer.summary')}</p>
+  </div>
+
+  <div class="docs-footer__grid">
+    <section class="docs-footer__section">
+      <h3>{t(locale, 'common', 'footer.sections.relatedSites')}</h3>
+      <nav class="docs-footer__links" aria-label={t(locale, 'common', 'footer.sections.relatedSites')}>
+        {relatedSites.map((link) => (
+          <a
+            class="docs-footer__rich-link"
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noreferrer' : undefined}
+            aria-label={t(locale, 'common', 'footer.visitPage').replace('{title}', link.label)}
+          >
+            <span class="docs-footer__link-title">{link.label}</span>
+            {link.description ? <span class="docs-footer__link-description">{link.description}</span> : null}
+          </a>
+        ))}
+      </nav>
+    </section>
+
+    <section class="docs-footer__section">
+      <h3>{t(locale, 'common', 'footer.sections.quickLinks')}</h3>
+      <nav class="docs-footer__links" aria-label={t(locale, 'common', 'footer.sections.quickLinks')}>
+        {quickLinks.map((link) => (
+          <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </section>
+
+    <section class="docs-footer__section">
+      <h3>{t(locale, 'common', 'footer.sections.community')}</h3>
+      <nav class="docs-footer__links" aria-label={t(locale, 'common', 'footer.sections.community')}>
+        {communityLinks.map((link) => (
+          <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </section>
+  </div>
+
+  <div class="docs-footer__compliance">
+    <a href={hagicodeCompliance.icp.href} target="_blank" rel="noreferrer" aria-label={t(locale, 'common', 'footer.icpLabel')}>
+      {hagicodeCompliance.icp.label}
+    </a>
+    <a href={hagicodeCompliance.publicSecurity.href} target="_blank" rel="noreferrer" aria-label={t(locale, 'common', 'footer.gonganLabel')}>
+      {hagicodeCompliance.publicSecurity.label}
+    </a>
+  </div>
+
+  <p class="docs-footer__copyright">{t(locale, 'common', 'footer.copyright').replace('{year}', String(currentYear))}</p>
+</div>
+
+<style>
+  .docs-footer {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .docs-footer__intro {
+    max-width: 48rem;
+  }
+
+  .docs-footer__eyebrow {
+    margin: 0 0 0.55rem;
+    color: var(--accent-strong);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .docs-footer__intro h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.55rem, 2vw, 2.2rem);
+    line-height: 1.05;
+  }
+
+  .docs-footer__intro p:last-child {
+    margin: 0.65rem 0 0;
+    color: var(--muted);
+  }
+
+  .docs-footer__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr) minmax(0, 0.85fr);
+    gap: 1rem;
+  }
+
+  .docs-footer__section {
+    padding: 1.1rem 1.15rem;
+    border: 1px solid rgba(72, 46, 34, 0.14);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 252, 247, 0.55);
+  }
+
+  .docs-footer__section h3 {
+    margin: 0 0 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+
+  .docs-footer__links {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .docs-footer__links a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: rgba(194, 77, 42, 0.22);
+    text-underline-offset: 0.2em;
+  }
+
+  .docs-footer__rich-link {
+    display: grid;
+    gap: 0.18rem;
+  }
+
+  .docs-footer__link-title {
+    font-weight: 700;
+  }
+
+  .docs-footer__link-description {
+    color: var(--muted);
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+
+  .docs-footer__compliance {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem 1.2rem;
+    padding-top: 0.2rem;
+  }
+
+  .docs-footer__compliance a,
+  .docs-footer__copyright {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .docs-footer__copyright {
+    margin: 0;
+  }
+
+  @media (max-width: 1080px) {
+    .docs-footer__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

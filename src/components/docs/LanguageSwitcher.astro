@@ -1,5 +1,5 @@
 ---
-import { SUPPORTED_SITE_LOCALES, type SiteLocale } from '@/i18n/locale-metadata';
+import { SITE_LOCALES, getSiteLocaleDefinition, type SiteLocale } from '@/i18n/locale-metadata';
 import { getLocalizedPath } from '@/lib/i18n/locale-routing';
 import { t } from '@/lib/i18n/ui';
 
@@ -10,19 +10,311 @@ interface Props {
 }
 
 const { locale, routeKey, alternateLocalePaths } = Astro.props;
+const currentLocale = getSiteLocaleDefinition(locale);
+const languageOptions = SITE_LOCALES.map((candidate) => ({
+  ...candidate,
+  href: alternateLocalePaths?.[candidate.code] ?? getLocalizedPath(routeKey, candidate.code),
+  selected: candidate.code === locale,
+}));
 ---
 
-<nav class="language-switcher" aria-label={t(locale, 'common', 'language.label')}>
-  {
-    SUPPORTED_SITE_LOCALES.map((candidate) => (
-      <a
-        href={alternateLocalePaths?.[candidate] ?? getLocalizedPath(routeKey, candidate)}
-        class:list={['language-switcher__item', { 'is-active': candidate === locale }]}
-        hreflang={candidate}
-        lang={candidate}
-      >
-        {t(locale, 'common', `language.${candidate}`)}
-      </a>
-    ))
+<div class="locale-chooser" data-locale-switcher data-open="false">
+  <button
+    type="button"
+    class="locale-chooser__trigger"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="impeccable-locale-dialog"
+    aria-label={`${t(locale, 'common', 'languageSwitcher.label')}: ${currentLocale.nativeName}`}
+    title={currentLocale.nativeName}
+    data-locale-trigger
+  >
+    <span class="locale-chooser__trigger-label">{currentLocale.nativeName}</span>
+    <span class="locale-chooser__trigger-chevron" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="locale-chooser__portal" hidden data-locale-portal>
+    <button
+      type="button"
+      class="locale-chooser__backdrop"
+      aria-label={t(locale, 'common', 'languageSwitcher.close')}
+      data-locale-close
+    />
+
+    <div
+      id="impeccable-locale-dialog"
+      class="locale-chooser__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="impeccable-locale-title"
+      data-locale-dialog
+    >
+      <div class="locale-chooser__header">
+        <div>
+          <p id="impeccable-locale-title" class="locale-chooser__title">{t(locale, 'common', 'languageSwitcher.dialogTitle')}</p>
+          <p class="locale-chooser__current">
+            {t(locale, 'common', 'languageSwitcher.currentLocaleLabel')}
+            {': '}
+            <strong>{currentLocale.nativeName}</strong>
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="locale-chooser__close"
+          aria-label={t(locale, 'common', 'languageSwitcher.close')}
+          data-locale-close
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="locale-chooser__grid-shell">
+        <div class="locale-chooser__grid" role="listbox" aria-label={t(locale, 'common', 'languageSwitcher.label')}>
+          {
+            languageOptions.map((option) => (
+              <button
+                type="button"
+                role="option"
+                class:list={['locale-chooser__option', { 'is-selected': option.selected }]}
+                aria-selected={option.selected}
+                data-locale-option
+                data-locale={option.code}
+                data-href={option.href}
+              >
+                <span class="locale-chooser__option-native">{option.nativeName}</span>
+                <span class="locale-chooser__option-name">{option.name}</span>
+                {option.selected ? (
+                  <span class="locale-chooser__option-badge">{t(locale, 'common', 'languageSwitcher.selectedState')}</span>
+                ) : null}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initDocsLanguageSwitcher } from '@/scripts/docs-language-switcher';
+
+  initDocsLanguageSwitcher();
+</script>
+
+<style>
+  .locale-chooser {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
   }
-</nav>
+
+  .locale-chooser__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.6rem;
+    padding: 0 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 252, 247, 0.8);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    backdrop-filter: blur(16px);
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .locale-chooser__trigger:hover {
+    border-color: rgba(194, 77, 42, 0.32);
+    background: rgba(255, 252, 247, 0.92);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .locale-chooser__trigger:focus-visible,
+  .locale-chooser__close:focus-visible,
+  .locale-chooser__option:focus-visible {
+    outline: 2px solid rgba(194, 77, 42, 0.65);
+    outline-offset: 3px;
+  }
+
+  .locale-chooser__trigger-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .locale-chooser__trigger-chevron {
+    font-size: 0.76rem;
+    transition: transform 160ms ease;
+  }
+
+  .locale-chooser[data-open='true'] .locale-chooser__trigger-chevron {
+    transform: rotate(180deg);
+  }
+
+  .locale-chooser__portal {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+  }
+
+  .locale-chooser__backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(37, 24, 20, 0.24);
+    padding: 0;
+  }
+
+  .locale-chooser__dialog {
+    position: absolute;
+    top: max(6vh, 2rem);
+    right: max(4vw, 1rem);
+    left: max(4vw, 1rem);
+    display: grid;
+    gap: 1rem;
+    max-width: 72rem;
+    max-height: 88vh;
+    margin: 0 auto;
+    padding: 1.3rem;
+    border: 1px solid var(--line-strong);
+    border-radius: calc(var(--radius-xl) + 4px);
+    background: rgba(252, 246, 238, 0.95);
+    box-shadow: 0 26px 60px rgba(78, 42, 28, 0.16);
+    backdrop-filter: blur(22px);
+  }
+
+  .locale-chooser__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .locale-chooser__title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .locale-chooser__current {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .locale-chooser__close {
+    width: 2.35rem;
+    height: 2.35rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+
+  .locale-chooser__grid-shell {
+    min-height: 0;
+    overflow: auto;
+    padding: 0.25rem;
+    border: 1px solid rgba(72, 46, 34, 0.14);
+    border-radius: calc(var(--radius-xl) - 4px);
+    background: rgba(255, 255, 255, 0.42);
+  }
+
+  .locale-chooser__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .locale-chooser__option {
+    min-height: 5.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 100%;
+    padding: 0.95rem 0.9rem;
+    border: 1px solid rgba(72, 46, 34, 0.14);
+    border-radius: 1rem;
+    background: rgba(255, 252, 247, 0.9);
+    color: var(--text);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition:
+      transform 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      background 150ms ease;
+  }
+
+  .locale-chooser__option:hover {
+    transform: translateY(-1px);
+    border-color: rgba(194, 77, 42, 0.28);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .locale-chooser__option.is-selected {
+    border-color: rgba(194, 77, 42, 0.34);
+    background: rgba(242, 111, 69, 0.1);
+  }
+
+  .locale-chooser__option-native {
+    font-weight: 700;
+  }
+
+  .locale-chooser__option-name {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .locale-chooser__option-badge {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: 0.35rem;
+    padding: 0.16rem 0.48rem;
+    border-radius: 999px;
+    background: rgba(194, 77, 42, 0.12);
+    color: var(--accent-strong);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 980px) {
+    .locale-chooser__dialog {
+      top: auto;
+      bottom: 1rem;
+      max-height: min(82vh, 42rem);
+    }
+
+    .locale-chooser__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .locale-chooser__trigger {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .locale-chooser__dialog {
+      right: 0.75rem;
+      left: 0.75rem;
+      padding: 1rem;
+    }
+
+    .locale-chooser__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
