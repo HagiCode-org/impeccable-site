@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Wiederverwendbare Komponenten, Tokens und Muster in das Design-System ziehen.
+highlights:
+  - Mehrere Komponenten lösen dasselbe Problem auf unterschiedliche Weise.
+  - Tokens und Muster müssen zentralisiert werden.
+  - Sie möchten ein wartbareres visuelles System.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Abdrift entdecken</span>
+      <span class="docs-viz-flow-hint">Wiederholte Hex-Werte, Button-Varianten, Abstands-Skalen, Textstile.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Primitive vorschlagen</span>
+      <span class="docs-viz-flow-hint">Token-Namen, Komponenten-APIs mit Variante + Größe, Textstile.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Aufrufstellen migrieren</span>
+      <span class="docs-viz-flow-hint">Doppeltes CSS durch die neuen Primitive ersetzen. Kein verwaister Code übrig.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Der Skill extrahiert nur, was drei oder mehr Mal mit derselben Absicht verwendet wird. Zwei Verwendungen sind kein Muster, und die Migration erfolgt immer im selben Durchgang.</p>
+</div>
+
+## Wann man es verwendet
+
+`/impeccable extract` ist für den Moment, in dem Ihre Codebasis versehentlich zu einem Design-System geworden ist. Wiederholte Button-Stile an 12 Stellen. Drei Varianten derselben Karte. Hex-Farben überall verstreut. Selbstgebaute Abstände, die versehentlich einer Skala entsprechen. Greifen Sie zu ihm, wenn Sie diese Abdrift in wiederverwendbare Primitive konsolidieren möchten.
+
+Verwenden Sie es, nachdem ein Produkt genug Features veröffentlicht hat, um die Muster zu offenbaren. Vorzeitige Extraktion erzeugt Abstraktionen, die nicht zur Realität passen.
+
+## Wie es funktioniert
+
+Der Skill entdeckt zuerst die Design-System-Struktur und identifiziert dann Extraktionsmöglichkeiten:
+
+1. **Tokens**: wiederholte Literal-Werte finden (Farben, Abstände, Radien, Schatten, Schriftgrößen). Token-Namen vorschlagen, zum Token-System hinzufügen, Verwendungen ersetzen.
+2. **Komponenten**: UI-Muster finden, die sich mit geringer Variation wiederholen (Buttons, Karten, Inputs, Modals). In eine einzelne Komponente mit Varianten extrahieren, Aufrufer migrieren.
+3. **Kompositionsmuster**: Layout- oder Interaktionsmuster finden, die sich wiederholen (Formularzeilen, Toolbar-Gruppen, Empty States). In Kompositions-Primitive extrahieren.
+4. **Textstile**: wiederholte Font-Size- + Weight- + Line-Height-Kombinationen finden. In Textstile extrahieren.
+5. **Animationsmuster**: wiederholte Easing-, Duration- oder Keyframe-Kombinationen finden. In Motion-Tokens extrahieren.
+
+Der Skill ist vorsichtig. Er extrahiert nur Dinge, die drei oder mehr Mal mit derselben Absicht verwendet werden. Er extrahiert niemals „weil es später vielleicht wiederverwendet wird". Vorzeitige Abstraktion ist schlimmer als Duplikation.
+
+## Ausprobieren
+
+```
+/impeccable extract the button styles
+```
+
+Erwartete Ausgabe:
+
+- 14 Button-Instanzen in 8 Dateien gefunden
+- 4 unterschiedliche Varianten: primary (gefüllter Akzent), secondary (umrandet), ghost (nur Text), destructive (gefüllt rot)
+- Alle 4 Varianten verwenden dieselbe Größenskala (small, default, large)
+- Extrahiert zu `<Button variant="primary" size="default">` mit token-gesteuerten Stilen
+- 14 Aufrufstellen migriert, ~180 Zeilen dupliziertes CSS entfernt
+- 3 fehlende Tokens hinzugefügt: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Fallstricke
+
+- **Zu früh extrahieren.** Zwei Verwendungen sind kein Muster. Drei könnten es sein. Warten Sie, bis das Muster offensichtlich ist.
+- **Über-generalisieren.** Die extrahierte Komponente sollte den aktuellen Anwendungsfällen nahe entsprechen, nicht jedes mögliche zukünftige Szenario vorwegnehmen. Sie können jederzeit später Varianten hinzufügen.
+- **Die Migration vergessen.** Extraktion ohne Migration lässt den alten duplizierten Code bestehen und erzeugt einen dritten Weg, dieselbe Sache zu tun. Immer im selben Durchgang migrieren.
+- **Dinge extrahieren, die sich in der Absicht unterscheiden.** Zwei Buttons, die ähnlich aussehen, aber unterschiedlichen Zwecken dienen (primäre Aktion vs. als Button gestalteter Link), sollten wahrscheinlich getrennt bleiben.

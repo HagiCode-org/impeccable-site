@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Réfléchir avant de construire. Produire un cahier des charges par la découverte, pas par supposition.
+highlights:
+  - Vous voulez planifier sans encore implémenter.
+  - La bonne mise en page ou le bon ton reste flou.
+  - Plusieurs parties prenantes doivent s'aligner sur l'intention avant le travail de construction.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Résultat de /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Objectif</span>
+        <span class="docs-viz-file-v">Permettre aux abonnés engagés de modifier ce qu'ils reçoivent sans les perdre par désabonnement.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Utilisateur</span>
+        <span class="docs-viz-file-v">Pressé, sur mobile, en réunion. Lecture rapide, peu de patience.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Contenu</span>
+        <span class="docs-viz-file-v">4 types de digest, 2 cadences, un opt-out global en bas.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Ressenti</span>
+        <span class="docs-viz-file-v">Calme, digne de confiance, pas de dark patterns.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Contraintes</span>
+        <span class="docs-viz-file-v">Mobile-first. Contraste WCAG AA. Une seule colonne, pas de modales.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Transmettez-le à <code>/impeccable</code>, <code>/impeccable craft</code> ou tout flux d'implémentation.</div>
+  </div>
+  <p class="docs-viz-caption">Un cahier des charges shape est une boussole, pas une spécification. Il capture l'intention, pas l'interface. Les compétences d'implémentation le lisent avant d'écrire une seule ligne de code.</p>
+</div>
+
+## Quand l'utiliser
+
+`/impeccable shape` est là où commence une fonctionnalité. Avant que quiconque écrive du code, avant que quiconque argumente sur le traitement du hero, avant que quiconque choisisse une police. Utilisez-le pour imposer une conversation de découverte sur l'objectif, les utilisateurs, le contenu et les contraintes, puis capturer les réponses sous forme de cahier des charges de conception que les compétences d'implémentation peuvent exploiter.
+
+Utilisez-le chaque fois qu'une fonctionnalité est sur le point de démarrer, qu'un ticket est vague, ou que vous vous surprenez à écrire du JSX pour comprendre ce que le produit devrait être.
+
+## Comment ça marche
+
+La plupart des interfaces générées par l'IA échouent pas à cause du code, mais à cause de la réflexion escamotée. Le modèle passe directement à « voici une grille de cartes » sans demander « qu'est-ce que l'utilisateur essaie d'accomplir ». `/impeccable shape` inverse cet ordre.
+
+La compétence exécute un entretien de découverte structuré en conversation. Elle n'écrira pas de code pendant cette phase. Les questions couvrent :
+
+- **Objectif et contexte** : à quoi sert la fonctionnalité, qui l'utilise, dans quel état d'esprit
+- **Contenu et données** : ce qui est affiché, les plages réalistes, les cas limites, ce qui est dynamique
+- **Objectifs de conception** : la chose la plus importante, le ressenti visé, les exemples de référence
+- **Contraintes** : techniques, de contenu, d'accessibilité, de localisation
+
+Vous répondez naturellement. La compétence pose des relances, pas un formulaire. À la fin, elle produit un cahier des charges de conception : un artefact structuré que vous pouvez transmettre à `/impeccable` ou toute autre compétence d'implémentation.
+
+Note : si vous voulez le flux complet (entretien de découverte, puis passage direct à la construction), utilisez `/impeccable craft` à la place. Il exécute `/impeccable shape` en interne, puis continue vers l'implémentation avec itération visuelle. `/impeccable shape` seul est pour quand vous ne voulez que le cahier des charges, afin de l'apporter à l'approche d'implémentation de votre choix.
+
+## Essayez
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Attendez-vous à une conversation de 5 à 10 questions. La compétence demande des choses comme « qui est la personne qui ouvre ceci, est-elle déjà engagée ou encore curieuse » et « que se passe-t-il quand l'utilisateur s'est désabonné de tout, masque-t-on la fonctionnalité ou affiche-t-on quelque chose ». Vous répondez, et un cahier des charges se matérialise.
+
+De là, vous pouvez transmettre le cahier des charges à `/impeccable`, `/impeccable polish` ou toute autre compétence. Ou simplement l'utiliser comme référence pendant que vous construisez manuellement.
+
+## Pièges courants
+
+- **Le sauter parce que ça semble lent.** L'entretien dure peut-être 5 minutes. Les réécritures que vous évitez se comptent en heures.
+- **Traiter le cahier des charges comme une spécification.** C'est une boussole, pas une checklist. Il capture l'intention, pas l'interface.
+- **Répondre par « standard » ou « normal ».** La spécificité est tout le but. Si un utilisateur est « pressé, sur mobile, entre deux réunions », dites-le. Cela change tout en aval.

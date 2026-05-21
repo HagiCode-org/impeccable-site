@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Wygeneruj zgodny ze specyfikacja DESIGN.md, ktory przechwytuje twoj system wizualny, aby kazdy agent AI pozostal on-brand.
+highlights:
+  - Baza kodu juz zawiera prawdziwy jezyk projektowy.
+  - Potrzebujesz przenosnego podsumowania kolorow, typografii, odstepow i komponentow.
+  - Przyszla praca projektowa dryfuje, bo system jest niejawny.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Format Google Stitch</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Kreatywna Gwiazda Polarna: <em>"Sanktuarium Redakcyjne."</em> Cichy typ, hojna pustka, jeden zaangazowany akcent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Plaski domyslnie. Cienie pojawiaja sie tylko jako reakcja na stan.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subskrybuj</span>
+        <span class="docs-viz-designmd-chip">filtr</span>
+        <span class="docs-viz-designmd-card">karta</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tonizuj neutralne ku odcieniowi akcentu.</span>
+        <span class="docs-viz-designmd-dont">Tekst gradientowy dla nacisku.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Szesc sekcji jest stalych, w stalym porzadku, ze stalymi nazwami. Obok, <code>DESIGN.json</code> wysylany jest jako czytelny maszynowo sidecar dla panelu projektowego Live Mode.</p>
+</div>
+
+## Kiedy uzywac
+
+Uruchom `/impeccable document`, gdy masz juz wystarczajaco duzo systemu wizualnego do udokumentowania: kolory, typografia, przynajmniej przycisk i karta. Komenda skanuje twoja baze kodu, wyciaga znalezione tokeny i wzorce komponentow i pisze `DESIGN.md` w korzeniu projektu, ktory podaza za [formatem Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), szesc sekcji w stalym porzadku, interoperacyjny z kazdym innym narzedziem DESIGN.md-aware.
+
+Sigmnij po to, gdy:
+
+- **Wlacznie uruchomiles `/impeccable teach`** i `PRODUCT.md` juz istnieje. Document to dopasowany plik wizualny.
+- **Komenda skierowala cie do niego.** Live, craft i polish czytaja DESIGN.md. Jesli go brakuje, umiejetnosc sugeruje uruchomienie document najpierw.
+- **Projekt odjechal** od starszego DESIGN.md i plik juz nie opisuje zyjqcego systemu.
+- **Przed duzym przeprojektowaniem**, aby uchwycic aktualny stan jako referencje dla nastepnego kierunku.
+
+Dla projektow jeszcze bez kodu (swiezy przebieg `teach`, nic nie zbudowane), istnieje tryb zalążkowy: `/impeccable document --seed` zadaje piec szybkich pytan strategicznych (strategia kolorow, kierunek typografii, energia ruchu, referencje, antyreferencje) i pisze szkielet. Ponownie uruchom w trybie skanowania, gdy pojawi sie kod.
+
+## Jak to dziala
+
+Przebieg skanowania znajduje zasoby projektowe w kolejnosci priorytetu: CSS custom properties, konfiguracja Tailwind, motywy CSS-in-JS, pliki tokenow projektowych, zrodlo komponentow, globalny stylesheet i na koniec obliczone style z wyrenderowanego wyniku, jesli przegladarka jest dostepna. Automatycznie wyciaga wszystko, co sie da, potem zadaje jedno zgrupowane pytanie dla czesci, ktore potrzebuja kreatywnego wejscia: **Kreatywna Gwiazda Polarna** (pojedyncza nazwana metafora dla calego systemu, jak "Sanktuarium Redakcyjne"), opisowe nazwy kolorow, filozofia elewacji i charakter komponentow.
+
+Wynikiem jest DESIGN.md z dokladnie szescioma sekcjami: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Naglowki sa stale znak-po-znaku, aby plik byl parsowalny przez inne narzedzia. Obok, `DESIGN.json` jest zapisany jako czytelny maszynowo sidecar. Ten sidecar to, czego uzywa panel projektowy live-mode do renderowania *tego projektu* faktycznych kafelkow przyciskow, pol wejsciowych, nawigacji i kart zamiast generycznej aproksymacji.
+
+Kazda inna komenda czyta DESIGN.md przy wywolaniu. Warianty, polerowania, audyty i nowe funkcje dziedzicza system wizualny bez bycia informowanym.
+
+## Wyprobuj
+
+```
+/impeccable document
+```
+
+Na projekcie z juz zdefiniowanymi tokenami, to zajmuje okolo dwie minuty: skan znajduje twoja palete i stos typograficzny, wybierasz Gwiazde Polarna z 2 lub 3 opcji, potwierdzasz opisowe nazwy kolorow ("Gluchy Tonowany Morsko-Niebieskawy", nie "niebieski-800") i plik lduje w korzeniu projektu.
+
+Na swiezym projekcie:
+
+```
+/impeccable document --seed
+```
+
+Piec pytan, okolo pieciu minut. Plik jest szkieletem, oznaczony komentarzem `<!-- SEED -->`, wiec jest szczery o tym, czym jest. Ponownie uruchom bez flagi, gdy zaimplementujesz tokeny.
+
+## Pulapki
+
+- **Uruchamianie zbyt wczesnie.** Na projekcie bez zaimplementowanych tokenow, tryb seed jest wlasciwy. Nie fabrykuj pelnej specyfikacji, ktorej kod nie moze potwierdzic. Falszywy DESIGN.md jest gorszy niz brak DESIGN.md.
+- **Traktowanie DESIGN.md jako dokumentacji tylko dla ludzi.** To jest glownie dla AI. Kazda inna komenda to czyta. Stanowczosc formatu ("nigdy", "zawsze", Nazwane Zasady) jest celowa.
+- **Dodawanie sekcji najwyzszego poziomu Layout / Motion / Responsive.** Specyfikacja ma szesc sekcji, w stalym porzadku, ze stalymi nazwami. Wloz tresc o ukladzie lub ruchu do Overview (zasady na poziomie filozofii) lub Components (zachowanie per komponent).
+- **Nadpisywanie istniejacego DESIGN.md po cichu.** Document zawsze potwierdza najpierw. Jesli chcesz zaczac od nowa, zmien nazwe istniejacego pliku lub wprost powiedz umiejetnosci, by nadpisac.

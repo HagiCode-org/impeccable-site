@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Viết lại UX copy gây nhầm lẫn để giao diện tự giải thích.
+highlights:
+  - Người dùng đang do dự vì cách diễn đạt mơ hồ.
+  - Giao diện cần văn bản hướng dẫn hoặc thông báo lỗi tốt hơn.
+  - Luồng sản phẩm ổn, nhưng ngôn ngữ đang làm chậm mọi người.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable clarify` dành cho văn bản giao diện khiến mọi người dừng lại và suy nghĩ. Nhãn gây nhầm lẫn, văn bản nút mơ hồ, thông báo lỗi đổ lỗi cho người dùng, tooltip lặp lại nhãn, trạng thái trống nói không có gì hữu ích. Sử dụng khi vấn đề không phải là bố cục hay màu sắc, mà là từ ngữ.
+
+Dấu hiệu tốt: "người dùng không hiểu trường này", "thông báo lỗi không hữu ích", "tôi không thể viết văn bản nút tốt", "tooltip này là lãng phí".
+
+## Cách hoạt động
+
+Kỹ năng viết lại văn bản trên các bề mặt nơi hầu hết vấn đề UX copy tồn tại:
+
+1. **Nhãn và gợi ý trường**: trực tiếp, cụ thể, nói rõ điều gì được kỳ vọng.
+2. **Văn bản nút**: động từ trước, mô tả kết quả, không phải hành động. "Lưu thay đổi" không phải "OK".
+3. **Thông báo lỗi**: giải thích điều gì sai, lỗi của ai và phải làm gì tiếp theo. Không bao giờ đổ lỗi cho người dùng.
+4. **Trạng thái trống**: định hướng người dùng, giải thích tại sao trạng thái trống, cung cấp bước tiếp theo.
+5. **Tooltip và văn bản trợ giúp**: thêm thông tin mà nhãn không thể mang, không bao giờ nhắc lại nó.
+6. **Hộp thoại xác nhận**: nêu tên hậu quả, không phải hành động.
+
+Kỹ năng sử dụng đối tượng và trạng thái tâm lý từ `PRODUCT.md` để điều chỉnh giọng điệu. Đối tượng kỹ thuật nhận ngôn ngữ chính xác. Đối tượng tiêu dùng nhận lời nói đơn giản. Người dùng vội vã nhận văn bản ngắn. Người dùng lo lắng (thanh toán, xóa) nhận sự trấn an.
+
+## Thử ngay
+
+```
+/impeccable clarify the billing form
+```
+
+Trước và sau, điển hình:
+
+- Nhãn "Billing address" -> "Address on your card"
+- Placeholder "Enter your VAT ID" -> "VAT ID (optional, for business)"
+- Lỗi "Invalid input" -> "This card number is 15 digits. You entered 14."
+- Nút "Submit" -> "Charge $29 and subscribe"
+- Trạng thái trống "No transactions yet" -> "Your first charge will show up here after your first order."
+
+## Những cạm bẫy cần tránh
+
+- **Viết thông minh hơn thay vì rõ ràng hơn.** Clarify không dành cho nâng cấp giọng điệu. Nếu văn bản đã rõ ràng, đừng sử dụng kỹ năng này. Sử dụng `/impeccable delight` thay thế khi bạn muốn cá tính.
+- **Bỏ qua câu hỏi về đối tượng.** Clarify cần biết ai đang đọc. Nếu `PRODUCT.md` không chỉ định cấp độ kỹ thuật của đối tượng, các bản viết lại sẽ chung chung.
+- **Chạy clarify trên văn bản marketing.** Clarify dành cho văn bản UX chức năng: nhãn, lỗi, hướng dẫn. Văn bản marketing cần một bộ kỹ năng khác và một người viết.

@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Sửa kiểu chữ cảm thấy chung chung, không nhất quán hoặc ngẫu nhiên.
+highlights:
+  - Văn bản về mặt kỹ thuật có thể đọc nhưng không thuyết phục hoặc được kiểm soát.
+  - Tiêu đề và nội dung đang hòa vào nhau.
+  - Bề mặt cần giọng điệu mạnh hơn thông qua kiểu chữ thay vì thêm trang trí.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Khi nào nên sử dụng
+
+Sử dụng `/impeccable typeset` khi văn bản trên trang trông giống kiểu chữ mặc định thay vì kiểu chữ được thiết kế. Phân cấp mờ nhạt, ba kích thước trông giống nhau, nội dung ở 14px, một font display thực chất chỉ là Inter bold, tiêu đề không chú ý kerning.
+
+Các dấu hiệu phổ biến: "phân cấp cảm thấy phẳng", "khả năng đọc không ổn", "font trông chung chung".
+
+## Cách hoạt động
+
+Kỹ năng đánh giá kiểu chữ qua năm chiều:
+
+1. **Lựa chọn font**: bạn có đang dùng các mặc định vô hình (Inter, Roboto, Arial, Open Sans), font có phù hợp với thương hiệu không, có quá 2 đến 3 họ font không.
+2. **Phân cấp**: tiêu đề, nội dung và chú thích có khác biệt rõ ràng ngay cái nhìn đầu tiên không, độ tương phản kích thước ít nhất 1.25x giữa các bước, độ tương phản weight có dễ đọc không.
+3. **Kích thước và tỷ lệ**: có một tỷ lệ kiểu chữ mạch lạc không, nội dung có đạt tối thiểu 16px không, tỷ lệ là fixed-rem cho giao diện ứng dụng hay fluid-clamp cho trang marketing.
+4. **Khả năng đọc**: độ dài dòng 45 đến 75 ký tự, line-height được điều chỉnh cho font và ngữ cảnh, độ tương phản.
+5. **Tính nhất quán**: cùng phần tử sử dụng cùng cách xử lý ở mọi nơi, không có ghi đè font-size một lần.
+
+Sau đó nó sửa những gì tìm thấy: chọn font đặc trưng, xây dựng tỷ lệ modular, mở rộng độ tương phản phân cấp, đặt độ dài dòng và leading phù hợp.
+
+## Thử ngay
+
+```
+/impeccable typeset the article layout
+```
+
+Diff kỳ vọng:
+
+- Font display đổi từ Inter 700 sang một font display thực sự
+- Tỷ lệ kiểu chữ xây dựng lại: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, tỷ lệ 1.333
+- Nội dung tăng từ 14px lên 16px
+- Độ dài dòng giới hạn ở 68ch cho cột bài viết
+- Line-height 1.6 cho nội dung, 1.1 cho display
+- Loại bỏ bốn giá trị `font-size` rải rác trong kiểu thành phần
+
+## Những cạm bẫy cần tránh
+
+- **Yêu cầu font mới mà không có ngữ cảnh.** Typeset sẽ chọn dựa trên giọng điệu thương hiệu trong `PRODUCT.md`. Nếu bạn chưa chạy `/impeccable teach`, gợi ý sẽ chung chung.
+- **Dùng typeset khi vấn đề là bố cục.** Nếu đoạn văn ổn nhưng trang cảm thấy chật, bạn cần `/impeccable layout`.
+- **Kỳ vọng tỷ lệ fluid clamp trên giao diện ứng dụng.** Typeset sử dụng tỷ lệ fixed rem cho giao diện ứng dụng. Kiểu chữ fluid dành cho trang marketing và nội dung nơi độ dài dòng thay đổi đáng kể.

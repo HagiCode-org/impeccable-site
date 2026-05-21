@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Bezlitosne odejmowanie. Obdzieraj projekty do samej istoty.
+highlights:
+  - Strona ma zbyt wiele konkurujacych pomyslow.
+  - Uzytkownicy potrzebuja szybszego zrozumienia, nie wiecej funkcji.
+  - Prostota jest poprawa, nie tymczasowym kompromisem.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Kiedy uzywac
+
+`/impeccable distill` usuwa to, czego nie powinno tam byc. Konkurujace przyciski, nadmiarowe informacje, dekoracyjne obramowania, trzy fonty tam, gdzie wystarczy jeden, szesc pozycji nawigacji tam, gdzie naleza sie trzy. Uzyj, gdy interfejs wydaje sie zapchlony, nabuzowany lub jakby probowal zrobic zbyt wiele na raz.
+
+Sigmnij po to po tym, jak `/impeccable critique` oflaguje "obciazenie poznawcze" lub "wizualny szum", lub kiedy strona urosla przez akrecje i nikt nie zrobil redakcji.
+
+## Jak to dziala
+
+Umiejetnosc zaczyna od jednego pytania: jaka jest jedyna robota, ktora ten interfejs probuje wykonac? Wszystko, co nie pomaga tej robocie, jest na ciele.
+
+Dziala w dwoch przebiegach:
+
+1. **Ocen zrodla zlozonosci.** Zbyt wiele elementow, nadmierna zmiennosc, przeciazenie informacyjne, wizualny szum, mylaca hierarchia, pelzanie funcji. Nazwij kazde z nich.
+2. **Redaguj bezlitośnie.** Usun to, co nie jest istotne. Polacz to, co mozna polaczyc. Ukryj to, co moze poczekac. Skonsoliduj zmiennosc w pojedyncze traktowanie. Zobowiaz sie do jednego jezyka wizualnego.
+
+Zasada: kazdy element na stronie musi usprawiedliwic swoje istnienie. Mniej przeszkod, nie mniej funkcji.
+
+## Wyprobuj
+
+```
+/impeccable distill this dashboard
+```
+
+Przed: cztery style kart, trzy warianty przyciskow, dwa traktowania naglowkow, panel boczny z 14 pozycjami pogrupowanymi w 5 sekcji.
+
+Po przebiegu `/distill`, typowe zmiany:
+
+- Zwiniecie czterech styli kart w jeden
+- Wybor jednego wariantu przycisku, degradacja pozostalych do linkow tekstowych
+- Ujednolicenie naglowkow
+- Grupowanie panelu bocznego w 3 sekcje, nie 5
+- Ukrycie zaawansowanych opcji za sekcja rozwijana
+
+Mniej rzeczy. Kazda jasniejsza.
+
+## Pulapki
+
+- **Mylenie distill z usuwaniem.** Distill usuwa przeszkody. Nie usuwa funkcji, ktorych uzytkownicy potrzebuja. Jesli uzytkownik polega na czyms codziennie, znajdz sposob, by to zachowac po cichu, nie sposob, by to uciac.
+- **Uruchamianie zbyt wczesnie.** Jesli funkcja nadal rosnie, dystrybucja teraz oznacza dystrybucje tej samej rzeczy w przyszlym tygodniu. Poczekaj, az ksztalt ustabilizuje sie.
+- **Oczekiwanie, ze zastapi prace nad hierarchia.** Czasem wlasciwa poprawka to nie usuwanie rzeczy, ale ich ulozenie. Sigmnij po `/impeccable layout`, gdy problemem jest uklad, nie ilosc.

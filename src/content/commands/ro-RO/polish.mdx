@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Trecerea finala meticuloasa intre bun si excelent.
+highlights:
+  - Alinierea, spatierea si micro-deciziile inca se simt aspre.
+  - Functionalitatea este aproape de lansare.
+  - Mici inconsistente trag in jos calitatea perceputa.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Cand se foloseste
+
+`/impeccable polish` este ultimul lucru pe care il rulati inainte de lansare. Vaneaza detaliile mici care separa o functionalitate livrata de una finisata: dezaliniari de jumatate de pixel, spatieri inconsistente, stari de focus uitate, tranzitii de incarcare care clipeste, copy care derapeaza in ton. De asemenea aliniaza functionalitatea cu sistemul de design, inlocuind valori hard-codate cu token-uri, schimband componente personalizate cu cele partajate si fixand orice derivare de la tiparele stabilite.
+
+Apelati la el cand functionalitatea este complet functionala, nimic nu este stricat si ceva inca se simte nepotrivit. De asemenea apelati la el cand o functionalitate a derivat de la sistemul de design si trebuie sa fie readusa in linie.
+
+## Cum functioneaza
+
+Polish incepe prin descoperirea sistemului de design (token-uri, scara de spatieri, componente partajate), apoi lucreaza metodic pe sase dimensiuni:
+
+1. **Aliniere vizuala si spatieri**: aderenta perfecta la grid-ul de pixeli, scara de spatieri consistenta, aliniere optica pe iconite.
+2. **Tipografie**: consistenta ierarhiei, lungime linie, vaduve si orfani, kerning pe titluri.
+3. **Culoare si contrast**: utilizarea token-urilor, paritate de tema, rapoarte WCAG, indicatori de focus.
+4. **Stari de interactiune**: hover, focus, active, dezactivat, incarcare, eroare, succes. Fiecare stare contorizata.
+5. **Tranzitii si miscare**: easing neted, fara agitare de layout, respect pentru `prefers-reduced-motion`.
+6. **Copy**: voce consistenta, timp corect, fara siruri placeholder, fara TODO-uri ratacite.
+
+Skill-ul este explicit despre un lucru: polish este ultimul pas, nu primul. Daca functionalitatea nu este complet terminata, finisarea ei este munca irosita.
+
+## Incercati
+
+```
+/impeccable polish the pricing page
+```
+
+O rulare sanatoasa arata asa:
+
+```
+Aliniere vizuala: fixate 3 elemente off-grid (baseline 8px)
+Tipografie: strangere kerning h1, fixare vaduva pe testimonial
+Interactiune: adaugata stare hover pe elementele FAQ, ring de focus pe input email
+Miscare: mollire intrare modal, adaugat fallback reduced-motion
+Copy: eliminat un "Lorem ipsum" ratacit, aliniata voce butoane
+```
+
+Cinci fixuri mici, nicio rescriere. Aceasta este forma unei treceri polish bune.
+
+## Capcane
+
+- **Finisarea lucrului care nu este terminat.** Daca exista TODO-uri in cod, nu sunteti pregatit. Rulati `/impeccable polish` doar pe functionalitati terminate.
+- **Tratarea polish ca redesen.** Polish rafineaza ce exista. Daca va prindeti rearhitectand un layout, aveati nevoie de `/impeccable critique` sau `/impeccable layout` in schimb.
+- **Rularea `/impeccable polish` fara `/impeccable audit` mai intai.** Polish prinde probleme bazate pe simtire. Auditul prinde pe cele masurabile. Folositi ambele.

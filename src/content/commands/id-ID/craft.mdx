@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Bentuk desainnya, lalu bangun, semua dalam satu alur.
+highlights:
+  - Anda memulai fitur baru dari nol.
+  - Anda menginginkan discovery, implementasi, dan penyempurnaan visual dalam satu proses.
+  - Anda lebih memilih loop build yang lebih lambat tetapi lebih deliberatif.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Wawancara discovery. Tujuan, pengguna, batasan, arah.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Muat referensi</span>
+      <span class="docs-viz-flow-hint">Spasial, tipografi, gerak, warna, interaksi.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Struktur, hierarki, tipografi, warna, status, gerak, responsif.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterasi visual</span>
+      <span class="docs-viz-flow-hint">Periksa di browser, perbaiki hingga sesuai dengan brief.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Setiap fase tidak dapat dilewati. Langkah discovery adalah tempat sebagian besar output AI gagal: saat kode sudah ada, pemikiran sudah terkunci.</p>
+</div>
+
+## Kapan menggunakannya
+
+`/impeccable craft` adalah perintah build end-to-end. Berikan deskripsi fitur dan skill akan menjalankan seluruh pipeline: discovery terstruktur, pemuatan referensi, implementasi, iterasi visual. Gunakan ketika Anda memulai fitur baru dari nol dan menginginkan seluruh alur kerja dalam satu pemanggilan.
+
+Gunakan ketika:
+
+- **Anda membangun fitur baru dan menginginkan alur lengkap.** Anda tidak ingin mengelola langkah-langkah sendiri.
+- **Anda tahu apa yang dibangun tetapi tidak tahu bagaimana seharusnya terlihat.** Fase discovery memaksa pemikiran desain sebelum implementasi menguncinya.
+- **Anda menginginkan iterasi visual secara default.** `craft` memeriksa hasil di browser dan menyempurnakan hingga kualitasnya tinggi, alih-alih mengirimkan versi pertama yang berfungsi.
+
+Jika Anda hanya menginginkan pemikiran tanpa kode, gunakan `/impeccable shape` secara mandiri. Jika Anda sudah memiliki visi yang jelas dan hanya ingin membangun, panggil `/impeccable` langsung dengan deskripsi fitur Anda. `craft` berada di antaranya: terstruktur, lengkap, berpendapat.
+
+## Cara kerjanya
+
+`craft` menjalankan empat fase secara berurutan:
+
+1. **Bentuk desain.** Menjalankan `/impeccable shape` secara internal: percakapan discovery singkat tentang tujuan, pengguna, konten, batasan, dan sasaran. Outputnya adalah brief desain yang dapat Anda baca dan bandingkan.
+2. **Muat referensi.** Berdasarkan brief, menarik file referensi yang tepat (spasial, tipografi, gerak, warna, interaksi, responsif, penulisan UX) sehingga model memiliki prinsip yang relevan dimuat sebelum mulai menulis kode.
+3. **Build.** Mengimplementasikan fitur dalam urutan yang deliberatif: struktur dulu, lalu jarak dan hierarki, lalu tipografi dan warna, lalu status, lalu gerak, lalu responsif. Setiap keputusan dapat ditelusuri kembali ke brief.
+4. **Iterasi visual.** Membuka hasil di browser, memeriksanya terhadap brief dan katalog anti-pola, dan menyempurnakan hingga sesuai dengan maksud. Langkah ini kritis. Versi pertama yang berfungsi bukanlah versi yang dikirim.
+
+Fase discovery tidak dapat dilewati dan itu memang tujuannya. Sebagian besar UI yang dihasilkan AI gagal karena tidak ada yang bertanya apa yang coba dicapai pengguna sebelum model mulai menulis JSX. `craft` membalikkan urutan itu.
+
+## Cobalah
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Harapkan wawancara discovery 5 hingga 10 pertanyaan terlebih dahulu. Pertanyaan tentang audiens Anda, kepribadian produk, nada emosional yang Anda inginkan, anti-referensi, dan batasan. Kemudian brief desain. Kemudian implementasi, dengan browser diperiksa di setiap tahap. Harapkan beberapa ronde iterasi dalam fase penyempurnaan visual.
+
+Seluruh proses lebih lama dari perintah biasa karena mencakup pemikiran, pembangunan, dan penyempurnaan. Itulah pertukarannya: lebih banyak struktur di awal, lebih sedikit pembersihan setelahnya.
+
+## Jebakan
+
+- **Menggunakannya untuk perubahan kecil.** `craft` untuk fitur baru, bukan sentuhan akhir. Untuk kode yang sudah ada, gunakan `/impeccable polish`, `/impeccable critique`, atau perintah penyempurnaan spesifik.
+- **Terburu-buru dalam fase discovery.** Wawancara terasa lambat dibandingkan "langsung mulai coding". Sebenarnya tidak. Menjawab pertanyaan dengan cermat menghasilkan brief yang lebih tajam, yang menghasilkan build yang lebih tajam, yang menghasilkan lebih sedikit penulisan ulang.
+- **Melewatkan iterasi visual.** Fase itu ada untuk suatu alasan. Celah antara "secara teknis berfungsi" dan "terasa benar" ditutup dengan penyempurnaan visual, bukan tinjauan kode. Biarkan berjalan.

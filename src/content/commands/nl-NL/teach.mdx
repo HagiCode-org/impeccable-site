@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Leer Impeccable voor wie je product is, eenmaal per project.
+highlights:
+  - Het project heeft nog geen ontwerpcontextbestand.
+  - Verschillende bijdragers hebben één gedeelde bron van waarheid nodig.
+  - Je wilt dat toekomstige commando's merk- en productrichting erven.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Bij elk commando geladen</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Ontwerp dient de taak.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Gebruikers</span>
+        <span class="docs-viz-file-v">SRE's in oproepdienst, snel lezend, vaak in het donker.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Merkstem</span>
+        <span class="docs-viz-file-v">Kalm, klinisch, geen hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-referenties</span>
+        <span class="docs-viz-file-v">Paarse kleurovergangen. Glassmorfisme. "Boost je productiviteit."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Elk commando leest dit voordat een regel code wordt geschreven.</div>
+  </div>
+  <p class="docs-viz-caption">Een afgeronde PRODUCT.md. Alleen strategie: wie, wat, waarom. Geen kleuren, geen lettertypes, geen pixelwaarden, die leven in DESIGN.md.</p>
+</div>
+
+## Wanneer te gebruiken
+
+Voer `/impeccable teach` eenmaal uit aan het begin van een project. Het is de oprit. Zonder het zal elk ander commando ontwerp produceren dat technisch bekwaam is maar generiek van toon: standaard SaaS-stem, veilige-standaard lettertypes, het AI-kleurenpalet. Met het leest elk commando jouw antwoorden voordat het genereert.
+
+Gebruik het wanneer:
+
+- **Je Impeccable net hebt geinstalleerd in een nieuw project.** Eerste ding om uit te voeren. Andere commando's zullen je ernaar doorverwijzen als je het overslaat.
+- **De merkrichting van het project is verschoven.** Nieuwe positionering, nieuwe doelgroep, nieuwe stem. Voer `teach` opnieuw uit en de bijgewerkte context stroomt door elk commando.
+- **Een ander commando zei "geen ontwerpcontext gevonden"** en stopte. Dat is het signaal: voer teach uit en hervat.
+
+## Hoe het werkt
+
+Teach schrijft twee complementaire bestanden in de hoofdmap van het project:
+
+- **`PRODUCT.md`** is het strategische bestand. Register (brand of product), doelgebruikers, productdoel, merkpersoonlijkheid, anti-referenties, ontwerpprincipes, toegankelijkheidsbehoeften. Beantwoordt "wie, wat, waarom".
+- **`DESIGN.md`** is het visuele bestand. Kleuren, typografie, elevatie, componenten, do's en don'ts. Beantwoordt "hoe het eruitziet". Geschreven door het gedelegeerde `/impeccable document`-commando, dat teach aan het einde aanroept.
+
+De flow scant eerst de codebase (README, package.json, componenten, tokens, merk-assets) en vormt een **registerhypothese**: brand (landingspagina's, marketing, portfolio's, waar ontwerp HET product is) of product (app-UI, dashboards, tools, waar ontwerp het product DIENT). Register is de eerste vraag, omdat het elk downstream-antwoord vormt: typografie-standaardwaarden, bewegingsenergie, kleurstrategie, de referentieset die commando's zoals `/impeccable typeset` gebruiken. Na register stelt teach alleen wat het niet kon afleiden: gebruikers, persoonlijkheid in drie echte woorden, referenties en anti-referenties, toegankelijkheidseisen.
+
+PRODUCT.md is alleen strategisch. Geen kleuren, geen lettertypes, geen pixelwaarden. Die leven in DESIGN.md. De twee bestanden gescheiden houden is bewust: strategie kan stabiel blijven terwijl het visuele systeem evolueert.
+
+## Probeer het
+
+```
+/impeccable teach
+```
+
+Verwacht een interview van 5 tot 8 minuten. De eerste vraag gaat meestal over register; de rest is kort. Teach citeert terug wat het heeft afgeleid uit je code ("van de routes ziet dit eruit als een product-oppervlak, klopt dat?") zodat je bevestigt, niet vanaf nul begint.
+
+Aan het einde biedt teach aan om `/impeccable document` voor je uit te voeren. Zeg ja tenzij je een specifieke reden hebt om te wachten. Een echte DESIGN.md is wat varianten, polishes en audits op-merk houdt.
+
+## Valkuilen
+
+- **Het overslaan om "snel een commando te proberen".** Elk ander commando zal je ter plekke interviewen in plaats daarvan. Teach eerst uitvoeren is sneller, niet langzamer.
+- **Generieke antwoorden geven.** "Modern en schoon" is niet nuttig. "Warm, mechanisch, eigenzinnig" wel. Wees specifiek. Wees bereid het oneens te zijn met veilige standaardwaarden.
+- **PRODUCT.md behandelen als onveranderlijk.** Het bestand is van jou. Als teach er iets in heeft gezet dat niet helemaal klopt, bewerk het dan. Elk commando leest het huidige bestand.
+- **Alleen bijvoeglijke naamwoorden opsommen voor referenties.** Merken, producten, gedrukte objecten: benoemd, niet beschreven. "Klim Type Foundry specimen pagina's", niet "technisch en schoon". Anti-referenties moeten even specifiek zijn.

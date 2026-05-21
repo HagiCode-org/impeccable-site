@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Ревью дизайна с оценкой, тестами персон и автоматическим обнаружением.
+highlights:
+  - Вам нужны выводы о слабых дизайнерских решениях, а не пересборка с нуля.
+  - Вам нужны оценки, дизайнерское обоснование и вероятные следующие шаги.
+  - Интерфейс работает, но всё равно кажется не тем.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Вердикт AI slop</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Эвристика (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Видимость статуса</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Соответствие реальному миру</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Последовательность и стандарты</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Предотвращение ошибок</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Узнавание вместо припоминания</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Персоны</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Оценщик</span>
+              <span class="docs-viz-critique-persona-note">Сравнивает нас с двумя альтернативами вечером во вторник.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Возвращающийся пользователь</span>
+              <span class="docs-viz-critique-persona-note">Знает продукт, на мобильном, торопится.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Скептик</span>
+              <span class="docs-viz-critique-persona-note">Видел каждый SaaS-лендинг и устал.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Два прохода (LLM-ревью дизайна плюс детерминированный детектор) сливаются в один приоритизированный список. Что работает, что исправить, и провокационные вопросы, на которые стоит ответить до релиза.</p>
+</div>
+
+## Когда использовать
+
+Обращайтесь к `/impeccable critique`, когда хотите честное второе мнение о том, что уже создано. Не «работает ли это», а «насколько это хорошо». Навык оценивает ваш интерфейс по 10 эвристикам Нильсена, проверяет когнитивную нагрузку, тестирует через призму персон и сверяется с автоматическим детектором на 25 конкретных антипаттернов.
+
+Используйте, когда страница функционально готова и вы хотите понять, выглядит ли она осознанной или как ИИ-шлак.
+
+## Как это работает
+
+`/impeccable critique` запускает две независимые оценки параллельно, чтобы они не влияли друг на друга.
+
+Первая — **LLM-ревью дизайна**: модель читает ваш исходный код, визуально проверяет живую страницу, если доступна браузерная автоматизация, и проходит полный каталог DO/DON'T навыка impeccable. Он оценивает эвристики Нильсена, считает ошибки когнитивной нагрузки, отслеживает эмоциональное путешествие по процессу и помечает ИИ-шлак.
+
+Вторая — **автоматический детектор** (`npx impeccable detect`), который детерминированно находит градиентный текст, фиолетовые палитры, боковые вкладки с рамками, вложенные карточки, проблемы с длиной строк и другие видимые отпечатки типичного ИИ-вывода.
+
+Два отчёта сливаются в один приоритизированный список: что работает, три–пять вещей, которые нужно исправить, и провокационные вопросы, на которые стоит ответить до релиза.
+
+## Попробуйте
+
+Направьте на страницу:
+
+```
+/impeccable critique the homepage hero
+```
+
+Вы получите оценочный отчёт. Типичная структура:
+
+- **Вердикт AI slop**: пройдено / не пройдено с конкретными признаками
+- **Оценки эвристик**: 10 чисел, от 0 до 4
+- **Когнитивная нагрузка**: количество ошибок из 8
+- **Приоритетные проблемы**: три–пять пунктов, каждый с что, почему и как исправить
+- **Вопросы для ответа**: те, которые сам интерфейс не может решить за вас
+
+Оттуда объедините с `/impeccable polish` или `/impeccable distill` для исправлений.
+
+## Подводные камни
+
+- **Запуск на незавершённой работе.** Critique предназначен для готовых страниц. Пустое состояние с тремя TODO будет оценено плохо, потому что оно не закончено, а не потому что оно плохое.
+- **Игнорирование вопросов в конце.** Обычно это исправления, которые сильнее всего меняют дизайн.
+- **Восприятие оценок эвристик как отметки.** Они диагностические, а не оценочные. 3/4 по эвристике, которая менее важна в вашем контексте — это нормально.

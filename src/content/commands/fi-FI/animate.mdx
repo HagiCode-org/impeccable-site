@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Tarkoituksellista liikettä joka välittää tilaa, ei koristelua.
+highlights:
+  - Käyttöliittymät tuntuvat elottomilta tai äkillisiltä tilojen välillä.
+  - Lataus, palaute tai siirtymät tarvitsevat liikettä joka selittää mitä tapahtuu.
+  - Haluat kurinalaista animaatiota, jossa on reduced-motion-varajärjestelmät.
+related:
+  - delight
+---
+
+## Milloin käyttää
+
+`/impeccable animate` on käyttöliittymille jotka tuntuvat elottomilta, joissa tilanmuutokset ovat välittömiä ja jäykkiä, joissa lataus vain ilmestyy, joissa käyttäjä ei koskaan aivan luota siihen, rekisteröityikö hänen klikkauksensa. Käytä sitä lisätäksesi pienet liikkeet jotka kommunikoivat mitä tapahtuu: saapumiset, poistumiset, palaute, siirtymät tilojen välillä.
+
+Älä käytä sitä lisätäksesi pomppuja tai elastisia jousia energian vuoksi. Se on koristelua, eikä tämä taito anna sitä sinulle.
+
+## Miten se toimii
+
+Taito tunnistaa staattiset hetket jotka hyötyisivät liikkeestä, sitten soveltaa niitä tiukalla kurinalaisuudella:
+
+1. **Saapumiset ja poistumiset**: elementit ilmestyvät ja lähtevät 200-300ms häivytyksellä plus hienovarainen Y tai skaalaus, ei asetteluominaisuuksia.
+2. **Tilapalaute**: hover, active, focus, lataus, onnistuminen kaikki kommunikoivat liikkeen kautta äkillisten vaihtojen sijaan.
+3. **Siirtymät näkymien välillä**: jaetut elementtisiirtymät missä se on järkevää, häivytys-läpi muuten.
+4. **Edistyminen ja lataus**: luurankonäytöt, määräävät palkit, liike joka sanoo "työskentelen yhä".
+5. **Reduced motion**: jokaisessa animaatiossa on `prefers-reduced-motion`-varajärjestelmä.
+
+Helpotus on aina eksponentiaalinen (ease-out-quart, quint tai expo) koska todelliset esineet hidastuvat tasaisesti. Ei pomppua, ei elastista, ei lineaarista millekään paitsi edistymisindikaattoreille.
+
+Taito animoi vain `transform`- ja `opacity`-ominaisuuksia. Jos huomaat animoivasi `width`, `height`, `top` tai `left`-ominaisuuksia, se tekee väärin. Käytä `grid-template-rows`-ominaisuutta korkeussiirtymiin.
+
+## Kokeile
+
+```
+/impeccable animate the sign-up flow
+```
+
+Tyypilliset lisäykset:
+
+- Sähköpostisyöte saa focus-hehkun focus-visible-tilassa (peittavyys + varjo, 180ms)
+- Lähetä-painike näyttää latauspyörän sisällään lataustilassa, ei erillistä latauspyörää sen vieressä
+- Onnistumisnäyttö saapuu peittävyydellä + translateY(8px), 260ms, ease-out-quart
+- Virheilmoitus liukuu alas grid-template-rows-ominaisuudella (ei height), 220ms
+- `@media (prefers-reduced-motion: reduce)`-varajärjestelmä jokaiselle siirtymälle
+
+## Sudenkuopat
+
+- **"Lisää animaatiota" -pyyntö.** Animate ei ole säätö. Se lisää liikettä missä se kommunikoi, ei kaikkialla.
+- **Reduced-motion-varajärjestelmien poistaminen.** Taito lisää ne automaattisesti. Ei-neuvoteltavissa saavutettavuuden kannalta.

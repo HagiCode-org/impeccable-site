@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: 帶評分、人物誌測試和自動偵測的設計審查。
+highlights:
+  - 你想要關於薄弱設計選項的發現，而非從頭重建。
+  - 你需要評分、設計推理和可能的後續步驟。
+  - 介面可以運作但仍然感覺不對。
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop 判定</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">啟發式評估 (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>系統狀態可見性</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>與真實世界相符</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>一致性與標準</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>錯誤預防</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>辨識勝過回憶</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">人物誌</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">評估者</span>
+              <span class="docs-viz-critique-persona-note">在週二晚上將我們與兩個替代方案比較。</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">回訪使用者</span>
+              <span class="docs-viz-critique-persona-note">熟悉產品，用手機，趕時間。</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">懷疑論者</span>
+              <span class="docs-viz-critique-persona-note">看過所有 SaaS 登入頁，已經厭倦了。</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">兩次評估（LLM 設計審查加上確定性偵測器）合併為一份優先排序清單。哪些有效、哪些需要修復，以及那些值得在交付前回答的發人深省的問題。</p>
+</div>
+
+## 何時使用
+
+當你想要對已建構的東西獲得誠實的第二意見時，請使用 `/impeccable critique`。不是問「能不能運作」，而是問「好不好」。技能會根據 Nielsen 的 10 項啟發式原則評分你的介面，執行認知負荷檢查，透過人物誌視角測試，並交叉參考自動偵測器檢查 25 個具體反模式。
+
+當頁面功能上已完成，你想知道它讀起來是有意為之還是像 AI 粗製濫造時使用它。
+
+## 運作方式
+
+`/impeccable critique` 平行執行兩個獨立評估，讓它們不會互相影響。
+
+第一個是 **LLM 設計審查**：模型閱讀你的原始碼，如果瀏覽器自動化可用則視覺檢查即時頁面，並走過 impeccable 技能的完整 DO/DON'T 目錄。它為 Nielsen 啟發式原則評分，計算認知負荷失敗數，追蹤流程中的情感旅程，並標記 AI 粗製濫造。
+
+第二個是**自動偵測器**（`npx impeccable detect`），確定性地找出漸層文字、紫色色盤、側邊標籤邊框、巢狀卡片、行長度問題，以及其他通用 AI 產出的可見指紋。
+
+兩份報告合併為一份優先排序清單：哪些有效、需要修復的三到五件事，以及那些值得在交付前回答的發人深省的問題。
+
+## 試試看
+
+將它指向一個頁面：
+
+```
+/impeccable critique the homepage hero
+```
+
+你會得到一份帶評分的報告。典型格式：
+
+- **AI slop 判定**：通過 / 未通過，附帶具體跡象
+- **啟發式評分**：10 個數字，0 到 4
+- **認知負荷**：8 項中的失敗數
+- **優先問題**：三到五個項目，每個都有是什麼、為什麼、如何修復
+- **需要回答的問題**：介面本身無法替你決定的那些
+
+接著搭配 `/impeccable polish` 或 `/impeccable distill` 來執行修復。
+
+## 注意事項
+
+- **對未完成的工作執行。** Critique 適用於已完成的頁面。一個帶三個 TODO 的空狀態會評分很差，因為它還沒完成，不是因為它不好。
+- **忽略結尾的問題。** 它們通常是能最大程度改變設計的修復。
+- **把啟發式評分當作成績。** 它們是診斷性的，不是評估性的。在一個對你的情境不太重要的啟發式原則上得到 3/4 是沒問題的。

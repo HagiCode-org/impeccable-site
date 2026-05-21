@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: 좋음과 훌륭함 사이의 꼼꼼한 최종 패스.
+highlights:
+  - 정렬, 간격, 미세한 결정이 여전히 거칠게 느껴집니다.
+  - 기능이 출시 직전입니다.
+  - 작은 불일치들이 인지된 품질을 끌어내리고 있습니다.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## 사용 시기
+
+`/impeccable polish`은 출시 전에 마지막으로 실행하는 것입니다. 출시된 기능과 마감된 기능을 구분하는 작은 디테일을 찾습니다: 반 픽셀 어긋남, 일관성 없는 간격, 잊힌 포커스 상태, 반짝이는 로딩 전환, 톤이 어긋난 카피. 또한 기능을 디자인 시스템에 맞춰 하드코딩된 값을 토큰으로 교체하고, 커스텀 컴포넌트를 공유 컴포넌트로 교체하며, 확립된 패턴에서의 어긋남을 수정합니다.
+
+기능이 기능적으로 완성되었고, 망가진 것은 없지만 여전히 어딘가 어색할 때 사용하세요. 또는 기능이 디자인 시스템에서 벗어났고 다시 맞춰야 할 때 사용하세요.
+
+## 작동 방식
+
+Polish는 먼저 디자인 시스템(토큰, 간격 스케일, 공유 컴포넌트)을 발견한 다음 6가지 차원에서 체계적으로 작업합니다:
+
+1. **시각적 정렬과 간격**: 픽셀 퍼펙트 그리드 준수, 일관된 간격 스케일, 아이콘의 시각적 정렬.
+2. **타이포그래피**: 계층 일관성, 행 길이, 위도와 고아, 헤드라인 커닝.
+3. **색상과 대비**: 토큰 사용, 테마 일치, WCAG 비율, 포커스 인디케이터.
+4. **인터랙션 상태**: hover, focus, active, disabled, loading, error, success. 모든 상태가 고려됨.
+5. **전환과 모션**: 부드러운 이징, 레이아웃 잔업 없음, `prefers-reduced-motion` 존중.
+6. **카피**: 일관된 목소리, 올바른 시제, 플레이스홀더 문자열 없음, 떠돌이 TODO 없음.
+
+스킬이 한 가지에 대해 명확히 합니다: polish는 첫 번째가 아닌 마지막 단계입니다. 기능이 기능적으로 완성되지 않았다면 polish하는 것은 낭비입니다.
+
+## 직접 해보기
+
+```
+/impeccable polish the pricing page
+```
+
+건강한 실행은 이렇게 보입니다:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+다섯 가지 작은 수정, 재작성 없음. 그것이 좋은 polish 패스의 모양입니다.
+
+## 주의 사항
+
+- **미완성 작업 polish하기.** 코드에 TODO가 있다면 아직 준비되지 않은 것입니다. 완성된 기능에만 `/impeccable polish`를 실행하세요.
+- **polish를 재설계로 취급하기.** Polish는 있는 것을 정제합니다. 레이아웃을 재설계하고 있다면 `/impeccable critique`나 `/impeccable layout`이 필요했던 것입니다.
+- **먼저 `/impeccable audit` 없이 `/impeccable polish` 실행하기.** Polish는 느낌 기반 이슈를 잡습니다. Audit은 측정 가능한 것을 잡습니다. 둘 다 사용하세요.

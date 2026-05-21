@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Piensa antes de construir. Produce un brief de diseno a traves del descubrimiento, no de la suposicion.
+highlights:
+  - Quieres planificacion sin implementacion aun.
+  - El layout o tono correcto aun no esta claro.
+  - Multiples interesados necesitan alinearse en la intencion antes de que comience el trabajo de construccion.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Resultado de /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Proposito</span>
+        <span class="docs-viz-file-v">Permitir que los suscriptores comprometidos cambien lo que reciben sin perderlos al cancelar la suscripcion.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Usuario</span>
+        <span class="docs-viz-file-v">Con prisa, en movil, en medio de una reunion. Leyendo rapido, poca paciencia.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Contenido</span>
+        <span class="docs-viz-file-v">4 tipos de resumen, 2 cadencias, una opcion de cancelar todo al final.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Sensacion</span>
+        <span class="docs-viz-file-v">Calma, confiable, sin patrones oscuros.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Restricciones</span>
+        <span class="docs-viz-file-v">Mobile-first. Contraste WCAG AA. Una columna, sin modales.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Entregalo a <code>/impeccable</code>, <code>/impeccable craft</code>, o cualquier flujo de implementacion.</div>
+  </div>
+  <p class="docs-viz-caption">Un brief de shape es una brujula, no una especificacion. Captura la intencion, no la UI. Las habilidades de implementacion lo leen antes de escribir una linea de codigo.</p>
+</div>
+
+## Cuando usarlo
+
+`/impeccable shape` es donde comienza una funcionalidad. Antes de que nadie escriba codigo, antes de que nadie discuta sobre el tratamiento del hero, antes de que nadie elija una fuente. Usalo para forzar una conversacion de descubrimiento sobre proposito, usuarios, contenido y restricciones, y luego captura las respuestas como un brief de diseno en el que las habilidades de implementacion pueden apoyarse.
+
+Usalo cuando una funcionalidad esta por comenzar, un ticket es vago, o te encuentras escribiendo JSX para averiguar que deberia ser el producto.
+
+## Como funciona
+
+La mayoria de las UIs generadas por IA fallan no por mal codigo, sino por pensamiento omitido. El modelo salta a "aqui hay una grilla de tarjetas" sin preguntar "que intenta lograr el usuario". `/impeccable shape` invierte ese orden.
+
+La habilidad ejecuta una entrevista de descubrimiento estructurada en conversacion. No escribira codigo durante esta fase. Las preguntas cubren:
+
+- **Proposito y contexto**: para que es la funcionalidad, quien la usa, en que estado mental se encuentran
+- **Contenido y datos**: que se muestra, rangos realistas, casos limite, que es dinamico
+- **Objetivos de diseno**: lo unico mas importante, la sensacion pretendida, ejemplos de referencia
+- **Restricciones**: tecnicas, de contenido, de accesibilidad, de localizacion
+
+Respondes naturalmente. La habilidad hace preguntas de seguimiento, no un formulario. Al final produce un brief de diseno: un artefacto estructurado que puedes entregar a `/impeccable` o cualquier otra habilidad de implementacion.
+
+Nota: si quieres el flujo completo (entrevista de descubrimiento, y luego directo a construir), usa `/impeccable craft`. Ejecuta `/impeccable shape` internamente, y luego continua con la implementacion e iteracion visual. `/impeccable shape` independiente es para cuando quieres solo el brief, para llevarlo al enfoque de implementacion que prefieras.
+
+## Probalo
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Espera una conversacion de 5 a 10 preguntas. La habilidad pregunta cosas como "quien es la persona que abre esto, y ya esta comprometida o todavia esta curioseando" y "que pasa cuando el usuario ha cancelado la suscripcion a todo, ocultamos la funcionalidad o mostramos algo". Respondes, y un brief se materializa.
+
+Desde ahi puedes entregar el brief a `/impeccable`, `/impeccable polish`, o cualquier otra habilidad. O simplemente usarlo como referencia mientras construyes manualmente.
+
+## Errores comunes
+
+- **Saltarselo porque parece lento.** La entrevista son quizas 5 minutos. Las reescrituras que evitas se miden en horas.
+- **Tratar el brief como una especificacion.** Es una brujula, no una lista de verificacion. Captura la intencion, no la UI.
+- **Responder con "estandar" o "normal".** La especificidad es todo el punto. Si un usuario esta "con prisa, en movil, entre reuniones", dilo. Eso cambia todo lo que viene despues.

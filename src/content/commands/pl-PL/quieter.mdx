@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Wycisz projekty, które krzyczą, nie tracąc ich intencji.
+highlights:
+  - Silne pomysły są obecne, ale strona jest zbyt głośna.
+  - Potrzebujesz powściągliwości bez stawania się nudnym.
+  - Obecny ton przytłacza czytanie lub przepływ zadań.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Kiedy używać
+
+`/impeccable quieter` jest przeciwagą dla `/impeccable bolder`. Sięgnij po nią, gdy interfejs jest wizualnie agresywny, przebodźcowany lub próbuje robić za dużo rzeczy na pełnej głośności. Neon na ciemnym, gradient text wszędzie, 6 kolorów akcentu, wszystko animowane, cienie 20px. Użyj quieter, gdy projekt musi oddychać i chcesz rafinacji bez utraty punktu widzenia.
+
+Przydatne też po tym, jak `/impeccable bolder` odrobinę za bardzo poszedł.
+
+## Jak to działa
+
+Umiejętność działa przez redukcję na czterech osiach:
+
+1. **Kolor**: desaturacja, obniżenie chromy w OKLCH, cofnięcie akcentów do jednego głównego plus wyciszone wsparcie. Nie więcej niż dwa celowe kolory.
+2. **Kontrast**: zmiękczenie ekstremalnych ciemności i jasności, ściągnięcie zakresu. Tła przechodzą z czystej bieli i czystej czerni na papier i ink.
+3. **Dekoracja**: usunięcie cieni, które nie wykonują pracy, porzucenie obramowań, które nie niosą struktury, wycofanie gradientów, które istnieją dla energii, a nie hierarchii.
+4. **Ruch i efekty**: spowolnienie animacji, usunięcie czegokolwiek, co gra automatycznie, porzucenie paralaksy i rozmycia, chyba że służą czytelności.
+
+Umiejętność zachowuje intencję projektu. Jeśli oryginał miał punkt widzenia, cichsza wersja ma ten sam punkt widzenia z większą pewnością. Rafinacja, nie neutralizacja.
+
+## Wypróbuj
+
+```
+/impeccable quieter the pricing page
+```
+
+Typowy diff:
+
+- Gradient text na cenie usunięty, zastąpiony stałym ink o jedną wagę cięższy
+- Trzy kolory akcentu zredukowane do jednego (magenta), pozostałe dwa stają się neutralnymi wariantami
+- Cienie kart zredukowane z `0 20px 40px rgba(0,0,0,0.2)` do `0 1px 0 var(--color-mist)` (kreska)
+- Tło przełącza się z ciemnego gradientu na papier z subtelnym płukaniem cream na górze
+- Animacja hero z 1.2s easeOut z 3 rozstawionymi elementami do pojedynczego fade-in 260ms
+
+## Pułapki
+
+- **Nadmierne aplikowanie.** Quieter może zdjąć osobowość, jeśli uruchomisz to na czymś, co było już powściągliwe. Używaj, gdy projekt jest zbyt głośny, nie gdy jest odpowiednio stanowczy.
+- **Mylenie quieter z distill.** Quieter redukuje intensywność. Distill usuwa elementy. To różne ruchy.
+- **Uruchamianie w odpowiedzi na krytykę, która mówi "zbyt zajęte".** Zajęte zazwyczaj znaczy za dużo rzeczy, nie za głośno. Spróbuj najpierw `/impeccable distill`.

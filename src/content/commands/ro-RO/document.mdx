@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Generati un DESIGN.md conform cu specificatia care capteaza sistemul vizual astfel incat fiecare agent AI ramane on-brand.
+highlights:
+  - Codul deja contine un limbaj de design real.
+  - Aveti nevoie de un rezumat portabil de culori, tipografie, spatieri si componente.
+  - Lucrul de design viitor deriveaza pentru ca sistemul este implicit.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Format Google Stitch</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Prezentare generala</span>
+      </div>
+      <p class="docs-viz-designmd-note">Stea Nord Creativa: <em>"Santuariul Editorial."</em> Tipografie linistita, aer generos, un accent angajat.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Culori</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Tipografie</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevatie</span>
+      </div>
+      <p class="docs-viz-designmd-note">Plat implicit. Umbrele apar doar ca raspuns la stare.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Componente</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Abonati-va</span>
+        <span class="docs-viz-designmd-chip">filtru</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Recomandari si Restrictii</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tentuiti neutrele spre nuanta de accent.</span>
+        <span class="docs-viz-designmd-dont">Text cu gradient pentru accentuare.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Cele sase sectiuni sunt fixe, intr-o ordine fixa, cu nume fixe. Alaturat, <code>DESIGN.json</code> este livrat ca sidecar citibil-masina pentru panoul de design Live Mode.</p>
+</div>
+
+## Cand se foloseste
+
+Rulati `/impeccable document` o data ce aveti suficient sistem vizual pentru a documenta: culori, tipografie, cel putin un buton si un card. Comanda scaneaza codul, extrage token-urile si tiparele de componente pe care le gaseste si scrie un `DESIGN.md` la radacina proiectului care urmeaza [formatul Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), sase sectiuni intr-o ordine fixa, interoperabil cu orice alt instrument constient de DESIGN.md.
+
+Apelati la el cand:
+
+- **Tocmai ati rulat `/impeccable teach`** si `PRODUCT.md` exista acum. Document este fisierul vizual corespunzator.
+- **O comanda v-a impins catre el.** Live, craft si polish citesc DESIGN.md. Daca lipseste, skill-ul sugereaza rularea document mai intai.
+- **Designul a derivat** de la un DESIGN.md mai vechi si fisierul nu mai descrie sistemul live.
+- **Inainte de o redesignare mare**, pentru a capta starea curenta ca referinta pentru urmatoarea directie.
+
+Pentru proiecte fara cod inca (rulare `teach` proaspata, nimic construit), exista un mod seed: `/impeccable document --seed` pune cinci intrebari strategice rapide (strategie de culoare, directie tipografie, energie miscare, referinte, anti-referinte) si scrie o schela. Re-rulati in mod scanare o data ce exista cod.
+
+## Cum functioneaza
+
+Trecerea de scanare gaseste asset-uri de design in ordine de prioritate: proprietati CSS personalizate, configuratie Tailwind, teme CSS-in-JS, fisiere de token-uri de design, sursa componentelor, foaia de stil globala si in final stilurile calculate din iesirea redatata live daca un browser este disponibila. Extrage automat tot ce poate, apoi pune o singura intrebare grupata pentru partile care au nevoie de input creativ: **Stea Nord Creativa** (o singura metafora numita pentru intregul sistem, precum "Santuariul Editorial"), nume descriptive de culori, filozofia elevatiei si caracterul componentelor.
+
+Iesirea este un DESIGN.md cu exact sase sectiuni: Prezentare generala, Culori, Tipografie, Elevatie, Componente, Recomandari si Restrictii. Headerele sunt fixe caracter-cu-caracter astfel incat fisierul sa fie parsabil de alte instrumente. Alaturat, `DESIGN.json` este scris ca sidecar citibil-masina. Acel sidecar este ceea ce panoul de design live-mode foloseste pentru a reda butonul, input-ul, navigarea si tile-urile de card ale *acestui proiect* in locul unei aproximari generice.
+
+Fiecare alta comanda citeste DESIGN.md la invocare. Variante, finisaje, audituri si functionalitati noi mostenesc sistemul vizual fara a fi instruite.
+
+## Incercati
+
+```
+/impeccable document
+```
+
+Pe un proiect cu token-uri deja definite, aceasta dureaza aproximativ doua minute: scanarea gaseste paleta si stiva de tipografie, alegeti o Stea Nord din 2 sau 3 optiuni, confirmati nume descriptive de culori ("Deep Muted Teal-Navy", nu "blue-800") si fisierul aterizeaza la radacina proiectului.
+
+Pe un proiect proaspat:
+
+```
+/impeccable document --seed
+```
+
+Cinci intrebari, aproximativ cinci minute. Fisierul este o schela, marcata cu un comentariu `<!-- SEED -->` astfel incat este sincera despre ceea ce este. Re-rulati fara flag o data ce ati implementat token-uri.
+
+## Capcane
+
+- **Rularea prea devreme.** Pe un proiect fara token-uri implementate, modul seed este potrivit. Nu fabricati o specificatie completa pe care codul nu o poate sustine. Un DESIGN.md fals este mai rau decat niciun DESIGN.md.
+- **Tratarea DESIGN.md ca documentatie doar pentru oameni.** Este in principal pentru AI. Fiecare alta comanda il citeste. Fortarea formatului ("niciodata", "intotdeauna", Reguli Numite) este intentionata.
+- **Adaugarea unei sectiuni de nivel superior Layout / Miscare / Responsiv.** Specificatia are sase sectiuni, intr-o ordine fixa, cu nume fixe. Impachetati continutul de layout sau miscare in Prezentare generala (reguli la nivel de filozofie) sau Componente (comportament per-componenta).
+- **Suprascrierea unui DESIGN.md existent silențios.** Document confirma intotdeauna mai intai. Daca doriti sa incepeti proaspǎt, redenumiti fisierul existent sau spuneti explicit skill-ului sa suprascrie.

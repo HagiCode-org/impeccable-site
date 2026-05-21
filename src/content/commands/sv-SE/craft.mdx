@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Forma designen, sedan bygg den, allt i ett flode.
+highlights:
+  - Du startar en ny funktion fran noll.
+  - Du vill ha upptackt, implementering och visuell forfining i en genomgang.
+  - Du foredrar en langsammare men mer overvägd byggslinga.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Upptacksintervju. Syfte, anvandare, begränsningar, riktning.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Load references</span>
+      <span class="docs-viz-flow-hint">Rumslig, typografi, rorelse, farg, interaktion.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Struktur, hierarki, typ, farg, tillstand, rorelse, responsiv.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterate visually</span>
+      <span class="docs-viz-flow-hint">Kontrollera i webblasaren, forfina tills det matchar briefen.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Varje fas ar icke-hoppbar. Upptackssteget ar dar de flesta AI-resultat misslyckas: nar kod väl finns, är tankesättet last.</p>
+</div>
+
+## Nar du ska anvanda det
+
+`/impeccable craft` ar end-to-end-byggkommandot. Ge det en funktionsbeskrivning och det kör hela pipelinen: strukturerad upptackt, referensladdning, implementering, visuell iteration. Använd det när du startar en ny funktion fran noll och vill ha hela arbetsflodet i ett anrop.
+
+Använd det när:
+
+- **Du bygger en ny funktion och vill ha hela flodet.** Du vill inte hantera stegen sjalv.
+- **Du vet vad du bygger men inte hur det ska se ut.** Upptacksfasen tvingar fram designtankandet innan implementeringen last det.
+- **Du vill ha visuell iteration som standard.** `craft` kontrollerar resultatet i en webblasare och forfinar tills poleringsnivan ar hog, istallet for att leverera den forsta fungerande versionen.
+
+Om du bara vill ha tankandet utan koden, anvand `/impeccable shape` fristående. Om du redan har en klar vision och bara vill bygga, anropa `/impeccable` direkt med din funktionsbeskrivning. `craft` ligger mittemellan: strukturerad, komplett, opinionsbildande.
+
+## Hur det fungerar
+
+`craft` kör fyra faser i ordning:
+
+1. **Forma designen.** Kör `/impeccable shape` internt: en kort upptacksintervju om syfte, anvandare, innehall, begränsningar och mal. Resultatet ar en designbrief du kan lasa och ga emot.
+2. **Ladda referenser.** Baserat pa briefen, hämtar rätt referensfiler (rumslig, typografi, rorelse, farg, interaktion, responsiv, UX-skrivande) sa modellen har de relevanta principerna laddade innan den borjar koda.
+3. **Bygg.** Implementerar funktionen i en medveten ordning: struktur forst, sedan avstand och hierarki, sedan typ och farg, sedan tillstand, sedan rorelse, sedan responsiv. Varje beslut spårar tillbaka till briefen.
+4. **Visuell iteration.** Oppnar resultatet i en webblasare, kontrollerar det mot briefen och antimönsterkatalogen, och forfinar tills det matchar avsikten. Det har steget ar kritiskt. Den forsta fungerande versionen ar aldrig den levererade versionen.
+
+Upptacksfasen ar icke-hoppbar och det ar poängen. De flesta AI-genererade granssnitt misslyckas for att ingen fragade vad anvandaren forsokte utfora innan modellen borjade skriva JSX. `craft` inverterar det.
+
+## Prova det
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Forventa en upptacksintervju med 5 till 10 fragor forst. Fragor om din malgrupp, produktens personlighet, den kanslomassiga tonen du vill ha, antireferenser och begränsningar. Sedan en designbrief. Sedan implementering, med webblasaren kontrollerad i varje steg. Forventa flera iterationsomgangar i den visuella poleringsfasen.
+
+Hela körningen ar längre an ett typiskt kommando for att den inkluderar tankandet, byggandet och forfiningen. Det ar avtalet: mer struktur fran början, mindre rensning efterat.
+
+## Fallgropar
+
+- **Att anvanda det for sma andringar.** `craft` ar for nya funktioner, inte justeringar. For befintlig kod, anvand `/impeccable polish`, `/impeccable critique` eller ett specifikt forfiningskommando istallet.
+- **Att skynda sig genom upptacksfasen.** Intervjun klangs langsam jamfort med "bara borja koda". Det ar den inte. Att svara pa fragorna noggrant producerar en skarpare brief, som producerar en skarpare bygge, som producerar färre omskrivningar.
+- **Att hoppa over den visuella iterationen.** Fasfinns av en anledning. Gapet mellan "tekniskt fungerar" och "kanns ratt" stangs med visuell polering, inte kodgranskning. Lat den kora.

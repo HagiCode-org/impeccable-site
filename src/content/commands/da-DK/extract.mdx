@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Udtræk genanvendelige komponenter, tokens og mønstre ind i designsystemet.
+highlights:
+  - Flere komponenter løser det samme problem forskelligt.
+  - Tokens og mønstre skal centraliseres.
+  - Du vil have et mere vedligeholdelsesvenligt visuelt system.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Opdag afvigelse</span>
+      <span class="docs-viz-flow-hint">Gentagne hex-værdier, knap-varianter, afstandsskalaer, tekststile.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Foreslå primitiver</span>
+      <span class="docs-viz-flow-hint">Token-navne, komponent-API'er med variant + størrelse, tekststile.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrer call sites</span>
+      <span class="docs-viz-flow-hint">Erstat duplikeret CSS med de nye primitiver. Ingen forældreløs kode tilbage.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Færdigheden udtrækker kun det der er brugt tre eller flere gange med samme intention. To brug er ikke et mønster, og migration sker altid i samme gennemkørsel.</p>
+</div>
+
+## Hvornår du skal bruge den
+
+`/impeccable extract` er til det øjeblik din kodebase ved et uheld er blevet et designsystem. Gentagne knapstile 12 steder. Tre varianter af samme kort. Hex-farver spredt overalt. Håndrullet afstand der tilfældigvis matcher en skala. Grib efter den, når du vil konsolidere denne afvigelse til genanvendelige primitiver.
+
+Brug den efter et produkt har sendt nok features til at afsløre mønstrene. For tidlig udtrækning skaber abstraktioner der ikke matcher virkeligheden.
+
+## Hvordan det virker
+
+Færdigheden opdager designsystemstrukturen først og identificerer derefter udtræksmuligheder:
+
+1. **Tokens**: find gentagne literale værdier (farver, afstand, radier, skygger, skriftstørrelser). Foreslå token-navne, tilføj til token-systemet, erstat brug.
+2. **Komponenter**: find UI-mønstre der gentages med mindre variation (knapper, kort, inputs, modaler). Udtræk til en enkelt komponent med varianter, migrer kaldere.
+3. **Sammensætningsmønstre**: find layout- eller interaktionsmønstre der gentages (formularrækker, værktøjslinjegrupper, tomme tilstande). Udtræk til sammensætningsprimitiver.
+4. **Tekststile**: find gentagne font-size + weight + line-height-kombinationer. Udtræk til tekststile.
+5. **Animationsmønstre**: find gentagne easing-, varigheds- eller keyframe-kombinationer. Udtræk til bevægelsestokens.
+
+Færdigheden er forsigtig. Den udtrækker kun ting brugt tre eller flere gange, med samme intention. Den udtrækker aldrig "fordi det måske blive genbrugt senere". For tidlig abstraktion er værre end duplikering.
+
+## Prøv det
+
+```
+/impeccable extract the button styles
+```
+
+Forventet output:
+
+- Fandt 14 knap-instanser på tværs af 8 filer
+- 4 distinkte varianter: primær (udfyldt accent), sekundær (indrammet), ghost (kun tekst), destruktiv (udfyldt rød)
+- Alle 4 varianter bruger samme størrelsesskala (small, default, large)
+- Udtrukket til `<Button variant="primary" size="default">` med token-drevne stile
+- Migrerede 14 call sites, fjernede ~180 linjer duplikeret CSS
+- Tilføjede 3 manglende tokens: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Faldgruper
+
+- **At udtrække for tidligt.** To brug er ikke et mønster. Tre kan være. Vent til mønsteret er tydeligt.
+- **Over-generalisering.** Den udtrukne komponent bør matche de nuværende use cases tæt, ikke anticipere enhver mulig fremtidig. Du kan altid tilføje varianter senere.
+- **At glemme migrationen.** Udtrækning uden migration efterlader den gamle duplikerede kode og skaber en tredje måde at gøre det samme på. Migrer altid i samme gennemkørsel.
+- **At udtrække ting der afviger i intention.** To knapper der ligner hinanden, men tjener forskellige formål (primær handling vs link stylet som knap), bør sandsynligvis forblive adskilt.

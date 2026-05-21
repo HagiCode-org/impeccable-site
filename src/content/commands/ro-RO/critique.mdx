@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: O revizuire de design cu scoruri, teste de persona si detectare automata.
+highlights:
+  - Doriti constatari despre alegeri de design slabe, nu o reconstructie de la zero.
+  - Aveti nevoie de scoruri, rationament de design si probabilele urmatori pasi.
+  - Interfata functioneaza dar inca se simte nepotrivit.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Verdict AI slop</span>
+        <span class="docs-viz-critique-verdict-value">RESPINS</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Euristici (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Vizibilitatea starii</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Potrivire cu lumea reala</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistenta si standarde</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Prevenirea erorilor</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recunoastere in loc de memorare</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Persoane</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Evaluatorul</span>
+              <span class="docs-viz-critique-persona-note">Ne compara cu doua alternative intr-o seara de marti.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Utilizatorul care revine</span>
+              <span class="docs-viz-critique-persona-note">Cunoaste produsul, pe mobil, in graba.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Scepticul</span>
+              <span class="docs-viz-critique-persona-note">A vazut fiecare landing SaaS si se plictiseste.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Cele doua treceri (revizuire de design LLM plus detectorul determinant) se imbina intr-o lista prioritizata. Ce functioneaza, ce trebuie reparat si intrebarile provocatoare care merita raspunsuri inainte de lansare.</p>
+</div>
+
+## Cand se foloseste
+
+Apelati la `/impeccable critique` cand doriti o a doua opinie sincera despre ceva ce ati construit deja. Nu "functioneaza" ci "este bun". Skill-ul evalueaza interfata dumneavoastra conform celor 10 euristici ale lui Nielsen, ruleaza verificari de incarcare cognitiva, testeaza prin lentile de persona si incruciseaza cu un detector automat pentru 25 de anti-modele concrete.
+
+Folositi-o cand o pagina este functional terminata si doriti sa stiti daca se citeste ca intentionata sau ca AI slop.
+
+## Cum functioneaza
+
+`/impeccable critique` ruleaza doua evaluari independente in paralel pentru a nu se influenta reciproc.
+
+Prima este o **revizuire de design LLM**: modelul citeste sursa dumneavoastra, inspecteaza vizual pagina live daca automatizarea browserului este disponibila si parcurge catalogul complet DO/DON'T al skill-ului impeccable. Evalueaza euristicle lui Nielsen, numara esecurile de incarcare cognitiva, traseaza calatoria emotionala prin flux si semnaleaza AI slop.
+
+A doua este un **detector automat** (`npx impeccable detect`) care gaseste determinant text cu gradient, palete violet, margini side-tab, carduri imbricate, probleme de lungime linie si celelalte amprente vizibile ale iesirii AI generice.
+
+Cele doua rapoarte se imbina intr-o lista prioritizata: ce functioneaza, cele trei pana la cinci lucruri care necesita reparare si intrebarile provocatoare care merita raspunsuri inainte de lansare.
+
+## Incercati
+
+Indreptati-l catre o pagina:
+
+```
+/impeccable critique the homepage hero
+```
+
+Primiti inapoi un raport cu scoruri. Forma tipica:
+
+- **Verdict AI slop**: admis / respins cu indicatiile specifice
+- **Scoruri euristice**: 10 numere, de la 0 la 4
+- **Incarcare cognitiva**: numar de esecuri din 8
+- **Probleme prioritare**: trei pana la cinci elemente, fiecare cu ce, de ce si remedierea
+- **Intrebari de raspuns**: cele pe care interfata insasi nu le poate decide pentru dumneavoastra
+
+De acolo, asociati cu `/impeccable polish` sau `/impeccable distill` pentru a actiona remedierile.
+
+## Capcane
+
+- **Rularea pe lucru incomplet.** Critique este pentru pagini terminate. O stare goala cu trei TODO-uri va primi un scor scazut pentru ca nu este terminata, nu pentru ca este rea.
+- **Ignorarea intrebarilor de la final.** Acestea sunt de obicei remedierile care schimba cel mai mult designul.
+- **Tratarea scorurilor euristice ca nota.** Acestea sunt diagnostice, nu evaluatii. Un 3/4 la o euristica care conteaza mai putin pentru contextul dumneavoastra este in regula.

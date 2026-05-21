@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Wyciagnij komponenty wielokrotnego uzycia, tokeny i wzorce do systemu projektowego.
+highlights:
+  - Wiele komponentow rozwiazuje ten sam problem na rozne sposoby.
+  - Tokeny i wzorce musza byc scentralizowane.
+  - Chcesz bardziej utrzymywalny system wizualny.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Powtarzajace sie wartosci hex, warianty przyciskow, skale odstepow, style tekstu.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Nazwy tokenow, API komponentow z wariantami i rozmiarami, style tekstu.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Zastap zduplikowany CSS nowymi prymitywami. Zaden osierocony kod nie zostaje w tyle.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Umiejetnosc wyciaga tylko to, co jest uzyte trzy lub wiecej razy z ta sama intencja. Dwa uzycia to nie wzorzec, a migracja zawsze odbywa sie w tym samym przebiegu.</p>
+</div>
+
+## Kiedy uzywac
+
+`/impeccable extract` jest na moment, gdy twoja baza kodu przypadkowo stala sie systemem projektowym. Powtarzajace sie style przyciskow w 12 miejscach. Trzy warianty tej samej karty. Wartosci hex rozsiane wszedzie. Recznie napisane odstepy, ktore przypadkowo pasuja do skali. Sigmnij po to, gdy chcesz skonsolidowac te dryf w wielokrotnego uzycia prymitywy.
+
+Uzyj po tym, jak produkt wyslal wystarczajaco duzo funkcji, by ujawnic wzorce. Przedwczesna ekstrakcja tworzy abstrakcje, ktore nie pasuja do rzeczywistosci.
+
+## Jak to dziala
+
+Umiejetnosc odkrywa najpierw strukture systemu projektowego, potem identyfikuje mozliwosci ekstrakcji:
+
+1. **Tokeny**: znajdz powtarzajace sie wartosci doslowne (kolory, odstepy, promienie, cienie, rozmiary fontow). Zaproponuj nazwy tokenow, dodaj do systemu tokenow, zastap uzycia.
+2. **Komponenty**: znajdz wzorce UI, ktore sie powtarzaja z drobnymi zmiennami (przyciski, karty, pola, modaly). Wyciagnij w pojedynczy komponent z wariantami, migruj wywolujacych.
+3. **Wzorce kompozycji**: znajdz wzorce ukladu lub interakcji, ktore sie powtarzaja (rzedy formularzy, grupy paskow narzedzi, stany puste). Wyciagnij w prymitywy kompozycji.
+4. **Style tekstu**: znajdz powtarzajace sie kombinacje font-size + weight + line-height. Wyciagnij w style tekstu.
+5. **Wzorce animacji**: znajdz powtarzajace sie kombinacje easing, duration lub keyframe. Wyciagnij w tokeny ruchu.
+
+Umiejetnosc jest ostrozna. Wyciaga tylko rzeczy uzyte trzy lub wiecej razy, z ta sama intencja. Nigdy nie wyciaga "bo moze byc uzyte pozniej". Przedwczesna abstrakcja jest gorsza niz duplikacja.
+
+## Wyprobuj
+
+```
+/impeccable extract the button styles
+```
+
+Oczekiwany wynik:
+
+- Znaleziono 14 instancji przyciskow w 8 plikach
+- 4 rozne warianty: primary (wypelniony akcent), secondary (obramowany), ghost (tylko tekst), destructive (wypelniony czerwony)
+- Wszystkie 4 warianty uzywaja tej samej skali rozmiarow (small, default, large)
+- Wyciagnieto do `<Button variant="primary" size="default">` ze stylami opartymi na tokenach
+- Zmigrowano 14 miejsc wywolan, usunieto okolo 180 linii zduplikowanego CSS
+- Dodano 3 brakujace tokeny: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Pulapki
+
+- **Wyciaganie zbyt wczesnie.** Dwa uzycia to nie wzorzec. Trzy moga byc. Poczekaj, az wzorzec bedzie oczywisty.
+- **Nadmierne uogolnianie.** Wyciagniety komponent powinien scisle pasowac do obecnych przypadkow uzycia, nie przewidywac kazdego mozliwego przyszlego. Zawsze mozesz dodac warianty pozniej.
+- **Zapominanie o migracji.** Ekstrakcja bez migracji zostawia stary zduplikowany kod i tworzy trzeci sposob robienia tej samej rzeczy. Zawsze migruj w tym samym przebiegu.
+- **Wyciaganie rzeczy rozniacych sie intencja.** Dwa przyciski, ktore wygladaja podobnie, ale sluza roznym celom (glowna akcja vs link stylizowany na przycisk) powinny prawdopodobnie pozostac osobne.

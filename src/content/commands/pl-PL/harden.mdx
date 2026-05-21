@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Uczyn interfejsy gotowymi na produkcje. Przypadki brzegowe, i18n, stany bledow, przepelnienie.
+highlights:
+  - Sciezka szczesliwa dziala, ale stany ze swiata rzeczywistego nadal wygldaja kruche.
+  - Musisz zamknac luki wysylkowe przed wydaniem.
+  - Obsluga bledow i odpornosc wazniejsze niz dodawanie nowych ozdobnikow.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Kiedy uzywac
+
+`/impeccable harden` jest na dzien, gdy twoj interfejs spotyka rzeczywistosc. Prawdziwe dane uzytkownikow sa nieporzadne: nazwiska majace 60 znakow, tytuly produktow po niemiecku, ceny w miliardach, bledy 500, tryby offline, tekst od prawej do lewej. Projekty, ktore dzialaja tylko z idealnymi danymi, nie sa gotowe na produkcje.
+
+Sigmnij po to przed premiera, przed otwarciem na nowy rynek lub kiedy raport o bledzie zaczyna sie od "nasz uzytkownik mial bardzo dlugie nazwisko i". Do przeplywow pierwszego uruchomienia, aktywacji stanow pustych i projektowania onboardingu sigmnij po `/impeccable onboard` zamiast tego.
+
+## Jak to dziala
+
+Umiejetnosc przechodzi przez cztery wymiary odpornosci na swiat rzeczywisty:
+
+1. **Ekstremalne teksty i dane**. Dlugi tekst, krotki tekst, znaki specjalne, emoji, RTL, liczby w miliardach, 1000-elementowe listy.
+2. **Scenariusze bledow**. Awarie sieci, API 4xx/5xx, bledy walidacji, bledy uprawnien, limity zapytan, jednoczesne operacje.
+3. **Miedzynarodowosc**. Dlugie tlumaczenia (niemiecki jest czesto o 30% dluzszy niz angielski), jezyki RTL, formaty dat i liczb, symbole walut, zestawy znakow.
+4. **Urzadzenie i kontekst**. Cele dotykowe, zachowanie offline, wolne polaczenia, tryb oszczedzania energii.
+
+Dla kazdego wymiaru identyfikuje tryb awarii, nastepnie stosuje konkretna poprawke: obsluga przepelnienia, informacyjne UI bledow, uklady bezpieczne dla i18n, pluralizacja, rozsadne procedury awaryjne.
+
+## Wyprobuj
+
+Zacznij od jednej strony i jednego wymiaru:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Oczekiwany wynik:
+
+- `.user-name` ma teraz `text-overflow: ellipsis` z podpowiedzia dla pelnej wartosci
+- `.bio` przelozono ze stalej wysokosci na `max-height` z rozwijana sekcja "pokaz wiecej"
+- Dodano stan pusty dla uzytkownikow bez bio
+- Dodano szkieletowy ladowacz dla asynchronicznego pobierania awatara
+- Przetestowano przy dlugosciach nazw 1, 20, 60, 200 znakow
+
+Uruchamiaj strona po stronie, nie wszystko na raz. Pierwszy przebieg jest najwiekszy; kolejne znajduja mniej problemow, gdy wzorce sie krystalizuja.
+
+## Pulapki
+
+- **Czekanie na raport o bledzie.** Harden jest prewencyjny. Jesli znajdziesz sie w naprawianiu tej samej klasy bledow dwa razy, uruchom `/impeccable harden` na calej funkcji.
+- **Traktowanie stanow bledow i pustych jako pomyslu po fakcie.** Wiekszosc pracy hardeningowej to UI stanow bledow i pustych. Zaplanuj na to czas, nie tylko blok `catch`.
+- **Pomijanie i18n bo "jestesmy tylko po angielsku na razie".** Uklady bezpieczne dla i18n to nadal lepsze uklady. Elastyczne kontenery, prawidlowe zawijanie tekstu, hojne line-height. Nic z tego nie szkodzi angielskiemu.

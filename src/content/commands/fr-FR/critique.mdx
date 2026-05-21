@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Une revue de conception avec notation, tests de personas et détection automatisée.
+highlights:
+  - Vous voulez des constats sur les choix de conception faibles, pas une reconstruction de zéro.
+  - Vous avez besoin de notation, de raisonnement de conception et de prochaines étapes probables.
+  - L'interface fonctionne mais semble encore décalée.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Verdict contenu IA générique</span>
+        <span class="docs-viz-critique-verdict-value">ÉCHEC</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristiques (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibilité du statut</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Correspondance avec le monde réel</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Cohérence et standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Prévention des erreurs</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Reconnaissance plutôt que rappel</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">L'évaluateur</span>
+              <span class="docs-viz-critique-persona-note">Nous compare à deux alternatives un mardi soir.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">L'utilisateur régulier</span>
+              <span class="docs-viz-critique-persona-note">Connaît le produit, sur mobile, pressé.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Le sceptique</span>
+              <span class="docs-viz-critique-persona-note">A vu toutes les landing pages SaaS et s'ennuie.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Les deux passes (revue de conception LLM plus le détecteur déterministe) fusionnent en une liste priorisée. Ce qui fonctionne, ce qu'il faut corriger, et les questions provocatrices auxquelles il vaut la peine de répondre avant la livraison.</p>
+</div>
+
+## Quand l'utiliser
+
+Tournez-vous vers `/impeccable critique` lorsque vous voulez un avis honnête et extérieur sur quelque chose que vous avez déjà construit. Pas « est-ce que ça fonctionne » mais « est-ce que c'est bien ». La compétence évalue votre interface selon les 10 heuristiques de Nielsen, exécute des vérifications de charge cognitive, teste à travers des lentilles de personas et recoupe un détecteur automatisé pour 25 anti-patterns concrets.
+
+Utilisez-la quand une page est fonctionnellement terminée et que vous voulez savoir si elle paraît intentionnelle ou ressemble à du contenu IA générique.
+
+## Comment ça marche
+
+`/impeccable critique` exécute deux évaluations indépendantes en parallèle pour ne pas se biaiser mutuellement.
+
+La première est une **revue de conception LLM** : le modèle lit votre code source, inspecte visuellement la page en direct si l'automatisation du navigateur est disponible, et parcourt le catalogue complet des FAIRE/NE PAS FAIRE de la compétence impeccable. Il note les heuristiques de Nielsen, comptabilise les échecs de charge cognitive, trace le parcours émotionnel à travers le flux et signale le contenu IA générique.
+
+La seconde est un **détecteur automatisé** (`npx impeccable detect`) qui trouve de manière déterministe les textes en dégradé, les palettes violettes, les bordures latérales d'onglets, les cartes imbriquées, les problèmes de longueur de ligne et les autres empreintes visibles d'une sortie IA générique.
+
+Les deux rapports fusionnent en une liste priorisée : ce qui fonctionne, les trois à cinq choses à corriger, et les questions provocatrices auxquelles il vaut la peine de répondre avant la livraison.
+
+## Essayez
+
+Pointez-la vers une page :
+
+```
+/impeccable critique the homepage hero
+```
+
+Vous recevez un rapport noté. Format typique :
+
+- **Verdict contenu IA générique** : réussite / échec avec les indices spécifiques
+- **Scores heuristiques** : 10 chiffres, de 0 à 4
+- **Charge cognitive** : nombre d'échecs sur 8
+- **Problèmes prioritaires** : trois à cinq éléments, chacun avec quoi, pourquoi et correction
+- **Questions à trancher** : celles que l'interface elle-même ne peut pas décider à votre place
+
+Ensuite, associez avec `/impeccable polish` ou `/impeccable distill` pour appliquer les corrections.
+
+## Pièges courants
+
+- **L'exécuter sur un travail inachevé.** Critique est pour les pages terminées. Un état vide avec trois TODOs aura une mauvaise note parce qu'il n'est pas fini, pas parce qu'il est mauvais.
+- **Ignorer les questions à la fin.** Ce sont généralement les corrections qui changent le plus la conception.
+- **Traiter les scores heuristiques comme une note.** Ils sont diagnostiques, pas évaluatifs. Un 3/4 sur une heuristique moins pertinente pour votre contexte est acceptable.

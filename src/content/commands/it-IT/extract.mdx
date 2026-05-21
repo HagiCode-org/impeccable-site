@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Estrai componenti, token e pattern riutilizzabili nel design system.
+highlights:
+  - Componenti multipli stanno risolvendo lo stesso problema in modo diverso.
+  - Token e pattern devono essere centralizzati.
+  - Vuoi un sistema visivo più manutenibile.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Scopri la deriva</span>
+      <span class="docs-viz-flow-hint">Valori hex ripetuti, varianti di pulsanti, scale di spaziatura, stili di testo.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Proponi primitive</span>
+      <span class="docs-viz-flow-hint">Nomi token, API componenti con variante + dimensione, stili di testo.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migra i call site</span>
+      <span class="docs-viz-flow-hint">Sostituisci il CSS duplicato con le nuove primitive. Nessun codice orfano lasciato indietro.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">La skill estrae solo ciò che viene usato tre o più volte con lo stesso intento. Due utilizzi non sono un pattern, e la migrazione avviene sempre nello stesso passaggio.</p>
+</div>
+
+## Quando usarlo
+
+`/impeccable extract` è per il momento in cui il tuo codebase è diventato accidentalmente un design system. Stili di pulsante ripetuti in 12 posti. Tre varianti della stessa card. Colori hex sparsi ovunque. Spaziatura fatta a mano che corrisponde casualmente a una scala. Ricorri a extract quando vuoi consolidare questa deriva in primitive riutilizzabili.
+
+Usalo dopo che un prodotto ha spedito abbastanza funzionalità da rivelare i pattern. L'estrazione prematura crea astrazioni che non corrispondono alla realtà.
+
+## Come funziona
+
+La skill scopre prima la struttura del design system, poi identifica le opportunità di estrazione:
+
+1. **Token**: trova valori letterali ripetuti (colori, spaziatura, raggi, ombre, dimensioni font). Proponi nomi token, aggiungi al sistema dei token, sostituisci gli utilizzi.
+2. **Componenti**: trova pattern UI che si ripetono con variazioni minori (pulsanti, card, input, modali). Estrai in un singolo componente con varianti, migra i chiamanti.
+3. **Pattern di composizione**: trova pattern di layout o interazione che si ripetono (righe di form, gruppi di toolbar, stati vuoti). Estrai in primitive di composizione.
+4. **Stili di testo**: trova combinazioni ripetute di font-size + weight + line-height. Estrai in stili di testo.
+5. **Pattern di animazione**: trova combinazioni ripetute di easing, durata o keyframe. Estrai in token di movimento.
+
+La skill è cauta. Estrae solo cose usate tre o più volte, con lo stesso intento. Non estrae mai "perché potrebbe essere riutilizzato in seguito". L'astrazione prematura è peggio della duplicazione.
+
+## Provalo
+
+```
+/impeccable extract the button styles
+```
+
+Output atteso:
+
+- Trovate 14 istanze di pulsante in 8 file
+- 4 varianti distinte: primary (accento pieno), secondary (bordato), ghost (solo testo), destructive (rosso pieno)
+- Tutte e 4 le varianti usano la stessa scala di dimensioni (small, default, large)
+- Estratto in `<Button variant="primary" size="default">` con stili guidati da token
+- Migrati 14 call site, rimossi ~180 righe di CSS duplicato
+- Aggiunti 3 token mancanti: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Insidie
+
+- **Estrarre troppo presto.** Due utilizzi non sono un pattern. Tre potrebbero esserlo. Aspetta che il pattern sia ovvio.
+- **Sovra-generalizzare.** Il componente estratto dovrebbe corrispondere da vicino ai casi d'uso attuali, non anticipare ogni possibile futuro. Puoi sempre aggiungere varianti dopo.
+- **Dimenticare la migrazione.** L'estrazione senza migrazione lascia in giro il vecchio codice duplicato e crea un terzo modo di fare la stessa cosa. Migra sempre nello stesso passaggio.
+- **Estrarre cose che differiscono nell'intento.** Due pulsanti che sembrano simili ma servono scopi diversi (azione primaria vs link stilizzato come pulsante) dovrebbero probabilmente restare separati.

@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: P0 ile P3 şiddet seviyeli beş boyutlu teknik kalite kontrolü.
+highlights:
+  - Sadece tat temelli geri bildirim değil, somut sorunlar ve şiddet seviyesi gerekiyor.
+  - Bir özelliği birleştirme veya yayınlama için hazırlıyorsunuz.
+  - Mobilde, karanlık temalarda veya yardımcı ihtiyaçlarda gizli kırılmalardan şüpheleniyorsunuz.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accessibility</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performance</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patterns</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Beş boyut 0 ile 4 arasında puanlanır, her bulgu P0 (yayını engeller) ile P3 (cilalama) olarak etiketlenir. Audit belgeler; düzeltmez. Bulguları <code>/impeccable harden</code>, <code>/impeccable polish</code> veya <code>/impeccable optimize</code> komutlarına yönlendirin.</p>
+</div>
+
+## Ne zaman kullanılır
+
+`/impeccable audit`, `/impeccable critique` komutunun teknik karşılığıdır. `/impeccable critique` "bu doğru hissettiriyor mu" diye sorarken, `/impeccable audit` "bu dayanıklı mı" diye sorar. Erişilebilirlik, performans, tema, responsive tasarım ve anti-pattern kontrollerini uygulamaya karşı çalıştırır, her boyutu 0 ile 4 arasında puanlar ve P0 ile P3 şiddet derecelendirmeleriyle bir plan üretir.
+
+Göndermeden önce, kalite sprint'i sırasında veya bir teknik lider "erişilebilirliğe gerçekten bakmalıyız" dediğinde kullanın.
+
+## Nasıl çalışır
+
+Yetenek kodunuzu beş boyutta tarar:
+
+1. **Erişilebilirlik**: WCAG kontrastı, ARIA, klavye navigasyonu, semantik HTML, form etiketleri.
+2. **Performans**: düzen savurması, pahalı animasyonlar, eksik tembel yükleme, paket boyutu.
+3. **Tema**: sabit kodlanmış renkler, karanlık mod kapsamı, token tutarlılığı.
+4. **Responsive**: kırılma noktası davranışı, dokunma hedefleri, mobil görüntü alanı işleme.
+5. **Anti-patternler**: algılayıcının çalıştırdığı aynı belirleyici 25 kontrol.
+
+Her boyut 0 ile 4 arasında bir puan alır. Her bulgu bir şiddet seviyesi alır: P0 yayını engeller, P1 bu sprint'te düzeltilmeli, P2 gelecek döngü, P3 cilalamadır. Bir bilet takipcisine yapıştırabileceğiniz tek bir belge alırsınız.
+
+Audit hiçbir şey düzeltmez. Belgeler. Bulguları kategoriye göre `/impeccable polish`, `/impeccable harden` veya `/impeccable optimize` komutlarına yönlendirin.
+
+## Deneyin
+
+```
+/impeccable audit the checkout flow
+```
+
+Beklenen çıktı:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+P0'ları `/impeccable harden` komutuna, tema ve tipografi P1'lerini `/impeccable typeset` ve `/impeccable polish` komutlarına, geri kalanı `/impeccable polish` komutuna verin.
+
+## Tuzaklar
+
+- **`/impeccable critique` ile karıştırmak.** Audit uygulama kalitesidir. Critique tasarım kalitesidir. Tam resim için her ikisini de çalıştırın.
+- **P0'ları P3'lerden önce düzeltmek.** Şiddet ölçeği bir nedenle vardır. En üstten başlayın.
+- **İyi olduğunu düşündüğünüz boyutları atlamak.** Tema ve responsive, çoğu kişinin sorun çıkana kadar iyi olduğunu varsaydığı alanlardır.

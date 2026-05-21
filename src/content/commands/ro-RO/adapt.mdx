@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Faceti designurile sa functioneze pe ecrane, dispozitive si contexte diferite fara a amputa functionalitati.
+highlights:
+  - Layout-ul curent se prabuseste pe ecrane mai mici.
+  - Produsul are nevoie de o strategie responsiva mai bine gandita.
+  - Tinte tactile, densitate sau flux de continut variaza in functie de dispozitiv.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Cand se foloseste
+
+`/impeccable adapt` este pentru a lua un design construit pentru un context si a-l face sa functioneze in altul. Mobil din desktop, tableta din mobil, print din web, embedded din standalone, email din dashboard. Apelati la el cand designul sursa este solid dar se dezintegreaza la alte puncte de intrerupere, la atingere sau intr-un container diferit.
+
+Nu pentru construire responsiva de la zero. Pentru aceea, incepeti cu `/impeccable` si modelati layout-ul responsiv-prim. Adapt este pentru completarea ulterioara "nu ne-am gandit niciodata la mobil".
+
+## Cum functioneaza
+
+Skill-ul lucreaza prin patru dimensiuni de potrivire contextuala:
+
+1. **Puncte de intrerupere si layout fluid**: prabusiti multi-coloana la o singura coloana, ajustati intervalele clamp, introduceti puncte de intrerupere noi unde designul se rupe genuin.
+2. **Tinte tactile**: zone de atingere minimum 44px, spatieri suficiente intre tinte adiacente, zone de tap mai mari decat limitele vizuale unde este necesar.
+3. **Tipare de navigare**: barele laterale de desktop devin navigare de jos mobil sau slide-out-uri, barele de instrumente dense se prabusesc in meniuri, starile hover primesc echivalente de atingere.
+4. **Prioritate de continut**: decideti ce trebuie sa fie vizibil, ce poate fi prabusit in disclosure-uri, ce poate fi eliminat complet pentru acel context.
+
+Regula non-negociabila: adaptati, nu amputati. Functionalitatea critica nu poate disparea pe mobil doar pentru ca este incomoda. Gasiti o modalitate de a o potrivi, redesenati interactiunea sau reconsiderati daca era cu adevarat critica pe desktop.
+
+## Incercati
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Modificari asteptate:
+
+- Gridul cu trei coloane devine coloana unica cu headere de sectiune care actioneaza ca divizoare lipicioase
+- Navigarea din bara laterala se muta la un scroller orizontal deasupra continutului
+- Comutatoarele capata 8px padding vertical astfel incat sa atinga tinte tactile de 44px
+- Textul de ajutor inline se muta la tap-to-reveal, nu hover
+- Sectiunea "Zona periculoasa" se extinde complet pe mobil in loc sa se prabuseasca, deoarece contine actiuni ireversibile si vrem ca utilizatorii sa le vada clar
+
+## Capcane
+
+- **Amputarea functionalitatilor.** Daca versiunea mobila ascunde lucruri pe care versiunea desktop le poate face, aceasta este o regresie, nu o adaptare. Luptati-va pentru functionalitate.
+- **Tratarea mobilului ca "desktop mai mic".** Mobilul este un context diferit: degete, intreruperi, sesiuni scurte. Adaptati-va contextului, nu latimii viewport-ului.
+- **Omiterea `/impeccable harden` ulterior.** Layout-urile responsive dezvaluie cazuri limita. Rulati intarirea dupa adapt pentru a prinde pe cele care apar doar la 320px.

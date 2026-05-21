@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Correggi la tipografia che sembra generica, incoerente o accidentale.
+highlights:
+  - Il testo è tecnicamente leggibile ma non persuasivo o controllato.
+  - Titoli e corpo del testo si confondono tra loro.
+  - La superficie ha bisogno di un tono più forte attraverso il tipo anziché più decorazione.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Quando usarlo
+
+Ricorri a `/impeccable typeset` quando il testo su una pagina sembra tipografia predefinita invece che tipografia progettata. Gerarchia confusa, tre dimensioni che sembrano uguali, corpo del testo a 14px, un font display che in realtà è solo Inter bold, titoli senza attenzione al crenaggio.
+
+Trigger comuni: "la gerarchia sembra piatta", "la leggibilità non va", "i font sembrano generici".
+
+## Come funziona
+
+La skill valuta la tipografia su cinque dimensioni:
+
+1. **Scelte dei font**: stai usando predefiniti invisibili (Inter, Roboto, Arial, Open Sans), il carattere corrisponde al brand, ci sono più di 2-3 famiglie.
+2. **Gerarchia**: titolo, corpo e didascalia sono chiaramente diversi a colpo d'occhio, il contrasto di dimensione è almeno 1.25x tra i livelli, i contrasti di peso sono leggibili.
+3. **Dimensionamento e scala**: esiste una scala tipografica coerente, il corpo del testo raggiunge il minimo di 16px, la scala è rem fissa per interfacce app o clamp fluida per pagine marketing.
+4. **Leggibilità**: lunghezza riga da 45 a 75 caratteri, interlinea calibrata per font e contesto, contrasto.
+5. **Coerenza**: lo stesso elemento usa lo stesso trattamento ovunque, nessun valore font-size isolato.
+
+Poi corregge ciò che trova: sceglie caratteri distintivi, costruisce una scala modulare, amplia il contrasto di gerarchia, imposta lunghezza riga e interlinea appropriate.
+
+## Provalo
+
+```
+/impeccable typeset the article layout
+```
+
+Diff atteso:
+
+- Font display scambiato da Inter 700 a un vero carattere display
+- Scala tipografica ricostruita: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, rapporto 1.333
+- Corpo del testo portato da 14px a 16px
+- Lunghezza riga limitata a 68ch sulla colonna articolo
+- Interlinea 1.6 per il corpo, 1.1 per il display
+- Rimossi quattro valori `font-size` sparsi nei componenti
+
+## Insidie
+
+- **Chiedere un nuovo font senza contesto.** Typeset sceglierà in base alla voce del brand in `PRODUCT.md`. Se non hai eseguito `/impeccable teach`, il suggerimento sarà generico.
+- **Ricorrere a typeset quando il problema è il layout.** Se i paragrafi vanno bene ma la pagina sembra stipata, ti serve `/impeccable layout`.
+- **Aspettarti scale fluid clamp sulle interfacce app.** Typeset usa scale rem fisse per interfacce applicazione. La tipografia fluida è per pagine marketing e di contenuto dove la lunghezza riga varia drasticamente.

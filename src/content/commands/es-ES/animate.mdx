@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Movimiento con propósito que comunica estado, no decoración.
+highlights:
+  - Las interfaces se sienten inertes o bruscas entre estados.
+  - Las transiciones de carga, feedback o cambios necesitan movimiento que explique lo que está ocurriendo.
+  - Buscas animación disciplinada con alternativas para movimiento reducido.
+related:
+  - delight
+---
+
+## Cuándo usarlo
+
+`/impeccable animate` es para interfaces que se sienten inertes, donde los cambios de estado son instantáneos y bruscos, donde la carga simplemente aparece de golpe, donde el usuario nunca confía del todo en que su clic se registró. Úsalo para añadir los pequeños movimientos que comunican lo que está ocurriendo: entradas, salidas, feedback, transiciones entre estados.
+
+No lo uses para añadir rebotes o elásticos por energia. Eso es decoración, y esta habilidad no te lo va a dar.
+
+## Cómo funciona
+
+La habilidad identifica momentos estáticos que se beneficiarían de movimiento, y los aplica con disciplina estricta:
+
+1. **Entradas y salidas**: los elementos aparecen y desaparecen con desvanecimientos de 200 a 300ms más un sutil desplazamiento Y o escala, nunca propiedades de layout.
+2. **Feedback de estado**: hover, activo, foco, carga y éxito se comunican mediante movimiento en lugar de cambios bruscos.
+3. **Transiciones entre vistas**: transiciones de elemento compartido donde tenga sentido, desvanecimiento progresivo en caso contrario.
+4. **Progreso y carga**: pantallas esqueleto, barras determinadas, movimiento que dice "sigue trabajando".
+5. **Movimiento reducido**: cada animación tiene una alternativa `prefers-reduced-motion`.
+
+La curva de aceleración es siempre exponencial (ease-out-quart, quint o expo) porque los objetos reales desaceleran suavemente. Sin rebotes, sin elásticos, sin lineal para nada excepto indicadores de progreso.
+
+La habilidad anima únicamente `transform` y `opacity`. Si te encuentras animando `width`, `height`, `top` o `left`, está haciendo algo mal. Usa `grid-template-rows` para transiciones de altura.
+
+## Pruébalo
+
+```
+/impeccable animate the sign-up flow
+```
+
+Adiciones típicas:
+
+- El campo de email recibe un resplandor de foco en focus-visible (opacidad + sombra, 180ms)
+- El botón de envío muestra un spinner dentro de sí mismo en estado de carga, no un spinner separado junto a él
+- La pantalla de éxito entra con opacidad + translateY(8px), 260ms, ease-out-quart
+- El mensaje de error se desliza hacia abajo con grid-template-rows (no height), 220ms
+- Alternativa `@media (prefers-reduced-motion: reduce)` para cada transición
+
+## Errores comunes
+
+- **Pedir "más animación".** Animate no es un dial. Añade movimiento donde comunica, no en todas partes.
+- **Eliminar las alternativas de movimiento reducido.** La habilidad las añade automáticamente. Innegociable para accesibilidad.

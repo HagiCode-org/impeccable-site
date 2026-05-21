@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Vorm het ontwerp en bouw het, alles in één flow.
+highlights:
+  - Je bouwt een nieuwe functie vanaf nul.
+  - Je wilt discovery, implementatie en visuele verfijning in één keer.
+  - Je geeft de voorkeur aan een langzamere maar meer doordachte bouwcyclus.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Vormen</span>
+      <span class="docs-viz-flow-hint">Discovery-interview. Doel, gebruikers, beperkingen, richting.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Referenties laden</span>
+      <span class="docs-viz-flow-hint">Ruimtelijk, typografie, beweging, kleur, interactie.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Bouwen</span>
+      <span class="docs-viz-flow-hint">Structuur, hiërarchie, typografie, kleur, statussen, beweging, responsive.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Visueel itereren</span>
+      <span class="docs-viz-flow-hint">Controleer in browser, verfijn tot het overeenkomt met de brief.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Elke fase is niet-over te slaan. De discoverystap is waar de meeste AI-output faalt: tegen de tijd dat code bestaat, is het denken al vastgelegd.</p>
+</div>
+
+## Wanneer te gebruiken
+
+`/impeccable craft` is het end-to-end bouwcommando. Geef het een functiebeschrijving en het voert de hele pijplijn uit: gestructureerde discovery, referentie-lading, implementatie, visuele iteratie. Gebruik het wanneer je een nieuwe functie vanaf nul start en de hele workflow in één aanroep wilt.
+
+Gebruik het wanneer:
+
+- **Je een nieuwe functie bouwt en de volledige flow wilt.** Je wilt de stappen niet zelf beheren.
+- **Je weet wat je bouwt maar niet hoe het eruit moet zien.** De discoveryfase dwingt het ontwerpendenken af voordat implementatie het vastlegt.
+- **Je standaard visuele iteratie wilt.** `craft` controleert het resultaat in een browser en verfijnt tot de afwerking hoog is, in plaats van de eerste werkende versie te leveren.
+
+Als je alleen het denken wilt zonder de code, gebruik dan `/impeccable shape` zelfstandig. Als je al een duidelijke visie hebt en gewoon wilt bouwen, roep dan `/impeccable` direct aan met je functiebeschrijving. `craft` zit er tussenin: gestructureerd, compleet, eigenzinnig.
+
+## Hoe het werkt
+
+`craft` voert vier fasen uit in volgorde:
+
+1. **Het ontwerp vormen.** Voert `/impeccable shape` intern uit: een kort discovery-gesprek over doel, gebruikers, inhoud, beperkingen en doelen. De output is een ontwerpbrief die je kunt lezen en waarop je kunt reageren.
+2. **Referenties laden.** Op basis van de brief worden de juiste referentiebestanden geladen (ruimtelijk, typografie, beweging, kleur, interactie, responsive, UX-schrijven) zodat het model de relevante principes heeft geladen voordat het begint met coderen.
+3. **Bouwen.** Implementeert de functie in een doordachte volgorde: eerst structuur, dan spatiëring en hiërarchie, dan typografie en kleur, dan statussen, dan beweging, dan responsive. Elke beslissing is herleidbaar tot de brief.
+4. **Visuele iteratie.** Opent het resultaat in een browser, controleert het tegen de brief en de anti-patrooncatalogus, en verfijnt tot het overeenkomt met de intentie. Deze stap is kritiek. De eerste werkende versie is nooit de geleverde versie.
+
+De discoveryfase is niet-over te slaan en dat is juist het punt. De meeste AI-gegenereerde UI's falen omdat niemand vroeg wat de gebruiker probeerde te bereiken voordat het model JSX begon te schrijven. `craft` keert dat om.
+
+## Probeer het
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Verwacht eerst een discovery-interview van 5 tot 10 vragen. Vragen over je doelgroep, de persoonlijkheid van het product, de emotionele toon die je wilt, anti-referenties en beperkingen. Daarna een ontwerpbrief. Daarna implementatie, met de browser gecontroleerd in elke fase. Verwacht meerdere iteratierondes in de visuele afrondingsfase.
+
+De hele uitvoering is langer dan een typisch commando omdat het het denken, het bouwen en het verfijnen omvat. Dat is de afweging: meer voorbereidende structuur, minder opschoning achteraf.
+
+## Valkuilen
+
+- **Het gebruiken voor kleine wijzigingen.** `craft` is voor nieuwe functies, niet voor cosmetische aanpassingen. Voor bestaande code kun je beter `/impeccable polish`, `/impeccable critique` of een specifiek verfijningscommando gebruiken.
+- **De discoveryfase overhaasten.** Het interview voelt traag in vergelijking met "gewoon beginnen met coderen". Dat is het niet. De vragen zorgvuldig beantwoorden levert een scherpere brief op, wat een scherpere build oplevert, wat minder herschrijvingen betekent.
+- **De visuele iteratie overslaan.** De fase bestaat om een reden. De kloof tussen "technisch werkend" en "voelt goed" wordt overbrugd met visuele afwerking, niet met codereview. Laat het draaien.

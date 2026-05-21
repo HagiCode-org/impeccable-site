@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Få design til å fungere på tvers av skjermer, enheter og kontekster uten å amputere funksjoner.
+highlights:
+  - Den nåværende layouten kollapser på mindre skjermer.
+  - Produktet trenger en mer gjennomtenkt responsiv strategi.
+  - Berøringsmål, tetthet eller innholdsflyt varierer etter enhet.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Når du skal bruke den
+
+`/impeccable adapt` er for å ta et design bygget for én kontekst og få det til å fungere i en annen. Mobil fra skrivebord, nettbrett fra mobil, utskrift fra nett, innebygd fra frittstående, e-post fra dashbord. Bruk den når kildedesignet er solid, men faller fra hverandre ved andre bruddpunkter, ved berøring, eller i en annen beholder.
+
+Ikke for å bygge responsivt fra bunnen av. For det, start med `/impeccable` og formgi layouten responsivt-først. Adapt er for "vi tenkte aldri på mobil"-etterfyllingen.
+
+## Hvordan det fungerer
+
+Ferdigheten virker gjennom fire dimensjoner av kontekstuell tilpasning:
+
+1. **Bruddpunkter og flytende layout**: kollaps multi-kolonne til enkelt, juster clamp-spenn, introduser nye bruddpunkter der designet genuint bryter.
+2. **Berøringsmål**: minimum 44px treffområder, tilstrekkelig avstand mellom tilstøtende mål, større trykk-soner enn visuelle grenser der det trengs.
+3. **Navigasjonsmønstre**: skrivebord-sidefelt blir mobil bunn-navigasjon eller utglidningsmenyer, tette verktøylinjer kollapser til menyer, hover-tilstander får berørings-ekvivalenter.
+4. **Innholdsprioritet**: bestem hva som må være synlig, hva som kan kollapse til utvidelseskontroller, hva som kan fjernes helt for den konteksten.
+
+Den ufravikelige regelen: tilpass, ikke amputer. Kritisk funksjonalitet kan ikke forsvinne på mobil bare fordi det er upraktisk. Finn en måte å tilpasse det på, redesign interaksjonen, eller revurder om det virkelig var kritisk på skrivebordet.
+
+## Prøv det
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Forventede endringer:
+
+- Tre-kolonne rutenett blir enkelt kolonne med seksjonsoverskrifter som klebrige delelinjer
+- Sidefeltnavigasjon flytter til en horisontal ruller over innholdet
+- Brytere får 8px vertikal utfylling slik at de oppfyller 44px berøringsmål
+- Inline hjelpetekst flytter til trykk-for-å-avsløre, ikke hover
+- "Faresonen"-seksjonen utvides fullstendig på mobil i stedet for å kollapse, fordi den inneholder ugjenkallelige handlinger og vi vil at brukerne skal se dem tydelig
+
+## Fallgruver
+
+- **Å amputere funksjoner.** Hvis mobilversjonen skjuler ting skrivebordsversjonen kan gjøre, er det en regresjon, ikke en tilpasning. Kjemp for funksjonen.
+- **Å behandle mobil som "mindre skrivebord".** Mobil er en annen kontekst: tomler, avbrytelser, korte økter. Tilpass til konteksten, ikke til visningsportbredden.
+- **Å hoppe over `/impeccable harden` etterpå.** Responsive layouter avslører kanttilfeller. Kjør herding etter adapt for å fange de som bare dukker opp ved 320px.

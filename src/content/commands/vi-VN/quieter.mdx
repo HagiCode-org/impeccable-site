@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Giảm bớt thiết kế đang la hét mà không mất đi ý định của chúng.
+highlights:
+  - Ý tưởng mạnh tồn tại, nhưng trang quá ồn.
+  - Bạn cần sự kiềm chế mà không trở nên nhạt nhẽo.
+  - Giọng điệu hiện tại lấn át việc đọc hoặc luồng tác vụ.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable quieter` là đối trọng của `/impeccable bolder`. Sử dụng khi giao diện gây kích thích trực quan, quá kích hoặc đang cố làm quá nhiều thứ ở âm lượng tối đa. Neon trên nền tối, gradient text ở khắp nơi, 6 màu nhấn, mọi thứ đều animated, shadow 20px. Sử dụng quieter khi thiết kế cần thở và bạn muốn tinh chỉnh mà không mất quan điểm.
+
+Cũng hữu ích sau khi `/impeccable bolder` đi hơi quá xa.
+
+## Cách hoạt động
+
+Kỹ năng hoạt động bằng cách giảm qua bốn trục:
+
+1. **Màu sắc**: giảm bão hòa, giảm chroma trong OKLCH, kéo accent trở lại một màu chính cộng với hỗ trợ phai. Không quá hai màu có chủ đích.
+2. **Độ tương phản**: làm dịu các cực tối và sáng, kéo phạm vi vào. Nền di chuyển từ trắng thuần và đen thuần sang giấy và mực.
+3. **Trang trí**: loại bỏ shadow không làm việc, bỏ viền không mang cấu trúc, nghỉ hưu gradient tồn tại vì năng lượng thay vì phân cấp.
+4. **Chuy động và hiệu ứng**: làm chậm animation, loại bỏ bất cứ thứ gì tự động phát, bỏ parallax và blur trừ khi chúng phục vụ khả năng đọc.
+
+Kỹ năng bảo tồn ý định thiết kế. Nếu bản gốc có quan điểm, phiên bản quieter có cùng quan điểm với nhiều tự tin hơn. Tinh chỉnh, không trung hòa.
+
+## Thử ngay
+
+```
+/impeccable quieter the pricing page
+```
+
+Diff điển hình:
+
+- Gradient text trên giá bị loại bỏ, thay bằng mực đặc ở một weight nặng hơn
+- Ba màu nhấn giảm xuống một (magenta), hai màu còn lại trở thành biến thể trung tính
+- Shadow thẻ giảm từ `0 20px 40px rgba(0,0,0,0.2)` xuống `0 1px 0 var(--color-mist)` (một đường kẻ mỏng)
+- Nền chuyển từ gradient tối sang giấy với lớp cream tinh tế ở trên
+- Animation hero từ 1.2s easeOut với 3 phần tử staggered xuống fade-in 260ms đơn
+
+## Những cạm bẫy cần tránh
+
+- **Áp dụng quá mức.** Quieter có thể tước bỏ cá tính nếu bạn chạy trên thứ gì đó đã được đo lường. Sử dụng khi thiết kế quá ồn, không khi nó tự tin đúng mức.
+- **Nhầm lẫn quieter với distill.** Quieter giảm cường độ. Distill loại bỏ phần tử. Chúng là những bước đi khác nhau.
+- **Chạy để phản hồi critique nói "quá bận rộn".** Bận rộn thường có nghĩa là quá nhiều thứ, không phải quá ồn. Thử `/impeccable distill` trước.

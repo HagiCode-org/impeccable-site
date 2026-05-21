@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Genel, tutarsız veya tesadüfi hissettiren tipografiyi düzeltin.
+highlights:
+  - Metin teknik olarak okunabilir ama ikna edici veya kontrollü değil.
+  - Başlıklar ve gövde metni birbirine karışıyor.
+  - Yüzey daha fazla dekorasyon yerine tipografi yoluyla daha güçlü ton gerektiriyor.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Ne zaman kullanılır
+
+Bir sayfadaki metin tasarlanmış tipografi yerine varsayılan tipografi gibi göründüğünde `/impeccable typeset` komutunu kullanın. Bulanık hiyerarşi, aynı görünen üç boyut, 14px'de gövde metni, aslında sadece Inter bold olan bir görüntü yazı tipi, kerning ilgisi olmayan başlıklar.
+
+Yaygın tetikleyiciler: "hiyerarşi düz hissettiriyor", "okunabilirlik kapalı", "yazı tipleri genel görünüyor".
+
+## Nasıl çalışır
+
+Yetenek tipografiyi beş boyutta değerlendirir:
+
+1. **Yazı tipi seçimleri**: görünmez varsayılanlar (Inter, Roboto, Arial, Open Sans) kullanıyor musunuz, yazı tipi markaya uygun mu, 2 ile 3 aileden fazla var mı.
+2. **Hiyerarşi**: başlık, gövde ve alt yazı bir bakışta açıkça farklı mı, adımlar arasındaki boyut kontrastı en az 1.25x mi, ağırlık kontrastları okunabilir mi.
+3. **Boyut ve ölçek**: tutarlı bir tipografi ölçeği var mı, gövde metni 16px minimumunu karşılıyor mu, ölçek uygulama kullanıcı arayüzleri için sabit-rem mi yoksa pazarlama sayfaları için akışkan-clamp mi.
+4. **Okunabilirlik**: satır uzunluğu 45 ile 75 karakter, yazı tipi ve bağlam için ayarlanmış satır yüksekliği, kontrast.
+5. **Tutarlılık**: aynı öğe her yerde aynı işlemeyi kullanıyor, tek seferlik font-size geçersiz kılmaları yok.
+
+Ardından bulduğu şeyleri düzeltir: ayırt edici yazı tipleri seçer, modüler bir ölçek oluşturur, hiyerarşi kontrastını genişletir, uygun satır uzunluğu ve satır yüksekliği ayarlar.
+
+## Deneyin
+
+```
+/impeccable typeset the article layout
+```
+
+Beklenen değişiklikler:
+
+- Görüntü yazı tipi Inter 700'den gerçek bir görüntü yazı tipine değiştirildi
+- Tipografi ölçeği yeniden oluşturuldu: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, oran 1.333
+- Gövde metni 14px'den 16px'e yükseltildi
+- Satır uzunluğu makale sütununda 68ch olarak sınırlandı
+- Satır yüksekliği gövde için 1.6, görüntü için 1.1
+- Bileşen stillerinde dağınık dört tek seferlik `font-size` değeri kaldırıldı
+
+## Tuzaklar
+
+- **Bağlam olmadan yeni yazı tipi istemek.** Typeset, `PRODUCT.md` marka sesine göre seçim yapar. `/impeccable teach` çalıştırmadıysanız, öneri genel olacaktır.
+- **Sorun tipografi değil düzen olduğunda typeset'e başvurmak.** Paragraflar iyi ama sayfa sıkışık hissettiriyorsa, `/impeccable layout` komutunu istiyorsunuz.
+- **Uygulama kullanıcı arayüzlerinde akışkan clamp ölçekleri beklemek.** Typeset, uygulama arayüzleri için sabit rem ölçekleri kullanır. Akışkan tipografi, satır uzunluğunun büyük ölçüde değiştiği pazarlama ve içerik sayfaları içindir.

@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Tarayıcıda UI üzerinde yineleme yapın. Bir öğe seçin, yorum bırakın, üç varyant alın. Birini kabul edin ve kaynak koda yazılsın.
+highlights:
+  - Bir geliştirme sunucusu zaten mevcut.
+  - Seçenekleri doğrudan oluşturulmuş UI üzerinde karşılaştırmak istiyorsunuz.
+  - En hızlı sonraki adım yönlendirilmiş görsel deneyimdir.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Animasyonlu demo ile uygulamalı görmek için <a href="/live-mode">/live-mode</a> sayfasına bakın. Bu sayfa, komut çalıştığında AI aracınızın okuduğu referanstır.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Durum: alfa.</strong> Canlı Mod uçtan uca çalışıyor ve denenmeye hazır, ancak gerçek dünya depoları ve framework yapılandırmalarına karşı daha fazla teste ihtiyaç duyuyor. Yaygın olmayan kurulumlarda kaba kenarlar bekleyin ve lütfen neyin bozulduğunu bildirin.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Canlı Mod döngü ortasında: seçici, seçtiğiniz öğenin dış çizgisini çizer, bağlam çubuğu hangi varyantta olduğunuzu gösterir ve genel çubuk altta sabit kalır. Bu varyantı kabul etmek, Varyant 2'yi kaynak koda geri yazar.</p>
+</div>
+
+## Ne zaman kullanılır
+
+Görsel olarak bir şeyi, bir tasarım aracında yapacağınız gibi yinelemek, ancak üretim kodunu çıktı olarak tutmak istediğinizde `/impeccable live` komutunu kullanın. Bir uygulama adımına gidiş-dönüş olmadan Figma'nın tuval benzeri akışı.
+
+Şunlar için kullanın:
+
+- **Gerçek bir öğe üzerinde yönleri keşfetmek.** Bir hero bölümü, bir bülten kartı, bir fiyatlandırma katmanı. Gerçekten farklı üç yaklaşım, yan yana, gerçek sayfada gerçek bağlamda.
+- **Neredeyse doğru olan bir UI parçasını cilalamak.** Neyin yanlış hissettirdiğini biliyorsunuz ama tam olarak söyleyemiyorsunuz. Öğeyi seçin, "daha eğlenceli" yazın veya sizi rahatsız eden kısmın üzerinden bir çizgi çizin, Başlat'a basın.
+- **Takımınızın tartıştığı iki yön arasında hızlı bir A/B.** Varyantlar oluşturun, hiçbirini kabul etmeyin, ayrılın. Amaç karşılaştırmaydı.
+
+Yeni sıfırdan özellikler (`/impeccable craft` komutunu kullanın) veya tam sayfa yeniden tasarımlar (`/impeccable` veya uzmanlaşmış bir iyileştirme komutu kullanın) için değildir.
+
+## Nasıl çalışır
+
+Tek bir komut, çalışan geliştirme sunucunuzun üzerinde bir seçici katmanı getirir. Herhangi bir öğeyi seçin. Yanında küçük bir bağlam çubuğu belirir. Serbest biçimli bir açıklama yazın veya eylem çiplerinden birini seçin (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). İsteğe bağlı olarak önce öğe üzerine yorum pinleri bırakın veya çizgiler çizin ve beceri bunları niyet olarak okur.
+
+Başlat'a basın. Her biri gerçekten farklı bir tasarım arketipine bağlı (renk üzerine üç ezgi değil) olan ve framework'ünüzün HMR'si aracılığıyla sayfada sıcak takas edilen üç **üretim kalitesinde varyant** oluşturulur. Ok tuşlarıyla bunlar arasında geçiş yapın. Birini kabul edin ve varyant kaynak koda geri yazılır. Üçünü de reddedin ve orijinal kalır.
+
+Vite, Next.js (monorepo dahil), SvelteKit, Astro, Nuxt ve düz statik HTML'yi destekler. Geliştirme sunucunuzda sıkı bir Content Security Policy varsa, ilk çalıştırma kurulumu bunu algılar ve seçicinin yüklenmesi için yalnızca geliştirme için tek seferlik bir yama sunar. Görsel kararlerde `DESIGN.md` önceliklidir, seste `PRODUCT.md` önceliklidir: ikisine de sahipseniz, varyantlar söylenmeden markaya sadık kalır.
+
+## Deneyin
+
+```
+/impeccable live
+```
+
+Geliştirme sunucusu URL'nizi açın, bülten kayıt kartını seçin, `delight` çipine tıklayın, Başlat'a basın. Kişilik boyutları arasında farklılık gösteren üç varyant alacaksınız (pul ve kartpostal hissi, tipografik sürpriz sürümü, illüstrasyonlu vurgu sürümü), aynı işlemenin üç farklı ezgisi değil.
+
+Veya bir hero seçin, "daha editoryal, daha az SaaS" yazın, Başlat'a basın. Üç varyant, aynı fikrin üç farklı tonu yerine farklı editoryal arketiplere (geniş format masthead, katalog tarzı spesifikasyon satırları, aşırı büyük glyph posteri) bağlanır.
+
+İşiniz bittiğinde canlı modu durdurun: "canlı modu durdur" deyin, sekmeyi kapatın veya seçici çubuğundaki çıkış düğmesine basın.
+
+## Tuzaklar
+
+- **Henüz yarısı yazılmış bir sayfada çalıştırmak.** Canlı varyant oluşturma bağlama ihtiyaç duyar. Öğede yer tutucu metin, genel Lorem ipsum veya stil sayfası öncesi varsayılan biçimlendirme varsa, varyantlar bunu yansıtır. Önce içeriği doldurun.
+- **Makro kararlar almasını beklemek.** Canlı mod, seçilmiş tek bir öğe üzerinde yineleme yapar. "Tüm fiyatlandırma sayfasını yeniden yap" için bunun yerine `/impeccable` veya `/impeccable craft` komutunu kullanın.
+- **Geri dönüş mesajlarını görmezden gelmek.** Öğe oluşturulmuş bir dosyadaysa (derlenmiş bir şablon, bir yapı çıktısı), seçici bunu açıkça söyler ve kabulü gerçek kaynak koduna yönlendirmeyi sunar. Kabulü oluşturulmuş dosyaya zorlamayın: sonraki yapı bunu siler.
+- **Marka uyumunu önemsediğinizde PRODUCT.md veya DESIGN.md olmadan çalıştırmak.** Canlı mod yine de oluşturur, ancak varyantlar genel varsayılanlara eğilim gösterir. Sonucun ürününüze uygun ses çıkarması gerekiyorsa önce `/impeccable teach` ve `/impeccable document` komutlarını çalıştırın.

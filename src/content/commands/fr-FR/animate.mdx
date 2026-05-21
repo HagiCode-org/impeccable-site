@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Du mouvement intentionnel qui communique l'état, pas de la décoration.
+highlights:
+  - Les interfaces semblent inertes ou brutales entre les états.
+  - Le chargement, le retour ou les transitions ont besoin de mouvement qui explique ce qui se passe.
+  - Vous voulez une animation disciplinée avec des alternatives de mouvement réduit.
+related:
+  - delight
+---
+
+## Quand l'utiliser
+
+`/impeccable animate` est pour les interfaces qui semblent inertes, où les changements d'état sont instantanés et brusques, où le chargement apparaît d'un coup, où l'utilisateur n'est jamais tout à fait sûr que son clic a été pris en compte. Utilisez-le pour ajouter les petits mouvements qui communiquent ce qui se passe : entrées, sorties, retours, transitions entre les états.
+
+Ne l'utilisez pas pour ajouter des rebonds ou des ressorts élastiques pour l'énergie. C'est de la décoration, et cette compétence ne vous en donnera pas.
+
+## Comment ça marche
+
+La compétence identifie les moments statiques qui bénéficieraient de mouvement, puis les applique avec une discipline stricte :
+
+1. **Entrées et sorties** : les éléments apparaissent et disparaissent avec des fondus de 200 à 300ms plus un léger mouvement Y ou d'échelle, jamais des propriétés de mise en page.
+2. **Retour d'état** : survol, actif, focus, chargement, succès communiquent tous par le mouvement au lieu de changements soudains.
+3. **Transitions entre vues** : transitions à élément partagé quand ça a du sens, fondu-enchaîné sinon.
+4. **Progression et chargement** : écrans squelettes, barres déterminées, du mouvement qui dit « encore en cours ».
+5. **Mouvement réduit** : chaque animation a une alternative `prefers-reduced-motion`.
+
+L'accélération est toujours exponentielle (ease-out-quart, quint ou expo) parce que les objets réels décélèrent en douceur. Pas de rebond, pas d'élastique, pas de linéaire sauf pour les indicateurs de progression.
+
+La compétence anime uniquement `transform` et `opacity`. Si vous vous surprenez à animer `width`, `height`, `top` ou `left`, c'est que quelque chose ne va pas. Utilisez `grid-template-rows` pour les transitions de hauteur.
+
+## Essayez
+
+```
+/impeccable animate the sign-up flow
+```
+
+Ajouts typiques :
+
+- Le champ email reçoit une lueur de focus sur focus-visible (opacité + ombre, 180ms)
+- Le bouton de soumission affiche un spinner à l'intérieur de lui-même en état de chargement, pas un spinner séparé à côté
+- L'écran de succès entre avec opacité + translateY(8px), 260ms, ease-out-quart
+- Le message d'erreur glisse vers le bas avec grid-template-rows (pas height), 220ms
+- Alternative `@media (prefers-reduced-motion: reduce)` pour chaque transition
+
+## Pièges courants
+
+- **Demander « plus d'animation ».** Animate n'est pas un curseur. Il ajoute du mouvement là où il communique, pas partout.
+- **Supprimer les alternatives de mouvement réduit.** La compétence les ajoute automatiquement. Non négociable pour l'accessibilité.

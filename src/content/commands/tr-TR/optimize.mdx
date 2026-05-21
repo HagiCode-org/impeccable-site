@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: LCP'den paket boyutuna kadar UI performansını tanılayın ve düzeltin.
+highlights:
+  - Arayüz yavaş, sarsıntılı veya ağır hissettiriyor.
+  - Tasarımı mahvetmeden maliyeti düşürmeniz gerekiyor.
+  - Performans artık görünür bir ürün sorunu.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Ne zaman kullanılır
+
+`/impeccable optimize`, yavaş hisseden arayüzler içindir. İlk boyut sonsuza kadar sürüyor, kaydırma sarsıntılı, görüntüler geç ortaya çıkıyor, etkileşimler gecikmeli hissettiriyor, paket 800KB JavaScript gönderiyor. Web Vitals kötüyse veya kullanıcılar işlerin yavaş olduğundan şikayet ediyorsanız kullanın.
+
+Erken optimizasyon olarak kullanmayın. LCP 1.1s ve INP 80ms ise, durun. Tasarım çalışması daha önemlidir.
+
+## Nasıl çalışır
+
+Beceri beş performans boyutunu ele alır:
+
+1. **Yükleme ve Web Vitals**: LCP, INP, CLS. İlk boyutu neyin engellediğini, etkileşimi neyin geciktirdiğini, düzeni neyin kaydırdığını belirleyin.
+2. **Oluşturma**: gereksiz yeniden oluşturular, eksik memoizasyon, pahalı uzlaştırma, döngülerde düzen çarpıtması.
+3. **Animasyonlar**: herhangi bir şey düzen özelliklerini canlandırıyor mu, dönüştürmeler ve opaklık dokunulan tek şey mi, `will-change` burada yardımcı mı yoksa zararlı mı.
+4. **Görüntüler ve varlıklar**: tembel yükleme, responsive görüntüler (`srcset`, `sizes`), modern biçimler (WebP, AVIF), CLS'yi önlemek için boyutlar ayarlanmış.
+5. **Paket boyutu**: kullanılmayan içe aktarımlar, aşırı büyük bağımlılıklar, eksik kod bölme, ölü kod.
+
+Beceri önce ve sonra ölçer. Her düzeltme ölçülür. Bir değişiklik bir metriği hareket ettirmiyorsa, geri alınır.
+
+## Deneyin
+
+```
+/impeccable optimize the homepage
+```
+
+Beklenen sonuç:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero image preloaded (-800ms)
+  - Removed render-blocking font stylesheet (-240ms)
+  - Deferred analytics script (-180ms)
+
+INP: 240ms → 90ms
+  - Debounced scroll handler
+  - Memoized expensive list render
+  - Removed synchronous layout read in event loop
+
+CLS: 0.18 → 0.02
+  - Set dimensions on hero image and logo
+  - Reserved space for async header badge
+
+Bundle: 340KB → 180KB
+  - Removed unused lodash import (52KB)
+  - Code-split the playground route (78KB)
+  - Dropped deprecated icon set (30KB)
+```
+
+## Tuzaklar
+
+- **Ölçmeden önce optimize etmek.** Temel metrikler olmadan, neyin yardımcı olduğunu söyleyemezsiniz. Hislerle değil, belirli Web Vitals rakamlarıyla `/impeccable optimize` çalıştırın.
+- **Küçük kazançların peşinden koşmak.** Bir hafta süren ve INP'de 20ms iyileştirme sağlayan bir değişiklik nadiren buna değer. Optimize'nin azalan getirileri vardır; ne zaman duracağınızı bilin.
+- **Her değişiklikten sonra yeniden ölçmeyi unutmak.** Yapım, becerinin tahmin edemediği bir şekilde işleri daha kötü hale getirmiş olabilir. Doğrulayın.

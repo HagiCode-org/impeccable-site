@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Addera strategisk farg till monokroma granssnitt utan att bli skrikig.
+highlights:
+  - Gransnittet ser kompetent ut men glömsbart.
+  - Du behovr tydligare betoning utan att skriva om hela strukturen.
+  - Den nuvarande paletten bar inte den avsedda stämningen.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Nar du ska anvanda det
+
+`/impeccable colorize` ar motvikten till "allt ar gratt". Instrumentpaneler som las som en beige vagg, formulär utan accent, innehallssidor som kunde vara vilken SaaS-produkt som helst. Använd det nar gransnittet ar funktionellt men kanslomassigt platt, och du vill ha varme utan att tippa over i AI-fargpaletten (lila-till-rosa, cyan-neon, mörkt läge-glow).
+
+## Hur det fungerar
+
+Fardigheten borjar med att lasa din varumärkesfarg om en finns, sedan bestammer den var fargen fortjänar sin plats:
+
+1. **Primär atgard** far den starkaste uttrycket av varumärkesnynansen.
+2. **Sekundära accenter** far dämpade eller tonade varianter, inte en andra full farg.
+3. **Neutrala** far toning mot varumärkesnynansen vid lag kroma (runt 0.005 till 0.01), vilket ar nastan osynligt per pixel men skapar undermedveten sammanhang.
+4. **Innehallskategorier** far ett begransat, avsiktligt accentsystem, inte en regnbage.
+
+Viktigt, den anvander OKLCH istallet for HSL sa att lika ljushetssteg ser lika ut. Nar ljusheten ror sig mot extremerna, sjunker kroman automatiskt. Det ar sa du far farg som kanns overvägd istallet for beräknad.
+
+## Prova det
+
+```
+/impeccable colorize the dashboard
+```
+
+Forvantad diff:
+
+- Varumärkesfarg flyttad fran en hardkodad hex till `--color-accent: oklch(62% 0.18 240)`
+- Neutrala tonade med 0.007 kroma mot varumärkesnynansen
+- Primärknapp far hela accenten, sekundära knappar far bläck/dimma
+- Diagramserien använder 3 distinkta nyaner, alla pa matchad ljushet sa ingen serie visuellt dominerar
+- Tomt tillstand-illustration far en mjuk accenttvätt
+
+## Fallgropar
+
+- **Att kora den utan en varumärkesnynans.** Colorize behovr en startpunkt. Om `PRODUCT.md` inte anger en, kommer den att fraga. Lat den inte valja fran AI-fargpalettens standardvarden.
+- **Att forventa att den fixar AI-fargpalettproblemet.** Om din design redan har lila gradienter och cyan-neon, behovr du `/impeccable quieter` forst, sedan kan colorize bygga upp igen.
+- **Att anvanda den pa redan färgstarka granssnitt.** Det ar ett jobb for `/impeccable quieter`. Colorize adderar, den subtraherar inte.

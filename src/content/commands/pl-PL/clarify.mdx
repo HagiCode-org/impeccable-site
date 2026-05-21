@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Przepisz mylace teksty UX, aby interfejsy tlumaczyly same siebie.
+highlights:
+  - Uzytkownicy wahaja sie, bo sformulowania sa niejasne.
+  - Interfejs potrzebuje lepszego tekstu instrukcyjnego lub komunikatow o bledach.
+  - Przeplyw produktu jest w porzadku, ale jezyk spowalnia ludzi.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Kiedy uzywac
+
+`/impeccable clarify` jest dla tekstu interfejsu, ktory sprawia, ze ludzie sie zatrzymuja i mysle. Mylace etykiety, niejednoznaczny tekst na przyciskach, komunikaty o bledach obwiniajace uzytkownika, podpowiedzi powtarzajace etykiety, stany puste mowiace nic uzytecznego. Uzyj, gdy problemem nie jest uklad ani kolor, ale slowa.
+
+Dobre wyzwalacze: "uzytkownicy nie rozumieja tego pola", "komunikat o bledzie nie jest pomocny", "nie potrafie napisac dobrego tekstu na przycisku", "ta podpowiedz jest stracona".
+
+## Jak to dziala
+
+Umiejetnosc przepisuje tekst na powierzchniach, gdzie zyje wiekszosc problemow tekstu UX:
+
+1. **Etykiety i podpowiedzi pol**: bezposrednie, konkretne, mowiace, co jest oczekiwane.
+2. **Tekst na przyciskach**: czasownik na poczatku, opisuje rezultat, nie akcje. "Zapisz zmiany" nie "OK".
+3. **Komunikaty o bledach**: wyjasniaja, co poszlo nie tak, czyja to wina i co zrobic dalej. Nigdy nie obwiniaja uzytkownika.
+4. **Stany puste**: orientuja uzytkownika, wyjasniaja, dlaczego stan jest pusty, oferuja nastepny krok.
+5. **Podpowiedzi i tekst pomocniczy**: dodaja informacje, ktorych etykieta nie moze niesc, nigdy jej nie powtarzaja.
+6. **Dialogi potwierdzenia**: nazywaja konsekwencje, nie akcje.
+
+Umiejetnosc uzywa odbiorcy i stanu umyslu z `PRODUCT.md` do dostrojenia glosu. Techniczny odbiorca dostaje precyzyjny jezyk. Konsumencki odbiorca dostaje prosta mowe. Pospiezni uzytkownicy dostaja krotki tekst. Niepokojacy uzytkownicy (platnosc, usuwanie) dostaja zapewnienie.
+
+## Wyprobuj
+
+```
+/impeccable clarify the billing form
+```
+
+Przed i po, typowo:
+
+- Etykieta "Billing address" -> "Adres na karcie"
+- Placeholder "Enter your VAT ID" -> "NIP (opcjonalny, dla firm)"
+- Blad "Invalid input" -> "Ten numer karty ma 15 cyfr. Wpisales 14."
+- Przycisk "Submit" -> "Pobierz 29 USD i subskrybuj"
+- Stan pusty "No transactions yet" -> "Twoja pierwsza platnosc pojawi sie tutaj po pierwszym zamowieniu."
+
+## Pulapki
+
+- **Pisanie bystrzejszego, a nie jasniejszego tekstu.** Clarify nie sluzy do ulepszania glosu. Jesli tekst jest juz jasny, nie sigmnij po te umiejetnosc. Uzyj `/impeccable delight`, gdy chcesz osobowosci.
+- **Pomijanie pytania o odbiorce.** Clarify musi wiedziec, kto czyta. Jesli `PRODUCT.md` nie okresla poziomu technicznego odbiorcow, przeredaktyzacje beda generyczne.
+- **Uruchamianie clarify na tekscie marketingowym.** Clarify jest dla funkcjonalnego tekstu UX: etykiety, bledy, instrukcje. Tekst marketingowy potrzebuje innego zestawu ruchow i ludzkiego pisarza.

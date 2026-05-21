@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Leve uma interface além dos limites convencionais. Shaders, física, 60fps, transições cinematográficas.
+highlights:
+  - A experiência deve parecer extraordinária, não apenas arrumada.
+  - Movimento rico ou rendering é parte da história do produto.
+  - A equipe está disposta a pagar por complexidade onde importa.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Quando usar
+
+`/impeccable overdrive` é para os momentos em que você quer impressionar. Um hero que usa WebGL. Uma tabela que lidar com um milhão de linhas. Um diálogo que emerge de seu elemento gatilho. Um formulário que valida em tempo real com feedback de streaming. Uma transição de página que parece cinematográfica. Use quando o orçamento do projeto permite ambição técnica e o resultado precisa parecer extraordinário.
+
+Não use em ferramentas de operação, dashboards, ou qualquer coisa onde confiabilidade supera espetáculo. Overdrive queima complexidade por efeito, e essa troca só vale a pena em momentos que importam.
+
+## Como funciona
+
+A skill escolhe um momento para tornar extraordinário e se compromete com ele, em vez de espalhar esforço por toda a interface. Então recorre a técnicas que a maioria das UIs geradas por IA nunca toca: shaders WebGL, spring physics, Scroll Timeline, View Transitions, animação em canvas, filtros acelerados por GPU. Tudo é orçado, perfilado e testado a 60fps, com fallbacks de movimento reduzido embutidos.
+
+A saída do Overdrive é anunciada com `──── ⚡ OVERDRIVE ────` para que você saiba que está entrando em um modo mais ambicioso. Espere diffs maiores, novas dependências e profundidade de implementação além do que outras skills produzem.
+
+## Experimente
+
+```
+/impeccable overdrive the landing hero
+```
+
+Uma execução concreta pode substituir um hero estático por um background de shader WebGL guiado pela posição do mouse, um headline de display que se revela com uma máscara no scroll usando a Scroll Timeline API, e uma View Transition no CTA que se transforma na próxima página. Mais um fallback de movimento reduzido que troca tudo por uma composição estática limpa.
+
+## Armadilhas
+
+- **Usar em todo lugar.** Overdrive funciona porque é raro. Se toda página tem momentos cinematográficos, nenhum deles é cinematográfico.
+- **Lançar sem fallbacks de movimento reduzido.** Inegociável. Overdrive os adiciona automaticamente; não os remova.
+- **Ignorar performance.** Momentos extraordinários ainda precisam atingir 60fps. Se o efeito perde frames, corte ou otimize. Espetáculo lento é pior que simples bem feito.
+- **Executar overdrive antes da interface base estar sólida.** Espetáculo sobre uma fundação quebrada parece distração, não delight.

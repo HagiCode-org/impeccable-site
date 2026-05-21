@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Faire fonctionner les designs sur tous les écrans, appareils et contextes sans amputer les fonctionnalités.
+highlights:
+  - La mise en page actuelle s'effondre sur les petits écrans.
+  - Le produit a besoin d'une stratégie responsive plus réfléchie.
+  - Les cibles tactiles, la densité ou le flux de contenu varient selon l'appareil.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Quand l'utiliser
+
+`/impeccable adapt` sert à prendre un design conçu pour un contexte et le faire fonctionner dans un autre. Du mobile à partir du bureau, de la tablette à partir du mobile, de l'impression à partir du web, de l'intégré à l'autonome, de l'email au tableau de bord. Utilisez-le quand le design source est solide mais s'effondre à d'autres points de rupture, au toucher, ou dans un conteneur différent.
+
+Pas pour construire du responsive de zéro. Pour cela, commencez par `/impeccable` et concevez la mise en page en pensant responsive d'abord. Adapt est pour le rattrapage « on n'a jamais pensé au mobile ».
+
+## Comment ça marche
+
+La compétence travaille sur quatre dimensions d'adaptation contextuelle :
+
+1. **Points de rupture et mise en page fluide** : réduire le multi-colonnes en colonne unique, ajuster les plages de clamp, introduire de nouveaux points de rupture là où le design se casse véritablement.
+2. **Cibles tactiles** : zones de toucher minimum de 44px, espacement suffisant entre les cibles adjacentes, zones d'appui plus grandes que les limites visuelles si nécessaire.
+3. **Patterns de navigation** : les barres latérales bureau deviennent une navigation mobile en bas ou des tiroirs coulissants, les barres d'outils denses se replient dans des menus, les états de survol obtiennent des équivalents tactiles.
+4. **Priorité de contenu** : décider ce qui doit être visible, ce qui peut se replier dans des disclosures, ce qui peut être retiré entièrement pour ce contexte.
+
+La règle non négociable : adaptez, n'amputez pas. Les fonctionnalités critiques ne peuvent pas disparaître sur mobile juste parce que c'est peu pratique. Trouvez un moyen de les caser, redessinez l'interaction, ou reconsidérez si elles étaient vraiment critiques sur bureau.
+
+## Essayez
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Modifications attendues :
+
+- La grille à trois colonnes devient une colonne unique avec les en-têtes de section servant de séparateurs collants
+- La navigation latérale passe à un défilement horizontal au-dessus du contenu
+- Les toggles gagnent 8px de padding vertical pour atteindre les cibles tactiles de 44px
+- Le texte d'aide en ligne passe en « appuyer pour révéler », pas au survol
+- La section « Zone à risque » s'étend complètement sur mobile au lieu de se replier, car elle contient des actions irréversibles et nous voulons que les utilisateurs les voient clairement
+
+## Pièges courants
+
+- **Amputer les fonctionnalités.** Si la version mobile masque des choses que la version bureau peut faire, c'est une régression, pas une adaptation. Défendez la fonctionnalité.
+- **Traiter le mobile comme « un bureau plus petit ».** Le mobile est un contexte différent : pouces, interruptions, courtes sessions. Adaptez-vous au contexte, pas à la largeur du viewport.
+- **Sauter `/impeccable harden` ensuite.** Les mises en page responsives révèlent des cas limites. Exécutez le durcissement après adapt pour attraper ceux qui n'apparaissent qu'à 320px.

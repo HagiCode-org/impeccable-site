@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Perbaiki tata letak, jarak, dan ritme visual.
+highlights:
+  - Halaman kekurangan penekanan yang jelas.
+  - Konten yang baik ada, tetapi komposisi menyembunyikannya.
+  - Anda menginginkan aliran yang lebih kuat sebelum menyentuh warna atau gerak.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Kapan menggunakannya
+
+`/impeccable layout` untuk halaman di mana tidak ada yang secara teknis salah tetapi tidak ada yang juga bernapas. Padding sama di mana-mana, grid kartu yang monoton, konten yang berjalan dari tepi ke tepi, hierarki yang hanya mengandalkan ukuran. Gunakan ketika tata letak "terasa kurang tepat" dan Anda tidak dapat mengartikulasikan mengapa.
+
+Pemicu yang baik: "segalanya terasa sesak", "terbaca seperti tembok teks", "saya tidak tahu harus melihat ke mana dulu".
+
+## Cara kerjanya
+
+Skill menelusuri lima dimensi tata letak:
+
+1. **Jarak**: apakah skala jarak konsisten atau ada celah 13px acak, apakah elemen terkait dikelompokkan rapat dengan jarak luas antara kelompok, apakah ada ritme sama sekali.
+2. **Hierarki visual**: apakah mata mendarat pada aksi utama dalam 2 detik, apakah hierarki melakukan pekerjaan nyata atau semuanya berteriak.
+3. **Grid dan struktur**: apakah ada grid yang mendasari atau tata letak acak, apakah elemen sejajar dengan baseline.
+4. **Ritme**: apakah halaman bergantian antara jarak rapat dan luas, atau semuanya seragam.
+5. **Kepadatan**: apakah tata letak terlalu sesak atau boros, apakah kepadatan sesuai dengan jenis konten.
+
+Perbaikan biasanya melibatkan pembangunan ulang skala jarak, pengenalan asimetri, penggabungan grid monoton menjadi tata letak campuran dengan hero dan elemen pendukung, dan pemberian ruang nyata pada aksi utama.
+
+## Cobalah
+
+```
+/impeccable layout the settings page
+```
+
+Perubahan tipikal:
+
+- Skala jarak disatukan ke 8 / 16 / 24 / 48 / 96px
+- Jeda bagian pada 48px, celah baris pada 16px, grup kolom formulir pada 8px
+- Aksi utama dikeluarkan dari alur formulir dengan buffer 32px
+- Batas dekoratif dihapus, diganti dengan pengelompokan berbasis jarak
+- Proporsi sidebar dan kolom utama diseimbangkan ulang (280 / flex vs 25 / 75)
+
+## Jebakan
+
+- **Membingungkan layout dengan distill.** Jika masalahnya terlalu banyak hal, jalankan `/impeccable distill` dulu. Layout untuk mengatur apa yang sudah merupakan set yang tepat.
+- **Mengharapkan menyelamatkan grid yang rusak.** Jika halaman tidak memiliki grid sama sekali, layout akan membangun satu. Tahu saja bahwa diff akan lebih besar dari yang Anda harapkan.
+- **Mengabaikan verdict hierarki.** Jika layout mengatakan "tidak ada yang utama", tidak ada pekerjaan jarak yang memperbaikinya. Anda membutuhkan keputusan konten, bukan penyesuaian tata letak.

@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Suunnittelutiimi jokaisen komennon takana.
+highlights:
+  - Haluat yhden sisäänkцynnin asetteluun, typografiaan, väriin, liikkeeseen ja UX-rakenteeseen.
+  - Tutkit suuntaa ja haluat taidon valitsevan oikean alityönkulun.
+  - Tarvitset laajinta suunnittelukontekstia yksittäisen komennon sijaan.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Milloin käyttää
+
+`/impeccable` on kotikomento. Kutsu sitä suoraan, kun haluat vapaamuotoista suunnittelutyötä koko oppaan ollessa ladattuna, valitsematta erikoistunutta komentoa. Se on varavaihtoehto, johon turvaudut, kun yksikään 23 erikoistumasta (`audit`, `polish`, `critique` ja muut) ei sovi puhtaasti siihen mitä yrität tehdä.
+
+Turvaudu suoraan `/impeccable`-komentoon kun:
+
+- **Et ole varma, mikä komento sopii.** Kuvaile mitä haluat tavallisella kielellä ja anna taidon valita oikea lähestymistapa.
+- **Työ kattaa useita osa-alueita.** "Tee tämä hero-osa uudelleen" koskee asettelua, typografiaa, väriä ja liikettä. Yksi komento ei voi omistaa sitä.
+- **Haluat täyden suunnitteluälykkyyden ilman rajoituksia.** Jokainen viitetiedosto ladattu, jokainen anti-pattern tarkistettu, ei valmiiksi asetettua työnkulkua.
+
+Rakenteellisiin työnkulkuihin turvaudu sivupalkin erikoistuneisiin komentoihin. Suorita `/impeccable teach` ensin missä tahansa uudessa projektissa luodaksesi PRODUCT.md- ja DESIGN.md-tiedostot. `/impeccable craft` ketjuttaa löytöhaastattelun täydelliseen rakennukseen live-visuaalisen iteraation kanssa. `/impeccable shape` tuottaa suunnittelubriefin koskematta koodiin. `/impeccable live` antaa sinulle selainvalitsimen, jossa on kolme muunnelmaa per elementti. Arviointi- ja hienosäätökomennot (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` ja muut) kukin omistavat tietyn osan työstä.
+
+## Miten se toimii
+
+Useimmat tekoälyn tuottamat käyttöliittymät epäonnistuvat samalla tavalla: geneeriset fontit, violetit liukuvärit, korttiruskelat korttirusteiden päällä, lasimofismi kaikkialla. `/impeccable` antaa tekoälyllesi vahvan näkökulman. Se lataa mielipiteellisen suunnitteluoppaan pitkän listan anti-patterneja, sitten se ohjaa mallia sitoutumaan tiettyyn esteettiseen suuntaan ennen yhdenkään koodirivin kirjoittamista.
+
+Kaksi tiedostoa projektisi juuressa muokkaavat kaikkea mitä taito tekee:
+
+- **`PRODUCT.md`** kantaa rekisterin (brändi vs. tuote), kohdekäyttäjät, brändipersoonallisuuden, anti-viitteet, suunnitteluperiaatteet. Vastaa kysymykseen "kuka, mitä, miksi".
+- **`DESIGN.md`** kantaa värit, typografian, korkeuden, komponentit, tehdään- ja ei-tehdä -säännöt, Google Stitchin kuuden osan formaatissa. Vastaa kysymykseen "miten se näyttää".
+
+Jokainen komento lukee molemmat tiedostot ennen tuottamista. **Rekisteri** päättää mitkä oletukset ladataan. Brändi (markkinointi, laskeutumissivut, portfolio, jossa suunnittelu ON tuote) ja tuote (sovelluskäyttöliittymä, kojelaudat, työkalut, joissa suunnittelu PALVELEE tuotetta) omaavat erilaiset oletukset typografialle, liikkeelle, värille ja tiheydelle. Sen kertominen kerran PRODUCT.md:ssä tarkoittaa, että `/impeccable typeset` ei työnnä toimituksellisia lehtifontteja kojelaudalle, eikä tuotefluentteja oletuksia kampanjasivulle. Katso [brändi vs. tuote -opas](/tutorials/brand-vs-product) nähdäksesi miten nämä kaksi eriytyvät.
+
+Ensimmäisellä käyttökerralla projektissa taito suorittaa `teach`-työnkulun automaattisesti: lyhyt haastattelu, joka kirjoittaa PRODUCT.md:n ja siirtyy sitten `/impeccable document`-komennolle DESIGN.md:tä varten. Tulevat komennot lukevat tiedostot kysymättä uudelleen.
+
+## Kokeile
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Molemmat kehotteet ovat tarkoituksella epämääräisiä. `/impeccable` valitsee vahvan esteettisen suunnan, joka on johdonmukainen rekisterisi kanssa, sitoutuu ei-oletusfontteihin, välttää tekoälyn väripalettia ja tekee sellaisia tarkkoja valintoja, joita suunnittelija tekisi. Ei komennon nimeä valittavaksi ensin, ei vaiheittaista työnkulkua seurattavaksi.
+
+Visuaaliseen iteraatioon selaimessa keskustelun sijaan:
+
+```
+/impeccable live
+```
+
+Valitse mikä tahansa elementti käynnissä olevalla dev-palvelimellasi. Jätä kommentti tai piirrä viiva. Saat kolme tuotantolaatuista muunnelmaa, jotka vaihdetaan kuumaan HMR:n kautta. Hyväksy haluamasi ja se kirjoitetaan takaisin lähdekoodiin.
+
+## Kiinnitä komennot takaisin pikakuvakkeiksi
+
+v3.0 yhdisti 18 erillistä taitoa yhteen `/impeccable`-komentoon, jossa on 23 alikomentoa. Jos kaipaat tietyn komennon lyhyttä muotoa, kiinnitä se takaisin:
+
+```
+/impeccable pin critique
+```
+
+Nämä lähtien `/critique` kutsuu `/impeccable critique`-komentoa suoraan. Se kirjoittaa kevyen uudelleenohjaustaidon, joka delegoi yläkomennolle, joten taidon päivitykset kulkevat läpi ilman uudelleenkiinnitystä.
+
+Kokeilun arvoisia kiinnityksiä:
+
+- `/impeccable pin polish` viimeisen läpikäynnin työhön
+- `/impeccable pin audit` deterministisiin a11y/suorituskykytarkistuksiin
+- `/impeccable pin live` selaimen iteraatiotyönkulkuun
+- `/impeccable pin critique` suunnitteluarseen
+
+Poistamiseen: `/impeccable unpin critique`. Kiinnitykset elävät hakemistoina, joilla on `i-`-etuliite harness-taitojen kansiossasi (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` jne.), joten voit myös poistaa ne manuaalisesti.
+
+## Sudenkuopat
+
+- **Sen kohteleminen tyylisuunnitelmana.** Se on mielipiteellinen suunnittelukumppani, ei lintteri. Oletukset ovat olemassa lattian nostamiseksi, ei ohittamaan harkintaasi. Jos sinulla on todellinen syy vastustaa (brändiohjeisto, saavutettavuusrajoite, käyttäjätutkimus), vastusta ja selitä miksi. Taito työskentelee kanssasi. Mikä tuottaa huonompaa tulosta, on ohjeen sivuuttaminen ilman syytä.
+- **Odotus, että se korjaa olemassa olevaa koodia.** `/impeccable` on luontia varten. Hienosäätöön turvaudu `/impeccable polish`, `/impeccable distill` tai `/impeccable critique` -komentoihin.
+- **Ajaminen ennen kuin `teach` on ehtinyt tallentaa kontekstin.** Uudessa projektissa se haastattelee sinua lennosta, mikä on ihan kunnossa mutta hitaampaa. `/impeccable teach`-komennon suorittaminen ensimmäisenä komentona on hieman sujuvampaa.
+- **Rekisterikysymyksen ohittaminen.** Brändi- ja tuoteoletukset eriytyvät riittävästi niin, että väärällä rekisterillä ajaminen tuottaa hienovaraisesti väärää tulosta. Jos `PRODUCT.md`:ssä ei ole `## Register`-kenttää (vanha versio), suorita `/impeccable teach` lisätäksesi sen.

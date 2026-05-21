@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Puanlama, persona testleri ve otomatik algılama ile tasarım incelemesi.
+highlights:
+  - Sıfırdan yeniden oluşturma değil, zayıf tasarım kararları hakkında bulgular istiyorsunuz.
+  - Puanlama, tasarım akıl yürütme ve olası sonraki adımlara ihtiyacınız var.
+  - Arayüz çalışıyor ama yine de yanlış hissettiriyor.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristics (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibility of status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match with real world</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistency & standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Error prevention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recognition over recall</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The evaluator</span>
+              <span class="docs-viz-critique-persona-note">Comparing us to two alternatives on a Tuesday evening.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The returning user</span>
+              <span class="docs-viz-critique-persona-note">Knows the product, on mobile, in a hurry.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The skeptic</span>
+              <span class="docs-viz-critique-persona-note">Has seen every SaaS landing and is bored.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">İki geçiş (LLM tasarım incelemesi ve belirleyici algılayıcı) önceliklendirilmiş tek bir listede birleşir. Ne çalışıyor, ne düzeltilmeli ve göndermeden önce yanıtlanmaya değer kışkırtıcı sorular.</p>
+</div>
+
+## Ne zaman kullanılır
+
+Zaten oluşturduğunuz bir şey hakkında dürüst bir ikinci görüş istediğinizde `/impeccable critique` komutunu kullanın. "Çalışıyor mu" değil, "iyi mi". Yetenek, kullanıcı arayüzünüzü Nielsen'in 10 buluşsal kuralına karşı puanlar, bilişsel yük kontrolleri çalıştırır, persona merceklerinden test eder ve 25 somut anti-pattern için otomatik bir algılayıcıyla çapraz referans verir.
+
+Bir sayfa işlevsel olarak bittiğinde ve kasıtlı mı yoksa AI çöpü olarak mı okunduğunu bilmek istediğinizde kullanın.
+
+## Nasıl çalışır
+
+`/impeccable critique` iki bağımsız değerlendirmeyi paralel olarak çalıştırır, böylece birbirlerini etkilemez.
+
+Birincisi bir **LLM tasarım incelemesidir**: model kaynağınızı okur, canlı sayfayı tarayıcı otomasyonu varsa görsel olarak inceler ve impeccable yeteneğinin tam YAP/YAPMA kataloğunu kullanır. Nielsen buluşsal kurallarını puanlar, bilişsel yük hatalarını sayar, akıştaki duygusal yolculuğu izler ve AI çöpünü işaretler.
+
+İkincisi, gradyan metin, mor paletler, yan sekme kenarlıkları, iç içe kartlar, satır uzunluğu sorunları ve genel AI çıktısının diğer görünür parmak izlerini belirleyici olarak bulan bir **otomatik algılayıcıdır** (`npx impeccable detect`).
+
+İki rapor önceliklendirilmiş tek bir listede birleşir: ne çalışıyor, düzeltilmesi gereken üç ile beş öğe ve göndermeden önce yanıtlanmaya değer kışkırtıcı sorular.
+
+## Deneyin
+
+Bir sayfaya yöneltin:
+
+```
+/impeccable critique the homepage hero
+```
+
+Puanlanmış bir rapor alırsınız. Tipik yapı:
+
+- **AI slop kararı**: spesifik işaretlerle geç/kal
+- **Buluşsal puanlar**: 10 sayı, 0 ile 4
+- **Bilişsel yük**: 8 üzerinden başarısızlık sayısı
+- **Öncelikli sorunlar**: üç ile beş öğe, her biri ne, neden ve düzeltme ile
+- **Yanıtlanacak sorular**: kullanıcı arayüzünün kendisi için karar veremeyecekleri
+
+Oradan, düzeltmelere işlemek için `/impeccable polish` veya `/impeccable distill` ile eşleştirin.
+
+## Tuzaklar
+
+- **Tamamlanmamış işte çalıştırmak.** Critique bitmiş sayfalar içindir. Üç TODO'su olan boş bir durum, kötü olduğu için değil, bitmediği için düşük puan alır.
+- **Sondaki soruları görmezden gelmek.** Genellikle tasarımı en çok değiştiren düzeltmeler bunlardır.
+- **Buluşsal puanları bir not olarak ele almak.** Tanısaldır, değerlendirici değil. Bağlamınız için daha az önemli olan bir buluşsal kuralda 3/4 iyidir.

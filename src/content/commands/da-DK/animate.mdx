@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Målrettet bevægelse der formidler tilstand, ikke dekoration.
+highlights:
+  - Grænseflader føles livløse eller bratte mellem tilstande.
+  - Indlæsning, feedback eller overgange har brug for bevægelse der forklarer, hvad der sker.
+  - Du vil have disciplineret animation med reduced-motion-fallbacks.
+related:
+  - delight
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable animate` er til grænseflader der føles livløse, hvor tilstandsændringer er øjeblikkelige og bratte, hvor indlæsning bare dukker op, hvor brugeren aldrig helt stoler på, at deres klik blev registreret. Brug den til at tilføje de små bevægelser, der kommunikerer, hvad der sker: indgange, udgange, feedback, overgange mellem tilstande.
+
+Brug den ikke til at tilføje hop eller elastiske fjedre for sjov. Det er dekoration, og denne færdighed vil ikke give dig det.
+
+## Hvordan det virker
+
+Færdigheden identificerer statiske øjeblikke, der ville have gavn af bevægelse, og anvender dem med streng disciplin:
+
+1. **Indgange og udgange**: elementer vises og forlader med 200 til 300ms fade plus subtil Y eller skalering, aldrig layout-egenskaber.
+2. **Tilbagemelding**: hover, aktiv, fokus, indlæsning, succes kommunikerer alle via bevægelse i stedet for pludselige skift.
+3. **Overgange mellem visninger**: shared-element-overgange hvor det giver mening, fade-through ellers.
+4. **Fremskridt og indlæsning**: skeletskærme, determinerede bjælker, bevægelse der siger "arbejder stadig".
+5. **Reduceret bevægelse**: hver animation har en `prefers-reduced-motion`-fallback.
+
+Easing er altid eksponentiel (ease-out-quart, quint eller expo), fordi rigtige objekter afkører jævnt. Ingen hop, ingen elastisk, ingen lineær for andet end fremskridtsindikatorer.
+
+Færdigheden animerer kun `transform` og `opacity`. Hvis du opdager at du animerer `width`, `height`, `top` eller `left`, gør den noget forkert. Brug `grid-template-rows` til højdeovergange.
+
+## Prøv det
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typiske tilføjelser:
+
+- E-mail-input får en fokus-glow ved focus-visible (opacity + shadow, 180ms)
+- Send-knap viser en spinner i sig selv ved indlæsningstilstand, ikke en separat spinner ved siden af
+- Succeskærme kommer ind med opacity + translateY(8px), 260ms, ease-out-quart
+- Fejlmeddelelse glider ned med grid-template-rows (ikke height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback for hver overgang
+
+## Faldgruber
+
+- **At bede om "mere animation".** Animate er ikke en drejeknap. Den tilføjer, hvor bevægelse kommunikerer, ikke overalt.
+- **At fjerne reduced-motion-fallbacks.** Færdigheden tilføjer dem automatisk. Ikke til forhandling for tilgængelighed.

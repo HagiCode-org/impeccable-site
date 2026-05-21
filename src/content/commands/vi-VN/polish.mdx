@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Lần duyệt cuối tỉ mỉ giữa tốt và xuất sắc.
+highlights:
+  - Căn chỉnh, khoảng cách và các quyết định vi mô vẫn cảm thấy thô.
+  - Tính năng gần sẵn sàng phát hành.
+  - Những sai lệch nhỏ đang kéo chất lượng cảm nhận xuống.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable polish` là thứ cuối cùng bạn chạy trước khi phát hành. Nó săn lùng các chi tiết nhỏ ngăn cách một tính năng đã phát hành và một tính năng đã hoàn thiện: sai lệch nửa pixel, khoảng cách không nhất quán, trạng thái focus bị quên, chuyển đổi tải nhấp nháy, văn bản trôi giọng điệu. Nó cũng căn chỉnh tính năng với hệ thống thiết kế của bạn, thay thế giá trị hardcoded bằng token, hoán đổi thành phần tùy chỉnh bằng thành phần dùng chung và sửa bất kỳ sự trôi dạt nào khỏi các mẫu đã thiết lập.
+
+Sử dụng khi tính năng hoàn thành về mặt chức năng, không có gì bị hỏng và vẫn có điều gì đó cảm thấy không ổn. Cũng sử dụng khi một tính năng đã trôi dạt khỏi hệ thống thiết kế và cần được kéo lại vào chuẩn.
+
+## Cách hoạt động
+
+Polish bắt đầu bằng cách khám phá hệ thống thiết kế (token, tỷ lệ khoảng cách, thành phần dùng chung), sau đó làm việc có phương pháp qua sáu chiều:
+
+1. **Căn chỉnh trực quan và khoảng cách**: tuân thủ lưới pixel-perfect, tỷ lệ khoảng cách nhất quán, căn chỉnh quang học trên icon.
+2. **Kiểu chữ**: tính nhất quán phân cấp, độ dài dòng, widow và orphan, kerning trên tiêu đề.
+3. **Màu sắc và độ tương phản**: sử dụng token, tương đương theme, tỷ lệ WCAG, chỉ báo focus.
+4. **Trạng thái tương tác**: hover, focus, active, disabled, loading, error, success. Mọi trạng thái được tính đến.
+5. **Chuyển đổi và chuyển động**: easing mượt mà, không giật layout, tôn trọng `prefers-reduced-motion`.
+6. **Văn bản**: giọng điệu nhất quán, thì chính xác, không có chuỗi giữ chỗ, không có TODO rác.
+
+Kỹ năng rõ ràng về một điều: polish là bước cuối cùng, không phải đầu tiên. Nếu tính năng chưa hoàn thành về mặt chức năng, việc polish là công sức lãng phí.
+
+## Thử ngay
+
+```
+/impeccable polish the pricing page
+```
+
+Một lần chạy khỏe mạnh trông như:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+Năm sửa nhỏ, không viết lại. Đó là hình dáng của một lần polish pass tốt.
+
+## Những cạm bẫy cần tránh
+
+- **Polish công việc chưa xong.** Nếu có TODO trong code, bạn chưa sẵn sàng. Chỉ chạy `/impeccable polish` trên tính năng đã hoàn thành.
+- **Coi polish như thiết kế lại.** Polish tinh chỉnh những gì tồn tại. Nếu bạn thấy mình đang tái cấu trúc bố cục, bạn cần `/impeccable critique` hoặc `/impeccable layout` thay thế.
+- **Chạy `/impeccable polish` mà không có `/impeccable audit` trước.** Polish bắt vấn đề dựa trên cảm giác. Audit bắt vấn đề đo lường được. Sử dụng cả hai.

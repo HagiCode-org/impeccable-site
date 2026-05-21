@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Gerak yang bertujuan menyampaikan status, bukan dekorasi.
+highlights:
+  - Antarmuka terasa hidup mati atau tiba-tiba antar status.
+  - Pemuatan, umpan balik, atau transisi membutuhkan gerak yang menjelaskan apa yang terjadi.
+  - Anda menginginkan animasi yang disiplin dengan fallback reduced-motion.
+related:
+  - delight
+---
+
+## Kapan menggunakannya
+
+`/impeccable animate` untuk antarmuka yang terasa hidup mati, di mana perubahan status instan dan mendadak, di mana pemuatan hanya muncul begitu saja, di mana pengguna tidak pernah benar-benar percaya bahwa klik mereka terdaftar. Gunakan untuk menambahkan gerakan kecil yang mengkomunikasikan apa yang sedang terjadi: masuk, keluar, umpan balik, transisi antar status.
+
+Jangan gunakan untuk menambahkan pantulan atau pegas elastis demi energi. Itu dekorasi, dan skill ini tidak akan memberikannya kepada Anda.
+
+## Cara kerjanya
+
+Skill mengidentifikasi momen statis yang akan mendapat manfaat dari gerak, kemudian menerapkannya dengan disiplin ketat:
+
+1. **Masuk dan keluar**: elemen muncul dan pergi dengan fade 200 hingga 300ms ditambah Y halus atau skala, tidak pernah properti tata letak.
+2. **Umpan balik status**: hover, active, focus, loading, success semuanya mengkomunikasikan melalui gerak alih-alih pertukaran mendadak.
+3. **Transisi antar tampilan**: transisi elemen bersama di mana masuk akal, fade-through jika tidak.
+4. **Kemajuan dan pemuatan**: layar kerangka, bar determinate, gerak yang mengatakan "masih bekerja".
+5. **Gerak berkurang**: setiap animasi memiliki fallback `prefers-reduced-motion`.
+
+Easing selalu eksponensial (ease-out-quart, quint, atau expo) karena objek nyata melambat secara mulus. Tidak ada pantulan, tidak ada elastis, tidak ada linear untuk apa pun kecuali indikator kemajuan.
+
+Skill hanya menganimasikan `transform` dan `opacity`. Jika Anda menemukan diri Anda menganimasikan `width`, `height`, `top`, atau `left`, berarti skill melakukan hal yang salah. Gunakan `grid-template-rows` untuk transisi ketinggian.
+
+## Cobalah
+
+```
+/impeccable animate the sign-up flow
+```
+
+Penambahan tipikal:
+
+- Input email mendapatkan cahaya fokus pada focus-visible (opacity + shadow, 180ms)
+- Tombol kirim menampilkan spinner di dalam dirinya sendiri pada status loading, bukan spinner terpisah di sebelahnya
+- Layar sukses masuk dengan opacity + translateY(8px), 260ms, ease-out-quart
+- Pesan kesalahan meluncur ke bawah dengan grid-template-rows (bukan height), 220ms
+- Fallback `@media (prefers-reduced-motion: reduce)` untuk setiap transisi
+
+## Jebakan
+
+- **Meminta "lebih banyak animasi".** Animate bukan dial. Skill menambahkan di mana gerak mengkomunikasikan, bukan di mana-mana.
+- **Menghapus fallback reduced-motion.** Skill menambahkannya secara otomatis. Tidak dapat dinegosiasikan untuk aksesibilitas.

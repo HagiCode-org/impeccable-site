@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: L'intelligence de conception derrière chaque commande.
+highlights:
+  - Vous voulez un point d'entrée unique pour la mise en page, la typographie, la couleur, le mouvement et la structure UX ensemble.
+  - Vous explorez une direction et voulez que la compétence choisisse le bon sous-flux de travail.
+  - Vous avez besoin du contexte de conception le plus large plutôt que d'un passage étroit à une seule commande.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Quand l'utiliser
+
+`/impeccable` est la commande principale. Appelez-la directement lorsque vous souhaitez un travail de conception libre avec le manuel de référence complet chargé, sans avoir à choisir une commande spécialisée. C'est le recours lorsque aucune des 23 spécialistes (`audit`, `polish`, `critique`, et les autres) ne correspond précisément à ce que vous essayez de faire.
+
+Utilisez `/impeccable` directement lorsque :
+
+- **Vous n'êtes pas sûr de la commande à utiliser.** Décrivez ce que vous voulez en langage courant et laissez la compétence choisir la bonne approche.
+- **Le travail couvre plusieurs disciplines.** « Refaire cette section hero » touche à la mise en page, la typographie, la couleur et le mouvement. Une seule commande ne peut pas tout couvrir.
+- **Vous voulez l'intelligence de conception complète sans contraintes.** Tous les fichiers de référence chargés, tous les anti-patterns vérifiés, aucun flux de travail prédéfini.
+
+Pour les flux structurés, tournez-vous vers les commandes spécialisées dans la barre latérale. Exécutez `/impeccable teach` en premier dans tout nouveau projet pour établir PRODUCT.md et DESIGN.md. `/impeccable craft` enchaîne un entretien de découverte avec une construction complète et une itération visuelle en direct. `/impeccable shape` produit un cahier des charges de conception sans toucher au code. `/impeccable live` vous offre un sélecteur dans le navigateur avec trois variantes par élément. Les commandes d'évaluation et de raffinement (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize`, et les autres) se partagent chacune une tranche spécifique du travail.
+
+## Comment ça marche
+
+La plupart des interfaces générées par l'IA échouent de la même manière : des polices génériques, des dégradés violets, des grilles de cartes imbriquées, du glassmorphisme partout. `/impeccable` donne à votre IA un point de vue affirmé. Il charge un manuel de conception opinioné ainsi qu'une longue liste d'anti-patterns, puis pousse le modèle à s'engager dans une direction esthétique précise avant d'écrire la moindre ligne de code.
+
+Deux fichiers à la racine de votre projet déterminent tout ce que fait la compétence :
+
+- **`PRODUCT.md`** contient le registre (marque vs produit), les utilisateurs cibles, la personnalité de marque, les anti-références, les principes de conception. Il répond à « qui, quoi, pourquoi ».
+- **`DESIGN.md`** contient les couleurs, la typographie, l'élévation, les composants, les bonnes pratiques et les erreurs à éviter, au format Google Stitch en six sections. Il répond à « à quoi ça ressemble ».
+
+Chaque commande lit les deux fichiers avant de générer. Le **registre** détermine les valeurs par défaut chargées. Marque (marketing, landing, portfolio, où le design EST le produit) et produit (interface applicative, tableaux de bord, outils, où le design SERT le produit) ont des valeurs par défaut différentes pour la typographie, le mouvement, la couleur et la densité. Le spécifier une fois dans PRODUCT.md signifie que `/impeccable typeset` n'imposera pas des polices éditoriales à un tableau de bord, et n'imposera pas les valeurs par défaut produit à une page de campagne. Consultez le [tutoriel marque vs produit](/tutorials/brand-vs-product) pour comprendre comment les deux divergent.
+
+Lors de la première utilisation dans un projet, la compétence exécute automatiquement le flux `teach` : un court entretien qui rédige PRODUCT.md puis délègue à `/impeccable document` pour DESIGN.md. Les commandes suivantes lisent les fichiers sans redemander.
+
+## Essayez
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Les deux prompts sont vaguement formulés exprès. `/impeccable` choisira une direction esthétique forte cohérente avec votre registre, s'engagera sur des polices non par défaut, évitera la palette de couleurs IA, et prendra les kinds de décisions spécifiques qu'un designer prendrait. Pas de nom de commande à choisir d'abord, pas de flux étape par étape à suivre.
+
+Pour une itération visuelle dans le navigateur plutôt que dans le chat :
+
+```
+/impeccable live
+```
+
+Choisissez n'importe quel élément sur votre serveur de développement en cours d'exécution. Déposez un commentaire ou tracez un trait. Obtenez trois variantes de qualité production échangées à chaud via HMR. Acceptez celle que vous voulez et elle réécrit le code source.
+
+## Épinglez les commandes en tant que raccourcis
+
+La v3.0 a consolidé 18 compétences autonomes en un seul `/impeccable` avec 23 sous-commandes. Si l'abréviation d'une commande spécifique vous manque, épinglez-la :
+
+```
+/impeccable pin critique
+```
+
+Désormais, `/critique` appelle `/impeccable critique` directement. Cela crée une compétence de redirection légère qui délègue au parent, donc les mises à jour de la compétence sont appliquées sans ré-épinglage.
+
+Raccourcis utiles à essayer :
+
+- `/impeccable pin polish` pour le travail de finition
+- `/impeccable pin audit` pour les vérifications déterministes a11y/perf
+- `/impeccable pin live` pour le flux d'itération dans le navigateur
+- `/impeccable pin critique` pour la revue de conception
+
+Pour supprimer : `/impeccable unpin critique`. Les raccourcis existent en tant que répertoires préfixés par `i-` dans votre dossier de compétences harness (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, etc.), vous pouvez donc aussi les supprimer manuellement.
+
+## Pièges courants
+
+- **Le traiter comme un guide de style.** C'est un partenaire de conception opinioné, pas un linter. Les valeurs par défaut existent pour rehausser le niveau, pas pour supplanter votre jugement. Si vous avez une vraie raison de vous opposer (directive de marque, contrainte d'accessibilité, recherche utilisateur), exprimez-vous et expliquez pourquoi. La compétence travaillera avec vous. Ce qui donne de moins bons résultats, c'est d'ignorer l'opinion sans raison.
+- **S'attendre à ce qu'il corrige du code existant.** `/impeccable` est conçu pour la création. Pour le raffinement, tournez-vous vers `/impeccable polish`, `/impeccable distill` ou `/impeccable critique`.
+- **L'exécuter avant que `teach` n'ait pu sauvegarder le contexte.** Sur un nouveau projet, il vous interrogera en cours de route, ce qui fonctionne mais est plus lent. Exécuter `/impeccable teach` explicitement comme toute première commande est légèrement plus fluide.
+- **Sauter la question du registre.** Les valeurs par défaut marque et produit divergent suffisamment pour que l'exécution sur le mauvais registre produise un résultat subtilement décalé. Si `PRODUCT.md` n'a pas de champ `## Register` (format hérité), exécutez `/impeccable teach` pour l'ajouter.

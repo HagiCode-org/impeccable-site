@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Verificare tehnica pe cinci dimensiuni cu severitate P0 pana la P3.
+highlights:
+  - Aveti nevoie de probleme concrete si severitate, nu doar feedback bazat pe gust.
+  - Pregatiti o functionalitate pentru fuziune sau lansare.
+  - Banuiti defectiuni ascunse pe mobil, in teme intunecate sau sub nevoi de asistenta.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accesibilitate</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performanta</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Tematica</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsiv</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-modele</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Cinci dimensiuni scorate de la 0 la 4, fiecare constatare etichetata de la P0 (blocheaza lansarea) pana la P3 (finisaj). Auditul documenta; nu repara. Directionati constatarile catre <code>/impeccable harden</code>, <code>/impeccable polish</code> sau <code>/impeccable optimize</code>.</p>
+</div>
+
+## Cand se foloseste
+
+`/impeccable audit` este echivalentul tehnic al `/impeccable critique`. Unde `/impeccable critique` intreaba "se simte bine", `/impeccable audit` intreaba "rezista". Ruleaza verificari de accesibilitate, performanta, tematic, design responsiv si anti-modele impotriva implementarii, scorate fiecare dimensiune de la 0 la 4 si produce un plan cu rating-uri de severitate P0 la P3.
+
+Folositi-l inainte de lansare, in timpul unui sprint de calitate sau oricand un lead tehnic spune "ar trebui chiar sa ne uitam la accesibilitate".
+
+## Cum functioneaza
+
+Skill-ul scaneaza codul dumneavoastra pe cinci dimensiuni:
+
+1. **Accesibilitate**: contrast WCAG, ARIA, navigare tastatura, HTML semantic, etichete de formular.
+2. **Performanta**: agitare de layout, animatii scumpe, lipsa lazy loading, greutate bundle.
+3. **Tematica**: culori hard-codate, acoperire dark mode, consistenta token-urilor.
+4. **Responsiv**: comportament la puncte de intrerupere, tinte tactile, gestionare viewport mobil.
+5. **Anti-modele**: aceleasi 25 de verificari deterministe pe care le ruleaza detectorul.
+
+Fiecare dimensiune primeste un scor de la 0 la 4. Fiecare constatare primeste o severitate: P0 blocheaza lansarea, P1 ar trebui reparat in acest sprint, P2 este pentru urmatorul ciclu, P3 este finisaj. Primiti inapoi un singur document pe care il puteti lipi intr-un tracker de tichete.
+
+Auditul nu repara nimic. Documenteaza. Directionati constatarile catre `/impeccable polish`, `/impeccable harden` sau `/impeccable optimize` in functie de categorie.
+
+## Incercati
+
+```
+/impeccable audit the checkout flow
+```
+
+Iesire asteptata:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Lipsesc etichete de formular pe 4 campuri
+  P1: Contrast 3.1:1 pe starea butonului dezactivat
+  P2: Niciun indicator de focus vizibil pe dropdown-ul personalizat
+
+Performance: 3/4 (bun)
+  P1: Imaginea hero nu este lazy-loaded (340KB)
+  ...
+```
+
+Dati P0-urile la `/impeccable harden`, P1-urile de tematic si tipografie la `/impeccable typeset` si `/impeccable polish`, restul la `/impeccable polish`.
+
+## Capcane
+
+- **Confundarea cu `/impeccable critique`.** Auditul este calitatea implementarii. Critique este calitatea designului. Rulati ambele pentru o imagine completa.
+- **Repararea P3-urilor inainte de P0-uri.** Scala de severitate exista dintr-un motiv. Incepeti de sus.
+- **Omiterea dimensiunilor pe care le credeti ca sunt in regula.** Tematica si responsiv sunt cele pe care majoritatea oamenilor le presupun in regula pana cand nu sunt.

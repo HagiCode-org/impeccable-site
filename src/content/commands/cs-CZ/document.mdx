@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Vygenerujte DESIGN.md odpovidajici specifikaci, ktery zachycuje vas vizualni system, aby kazdy AI agent zustal ve znacke.
+highlights:
+  - Kodova zakladna jiz obsahuje skutecny designovy jazyk.
+  - Potrebujete prenositelny souhrn barev, typografie, rozestupu a komponent.
+  - Budouci designova prace odchyluje, protoze system je implicitni.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Quiet type, generous air, one committed accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Flat by default. Shadows appear only as a response to state.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tint neutrals toward the accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text for emphasis.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Sest sekci je pevnych, v pevnem poradi, s pevnymi nazvy. Vedle toho se <code>DESIGN.json</code> dodava jako strojove citelny pruvodce pro panel designu Live Mode.</p>
+</div>
+
+## Kdy pouzit
+
+Spustte `/impeccable document`, jakmile mate dost vizualniho systemu k dokumentaci: barvy, typografii, alespon tlacitko a kartu. Prikaz proskenuje vasi kodovou zakladu, extrahuje tokeny a vzory komponent, ktere najde, a zapise `DESIGN.md` v korenu projektu, ktery se ridi [formatem Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), sest sekci v pevnem poradi, interoperabilni s kazdym jinym nastrojem pracujicim s DESIGN.md.
+
+Siahnete po nem kdyz:
+
+- **Prave jste spustili `/impeccable teach`** a `PRODUCT.md` jiz existuje. Document je odpovidajici vizualni soubor.
+- **Prikaz vas k tomu navykl.** Live, craft a polish vsechny ctou DESIGN.md. Pokud chybi, dovednost navrhne spustit document jako prvni.
+- **Design se odchylil** od starsiho DESIGN.md a soubor jiz nepopisuje zivy system.
+- **Pred velkym redesignem**, pro zachyceni soucasneho stavu jako reference pro nový smer.
+
+Pro projekty bez kodu zatim (cerstve spusteny `teach`, nic sestaveneho) existuje rezim osivani: `/impeccable document --seed` polozi pet rychlych strategickych otazek (barevna strategie, smer typografie, energie pohybu, reference, anti-reference) a zapise kostru. Znovu spustte v rezimu skenovani, az bude kod k dispozici.
+
+## Jak to funguje
+
+Pruchod skenovanim najde designove prvky v poradi podle priority: CSS vlastni vlastnosti, konfigurace Tailwind, CSS-in-JS temata, soubory designovych tokenu, zdrojovy kod komponent, globalni stylesheet a nakonec vypocitane styly ze ziveho vykresleneho vystupu, pokud je k dispozici prohlizec. Automaticky extrahuje vse, co muze, a pak se zepta jedne seskupene otazky na casti, ktere potrebuji tvurci vstup: **Creative North Star** (jedna pojmenovana metafora pro cely system, napriklad "The Editorial Sanctuary"), popisne nazvy barev, filozofie elevace a charakter komponent.
+
+Vystupem je DESIGN.md s prave sesti sekcemi: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Zalaviji jsou pevne znak po znaku, aby byl soubor parsovatelny jinými nastroji. Vedle neho je zapsan `DESIGN.json` jako strojove citelny pruvodce. Tento pruvodce pouziva panel designu v live-mode pro vykresleni skutecneho tlacitka, vstupu, navigace a karty *tohoto projektu* misto obecne aproximace.
+
+Kazdy dalsi prikaz cte DESIGN.md pri spusteni. Varianty, lesteni, audity a nove funkce dedi vizualni system bez toho, aby jim to bylo receno.
+
+## Vyzkousejte to
+
+```
+/impeccable document
+```
+
+Na projektu s jiz definovanymi tokeny to trva asi dve minuty: skenovani najde vasi paletu a typograficky zasobnik, vyberete North Star ze 2 nebo 3 moznosti, potvrdte popisne nazvy barev ("Deep Muted Teal-Navy", nikoli "blue-800") a soubor pristani v korenu projektu.
+
+Na novém projektu:
+
+```
+/impeccable document --seed
+```
+
+Pet otazek, asi pet minut. Soubor je kostra, oznacena komentarem `<!-- SEED -->`, takze je poctivy k tomu, cím je. Znovu spustte bez prepinace, az budete mit implementovane tokeny.
+
+## Na co si dat pozor
+
+- **Spusteni prilis brzy.** Na projektu bez implementovanych tokenu je rezim osivani spravny. Nevytvarejte plnou specifikaci, kterou kod nemuze podlozit. Falesny DESIGN.md je horsi nez zadny DESIGN.md.
+- **Zachazeni s DESIGN.md jako dokumentaci jen pro lidi.** Je primarne pro AI. Kazdy dalsi prikaz jej cte. Vnutnost formatu ("nikdy", "vzdy", pojmenovana pravidla) je umyslna.
+- **Pridani sekce Layout / Motion / Responsive na nejvyssi uroven.** Specifikace ma sest sekci, v pevnem poradi, s pevnymi nazvy. Slozte obsah layoutu nebo pohybu do Overview (pravidla na urovni filozofie) nebo Components (chovani pro jednotlive komponenty).
+- **Tichym prepisovanim existujiciho DESIGN.md.** Document vzdy nejprve potvrdi. Pokud chcete zacit znovu, prejmenujte existujici soubor z cesty nebo explicitne reknete dovednosti, aby prepisala.

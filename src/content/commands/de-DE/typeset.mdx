@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Typografie reparieren, die generisch, inkonsistent oder zufällig wirkt.
+highlights:
+  - Text ist technisch lesbar, aber nicht überzeugend oder kontrolliert.
+  - Überschriften und Fließtext verschmelzen miteinander.
+  - Die Oberfläche braucht einen stärkeren Ton durch Typografie statt durch mehr Dekoration.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Wann man es verwendet
+
+Greifen Sie zu `/impeccable typeset`, wenn der Text auf einer Seite wie Standard-Typografie aussieht statt wie gestaltete Typografie. Verschwommene Hierarchie, drei Größen, die gleich aussehen, Fließtext bei 14px, eine Display-Schrift, die eigentlich nur Inter bold ist, Überschriften ohne Kerning-Aufmerksamkeit.
+
+Häufige Auslöser: „Hierarchie wirkt flach", „Lesbarkeit ist nicht richtig", „Schriften sehen generisch aus".
+
+## Wie es funktioniert
+
+Der Skill bewertet Typografie über fünf Dimensionen:
+
+1. **Schriftwahl**: verwenden Sie unsichtbare Standards (Inter, Roboto, Arial, Open Sans), passt die Schriftart zur Marke, gibt es mehr als 2 bis 3 Schriftfamilien.
+2. **Hierarchie**: sind Überschrift, Fließtext und Caption auf einen Blick klar unterschiedlich, ist der Größenkontrast zwischen Stufen mindestens 1,25x, sind Gewichts-Kontraste lesbar.
+3. **Größen und Skala**: gibt es eine kohärente Typografie-Skala, erfüllt der Fließtext mindestens 16px, ist die Skala fixed-rem für App-UIs oder fluid-clamp für Marketing-Seiten.
+4. **Lesbarkeit**: Zeilenlänge 45 bis 75 Zeichen, line-height für Schrift und Kontext abgestimmt, Kontrast.
+5. **Konsistenz**: dasselbe Element erhält überall dieselbe Behandlung, keine einmaligen font-size-Überschreibungen.
+
+Anschließend behebt er, was er findet: wählt markante Schriftarten, baut eine modulare Skala auf, erweitert den Hierarchie-Kontrast, setzt richtige Zeilenlänge und Durchschuss.
+
+## Ausprobieren
+
+```
+/impeccable typeset the article layout
+```
+
+Erwartetes Diff:
+
+- Display-Schrift von Inter 700 zu einer echten Display-Schrift gewechselt
+- Typografie-Skala neu aufgebaut: 3rem / 2rem / 1,25rem / 1rem / 0,875rem, Verhältnis 1,333
+- Fließtext von 14px auf 16px angehoben
+- Zeilenlänge auf 68ch in der Artikel-Spalte begrenzt
+- Line-height 1,6 für Fließtext, 1,1 für Display
+- Vier einmalige `font-size`-Werte in Komponenten-Stilen entfernt
+
+## Fallstricke
+
+- **Nach einer neuen Schrift ohne Kontext fragen.** Typeset wählt basierend auf der Markenstimme in `PRODUCT.md`. Wenn Sie `/impeccable teach` nicht ausgeführt haben, wird der Vorschlag generisch sein.
+- **Zu typeset greifen, wenn das Problem das Layout ist.** Wenn Absätze in Ordnung sind, sich die Seite aber beengt anfühlt, möchten Sie `/impeccable layout`.
+- **Fluide clamp-Skalen bei App-UIs erwarten.** Typeset verwendet feste rem-Skalen für App-Interfaces. Fluide Typografie ist für Marketing- und Content-Seiten, wo die Zeilenlänge stark variiert.

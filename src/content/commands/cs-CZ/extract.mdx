@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Vytahnete znovupouzitelne komponenty, tokeny a vzory do designoveho systemu.
+highlights:
+  - Vice komponent resi stejny problem ruzne.
+  - Tokeny a vzory potrebuji byt centralizovany.
+  - Chcete udrzovatelnejsi vizualni system.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Opakovane hex hodnoty, varianty tlacitek, meritka rozestupu, textove styly.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Nazvy tokenu, API komponent s variantami a velikostmi, textove styly.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Nahradte duplicitni CSS novymi primitivy. Zadny osirely kod nezusta.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Dovednost extrahuje pouze to, co je pouzito trikrat nebo vice se stejnym umyslem. Dve pouziti nejsou vzor a migrace vzdy probehne ve stejném pruchodu.</p>
+</div>
+
+## Kdy pouzit
+
+`/impeccable extract` je pro okamzik, kdy se vase kodova zakladna nahodou stala designovym systemem. Opakovane styly tlacitek na 12 mistech. Tri varianty stejne karty. Hex barvy rozptylene vsude. Rucne vytvorene rozestupy, ktere nahodou odpovidaji meritku. Siahnete po nem, kdyz chcete tuto drift konsolidovat do znovupouzitelnych primitiv.
+
+Pouzijte jej, az kdyz produkt ma dodano dost funkci na to, aby se vzory projevily. Predcasna extrakce vytvari abstrakce, ktere neodpovidaji realite.
+
+## Jak to funguje
+
+Dovednost nejprve objevi strukturu designoveho systemu a pak identifikuje prilezitosti k extrakci:
+
+1. **Tokeny**: najde opakovane literalni hodnoty (barvy, rozestupy, polomery, stiny, velikosti pisma). Navrhne nazvy tokenu, prida do systemu tokenu, nahradi pouziti.
+2. **Komponenty**: najde UI vzory, ktere se opakuji s mensimi variacemi (tlacitka, karty, vstupy, modalni okna). Extrahuje do jedne komponenty s variantami, migruje volajici.
+3. **Skladaci vzory**: najde layoutove nebo interakcni vzory, ktere se opakuji (radky formulare, skupiny panelu nastroju, prazdne stavy). Extrahuje do skladacich primitiv.
+4. **Textove styly**: najde opakovane kombinace font-size + weight + line-height. Extrahuje do textovych stylu.
+5. **Animacni vzory**: najde opakovane kombinace easing, duration nebo keyframe. Extrahuje do tokenu pohybu.
+
+Dovednost je opatrna. Extrahuje pouze veci pouzite trikrat nebo vice se stejnym umyslem. Nikdy neextrahuje "protoze by to mohlo byt znovu pouzito pozdeji". Predcasna abstrakce je horsi nez duplicita.
+
+## Vyzkousejte to
+
+```
+/impeccable extract the button styles
+```
+
+Ocekavany vystup:
+
+- Nalezeno 14 instanci tlacitek v 8 souborech
+- 4 distinct varianty: primary (vyplnena akcentova), secondary (ohranicena), ghost (pouze text), destructive (vyplnena cervena)
+- Vsechny 4 varianty pouzivaji stejne meritko velikosti (small, default, large)
+- Extrahovano do `<Button variant="primary" size="default">` s tokenovymi styly
+- Migrovano 14 mist volani, odstraneno ~180 radku duplicitniho CSS
+- Pridano 3 chybejici tokeny: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Na co si dat pozor
+
+- **Extrakce prilis brzy.** Dve pouziti nejsou vzor. Tri mohou byt. Pockejte, az bude vzor zrejmy.
+- **Pregeneralizovani.** Extrahovana komponenta by mela odpovidat soucasnym pripadum pouziti, ne predvidat kazdou budouci moznost. Varianty muzete vzdy pridat pozdeji.
+- **Zapomenuti na migraci.** Extrakce bez migrace nechava stary duplicitni kod na miste a vytvari treti zpusob, jak delat stejnou vec. Vzdy migrujte ve stejném pruchodu.
+- **Extrakce veci, ktere se lisi v umyslu.** Dve tlacitka, ktere vypadaji podobne, ale slouzi ruznym ucelum (primarni akce vs odkaz stylizovany jako tlacitko), by pravdepodobne mela zustat oddelena.

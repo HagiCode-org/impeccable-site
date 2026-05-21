@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: 在瀏覽器中迭代 UI。選取元素、放下評論、獲得三個變體。接受一個，它會寫回原始碼。
+highlights:
+  - 開發伺服器已經存在。
+  - 你想要直接在渲染的 UI 上比較選項。
+  - 最快的下一步是引導式的視覺實驗。
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">觀看實際運作，包含動畫演示，請至 <a href="/live-mode">/live-mode</a>。本頁是當指令執行時你的 AI 工具讀取的參考文件。</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>狀態：alpha。</strong>即時模式端到端運作正常，可供試用，但仍需要針對更多真實世界的儲存庫和框架設定進行測試。不常見的設定可能會有粗糙的邊緣，請回報損壞的部分。</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">即時模式循環中：選取器勾勒出你選擇的元素，情境列顯示你目前在哪個變體上，全域列固定在底部。在這個上接受會將變體 2 寫回原始碼。</p>
+</div>
+
+## 何時使用
+
+當你想要像在設計工具中那樣視覺化地迭代東西，但保持生產程式碼作為輸出時，請使用 `/impeccable live`。Figma 的畫布式流程，無需到實作步驟的往返。
+
+適用於：
+
+- **在真實元素上探索方向。** 一個 hero 區塊、一張電子報卡片、一個定價層級。三個真正不同的方案，並排呈現在實際頁面的實際情境中。
+- **打磨一塊幾乎對了的 UI。** 你知道什麼感覺不對但說不上來。選取元素，塗鴉「更活潑」或在困擾你的部分畫一條線，按下開始。
+- **團隊正在辯論的兩個方向之間快速 A/B。** 生成變體，不接受任何一個，離開。重點是比較。
+
+它不適用於全新的綠地功能（用 `/impeccable craft`）或整頁重新設計（用 `/impeccable` 或專門的精煉指令）。
+
+## 運作方式
+
+一個指令在你的開發伺服器上帶出一個選取覆蓋層。你選取任何元素。旁邊出現一個小型情境列。輸入自由形式的描述或選擇一個動作晶片（`bolder`、`quieter`、`distill`、`polish`、`typeset`、`colorize`、`layout`、`animate`、`delight`、`overdrive`）。選擇性地先在元素上放下評論標記或畫上筆觸，技能會將這些讀取為意圖。
+
+按下開始。三個**生產品質的變體**被生成，每個都錨定到一個真正不同的設計原型（不是三個色彩的變奏），並透過你框架的 HMR 熱替換到頁面中。用方向鍵循環瀏覽。接受一個，變體會寫回原始碼。全部丟棄，原始版本保留。
+
+它支援 Vite、Next.js（包括 monorepo）、SvelteKit、Astro、Nuxt 和純靜態 HTML。如果你的開發伺服器有嚴格的 Content Security Policy，首次執行設定會偵測到並提供一次性、僅限開發的補丁，讓選取器可以載入。`DESIGN.md` 在視覺決策上優先，`PRODUCT.md` 在語氣上優先：如果你兩者都有，變體無需被告知就能保持品牌一致。
+
+## 試試看
+
+```
+/impeccable live
+```
+
+開啟你的開發伺服器 URL，選取電子報註冊卡片，點擊 `delight` 晶片，按下開始。你會獲得三個在性格維度上變化的變體（郵票和明信片感、字型驚喜版本、插畫重點版本），而非三個相同處理的變奏。
+
+或者選取一個 hero，輸入「更編輯風，少 SaaS」，按下開始。三個變體會錨定到不同的編輯原型（大報報頭、目錄式規格行、超大字符海報），而非同一想法的三個深淺版本。
+
+完成時停止即時模式：說「停止即時模式」、關閉分頁，或點擊選取列上的退出按鈕。
+
+## 注意事項
+
+- **在仍只寫了一半的頁面上執行。** 即時變體生成需要脈絡。如果元素有佔位文案、通用的 Lorem ipsum 或樣式表之前的預設格式，變體會反映那些。先填好內容。
+- **期望它做宏觀決策。** 即時模式迭代單一選取的元素。對於「重做整個定價頁」，改用 `/impeccable` 或 `/impeccable craft`。
+- **忽略後備訊息。** 如果元素存在於生成的檔案中（編譯的模板、建構輸出），選取器會明確說明並提議將接受路由到真正的原始碼。不要強制接受到生成的檔案中：下一次建構會抹掉它。
+- **在意品牌一致性但沒有 PRODUCT.md 或 DESIGN.md 就執行。** 即時模式仍會生成，但變體會傾向通用預設值。如果結果需要聽起來像你的產品，先執行 `/impeccable teach` 和 `/impeccable document`。

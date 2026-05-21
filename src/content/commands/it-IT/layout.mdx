@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Correggi layout, spaziatura e ritmo visivo.
+highlights:
+  - La pagina manca di enfasi chiara.
+  - Esiste buon contenuto, ma la composizione lo nasconde.
+  - Vuoi un flusso più forte prima di toccare colore o movimento.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Quando usarlo
+
+`/impeccable layout` è per le pagine dove nulla è tecnicamente sbagliato ma nulla sta respirando nemmeno. Padding uguale ovunque, griglie di card monotone, contenuto che va da bordo a bordo, gerarchia che si affida solo alla dimensione. Ricorri a layout quando un layout "sembra strano" e non riesci ad articolare perché.
+
+Buoni trigger: "tutto sembra affollato", "si legge come un muro", "non so dove guardare per primo".
+
+## Come funziona
+
+La skill percorre cinque dimensioni del layout:
+
+1. **Spaziatura**: la scala di spaziatura è coerente o ci sono gap casuali di 13px, gli elementi correlati sono raggruppati stretti con spazio generoso tra i gruppi, esiste un ritmo.
+2. **Gerarchia visiva**: l'occhio si posa sull'azione principale entro 2 secondi, la gerarchia fa un vero lavoro o tutto sta urlando.
+3. **Griglia e struttura**: esiste una griglia sottostante o il layout è casuale, gli elementi sono allineati alle linee di base.
+4. **Ritmo**: la pagina alterna spaziatura stretta e generosa, o tutto è uniforme.
+5. **Densità**: il layout è stipato o sprecone, la densità corrisponde al tipo di contenuto.
+
+Le correzioni di solito coinvolgono la ricostruzione della scala di spaziatura, l'introduzione di asimmetria, il collasso di griglie monotone in un layout misto con hero ed elementi di supporto, e dare all'azione principale vero spazio.
+
+## Provalo
+
+```
+/impeccable layout the settings page
+```
+
+Modifiche tipiche:
+
+- Scala di spaziatura unificata a 8 / 16 / 24 / 48 / 96px
+- Interruzioni di sezione a 48px, gap tra righe a 16px, gruppi di campi form a 8px
+- Azioni principali estratte dal flusso del form con buffer di 32px
+- Bordi decorativi rimossi, sostituiti con raggruppamento basato sulla spaziatura
+- Proporzioni sidebar e colonna principale ribilanciate (280 / flex vs 25 / 75)
+
+## Insidie
+
+- **Confondere arrange con distill.** Se il problema è troppe cose, esegui prima `/impeccable distill`. Layout serve per disporre ciò che è già il set giusto.
+- **Aspettarsi che salvi una griglia rotta.** Se la pagina non ha una griglia, arrange ne costruirà una. Sappi solo che il diff sarà più grande di quanto ti aspetti.
+- **Ignorare il verdetto sulla gerarchia.** Se arrange dice "nulla è primario", nessuna quantità di lavoro sulla spaziatura lo risolve. Serve una decisione sul contenuto, non un aggiustamento del layout.

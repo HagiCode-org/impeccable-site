@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Erst denken, dann bauen. Einen Design Brief durch Discovery erstellen, nicht durch Raten.
+highlights:
+  - Sie möchten Planung ohne Implementierung.
+  - Das richtige Layout oder der richtige Ton sind noch unklar.
+  - Mehrere Stakeholder müssen sich vor dem Build auf die Absicht einigen.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Ergebnis von /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Zweck</span>
+        <span class="docs-viz-file-v">Engagierte Abonnenten ihre Auswahl ändern lassen, ohne sie zur Abmeldung zu verlieren.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Nutzer</span>
+        <span class="docs-viz-file-v">In Eile, auf dem Smartphone, mitten im Meeting. Schnell lesend, wenig Geduld.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Inhalte</span>
+        <span class="docs-viz-file-v">4 Digest-Typen, 2 Frequenzen, ein Alles-abbestellen ganz unten.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Gefühl</span>
+        <span class="docs-viz-file-v">Ruhig, vertrauenswürdig, keine Dark Patterns.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Einschränkungen</span>
+        <span class="docs-viz-file-v">Mobile-first. WCAG AA-Kontrast. Einspaltig, keine Modals.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Übergeben Sie es an <code>/impeccable</code>, <code>/impeccable craft</code> oder einen beliebigen Implementierungsablauf.</div>
+  </div>
+  <p class="docs-viz-caption">Ein Shape-Brief ist ein Kompass, keine Spezifikation. Er erfasst Absicht, nicht UI. Implementierungs-Skills lesen ihn, bevor eine Zeile Code geschrieben wird.</p>
+</div>
+
+## Wann man es verwendet
+
+`/impeccable shape` ist der Startpunkt eines Features. Bevor jemand Code schreibt, bevor jemand über die Hero-Gestaltung streitet, bevor jemand eine Schrift auswählt. Verwenden Sie es, um ein Discovery-Gespräch über Zweck, Nutzer, Inhalte und Einschränkungen zu erzwingen, und erfassen Sie dann die Antworten als Design Brief, auf den sich die Implementierungs-Skills stützen können.
+
+Greifen Sie zu ihm, wenn ein Feature starten soll, ein Ticket vage ist, oder Sie sich dabei ertappen, JSX zu schreiben, um herauszufinden, was das Produkt sein soll.
+
+## Wie es funktioniert
+
+Die meisten KI-generierten UIs scheitern nicht wegen schlechtem Code, sondern wegen übersprungenem Denken. Das Modell springt zu „hier ist ein Kartenraster", ohne zu fragen „was versucht der Nutzer zu erreichen". `/impeccable shape` kehrt diese Reihenfolge um.
+
+Der Skill führt ein strukturiertes Discovery-Interview im Gespräch durch. Er wird in dieser Phase keinen Code schreiben. Die Fragen umfassen:
+
+- **Zweck und Kontext**: wofür das Feature ist, wer es nutzt, in welcher Verfassung sie sich befinden
+- **Inhalte und Daten**: was angezeigt wird, realistische Bereiche, Randfälle, was dynamisch ist
+- **Design-Ziele**: die einzelne wichtigste Sache, das angestrebte Gefühl, Referenzbeispiele
+- **Einschränkungen**: technische, inhaltliche, Barrierefreiheit, Lokalisierung
+
+Sie antworten natürlich. Der Skill stellt Rückfragen, kein Formular. Am Ende produces er einen Design Brief: ein strukturiertes Artefakt, das Sie an `/impeccable` oder einen anderen Implementierungs-Skill übergeben können.
+
+Hinweis: Wenn Sie den vollständigen Ablauf möchten (Discovery-Interview, dann direkt ins Bauen), verwenden Sie stattdessen `/impeccable craft`. Es führt `/impeccable shape` intern aus und fährt dann mit Implementierung und visueller Iteration fort. `/impeccable` standalone ist für den Fall, dass Sie nur den Brief möchten, um ihn zu einem beliebigen Implementierungsansatz Ihrer Wahl mitzunehmen.
+
+## Ausprobieren
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Erwarten Sie ein Gespräch mit 5 bis 10 Fragen. Der Skill fragt Dinge wie „wer ist die Person, die dies öffnet, und ist sie bereits engagiert oder noch neugierig" und „was passiert, wenn der Nutzer sich von allem abgemeldet hat, verbergen wir das Feature oder zeigen wir etwas". Sie antworten, und ein Brief entsteht.
+
+Von dort können Sie den Brief an `/impeccable`, `/impeccable polish` oder einen anderen Skill übergeben. Oder ihn einfach als Referenz nutzen, während Sie manuell bauen.
+
+## Fallstricke
+
+- **Überspringen, weil es sich langsam anfühlt.** Das Interview dauert vielleicht 5 Minuten. Die Neu-Schreibvorgänge, die Sie vermeiden, werden in Stunden gemessen.
+- **Den Brief als Spezifikation behandeln.** Er ist ein Kompass, keine Checkliste. Er erfasst Absicht, nicht UI.
+- **Mit „standard" oder „normal" antworten.** Spezifität ist der ganze Punkt. Wenn ein Nutzer „in Eile, auf dem Smartphone, zwischen Meetings" ist, sagen Sie das. Das ändert alles downstream.

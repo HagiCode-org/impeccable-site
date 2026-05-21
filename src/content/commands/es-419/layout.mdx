@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Corrige layout, espaciado y ritmo visual.
+highlights:
+  - La pagina carece de enfasis claro.
+  - Existe buen contenido, pero la composicion lo oculta.
+  - Quieres un flujo mas fuerte antes de tocar color o movimiento.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Cuando usarlo
+
+`/impeccable layout` es para paginas donde nada esta tecnicamente mal pero nada respira tampoco. Relleno igual en todas partes, grillas de tarjetas monotonas, contenido que va de borde a borde, jerarquia que depende solo del tamano. Usalo cuando un layout "se siente mal" y no puedes articular por que.
+
+Buenos disparadores: "todo se siente amontonado", "se lee como un muro", "no se donde mirar primero".
+
+## Como funciona
+
+La habilidad recorre cinco dimensiones de layout:
+
+1. **Espaciado**: la escala de espaciado es consistente o hay brechas aleatorias de 13px, los elementos relacionados estan agrupados con generoso espacio entre grupos, hay algun ritmo.
+2. **Jerarquia visual**: la vista aterriza en la accion primaria en 2 segundos, la jerarquia esta haciendo trabajo real o todo esta gritando.
+3. **Grilla y estructura**: hay una grilla subyacente o el layout es aleatorio, los elementos estan alineados a lineas base.
+4. **Ritmo**: la pagina alterna entre espaciado apretado y generoso, o todo es uniforme.
+5. **Densidad**: el layout esta apretado o es desperdiciado, la densidad coincide con el tipo de contenido.
+
+Las correcciones usualmente implican reconstruir la escala de espaciado, introducir asimetria, colapsar grillas monotonas en un layout mixto con hero y elementos secundarios, y darle espacio real a la accion primaria.
+
+## Probalo
+
+```
+/impeccable layout the settings page
+```
+
+Cambios tipicos:
+
+- Escala de espaciado unificada a 8 / 16 / 24 / 48 / 96px
+- Saltos de seccion a 48px, brechas de fila a 16px, grupos de campos de formulario a 8px
+- Acciones primarias separadas del flujo del formulario con buffer de 32px
+- Bordes decorativos eliminados, reemplazados con agrupacion basada en espaciado
+- Proporciones de barra lateral y columna principal reequilibradas (280 / flex vs 25 / 75)
+
+## Errores comunes
+
+- **Confundir layout con distill.** Si el problema es que hay demasiadas cosas, ejecuta `/impeccable distill` primero. Layout es para organizar lo que ya es el conjunto correcto.
+- **Esperar que rescate una grilla rota.** Si la pagina no tiene grilla, layout constr uira una. Solo sabe que el diff va a ser mas grande de lo que esperas.
+- **Ignorar el veredicto de jerarquia.** Si layout dice "nada es primario", ninguna cantidad de trabajo de espaciado arregla eso. Necesitas una decision de contenido, no un ajuste de layout.

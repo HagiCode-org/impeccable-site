@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Görsel sisteminizi yakalayan ve her AI aracının markaya sadık kalmasını sağlayan spesifikasyon uyumlu bir DESIGN.md oluşturun.
+highlights:
+  - Kod tabanında zaten gerçek bir tasarım dili mevcut.
+  - Renkler, tipografi, aralık ve bileşenler için taşınabilir bir özete ihtiyacınız var.
+  - Gelecekteki tasarım çalışmaları, sistem örtük olduğu için sapma gösteriyor.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Quiet type, generous air, one committed accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Flat by default. Shadows appear only as a response to state.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tint neutrals toward the accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text for emphasis.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Altı bölüm sabittir, sabit bir sıradadır ve sabit isimlere sahiptir. Yanında, <code>DESIGN.json</code> Canlı Mod tasarım paneli için makine tarafından okunabilir bir yardımcı dosya olarak sunulur.</p>
+</div>
+
+## Ne zaman kullanılır
+
+Görsel sisteminizi belgeleyecek kadar materyale sahip olduğunuzda `/impeccable document` komutunu çalıştırın: renkler, tipografi, en azından bir düğme ve bir kart. Komut, kod tabanınızı tarar, bulduğu token'ları ve bileşen kalıplarını çıkarır ve proje köküne [Google Stitch DESIGN.md formatıyla](https://stitch.withgoogle.com/docs/design-md/format/) uyumlu, sabit sıralı altı bölümden oluşan, diğer DESIGN.md uyumlu araçlarla birlikte çalışabilen bir `DESIGN.md` yazar.
+
+Şu durumlarda kullanın:
+
+- **Az önce `/impeccable teach` komutunu çalıştırdınız** ve `PRODUCT.md` artık mevcut. Document, buna karşılık gelen görsel taraf dosyasıdır.
+- **Bir komut sizi bu dosyaya yönlendirdi.** Live, craft ve polish komutlarının tümü DESIGN.md dosyasını okur. Eğer dosya eksikse, beceri önce document komutunu çalıştırmanızı önerir.
+- **Tasarım eski** bir DESIGN.md dosyasından sapma gösterdi ve dosya artık canlı sistemi tanımlamıyor.
+- **Büyük bir yeniden tasarım öncesinde**, bir sonraki yön için referans olarak mevcut durumu yakalamak için.
+
+Henüz kodu olmayan projeler için (yeni bir `teach` çalıştırması, henüz oluşturulmamış), bir tohum modu vardır: `/impeccable document --seed` beş kısa stratejik soru sorar (renk stratejisi, tipografi yönü, hareket enerjisi, referanslar, anti-referanslar) ve bir iskelet yazar. Kod oluştuktan sonra tarama modunda yeniden çalıştırın.
+
+## Nasıl çalışır
+
+Tarama geçişi, tasarım varlıklarını öncelik sırasına göre bulur: CSS özel özellikleri, Tailwind yapılandırması, CSS-in-JS temaları, tasarım token dosyaları, bileşen kaynak kodu, genel stil sayfası ve son olarak bir tarayıcı mevcutsa canlı oluşturulan çıktıdan hesaplanan stiller. Otomatik olarak bulabildiği her şeyi çıkarır, ardından yaratıcı giriş gerektiren parçalar için bir gruplandırılmış soru sorar: **Creative North Star** (tüm sistem için tek bir adlandırılmış metafor, örneğin "The Editorial Sanctuary"), açıklayıcı renk adları, yükseltme felsefesi ve bileşen karakteri.
+
+Çıktı, tam olarak altı bölümden oluşan bir DESIGN.md dosyasıdır: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Başlıklar, dosyanın diğer araçlar tarafından ayrıştırılabilmesi için karakter karakter sabittir. Yanında, `DESIGN.json` makine tarafından okunabilir bir yardımcı dosya olarak yazılır. Bu yardımcı dosya, canlı mod tasarım panelinin genel bir yaklaşık gösterim yerine *bu projenin* gerçek düğme, giriş, gezinti ve kart döşemelerini oluşturmak için kullandığı şeydir.
+
+Diğer tüm komutlar çağrıldığında DESIGN.md dosyasını okur. Varyantlar, cilalar, denetimler ve yeni özellikler, görsel sistemi söylenmeden devralır.
+
+## Deneyin
+
+```
+/impeccable document
+```
+
+Önceden tanımlanmış token'ları olan bir projede, bu yaklaşık iki dakika sürer: tarama paletinizi ve tipografi yığınızı bulur, 2 veya 3 seçenekten bir Kuzey Yıldızı seçersiniz, açıklayıcı renk adlarını onaylarsınız ("blue-800" değil, "Deep Muted Teal-Navy") ve dosya proje köküne yerleşir.
+
+Yeni bir projede:
+
+```
+/impeccable document --seed
+```
+
+Beş soru, yaklaşık beş dakika. Dosya bir iskelet olup, ne olduğu konusunda dürüst olmak üzere bir `<!-- SEED -->` yorumuyla işaretlenmiştir. Token'ları uyguladıktan sonra bayrak olmadan yeniden çalıştırın.
+
+## Tuzaklar
+
+- **Çok erken çalıştırmak.** Uygulanmış token'ları olmayan bir projede, tohum modu doğrudur. Kodun destekleyemeyeceği tam bir spesifikasyon üretmeyin. Sahte bir DESIGN.md, DESIGN.md olmamasından daha kötüdür.
+- **DESIGN.md'yi sadece insanlar için belge olarak düşünmek.** Bu öncelikle AI içindir. Diğer tüm komutlar bunu okur. Formatın kararlılığı ("asla", "her zaman", Adlandırılmış Kurallar) kasıtlıdır.
+- **Layout / Motion / Responsive üst düzey bölümü eklemek.** Spesifikasyonun altı bölümü vardır, sabit bir sıradadır ve sabit isimlere sahiptir. Düzen veya hareket içeriğini Overview bölümüne (felsefe düzeyindeki kurallar) veya Components bölümüne (bileşen başına davranış) katın.
+- **Mevcut bir DESIGN.md dosyasının sessizce üzerine yazmak.** Document her zaman önce onay ister. Yeniden başlamak istiyorsanız, mevcut dosyayı yeniden adlandırın veya beceriye açıkça üzerine yazmasını söyleyin.

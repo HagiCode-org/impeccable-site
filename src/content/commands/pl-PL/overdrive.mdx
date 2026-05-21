@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Przesuń interfejs poza konwencjonalne granice. Shadery, fizyka, 60fps, kinowe przejścia.
+highlights:
+  - Doświadczenie ma się wydawać nadzwyczajne, nie tylko porządne.
+  - Bogaty ruch lub rendering jest częścią opowieści produktu.
+  - Zespół jest skłonny zapłacić za złożoność tam, gdzie ma znaczenie.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Kiedy używać
+
+`/impeccable overdrive` jest na momenty, kiedy chcesz zaimponować. Hero, które używa WebGL. Tabela, która obsługuje milion wierszy. Dialog, który morphuje z elementu wyzwalającego. Formularz, który waliduje w czasie rzeczywistym ze strumieniową informacją zwrotną. Przejście strony, które wydaje się kinowe. Użyj, gdy budżet projektu pozwala na techniczną ambicję, a wynik musi wydawać się nadzwyczajny.
+
+Nie używaj na narzędziach operatorskich, dashboardach ani niczym, gdzie niezawodność przebija spektakl. Overdrive płaci złożonością za efekt, i ten kompromis jest tego wart tylko w momentach, które mają znaczenie.
+
+## Jak to działa
+
+Umiejętność wybiera jeden moment do uczynienia nadzwyczajnym i się na nim angażuje, zamiast rozprowadzać wysiłek po całym interfejsie. Sięga po techniki, których większość generowanych przez AI interfejsów nigdy nie dotyka: shadery WebGL, fizyka sprężyn, Scroll Timeline, View Transitions, animacja canvas, filtry akcelerowane przez GPU. Wszystko jest budżetowane, profilowane i testowane na 60fps, z fallbackami reduced-motion wbudowanymi od razu.
+
+Wynik overdrive jest ogłaszany z `──── ⚡ OVERDRIVE ────`, żebyś wiedział, że wchodzisz w bardziej ambitny tryb. Oczekuj większych diffów, nowych zależności i głębi implementacji wykraczającej poza to, co produkują inne umiejętności.
+
+## Wypróbuj
+
+```
+/impeccable overdrive the landing hero
+```
+
+Jeden konkretny przebieg mógłby zastąpić statyczne hero tłem shaderowym WebGL napędzanym pozycją myszy, nagłówkiem displayowym, który odsłania się z maską na scrollu używając Scroll Timeline API, i View Transition na CTA, które morphuje w następną stronę. Plus fallback reduced-motion, który podmienia wszystko na czystą statyczną kompozycję.
+
+## Pułapki
+
+- **Używanie wszędzie.** Overdrive działa, bo jest rzadkie. Jeśli każda strona ma kinowe momenty, żadne z nich nie jest kinowe.
+- **Wysyłanie bez fallbacków reduced-motion.** Nienegocjowalne. Overdrive dodaje je automatycznie; nie usuwaj ich.
+- **Ignorowanie wydajności.** Nadzwyczajne momenty nadal muszą trafiać 60fps. Jeśli efekt gubi klatki, utnij go lub zoptymalizuj. Wolny spektakl jest gorszy niż prosto, ale dobrze zrobione.
+- **Uruchamianie overdrive przed tym, jak bazowy interfejs jest solidny.** Spektakl na zepsutym fundamencie czyta się jako odwrócenie uwagi, nie delight.

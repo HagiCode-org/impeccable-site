@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Vijf-dimensionale technische kwaliteitscontrole met P0 tot P3 ernst.
+highlights:
+  - Je hebt concrete problemen en ernstgraden nodig, niet alleen op smaak gebaseerde feedback.
+  - Je bereidt een functie voor op een merge of release.
+  - Je vermoedt verborgen problemen op mobiel, in donkere thema's of onder toegankelijkheidsbehoeften.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Toegankelijkheid</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Prestaties</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patronen</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Vijf dimensies gescoord van 0 tot 4, elke bevinding gelabeld P0 (blokkeert release) tot P3 (afwerking). Audit documenteert; het repareert niet. Routeer de bevindingen naar <code>/impeccable harden</code>, <code>/impeccable polish</code> of <code>/impeccable optimize</code>.</p>
+</div>
+
+## Wanneer te gebruiken
+
+`/impeccable audit` is de technische tegenhanger van `/impeccable critique`. Waar `/impeccable critique` vraagt "voelt dit goed", vraagt `/impeccable audit` "houdt dit stand". Het voert toegankelijkheids-, prestatie-, theming-, responsive-design- en anti-patrooncontroles uit op de implementatie, scoort elke dimensie van 0 tot 4, en produceert een plan met P0 tot P3 ernstgraden.
+
+Gebruik het voor levering, tijdens een kwaliteitsprint, of wanneer een tech lead zegt "we moeten echt naar toegankelijkheid kijken".
+
+## Hoe het werkt
+
+De skill scant je code over vijf dimensies:
+
+1. **Toegankelijkheid**: WCAG-contrast, ARIA, toetsenbordnavigatie, semantische HTML, formulierlabels.
+2. **Prestaties**: layout-thrashing, dure animaties, ontbrekende lazy loading, bundelgrootte.
+3. **Theming**: hardcoded kleuren, dark mode-dekking, tokenconsistentie.
+4. **Responsive**: breakpoint-gedrag, aanraakdoelen, mobiele viewport-afhandeling.
+5. **Anti-patronen**: dezelfde deterministische 25 controles die de detector uitvoert.
+
+Elke dimensie krijgt een score van 0 tot 4. Elke bevinding krijgt een ernst: P0 blokkeert de release, P1 moet deze sprint worden opgelost, P2 is voor de volgende cyclus, P3 is afwerking. Je krijgt een enkel document terug dat je in een tickettracker kunt plakken.
+
+Audit repareert niets. Het documenteert. Routeer de bevindingen naar `/impeccable polish`, `/impeccable harden` of `/impeccable optimize`, afhankelijk van de categorie.
+
+## Probeer het
+
+```
+/impeccable audit the checkout flow
+```
+
+Verwachte output:
+
+```
+Toegankelijkheid: 2/4 (gedeeltelijk)
+  P0: Ontbrekende formulierlabels op 4 invoervelden
+  P1: Contrast 3.1:1 op uitgeschakelde knopstatus
+  P2: Geen zichtbare focus-indicator op aangepaste dropdown
+
+Prestaties: 3/4 (goed)
+  P1: Hero-afbeelding niet lazy-loaded (340KB)
+  ...
+```
+
+Geef de P0's door aan `/impeccable harden`, de theming- en typografie-P1's aan `/impeccable typeset` en `/impeccable polish`, de rest aan `/impeccable polish`.
+
+## Valkuilen
+
+- **Verwarring met `/impeccable critique`.** Audit is implementatiekwaliteit. Critique is ontwerpkwaliteit. Voer beide uit voor een compleet beeld.
+- **P3's repareren voordat P0's zijn opgelost.** De ernsttschaal bestaat om een reden. Begin bovenaan.
+- **De dimensies overslaan waarvan je denkt dat ze goed zijn.** Theming en responsive zijn de dimensies waar de meeste mensen van uitgaan dat ze goed zijn tot ze dat niet zijn.

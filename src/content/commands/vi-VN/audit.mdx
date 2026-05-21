@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Kiểm tra chất lượng kỹ thuật năm chiều với mức nghiêm trọng P0 đến P3.
+highlights:
+  - Bạn cần các vấn đề cụ thể và mức nghiêm trọng, không chỉ phản hồi dựa trên thị hiếu.
+  - Bạn đang chuẩn bị một tính năng để merge hoặc phát hành.
+  - Bạn nghi ngờ hỏng hóc ẩn trên mobile, trong dark theme hoặc dưới nhu cầu hỗ trợ tiếp cận.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Khả năng tiếp cận</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Hiệu suất</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Tùy biến giao diện</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Phản mẫu</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Năm chiều được chấm từ 0 đến 4, mỗi phát hiện được gắn nhãn P0 (chặn phát hành) đến P3 (tinh chỉnh). Audit chỉ ghi nhận; không sửa. Chuyển các phát hiện đến <code>/impeccable harden</code>, <code>/impeccable polish</code>, hoặc <code>/impeccable optimize</code>.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+`/impeccable audit` là đối tác kỹ thuật của `/impeccable critique`. Khi `/impeccable critique` hỏi "cái này có cảm giác đúng không", `/impeccable audit` hỏi "cái này có chịu đựng được không". Nó chạy kiểm tra khả năng tiếp cận, hiệu suất, tùy biến giao diện, thiết kế responsive và phản mẫu dựa trên triển khai, chấm mỗi chiều từ 0 đến 4 và tạo một kế hoạch với mức nghiêm trọng từ P0 đến P3.
+
+Sử dụng trước khi phát hành, trong sprint chất lượng, hoặc bất cứ khi nào một tech lead nói "chúng ta thực sự nên xem xét khả năng tiếp cận".
+
+## Cách hoạt động
+
+Kỹ năng quét code của bạn qua năm chiều:
+
+1. **Khả năng tiếp cận**: độ tương phản WCAG, ARIA, điều hướng bàn phím, HTML ngữ nghĩa, nhãn biểu mẫu.
+2. **Hiệu suất**: layout thrashing, animation tốn kém, thiếu lazy loading, dung lượng bundle.
+3. **Tùy biến giao diện**: màu hardcoded, độ phủ dark mode, tính nhất quán token.
+4. **Responsive**: hành vi breakpoint, vùng chạm, xử lý viewport mobile.
+5. **Phản mẫu**: cùng 25 kiểm tra xác định mà bộ phát hiện chạy.
+
+Mỗi chiều nhận điểm từ 0 đến 4. Mỗi phát hiện nhận mức nghiêm trọng: P0 chặn phát hành, P1 nên sửa trong sprint này, P2 cho kỳ tiếp theo, P3 là tinh chỉnh. Bạn nhận lại một tài liệu duy nhất có thể dán vào trình theo dõi ticket.
+
+Audit không sửa bất cứ điều gì. Nó chỉ ghi nhận. Chuyển các phát hiện đến `/impeccable polish`, `/impeccable harden`, hoặc `/impeccable optimize` tùy theo danh mục.
+
+## Thử ngay
+
+```
+/impeccable audit the checkout flow
+```
+
+Kết quả kỳ vọng:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+Chuyển các P0 cho `/impeccable harden`, các P1 về tùy biến giao diện và kiểu chữ cho `/impeccable typeset` và `/impeccable polish`, phần còn lại cho `/impeccable polish`.
+
+## Những cạm bẫy cần tránh
+
+- **Nhầm lẫn với `/impeccable critique`.** Audit là chất lượng triển khai. Critique là chất lượng thiết kế. Chạy cả hai để có bức tranh toàn cảnh.
+- **Sửa P3 trước P0.** Thang mức nghiêm trọng tồn tại vì một lý do. Bắt đầu từ trên xuống.
+- **Bỏ qua các chiều bạn nghĩ ổn.** Tùy biến giao diện và responsive là những thứ hầu hết mọi người cho là ổn cho đến khi chúng không còn ổn.

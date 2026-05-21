@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Adj stratégiai színt monokróm felületekhez rikítóvá válás nélkül.
+highlights:
+  - A felület kompetensnek hat, de felejthető.
+  - Egyértelműbb hangsúlyra van szükséged a teljes szerkezet újraírása nélkül.
+  - A jelenlegi paletta nem hordozza a kívánt hangulatot.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Mikor használd
+
+Az `/impeccable colorize` az ellenpontja a "minden szürke" problémának. Irányítópultok, amelyek bézs falként hatnak, űrlapok hangsúly nélkül, tartalomoldalak, amelyek bármelyik SaaS termék lehetnek. Nyúlj hozzá, amikor a felület funkcionális, de érzelmileg lapos, és melegséget szeretnél az AI színpalettába (lila-rózsaszín, cián neon, sötét mód ragyogás) esés nélkül.
+
+## Hogyan működik
+
+A skill úgy kezd, hogy beolvassa a márka színedet, ha létezik, majd eldönti, hol érdemli meg a helyét a szín:
+
+1. **Elsődleges akció** kapja a legerősebb kifejezését a márka színárnyalatnak.
+2. **Másodlagos hangsúlyok** tompított vagy árnyalt variánsokat kapnak, nem egy második teljes színt.
+3. **Semlegesek** a márka színárnyalata felé hajlanak alacsony krominanciával (kb. 0.005-0.01), ami pixelenként alig látható, de tudatalatti kohéziót teremt.
+4. **Tartalom-kategóriák** korlátozott, szándékos hangsúly-rendszert kapnak, nem szivárványt.
+
+Fontos, hogy OKLCH-t használ HSL helyett, hogy az egyenlő világossági lépések egyenlőnek is tűnjenek. Ahogy a világosság a szélsőértékek felé mozog, a krominancia automatikusan csökken. Így kapsz olyan színt, amely átgondoltnak hat kiszámított helyett.
+
+## Próbáld ki
+
+```
+/impeccable colorize the dashboard
+```
+
+Várható diff:
+
+- Márka szín áthelyezve hardcoded hex-ről `--color-accent: oklch(62% 0.18 240)`-ra
+- Semlegesek 0.007 krominanciával árnyalva a márka színárnyalata felé
+- Az elsődleges gomb kapja a teljes hangsúlyt, a másodlagos gombok ink/mist színt kapnak
+- Diagram sorozat 3 különálló színárnyalatot használ, mind egyező világosságon, így egyetlen sorozat sem dominál vizuálisan
+- Üres állapot illusztráció puha hangsúly-lemosást kap
+
+## Csapdák
+
+- **Márka színárnyalat nélkül futtatni.** A Colorize-nak kiindulási pontra van szüksége. Ha a `PRODUCT.md` nem ad meg egyet, kérdezni fog. Ne hagyd, hogy az AI színpaletta alapértékekből válasszon.
+- **Azt várni tőle, hogy megoldja az AI színpaletta problémát.** Ha a dizájnban már vannak lila gradiensek és cián neon, először az `/impeccable quieter` kell, aztán a colorize újraépíthet.
+- **Már színes felületeken használni.** Ez az `/impeccable quieter` feladata. A Colorize hozzáad, nem von ki.

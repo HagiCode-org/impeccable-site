@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: 仕様準拠のDESIGN.mdを生成し、ビジュアルシステムをキャプチャしてすべてのAIエージェントがブランドに合致するようにする。
+highlights:
+  - コードベースにはすでに本物のデザイン言語が含まれている。
+  - カラー、タイポグラフィ、スペーシング、コンポーネントのポータブルな要約が必要。
+  - システムが暗黙的であるため、今後のデザイン作業が逸脱している。
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Quiet type, generous air, one committed accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Flat by default. Shadows appear only as a response to state.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tint neutrals toward the accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text for emphasis.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">6つのセクションは固定順序、固定名。併せて <code>DESIGN.json</code> がLive Modeデザインパネル用の機械読み取り可能なサイドカーとして出力されます。</p>
+</div>
+
+## いつ使うか
+
+ドキュメント化するだけのビジュアルシステムができたら `/impeccable document` を実行してください：カラー、タイポグラフィ、少なくともボタンとカード。コマンドはコードベースをスキャンし、見つけたトークンとコンポーネントパターンを抽出し、[Google Stitch DESIGN.md形式](https://stitch.withgoogle.com/docs/design-md/format/)に従う `DESIGN.md` をプロジェクトルートに書き込みます。6つのセクションが固定順序で、他のすべてのDESIGN.md対応ツールと相互運用可能です。
+
+次のような場合に使ってください。
+
+- **`/impeccable teach` を実行したばかり**で `PRODUCT.md` が存在する。Documentは対応するビジュアル側のファイル。
+- **コマンドから促された。** Live、craft、polishはすべてDESIGN.mdを読み込みます。欠落している場合、スキルはまずdocumentの実行を提案します。
+- **デザインが古いDESIGN.mdから逸脱し**、ファイルがもはや稼働中のシステムを記述していない。
+- **大規模なリデザインの前**に、次の方向性の参照として現在の状態をキャプチャする。
+
+コードがまだないプロジェクト（新規の `teach` 実行、何もビルドされていない）では、シードモードがあります：`/impeccable document --seed` は5つの短い戦略的質問（カラーストラテジー、タイプ方向、モーションエネルギー、リファレンス、アンチリファレンス）をしてスキャフォールドを書き込みます。コードができたらスキャンモードで再実行してください。
+
+## 仕組み
+
+スキャンパスは優先順位に従ってデザインアセットを見つけます：CSSカスタムプロパティ、Tailwind設定、CSS-in-JSテーマ、デザイントークンファイル、コンポーネントソース、グローバルスタイルシート、最後にブラウザが利用可能な場合はライブレンダリング出力からの計算スタイル。可能な限りすべてを自動抽出し、クリエイティブな入力が必要な部分について1つのグループ化された質問をします：**Creative North Star**（システム全体の単一の名前付きメタファー、「The Editorial Sanctuary」のような）、説明的なカラー名、エレベーション哲学、コンポーネントキャラクター。
+
+出力は丁度6つのセクションを持つDESIGN.mdです：Overview、Colors、Typography、Elevation、Components、Do's and Don'ts。ヘッダーは文字単位で固定されており、ファイルが他のツールで解析可能です。併せて `DESIGN.json` が機械読み取り可能なサイドカーとして書き込まれます。このサイドカーがライブモードデザインパネルで、汎用の近似ではなく*このプロジェクトの*実際のボタン、入力、ナビ、カードタイルをレンダリングするために使われます。
+
+他のすべてのコマンドは呼び出し時にDESIGN.mdを読み込みます。バリアント、ポリッシュ、監査、新機能は、指示されなくてもビジュアルシステムを継承します。
+
+## 試してみる
+
+```
+/impeccable document
+```
+
+すでにトークンが定義されているプロジェクトでは、約2分かかります：スキャンがパレットとタイプスタックを見つけ、2〜3のオプションからNorth Starを選び、説明的なカラー名を確認（"blue-800"ではなく"Deep Muted Teal-Navy"）し、ファイルがプロジェクトルートに配置されます。
+
+新規プロジェクトの場合：
+
+```
+/impeccable document --seed
+```
+
+5つの質問、約5分。ファイルはスキャフォールドで、正直に何であるかを示す `<!-- SEED -->` コメント付き。トークンを実装したらフラグなしで再実行してください。
+
+## 注意点
+
+- **早すぎる時期に実行すること。** 実装されたトークンがないプロジェクトでは、シードモードが正しいです。コードが裏付けられない完全な仕様を捏造しないでください。偽のDESIGN.mdはDESIGN.mdなしより悪いです。
+- **DESIGN.mdを人間向けのドキュメントとしてのみ扱うこと。** 主にAI向けです。他のすべてのコマンドが読み込みます。形式の強さ（"never"、"always"、Named Rules）は意図的です。
+- **Layout / Motion / Responsiveのトップレベルセクションを追加すること。** 仕様には6つのセクションが固定順序、固定名であります。レイアウトやモーションの内容はOverview（哲学レベルのルール）またはComponents（コンポーネントごとの動作）に折りたたんでください。
+- **既存のDESIGN.mdを黙って上書きすること。** Documentは常に最初に確認します。新規開始したい場合は、既存のファイルを別の場所にリネームするか、スキルに上書きを明示的に伝えてください。

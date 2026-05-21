@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Thiết kế trải nghiệm first-run, trạng thái trống và đường dẫn đến giá trị.
+highlights:
+  - Người dùng mới đang đến mà không có ngữ cảnh.
+  - Sản phẩm cần một hành động thành công đầu tiên tốt hơn.
+  - Trạng thái trống và bước thiết lập đang dạy quá ít.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable onboard` dành cho những khoảnh khắc quyết định người dùng mới có ở lại hay không: màn hình đầu tiên, trạng thái trống, luồng thiết lập, tour sản phẩm, khoảng trống "tôi phải làm gì bây giờ". Sử dụng khi kích hoạt yếu, khi người dùng mới rơi bỏ trước khi đạt giá trị, hoặc khi sản phẩm có trạng thái trống chỉ nói "chưa có mục nào" và dừng ở đó.
+
+## Cách hoạt động
+
+Lệnh bắt đầu từ một câu hỏi: khoảnh khắc aha là gì và người dùng mới có thể đến đó nhanh thế nào. Mọi quyết định thiết kế đều hướng đến khoảnh khắc đó.
+
+Nó hoạt động trên các bề mặt định hình ấn tượng đầu tiên:
+
+1. **Trải nghiệm first-run**: những khoảnh khắc ngay sau đăng ký. Người dùng nên thấy tour, canvas trống, ví dụ đã điền hay không có gì cả. Chọn cách tiếp cận phù hợp với sản phẩm.
+2. **Trạng thái trống**: mọi màn hình không dữ liệu được định hướng. Tôi đang ở đâu, tại sao trống, tôi làm gì tiếp theo, nó sẽ trông như thế nào khi đầy.
+3. **Thiết lập và cài đặt**: cấu hình bắt buộc được giảm thiểu, mặc định thông minh, mỗi bước giải thích tại sao nó quan trọng.
+4. **Tiết lộ tiệm tiến**: tính năng nâng cao giữ ngoài đường cho đến khi chúng xứng đáng.
+5. **Sự kiện kích hoạt**: khoảnh khắc người dùng lần đầu trải nghiệm giá trị cốt lõi được đo lường và ăn mừng, một cách tinh tế.
+
+Lệnh chống lại hai chế độ thất bại phổ biến: onboarding quá hướng dẫn nơi người dùng click qua carousel trước khi chạm vào bất cứ thứ gì, và không onboarding nơi người dùng bị thả vào ứng dụng trống và kỳ vọng tự tìm hiểu.
+
+## Thử ngay
+
+```
+/impeccable onboard the editor
+```
+
+Đầu ra điển hình:
+
+- First-run: thay thế editor trống bằng tài liệu ví dụ đã điền mà người dùng có thể sửa. Nút hủy bỏ ví dụ, chỉnh thay nội dung bằng công việc của người dùng.
+- Trạng thái trống trên danh sách tài liệu: "Chưa có tài liệu. Tạo tài liệu đầu tiên hoặc nhập từ Notion, Google Docs hoặc Markdown."
+- Thiết lập: giảm từ 6 trường bắt buộc xuống 1 (tên workspace). Mọi thứ khác có mặc định thông minh và có thể chỉnh sau trong cài đặt.
+- Kích hoạt: lần đầu người dùng lưu tài liệu, một toast tinh tế nói "Đã lưu. Công việc của bạn giờ trên cloud." Chỉ một lần, không lặp lại.
+
+## Những cạm bẫy cần tránh
+
+- **Thêm tour sản phẩm như câu trả lời mặc định.** Hầu hết sản phẩm không cần tour. Chúng cần một màn hình đầu tiên tốt hơn. Tour là nạng.
+- **Thiết kế onboarding mà không xác định khoảnh khắc aha.** Nếu bạn không thể nói trong một câu người dùng nên cảm thấy gì trong 60 giây đầu tiên, hãy quay lại `/impeccable shape` trước.
+- **Chạy onboard trên luồng bị hỏng.** Sửa luồng trước. Onboarding không thể cứu một sản phẩm nơi hành động cốt lõi bị hỏng.

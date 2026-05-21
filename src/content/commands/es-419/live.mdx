@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Itera sobre UI en el navegador. Selecciona un elemento, deja un comentario, obtiene tres variantes. Acepta una y se escribe en el codigo fuente.
+highlights:
+  - Un servidor de desarrollo ya existe.
+  - Quieres comparar opciones directamente en UI renderizada.
+  - El proximo paso mas rapido es experimentacion visual guiada.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Velo en accion, con la demo animada, en <a href="/live-mode">/live-mode</a>. Esta pagina es la referencia de lo que lee tu harness de IA cuando el comando se ejecuta.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Estado: alfa.</strong> El Modo Live funciona de extremo a extremo y esta listo para probar, pero todavia necesita mas pruebas contra repos reales y configuraciones de frameworks. Espera bordes rugosos en configuraciones poco comunes, y por favor reporta lo que se rompa.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Modo Live a mitad del ciclo: el selector resalta el elemento que elegiste, la barra de contexto muestra en que variante estas, y la barra global permanece fijada en la parte inferior. Aceptar en esta escribe la Variante 2 de vuelta al codigo fuente.</p>
+</div>
+
+## Cuando usarlo
+
+Recurre a `/impeccable live` cuando quieres iterar sobre algo visualmente de la forma en que lo harias en una herramienta de diseno, pero mantener codigo de produccion como salida. El flujo tipo lienzo de Figma sin el viaje de ida y vuelta a un paso de implementacion.
+
+Usalo para:
+
+- **Explorar direcciones en un elemento real.** Una seccion hero, una tarjeta de newsletter, un nivel de precios. Tres tomas genuinamente diferentes, lado a lado, en la pagina real con el contexto real.
+- **Pulir una pieza de UI que esta casi bien.** Sabes que se siente incorrecto pero no puedes decirlo exactamente. Selecciona el elemento, garabatea "mas ludico" o dibuja un trazo sobre la parte que te molesta, dale a Go.
+- **Un rapido A/B entre dos direcciones que tu equipo esta debatiendo.** Genera variantes, no aceptes ninguna, vete. El punto era la comparacion.
+
+NO es para nuevas funcionalidades greenfield (recurre a `/impeccable craft`) o redisenos de pagina completa (recurre a `/impeccable` o un comando de refinamiento especializado).
+
+## Como funciona
+
+Un comando trae un selector superpuesto sobre tu servidor de desarrollo en ejecucion. Seleccionas cualquier elemento. Una pequena barra de contexto aparece junto a el. Escribe una descripcion libre o elige uno de los chips de accion (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Opcionalmente deja pines de comentario o dibuja trazos directamente sobre el elemento primero, y la habilidad los lee como intencion.
+
+Dale a Go. Tres **variantes de calidad de produccion** se generan, cada una anclada a un arquetipo de diseno genuinamente diferente (no tres variaciones de color) y se intercambian en caliente en la pagina via el HMR de tu framework. Navega entre ellas con las teclas de flecha. Acepta una y la variante se escribe de vuelta al codigo fuente. Descarta las tres y el original permanece.
+
+Soporta Vite, Next.js (incluyendo monorepos), SvelteKit, Astro, Nuxt y HTML estatico plano. Si tu servidor de desarrollo tiene una Politica de Seguridad de Contenido estricta, la configuracion de primera ejecucion la detecta y ofrece un parche unico solo para desarrollo para que el selector pueda cargar. `DESIGN.md` gana en decisiones visuales, `PRODUCT.md` gana en voz: si tienes ambos, las variantes se mantienen dentro de la marca sin que se les diga.
+
+## Probalo
+
+```
+/impeccable live
+```
+
+Abre la URL de tu servidor de desarrollo, selecciona la tarjeta de registro al newsletter, haz clic en el chip `delight`, dale a Go. Obtendras tres variantes que varian en dimensiones de personalidad (una sensacion de estampilla y postal, una version de sorpresa tipografica, una con acento ilustrado), no tres variaciones del mismo tratamiento.
+
+O selecciona un hero, escribe "mas editorial, menos SaaS", dale a Go. Las tres variantes se anclan a diferentes arquetipos editoriales (cabecera de periodico, filas de especificaciones estilo catalogo, poster de glifo sobredimensionado) en lugar de tres tonos de la misma idea.
+
+Deten el modo live cuando hayas terminado: di "detener modo live", cierra la pestana, o dale al boton de salida en la barra del selector.
+
+## Errores comunes
+
+- **Ejecutarlo en una pagina que todavia esta medio escrita.** La generacion de variantes en vivo necesita contexto. Si el elemento tiene texto placeholder, Lorem ipsum generico, o formato predeterminado pre-stylesheet, las variantes reflejaran eso. Llena el contenido primero.
+- **Esperar que tome decisiones macro.** El modo live itera sobre un unico elemento seleccionado. Para "rediseñar toda la pagina de precios", recurre a `/impeccable` o `/impeccable craft`.
+- **Ignorar los mensajes de fallback.** Si el elemento vive en un archivo generado (una plantilla compilada, una salida de build), el selector lo dice explicitamente y ofrece enrutar la aceptacion al codigo fuente real. No fuerces la aceptacion en el archivo generado: el proximo build lo borrara.
+- **Ejecutarlo sin PRODUCT.md o DESIGN.md cuando te importa la afinidad de marca.** Live seguira generando, pero las variantes tenderan a valores predeterminados genericos. Ejecuta `/impeccable teach` y `/impeccable document` primero si el resultado necesita sonar como tu producto.

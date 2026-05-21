@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: 將可重複使用的元件、token 和模式提取到設計系統中。
+highlights:
+  - 多個元件正以不同的方式解決相同的問題。
+  - Token 和模式需要集中化。
+  - 你想要一個更可維護的視覺系統。
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">發現偏離</span>
+      <span class="docs-viz-flow-hint">重複的 hex 值、按鈕變體、間距比例、文字樣式。</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">提出基元</span>
+      <span class="docs-viz-flow-hint">Token 名稱、帶變體 + 尺寸的元件 API、文字樣式。</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">遷移呼叫點</span>
+      <span class="docs-viz-flow-hint">用新的基元替換重複的 CSS。不留孤立的程式碼。</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">技能只提取使用三次或以上且意圖相同的東西。兩次使用不是模式，遷移總是在同一輪中完成。</p>
+</div>
+
+## 何時使用
+
+`/impeccable extract` 適用於你的程式庫已經意外成為一個設計系統的時刻。12 個地方重複的按鈕樣式。三種版本的同一張卡片。散落各處的 hex 色彩。碰巧匹配某個比例的手工間距。當你想要將這些偏離整合為可重複使用的基元時使用。
+
+在產品已經交付了足夠的功能來揭示模式後使用。過早提取會創造與現實不符的抽象。
+
+## 運作方式
+
+技能首先發現設計系統結構，然後識別提取機會：
+
+1. **Token**：找到重複的字面值（色彩、間距、圓角、陰影、字型大小）。提出 token 名稱、加入 token 系統、替換使用處。
+2. **元件**：找到以微小變化重複的 UI 模式（按鈕、卡片、輸入框、對話框）。提取為帶變體的單一元件，遷移呼叫方。
+3. **組合模式**：找到重複的版面或互動模式（表單行、工具列群組、空狀態）。提取為組合基元。
+4. **文字樣式**：找到重複的 font-size + weight + line-height 組合。提取為文字樣式。
+5. **動畫模式**：找到重複的緩動、持續時間或關鍵影格組合。提取為動態 token。
+
+技能是謹慎的。它只提取使用三次或以上且意圖相同的東西。它絕不提取「因為以後可能會重複使用」。過早的抽象比重複更糟糕。
+
+## 試試看
+
+```
+/impeccable extract the button styles
+```
+
+預期輸出：
+
+- 在 8 個檔案中找到 14 個按鈕實例
+- 4 種不同的變體：primary（填滿重點色）、secondary（帶邊框）、ghost（純文字）、destructive（填滿紅色）
+- 所有 4 種變體使用相同的尺寸比例（small、default、large）
+- 提取為 `<Button variant="primary" size="default">`，帶 token 驅動的樣式
+- 遷移 14 個呼叫點，移除約 180 行重複的 CSS
+- 新增 3 個缺少的 token：`--button-radius`、`--button-padding-y`、`--button-padding-x`
+
+## 注意事項
+
+- **太早提取。** 兩次使用不是模式。三次可能是。等到模式很明顯。
+- **過度通用化。** 提取的元件應該密切匹配當前的使用案例，而不是預期每個可能的未來案例。你隨時可以之後添加變體。
+- **忘記遷移。** 沒有遷移的提取讓舊的重複程式碼留在原地，並創造做同一件事的第三種方式。總是在同一輪中遷移。
+- **提取意圖不同的東西。** 兩個看起來相似但用途不同的按鈕（主要操作 vs 樣式化為按鈕的連結）可能應該保持分開。

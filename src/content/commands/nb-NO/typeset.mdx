@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Fiks typografi som føles generisk, inkonsekvent eller tilfeldig.
+highlights:
+  - Teksten er teknisk lesbar, men ikke overbevisende eller kontrollert.
+  - Overskrifter og brødtekst flyter sammen til én masse.
+  - Flaten trenger sterkere tone gjennom typografi fremfor mer dekorasjon.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Når du skal bruke den
+
+Bruk `/impeccable typeset` når teksten på en side ser ut som standard typografi i stedet for designet typografi. Utydelig hierarki, tre størrelser som ser like ut, brødtekst på 14px, en display-font som egentlig bare er Inter bold, overskrifter uten kerning-oppmerksomhet.
+
+Typiske utløsere: "hierarkiet føles flatt", "lesbarheten er av", "skriftene ser generiske ut".
+
+## Hvordan det fungerer
+
+Ferdigheten vurderer typografi på tvers av fem dimensjoner:
+
+1. **Skriftvalg**: bruker du usynlige standarder (Inter, Roboto, Arial, Open Sans), stemmer skrifttypen med merkevaren, er det mer enn 2 til 3 skriftfamilier.
+2. **Hierarki**: er overskrifter, brødtekst og bildetekster tydelig forskjellige ved første øyekast, er størrelseskontrasten minst 1.25x mellom trinn, er vektkontrastene lesbare.
+3. **Størrelse og skala**: finnes det en sammenhengende typeskala, oppfyller brødteksten minimum 16px, er skalaen fast-rem for app-UI eller flytende-clamp for markedsføringssider.
+4. **Lesbarhet**: linjelengde 45 til 75 tegn, linjehøyde innstilt for skrifttype og kontekst, kontrast.
+5. **Konsistens**: samme element bruker samme behandling overalt, ingen engangs font-size-overstyringer.
+
+Deretter fiksar den det den finner: velger særpregede skrifttyper, bygger en modulær skala, utvider hierarkikontrasten, setter riktig linjelengde og ledetekst.
+
+## Prøv det
+
+```
+/impeccable typeset the article layout
+```
+
+Forventet endring:
+
+- Display-font byttet fra Inter 700 til et ekte display-skriftbilde
+- Typeskala gjenoppbygget: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, ratio 1.333
+- Brødtekst hevet fra 14px til 16px
+- Linjelengde begrenset til 68ch på artikkelkolonnen
+- Linjehøyde 1.6 for brødtekst, 1.1 for display
+- Fjernet fire engangs `font-size`-verdier spredt i komponentstiler
+
+## Fallgruver
+
+- **Å be om en ny skrift uten kontekst.** Typeset vil velge basert på merkestemmen i `PRODUCT.md`. Hvis du ikke har kjørt `/impeccable teach`, vil forslaget være generisk.
+- **Å ty til typeset når problemet er layout.** Hvis avsnittene er fine, men siden føles trang, vil du ha `/impeccable layout`.
+- **Å forvente flytende clamp-skalaer på app-UI-er.** Typeset bruker faste rem-skalaer for app-grensesnitt. Flytende typografi er for markedsførings- og innholdssider der linjelengden varierer dramatisk.

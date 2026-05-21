@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Định hình thiết kế, sau đó dựng nên nó, tất cả trong một luồng.
+highlights:
+  - Bạn đang bắt đầu một tính năng mới từ con số không.
+  - Bạn muốn khám phá, triển khai và tinh chỉnh trực quan trong một lần.
+  - Bạn thích một vòng lặp dựng chậm hơn nhưng có chủ đích hơn.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Phỏng vấn khám phá. Mục đích, người dùng, ràng buộc, hướng đi.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Load references</span>
+      <span class="docs-viz-flow-hint">Không gian, kiểu chữ, chuyển động, màu sắc, tương tác.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Cấu trúc, phân cấp, kiểu chữ, màu sắc, trạng thái, chuyển động, responsive.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterate visually</span>
+      <span class="docs-viz-flow-hint">Kiểm tra trong trình duyệt, tinh chỉnh cho đến khi phù hợp với bản tóm tắt.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Mọi giai đoạn đều không thể bỏ qua. Bước khám phá là nơi hầu hết đầu ra AI thất bại: khi code đã tồn tại, tư duy đã bị khóa.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+`/impeccable craft` là lệnh dựng end-to-end. Cung cấp mô tả tính năng và nó chạy toàn bộ quy trình: khám phá có cấu trúc, tải tham chiếu, triển khai, lặp trực quan. Sử dụng khi bạn đang bắt đầu một tính năng mới từ con số không và muốn toàn bộ quy trình làm việc trong một lần gọi.
+
+Sử dụng khi:
+
+- **Bạn đang dựng một tính năng mới và muốn toàn bộ quy trình.** Bạn không muốn tự quản lý các bước.
+- **Bạn biết mình đang dựng gì nhưng không biết nó nên trông như thế nào.** Giai đoạn khám phá buộc tư duy thiết kế trước khi triển khai khóa nó lại.
+- **Bạn muốn lặp trực quan mặc định.** `craft` kiểm tra kết quả trong trình duyệt và tinh chỉnh cho đến khi độ hoàn thiện cao, thay vì phát hành phiên bản hoạt động đầu tiên.
+
+Nếu bạn chỉ muốn tư duy mà không cần code, hãy sử dụng `/impeccable shape` độc lập. Nếu bạn đã có tầm nhìn rõ ràng và chỉ muốn dựng, hãy gọi `/impeccable` trực tiếp với mô tả tính năng. `craft` nằm ở giữa: có cấu trúc, hoàn chỉnh, có quan điểm.
+
+## Cách hoạt động
+
+`craft` chạy bốn giai đoạn theo thứ tự:
+
+1. **Định hình thiết kế.** Chạy `/impeccable shape` nội bộ: một cuộc trò chuyện khám phá ngắn về mục đích, người dùng, nội dung, ràng buộc và mục tiêu. Kết quả là bản tóm tắt thiết kế mà bạn có thể đọc và phản hồi.
+2. **Tải tham chiếu.** Dựa trên bản tóm tắt, kéo các tệp tham chiếu phù hợp (không gian, kiểu chữ, chuyển động, màu sắc, tương tác, responsive, UX writing) để mô hình có các nguyên tắc liên quan được tải trước khi bắt đầu code.
+3. **Dựng.** Triển khai tính năng theo thứ tự có chủ đích: cấu trúc trước, sau đó là khoảng cách và phân cấp, rồi kiểu chữ và màu sắc, rồi trạng thái, rồi chuyển động, rồi responsive. Mọi quyết định đều có thể truy ngược về bản tóm tắt.
+4. **Lặp trực quan.** Mở kết quả trong trình duyệt, kiểm tra với bản tóm tắt và danh mục phản mẫu, và tinh chỉnh cho đến khi phù hợp với mục đích. Bước này rất quan trọng. Phiên bản hoạt động đầu tiên không bao giờ là phiên bản được phát hành.
+
+Giai đoạn khám phá không thể bỏ qua và đó chính là mục đích. Hầu hết các UI do AI tạo ra thất bại vì không ai hỏi người dùng đang cố gắng hoàn thành điều gì trước khi mô hình bắt đầu viết JSX. `craft` đảo ngược thứ tự đó.
+
+## Thử ngay
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Kỳ vọng một cuộc phỏng vấn khám phá gồm 5 đến 10 câu hỏi trước. Các câu hỏi về đối tượng của bạn, tính cách sản phẩm, giọng điệu cảm xúc bạn muốn, phản-tham chiếu và ràng buộc. Sau đó là bản tóm tắt thiết kế. Rồi triển khai, với trình duyệt được kiểm tra ở mỗi giai đoạn. Kỳ vọng nhiều vòng lặp trong giai đoạn tinh chỉnh trực quan.
+
+Toàn bộ quá trình chạy dài hơn một lệnh điển hình vì nó bao gồm tư duy, dựng và tinh chỉnh. Đó là sự đánh đổi: nhiều cấu trúc ban đầu, ít dọn dẹp sau này.
+
+## Những cạm bẫy cần tránh
+
+- **Sử dụng cho các thay đổi nhỏ.** `craft` dành cho tính năng mới, không phải chỉnh sửa nhỏ. Đối với code hiện có, hãy sử dụng `/impeccable polish`, `/impeccable critique`, hoặc một lệnh tinh chỉnh cụ thể thay thế.
+- **Vội vàng qua giai đoạn khám phá.** Cuộc phỏng vấn có vẻ chậm so với "bắt đầu code ngay". Nhưng không phải vậy. Trả lời các câu hỏi cẩn thận tạo ra bản tóm tắt sắc bén hơn, tạo ra bản dựng sắc bén hơn, tạo ra ít lần viết lại hơn.
+- **Bỏ qua lặp trực quan.** Giai đoạn này tồn tại vì một lý do. Khoảng cách giữa "hoạt động về mặt kỹ thuật" và "cảm giác đúng" được thu hẹp bằng tinh chỉnh trực quan, không phải đánh giá code. Hãy để nó chạy.

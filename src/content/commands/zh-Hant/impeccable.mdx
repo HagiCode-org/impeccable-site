@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: 每個指令背後的設計智慧引擎。
+highlights:
+  - 你想要一個統一的入口，同時處理版面配置、字型、色彩、動態與 UX 結構。
+  - 你正在探索方向，希望技能自動選擇正確的子工作流程。
+  - 你需要最廣泛的設計脈絡，而非單一指令的窄幅處理。
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## 何時使用
+
+`/impeccable` 是主指令。當你想要以自由形式進行設計工作、載入完整設計手冊，而不挑選特定專門指令時，直接呼叫它。它是你的後備選擇，當 23 個專門指令（`audit`、`polish`、`critique` 等）無法明確對應你正在做的事情時。
+
+以下情況請直接使用 `/impeccable`：
+
+- **你不確定哪個指令適合。** 用自然語言描述你想要的結果，讓技能選擇正確的方法。
+- **工作跨越多個領域。**「重做這個 hero 區塊」涉及版面配置、字型、色彩和動態。單一指令無法涵蓋。
+- **你想要不受限制的完整設計智慧。** 所有參考檔案載入、所有反模式檢查、無預設工作流程。
+
+對於結構化的流程，請使用側邊欄中的專門指令。在任何新專案上先執行 `/impeccable teach` 以建立 PRODUCT.md 和 DESIGN.md。`/impeccable craft` 將探索訪談串聯成一個包含視覺迭代的完整建構流程。`/impeccable shape` 在不碰程式碼的情況下產出設計簡報。`/impeccable live` 給你一個瀏覽器選取器，每個元素提供三個變體。評估和精煉指令（`audit`、`critique`、`polish`、`typeset`、`layout`、`colorize` 等）各自負責工作的一個特定切面。
+
+## 運作方式
+
+大多數 AI 生成的 UI 以同樣的方式失敗：通用字型、紫色漸層、卡片堆疊卡片堆疊、到處都是玻璃擬態。`/impeccable` 為你的 AI 提供強烈的觀點。它載入一份有主見的設計手冊加上一長串反模式清單，然後推動模型在寫下任何一行程式碼之前就對特定的美學方向做出承諾。
+
+你專案根目錄中的兩個檔案決定了技能的一切行為：
+
+- **`PRODUCT.md`** 承載定位（brand 與 product）、目標使用者、品牌性格、反面參考、設計原則。回答「誰、什麼、為什麼」。
+- **`DESIGN.md`** 承載色彩、字型、高度、元件、該做與不該做的事項，採用 Google Stitch 六段式格式。回答「看起來如何」。
+
+每個指令在生成之前都會讀取這兩個檔案。**定位**決定載入哪些預設值。Brand（行銷、登入頁、作品集，設計即產品本身）和 product（應用 UI、儀表板、工具，設計服務於產品）在字型、動態、色彩和密度上有不同的預設值。在 PRODUCT.md 中指定一次，意味著 `/impeccable typeset` 不會在儀表板上套用編輯雜誌風格的字型，也不會在活動頁面上套用產品化的預設值。參閱 [brand 與 product 教學](/tutorials/brand-vs-product) 了解兩者的分歧點。
+
+在專案中首次使用時，技能會自動執行 `teach` 流程：一段簡短的訪談會寫入 PRODUCT.md，然後委託 `/impeccable document` 來處理 DESIGN.md。後續的指令會直接讀取檔案，不再重複詢問。
+
+## 試試看
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+兩個提示刻意保持模糊。`/impeccable` 會選擇一個與你的定位一致的強烈美學方向，選擇非預設字型，避開 AI 色彩盤，做出設計師會做出的那種具體選擇。不需要先挑指令名稱，不需要遵循逐步工作流程。
+
+想要在瀏覽器中進行視覺迭代而非在聊天中：
+
+```
+/impeccable live
+```
+
+在你的開發伺服器上選取任何元素。放下評論或筆觸。獲得三個生產品質的變體，透過 HMR 熱替換。接受你想要的，它會寫回原始碼。
+
+## 將指令釘選為快捷方式
+
+v3.0 將 18 個獨立技能合併為一個帶有 23 個子指令的 `/impeccable`。如果你懷念某個特定指令的簡短形式，將它釘選回來：
+
+```
+/impeccable pin critique
+```
+
+從現在起，`/critique` 會直接呼叫 `/impeccable critique`。它會寫入一個輕量的重定向技能來委託給父技能，因此技能的更新會自動流通，無需重新釘選。
+
+值得一試的釘選：
+
+- `/impeccable pin polish` 用於最終打磨
+- `/impeccable pin audit` 用於確定性的無障礙/效能檢查
+- `/impeccable pin live` 用於瀏覽器迭代流程
+- `/impeccable pin critique` 用於設計審查
+
+移除方式：`/impeccable unpin critique`。釘選以 `i-` 前綴的目錄形式存放在你的工具技能資料夾中（`.claude/skills/i-critique/`、`.cursor/skills/i-critique/` 等），你也可以手動刪除它們。
+
+## 注意事項
+
+- **把它當作風格指南。** 它是一個有主見的設計夥伴，不是程式碼檢查工具。預設值的存在是為了提高下限，不是為了推翻你的判斷。如果你有正當理由反對（品牌規範、無障礙限制、使用者研究），請說明原因。技能會與你合作。忽視觀點而沒有理由才會產生更差的結果。
+- **期望它修復現有程式碼。** `/impeccable` 用於創建。對於精煉，請改用 `/impeccable polish`、`/impeccable distill` 或 `/impeccable critique`。
+- **在 `teach` 有機會儲存脈絡之前執行。** 在全新專案中，它會在過程中訪談你，這沒問題但會比較慢。明確將 `/impeccable teach` 作為你的第一個指令會稍微順暢一些。
+- **跳過定位問題。** Brand 和 product 的預設值分歧夠大，在錯誤的定位下執行會產生微妙偏差的結果。如果 `PRODUCT.md` 沒有 `## Register` 欄位（舊版），執行 `/impeccable teach` 來新增它。

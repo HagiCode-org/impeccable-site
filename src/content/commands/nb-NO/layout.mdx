@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Fiks layout, avstand og visuell rytme.
+highlights:
+  - Siden mangler tydelig tyngdepunkt.
+  - Godt innhold finnes, men komposisjonen skjuler det.
+  - Du vil ha sterkere flyt før du tar på farge eller bevegelse.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Når du skal bruke den
+
+`/impeccable layout` er for sider der ingenting er teknisk galt, men ingenting puster heller. Lik utfylling overalt, monotone kortrutenett, innhold som løper fra kant til kant, hierarki som utelukkende baserer seg på størrelse. Bruk den når en layout "føles feil" og du ikke kan sette ord på hvorfor.
+
+Gode utløsere: "alt føles trengt", "det reads som en vegg", "jeg vet ikke hvor jeg skal se først".
+
+## Hvordan det fungerer
+
+Ferdigheten går gjennom fem layout-dimensjoner:
+
+1. **Avstand**: er avstandsskalaen konsekvent eller finnes det tilfeldige 13px-mellomrom, er relaterte elementer gruppert tett med rikelig mellomrom mellom grupper, finnes det i det hele tatt en rytme.
+2. **Visuelt hierarki**: lander øyet på den primære handlingen innen 2 sekunder, gjør hierarkiet reelt arbeid eller roper alt på en gang.
+3. **Rutenett og struktur**: finnes det et underliggende rutenett eller er layouten tilfeldig, er elementer justert til grunnlinjer.
+4. **Rytme**: veksler siden mellom tett og rommelig avstand, eller er alt jevnt.
+5. **Tetthet**: er layouten trang eller sløsende, stemmer tettheten med innholdstypen.
+
+Fikser involverer vanligvis å gjenoppbygge avstandsskalaen, introdusere asymmetri, kollapse monotone rutenett til en blandet layout med hero- og støtteelementer, og gi den primære handlingen ekte plass.
+
+## Prøv det
+
+```
+/impeccable layout the settings page
+```
+
+Typiske endringer:
+
+- Avstandsskala forenet til 8 / 16 / 24 / 48 / 96px
+- Seksjonsavbrudd ved 48px, radmellomrom ved 16px, skjemafeltgrupper ved 8px
+- Primære handlinger trukket ut av skjemaflyten med 32px buffer
+- Dekorative kanter fjernet, erstattet med avstandsdrevet gruppering
+- Sidefelt og hovedkolonne proporsjoner rebalansert (280 / flex vs 25 / 75)
+
+## Fallgruver
+
+- **Å forveksle arrange med distill.** Hvis problemet er for mange ting, kjør `/impeccable distill` først. Layout er for å arrangere det som allerede er riktig sett.
+- **Å forvente at den redder et ødelagt rutenett.** Hvis siden ikke har noe rutenett i det hele tatt, vil arrange bygge et. Bare vit at diffen blir større enn du forventer.
+- **Å ignorere hierarki-vurderingen.** Hvis arrange sier "ingenting er primært", fikser ingen mengde avstandsarbeid det. Du trenger en innholdsbeslutning, ikke en layout-justering.

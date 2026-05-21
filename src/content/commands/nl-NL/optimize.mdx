@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnosticeer en repareer UI-prestaties van LCP tot bundelgrootte.
+highlights:
+  - De interface voelt traag, schokkerig of zwaar.
+  - Je moet kosten verlagen zonder het ontwerp te slopen.
+  - Prestaties zijn nu een zichtbaar productprobleem.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Wanneer te gebruiken
+
+`/impeccable optimize` is voor interfaces die traag aanvoelen. First paint duurt eindeloos, scrollen schokt, afbeeldingen verschijnen laat, interacties voelen sloom, de bundel levert 800KB JavaScript. Gebruik het wanneer de Web Vitals slecht zijn of wanneer gebruikers klagen dat dingen traag zijn.
+
+Gebruik het niet als premature optimalisatie. Als LCP 1.1s is en INP 80ms, stop dan. Het ontwerpwerk is belangrijker.
+
+## Hoe het werkt
+
+De skill werkt door vijf prestatiedimensies:
+
+1. **Laden en Web Vitals**: LCP, INP, CLS. Identificeer wat first paint blokkeert, wat interactie vertraagt, wat lay-out verschuift.
+2. **Weergave**: onnodige re-renders, ontbrekende memoisatie, dure reconciliation, layout-thrash in lussen.
+3. **Animaties**: animeert iets lay-outeigenschappen, zijn transforms en opacity het enige dat wordt aangeraakt, helpt of schaadt `will-change` hier.
+4. **Afbeeldingen en assets**: lazy loading, responsive afbeeldingen (`srcset`, `sizes`), moderne formaten (WebP, AVIF), afmetingen ingesteld om CLS te voorkomen.
+5. **Bundelgrootte**: ongebruikte imports, te grote afhankelijkheden, ontbrekende code-splitting, dode code.
+
+De skill meet voor en na. Elke reparatie wordt gekwantificeerd. Als een wijziging geen metriek verplaatst, wordt deze teruggedraaid.
+
+## Probeer het
+
+```
+/impeccable optimize the homepage
+```
+
+Verwachte vorm:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero-afbeelding vooraf geladen (-800ms)
+  - Render-blokkerend lettertype-stylesheet verwijderd (-240ms)
+  - Analytics-script uitgesteld (-180ms)
+
+INP: 240ms → 90ms
+  - Scroll-handler gedebounced
+  - Durige lijstweergave gememoiseerd
+  - Synchrone layout-read in event-loop verwijderd
+
+CLS: 0.18 → 0.02
+  - Afmetingen ingesteld op hero-afbeelding en logo
+  - Ruimte gereserveerd voor asynchrone header-badge
+
+Bundel: 340KB → 180KB
+  - Ongebruikte lodash-import verwijderd (52KB)
+  - Playground-route code-split (78KB)
+  - Verouderde pictogrammenset verwijderd (30KB)
+```
+
+## Valkuilen
+
+- **Optimaliseren voordat je meet.** Zonder baseline-metrieken kun je niet vertellen wat hielp. Voer `/impeccable optimize` uit met specifieke Web Vitals-nummers, niet met gevoelens.
+- **Kleine winsten najagen.** Een 20ms-verbetering in INP die een week kost is zelden de moeite waard. Optimize heeft afnemende meeropbrengsten; weet wanneer je moet stoppen.
+- **Vergeten opnieuw te meten na elke wijziging.** De build had dingen slechter kunnen maken op een manier die de skill niet voorspelde. Verifieer.

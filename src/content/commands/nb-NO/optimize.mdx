@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnoser og fiks UI-ytelse fra LCP til buntstørrelse.
+highlights:
+  - Grensesnittet føles tregt, hakkete eller tungt.
+  - Du må redusere kostnad uten å rive ut designet.
+  - Ytelse er nå et synlig produktproblem.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Når du skal bruke den
+
+`/impeccable optimize` er for grensesnitt som føles trege. Første maling tar evigheter, rulling hakker, bilder popper inn sent, interaksjoner føles trege, bunten sender 800KB med JavaScript. Bruk det når Web Vitals er dårlige eller når brukere klager over at ting er tregt.
+
+Ikke bruk det som for tidlig optimalisering. Hvis LCP er 1.1s og INP er 80ms, stopp. Designarbeidet betyr mer.
+
+## Hvordan det fungerer
+
+Ferdigheten jobber gjennom fem ytelsesdimensjoner:
+
+1. **Lasting og Web Vitals**: LCP, INP, CLS. Identifiser hva som blokkerer første maling, hva som forsinket interaksjon, hva som forskyver layout.
+2. **Rendering**: unødvendige re-renderinger, manglende memoisering, dyr avstemming, layout-ødeleggelse i løkker.
+3. **Animasjoner**: animerer noe layout-egenskaper, er transform og opacity det eneste som berøres, hjelper eller skader `will-change` her.
+4. **Bilder og ressurser**: lat lasting, responsive bilder (`srcset`, `sizes`), moderne formater (WebP, AVIF), dimensjoner satt for å forhindre CLS.
+5. **Buntstørrelse**: ubrukte importer, overdimensjonerte avhengigheter, manglende kodedeling, død kode.
+
+Ferdigheten måler før og etter. Hver fiks kvantifiseres. Hvis en endring ikke flytter en metrikk, rulles den tilbake.
+
+## Prøv det
+
+```
+/impeccable optimize the homepage
+```
+
+Forventet utforming:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero-bilde forhåndslastet (-800ms)
+  - Fjernet render-blokkerende stilark for skrifttype (-240ms)
+  - Utsatt analyse-skript (-180ms)
+
+INP: 240ms → 90ms
+  - Debounced rullehåndterer
+  - Memoisert dyr listerendering
+  - Fjernet synkron layout-lesing i hendelsessløyfen
+
+CLS: 0.18 → 0.02
+  - Satt dimensjoner på hero-bilde og logo
+  - Reservert plass for asynkron header-badge
+
+Bunt: 340KB → 180KB
+  - Fjernet ubrukt lodash-import (52KB)
+  - Kodedelt playground-ruten (78KB)
+  - Droppet utdatert ikonsett (30KB)
+```
+
+## Fallgruver
+
+- **Å optimalisere før måling.** Uten baseline-metrikker kan du ikke se hva som hjalp. Kjør `/impeccable optimize` med spesifikke Web Vitals-tall, ikke magefølelse.
+- **Å jakte på små gevinster.** En 20ms forbedring i INP som tar en uke er sjelden verdt det. Optimize har avtakende avkastning; vit når du skal stoppe.
+- **Å glemme å måle på nytt etter hver endring.** Byggingen kan ha gjort ting verre på en måte ferdigheten ikke forutså. Verifiser.

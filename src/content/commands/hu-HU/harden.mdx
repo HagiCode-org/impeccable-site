@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Felületek gyártásra készítése. Szélsőséges esetek, i18n, hibaállapotok, túlcsordulás.
+highlights:
+  - A boldog út működik, de a valós állapotok még törékenynek tűnnek.
+  - Le kell zárni a szállítási réseket a kiadás előtt.
+  - A hibakezelés és a rugalmasság fontosabb, mint új flörök hozzáadása.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Mikor használd
+
+A `/impeccable harden` abban a pillanatban jön, amikor a felületed találkozik a valósággal. A valódi felhasználói adatok rendetlenek: 60 karakteres nevek, német termékcímek, milliárdos árak, 500-as hibák, offline módok, jobbról balra írt szöveg. Azok a tervek, amelyek csak tökéletes adattal működnek, nem gyártásra készek.
+
+Nyúlj hozzá indulás előtt, egy új piac megnyitása előtt, vagy bármikor, amikor egy hibajelentés így kezdődik: „a felhasználónk nagyon hosszú neve volt és". Az első futtatási folyamatokhoz, üres állapotú aktivációhoz és beléptető dizájnhoz inkább a `/impeccable onboard` parancsot használd.
+
+## Hogyan működik
+
+A szakértelem négy dimenzió mentén vizsgálja a valós világbeli rugalmasságot:
+
+1. **Szöveges és adatextémumok**. Hosszú szöveg, rövid szöveg, speciális karakterek, emodzsi, RTL, milliárdos számok, 1000 elemes listák.
+2. **Hibaforgatókönyvek**. Hálózati hibák, API 4xx/5xx, validációs hibák, jogosultsági hibák, sebességkorlátok, párhuzamos műveletek.
+3. **Internacionalizáció**. Hosszú fordítások (a német gyakran 30%-kal hosszabb az angolnál), RTL nyelvek, dátum- és számformátumok, pénznem-szimbólumok, karakterkészletek.
+4. **Eszköz és környezet**. Érintési célpontok, offline viselkedés, lassú kapcsolatok, energiatakarékos mód.
+
+Minden dimenziónál azonosítja a hibaformát, majd alkalmazza a konkrét javítást: túlcsordulás-kezelés, informatív hiba UI, i18n-biztos elrendezések, többes szám, ésszerű tartalékok.
+
+## Próbáld ki
+
+Kezdd egy oldallal és egy dimenzióval:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Várható kimenet:
+
+- `.user-name` mostantól `text-overflow: ellipsis` paraméterrel rendelkezik, eszköztippel a teljes értékhez
+- `.bio` rögzített magasságról `max-height`-ra váltott, „mutass többet" felfedéssel
+- Üres állapot hozzáadva a biográfia nélküli felhasználókhoz
+- Csontváz-betöltő hozzáadva az aszinkron avatár lekéréshez
+- Tesztelve 1, 20, 60, 200 karakteres névhosszúságoknál
+
+Oldalanként futtasd, nem egyszerre. Az első futás a legnagyobb; a következő futások kevesebb problémát találnak, ahogy a minták megszilárdulnak.
+
+## Gyakori buktatók
+
+- **Várakozás egy hibajelentésre.** A harden megelőző. Ha kétszer ugyanazt a hibaosztályt javítod, futtasd a `/impeccable harden` parancsot a teljes funkción.
+- **A hiba- és üres állapotok utólagos gondolatként kezelése.** A hardening munka nagy része hiba- és üres állapot UI. Szánj rá időt, ne csak egy `catch` blokkot.
+- **Az i18n kihagyása a „most még csak angolul vagyunk" indokkal.** Az i18n-biztos elrendezések akkor is jobb elrendezések. Rugalmas konténerek, megfelelő szövegtörés, bőséges sormagasság. Egyik sem árt az angolnak.

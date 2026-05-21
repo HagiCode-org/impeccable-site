@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Kíméletlen lecsupaszítás. Tervek visszavezetése a lényegre.
+highlights:
+  - Az oldalon túl sok egymással versengő ötlet van.
+  - A felhasználóknak gyorsabb megértésre van szükségük, nem több funkcióra.
+  - Az egyszerűség a fejlesztés, nem átmeneti kompromisszum.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Mikor használd
+
+A `/impeccable distill` eltávolítja, aminek nem kellene ott lennie. Versengő gombok, redundáns információ, dekoratív szegélyek, három betűtípus, ahol egy is elég, hat navigációs elem, ahol három való. Akkor használd, ha egy felület zsúfoltnak, zajosnak hat, vagy úgy tűnik, egyszerre túl mindent akar csinálni.
+
+Nyúlj hozzá, miután a `/impeccable critique` „kognitív terhelés" vagy „vizuális zaj" jelzést ad, vagy bármikor, amikor egy oldal accretióval nőtt, és senki nem végezte el a szerkesztést.
+
+## Hogyan működik
+
+A szakértelem egyetlen kérdésből indul: mi az az egyetlen feladat, amit ez a felület megpróbál ellátni? Minden, ami nem segíti ezt a feladatot, a vágódeszkán landol.
+
+Két fázisban dolgozik:
+
+1. **A komplexitásforrások felmérése**. Túl sok elem, túlzott változatosság, információs túlterheltség, vizuális zaj, zavaros hierarchia, funkciókúszás. Mindegyik megnevezése.
+2. **Kíméletlen szerkesztés**. Eltávolítja, ami nem nélkülözhetetlen. Összevonja, ami összevonható. Elrejti, ami várhat. A változatokat egyetlen kezeléssé konszolidálja. Egyetlen vizuális nyelvre kötelezi el magát.
+
+Az elv: az oldalon lévő minden elemnek igazolnia kell a létezését. Kevesebb akadály, nem kevesebb funkció.
+
+## Próbáld ki
+
+```
+/impeccable distill this dashboard
+```
+
+Előtte: négy kártyastílus, három gombváltozat, két fejléckezelés, egy oldalsáv 14 tételből, 5 szakaszba csoportosítva.
+
+Egy `/distill` futás után, tipikus változások:
+
+- A négy kártyastílus összevonása eggyé
+- Egy gombváltozat kiválasztása, a többi lefokozása szöveges hivatkozásokká
+- A fejlécek egységesítése
+- Az oldalsáv 3 szakaszba csoportosítása, 5 helyett
+- Speciális beállítások elrejtése egy lenyitható rész mögé
+
+Kevesebb dolog. Mindegyik tisztább.
+
+## Gyakori buktatók
+
+- **A distill összetévesztése a törléssel.** A distill akadályokat távolít el. Nem távolítja el azokat a funkciókat, amelyekre a felhasználóknak szükségük van. Ha egy felhasználó naponta támaszkodik valamire, találj módot a csendben tartására, ne a kivágására.
+- **Túl korai futtatás.** Ha a funkció még növekszik, a mostani lepárlás azt jelenti, hogy jövő héten újra le kell párolni. Várj, amíg a forma stabilizálódik.
+- **Arra számítani, hogy helyettesíti a hierarchiamunkát.** Néha a jó megoldás nem az eltávolítás, hanem az elrendezés. Nyúlj a `/impeccable layout` parancshoz, ha a probléma az elrendezés, nem a mennyiség.

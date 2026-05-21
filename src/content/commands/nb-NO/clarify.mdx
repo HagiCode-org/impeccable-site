@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Skriv om forvirrende UX-tekst slik at grensesnitt forklarer seg selv.
+highlights:
+  - Brukerne tvekker fordi formuleringen er vag.
+  - Grensesnittet trenger bedre instruksjons- eller feiltekst.
+  - Produktflyten er fin, men språket bremser folk ned.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Når du skal bruke den
+
+`/impeccable clarify` er for grensesnitttekst som får folk til å stoppe opp og tenke. Forvirrende etiketter, tvetydig knappe-tekst, feilmeldinger som skylder på brukeren, verktøytips som gjentar etiketten, tomme tilstander som ikke sier noe nyttig. Bruk den når problemet ikke er layouten eller fargen, det er ordene.
+
+Gode utløsere: "brukere forstår ikke dette feltet", "feilmeldingen er ikke nyttig", "jeg kan ikke skrive god knappe-tekst", "dette verktøytips er bortkastet".
+
+## Hvordan det fungerer
+
+Ferdigheten skriver om tekst på de flatene der de fleste UX-tekstproblemer lever:
+
+1. **Etiketter og felthint**: direkte, spesifikke, sier hva som forventes.
+2. **Knappe-tekst**: verb først, beskriver utfallet, ikke handlingen. "Lagre endringer" ikke "OK".
+3. **Feilmeldinger**: forklarer hva som gikk galt, hvem sin skyld det er, og hva som gjøres videre. Aldri skyld på brukeren.
+4. **Tomme tilstander**: orienterer brukeren, forklarer hvorfor tilstanden er tom, tilbyr et neste steg.
+5. **Verktøytips og hjelpetekst**: legger til informasjon etiketten ikke kan bære, gjentar den aldri.
+6. **Bekreftelsesdialoger**: navngir konsekvensene, ikke handlingen.
+
+Ferdigheten bruker publikum og sinnstilstand fra `PRODUCT.md` til å justere stemmen. Teknisk publikum får presist språk. Forbrukerpublikum får enkelt språk. Stressede brukere får kort tekst. Engstelige brukere (betaling, sletting) får trygghet.
+
+## Prøv det
+
+```
+/impeccable clarify the billing form
+```
+
+Før og etter, typisk:
+
+- Etikett "Faktureringsadresse" → "Adressen på kortet ditt"
+- Plassholder "Skriv inn ditt VAT-nummer" → "VAT-nummer (valgfritt, for bedrifter)"
+- Feil "Ugyldig inndata" → "Dette kortnummeret er 15 siffer. Du skrev inn 14."
+- Knapp "Send inn" → "Trekk $29 og abonner"
+- Tom tilstand "Ingen transaksjoner ennå" → "Ditt første trekk vil dukke opp her etter din første ordre."
+
+## Fallgruver
+
+- **Å skrive smartere, ikke klarere.** Clarify er ikke for stemmeoppgraderinger. Hvis teksten allerede er klar, ikke bruk denne ferdigheten. Bruk `/impeccable delight` i stedet når du vil ha personlighet.
+- **Å hoppe over publikumsspørsmålet.** Clarify trenger å vite hvem som leser. Hvis `PRODUCT.md` ikke spesifiserer publikumets tekniske nivå, vil omskrivingene bli generiske.
+- **Å kjøre clarify på markedsføringstekst.** Clarify er for funksjonell UX-tekst: etiketter, feilmeldinger, instruksjoner. Markedsføringstekst trenger et annet sett med grep og en menneskelig skriver.

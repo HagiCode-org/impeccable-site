@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Apprendre à Impeccable à qui votre produit est destiné, une fois par projet.
+highlights:
+  - Le projet n'a pas encore de fichier de contexte de design.
+  - Différents contributeurs ont besoin d'une source de vérité partagée.
+  - Vous voulez que les commandes futures héritent de la direction de marque et de produit.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Loaded on every command</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Design serves the task.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">SREs on call, reading fast, often in the dark.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">Calm, clinical, no hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">Purple gradients. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Every command reads this before writing a line of code.</div>
+  </div>
+  <p class="docs-viz-caption">Un PRODUCT.md terminé. Stratégie uniquement : qui, quoi, pourquoi. Pas de couleurs, pas de polices, pas de valeurs en pixels, tout ça vit dans DESIGN.md.</p>
+</div>
+
+## Quand l'utiliser
+
+Exécutez `/impeccable teach` une fois au début d'un projet. C'est la rampe d'accès. Sans lui, chaque autre commande produira un design techniquement compétent mais génériquement tonné : voix SaaS standard, polices par défaut sûres, la palette de couleurs IA. Avec lui, chaque commande lit vos réponses avant de générer.
+
+Utilisez-le quand :
+
+- **Vous venez d'installer Impeccable dans un nouveau projet.** Première chose à exécuter. Les autres commandes vous y pousseront si vous passez à côté.
+- **La direction de marque du projet a changé.** Nouveau positionnement, nouveau public, nouvelle voix. Relancez `teach` et le contexte mis à jour circule dans chaque commande.
+- **Une autre commande a dit « aucun contexte de design trouvé »** et s'est arrêtée. C'est le signal : exécutez teach, puis reprenez.
+
+## Comment ça marche
+
+Teach écrit deux fichiers complémentaires à la racine du projet :
+
+- **`PRODUCT.md`** est le fichier stratégique. Registre (marque ou produit), utilisateurs cibles, objectif du produit, personnalité de marque, anti-références, principes de design, besoins d'accessibilité. Répond à « qui, quoi, pourquoi ».
+- **`DESIGN.md`** est le fichier visuel. Couleurs, typographie, élévation, composants, à faire et à ne pas faire. Répond à « à quoi ça ressemble ». Écrit par la commande `/impeccable document` déléguée, que teach invoque à la fin.
+
+Le flux scanne d'abord le codebase (README, package.json, composants, tokens, assets de marque) et forme une **hypothèse de registre** : brand (landing, marketing, portfolio, où le design EST le produit) ou product (UI d'app, tableaux de bord, outils, où le design SERT le produit). Le registre est la première question, car il façonne chaque réponse en aval : defaults typographiques, énergie de mouvement, stratégie de couleur, l'ensemble de références que des commandes comme `/impeccable typeset` utilisent. Après le registre, teach ne demande que ce qu'il n'a pas pu déduire : utilisateurs, personnalité en trois vrais mots, références et anti-références, exigences d'accessibilité.
+
+PRODUCT.md est stratégique uniquement. Pas de couleurs, pas de polices, pas de valeurs en pixels. Tout ça vit dans DESIGN.md. Garder les deux fichiers séparés est délibéré : la stratégie peut rester stable pendant que le système visuel évolue.
+
+## Essayez
+
+```
+/impeccable teach
+```
+
+Attendez-vous à un entretien de 5 à 8 minutes. La première question porte généralement sur le registre ; les suivantes sont courtes. Teach vous citera ce qu'il a déduit de votre code (« d'après les routes, ça ressemble à une surface produit, ça correspond ? ») pour que vous confirmiez, pas que vous partiez de zéro.
+
+À la fin, teach propose d'exécuter `/impeccable document` pour vous. Dites oui sauf si vous avez une raison spécifique d'attendre. Un vrai DESIGN.md est ce qui garde les variantes, polishes et audits fidèles à la marque.
+
+## Pièges courants
+
+- **Le sauter pour « juste essayer une commande rapidement ».** Chaque autre commande vous interrogera en plein vol à la place. Exécuter teach d'abord est plus rapide, pas plus lent.
+- **Donner des réponses génériques.** « Moderne et épuré » n'est pas utile. « Chaleureux, mécanique, opinionné » l'est. Soyez spécifique. Soyez prêt à contredire les defaults sûrs.
+- **Traiter PRODUCT.md comme immuable.** Le fichier est à vous. Si teach y a mis quelque chose qui n'est pas tout à fait juste, modifiez-le. Chaque commande lit le fichier actuel.
+- **Ne lister que des adjectifs pour les références.** Marques, produits, objets imprimés : nommés, pas décrits. « Les pages de spécimens de Klim Type Foundry », pas « technique et épuré ». Les anti-références devraient être tout aussi spécifiques.

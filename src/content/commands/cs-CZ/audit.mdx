@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Petidimenzionalni technicka kontrola kvality se zavaznosti P0 az P3.
+highlights:
+  - Potrebujete konkretni problemy a zavaznost, ne jen feedback zalozeny na vkusu.
+  - Pripravujete funkci na merge nebo vydani.
+  - Podezrivate ze skrytych problemu na mobilu, v temnych tematech nebo pod specifickymi potreby.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accessibility</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performance</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patterns</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Pet dimenzi hodnocenych 0 az 4, kazdy nalezek oznacen P0 (blokuje vydani) az P3 (lesteni). Audit dokumentuje; neopravuje. Smerujte nalezy do <code>/impeccable harden</code>, <code>/impeccable polish</code> nebo <code>/impeccable optimize</code>.</p>
+</div>
+
+## Kdy pouzit
+
+`/impeccable audit` je technicky protiklad k `/impeccable critique`. Kdyz `/impeccable critique` se pta "pripada to spravne", `/impeccable audit` se pta "vydrzi to". Provede kontroly pristupnosti, vykonu, tematiky, responsivniho designu a anti-patternu proti implementaci, ohodnoti kazdou dimenzi 0 az 4 a vytvori plan se zavaznosti P0 az P3.
+
+Pouzijte pred odeslanim, behem sprintu kvality nebo kdykoliv technicky vedouci rekne "mel bychom se opravdu podivat na pristupnost".
+
+## Jak to funguje
+
+Dovednost proskenuje vas kod pres pet dimenzi:
+
+1. **Pristupnost**: WCAG kontrast, ARIA, klavesnice navigace, semanticky HTML, popisky formularu.
+2. **Vykon**: layout thrashing, nakladne animace, chybejici lazy loading, velikost balicku.
+3. **Tematika**: hard-coded barvy, pokryti dark mode, konzistence tokenu.
+4. **Responsivita**: chovani breakpointu, dotykove cile, sprava mobilniho viewportu.
+5. **Anti-patterny**: stejnych 25 deterministickych kontrol, ktere provadi detektor.
+
+Kazda dimenze ziska skore 0 az 4. Kazdy nalezek ziska zavaznost: P0 blokuje vydani, P1 by se melo opravit tento sprint, P2 je pro dalsi cyklus, P3 je lesteni. Zpet dostanete jediny dokument, ktery muzete vlozit do ticket trackeru.
+
+Audit nic neopravuje. Dokumentuje. Smerujte nalezy do `/impeccable polish`, `/impeccable harden` nebo `/impeccable optimize` podle kategorie.
+
+## Vyzkousejte to
+
+```
+/impeccable audit the checkout flow
+```
+
+Ocekavany vystup:
+
+```
+Accessibility: 2/4 (castecne)
+  P0: Chybejici popisky formularu na 4 vstupech
+  P1: Kontrast 3.1:1 na stavu zakazaneho tlacitka
+  P2: Zadny viditelny indikator zasazeni na vlastnim dropdownu
+
+Performance: 3/4 (dobre)
+  P1: Hero obrazek neni lazy-loaded (340KB)
+  ...
+```
+
+Predejte P0 `/impeccable harden`, tematicke a typograficke P1 `/impeccable typeset` a `/impeccable polish`, zbytek `/impeccable polish`.
+
+## Na co si dat pozor
+
+- **Zamena s `/impeccable critique`.** Audit je kvalita implementace. Critique je kvalita designu. Pro uplny obraz spustte obe.
+- **Opravovani P3 pred P0.** Stupnice zavaznosti existuje z duvodu. Zacte na hornim konci.
+- **Preskakovani dimenzi, o kterych si myslite, ze jsou v poradku.** Tematika a responsivita jsou ty, o kterych vetsina lidi predpoklada, ze jsou v poradku, az nejsou.

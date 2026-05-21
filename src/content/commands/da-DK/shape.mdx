@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Tænk før du bygger. Producer et designbrief gennem discovery, ikke gætterier.
+highlights:
+  - Du vil have planlægning uden implementering endnu.
+  - Det rigtige layout eller den rigtige tone er stadig uklart.
+  - Flere interessenter skal blive enige om hensigten, før byggarbejdet starter.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output fra /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Formål</span>
+        <span class="docs-viz-file-v">Lade engagerede abonnenter ændre, hvad de modtager, uden at miste dem til afmelding.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Bruger</span>
+        <span class="docs-viz-file-v">Forstyrret, på mobil, midt i et møde. Læser hurtigt, lav tålmodighed.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Indhold</span>
+        <span class="docs-viz-file-v">4 digest-typer, 2 kadencer, én afmeld-alle i bunden.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Følelse</span>
+        <span class="docs-viz-file-v">Rolig, troværdig, ingen dark patterns.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Begrænsninger</span>
+        <span class="docs-viz-file-v">Mobile-first. WCAG AA kontrast. Én kolonne, ingen modaler.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Giv det til <code>/impeccable</code>, <code>/impeccable craft</code> eller ethvert implementeringsflow.</div>
+  </div>
+  <p class="docs-viz-caption">Et shape-brief er et kompas, ikke en specifikation. Det fanger hensigt, ikke UI. Implementeringsfærdigheder læser det, før de skriver en linje kode.</p>
+</div>
+
+## Hvornår du skal bruge den
+
+`/impeccable shape` er der, hvor en funktion starter. Før nogen skriver kode, før nogen diskuterer hero-behandlingen, før nogen vælger en skrifttype. Brug det til at fremtvinge en discovery-samtale om formål, brugere, indhold og begrænsninger, og fang derefter svarene som et designbrief, som implementeringsfærdighederne kan støtte sig til.
+
+Grib efter den, hver gang en funktion er ved at starte, et ticket er vagt, eller du griber dig selv i at skrive JSX for at finde ud af, hvad produktet skal være.
+
+## Hvordan det virker
+
+De fleste AI-genererede UI'er fejler ikke på grund af dårlig kode, men på grund af sprunget tænkning. Modellen hopper til "her er et kort-grid" uden at spørge "hvad prøver brugeren at opnå". `/impeccable shape` inverterer den rækkefølge.
+
+Færdigheden kører et struktureret discovery-interview i samtalen. Den vil ikke skrive kode i denne fase. Spørgsmålene dækker:
+
+- **Formål og kontekst**: hvad funktionen er til, hvem der bruger den, hvilken sindstilstand de er i
+- **Indhold og data**: hvad der vises, realistiske intervaller, kanttilfælde, hvad der er dynamisk
+- **Designmål**: den ene vigtigste ting, den tilsigtede følelse, referenceeksempler
+- **Begrænsninger**: tekniske, indholdsmæssige, tilgængelighed, lokalisering
+
+Du svarer naturligt. Færdigheden stiller opfølgende spørgsmål, ikke et formular. Til sidst producerer den et designbrief: et struktureret artefakt, du kan give til `/impeccable` eller enhver anden implementeringsfærdighed.
+
+Bemærk: Hvis du vil have det fulde flow (discovery-interview og derefter direkte i bygning), så brug `/impeccable craft` i stedet. Den kører `/impeccable shape` internt og fortsætter derefter til implementering med visuel iteration. `/impeccable shape` selvstændigt er til, når du kun vil have briefet, så du kan tage det til den implementeringsmetode, du foretrækker.
+
+## Prøv det
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Forvent en samtale med 5 til 10 spørgsmål. Færdigheden spørger ting som "hvem er personen, der åbner dette, og er de allerede engagerede eller stadig nysgerrige" og "hvad sker der, når brugeren har afmeldt alt, skjuler vi funktionen eller viser vi noget". Du svarer, og et brief materialiserer sig.
+
+Derfra kan du give briefet til `/impeccable`, `/impeccable polish` eller enhver anden færdighed. Eller bare bruge det som reference, mens du bygger i hånden.
+
+## Faldgruber
+
+- **At springe det over, fordi det føles langsomt.** Interviewet tager måske 5 minutter. De omskrivninger, du undgår, måles i timer.
+- **At behandle briefet som en specifikation.** Det er et kompas, ikke en tjekliste. Det fanger hensigt, ikke UI.
+- **At svare med "standard" eller "normalt".** Specificitet er hele pointen. Hvis en bruger er "forstyrret, på mobil, mellem møder", så sig det. Det ændrer alt nedstrøms.

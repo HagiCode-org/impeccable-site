@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Zdiagnozuj i napraw wydajnosc UI od LCP po rozmiar pakietu.
+highlights:
+  - Interfejs wydaje sie wolny, skaczacy lub cieiezki.
+  - Musisz zredukowac koszty bez wycinania projektu.
+  - Wydajnosc jest teraz widocznym problemem produktowym.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Kiedy uzywac
+
+`/impeccable optimize` jest dla interfejsow, ktore wydaja sie wolne. Pierwsze renderowanie trwa wiecznie, przewijanie przerywa, obrazki pojawiaja sie pozno, interakcje wydaja sie ospale, pakiet wysyla 800KB JavaScriptu. Uzyj, gdy Web Vitals sa zle lub gdy uzytkownicy narzekaja, ze rzeczy sa powolne.
+
+Nie uzywaj jako przedwczesnej optymalizacji. Jesli LCP to 1.1s, a INP to 80ms, przestan. Praca projektowa wazniejsza.
+
+## Jak to dziala
+
+Umiejetnosc przechodzi przez piec wymiarow wydajnosci:
+
+1. **Ladowanie i Web Vitals**: LCP, INP, CLS. Zidentyfikuj, co blokuje pierwsze renderowanie, co opoznia interakcje, co przesuwa uklad.
+2. **Renderowanie**: niepotrzebne re-renderowania, brakujaca memoizacja, kosztowne uzgadnianie, layout thrash w petlach.
+3. **Animacje**: czy cos animuje wlasciwosci ukladu, czy transformacje i opacity to jedyne, co jest dotykane, czy `will-change` pomaga, czy szkodzi.
+4. **Obrazki i zasoby**: lazy loading, responsywne obrazki (`srcset`, `sizes`), nowoczesne formaty (WebP, AVIF), wymiary ustawione, aby zapobiec CLS.
+5. **Rozmiar pakietu**: nieuzywane importy, przerosniete zaleznosci, brakujace code-splitting, martwy kod.
+
+Umiejetnosc mierzy przed i po. Kazda poprawka jest kwantyfikowana. Jesli zmiana nie przesuwa metryki, jest wycofywana.
+
+## Wyprobuj
+
+```
+/impeccable optimize the homepage
+```
+
+Oczekiwany ksztalt:
+
+```
+LCP: 3.2s -> 1.4s
+  - Obraz hero preloadowany (-800ms)
+  - Usuniety render-blokujacy stylesheet fontu (-240ms)
+  - Odroczony skrypt analityczny (-180ms)
+
+INP: 240ms -> 90ms
+  - Debounced handler przewijania
+  - Zmemoizowany kosztowny render listy
+  - Usuniety synchroniczny odczyt layoutu w petli zdarzen
+
+CLS: 0.18 -> 0.02
+  - Ustawione wymiary na obrazie hero i logo
+  - Zarezerwowane miejsce na asynchroniczna odznakke naglowka
+
+Pakiet: 340KB -> 180KB
+  - Usuniety nieuzywany import lodash (52KB)
+  - Code-split na trasie playground (78KB)
+  - Porzucony przestarzalay zestaw ikon (30KB)
+```
+
+## Pulapki
+
+- **Optymalizowanie przed mierzeniem.** Bez metryk bazowych nie potrafisz powiedziec, co pomoglo. Uruchom `/impeccable optimize` z konkretnymi liczbami Web Vitals, nie przeczwuciami.
+- **Gonienie malych wygranych.** 20ms poprawa w INP, ktora zajmuje tydzien, rzadko jest warta. Optimize ma malejace zwroty; wiedz, kiedy przestac.
+- **Zapominanie o ponownym pomiarze po kazdej zmianie.** Budowanie moglo zrobic rzeczy gorzej w sposob, ktorego umiejetnosc nie przewidziala. Zweryfikuj.

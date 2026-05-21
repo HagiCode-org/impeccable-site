@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Posunte rozhrani za bezne limity. Shadery, fyzika, 60fps, cinematicke prechody.
+highlights:
+  - Zazitok ma pripadne vypadat mimoradne, ne jen uklizene.
+  - Bohaty pohyb nebo vykreslovani je soucasti pribehu produktu.
+  - Tym je ochoten platit za slozitost tam, kde na ni zalezi.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Kdy pouzit
+
+`/impeccable overdrive` je pro okamziky, kdy chcete zapůsobit. Hero, ktera pouziva WebGL. Tabulka, ktera zvladne milion radku. Dialog, ktery se promorphuje ze sveho spoustece. Formular, ktery validuje v realnem case se streamovanim zpetnou vazbou. Prechod stranky, ktery vypada cinematicky. Pouzijte jej, kdyz rozpočet projektu umoznuje technickou ambici a vysledek ma vypadat mimoradne.
+
+Nepouzivejte na operatorske nastroje, dashboardy nebo cokoliv, kde spolehlivost porazi spektakl. Overdrive pali slozitost za efekt a tento kompromis se vyplati jen na okamzicich, ktere na nich zalezi.
+
+## Jak to funguje
+
+Dovednost vybere jeden okamzik k mimoradnemu zpracovani a zavazuje se k nemu, misto rozhazovani usili po celém rozhrani. Pak siahne po technikach, kterych se vetsina AI generovanych UI nikdy nedorazi: WebGL shadery, pruzinova fyzika, Scroll Timeline, View Transitions, animace na canvasu, GPU akcelerovane filtry. Vse je rozpoctovano, profilovano a testovano na 60fps, se zalozními variantami pro reduced motion zabudovanými.
+
+Vystup Overdrive je ohlasen s `──── ⚡ OVERDRIVE ────`, takze vite, ze vstupujete do ambicioznejšího rezimu. Ockejte vetsi diffy, nove zavislosti a hloubku implementace presahujici to, co produkují jiné dovednosti.
+
+## Vyzkousejte to
+
+```
+/impeccable overdrive the landing hero
+```
+
+Jedno konkretni spusteni by mohlo nahradit staticke hero pozadim s WebGL shaderem ridene polohou mysi, zobrazovacím nadpistem, ktery se odhaluje maskou pri scrollovani pomoci Scroll Timeline API, a View Transition na CTA, ktera se promorphuje do dalsi stranky. Plus zalozní varianta pro reduced motion, ktera to vse vymeni za cistou statickou kompozici.
+
+## Na co si dat pozor
+
+- **Pouzivani vsude.** Overdrive funguje, protoze je vzacny. Pokud ma kazda stranka cinematicke okamziky, zadny z nich neni cinematicky.
+- **Dodavani bez zalozních variant pro reduced motion.** Nevyjednatelne. Overdrive je pridava automaticky; neodstranujte je.
+- **Ignorovani vykonu.** Mimoradne okamziky stale potrebuji dosahovat 60fps. Pokud efekt zpusobuje ztratu snimku, oriznete jej nebo optimalizujte. Pomaly spektakl je horsi nez jednoduché dobre udelane.
+- **Spusteni overdrive driv, nez je zakladni rozhrani pevne.** Spektakl na rozbiten zakladne vypada jako rozptylovani, ne jako poteseni.

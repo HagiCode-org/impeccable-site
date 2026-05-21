@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Omskriv forvirrende UX-tekst, så grænseflader forklarer sig selv.
+highlights:
+  - Brugere tøver, fordi formuleringen er vag.
+  - Grænsefladen har brug for bedre instruktionel eller fejltekst.
+  - Produktflowet er fint, men sproget forsinker folk.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable clarify` er til grænsefladetekst der får folk til at stoppe op og tænke. Forvirrende etiketter, tvetydig knaptekst, fejlmeddelelser der skylder på brugeren, tooltips der gentager etiketten, tomme tilstande der siger intet brugbart. Brug den, når problemet ikke er layoutet eller farven, det er ordene.
+
+Gode udløsere: "brugere forstår ikke dette felt", "fejlmeddelelsen er ikke nyttig", "jeg kan ikke skrive god knaptekst", "denne tooltip er spild".
+
+## Hvordan det virker
+
+Færdigheden omskriver tekst på de overflader, hvor de fleste UX-tekstproblemer lever:
+
+1. **Etiketter og felt-tips**: direkte, specifik, siger hvad der forventes.
+2. **Knaptekst**: verbum-først, beskriver resultatet, ikke handlingen. "Gem ændringer" ikke "OK".
+3. **Fejlmeddelelser**: forklar hvad der gik galt, hvem der har skylden, og hvad der skal gøres herefter. Aldrig skyld på brugeren.
+4. **Tomme tilstande**: orientér brugeren, forklar hvorfor tilstanden er tom, tilbyd et næste skridt.
+5. **Tooltips og hjælpetekst**: tilføj information etiketten ikke kan bære, gentag den aldrig.
+6. **Bekræftelsesdialoger**: navngiv konsekvenserne, ikke handlingen.
+
+Færdigheden bruger publikum og mental tilstand fra `PRODUCT.md` til at justere stemmen. Teknisk publikum får præcist sprog. Forbrugerpublikum får folkelig tale. Stressende brugere får kort tekst. Ængstelige brugere (betaling, sletning) får tryghed.
+
+## Prøv det
+
+```
+/impeccable clarify the billing form
+```
+
+Før og efter, typisk:
+
+- Etiket "Billing address" -> "Adresse på dit kort"
+- Placeholder "Enter your VAT ID" -> "Momsnummer (valgfrit, til virksomheder)"
+- Fejl "Invalid input" -> "Dette kortnummer er 15 cifre. Du indtastede 14."
+- Knap "Submit" -> "Hæv $29 og abonner"
+- Tom tilstand "No transactions yet" -> "Din første afskrivning vises her efter din første ordre."
+
+## Faldgruper
+
+- **At skrive klogere, ikke tydeligere.** Clarify er ikke til stemmeopgraderinger. Hvis teksten allerede er klar, så brug ikke denne færdighed. Brug `/impeccable delight` i stedet, når du vil have personlighed.
+- **At springe publikumsspørgsmålet over.** Clarify har brug for at vide, hvem der læser. Hvis `PRODUCT.md` ikke angiver publikums tekniske niveau, bliver omskrivningerne generiske.
+- **At køre clarify på markedsføringstekst.** Clarify er til funktionel UX-tekst: etiketter, fejl, instruktioner. Markedsføringstekst kræver et andet sæt bevægelser og en menneskelig forfatter.

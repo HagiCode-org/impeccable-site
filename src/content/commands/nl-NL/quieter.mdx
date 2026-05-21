@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Toon ontwerpen die schreeuwen af zonder hun intentie te verliezen.
+highlights:
+  - Sterke ideeën zijn aanwezig, maar de pagina is te luid.
+  - Je hebt terughoudendheid nodig zonder saai te worden.
+  - De huidige toon overweldigt het lezen of de taakflow.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Wanneer te gebruiken
+
+`/impeccable quieter` is het tegengewicht voor `/impeccable bolder`. Gebruik het wanneer een interface visueel agressief is, overstimulerend, of probeert te veel dingen tegelijk op vol volume te doen. Neon op donker, overal kleurovergangstekst, 6 accentkleuren, alles geanimeerd, 20px schaduwen. Gebruik quieter wanneer het ontwerp ademruimte nodig heeft en je verfijning wilt zonder het standpunt te verliezen.
+
+Ook nuttig nadat `/impeccable bolder` een beetje te ver is gegaan.
+
+## Hoe het werkt
+
+De skill werkt door reductie over vier assen:
+
+1. **Kleur**: desatureren, chroma verlagen in OKLCH, accenten terugbrengen tot een enkele primaire plus gedempte ondersteuning. Niet meer dan twee intentionele kleuren.
+2. **Contrast**: extreme donkers en lichten verzachten, het bereik intrekken. Achtergronden gaan van zuiver wit en zuiver zwart naar papier en inkt.
+3. **Decoratie**: schaduwen verwijderen die geen werk doen, randen laten vallen die geen structuur dragen, kleurovergangen uitschakelen die bestaan voor energie in plaats van hiërarchie.
+4. **Beweging en effect**: animaties vertragen, alles verwijderen dat automatisch afspeelt, parallax en blur laten vervallen tenzij ze de leesbaarheid dienen.
+
+De skill behoudt de intentie van het ontwerp. Als het origineel een standpunt had, heeft de stillere versie hetzelfde standpunt met meer zelfvertrouwen. Verfijning, niet neutralisatie.
+
+## Probeer het
+
+```
+/impeccable quieter the pricing page
+```
+
+Typische diff:
+
+- Kleurovergangstekst op de prijs verwijderd, vervangen door vaste inkt bij één gewicht zwaarder
+- Drie accentkleuren gereduceerd tot één (magenta), de andere twee worden neutrale varianten
+- Kaartschaduwen gereduceerd van `0 20px 40px rgba(0,0,0,0.2)` naar `0 1px 0 var(--color-mist)` (een haartje)
+- Achtergrond wisselt van donkere kleurovergang naar papier met een subtiele crème-wassing bovenaan
+- Hero-animatie van 1.2s easeOut met 3 gestaffelde elementen naar een enkele 260ms fade-in
+
+## Valkuilen
+
+- **Over-toepassen.** Quieter kan persoonlijkheid wegnemen als je het uitvoert op iets dat al afgemeten was. Gebruik het wanneer het ontwerp te luid is, niet wanneer het correct assertief is.
+- **Quieter verwarren met distill.** Quieter vermindert intensiteit. Distill verwijdert elementen. Het zijn verschillende bewerkingen.
+- **Het uitvoeren als reactie op een critique die zegt "te druk".** Druk betekent meestal te veel dingen, niet te luid. Probeer eerst `/impeccable distill`.

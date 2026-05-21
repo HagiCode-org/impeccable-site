@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Celowy ruch, który przekazuje stan, a nie dekorację.
+highlights:
+  - Interfejsy wydają się bez życia lub gwałtowne między stanami.
+  - Ładowanie, informacja zwrotna lub przejścia potrzebują ruchu, który wyjaśnia, co się dzieje.
+  - Chcesz zdyscyplinowanej animacji z fallbackami reduced-motion.
+related:
+  - delight
+---
+
+## Kiedy używać
+
+`/impeccable animate` jest na interfejsy, które wydają się bez życia, gdzie zmiany stanu są natychmiastowe i drastyczne, gdzie ładowanie po prostu się pojawia, gdzie użytkownik nigdy do końca nie ufa, że jego kliknięcie się zarejestrowało. Użyj, aby dodać małe ruchy, które komunikują, co się dzieje: wejścia, wyjścia, informacja zwrotna, przejścia między stanami.
+
+Nie używaj do dodawania odbić czy sprężyn elastycznych dla energii. To dekoracja, a ta umiejętność ci tego nie da.
+
+## Jak to działa
+
+Umiejętność identyfikuje statyczne momenty, które skorzystałyby z ruchu, a potem aplikuje je ze ścisłą dyscypliną:
+
+1. **Wejścia i wyjścia**: elementy pojawiają się i odchodzą z zanikaniem 200 do 300ms plus subtelnym Y lub scale, nigdy właściwościami układu.
+2. **Informacja zwrotna stanu**: hover, active, focus, loading, success komunikują się przez ruch zamiast nagłych podmian.
+3. **Przejścia między widokami**: shared-element transitions, gdzie to ma sens, fade-through w przeciwnym razie.
+4. **Postęp i ładowanie**: ekrany szkieletowe, deterministyczne paski, ruch, który mówi "nadal pracuję".
+5. **Zredukowany ruch**: każda animacja ma fallback `prefers-reduced-motion`.
+
+Easing jest zawsze eksponencjalny (ease-out-quart, quint lub expo), bo prawdziwe obiekty wytracają prędkość płynnie. Żadnych odbić, żadnych elastycznych sprężyn, żadnego linear dla czegokolwiek poza wskaźnikami postępu.
+
+Umiejętność animuje tylko `transform` i `opacity`. Jeśli znajdziesz się na animowaniu `width`, `height`, `top` lub `left`, robi coś nie tak. Użyj `grid-template-rows` do przejść wysokości.
+
+## Wypróbuj
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typowe dodatki:
+
+- Pole email dostaje poświatę focus na focus-visible (opacity + shadow, 180ms)
+- Przycisk submit pokazuje spinner wewnątrz siebie w stanie ładowania, nie osobny spinner obok
+- Ekran sukcesu wchodzi z opacity + translateY(8px), 260ms, ease-out-quart
+- Komunikat błędu zsuwa się z grid-template-rows (nie height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback dla każdego przejścia
+
+## Pułapki
+
+- **Prośba o "więcej animacji".** Animate to nie pokrętło. Dodaje tam, gdzie ruch komunikuje, nie wszędzie.
+- **Usuwanie fallbacków reduced-motion.** Umiejętność dodaje je automatycznie. Nienegocjowalne dla dostępności.

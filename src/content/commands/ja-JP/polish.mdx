@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: 良いものと素晴らしいものの間の緻密な最終仕上げ。
+highlights:
+  - 整列、スペーシング、細かい決定がまだ粗く感じる。
+  - 機能が出荷に近い。
+  - 小さな不整合が知覚品質を下げている。
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## いつ使うか
+
+`/impeccable polish` は出荷前に実行する最後のものです。出荷された機能と磨き上げられた機能を分ける小さなディテールを追及します：半ピクセルのズレ、一貫性のないスペーシング、忘れられたフォーカス状態、フラッシュするローディング遷移、トーンが揺らぐコピー。また、機能をデザインシステムに合わせ、ハードコードされた値をトークンに置き換え、カスタムコンポーネントを共有コンポーネントにスワップし、確立されたパターンからの逸脱を修正します。
+
+機能が機能的に完成しており、何も壊れていないが、まだ何かが違和感がある場合に使ってください。また、機能がデザインシステムから逸脱し、軌道修正が必要な場合にも使ってください。
+
+## 仕組み
+
+Polishはまずデザインシステム（トークン、スペーシングスケール、共有コンポーネント）を発見し、次に6つの次元で体系的に動作します。
+
+1. **視覚的整列とスペーシング**：ピクセルパーフェクトなグリッドへの準拠、一貫したスペーシングスケール、アイコンの光学的整列。
+2. **タイポグラフィ**：階層の一貫性、行の長さ、未亡人と孤児、見出しのカーニング。
+3. **カラーとコントラスト**：トークンの使用、テーマパリティ、WCAG比、フォーカスインジケーター。
+4. **インタラクションステート**：hover、focus、active、disabled、loading、error、success。すべてのステートが確認済み。
+5. **遷移とモーション**：スムーズなイージング、レイアウトジャンクなし、`prefers-reduced-motion` の尊重。
+6. **コピー**：一貫した声、正しい時制、プレースホルダー文字列なし、迷子のTODOなし。
+
+スキルは1つを明確にしています：polishは最後のステップであり、最初ではない。機能が機能的に完成していない場合、磨き上げは無駄な作業です。
+
+## 試してみる
+
+```
+/impeccable polish the pricing page
+```
+
+健全な実行の例：
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+5つの小さな修正、書き直しなし。それが良いpolishパスの形です。
+
+## 注意点
+
+- **未完成の作品を磨き上げること。** コードにTODOがあれば、まだ準備ができていません。完成した機能にのみ `/impeccable polish` を実行してください。
+- **polishをリデザインとして扱うこと。** Polishは既存のものを洗練します。レイアウトを再構築しているなら、`/impeccable critique` や `/impeccable layout` が必要でした。
+- **`/impeccable audit` なしで `/impeccable polish` を実行すること。** Polishは感覚ベースの問題をキャッチします。Auditは測定可能な問題をキャッチします。両方を使ってください。

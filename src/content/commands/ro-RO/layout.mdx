@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Reparati layout-ul, spatierea si ritmul vizual.
+highlights:
+  - Pagina nu are accentuare clara.
+  - Exista continut bun, dar compozitia il ascunde.
+  - Doriti un flux mai puternic inainte de a atinge culoare sau miscare.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Cand se foloseste
+
+`/impeccable layout` este pentru pagini unde nimic nu este tehnic gresit dar nimic nu respira either. Padding egal peste tot, griduri de carduri monoton, continut care merge de la margine la margine, ierarhie care se bazeaza doar pe dimensiune. Apelati la el cand un layout "se simte nepotrivit" si nu puteti articula de ce.
+
+Declanse bune: "totul se simte aglomerat", "se citeste ca un zid", "nu stiu unde sa ma uit mai intai".
+
+## Cum functioneaza
+
+Skill-ul parcurge cinci dimensiuni de layout:
+
+1. **Spatiere**: scara de spatieri este consistenta sau exista goluri aleatorii de 13px, elementele inrudite sunt grupate strans cu spatiu generos intre grupuri, exista vreun ritm.
+2. **Ierarhie vizuala**: privirea aterizeaza pe actiunea principala in 2 secunde, ierarhia face munca reala sau totul striga.
+3. **Grid si structura**: exista un grid de baza sau layout-ul este aleatoriu, elementele sunt aliniate la baseline.
+4. **Ritm**: pagina alterneaza intre spatieri stranse si generoase, sau totul este uniform.
+5. **Densitate**: layout-ul este strangulat sau risipitor, densitatea se potriveste cu tipul de continut.
+
+Reparatiile implica de obicei reconstruirea scalei de spatieri, introducerea asimetriei, prabusirea gridurilor monotone intr-un layout mixt cu elemente hero si secundare, si oferirea de spatiu real actiunii principale.
+
+## Incercati
+
+```
+/impeccable layout the settings page
+```
+
+Modificari tipice:
+
+- Scara de spatieri unificata la 8 / 16 / 24 / 48 / 96px
+- Intreruperi de sectiune la 48px, goluri de rand la 16px, grupuri de campuri de formular la 8px
+- Actiunile principale extrase din fluxul formularului cu buffer de 32px
+- Margini decorative eliminate, inlocuite cu grupare bazata pe spatieri
+- Proportiile barei laterale si coloanei principale reechilibrate (280 / flex vs 25 / 75)
+
+## Capcane
+
+- **Confundarea arrange cu distill.** Daca problema este ca sunt prea multe lucruri, rulati `/impeccable distill` mai intai. Layout este pentru aranjarea a ceea ce este deja setul potrivit.
+- **Asteptarea sa salveze un grid stricat.** Daca pagina nu are deloc grid, arrange va construi unul. Sa stiti doar ca diff-ul va fi mai mare decat va asteptati.
+- **Ignorarea verdictului de ierarhie.** Daca arrange spune "nimic nu este principal", nicio cantitate de lucru cu spatieri nu repara asta. Aveti nevoie de o decizie de continut, nu de o ajustare de layout.

@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Suy nghĩ trước khi dựng. Tạo bản tóm tắt thiết kế thông qua khám phá, không phải phỏng đoán.
+highlights:
+  - Bạn muốn lập kế hoạch mà chưa triển khai.
+  - Bố cục hoặc giọng điệu phù hợp vẫn chưa rõ ràng.
+  - Nhiều bên liên quan cần thống nhất về ý định trước khi bắt đầu dựng.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Kết quả của /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Purpose</span>
+        <span class="docs-viz-file-v">Cho phép người đăng ký cam kết thay đổi nội dung nhận được mà không mất họ vào việc hủy đăng ký.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">User</span>
+        <span class="docs-viz-file-v">Vội vã, trên điện thoại, đang giữa cuộc họp. Đọc nhanh, ít kiên nhẫn.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Content</span>
+        <span class="docs-viz-file-v">4 loại digest, 2 tần suất, một tùy chọn hủy toàn bộ ở cuối.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Feeling</span>
+        <span class="docs-viz-file-v">Bình tĩnh, đáng tin cậy, không có dark patterns.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Constraints</span>
+        <span class="docs-viz-file-v">Mobile-first. Độ tương phản WCAG AA. Một cột, không có modal.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Chuyển cho <code>/impeccable</code>, <code>/impeccable craft</code>, hoặc bất kỳ luồng triển khai nào.</div>
+  </div>
+  <p class="docs-viz-caption">Bản tóm tắt shape là một chiếc la bàn, không phải bản đặc tả. Nó ghi nhận ý định, không phải UI. Các kỹ năng triển khai đọc nó trước khi viết một dòng code.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+`/impeccable shape` là nơi một tính năng bắt đầu. Trước khi ai đó viết code, trước khi ai đó tranh luận về cách xử lý hero, trước khi ai đó chọn font. Sử dụng để thúc đẩy một cuộc trò chuyện khám phá về mục đích, người dùng, nội dung và ràng buộc, sau đó ghi lại câu trả lời dưới dạng bản tóm tắt thiết kế mà các kỹ năng triển khai có thể dựa vào.
+
+Sử dụng bất cứ khi nào một tính năng sắp bắt đầu, một ticket mơ hồ, hoặc khi bạn phát hiện mình đang viết JSX để tìm hiểu sản phẩm nên là gì.
+
+## Cách hoạt động
+
+Hầu hết các UI do AI tạo ra thất bại không phải vì code tồi, mà vì thiếu tư duy. Mô hình nhảy ngay vào "đây là lưới thẻ" mà không hỏi "người dùng đang cố gắng hoàn thành điều gì". `/impeccable shape` đảo ngược thứ tự đó.
+
+Kỹ năng chạy một cuộc phỏng vấn khám phá có cấu trúc qua trò chuyện. Nó sẽ không viết code trong giai đoạn này. Các câu hỏi bao gồm:
+
+- **Mục đích và bối cảnh**: tính năng dùng để làm gì, ai sử dụng, trạng thái tâm lý của họ
+- **Nội dung và dữ liệu**: những gì hiển thị, phạm vi thực tế, trường hợp biên, những gì là động
+- **Mục tiêu thiết kế**: điều quan trọng nhất, cảm xúc dự định, ví dụ tham chiếu
+- **Ràng buộc**: kỹ thuật, nội dung, khả năng tiếp cận, địa phương hóa
+
+Bạn trả lời tự nhiên. Kỹ năng hỏi thêm, không phải một biểu mẫu. Cuối cùng nó tạo ra bản tóm tắt thiết kế: một cấu trúc bạn có thể chuyển cho `/impeccable` hoặc bất kỳ kỹ năng triển khai nào khác.
+
+Lưu ý: nếu bạn muốn toàn bộ quy trình (phỏng vấn khám phá, sau đó đi thẳng vào dựng), hãy sử dụng `/impeccable craft` thay thế. Nó chạy `/impeccable shape` nội bộ, sau đó tiếp tục triển khai với lặp trực quan. `/impeccable shape` độc lập dành cho khi bạn chỉ muốn bản tóm tắt, để có thể mang nó đến bất kỳ cách tiếp cận triển khai nào bạn muốn.
+
+## Thử ngay
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Kỳ vọng một cuộc trò chuyện gồm 5 đến 10 câu hỏi. Kỹ năng sẽ hỏi những thứ như "ai là người mở trang này, họ đã cam kết hay vẫn đang tìm hiểu" và "điều gì xảy ra khi người dùng đã hủy đăng ký mọi thứ, chúng ta ẩn tính năng hay hiển thị gì đó". Bạn trả lời, và bản tóm tắt hình thành.
+
+Từ đó bạn có thể chuyển bản tóm tắt cho `/impeccable`, `/impeccable polish`, hoặc bất kỳ kỹ năng nào khác. Hoặc chỉ sử dụng nó làm tài liệu tham khảo trong khi bạn tự dựng.
+
+## Những cạm bẫy cần tránh
+
+- **Bỏ qua vì cảm thấy chậm.** Cuộc phỏng vấn chỉ mất khoảng 5 phút. Những lần viết lại bạn tránh được tính bằng giờ.
+- **Coi bản tóm tắt như bản đặc tả.** Nó là la bàn, không phải danh sách kiểm tra. Nó ghi nhận ý định, không phải UI.
+- **Trả lời bằng "tiêu chuẩn" hoặc "bình thường".** Tính cụ thể là toàn bộ mục đích. Nếu người dùng "vội vã, trên điện thoại, giữa các cuộc họp", hãy nói vậy. Điều đó thay đổi mọi thứ ở hạ lưu.

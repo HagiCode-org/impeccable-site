@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Molde o design e depois construa-o, tudo num único fluxo.
+highlights:
+  - Está a iniciar uma nova funcionalidade do zero.
+  - Pretende descoberta, implementação e refinamento visual numa única passagem.
+  - Prefere um ciclo de compilação mais lento mas mais deliberado.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Entrevista de descoberta. Propósito, utilizadores, restrições, direção.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Load references</span>
+      <span class="docs-viz-flow-hint">Espacial, tipografia, movimento, cor, interação.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Estrutura, hierarquia, tipo, cor, estados, movimento, responsivo.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterate visually</span>
+      <span class="docs-viz-flow-hint">Verificar no navegador, refinar até corresponder ao briefing.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Cada fase é intransponível. A etapa de descoberta é onde a maioria do output da IA falha: quando o código existe, o pensamento já está bloqueado.</p>
+</div>
+
+## Quando utilizar
+
+`/impeccable craft` é o comando de compilação de ponta a ponta. Forneça uma descrição da funcionalidade e ele executa todo o pipeline: descoberta estruturada, carregamento de referências, implementação, iteração visual. Utilize-o quando está a iniciar uma nova funcionalidade do zero e pretende o fluxo de trabalho completo numa única invocação.
+
+Recorra a ele quando:
+
+- **Está a construir uma nova funcionalidade e pretende o fluxo completo.** Não quer gerir os passos manualmente.
+- **Sabe o que está a construir mas não como deve parecer.** A fase de descoberta força o pensamento de design antes que a implementação o bloqueie.
+- **Pretende iteração visual por predefinição.** `craft` verifica o resultado num navegador e refine até que o polimento seja elevado, em vez de entregar a primeira versão funcional.
+
+Se apenas pretende o raciocínio sem o código, utilize `/impeccable shape` de forma autónoma. Se já tem uma visão clara e apenas quer construir, invoque `/impeccable` diretamente com a descrição da funcionalidade. `craft` situa-se no meio: estruturado, completo, opinativo.
+
+## Como funciona
+
+`craft` executa quatro fases em sequência:
+
+1. **Moldar o design.** Executa `/impeccable shape` internamente: uma breve conversa de descoberta sobre propósito, utilizadores, conteúdo, restrições e objetivos. O resultado é um briefing de design que pode ler e sobre o qual se pode posicionar.
+2. **Carregar referências.** Com base no briefing, importa os ficheiros de referência corretos (espacial, tipografia, movimento, cor, interação, responsivo, redação UX) para que o modelo tenha os princípios relevantes carregados antes de começar a codificar.
+3. **Construir.** Implementa a funcionalidade numa ordem deliberada: estrutura primeiro, depois espaçamento e hierarquia, depois tipo e cor, depois estados, depois movimento, depois responsivo. Cada decisão remete para o briefing.
+4. **Iteração visual.** Abre o resultado num navegador, verifica-o contra o briefing e o catálogo de anti-padrões, e refine até corresponder à intenção. Este passo é crítico. A primeira versão funcional nunca é a versão enviada.
+
+A fase de descoberta é intransponível e esse é o ponto. A maioria dos interfaces gerados por IA falham porque ninguém perguntou o que o utilizador estava a tentar realizar antes de o modelo começar a escrever JSX. `craft` inverte essa lógica.
+
+## Experimente
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Espere primeiro uma entrevista de descoberta com 5 a 10 perguntas. Questões sobre o seu público, a personalidade do produto, o tom emocional desejado, anti-referências e restrições. Depois um briefing de design. Depois implementação, com o navegador verificado em cada etapa. Espere múltiplas rondas de iteração na fase de polimento visual.
+
+A execução completa é mais longa do que um comando típico porque inclui o pensamento, a construção e o refinamento. Esse é o compromisso: mais estrutura inicial, menos correções posteriores.
+
+## Armadilhas
+
+- **Utilizá-lo para pequenas alterações.** `craft` destina-se a novas funcionalidades, não a retoques. Para código existente, recorra a `/impeccable polish`, `/impeccable critique` ou a um comando de refinamento específico.
+- **Apressar a fase de descoberta.** A entrevista parece lenta em comparação com "começar logo a codificar". Não é. Responder cuidadosamente às perguntas produz um briefing mais preciso, que produz uma compilação mais precisa, que produz menos reescritas.
+- **Saltar a iteração visual.** A fase existe por uma razão. O fosso entre "tecnicamente funciona" e "parece correto" é preenchido com polimento visual, não com revisão de código. Deixe-a correr.

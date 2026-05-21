@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: En designgjennomgang med poengsetting, personatesting og automatisert deteksjon.
+highlights:
+  - Du vil ha funn om svake designvalg, ikke en gjenoppbygging fra bunnen av.
+  - Du trenger poengsetting, designresonnement og sannsynlige neste steg.
+  - Grensesnittet fungerer, men føles fortsatt ikke helt riktig.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI-søppel-vurdering</span>
+        <span class="docs-viz-critique-verdict-value">FEIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-tekst &middot; ai-fargepalett &middot; nestede-kort</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristikker (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Synlighet av systemstatus</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Samsvar med virkeligheten</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Konsistens og standarder</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Feilforebygging</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Gjenkjenning fremfor husking</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personaer</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Vurdereren</span>
+              <span class="docs-viz-critique-persona-note">Sammenligner oss med to alternativer en tirsdagskveld.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Den tilbakevendende brukeren</span>
+              <span class="docs-viz-critique-persona-note">Kjenner produktet, på mobil, har dårlig tid.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Skeptikeren</span>
+              <span class="docs-viz-critique-persona-note">Har sett alle SaaS-landingssider og kjeder seg.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">De to gjennomgangene (LLM-designreview pluss den deterministiske detektoren) slås sammen til én prioriteret liste. Hva som fungerer, hva som bør fikses, og de provoserende spørsmålene det er verdt å svare på før lansering.</p>
+</div>
+
+## Når du skal bruke den
+
+Bruk `/impeccable critique` når du vil ha en ærlig second opinion på noe du allerede har bygget. Ikke "virker det", men "er det bra". Ferdigheten poengsetter grensesnittet ditt mot Nielsens 10 heuristikker, kjører kognitiv belastning-sjekker, tester gjennom persona-linser, og kryssrefererer en automatisk detektor for 25 konkrete antimønstre.
+
+Bruk den når en side er funksjonelt ferdig og du vil vite om den oppleves som bevisst eller som AI-søppel.
+
+## Hvordan det fungerer
+
+`/impeccable critique` kjører to uavhengige vurderinger parallelt slik at de ikke påvirker hverandre.
+
+Den første er et **LLM-designreview**: modellen leser kildekoden din, inspiserer den levende siden visuelt hvis nettleserautomatisering er tilgjengelig, og går gjennom impeccable-ferdighetens fulle GJØR/IKKJE GJØR-katalog. Den poengsetter Nielsens heuristikker, teller kognitive belastningsfeil, sporer den emosjonelle reisen gjennom flyten, og flagger AI-søppel.
+
+Den andre er en **automatisk detektor** (`npx impeccable detect`) som deterministisk finner gradient-tekst, lilla paletter, sidefanekanter, nestede kort, linjelengdeproblemer og de andre synlige fingeravtrykkene fra generisk AI-utdata.
+
+De to rapportene slås sammen til én prioriteret liste: hva som fungerer, de tre til fem tingene som må fikses, og de provoserende spørsmålene det er verdt å svare på før lansering.
+
+## Prøv det
+
+Pek den mot en side:
+
+```
+/impeccable critique the homepage hero
+```
+
+Du får tilbake en poengsatt rapport. Typisk utseende:
+
+- **AI-søppel-vurdering**: bestått / ikke bestått med de spesifikke tegnene
+- **Heuristikkpoeng**: 10 tall, 0 til 4
+- **Kognitiv belastning**: antall feil av 8 mulige
+- **Prioriterte problemer**: tre til fem elementer, hvert med hva, hvorfor og fiks
+- **Spørsmål å svare på**: de som grensesnittet i seg selv ikke kan avgjøre for deg
+
+Derfra kan du koble med `/impeccable polish` eller `/impeccable distill` for å handle på fiksene.
+
+## Fallgruver
+
+- **Å kjøre den på ufullstendig arbeid.** Critique er for ferdige sider. En tom tilstand med tre TODO-er vil poengsettes dårlig fordi den ikke er ferdig, ikke fordi den er dårlig.
+- **Å ignorere spørsmålene på slutten.** De er vanligvis de fiksene som endrer designet mest.
+- **Å behandle heuristikkpoengene som en karakter.** De er diagnostiske, ikke evaluerende. En 3/4 på en heuristikk som betyr mindre for din kontekst er helt greit.

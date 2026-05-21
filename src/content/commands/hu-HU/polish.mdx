@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: A lelkiismeretes utolsó menet a jó és a kiváló között.
+highlights:
+  - Az igazítás, térköz és mikro-döntések még mindig durvának érződnek.
+  - A funkció közel van a szállításhoz.
+  - A kis következetlenségek húzzák le az érzékelt minőséget.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Mikor használd
+
+A `/impeccable polish` az utolsó dolog, amit szállítás előtt futtatsz. Felkutatja az apró részleteket, amelyek elválasztják a szállított funkciót a polírozottól: fél-pixeles elcsúszások, következetlen térközök, elfeledett fókusz-állapotok, villogó betöltési átmenetek, hangnemben sodródó szövegek. Illetve összehangolja a funkciót a dizájnrendszereddel, kicserélve a hardcoded értékeket tokenekre, cserélve az egyedi komponenseket megosztottakra, és javítva bármilyen elcsúszást a megszokott mintáktól.
+
+Nyúlj hozzá, amikor a funkció funkcionálisan kész, semmi sem romlott, és valami még mindig nem stimm. Illetve akkor is, amikor egy funkció elcsúszott a dizájnrendszertől, és vissza kell húzni a vonalba.
+
+## Hogyan működik
+
+A polish úgy kezdődik, hogy felfedezi a dizájnrendszert (tokenek, térközskála, megosztott komponensek), majd módszeresen dolgozik hat dimenzió mentén:
+
+1. **Vizuális igazítás és térköz**: pixel-pontos rács-követés, következetes térközskála, optikai igazítás az ikonokon.
+2. **Tipográfia**: hierarchia-következetesség, sorrhossz, özvegyek és árvák, kerning a címsorokon.
+3. **Szín és kontraszt**: token-használat, téma-paritás, WCAG arányok, fókusz-jelölők.
+4. **Interakciós állapotok**: hover, fókusz, aktív, letiltott, betöltő, hiba, siker. Minden állapot lefedve.
+5. **Átmenetek és mozgás**: sima enyhítés, nincs elrendezés-zajongás, a `prefers-reduced-motion` tiszteletben tartása.
+6. **Szöveg**: következetes hangnem, helyes igeidő, nincs helyőrző sztring, nincs kóbor TODO.
+
+A szakértelem egy dologban határozott: a polish az utolsó lépés, nem az első. Ha a funkció nem funkcionálisan kész, a polírozása pazarolt munka.
+
+## Próbáld ki
+
+```
+/impeccable polish the pricing page
+```
+
+Egy egészséges futás így néz ki:
+
+```
+Vizuális igazítás: 3 rácsról lecsúszott elem javítva (8px alapvonal)
+Tipográfia: h1 kerning szigorítva, özvegy javítva a véleményen
+Interakció: hover állapot hozzáadva a FAQ elemekhez, fókusz-gyűrű az e-mail bevitelen
+Mozgás: modális megjelenés lágyítva, reduced-motion tartalék hozzáadva
+Szöveg: egy „Lorem ipsum" kóbor eltávolítva, gomb hangnem összehangolva
+```
+
+Öt apró javítás, nincs újraírás. Ez egy jó polírozási menet alakja.
+
+## Gyakori buktatók
+
+- **Befejezetlen munka polírozása.** Ha vannak TODO-k a kódban, még nem vagy kész. A `/impeccable polish` parancsot csak kész funkciókon futtasd.
+- **A polish kezelése átdizájnként.** A polish finomítja, ami van. Ha azon kapod magad, hogy átfogod tervezni egy elrendezést, a `/impeccable critique` vagy `/impeccable layout` parancsra volt szükséged.
+- **A `/impeccable polish` futtatása `/impeccable audit` nélkül.** A polish érzés-alapú problémákat kap el. Az audit mérhetőeket. Használd mindkettőt.

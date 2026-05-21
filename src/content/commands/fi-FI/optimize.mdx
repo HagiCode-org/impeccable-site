@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnosoi ja korjaa käyttöliittymän suorituskyky LCP:stä bundle-kokoon.
+highlights:
+  - Käyttöliittymä tuntuu hitaalta, tärisevältä tai raskaalta.
+  - Tarvitset vähentää kustannuksia ilman suunnittelun purkamista.
+  - Suorituskyky on nyt näkyvä tuoteongelma.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Milloin käyttää
+
+`/impeccable optimize` on käyttöliittymille jotka tuntuvat hitailta. Ensimmäinen renderöinti kestää ikuisesti, vierittäminen tärisee, kuvat ilmestyvät myöhään, vuorovaikutukset tuntuvat hitailta, bundle lähettää 800KB JavaScriptiä. Käytä sitä kun Web Vitals ovat huonot tai kun käyttäjät valittavat asioiden olevan hitaita.
+
+Älä käytä sitä ennenaikaisena optimointina. Jos LCP on 1.1s ja INP on 80ms, lopeta. Suunnittelutyö merkitsee enemmän.
+
+## Miten se toimii
+
+Taito käy läpi viisi suorituskykydimensiota:
+
+1. **Lataus ja Web Vitals**: LCP, INP, CLS. Tunnista mikä estää ensimmäisen renderöinnin, mikä viivästyttää vuorovaikutusta, mikä siirtää asettelua.
+2. **Renderöinti**: tarpeettomat uudelleenrenderöinnit, puuttuva memoisaatio, kalliit sovittamiset, asettelun takominen silmukoissa.
+3. **Animaatiot**: animoiko mikään asetteluominaisuuksia, ovatko transform ja opacity ainoat joita kosketaan, auttaako vai haittaako `will-change` tässä.
+4. **Kuvat ja resurssit**: laiska lataus, responsiiviset kuvat (`srcset`, `sizes`), modernit formaatit (WebP, AVIF), dimensiot asetettu CLS:n estämiseksi.
+5. **Bundle-koko**: käyttämättömät tuonnit, ylikokoiset riippuvuudet, puuttuva koodijako, kuollut koodi.
+
+Taito mittaa ennen ja jälkeen. Jokainen korjaus kvantifioidaan. Jos muutos ei vaikuta mittariin, se perutaan.
+
+## Kokeile
+
+```
+/impeccable optimize the homepage
+```
+
+Odotettu muoto:
+
+```
+LCP: 3.2s -> 1.4s
+  - Hero-kuva esiladattu (-800ms)
+  - Renderöintiä estävä fonttityylitiedosto poistettu (-240ms)
+  - Analytiikkaskripti lykätty (-180ms)
+
+INP: 240ms -> 90ms
+  - Debounced vierituskäsittelijä
+  - Memoitettu kallis listan renderöinti
+  - Poistettu synkroninen asetteluluku tapahtumasilmukassa
+
+CLS: 0.18 -> 0.02
+  - Asetetut dimensiot hero-kuvalle ja logolle
+  - Varattu tilaa asynkroniselle otsikkomerkillä
+
+Bundle: 340KB -> 180KB
+  - Poistettu käyttämätön lodash-tuonti (52KB)
+  - Koodijako playground-reitille (78KB)
+  - Pudotettu vanhentunut kuvakesarja (30KB)
+```
+
+## Sudenkuopat
+
+- **Optimointi ennen mittaamista.** Ilman perusmittareita et voi sanoa mikä auttoi. Suorita `/impeccable optimize` yksityiskohtaisilla Web Vitals-numeroilla, ei tunnelmilla.
+- **Pienten voittojen jahtaaminen.** 20ms parannus INP:ssä joka vie viikon on harvoin sen arvoista. Optimella on pienenevä tuotto; tiedä milloin lopettaa.
+- **Uudelleenmittauksen unohtaminen jokaisen muutoksen jälkeen.** Rakennus saattoi tehdä asioista huonompia tavalla jota taito ei ennustanut. Vahvista.

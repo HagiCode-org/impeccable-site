@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Hiljennä suunnitelmia jotka huutavat menettämättä niiden tarkoitusta.
+highlights:
+  - Vahvoja ideoita on, mutta sivu on liian äänekäs.
+  - Tarvitset pidättyväisyyttä muuttumatta mauttomaksi.
+  - Nykyinen sävy ylikuormittaa lukemista tai tehtävätyönkulkua.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Milloin käyttää
+
+`/impeccable quieter` on vastapaino `/impeccable bolder`-komennolle. Turvaudu siihen kun käyttöliittymä on visuaalisesti aggressiivinen, ylikiihottava tai yrittää tehdä liian montaa asiaa täydellä volyymillä. Neon tummalla, liukuväritekstiä kaikkialla, 6 aksenttiväriä, kaikki animoitu, 20px varjot. Käytä quieteria kun suunnittelu tarvitsee hengittää ja haluat hienosäätöä menettämättä näkökulmaa.
+
+Myös hyödyllinen kun `/impeccable bolder` menee vähän liian pitkälle.
+
+## Miten se toimii
+
+Taito toimii vähentämällä neljän akselin läpi:
+
+1. **Väri**: pura kylläisyyttä, laske kromaa OKLCH:ssa, vedä aksentit takaisin yhteen ensisijaiseen plus pehmeitetty tuki. Enintään kaksi tarkoituksellista väriä.
+2. **Kontrasti**: pehmennä äärimmäisiä tummia ja vaaleita, vedä aluetta kasaan. Taustat siirtyvät puhtaasta valkoisesta ja puhtaasta mustasta paperiin ja musteeseen.
+3. **Koristelu**: poista varjot jotka eivät tee työtä, pudota reunat jotka eivät kanna rakennetta, eläkkeelle siirrä liukuvärit jotka ovat olemassa energian vuoksi hierarkian sijaan.
+4. **Liike ja tehoste**: hidasta animaatioita, poista kaikki mikä toistaa automaattisesti, pudota parallax ja sumennus elleivät ne palvele luettavuutta.
+
+Taito säilyttää suunnittelun tarkoituksen. Jos alkuperäisellä oli näkökulma, hiljaisemmalla versiolla on sama näkökulma enemmällä itseluottamuksella. Hienosäätöä, ei neutralisointia.
+
+## Kokeile
+
+```
+/impeccable quieter the pricing page
+```
+
+Tyypillinen diff:
+
+- Liukuväriteksti hinnassa poistettu, korvattu kiinteällä musteella yhden painon raskaammalla
+- Kolme aksenttiväriä supistettu yhteen (magenta), muut kaksi muuttuvat neutraaleiksi muunnelmiksi
+- Korttien varjot supistettu `0 20px 40px rgba(0,0,0,0.2)` arvosta `0 1px 0 var(--color-mist)` arvoon (hiusviiva)
+- Tausta vaihtuu tummasta liukuväristä paperiin hienovaraisella kermapesulla yläosassa
+- Hero-animaatio 1.2s easeOut 3 porrastetulla elementillä yhdeksi 260ms häivytys-sisäänluoennaksi
+
+## Sudenkuopat
+
+- **Ylikäyttö.** Quieter voi riistää persoonallisuuden jos ajat sen jotain joka oli jo mitattua. Käytä sitä kun suunnittelu on liian äänekäs, ei kun se on oikeasti määrätietoista.
+- **Sekoittaminen distillin kanssa.** Quieter vähentää voimakkuutta. Distill poistaa elementtejä. Ne ovat eri liikkeitä.
+- **Ajaminen vastauksena arvosteluun joka sanoo "liian kiireinen".** Kiireinen tarkoittaa yleensä liian monia asioita, ei liian äänekästä. Kokeile `/impeccable distill` ensin.

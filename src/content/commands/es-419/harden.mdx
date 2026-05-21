@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Haz que las interfaces esten listas para produccion. Casos limite, i18n, estados de error, desbordamiento.
+highlights:
+  - El camino feliz funciona, pero los estados del mundo real todavia se ven fragiles.
+  - Necesitas cerrar brechas antes del release.
+  - El manejo de errores y la resiliencia importan mas que agregar nuevo estilo.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Cuando usarlo
+
+`/impeccable harden` es para el dia en que tu interfaz se encuentra con la realidad. Los datos reales de usuarios son desordenados: nombres de 60 caracteres, titulos de productos en aleman, precios en los miles de millones, errores 500, modos offline, texto de derecha a izquierda. Los disen os que solo funcionan con datos perfectos no estan listos para produccion.
+
+Usalo antes del lanzamiento, antes de abrir a un nuevo mercado, o cada vez que un reporte de bug comience con "nuestro usuario tenia un nombre realmente largo y". Para flujos de primera ejecucion, activacion de estados vacios y diseno de onboarding, recurre a `/impeccable onboard`.
+
+## Como funciona
+
+La habilidad trabaja a traves de cuatro dimensiones de resiliencia en el mundo real:
+
+1. **Extremos de texto y datos**. Texto largo, texto corto, caracteres especiales, emoji, RTL, numeros en los miles de millones, listas de 1000 elementos.
+2. **Escenarios de error**. Fallos de red, API 4xx/5xx, errores de validacion, errores de permisos, limites de tasa, operaciones concurrentes.
+3. **Internacionalizacion**. Traducciones largas (el aleman suele ser 30% mas largo que el ingles), idiomas RTL, formatos de fecha y numero, simbolos de moneda, conjuntos de caracteres.
+4. **Dispositivo y contexto**. Targets tactiles, comportamiento offline, conexiones lentas, modo de bajo consumo.
+
+Para cada dimension identifica el modo de fallo, y luego aplica la correccion concreta: manejo de desbordamiento, UI de error informativa, layouts seguros para i18n, pluralizacion, fallbacks sensatos.
+
+## Probalo
+
+Comienza con una pagina y una dimension:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Salida esperada:
+
+- `.user-name` ahora tiene `text-overflow: ellipsis` con un tooltip para el valor completo
+- `.bio` cambio de altura fija a `max-height` con un desplegable "mostrar mas"
+- Se agrego un estado vacio para usuarios sin bio
+- Se agrego un cargador esqueleto para la carga asincrona del avatar
+- Probado con longitudes de nombre de 1, 20, 60, 200 caracteres
+
+Ejecutalo por pagina, no todo a la vez. La primera ejecucion es la mas grande; las ejecuciones subsiguientes encuentran menos problemas a medida que los patrones se solidifican.
+
+## Errores comunes
+
+- **Esperar un reporte de bug.** Harden es preventivo. Si te encuentras corrigiendo la misma clase de bug dos veces, ejecuta `/impeccable harden` en toda la funcionalidad.
+- **Tratar los estados de error y vacios como una ocurrencia tardia.** La mayor parte del trabajo de hardening es UI de error y estado vacio. Presupuesta tiempo para eso, no solo un bloque `catch`.
+- **Saltarse i18n porque "somos solo en ingles por ahora".** Los layouts seguros para i18n son mejores layouts de todas formas. Contenedores flexibles, ajuste de texto adecuado, interlineado generoso. Nada de eso dana al ingles.

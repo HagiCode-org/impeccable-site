@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: First-Run-Erlebnisse, Empty States und Wege zum Wert gestalten.
+highlights:
+  - Neue Nutzer kommen ohne Kontext an.
+  - Das Produkt braucht eine bessere erste erfolgreiche Aktion.
+  - Empty States und Einrichtungsschritte lehren zu wenig.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Wann man es verwendet
+
+`/impeccable onboard` ist für die Momente, die entscheiden, ob ein neuer Nutzer bleibt: der erste Bildschirm, der Empty State, der Einrichtungsablauf, der Produkt-Tour, die „Was soll ich jetzt tun?"-Lücke. Greifen Sie zu ihm, wenn die Aktivierung schwach ist, wenn neue Nutzer abbrechen, bevor sie Wert erreichen, oder wenn Ihr Produkt Empty States hat, die „Noch keine Elemente" sagen und dort aufhören.
+
+## Wie es funktioniert
+
+Der Befehl beginnt mit einer Frage: was ist der Aha-Moment, und wie schnell kann ein neuer Nutzer dorthin gelangen. Jede Design-Entscheidung zielt auf diesen Moment.
+
+Er arbeitet über die Oberflächen, die erste Eindrücke prägen:
+
+1. **First-Run-Erlebnis**: die Momente unmittelbar nach der Registrierung. Soll der Nutzer eine Tour sehen, eine leere Leinwand, ein ausgefülltes Beispiel oder gar nichts. Wählen Sie den Ansatz, der zum Produkt passt.
+2. **Empty States**: jeder Null-Daten-Bildschirm wird orientiert. Wo bin ich, warum ist das leer, was mache ich als Nächstes, wie wird es aussehen, wenn es voll ist.
+3. **Einrichtung und Installation**: erforderliche Konfiguration wird minimiert, Standards sind intelligent, jeder Schritt erklärt, warum er wichtig ist.
+4. **Progressive Offenlegung**: erweiterte Features bleiben aus dem Weg, bis sie verdient sind.
+5. **Aktivierungs-Events**: der Moment, in dem ein Nutzer zum ersten Mal den Kernwert erlebt, wird instrumentiert und leise gefeiert.
+
+Der Befehl widersteht zwei häufigen Fehlermodi: über-tutorialisiertes Onboarding, bei dem Nutzer durch ein Karussell klicken, bevor sie etwas berühren können, und Null-Onboarding, bei dem Nutzer in eine leere App geworfen werden und selbst herausfinden sollen, wie es funktioniert.
+
+## Ausprobieren
+
+```
+/impeccable onboard the editor
+```
+
+Typische Ausgabe:
+
+- First-Run: ersetzt leeren Editor durch ein ausgefülltes Beispieldokument, das der Nutzer bearbeiten kann. Abbrechen-Button verwirft das Beispiel, Bearbeiten ersetzt den Inhalt durch die Arbeit des Nutzers.
+- Empty State in der Dokumentenliste: „Noch keine Dokumente. Erstellen Sie Ihr erstes oder importieren Sie aus Notion, Google Docs oder Markdown."
+- Einrichtung: von 6 Pflichtfeldern auf 1 reduziert (Workspace-Name). Alles andere hat einen intelligenten Standard und kann später in den Einstellungen bearbeitet werden.
+- Aktivierung: beim ersten Speichern eines Dokuments zeigt ein leiser Toast „Gespeichert. Ihre Arbeit ist jetzt in der Cloud." Einmalig, nicht wiederholt.
+
+## Fallstricke
+
+- **Eine Produkt-Tour als Standardantwort hinzufügen.** Die meisten Produkte brauchen keine Tour. Sie brauchen einen besseren ersten Bildschirm. Touren sind eine Krücke.
+- **Onboarding gestalten ohne Definition des Aha-Moments.** Wenn Sie in einem Satz nicht sagen können, was der Nutzer in den ersten 60 Sekunden fühlen soll, gehen Sie zuerst zurück zu `/impeccable shape`.
+- **Onboard auf einem kaputten Ablauf ausführen.** Reparieren Sie den Ablauf zuerst. Onboarding kann ein Produkt nicht retten, bei dem die Kern-Aktion kaputt ist.

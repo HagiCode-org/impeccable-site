@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Corriger une typographie qui semble générique, incohérente ou accidentelle.
+highlights:
+  - Le texte est techniquement lisible mais ni persuasif ni maîtrisé.
+  - Les titres et le corps du texte se confondent.
+  - La surface a besoin d'un ton plus fort par la typographie plutôt que par plus de décoration.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Quand l'utiliser
+
+Tournez-vous vers `/impeccable typeset` lorsque le texte sur une page ressemble à de la typographie par défaut plutôt qu'à de la typographie conçue. Hiérarchie confuse, trois tailles qui se ressemblent, corps de texte à 14px, une police de titrage qui est en fait juste Inter bold, des titres sans attention au crénage.
+
+Déclencheurs courants : « la hiérarchie semble plate », « la lisibilité n'est pas bonne », « les polices semblent génériques ».
+
+## Comment ça marche
+
+La compétence évalue la typographie selon cinq dimensions :
+
+1. **Choix des polices** : utilisez-vous des valeurs par défaut invisibles (Inter, Roboto, Arial, Open Sans), la police correspond-elle à la marque, y a-t-il plus de 2 à 3 familles.
+2. **Hiérarchie** : les titres, le corps et les légendes sont-ils clairement différents au premier coup d'œil, le contraste de taille est-il d'au moins 1,25x entre les niveaux, les contrastes de graisse sont-ils lisibles.
+3. **Dimensionnement et échelle** : existe-t-il une échelle typographique cohérente, le corps du texte atteint-il le minimum de 16px, l'échelle est-elle en rem fixe pour les interfaces applicatives ou en clamp fluide pour les pages marketing.
+4. **Lisibilité** : longueur de ligne de 45 à 75 caractères, interligne ajusté à la police et au contexte, contraste.
+5. **Cohérence** : un même élément reçoit le même traitement partout, pas de remplacements isolés de font-size.
+
+Elle corrige ensuite ce qu'elle trouve : choisit des polices distinctives, construit une échelle modulaire, élargit le contraste de hiérarchie, définit une longueur de ligne et un interligne appropriés.
+
+## Essayez
+
+```
+/impeccable typeset the article layout
+```
+
+Diff attendu :
+
+- Police de titrage remplacée d'Inter 700 par une vraie police display
+- Échelle typographique reconstruite : 3rem / 2rem / 1.25rem / 1rem / 0.875rem, ratio 1.333
+- Corps du texte passé de 14px à 16px
+- Longueur de ligne limitée à 68ch sur la colonne d'article
+- Interligne à 1.6 pour le corps, 1.1 pour le titrage
+- Suppression de quatre valeurs `font-size` isolées dispersées dans les styles de composants
+
+## Pièges courants
+
+- **Demander une nouvelle police sans contexte.** Typeset choisira en fonction du ton de marque dans `PRODUCT.md`. Si vous n'avez pas exécuté `/impeccable teach`, la suggestion sera générique.
+- **Faire appel à typeset quand le problème est la mise en page.** Si les paragraphes vont bien mais que la page semble à l'étroit, vous avez besoin de `/impeccable layout`.
+- **S'attendre à des échelles clamp fluides sur des interfaces applicatives.** Typeset utilise des échelles rem fixes pour les interfaces d'application. La typographie fluide est réservée aux pages marketing et de contenu où la longueur de ligne varie considérablement.

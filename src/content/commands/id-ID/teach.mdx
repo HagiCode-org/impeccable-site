@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Ajarkan Impeccable untuk siapa produk Anda, sekali per proyek.
+highlights:
+  - Proyek belum memiliki file konteks desain.
+  - Berbagai kontributor membutuhkan satu sumber kebenaran yang sama.
+  - Anda menginginkan perintah di masa depan mewarisi arah brand dan produk.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Dimuat pada setiap perintah</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Produk. Desain melayani tugas.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Pengguna</span>
+        <span class="docs-viz-file-v">SRE yang sedang piket, membaca cepat, sering di gelap.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Suara brand</span>
+        <span class="docs-viz-file-v">Tenang, klinis, tanpa hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-referensi</span>
+        <span class="docs-viz-file-v">Gradien ungu. Glassmorphism. "Tingkatkan produktivitas Anda."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Setiap perintah membaca ini sebelum menulis satu baris kode pun.</div>
+  </div>
+  <p class="docs-viz-caption">PRODUCT.md yang sudah selesai. Hanya strategi: siapa, apa, mengapa. Tidak ada warna, tidak ada font, tidak ada nilai piksel, mereka hidup di DESIGN.md.</p>
+</div>
+
+## Kapan menggunakannya
+
+Jalankan `/impeccable teach` sekali di awal proyek. Ini adalah jalan masuk. Tanpanya, setiap perintah lain akan menghasilkan desain yang secara teknis kompeten tetapi bernada generik: suara SaaS standar, font default-aman, palet warna AI. Dengan ini, setiap perintah membaca jawaban Anda sebelum menghasilkan.
+
+Gunakan ketika:
+
+- **Anda baru menginstal Impeccable di proyek baru.** Hal pertama yang harus dijalankan. Perintah lain akan mendorong Anda ke sini jika Anda melewatkan.
+- **Arah brand proyek telah bergeser.** Pemosisian baru, audiens baru, suara baru. Jalankan kembali `teach` dan konteks yang diperbarui mengalir melalui setiap perintah.
+- **Perintah lain mengatakan "tidak ditemukan konteks desain"** dan berhenti. Itulah tandanya: jalankan teach, lalu lanjutkan.
+
+## Cara kerjanya
+
+Teach menulis dua file komplementer di root proyek:
+
+- **`PRODUCT.md`** adalah file strategis. Register (brand atau produk), pengguna target, tujuan produk, kepribadian brand, anti-referensi, prinsip desain, kebutuhan aksesibilitas. Menjawab "siapa, apa, mengapa".
+- **`DESIGN.md`** adalah file visual. Warna, tipografi, elevasi, komponen, hal yang boleh dan tidak boleh dilakukan. Menjawab "bagaimana tampilannya". Ditulis oleh perintah `/impeccable document` yang didelegasikan, yang teach panggil pada akhir.
+
+Alur memindai codebase terlebih dahulu (README, package.json, komponen, token, aset brand) dan membentuk **hipotesis register**: brand (landing, pemasaran, portofolio, di mana desain ADALAH produk) atau produk (UI aplikasi, dasbor, alat, di mana desain MELAYANI produk). Register adalah pertanyaan pertama, karena membentuk setiap jawaban di hilir: default tipografi, energi gerak, strategi warna, set referensi yang ditarik oleh perintah seperti `/impeccable typeset`. Setelah register, teach hanya bertanya apa yang tidak dapat disimpulkan: pengguna, kepribadian dalam tiga kata nyata, referensi dan anti-referensi, persyaratan aksesibilitas.
+
+PRODUCT.md hanya strategis. Tidak ada warna, tidak ada font, tidak ada nilai piksel. Mereka hidup di DESIGN.md. Menjaga kedua file tetap terpisah adalah disengaja: strategi dapat tetap stabil sementara sistem visual berkembang.
+
+## Cobalah
+
+```
+/impeccable teach
+```
+
+Harapkan wawancara 5 hingga 8 menit. Pertanyaan pertama biasanya tentang register; sisanya singkat. Teach akan mengutip kembali apa yang disimpulkan dari kode Anda ("dari rute, ini terlihat seperti permukaan produk, cocok?") sehingga Anda mengkonfirmasi, bukan mulai dari nol.
+
+Pada akhirnya, teach menawarkan untuk menjalankan `/impeccable document` untuk Anda. Katakan ya kecuali Anda memiliki alasan spesifik untuk menunda. DESIGN.md nyata adalah yang menjaga varian, polish, dan audit tetap on-brand.
+
+## Jebakan
+
+- **Melewatinya untuk "coba perintah dengan cepat saja".** Setiap perintah lain akan mewawancarai Anda di tengah proses. Menjalankan teach dulu lebih cepat, bukan lebih lambat.
+- **Memberikan jawaban generik.** "Modern dan bersih" tidak berguna. "Hangat, mekanis, berpendapat" berguna. Jadilah spesifik. Berani tidak setuju dengan default yang aman.
+- **Memperlakukan PRODUCT.md sebagai tidak dapat diubah.** File itu milik Anda. Jika teach menaruh sesuatu di sana yang tidak tepat, edit. Setiap perintah membaca file saat ini.
+- **Hanya mendaftar kata sifat untuk referensi.** Brand, produk, objek cetak: disebutkan, bukan dideskripsikan. "Halaman spesimen Klim Type Foundry", bukan "teknis dan bersih". Anti-referensi harus sama spesifiknya.

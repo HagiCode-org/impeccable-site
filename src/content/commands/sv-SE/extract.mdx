@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Dra ut ateranvandbara komponenter, tokens och monster i designsystemet.
+highlights:
+  - Flera komponenter loser samma problem pa olika satt.
+  - Tokens och monster behovr centraliseras.
+  - Du vill ha ett mer underhallbart visuellt system.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Upprepade hex-varden, knappvarianter, avstandsskalor, textstilar.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Tokennamn, komponent-API:er med variant + storlek, textstilar.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Ersatt duplicerad CSS med de nya primitiverna. Ingen foräldralos kod kvar.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Fardigheten extraherar bara det som anvands tre eller flera ganger med samma avsikt. Tva anvandningar ar inte ett monster, och migrering sker alltid i samma pass.</p>
+</div>
+
+## Nar du ska anvanda det
+
+`/impeccable extract` ar for ogonblicket da din kodbas av en händelse har blivit ett designsystem. Upprepade knappstilar pa 12 platser. Tre varianter av samma kort. Hex-farger utspridda overallt. Handrullade avstand som av en händelse matchar en skala. Anvand det nar du vill konsolidera denna drift till ateranvandbara primitiver.
+
+Anvand det efter att en produkt har levererat tillrackligt med funktioner for att avslja monstren. For tidig extraktion skapar abstraktioner som inte matchar verkligheten.
+
+## Hur det fungerar
+
+Fardigheten upptacker designsystemstrukturen forst, sedan identifierar den extraktionsmojligheter:
+
+1. **Tokens**: hitta upprepade literala varden (farger, avstand, radier, skuggor, typsnittsstorlekar). Forese tokennamn, lagg till i tokensystemet, ersatt anvandningar.
+2. **Komponenter**: hitta UI-monster som upprepas med mindre variation (knappar, kort, inmatningar, modaler). Extrahera till en enda komponent med varianter, migrera anropare.
+3. **Sammansättningsmonster**: hitta layout- eller interaktionsmonster som upprepas (formularrader, verktygsfälttsgrupper, tomma tillstand). Extrahera till sammansättningsprimitiver.
+4. **Textstilar**: hitta upprepade kombinationer av font-size + weight + line-height. Extrahera till textstilar.
+5. **Animationsmonster**: hitta upprepade easing-, duration- eller keyframe-kombinationer. Extrahera till rorelse-tokens.
+
+Fardigheten ar forsiktig. Den extraherar bara saker som anvands tre eller flera ganger, med samma avsikt. Den extraherar aldrig "for att det kanske kan ateranvandas senare". For tidig abstraktion ar samre an duplicering.
+
+## Prova det
+
+```
+/impeccable extract the button styles
+```
+
+Forvintad utmatning:
+
+- Hittade 14 knappinstanser over 8 filer
+- 4 distinkta varianter: primary (ifylld accent), secondary (inramad), ghost (endast text), destructive (ifylld rod)
+- Alla 4 varianter anvander samma storleksskala (small, default, large)
+- Extraherad till `<Button variant="primary" size="default">` med token-drivna stilar
+- Migrerade 14 anropsplatser, tog bort ~180 rader duplicerad CSS
+- Lade till 3 saknade tokens: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Fallgropar
+
+- **Att extrahera for tidigt.** Tva anvandningar ar inte ett monster. Tre kanske ar det. Vanta tills monstret ar uppenbart.
+- **Att overgeneralisera.** Den extraherade komponenten bor matcha de aktuella anvandningsfallen noga, inte anticipera varje mojlig framtid. Du kan alltid lägga till varianter senare.
+- **Att glomma migreringen.** Extraktion utan migrering lämnar den gamla duplicerade koden kvar och skapar ett tredje satt att gora samma sak. Migrera alltid i samma pass.
+- **Att extrahera saker som skiljer sig i avsikt.** Tva knappar som ser likadana ut men tjänar olika syften (primar atgard vs lank stylad som knapp) bor forblifrom olika.

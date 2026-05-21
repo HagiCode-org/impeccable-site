@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Designintelligensen bag hver eneste kommando.
+highlights:
+  - Du vil have ét indgangspunkt til layout, typografi, farve, bevægelse og UX-struktur samlet.
+  - Du udforsker en retning og vil have, at færdigheden vælger den rigtige under-arbejdsgang.
+  - Du har brug for den bredeste designkontekst frem for en snæver et-kommando-gennemgang.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable` er hjemmekommandoen. Kald den direkte, når du vil have fritform designarbejde med det fulde håndbog indlæst, uden at vælge en specialiseret kommando. Det er det fallback, du griber til, når ingen af de 23 specialister (`audit`, `polish`, `critique` og resten) passer rent på det, du prøver at gøre.
+
+Grib efter `/impeccable` direkte, når:
+
+- **Du er ikke sikker på, hvilken kommando der passer.** Beskriv hvad du vil i almindeligt engelsk, og lad færdigheden vælge den rigtige tilgang.
+- **Arbejdet spænder over flere discipliner.** "Lav denne hero-sektion om" rører ved layout, typografi, farve og bevægelse. Én kommando kan ikke eje det.
+- **Du vil have den fulde designintelligens uden begrænsninger.** Alle referencefiler indlæst, alle anti-patterns tjekket, ingen forudsat arbejdsgang.
+
+For strukturerede flows, grib efter de specialiserede kommandoer i sidebjælken. Kør `/impeccable teach` først på ethvert nyt projekt for at etablere PRODUCT.md og DESIGN.md. `/impeccable craft` kæder et discovery-interview sammen med en komplet bygning med live visuel iteration. `/impeccable shape` producerer et designbrief uden at røre kode. `/impeccable live` giver dig en browser-picker med tre varianter per element. Evaluerings- og forfiningskommandoerne (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` og resten) ejer hver en specifik del af arbejdet.
+
+## Hvordan det virker
+
+De fleste AI-genererede UI'er fejler på samme måde: generiske skrifttyper, lilla farveovergange, kort-grids på kort-grids, glassmorphism overalt. `/impeccable` giver din AI et stærkt synspunkt. Den indlæser en meningfuld designhåndbog plus en lang liste over anti-patterns og presser derefter modellen til at forpligte sig til en specifik æstetisk retning, før den skriver en eneste linje kode.
+
+To filer i dit projektrod former alt, hvad færdigheden gør:
+
+- **`PRODUCT.md`** bærer register (brand vs. produkt), målbrugere, brandpersonlighed, anti-referencer, designprincipper. Svarer på "hvem, hvad, hvorfor".
+- **`DESIGN.md`** bærer farver, typografi, elevation, komponenter, do's and don'ts, i sek afsnit Google Stitch-format. Svarer på "hvordan det ser ud".
+
+Hver kommando læser begge filer før generering. **Register** beslutter, hvilke standarder der indlæses. Brand (marketing, landing, portfolio, hvor design ER produktet) og produkt (app-UI, dashboards, værktøjer, hvor design TJENER produktet) har forskellige standarder for typografi, bevægelse, farve og tæthed. At specificere det én gang i PRODUCT.md betyder, at `/impeccable typeset` ikke vil presse redaktionelle magasin-skrifttyper på et dashboard, og ikke vil presse produktflydende standarder på en kampagneside. Se [brand vs. produkt selvstudiet](/tutorials/brand-vs-product) for hvordan de to divergerer.
+
+Ved førstegangsbrug i et projekt kører færdigheden automatisk `teach`-flowet: et kort interview, der skriver PRODUCT.md og derefter delegerer til `/impeccable document` for DESIGN.md. Fremtidige kommandoer læser filerne uden at spørge igen.
+
+## Prøv det
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Begge prompts er bevidst vage. `/impeccable` vil vælge en stærk æstetisk retning i overensstemmelse med dit register, forpligte sig til ikke-standard skrifttyper, undgå AI-fargepaletten og træffe de slags specifikke valg, som en designer ville træffe. Intet kommandonavn at vælge først, ingen trin-for-trin arbejdsgang at følge.
+
+For visuel iteration i browseren frem for chat:
+
+```
+/impeccable live
+```
+
+Vælg ethvert element på din kørende dev-server. Slip en kommentar eller streg. Få tre produktionskvalitetsvarianter hot-swappet ind via HMR. Accepter den, du vil have, og den skriver tilbage til kildekoden.
+
+## Fastgør kommandoer tilbage som genveje
+
+v3.0 konsoliderede 18 selvstændige færdigheder til en enkelt `/impeccable` med 23 underkommandoer. Hvis du savner den korte form af en specifik kommando, kan du fastgøre den tilbage:
+
+```
+/impeccable pin critique
+```
+
+Fra nu af aktiverer `/critique` `/impeccable critique` direkte. Den skriver en let redirect-færdighed, der delegerer til forælderen, så opdateringer til færdigheden flyder igennem uden gen-fastgørelse.
+
+Nyttige pins at prøve:
+
+- `/impeccable pin polish` til sidste-gennemgangsarbejde
+- `/impeccable pin audit` til deterministiske a11y/ydelseskontroller
+- `/impeccable pin live` til browser-iterationsflowet
+- `/impeccable pin critique` til designgennemgang
+
+For at fjerne: `/impeccable unpin critique`. Pins lever som mapper med præfiks `i-` i din harness-skills-mappe (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` osv.), så du kan også slette dem manuelt.
+
+## Faldgruber
+
+- **At behandle det som en stilguide.** Det er en meningstung designpartner, ikke en linter. Standarderne eksisterer for at hæve gulvet, ikke for at overstyre din vurdering. Hvis du har en reel grund til at skubbe tilbage (brandretningslinje, tilgængelighedsbegrænsning, brugerforskning), så skub tilbage og forklar hvorfor. Færdigheden vil arbejde med dig. Det der producerer dårligere output er at ignorere holdningen uden en grund.
+- **At forvente at den fikser eksisterende kode.** `/impeccable` er til skabelse. Til forfining, grib efter `/impeccable polish`, `/impeccable distill` eller `/impeccable critique` i stedet.
+- **At køre den før `teach` har haft mulighed for at gemme kontekst.** På et nyt projekt vil den interviewe dig midt i forløbet, hvilket er fint, men langsommere. At køre `/impeccable teach` eksplicit som din allerførste kommando er en lille smule mere glat.
+- **At springe register-spørgsmålet over.** Brand- og produktstandarder afviger nok til, at kørsel på det forkerte register producerer subtilt forkert output. Hvis `PRODUCT.md` ikke har et `## Register`-felt (ældre version), så kør `/impeccable teach` for at tilføje det.

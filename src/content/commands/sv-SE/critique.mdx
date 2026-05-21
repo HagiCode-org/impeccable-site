@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: En designgranskning med poang, personatest och automatiserad detektering.
+highlights:
+  - Du vill ha fynd om svaga designval, inte ett ombygge fran grunden.
+  - Du behovr poangsattning, designresonemang och troliga nasta steg.
+  - Gransnittet fungerar men kanns fortfarande fel.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristics (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibility of status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match with real world</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistency & standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Error prevention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recognition over recall</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The evaluator</span>
+              <span class="docs-viz-critique-persona-note">Comparing us to two alternatives on a Tuesday evening.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The returning user</span>
+              <span class="docs-viz-critique-persona-note">Knows the product, on mobile, in a hurry.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The skeptic</span>
+              <span class="docs-viz-critique-persona-note">Has seen every SaaS landing and is bored.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">De tva passagerna (LLM-designgranskning plus den deterministiska detektorn) slas samman till en prioriterad lista. Vad som fungerar, vad som ska fixas och de provocerande fragorna vardt att besvara innan leverans.</p>
+</div>
+
+## Nar du ska anvanda det
+
+Anvand `/impeccable critique` nar du vill ha en ärlig andra asikt om nonting du redan har byggt. Inte "fungerar det" utan "ar det bra". Fardigheten poangsatter ditt gransnitt mot Nielsens 10 heuristiker, kör kognitiva belastningskontroller, testar genom personalinser och korsreferensar en automatiserad detektor for 25 konkreta antimönster.
+
+Anvand det nar en sida ar funktionellt klar och du vill veta om den las som avsiktlig eller som AI-slop.
+
+## Hur det fungerar
+
+`/impeccable critique` kör tva oberoende bedomningar parallellt sa de inte pavarkar varandra.
+
+Den forsta ar en **LLM-designgranskning**: modellen laser din kallkod, inspekterar den levande sidan visuellt om webblasarautomatisering ar tillganglig, och gar genom impeccable-fardighetens fulla GORa/BOR-inte-katalog. Den poangsatter Nielsens heuristiker, raknar kognitiva belastningsfel, spårar den kanslomassiga resan genom flodet och flaggar AI-slop.
+
+Den andra ar en **automatiserad detektor** (`npx impeccable detect`) som deterministiskt hittar gradient-text, lila paletter, sidoflikar-kantlinjer, nastlade kort, radlangdsproblem och de andra synliga fingeravtrycken fran generisk AI-utdata.
+
+De tva rapporterna slas samman till en prioriterad lista: vad som fungerar, de tre till fem sakerna som behover fixas och de provocerande fragorna varda att besvara innan leverans.
+
+## Prova det
+
+Peka pa en sida:
+
+```
+/impeccable critique the homepage hero
+```
+
+Du far tillbaka en poangsatt rapport. Typisk form:
+
+- **AI slop-verdict**: godkant / underkant med de specifika tecknen
+- **Heuristikpoang**: 10 siffror, 0 till 4
+- **Kognitiv belastning**: felantal av 8
+- **Prioriterade problem**: tre till fem poster, vardera med vad, varfor och fix
+- **Fragor att besvara**: de som gransnittet sjalvt inte kan besluta om
+
+Därifran, para med `/impeccable polish` eller `/impeccable distill` for att agera pa fixarna.
+
+## Fallgropar
+
+- **Att kora det pa ofardigt arbete.** Critique ar for fardiga sidor. Ett tomt tillstand med tre TODOs kommer att fa daliga poang for att det inte ar klart, inte for att det ar daligt.
+- **Att ignorera fragorna pa slutet.** De ar vanligtvis de fixar som andrar designen mest.
+- **Att behandla heuristikpoangen som ett betyg.** De ar diagnostiska, inte evaluerande. En 3/4 pa en heuristik som matter mindre for din kontext ar okej.

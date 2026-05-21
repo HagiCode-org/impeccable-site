@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnostikujte a opravte vykonnost UI od LCP po velikost balicku.
+highlights:
+  - Rozhrani vypada pomalu, trhavne nebo tezke.
+  - Potrebujete snizit naklady bez niceseni designu.
+  - Vykon je nyni viditelnym problemem produktu.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Kdy pouzit
+
+`/impeccable optimize` je pro rozhrani, ktera vypadaji pomalu. Prvni vykresleni trva vecnost, scrollovani se trha, obrazky se objevuji pozde, interakce vypadaji zpozdené, balicek dodava 800KB JavaScriptu. Pouzijte jej, kdyz jsou Web Vitals spatne nebo kdyz uzivatele stizuji, ze veci jsou pomale.
+
+Nepouzivejte jako predcasnou optimalizaci. Pokud je LCP 1.1s a INP 80ms, zastavte se. Designova prace je dulezitejsi.
+
+## Jak to funguje
+
+Dovednost pracuje peti dimenzemi vykonu:
+
+1. **Nacitani a Web Vitals**: LCP, INP, CLS. Identifikujte, co blokuje prvni vykresleni, co zpozduje interakci, co posouva layout.
+2. **Vykreslovani**: zbytecne prekreslovani, chybejici memoizace, nakladne srovnávani, thrashing layoutu ve smyckach.
+3. **Animace**: animuje neco vlastnosti layoutu, jsou transform a opacity jedine, co se dotyka, pomuze nebo uskodi zde `will-change`.
+4. **Obrazky a prvky**: len nacitani, responzivni obrazky (`srcset`, `sizes`), moderni formaty (WebP, AVIF), nastavene rozmery pro zabraneni CLS.
+5. **Velikost balicku**: nepouzite importy, prilis velke zavislosti, chybejici rozdeleni kodu, mrtvy kod.
+
+Dovednost meri pred a po. Kazda oprava je kvantifikovana. Pokud zmena nepohne metrikou, je vracena zpet.
+
+## Vyzkousejte to
+
+```
+/impeccable optimize the homepage
+```
+
+Ocekavany tvar:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero image preloaded (-800ms)
+  - Removed render-blocking font stylesheet (-240ms)
+  - Deferred analytics script (-180ms)
+
+INP: 240ms → 90ms
+  - Debounced scroll handler
+  - Memoized expensive list render
+  - Removed synchronous layout read in event loop
+
+CLS: 0.18 → 0.02
+  - Set dimensions on hero image and logo
+  - Reserved space for async header badge
+
+Bundle: 340KB → 180KB
+  - Removed unused lodash import (52KB)
+  - Code-split the playground route (78KB)
+  - Dropped deprecated icon set (30KB)
+```
+
+## Na co si dat pozor
+
+- **Optimalizace pred merenim.** Bez zakladnich metrik nemuzete rict, co pomohlo. Spustte `/impeccable optimize` se specifickymi cisly Web Vitals, ne s pocity.
+- **Stihani malych vylepseni.** Zlepseni INP o 20ms, ktere trva tyden, je zridka hodnotne. Optimize ma klesajici vratnost; poznejte, kdy se zastavit.
+- **Zapomenuti znovu mereni po kazde zmene.** Sestaveni mohlo veci zhoršit zpusobem, ktery dovednost nepredvidala. Overte.

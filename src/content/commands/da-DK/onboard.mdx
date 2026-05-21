@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Design første-kørsels-oplevelser, tomme tilstande og veje til værdi.
+highlights:
+  - Nye brugere ankommer uden kontekst.
+  - Produktet har brug for en bedre første vellykkede handling.
+  - Tomme tilstande og opsætningstrin gør for lidt undervisning.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable onboard` er til de øjeblikke der afgør, om en ny bruger bliver hængende: den første skærm, den tomme tilstand, opsætningsflowet, produkt-turen, "hvad gør jeg nu"-kløften. Grib efter den, når aktivering er svag, når nye brugere falder fra før de når værdi, eller når dit produkt har tomme tilstande der siger "ingen elementer endnu" og stopper der.
+
+## Hvordan det virker
+
+Kommandoen starter fra ét spørgsmål: hvad er aha-øjeblikket, og hvor hurtigt kan en ny bruger nå dertil. Hver designbeslutning peger på det øjeblik.
+
+Den arbejder på tværs af de overflader der former førsteindtryk:
+
+1. **Første-kørsels-oplevelse**: øjeblikkene umiddelbart efter tilmelding. Skal brugeren se en tur, et tomt lærred, et udfyldt eksempel eller slet intet. Vælg den tilgang der matcher produktet.
+2. **Tomme tilstande**: hver nul-data-skærm bliver orienteret. Hvor er jeg, hvorfor er dette tomt, hvad gør jeg nu, hvordan vil det se ud, når det er fyldt.
+3. **Opsætning og installation**: påkrævet konfiguration minimeres, standarder er smarte, hvert trin forklarer hvorfor det er vigtigt.
+4. **Progressiv afsløring**: avancerede features holdes ude af vejen, indtil de er fortjent.
+5. **Aktiveringsbegivenheder**: det øjeblik en bruger første gang oplever kerneværdien, instrumenteres og fejres, stille.
+
+Kommandoen modstår to almindelige fejltilstande: over-tutorialiseret onboarding, hvor brugere klikker gennem et karrusel før de kan røre ved noget, og nul-onboarding, hvor brugere droppes ind i en tom app og forventes at finde ud af det selv.
+
+## Prøv det
+
+```
+/impeccable onboard the editor
+```
+
+Typisk output:
+
+- Første-kørsel: erstatter tom editor med et udfyldt eksemplardokument brugeren kan ændre. Annuller-knappen kasserer eksemplet, redigering erstatter indholdet med brugerens arbejde.
+- Tom tilstand på dokumentliste: "Ingen dokumenter endnu. Opret dit første, eller importer fra Notion, Google Docs eller Markdown."
+- Opsætning: reduceret fra 6 påkrævede felter til 1 (arbejdsområdenavn). Alt andet har en smart standard og kan redigeres senere i indstillinger.
+- Aktivering: første gang en bruger gemmer et dokument, siger en stille toast "Gemt. Dit arbejde er i skyen nu." Engangs, ikke gentaget.
+
+## Faldgruber
+
+- **At tilføje en produkt-tur som standardsvar.** De fleste produkter har ikke brug for en tur. De har brug for en bedre første skærm. Ture er en krykke.
+- **At designe onboarding uden at definere aha-øjeblikket.** Hvis du ikke kan sige i én sætning, hvad brugeren bør føle i de første 60 sekunder, så gå tilbage til `/impeccable shape` først.
+- **At køre onboard på et ødelagt flow.** Ret flowet først. Onboarding kan ikke redde et produkt, hvor kernehåndlingen er ødelagt.

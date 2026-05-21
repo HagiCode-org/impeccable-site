@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Gør grænseflader produktionsklare. Kant-tilfælde, i18n, fejltilstande, overløb.
+highlights:
+  - Happy path virker, men virkelige tilstande ser stadig skrøbelige ud.
+  - Du har brug for at lukke afsendelseskløfter inden udgivelse.
+  - Fejlhåndtering og robusthed betyder mere end at tilføje ny flair.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable harden` er til den dag din grænseflade møder virkeligheden. Rigtige brugerdata er rodet: navne der er 60 tegn lange, produkttitler på tysk, priser i milliarder, 500-fejl, offline-tilstande, højre-til-venstre-tekst. Designs der kun fungerer med perfekte data er ikke produktionsklare.
+
+Grib efter den inden lancering, inden åbning for et nyt marked, eller hver gang en fejlrapport starter med "vores bruger havde et rigtig langt navn og". For første-kørsels-flows, tom-tilstand-aktivering og onboarding-design, grib efter `/impeccable onboard` i stedet.
+
+## Hvordan det virker
+
+Færdigheden arbejder gennem fire dimensioner af virkeligheds-robusthed:
+
+1. **Tekst- og dataekstremer**. Lang tekst, kort tekst, specialtegn, emoji, RTL, tal i milliarder, 1000-element-lister.
+2. **Fejlscenarier**. Netværksfejl, API 4xx/5xx, valideringsfejl, tilladelsesfejl, hastighedsbegrænsninger, samtidige operationer.
+3. **Internationalisering**. Lange oversættelser (tysk er ofte 30% længere end engelsk), RTL-sprog, dato- og talformater, valutasymboler, tegnsæt.
+4. **Enhed og kontekst**. Touch-mål, offline-opførsel, langsomme forbindelser, strømbesparende tilstand.
+
+For hver dimension identificerer den fejltilstanden og anvender derefter den konkrete løsning: overløbshåndtering, informativ fejl-UI, i18n-sikre layouts, pluralisering, fornuftige fallbacks.
+
+## Prøv det
+
+Start med én side og én dimension:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Forventet output:
+
+- `.user-name` har nu `text-overflow: ellipsis` med en tooltip for den fulde værdi
+- `.bio` skiftet fra fast højde til `max-height` med en "vis mere"-disclosure
+- Tilføjede en tom tilstand for brugere uden bio
+- Tilføjede en skeletindlæser for asynkron avatar-hentning
+- Testet ved navnelængder 1, 20, 60, 200 tegn
+
+Kør den per side, ikke alt på én gang. Den første kørsel er den største; efterfølgende kørsler finder færre problemer, efterhånden som mønstrene stabiliserer sig.
+
+## Faldgruber
+
+- **At vente på en fejlrapport.** Harden er forebyggende. Hvis du opdager at du retter den samme klasse af fejl to gange, så kør `/impeccable harden` på tværs af featuren.
+- **At behandle fejl- og tomme tilstande som en eftertanke.** Det meste hærdningsarbejde er fejl- og tom-tilstands-UI. Budgetter tid til det, ikke bare en `catch`-blok.
+- **At springe i18n over, fordi "vi er kun engelsk for nu".** i18n-sikre layouts er stadig bedre layouts. Fleksible containere, korrekt tekstombrydning, gavmellig linjehøjde. Intet af det skader engelsk.

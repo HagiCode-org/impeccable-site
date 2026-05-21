@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Ganditi inainte sa construiti. Produseti un brief de design prin descoperire, nu prin ghicire.
+highlights:
+  - Doriti planificare fara implementare inca.
+  - Layout-ul sau tonul potrivit este inca neclar.
+  - Mai multi factori interesati trebuie sa se alinieze pe intentie inainte de a incepe lucrul de constructie.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Iesirea /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Scop</span>
+        <span class="docs-viz-file-v">Permite abonatilor dedicati sa schimbe ceea ce primesc fara a-i pierde prin dezabonare.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Utilizator</span>
+        <span class="docs-viz-file-v">In graba, pe mobil, in mijlocul unei intalniri. Citeste rapid, rabare scazuta.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Continut</span>
+        <span class="docs-viz-file-v">4 tipuri de rezumat, 2 cadente, o optiune de dezabonare totala la final.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Senzatie</span>
+        <span class="docs-viz-file-v">Calm, de incredere, fara modele inselatoare.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Restrictii</span>
+        <span class="docs-viz-file-v">Mobile-first. Contrast WCAG AA. O coloana, fara modale.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Dati-l la <code>/impeccable</code>, <code>/impeccable craft</code> sau orice flux de implementare.</div>
+  </div>
+  <p class="docs-viz-caption">Un brief shape este o busola, nu o specificatie. Capteaza intentia, nu UI-ul. Skill-urile de implementare il citesc inainte de a scrie o linie de cod.</p>
+</div>
+
+## Cand se foloseste
+
+`/impeccable shape` este locul unde incepe o functionalitate. Inainte ca oricine sa scrie cod, inainte ca oricine sa argumenteze despre tratamentul hero-ului, inainte ca oricine sa aleaga un font. Folositi-l pentru a forta o conversatie de descoperire despre scop, utilizatori, continut si restrictii, apoi captati raspunsurile ca un brief de design pe care skill-urile de implementare se pot baza.
+
+Apelati la el ori de cate ori o functionalitate este pe cale sa inceapa, un tichet este vag, sau va prindeti scriind JSX pentru a figura ce ar trebui sa fie produsul.
+
+## Cum functioneaza
+
+Majoritatea interfețelor UI generate de AI esueaza nu din cauza codului prost, ci din cauza gandirii omise. Modelul sare la "iată un grid de carduri" fara a intreba "ce incearca utilizatorul sa realizeze". `/impeccable shape` inverseaza acea ordine.
+
+Skill-ul ruleaza un interviu de descoperire structurat in conversatie. Nu va scrie cod in aceasta faza. Intrebarile acopera:
+
+- **Scop si context**: pentru ce este functionalitatea, cine o foloseste, in ce stare de spirit se afla
+- **Continut si date**: ce se afiseaza, intervale realiste, cazuri limita, ce este dinamic
+- **Obiective de design**: cel mai important lucru, sentimentul intentionat, exemple de referinta
+- **Restrictii**: tehnice, de continut, de accesibilitate, de localizare
+
+Raspundeti natural. Skill-ul pune intrebari de urmarire, nu un formular. La final produce un brief de design: un artefact structurat pe care il puteti da la `/impeccable` sau orice alt skill de implementare.
+
+Nota: daca doriti fluxul complet (interviu de descoperire, apoi direct in constructie), folositi `/impeccable craft` in schimb. Ruleaza `/impeccable shape` intern, apoi continua in implementare cu iterare vizuala. `/impeccable shape` independent este pentru cand doriti doar brief-ul, astfel incat sa-l puteti duce la orice abordare de implementare preferati.
+
+## Incercati
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Asteptati-va la o conversatie de 5 pana la 10 intrebari. Skill-ul intreaba lucruri precum "cine este persoana care deschide asta, si este deja angajata sau inca curioasa" si "ce se intampla cand utilizatorul s-a dezabonat de la toate, ascundem functionalitatea sau afisam ceva". Raspundeti, si un brief se materializeaza.
+
+De acolo puteti da brief-ul la `/impeccable`, `/impeccable polish` sau orice alt skill. Sau doar folositi-l ca referinta in timp ce construiti manual.
+
+## Capcane
+
+- **Omiterea pentru ca pare lent.** Interviul dureaza poate 5 minute. Rescrierile pe care le evitati se masoara in ore.
+- **Tratarea brief-ului ca specificatie.** Este o busola, nu o lista de verificare. Capteaza intentia, nu UI-ul.
+- **Raspunsul cu "standard" sau "normal".** Specificitatea este intregul scop. Daca un utilizator este "in graba, pe mobil, intre intalniri", spuneti asa. Asta schimba totul in aval.

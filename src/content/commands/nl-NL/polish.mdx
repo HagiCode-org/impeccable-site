@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: De nauwgezette eindpassage tussen goed en geweldig.
+highlights:
+  - Uitlijning, spatiëring en micro-beslissingen voelen nog ruw.
+  - De functie is bijna klaar voor levering.
+  - Kleine inconsistenties trekken de waargenomen kwaliteit omlaag.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Wanneer te gebruiken
+
+`/impeccable polish` is het laatste dat je uitvoert voordat je levert. Het jaagt op de kleine details die een geleverde functie scheiden van een gepolijste: halve-pixel mislijningen, inconsistente spatiëring, vergeten focus-statussen, laadovergangen die flitsen, tekst die afdrijft in toon. Het lijnt de functie ook uit met je ontwerpsysteem, door hardcoded waarden te vervangen door tokens, custom componenten te wisselen voor gedeelde, en eventuele drift van gevestigde patronen te herstellen.
+
+Gebruik het wanneer de functie functioneel compleet is, er niets kapot is, en er toch iets niet goed voelt. Gebruik het ook wanneer een functie is afgedreven van het ontwerpsysteem en terug in lijn gebracht moet worden.
+
+## Hoe het werkt
+
+Polish begint met het ontdekken van het ontwerpsysteem (tokens, spatiëringsschaal, gedeelde componenten), en werkt vervolgens methodisch over zes dimensies:
+
+1. **Visuele uitlijning en spatiëring**: pixel-perfecte grid-naleving, consistente spatiëringsschaal, optische uitlijning op pictogrammen.
+2. **Typografie**: hiërarchieconsistentie, regellengte, wezen en wezen, kerning op koppen.
+3. **Kleur en contrast**: token-gebruik, themaparity, WCAG-verhoudingen, focus-indicators.
+4. **Interactiestatussen**: hover, focus, active, disabled, laden, fout, succes. Elke status meegerekend.
+5. **Overgangen en beweging**: vloeiende easing, geen lay-out-schokken, respect voor `prefers-reduced-motion`.
+6. **Tekst**: consistente stem, juiste tijd, geen plaatsteksten, geen verdwaalde TODO's.
+
+De skill is expliciet over één ding: polish is de laatste stap, niet de eerste. Als de functie niet functioneel compleet is, is polijsten verspilde moeite.
+
+## Probeer het
+
+```
+/impeccable polish the pricing page
+```
+
+Een gezonde uitvoering ziet er zo uit:
+
+```
+Visuele uitlijning: 3 off-grid elementen gecorrigeerd (8px basislijn)
+Typografie: h1-kerning strakker gemaakt, wees in testimonial opgelost
+Interactie: hover-status toegevoegd op FAQ-items, focus-ring op e-mailinvoer
+Beweging: modal-entree verzacht, reduced-motion fallback toegevoegd
+Tekst: één verdwaalde "Lorem ipsum" verwijderd, knopstem uitgelijnd
+```
+
+Vijf kleine reparaties, geen herschrijvingen. Dat is de vorm van een goede polish-pass.
+
+## Valkuilen
+
+- **Polijsten van werk dat niet af is.** Als er TODO's in de code staan, ben je er niet klaar voor. Voer `/impeccable polish` alleen uit op afgeronde functies.
+- **Polish behandelen als herontwerp.** Polish verfijnt wat bestaat. Als je jezelf betrapt op het herarchitecten van een lay-out, had je `/impeccable critique` of `/impeccable layout` nodig.
+- **`/impeccable polish` uitvoeren zonder eerst `/impeccable audit`.** Polish vangt op gevoel gebaseerde problemen. Audit vangt meetbare problemen. Gebruik beide.

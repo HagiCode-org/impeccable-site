@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnosis dan perbaiki performa UI dari LCP hingga ukuran bundle.
+highlights:
+  - Antarmuka terasa lambat, tersendat, atau berat.
+  - Anda perlu mengurangi biaya tanpa merusak desain.
+  - Performa sekarang menjadi masalah produk yang terlihat.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Kapan menggunakannya
+
+`/impeccable optimize` untuk antarmuka yang terasa lambat. Paint pertama memakan waktu lama, pengguliran tersendat, gambar muncul terlambat, interaksi terasa lamban, bundle mengirim 800KB JavaScript. Gunakan ketika Web Vitals buruk atau ketika pengguna mengeluh bahwa segalanya lambat.
+
+Jangan gunakan sebagai optimisasi prematur. Jika LCP 1.1s dan INP 80ms, berhenti. Pekerjaan desain lebih penting.
+
+## Cara kerjanya
+
+Skill bekerja melalui lima dimensi performa:
+
+1. **Pemuatan dan Web Vitals**: LCP, INP, CLS. Identifikasi apa yang menghalangi paint pertama, apa yang menunda interaksi, apa yang menggeser tata letak.
+2. **Rendering**: render ulang yang tidak perlu, memoization yang hilang, rekonsiliasi mahal, layout thrash dalam loop.
+3. **Animasi**: apakah ada yang menganimasikan properti tata letak, apakah transform dan opacity satu-satunya yang disentuh, apakah `will-change` membantu atau merugikan di sini.
+4. **Gambar dan aset**: lazy loading, gambar responsif (`srcset`, `sizes`), format modern (WebP, AVIF), dimensi diatur untuk mencegah CLS.
+5. **Ukuran bundle**: impor yang tidak digunakan, dependensi yang terlalu besar, code-splitting yang hilang, kode mati.
+
+Skill mengukur sebelum dan sesudah. Setiap perbaikan dikuantifikasi. Jika perubahan tidak memindahkan metrik, perubahan dikembalikan.
+
+## Cobalah
+
+```
+/impeccable optimize the homepage
+```
+
+Bentuk yang diharapkan:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero image preloaded (-800ms)
+  - Removed render-blocking font stylesheet (-240ms)
+  - Deferred analytics script (-180ms)
+
+INP: 240ms → 90ms
+  - Debounced scroll handler
+  - Memoized expensive list render
+  - Removed synchronous layout read in event loop
+
+CLS: 0.18 → 0.02
+  - Set dimensions on hero image and logo
+  - Reserved space for async header badge
+
+Bundle: 340KB → 180KB
+  - Removed unused lodash import (52KB)
+  - Code-split the playground route (78KB)
+  - Dropped deprecated icon set (30KB)
+```
+
+## Jebakan
+
+- **Mengoptimalkan sebelum mengukur.** Tanpa metrik baseline, Anda tidak bisa mengatakan apa yang membantu. Jalankan `/impeccable optimize` dengan angka Web Vitals spesifik, bukan perasaan.
+- **Mengejar kemenangan kecil.** Peningkatan INP 20ms yang memakan waktu seminggu jarang sepadan. Optimize memiliki hasil yang semakin berkurang; ketahui kapan harus berhenti.
+- **Lupa mengukur ulang setelah setiap perubahan.** Build bisa membuat segalanya lebih buruk dengan cara yang tidak diprediksi oleh skill. Verifikasi.

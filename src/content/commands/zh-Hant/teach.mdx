@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: 每個專案一次，教 Impeccable 你的產品是為誰而做。
+highlights:
+  - 專案尚未有設計脈絡檔案。
+  - 不同的貢獻者需要一個共享的單一事實來源。
+  - 你希望未來的指令繼承品牌和產品方向。
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">每次指令執行時載入</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">定位</span>
+        <span class="docs-viz-file-v">Product。設計服務於任務。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">使用者</span>
+        <span class="docs-viz-file-v">待命的 SRE，快速閱讀，經常在黑暗中。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">品牌聲音</span>
+        <span class="docs-viz-file-v">沉穩、臨床、無炒作。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">反面參考</span>
+        <span class="docs-viz-file-v">紫色漸層。玻璃擬態。「提升你的生產力。」</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">每個指令在寫下任何一行程式碼之前都會讀取這個檔案。</div>
+  </div>
+  <p class="docs-viz-caption">一份完成的 PRODUCT.md。只有策略：誰、什麼、為什麼。沒有色彩、沒有字型、沒有像素值，那些存在於 DESIGN.md 中。</p>
+</div>
+
+## 何時使用
+
+在專案開始時執行一次 `/impeccable teach`。它是入口坡道。沒有它，每個其他指令會產出技術上勝任但調性通用的設計：標準 SaaS 語氣、安全預設字型、AI 色彩盤。有了它，每個指令在生成之前都會讀取你的答案。
+
+以下情況請使用：
+
+- **你剛在新專案中安裝了 Impeccable。** 第一件要執行的事。如果你跳過，其他指令會提示你執行。
+- **專案的品牌方向已經轉變。** 新定位、新受眾、新聲音。重新執行 `teach`，更新的脈絡會流通到每個指令。
+- **另一個指令說「找不到設計脈絡」** 並停止了。那就是信號：執行 teach，然後繼續。
+
+## 運作方式
+
+Teach 在專案根目錄寫入兩個互補的檔案：
+
+- **`PRODUCT.md`** 是策略檔案。定位（brand 或 product）、目標使用者、產品目的、品牌性格、反面參考、設計原則、無障礙需求。回答「誰、什麼、為什麼」。
+- **`DESIGN.md`** 是視覺檔案。色彩、字型、高度、元件、該做與不該做的事項。回答「看起來如何」。由委託的 `/impeccable document` 指令撰寫，teach 在結束時呼叫它。
+
+流程首先掃描程式碼庫（README、package.json、元件、token、品牌資產）並形成一個**定位假設**：brand（登入頁、行銷、作品集，設計即產品本身）或 product（應用 UI、儀表板、工具，設計服務於產品）。定位是第一個問題，因為它決定了每個下游答案：字型預設值、動態能量、色彩策略、`/impeccable typeset` 等指令拉取的參考集。定位之後，teach 只問它無法推斷的內容：使用者、三個真實詞語描述的個性、參考和反面參考、無障礙需求。
+
+PRODUCT.md 只有策略。沒有色彩、沒有字型、沒有像素值。那些存在於 DESIGN.md 中。保持兩個檔案分開是刻意的：策略可以保持穩定，而視覺系統持續演進。
+
+## 試試看
+
+```
+/impeccable teach
+```
+
+預期一段 5 到 8 分鐘的訪談。第一個問題通常是關於定位；其餘都很簡短。Teach 會引用它從你的程式碼中推斷出的內容（「從路由來看，這看起來像一個 product 介面，符合嗎？」），所以你在確認，而不是從頭開始。
+
+最後，teach 會提議為你執行 `/impeccable document`。除非你有特定理由暫緩，否則說好。一份真正的 DESIGN.md 是讓變體、打磨和審查保持品牌一致的關鍵。
+
+## 注意事項
+
+- **為了「快速試一個指令」而跳過。** 每個其他指令會改在過程中訪談你。先執行 teach 更快，不是更慢。
+- **給出通用的答案。**「現代和乾淨」沒有用。「溫暖、機械、有主見」才有。要具體。要願意反對安全預設值。
+- **把 PRODUCT.md 當作不可變的。** 檔案是你的。如果 teach 在裡面放了不太對的東西，編輯它。每個指令讀取的是當前檔案。
+- **只用形容詞列舉參考。** 品牌、產品、印刷品：要命名，不是描述。「Klim Type Foundry 的樣本頁」，不是「技術性和乾淨」。反面參考也應該同樣具體。

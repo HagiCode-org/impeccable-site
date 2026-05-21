@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: ตรวจสอบคุณภาพทางเทคนิคห้ามิติพร้อมระดับความรุนแรง P0 ถึง P3
+highlights:
+  - คุณต้องการปัญหาที่เป็นรูปธรรมและระดับความรุนแรง ไม่ใช่แค่ข้อเสนอแนะตามรสนิยม
+  - คุณกำลังเตรียมฟีเจอร์สำหรับการ merge หรือ release
+  - คุณสงสัยว่ามีการเสียหายที่ซ่อนอยู่บนมือถือ ในธีมมืด หรือภายใต้ความต้องการด้านการช่วยเหลือ
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accessibility</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performance</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patterns</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">ห้ามิติให้คะแนน 0 ถึง 4 ข้อค้นพบแต่ละข้อติดแท็ก P0 (บล็อก release) ถึง P3 (ปรับแต่ง) Audit บันทึกเอกสาร; ไม่ได้แก้ไข ส่งต่อข้อค้นพบไปที่ <code>/impeccable harden</code>, <code>/impeccable polish</code> หรือ <code>/impeccable optimize</code></p>
+</div>
+
+## เมื่อไรควรใช้
+
+`/impeccable audit` คือคู่เทียบเท่าทางเทคนิคของ `/impeccable critique` ในขณะที่ `/impeccable critique` ถามว่า "นี่รู้สึกถูกต้องไหม" `/impeccable audit` ถามว่า "นี่ทนได้ไหม" มันรันการตรวจสอบการเข้าถึง ประสิทธิภาพ ธีม การออกแบบเรสปอนซิฟ และแอนตี้แพทเทิร์นกับการสร้าง ให้คะแนนแต่ละมิติ 0 ถึง 4 และสร้างแผนพร้อมระดับความรุนแรง P0 ถึง P3
+
+ใช้ก่อนส่งมอบ ระหว่างสปริ้นท์คุณภาพ หรือเมื่อใดก็ตามที่เทคลีดพูดว่า "เราควรดูเรื่องการเข้าถึงจริงๆ"
+
+## วิธีการทำงาน
+
+สกิลสแกนโค้ดของคุณในห้ามิติ:
+
+1. **การเข้าถึง**: คอนทราสต์ WCAG, ARIA, การนำทางคีย์บอร์ด, HTML แบบเซแมนติก, เลเบิลฟอร์ม
+2. **ประสิทธิภาพ**: การกระตุกเลย์เอาต์ แอนิเมชันที่หนัก การขาดการโหลดแบบ lazy น้ำหนักบันเดิล
+3. **ธีม**: สีที่ฮาร์ดโค้ด ความครอบคลุมโหมดมืด ความสม่ำเสมอของโทเคน
+4. **เรสปอนซิฟ**: พฤติกรรมเบรกพอยต์ เป้าหมายสัมผัส การจัดการวิวพอร์ตมือถือ
+5. **แอนตี้แพทเทิร์น**: การตรวจสอบแบบกำหนดได้ 25 รายการเหมือนที่ตัวตรวจจับรัน
+
+แต่ละมิติได้คะแนน 0 ถึง 4 แต่ละข้อค้นพบได้ระดับความรุนแรง: P0 บล็อก release, P1 ควรแก้สปริ้นท์นี้, P2 คือรอบถัดไป, P3 คือการปรับแต่ง คุณได้เอกสารเดียวที่วางลงในตัวติดตามติเก็ตได้
+
+Audit ไม่ได้แก้ไขอะไรเลย มันบันทึกเอกสาร ส่งต่อข้อค้นพบไปที่ `/impeccable polish`, `/impeccable harden` หรือ `/impeccable optimize` ขึ้นอยู่กับหมวดหมู่
+
+## ลองใช้งาน
+
+```
+/impeccable audit the checkout flow
+```
+
+ผลลัพธ์ที่คาดหวัง:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+ส่ง P0 ให้ `/impeccable harden` ธีมและตัวอักษร P1 ให้ `/impeccable typeset` และ `/impeccable polish` ที่เหลือให้ `/impeccable polish`
+
+## ข้อควรระวัง
+
+- **สับสนกับ `/impeccable critique`** Audit คือคุณภาพการสร้าง Critique คือคุณภาพการออกแบบ รันทั้งสองอย่างเพื่อภาพรวมที่สมบูรณ์
+- **แก้ P3 ก่อน P0** สเกลระดับความรุนแรงมีอยู่ด้วยเหตุผล เริ่มจากด้านบน
+- **ข้ามมิติที่คุณคิดว่าใช้ได้** ธีมและเรสปอนซิฟคือสิ่งที่คนส่วนใหญ่คิดว่าใช้ได้จนกระทั่งพวกมันไม่ได้

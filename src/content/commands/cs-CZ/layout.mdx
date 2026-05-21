@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Opravte layout, rozestupy a vizualni rytmus.
+highlights:
+  - Strance chybi jasny duraz.
+  - Dobry obsah existuje, ale skladba jej skryva.
+  - Chcete silnejsi tok pred zasahem do barev nebo pohybu.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Kdy pouzit
+
+`/impeccable layout` je pro stranky, kde neni nic technicky spatne, ale nic nedycha taky. Vsude stejne odsazeni, monotoni mrizky karet, obsah, ktery bezi od okraje k okraji, hierarchie, ktera se spoleha jen na velikost. Siahnete po nem, kdyz layout "pripada divny" a nevite, jak to rict.
+
+Dobre spoustece: "vse pripada preplnene", "cte se to jako zeď", "nevim, kam se podivat prvni".
+
+## Jak to funguje
+
+Dovednost projde peti layoutovymi dimenzemi:
+
+1. **Rozestupy**: je stupnice rozestupu konzistentni, nebo existuji nahodne 13px mezery, jsou souvisejici prvky seskupene tesne s velkorysymi mezerami mezi skupinami, existuje vubec nejaky rytmus.
+2. **Vizualni hierarchie**: dopadne oko na primarni akci do 2 sekund, dela hierarchie skutecnou praci, nebo krici vsechno.
+3. **Mrizka a struktura**: existuje podkladova mrizka, nebo je layout nahodny, jsou prvky zarovnany na zakladnich carach.
+4. **Rytmus**: stranka se strieda mezi tesnymi a velkorysymi rozestupy, nebo je vsude stejne.
+5. **Hustota**: je layout stisneny nebo plytva, odpovida hustota typu obsahu.
+
+Opravy obvykle zahrnuji obnoveni stupnice rozestupu, zavedeni asymetrie, zhroumuti monotoni mrizky do smiseniho layoutu s hero a podpurnymi prvky a poskytnuti skutecneho prostoru primarni akci.
+
+## Vyzkousejte to
+
+```
+/impeccable layout the settings page
+```
+
+Typicke zmeny:
+
+- Stupnice rozestupu sjednocena na 8 / 16 / 24 / 48 / 96px
+- Sekciove preryvy na 48px, radkove mezery na 16px, skupiny formularovych poli na 8px
+- Primarni akce vyrazene z toku formulare s 32px bufferem
+- Dekorativni oramovani odstraneno, nahrazeno rozestupy ridicim seskupovanim
+- Proporce bocniho panelu a hlavniho sloupce prevyvazene (280 / flex vs 25 / 75)
+
+## Na co si dat pozor
+
+- **Zamena s distill.** Pokud je problem prilis mnoho veci, spustte nejprve `/impeccable distill`. Layout je pro usporadani toho, co je jiz spravnou sadou.
+- **Ocekavani, ze zachrani rozbitou mrizku.** Pokud stranka nema vubec zadnou mrizku, layout jednu vytvori. Proste vedte, ze diff bude vetsi, nez ocekavate.
+- **Ignorovani verdiktu hierarchie.** Pokud layout rika "nic neni primarni", zadne mnozstvi prace s rozestupy to neopravi. Potrebujete rozhodnuti o obsahu, ne layoutovou upravu.

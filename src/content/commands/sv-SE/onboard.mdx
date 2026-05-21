@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Designa forstakörsupplevelser, tomma tillstand och vager till värde.
+highlights:
+  - Nya anvandare kommer utan kontext.
+  - Produkten behovr en battre forsta framgangsrika atgard.
+  - Tomma tillstand och installationssteg gör for lite undervisning.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Nar du ska anvanda det
+
+`/impeccable onboard` ar for ogonblicken som bestammer om en ny anvandare stannar: den forsta skärmen, det tomma tillstandet, installationsflodet, produktrundturen, "vad gor jag nu"-luckan. Anvand det nar aktiveringen ar svag, nar nya anvandare hoppar av fore de når värde, eller nar din produkt har tomma tillstand som sager "inga objekt ännu" och stannar dar.
+
+## Hur det fungerar
+
+Kommandot borjar fran en fraga: vad ar aha-oegenblicket, och hur snabbt kan en ny anvandare ta sig dit. Varje designbeslut pekar pa det ogonblicket.
+
+Det arbetar over de ytor som formar forstaintryck:
+
+1. **Forstakörsupplevelse**: ogonblicken omedelbart efter registrering. Borde anvandaren se en rundtur, en tom canvas, ett ifyllt exempel eller ingenting alls. Valj tillvagagangssattet som matchar produkten.
+2. **Tomma tillstand**: varje nolldata-skärm blir orienterad. Var ar jag, varför ar det har tomt, vad gor jag härefter, hur kommer det att se ut nar det ar fullt.
+3. **Installation och installation**: erforderlig konfiguration minimeras, standardvarden ar smarta, varje steg forklarar varför det betyder noget.
+4. **Progressiv avslöjande**: avancerade funktioner haller sig ur vagen tills de ar intjänade.
+5. **Aktiveringsevenemang**: ogenblicket da en anvandare forsta gangen upplever karnvardet instrumenteras och firas, tyst.
+
+Kommandot mostar tva vanliga fellagen: over-tutorialiserad onboarding dar anvandare klickar sig genom en karusell fore de kan röra nagot, och noll-onboarding dar anvandare släpps in i en tom app och forvantas lista ut det sjalva.
+
+## Prova det
+
+```
+/impeccable onboard the editor
+```
+
+Typisk utmatning:
+
+- Forstakörning: ersatter tom redigerare med ett ifyllt exempeldokument anvandaren kan ändra. Avbryt-knappen kastar exemplet, redigering ersatter innehallet med anvandarens arbete.
+- Tomt tillstand pa dokumentlistan: "Inga dokument ännu. Skapa ditt forsta, eller importera fran Notion, Google Docs eller Markdown."
+- Installation: minskade fran 6 erforderliga falt till 1 (arbetsytenamn). Allt annat har ett smart standardvard och kan redigeras senare i installningarna.
+- Aktivering: forsta gangen en anvandare sparar ett dokument, en tyst toast sager "Sparat. Ditt arbete ar i molnet nu." Engangs, inte upprepad.
+
+## Fallgropar
+
+- **Att lägga till en produktrundtur som standardsvaret.** De flesta produkter behovr ingen rundtur. De behovr en battre forsta skärm. Rundturer ar en krycka.
+- **Att designa onboarding utan att definiera aha-oegenblicket.** Om du inte kan sager i en mening vad anvandaren borde kanna under de forsta 60 sekunderna, ga tillbaka till `/impeccable shape` forst.
+- **Att kora onboard pa ett trasigt flode.** Fixa flodet forst. Onboarding kan inte radda en produkt dar karnatgardern ar trasig.

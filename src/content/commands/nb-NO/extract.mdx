@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Trekk ut gjenbrukbare komponenter, tokens og mønstre inn i designsystemet.
+highlights:
+  - Flere komponenter løser det samme problemet på ulike måter.
+  - Tokens og mønstre må sentraliseres.
+  - Du vil ha et mer vedlikeholdbart visuelt system.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Oppdag avvik</span>
+      <span class="docs-viz-flow-hint">Gjentatte heksadesimalverdier, knappevarianter, avstandsskalaer, tekststiler.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Foreslå primitiver</span>
+      <span class="docs-viz-flow-hint">Tokennavn, komponent-API-er med variant + størrelse, tekststiler.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrer brukssteder</span>
+      <span class="docs-viz-flow-hint">Erstatt duplisert CSS med de nye primitivene. Ingen foreldreløs kode blir liggende.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Ferdigheten trekker bare ut det som brukes tre eller flere ganger med samme hensikt. To bruk er ikke et mønster, og migrasjon skjer alltid i samme gjennomgang.</p>
+</div>
+
+## Når du skal bruke den
+
+`/impeccable extract` er for øyeblikket kodebasen din ved et uhell har blitt et designsystem. Gjentatte knappestiler på 12 steder. Tre varianter av det samme kortet. Heksadesimale farger spredt overalt. Håndrullet avstand som tilfeldigvis matcher en skala. Bruk det når du vil konsolidere dette avviket til gjenbrukbare primitiver.
+
+Bruk det etter at et produkt har levert nok funksjoner til å avdekke mønstrene. For tidlig ekstraksjon skaper abstraksjoner som ikke matcher virkeligheten.
+
+## Hvordan det fungerer
+
+Ferdigheten oppdager designsystemstrukturen først, og identifiserer deretter ekstraksjonsmuligheter:
+
+1. **Tokens**: finn gjentatte literale verdier (farger, avstand, radiuser, skygger, skriftstørrelser). Foreslå tokennavn, legg til i tokensystemet, erstatt bruk.
+2. **Komponenter**: finn UI-mønstre som gjentar seg med små variasjoner (knapper, kort, input, modaler). Trekk ut til en enkelt komponent med varianter, migrer kallere.
+3. **Sammensetningsmønstre**: finn layout- eller interaksjonsmønstre som gjentar seg (formular-rader, verktøylinje-grupper, tomme tilstander). Trekk ut til sammensetningsprimitiver.
+4. **Tekststiler**: finn gjentatte kombinasjoner av font-size + weight + line-height. Trekk ut til tekststiler.
+5. **Animasjonsmønstre**: finn gjentatte easing-, varighets- eller keyframe-kombinasjoner. Trekk ut til bevegelsestokens.
+
+Ferdigheten er forsiktig. Den trekker bare ut ting som brukes tre eller flere ganger, med samme hensikt. Den trekker aldri ut "fordi det kanskje blir brukt senere". For tidlig abstraksjon er verre enn duplisering.
+
+## Prøv det
+
+```
+/impeccable extract the button styles
+```
+
+Forventet utdata:
+
+- Fant 14 knappeinstanser på tvers av 8 filer
+- 4 distinkte varianter: primary (fylt aksent), secondary (med kant), ghost (kun tekst), destructive (fylt rød)
+- Alle 4 variantene bruker samme størrelsesskala (small, default, large)
+- Trukket ut til `<Button variant="primary" size="default">` med token-drevne stiler
+- Migrert 14 brukssteder, fjernet ~180 linjer med duplisert CSS
+- Lagt til 3 manglende tokens: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Fallgruver
+
+- **Å trekke ut for tidlig.** To bruk er ikke et mønster. Tre kan være det. Vent til mønsteret er åpenbart.
+- **Over-generalisering.** Den ekstraherte komponenten bør matche nåværende brukstilfeller tett, ikke anticipere alle mulige fremtidige. Du kan alltid legge til varianter senere.
+- **Å glemme migrasjonen.** Ekstraksjon uten migrasjon etterlater den gamle dupliserte koden og skaper en tredje måte å gjøre det samme på. Alltid migrer i samme gjennomgang.
+- **Å trekke ut ting som skiller seg i hensikt.** To knapper som ser like ut, men tjener forskjellige formål (primærhandling vs lenke stilte som knapp) bør sannsynligvis forbli separate.

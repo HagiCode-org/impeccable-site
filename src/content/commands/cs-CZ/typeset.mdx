@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Opravte typografii, ktera pripada obecna, nekonzistentni nebo nahodna.
+highlights:
+  - Text je technicky citelny, ale neni presvedcivy ani kontrolovany.
+  - Nadpisy a telo textu se navzajem splivaji.
+  - Povrch potrebuje silnejsi ton prostrednictvim typografie, nikoli vice dekorace.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Kdy pouzit
+
+Siahnete po `/impeccable typeset`, kdyz text na strance vypada jako vychozi typografie misto navrzene typografie. Zamlzena hierarchie, tri velikosti, ktere vypadaji stejne, telo textu na 14px, display font, ktery je vlastne jen Inter bold, nadpisy bez pozornosti ke kerningu.
+
+Bezne spoustece: "hierarchie pripada plocha", "citelnost je spatna", "fonty pripadaji obecne".
+
+## Jak to funguje
+
+Dovednost zhodnoti typografii napric peti dimenzemi:
+
+1. **Vyber fontu**: pouzivate neviditelne vychozi hodnoty (Inter, Roboto, Arial, Open Sans), odpovida typ pisma znacke, je tam vice nez 2 az 3 rodiny.
+2. **Hierarchie**: jsou nadpisy, telo textu a popisky na prvni pohled jasne odlisne, je kontrast velikosti alespon 1.25x mezi stupni, jsou kontrasty vah citelne.
+3. **Velikosti a meritko**: existuje souvisla typova stupnice, splnuje telo textu minimalne 16px, je stupnice fixni-rem pro aplikacni UI nebo fluidni-clamp pro marketingove stranky.
+4. **Citelnost**: delka radku 45 az 75 znaku, line-height naladeny pro font a kontext, kontrast.
+5. **Konzistence**: stejny prvek pouziva vsude stejne osetreni, zadne jednorazove prepisy font-size.
+
+Potom opravi, co najde: vybere charakteristicke typy pisma, vytvori modulyarni stupnici, rozsiri kontrast hierarchie, nastavi spravnou delku radku a radkovani.
+
+## Vyzkousejte to
+
+```
+/impeccable typeset the article layout
+```
+
+Ocekavany diff:
+
+- Display font vymenen z Inter 700 za skutecny display typ pisma
+- Typova stupnice obnovena: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, pomer 1.333
+- Telo textu zvyseno z 14px na 16px
+- Delka radku omezena na 68ch ve sloupci clanku
+- Line-height 1.6 pro telo textu, 1.1 pro display
+- Odstraneno ctyri jednorazove hodnoty `font-size` roztrousene ve stylech komponent
+
+## Na co si dat pozor
+
+- **Zadost o novy font bez kontextu.** Typeset vybira na zaklade hlasu znacky v `PRODUCT.md`. Pokud jste nespustili `/impeccable teach`, navrh bude obecny.
+- **Sahani po typeset, kdyz je problem layout.** Pokud jsou odstavce v poradku, ale stranka se zdita stisnena, chcete `/impeccable layout`.
+- **Ocekavani fluidnich clamp stupnic na aplikacnim UI.** Typeset pouziva fixni rem stupnice pro aplikacni rozhrani. Fluidni typografie je pro marketing a obsahove stranky, kde se delka radku dramaticky meni.

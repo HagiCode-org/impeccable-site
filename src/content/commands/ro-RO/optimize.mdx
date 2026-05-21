@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnosticati si reparati performanta UI de la LCP pana la dimensiunea bundle-ului.
+highlights:
+  - Interfata se simte lenta, sacaitoare sau greoaie.
+  - Trebuie sa reduceti costul fara a distruge designul.
+  - Performanta este acum o problema vizibila a produsului.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Cand se foloseste
+
+`/impeccable optimize` este pentru interfețe care se simt lente. Prima redare dureaza o vesnicie, scroll-ul sacaie, imaginile apar tarziu, interactiunile se simt laggy, bundle-ul livreaza 800KB de JavaScript. Folositi-o cand Web Vitals sunt rele sau cand utilizatorii se plang ca lucrurile sunt lenese.
+
+Nu o folositi ca optimizare prematura. Daca LCP este 1.1s si INP este 80ms, opriti-va. Munca de design conteaza mai mult.
+
+## Cum functioneaza
+
+Skill-ul lucreaza prin cinci dimensiuni de performanta:
+
+1. **Incarcare si Web Vitals**: LCP, INP, CLS. Identifica ce blocheaza prima redare, ce intarzie interactiunea, ce muta layout-ul.
+2. **Redare**: re-redari inutile, memoizare lipsa, reconciliere scumpa, agitare de layout in bucle.
+3. **Animatii**: ceva animeaza proprietati de layout, transformari si opacity sunt singurele atinse, `will-change` ajuta sau dauneaza aici.
+4. **Imagini si asset-uri**: lazy loading, imagini responsive (`srcset`, `sizes`), formate moderne (WebP, AVIF), dimensiuni setate pentru a preveni CLS.
+5. **Dimensiune bundle**: importuri neutilizate, dependente supradimensionate, lipsa code-splitting, cod mort.
+
+Skill-ul masoara inainte si dupa. Fiecare remediere este cuantificata. Daca o schimbare nu muta o metrica, este reluata.
+
+## Incercati
+
+```
+/impeccable optimize the homepage
+```
+
+Forma asteptata:
+
+```
+LCP: 3.2s → 1.4s
+  - Imagine hero pre-incarcata (-800ms)
+  - Eliminat stylesheet de font care blocheaza redarea (-240ms)
+  - Amarat scriptul de analitica (-180ms)
+
+INP: 240ms → 90ms
+  - Handler de scroll cu debounce
+  - Randare lista scumpa memoizata
+  - Eliminata citire layout sincrona in bucla de evenimente
+
+CLS: 0.18 → 0.02
+  - Setate dimensiuni pe imaginea hero si logo
+  - Rezervat spatiu pentru badge-ul de header async
+
+Bundle: 340KB → 180KB
+  - Eliminat import lodash neutilizat (52KB)
+  - Code-split pe ruta playground (78KB)
+  - Eliminat set de iconite depreciat (30KB)
+```
+
+## Capcane
+
+- **Optimizarea inainte de masurare.** Fara metrici de baza, nu puteti spune ce a ajutat. Rulati `/impeccable optimize` cu numere Web Vitals specifice, nu cu impresii.
+- **Urmarirea castigurilor minuscule.** O imbunatatire de 20ms in INP care dureaza o saptamana rareori merita. Optimize are randamente descrescatoare; stiti cand sa va opriti.
+- **Uitarea de a re-masura dupa fiecare schimbare.** Build-ul ar fi putut face lucrurile mai rele intr-un mod pe care skill-ul nu l-a prezis. Verificati.

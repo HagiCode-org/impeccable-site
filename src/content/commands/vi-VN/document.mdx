@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Tạo DESIGN.md tuân thủ đặc tả ghi nhận hệ thống trực quan của bạn để mọi AI agent giữ đúng thương hiệu.
+highlights:
+  - Codebase đã chứa ngôn ngữ thiết kế thực sự.
+  - Bạn cần bản tóm tắt di động về màu sắc, kiểu chữ, khoảng cách và thành phần.
+  - Công việc thiết kế tương lai đang trôi dạt vì hệ thống chỉ ngầm hiểu.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Định dạng Google Stitch</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Kiểu chữ yên tĩnh, không gian rộng rãi, một accent cam kết.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Phẳng mặc định. Shadow chỉ xuất hiện như phản hồi trạng thái.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Nhuộm màu trung tính theo hướng accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text để nhấn mạnh.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Sáu phần được cố định, theo thứ tự cố định, với tên cố định. Cùng với đó, <code>DESIGN.json</code> được gửi kèm dưới dạng sidecar có thể đọc bằng máy cho bảng thiết kế Live Mode.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+Chạy `/impeccable document` một khi bạn có đủ hệ thống trực quan để ghi nhận: màu sắc, kiểu chữ, ít nhất một nút và một thẻ. Lệnh quét codebase của bạn, trích xuất token và mẫu thành phần nó tìm thấy và ghi `DESIGN.md` tại thư mục gốc dự án tuân theo [định dạng Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), sáu phần theo thứ tự cố định, tương thích với mọi công cụ nhận biết DESIGN.md khác.
+
+Sử dụng khi:
+
+- **Bạn vừa chạy `/impeccable teach`** và `PRODUCT.md` đã tồn tại. Document là tệp phía trực quan tương ứng.
+- **Một lệnh đã hướng bạn đến nó.** Live, craft và polish đều đọc DESIGN.md. Nếu thiếu, kỹ năng đề nghị chạy document trước.
+- **Thiết kế đã trôi dạt** từ DESIGN.md cũ và tệp không còn mô tả hệ thống đang chạy.
+- **Trước một lần thiết kế lại lớn**, để ghi nhận trạng thái hiện tại làm tham chiếu cho hướng tiếp theo.
+
+Đối với dự án chưa có code (chạy `teach` mới, chưa dựng gì), có chế độ seed: `/impeccable document --seed` hỏi năm câu hỏi chiến lược nhanh (chiến lược màu sắc, hướng kiểu chữ, năng lượng chuyển động, tham chiếu, phản-tham chiếu) và ghi scaffold. Chạy lại ở chế độ quét khi có code.
+
+## Cách hoạt động
+
+Lần quét tìm tài sản thiết kế theo thứ tự ưu tiên: CSS custom properties, cấu hình Tailwind, theme CSS-in-JS, tệp design token, source thành phần, stylesheet toàn cục và cuối cùng là computed style từ đầu ra render trực tiếp nếu có trình duyệt. Nó tự trích xuất mọi thứ có thể, sau đó hỏi một câu hỏi nhóm cho các phần cần đầu vào sáng tạo: **Creative North Star** (một phép ẩn dụ được đặt tên cho toàn bộ hệ thống, như "The Editorial Sanctuary"), tên màu mô tả, triết lý elevation và tính cách thành phần.
+
+Đầu ra là DESIGN.md với chính xác sáu phần: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Header được cố định ký tự đối ký tự để tệp có thể phân tích cú pháp bởi các công cụ khác. Cùng với đó, `DESIGN.json` được ghi dưới dạng sidecar có thể đọc bằng máy. Sidecar đó là thứ bảng thiết kế live-mode sử dụng để render nút, input, nav và thẻ của *dự án này* thay vì ước lượng chung.
+
+Mọi lệnh khác đọc DESIGN.md khi gọi. Biến thể, polish, audit và tính năng mới kế thừa hệ thống trực quan mà không cần được nói.
+
+## Thử ngay
+
+```
+/impeccable document
+```
+
+Trên một dự án đã có token, quá trình này mất khoảng hai phút: quét tìm bảng màu và ngăn kiểu chữ của bạn, bạn chọn North Star từ 2 hoặc 3 tùy chọn, xác nhận tên màu mô tả ("Deep Muted Teal-Navy", không phải "blue-800") và tệp hạ cánh tại thư mục gốc dự án.
+
+Trên dự án mới:
+
+```
+/impeccable document --seed
+```
+
+Năm câu hỏi, khoảng năm phút. Tệp là scaffold, đánh dấu bằng comment `<!-- SEED -->` để trung thực về những gì nó là. Chạy lại không có flag khi bạn đã triển khai token.
+
+## Những cạm bẫy cần tránh
+
+- **Chạy quá sớm.** Trên dự án chưa có token triển khai, chế độ seed là đúng. Đừng bịa ra một đặc tả đầy đủ mà code không thể hỗ trợ. Một DESIGN.md giả tệ hơn không có DESIGN.md.
+- **Coi DESIGN.md là tài liệu chỉ cho con người.** Nó chủ yếu dành cho AI. Mọi lệnh khác đều đọc nó. Tính cứng nhắc của định dạng ("never", "always", Named Rules) là cố ý.
+- **Thêm phần Layout / Motion / Responsive ở cấp cao nhất.** Đặc tả có sáu phần, theo thứ tự cố định, với tên cố định. Gấp nội dung layout hoặc motion vào Overview (quy tắc cấp triết lý) hoặc Components (hành vi mỗi thành phần).
+- **Ghi đè DESIGN.md hiện có im lặng.** Document luôn xác nhận trước. Nếu bạn muốn bắt đầu lại, đổi tên tệp hiện có sang nơi khác hoặc nói rõ ràng với kỹ năng để ghi đè.

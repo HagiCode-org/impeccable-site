@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Reduceti designurile care striga fara a le pierde intentia.
+highlights:
+  - Idei puternice sunt prezente, dar pagina este prea zgomotoasa.
+  - Aveti nevoie de retinere fara a deveni banal.
+  - Tonul curent copleseste citirea sau fluxul de sarcini.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Cand se foloseste
+
+`/impeccable quieter` este contrapondere la `/impeccable bolder`. Apelati la el cand o interfata este vizual agresiva, suprastimulatoare sau incearca sa faca prea multe lucruri la volum maxim. Neon pe intuneric, text cu gradient peste tot, 6 culori de accent, totul animat, umbre de 20px. Folositi quieter cand designul are nevoie sa respire si doriti rafinare fara a pierde punctul de vedere.
+
+De asemenea util dupa ce `/impeccable bolder` merge putin prea departe.
+
+## Cum functioneaza
+
+Skill-ul lucreaza prin reducere pe patru axe:
+
+1. **Culoare**: desaturati, reduceti cromatica in OKLCH, retrageti accentele la o singura culoare primara plus suport atenuat. Nu mai mult de doua culori intentionate.
+2. **Contrast**: molliti extreme intunecate si luminoase, trageti intervalul inauntru. Fundalurile se muta de la alb pur si negru pur la hartie si cerneala.
+3. **Decoratiune**: eliminati umbre care nu fac munca, abandonati margini care nu poarta structura, retrageti gradienti care exista pentru energie mai degraba decat ierarhie.
+4. **Miscare si efect**: incetiniti animatiile, eliminati orice care ruleaza automat, abandonati parallax si blur cu exceptia cazului in care servesc lizibilitatii.
+
+Skill-ul pastreaza intentia designului. Daca originalul avea un punct de vedere, versiunea mai linistita are acelasi punct de vedere cu mai multa incredere. Rafinare, nu neutralizare.
+
+## Incercati
+
+```
+/impeccable quieter the pricing page
+```
+
+Diff tipic:
+
+- Text cu gradient pe pret eliminat, inlocuit cu cerneala solida la o greutate mai grea
+- Trei culori de accent reduse la una (magenta), celelalte doua devin variante neutre
+- Umbrele cardurilor reduse de la `0 20px 40px rgba(0,0,0,0.2)` la `0 1px 0 var(--color-mist)` (o linie de par)
+- Fundalul comuta de la gradient intunecat la hartie cu o spalare usoara de crem in partea de sus
+- Animatia hero de la 1.2s easeOut cu 3 elemente etajate la o singura estompare-in de 260ms
+
+## Capcane
+
+- **Supra-aplicarea.** Quieter poate elimina personalitatea daca il rulati pe ceva care era deja masurat. Folositi-l cand designul este prea zgomotos, nu cand este corect afirmativ.
+- **Confundarea quieter cu distill.** Quieter reduce intensitatea. Distill elimina elemente. Sunt miscari diferite.
+- **Rularea ca raspuns la o critica care spune "prea aglomerat".** Aglomerat de obicee inseamna prea multe lucruri, nu prea zgomotos. Incercati `/impeccable distill` mai intai.

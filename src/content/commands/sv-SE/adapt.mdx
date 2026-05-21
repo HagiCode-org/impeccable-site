@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Gor designer som fungerar over skärmar, enheter och kontexter utan att amputera funktioner.
+highlights:
+  - Den nuvarande layouten kollapsar pa mindre skärmar.
+  - Produkten behovr en mer genomtanks responsiv strategi.
+  - Tryckmal, densitet eller innehallsflode varierar per enhet.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Nar du ska anvanda det
+
+`/impeccable adapt` ar for att ta en design byggd for en kontext och göra den fungerande i en annan. Mobil fran skrivbord, surfplatta fran mobil, utskrift fran webb, inbaddad fran fristaende, e-post fran instrumentpanel. Använd det nar kallkodsdesignen ar solid men faller isor pa andra brytpunkter, pa touch eller i en annan behallare.
+
+Inte for att bygga responsivt fran grunden. For det, borja med `/impeccable` och forma layouten responsivt-forst. Adapt ar for "vi tankte aldrig pa mobil"-efterfyllningen.
+
+## Hur det fungerar
+
+Fardigheten arbetar genom fyra dimensioner av kontextuell passform:
+
+1. **Brytpunkter och fluid layout**: kollapsa multi-kolumn till singel, justera clamp-intervall, introducera nya brytpunkter dar designen genuint går sönder.
+2. **Tryckmal**: minimum 44px tryckomraden, tillrackliga avstand mellan intilliggande mal, större tryckzoner an visuella gränser dar det behovs.
+3. **Navigeringsmonster**: skrivbordssidofalt blir mobil botten-nav eller utfällningar, täta verktygsfält kollapsar till menyer, hover-tillstand far touch-ekvivalenter.
+4. **Innehallsprioritering**: bestam vad som maste vara synligt, vad som kan kollapsa till avslöjare, vad som kan tas bort helt for den kontexten.
+
+Den icke-forhandlingsbara regeln: anpassa, inte amputera. Kritisk funktionalitet kan inte försvinna pa mobil bara for att det ar obekvamt. Hitta ett satt att passa in, redesigna interaktionen eller overväg om det verkligen var kritiskt pa skrivbordet.
+
+## Prova det
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Forvantade andringar:
+
+- Tre-kolumn rutnat blir singelkolumn med sektionsrubriker som fungerar som klistriga avdelare
+- Sidofaltsnavigering flyttas till en horisontell skrollare ovanfor innehållet
+- Vaxlar far 8px vertikal padding sa de moter 44px tryckmal
+- Inbaddad hjalptext flyttas till tryck-for-avslöja, inte hover
+- "FAR zon"-sektionen expanderar helt pa mobil istallet for att kollapsa, for att den innehaller irreversibla atgarder och vi vill att anvandare ska se dem tydligt
+
+## Fallgropar
+
+- **Att amputera funktioner.** Om mobilversionen doljer saker skrivbordsversionen kan gora, ar det en regression, inte en anpassning. Kampa for funktionen.
+- **Att behandla mobil som "mindre skrivbord".** Mobil ar en annan kontext: tummar, avbrott, korta sessioner. Anpassa till kontexten, inte till vyportbredden.
+- **Att hoppa over `/impeccable harden` efterat.** Responsiva layouter avslöjar kantfall. Kor hardening efter adapt for att fanga de som bara visar sig vid 320px.

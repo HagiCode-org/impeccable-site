@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Det metodiske siste passet mellom bra og fantastisk.
+highlights:
+  - Justering, avstand og mikrobeslutninger føles fortsatt rå.
+  - Funksjonen er nær levering.
+  - Små inkonsekvenser trekker opplevd kvalitet ned.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Når du skal bruke den
+
+`/impeccable polish` er det siste du kjører før levering. Den jakter ned de små detaljene som skiller en levert funksjon fra en polert: halvpikselfeilsjusteringer, inkonsekvent avstand, glemte fokus-tilstander, lasteoverganger som blitzer, tekst som driver i tone. Den justerer også funksjonen mot ditt designsystem, erstatter hardkodede verdier med tokens, bytter ut tilpassede komponenter med delte, og fikser eventuell drift fra etablerte mønstre.
+
+Bruk det når funksjonen er funksjonelt komplett, ingenting er ødelagt, og noe fortsatt føles av. Også bruk det når en funksjon har drevet fra designsystemet og må trekkes tilbake på linje.
+
+## Hvordan det fungerer
+
+Polish starter med å oppdage designsystemet (tokens, avstandsskala, delte komponenter), og jobber deretter metodisk på tvers av seks dimensjoner:
+
+1. **Visuell justering og avstand**: piksel-perfekt rutenett-etterlevelse, konsekvent avstandsskala, optisk justering av ikoner.
+2. **Typografi**: hierarkikonsistens, linjelengde, enker og foreldreløse, sperring på overskrifter.
+3. **Farge og kontrast**: token-bruk, tema-paritet, WCAG-forhold, fokusindikatorer.
+4. **Interaksjonstilstander**: hover, fokus, aktiv, deaktivert, lasting, feil, suksess. Hver tilstand tatt hensyn til.
+5. **Overganger og bevegelse**: jevn easing, ingen layout-hakk, respekt for `prefers-reduced-motion`.
+6. **Tekst**: konsekvent stemme, riktig tid, ingen plassholder-strenger, ingen løse TODO-er.
+
+Ferdigheten er eksplisitt om én ting: polish er det siste steget, ikke det første. Hvis funksjonen ikke er funksjonelt komplett, er polering bortkastet arbeid.
+
+## Prøv det
+
+```
+/impeccable polish the pricing page
+```
+
+En sunn kjøring ser slik ut:
+
+```
+Visuell justering: fikset 3 elementer utenfor rutenettet (8px baseline)
+Typografi: strammet inn h1-sperring, fikset enke på testimonial
+Interaksjon: lagt til hover-tilstand på FAQ-elementer, fokus-ring på e-postinput
+Bevegelse: myket ned modal-oppføring, lagt til reduced-motion-reserve
+Tekst: fjernet én "Lorem ipsum"-løsreving, justert knappe-stemme
+```
+
+Fem små fiks, ingen omskrivninger. Det er formen på et godt poleringspass.
+
+## Fallgruver
+
+- **Å polere arbeid som ikke er ferdig.** Hvis det finnes TODO-er i koden, er du ikke klar. Kjør `/impeccable polish` kun på ferdige funksjoner.
+- **Å behandle polering som redesign.** Polering foredeler det som finnes. Hvis du befinner deg i å omstrukturere en layout, trengte du `/impeccable critique` eller `/impeccable layout` i stedet.
+- **Å kjøre `/impeccable polish` uten `/impeccable audit` først.** Polering fanger følelsesbaserte problemer. Revisjon fanger målbare. Bruk begge.

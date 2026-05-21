@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Itereer op UI in de browser. Kies een element, plaats een opmerking, krijg drie varianten. Accepteer een en het schrijft naar de broncode.
+highlights:
+  - Een dev-server bestaat al.
+  - Je wilt opties direct vergelijken op weergegeven UI.
+  - De snelste volgende stap is geleide visuele experimentatie.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Zie het in actie, met de geanimeerde demo, op <a href="/live-mode">/live-mode</a>. Deze pagina is de referentie voor wat je AI-harness leest wanneer het commando wordt uitgevoerd.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Status: alpha.</strong> Live Mode werkt end-to-end en is klaar om te proberen, maar heeft nog meer testing nodig tegen real-world repo's en framework-configuraties. Verwacht ruwe randen op ongewone setups, en rapporteer alsjeblieft wat breekt.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">Een ansichtkaart van de redacteur, ongeveer eens per maand. Geen trackingpixels, geen "even checken."</p>
+        <button class="docs-viz-live-btn" type="button">Stuur me er een</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Vorige">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Volgende">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accepteren</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Kiezen</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode midden in een cyclus: de picker omlijnt het element dat je hebt gekozen, de contextbalk toont op welke variant je zit, en de globale balk blijft onderaan gepind. Accepteren op deze schrijft Variant 2 terug naar broncode.</p>
+</div>
+
+## Wanneer te gebruiken
+
+Gebruik `/impeccable live` wanneer je visueel wilt itereren op iets zoals je in een ontwerptool zou doen, maar productiecode als output behoudt. De canvas-achtige flow van Figma zonder de retourtrip naar een implementatiestap.
+
+Gebruik het voor:
+
+- **Richtingen verkennen op een echt element.** Een hero-sectie, een nieuwsbriefkaart, een prijstier. Drie echt verschillende benaderingen, naast elkaar, op de daadwerkelijke pagina met de daadwerkelijke context.
+- **Een stuk UI polijsten dat bijna goed is.** Je weet wat niet goed voelt maar kunt het niet precies zeggen. Kies het element, krabbel "speelser" of teken een arcering door het deel dat je stoort, klik op Start.
+- **Een snelle A/B tussen twee richtingen waar je team over debatteert.** Genereer varianten, accepteer niets, loop weg. Het punt was de vergelijking.
+
+Het is NIET voor nieuwe groene-weide functies (gebruik `/impeccable craft`) of volledige pagina-herontwerpen (gebruik `/impeccable` of een gespecialiseerd verfijningscommando).
+
+## Hoe het werkt
+
+Eén commando brengt een picker-overlay bovenop je draaiende dev-server. Je kiest elk element. Een kleine contextbalk verschijnt ernaast. Typ een vrije-vorm beschrijving of kies een van de actiechips (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Optioneel kun je eerst commentaarpinnen plaatsen of arceringen direct op het element tekenen, en de skill leest die als intentie.
+
+Klik op Start. Drie **productiekwaliteit varianten** worden gegenereerd, elk verankerd aan een echt verschillend ontwerparchetype (niet drie variaties op kleur) en hot-swapped in de pagina via de HMR van je framework. Blader erdoor met pijltjestoetsen. Accepteer een en de variant wordt teruggestuurd naar de broncode. Verwerp alle drie en het origineel blijft staan.
+
+Het ondersteunt Vite, Next.js (inclusief monorepos), SvelteKit, Astro, Nuxt en gewone statische HTML. Als je dev-server een strikt Content Security Policy heeft, detecteert de first-run setup dit en biedt een eenmalige, dev-only patch aan zodat de picker kan laden. `DESIGN.md` wint bij visuele beslissingen, `PRODUCT.md` wint bij stem: als je beide hebt, blijven varianten on-brand zonder dat het wordt verteld.
+
+## Probeer het
+
+```
+/impeccable live
+```
+
+Open je dev-server-URL, kies de nieuwsbrief-aanmeldkaart, klik op de `delight`-chip, klik op Start. Je krijgt drie varianten die variëren over persoonlijkheidsdimensies (een postzegel-en-ansichtkaart-gevoel, een typografisch-verrassingsversie, een geillustreerd-accent-versie), niet drie variaties op dezelfde behandeling.
+
+Of kies een hero, typ "meer redactioneel, minder SaaS", klik op Start. De drie varianten verankeren aan verschillende redactionele archetypen (broadsheet-masthead, catalogus-stijl specificatierijen, oversized-glyph poster) in plaats van drie tinten van hetzelfde idee.
+
+Stop live mode als je klaar bent: zeg "stop live mode", sluit het tabblad, of klik op de afsluitknop op de picker-balk.
+
+## Valkuilen
+
+- **Het uitvoeren op een pagina die nog half geschreven is.** Live variant-generatie heeft context nodig. Als het element plaatstekst heeft, generieke Lorem ipsum, of pre-stylesheet standaardformattering, zullen varianten dat weerspiegelen. Vul eerst de inhoud in.
+- **Verwachten dat het macro-beslissingen maakt.** Live mode itereert op een enkel gekozen element. Voor "maak de hele prijspagina opnieuw", gebruik `/impeccable` of `/impeccable craft` in plaats daarvan.
+- **De fallback-berichten negeren.** Als het element in een gegenereerd bestand leeft (een gecompileerde template, een build-output), zegt de picker dat expliciet en biedt aan de acceptatie door te sturen naar de echte broncode. Forceer de acceptatie niet in het gegenereerde bestand: de volgende build wist het.
+- **Het uitvoeren zonder PRODUCT.md of DESIGN.md wanneer je om merkfit geeft.** Live genereert nog steeds, maar de varianten leunen naar generieke standaardwaarden. Voer eerst `/impeccable teach` en `/impeccable document` uit als het resultaat als jouw product moet klinken.

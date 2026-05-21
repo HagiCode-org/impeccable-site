@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Tasarımları özellikleri kesmeden ekranlar, cihazlar ve bağlamlar arasında çalışır hale getirin.
+highlights:
+  - Mevcut düzen daha küçük ekranlarda çöküyor.
+  - Ürün daha thoughtful bir responsive stratejiye ihtiyaç duyuyor.
+  - Dokunma hedefleri, yoğunluk veya içerik akışı cihaza göre değişiyor.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Ne zaman kullanılır
+
+`/impeccable adapt`, bir bağlam için oluşturulmuş bir tasarımı alıp başka bir bağlamda çalışır hale getirmek içindir. Masaüstünden mobil, mobil'den tablet, web'den baskı, bağımsızdan gömülü, panodan e-posta. Kaynak tasarım sağlam ama diğer kırılma noktalarında, dokunmada veya farklı bir kapta dağılıyorsa kullanın.
+
+Sıfırdan responsive oluşturmak için değil. Bunun için `/impeccable` ile başlayın ve düzeni responsive-öncelikli şekillendirin. Adapt, "mobil hiç düşünülmedi" geri doldurması içindir.
+
+## Nasıl çalışır
+
+Yetenek, bağlamsal uyumun dört boyutundan geçer:
+
+1. **Kırılma noktaları ve akışkan düzen**: çok sütunlu düzeni tek sütuna çökert, clamp aralıklarını ayarla, tasarımın gerçekten kırıldığı yerlerde yeni kırılma noktaları ekle.
+2. **Dokunma hedefleri**: minimum 44px alanlar, bitişik hedefler arasında yeterli aralık, gerektiğinde görsel sınırlardan daha büyük dokunma bölgeleri.
+3. **Navigasyon desenleri**: masaüstü kenar çubukları mobil alt navigasyon veya kaydırma panelleri olur, yoğun araç çubukları menülere çöker, hover durumları dokunma eşdeğerleri alır.
+4. **İçerik önceliği**: ne görünür olmalı, ne açığa çökertilebilir, o bağlam için tamamen ne kaldırılabilir karar verin.
+
+Pazarlıksız kural: uyarlayın, kesmeyin. Kritik işlevsellik, uygun olmadığı için mobilde kaybolamaz. Sığdırmanın bir yolunu bulun, etkileşimi yeniden tasarlayın veya masaüstünde gerçekten kritik olup olmadığını yeniden düşünün.
+
+## Deneyin
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Beklenen değişiklikler:
+
+- Üç sütunlu ızgara, bölüm başlıklarının yapışkan ayırıcılar olarak hareket ettiği tek sütun olur
+- Kenar çubuğu navigasyonu içeriğin üzerinde yatay bir kaydırıcıya taşınır
+- Geçiş anahtarları 44px dokunma hedeflerini karşılamak için 8px dikey dolgu kazanır
+- Satır içi yardım metni hover yerine dokunma-açığa taşınır
+- "Tehlike bölgesi" bölümü, geri alınamaz eylemler içerdiği ve kullanıcıların onları net görmesini istediğimiz için mobilde tamamen genişler
+
+## Tuzaklar
+
+- **Özellikleri kesmek.** Mobil sürüm masaüstü sürümünün yapabildiği şeyleri gizliyorsa, bu bir uyarlama değil bir gerilemedir. Özellik için savaşın.
+- **Mobil'i "daha küçük masaüstü" olarak ele almak.** Mobil farklı bir bağlamdır: başparmaklar, kesinti, kısa oturumlar. Görüntü alanı genişliğine değil bağlama uyum sağlayın.
+- **Sonra `/impeccable harden` atlamak.** Responsive düzenler uç durumları ortaya çıkarır. 320px'de sadece ortaya çıkanları yakalamak için adapt'tan sonra sertleştirme çalıştırın.

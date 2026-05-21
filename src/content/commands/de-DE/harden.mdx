@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Interfaces produktionsreif machen. Randfälle, i18n, Fehlerzustände, Overflow.
+highlights:
+  - Der Happy Path funktioniert, aber Zustände in der realen Welt wirken noch fragil.
+  - Sie müssen Lücken vor dem Release schließen.
+  - Fehlerbehandlung und Belastbarkeit sind wichtiger als neuer Glanz.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Wann man es verwendet
+
+`/impeccable harden` ist für den Tag, an dem Ihr Interface auf die Realität trifft. Echte Nutzerdaten sind chaotisch: Namen die 60 Zeichen lang sind, Produkttitel auf Deutsch, Preise in den Milliarden, 500er-Fehler, Offline-Modi, Rechts-nach-Links-Text. Designs, die nur mit perfekten Daten funktionieren, sind nicht produktionsreif.
+
+Greifen Sie zu ihm vor dem Launch, vor dem Eintritt in einen neuen Markt, oder jederzeit, wenn ein Bug-Report mit „unser Nutzer hatte einen wirklich langen Namen und" beginnt. Für First-Run-Abläufe, Empty-State-Aktivierung und Onboarding-Design greifen Sie stattdessen zu `/impeccable onboard`.
+
+## Wie es funktioniert
+
+Der Skill arbeitet durch vier Dimensionen der realen Belastbarkeit:
+
+1. **Text- und Datenextreme**. Lange Texte, kurze Texte, Sonderzeichen, Emoji, RTL, Zahlen in den Milliarden, 1000-Element-Listen.
+2. **Fehlerszenarien**. Netzwerkausfälle, API 4xx/5xx, Validierungsfehler, Berechtigungsfehler, Ratenbegrenzungen, gleichzeitige Operationen.
+3. **Internationalisierung**. Lange Übersetzungen (Deutsch ist oft 30% länger als Englisch), RTL-Sprachen, Datums- und Zahlenformate, Währungssymbole, Zeichensätze.
+4. **Gerät und Kontext**. Touch-Ziele, Offline-Verhalten, langsame Verbindungen, Stromsparmodus.
+
+Für jede Dimension identifiziert er den Fehlermodus und wendet dann die konkrete Lösung an: Overflow-Behandlung, informative Fehler-UI, i18n-sichere Layouts, Pluralisierung, sinnvolle Fallbacks.
+
+## Ausprobieren
+
+Beginnen Sie mit einer Seite und einer Dimension:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Erwartete Ausgabe:
+
+- `.user-name` hat jetzt `text-overflow: ellipsis` mit einem Tooltip für den vollständigen Wert
+- `.bio` von fester Höhe zu `max-height` mit einer „Mehr anzeigen"-Aufklapp-Funktion gewechselt
+- Empty State für Nutzer ohne Bio hinzugefügt
+- Skeleton-Loader für den asynchronen Avatar-Fetch hinzugefügt
+- Getestet bei Namenslängen 1, 20, 60, 200 Zeichen
+
+Führen Sie es seitenweise aus, nicht alles auf einmal. Der erste Durchlauf ist der größte; nachfolgende Durchläufe finden weniger Probleme, da sich die Muster verfestigen.
+
+## Fallstricke
+
+- **Auf einen Bug-Report warten.** Harden ist präventiv. Wenn Sie feststellen, dass Sie dieselbe Art von Bug zweimal beheben, führen Sie `/impeccable harden` über das Feature aus.
+- **Fehler- und Empty States als Nachgedanke behandeln.** Die meiste Hardening-Arbeit ist Fehler- und Empty-State-UI. Budgetieren Sie Zeit dafür, nicht nur einen `catch`-Block.
+- **i18n überspringen mit „wir sind vorerst nur auf Englisch".** i18n-sichere Layouts sind trotzdem bessere Layouts. Flexible Container, korrekter Textumbruch, großzügige Line-height. Nichts davon schadet Englisch.

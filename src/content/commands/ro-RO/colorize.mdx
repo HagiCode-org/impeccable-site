@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Adaugati culoare strategica interfețelor monocromatice fara a deveni stridente.
+highlights:
+  - Interfata arata competent dar de uitat.
+  - Aveti nevoie de accentuare mai clara fara a rescrie intreaga structura.
+  - Paleta curenta nu transmite starea de spirit intentionata.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Cand se foloseste
+
+`/impeccable colorize` este contrapondere la "totul este gri". Dashboard-uri care se citesc ca un zid bej, formulare fara accent, pagini de continut care ar putea fi orice produs SaaS. Apelati la el cand interfata este functionala dar platita emotional, si doriti caldura fara a aluneca in paleta de culori AI (violet-roz, neon cyan, stralucire dark mode).
+
+## Cum functioneaza
+
+Skill-ul incepe prin a citi culoarea de brand daca exista una, apoi decide unde culoarea isi castiga locul:
+
+1. **Actiunea principala** primeste cea mai puternica expresie a nuantei de brand.
+2. **Accente secundare** primesc variante atenuate sau tentuite, nu o a doua culoare completa.
+3. **Neutrele** primesc tentuire spre nuanta de brand la cromatica scazuta (aproximativ 0.005 pana la 0.01), ceea ce este aproape invizibil per pixel dar creeaza coeziune subconstienta.
+4. **Categoriile de continut** primesc un sistem de accent limitat si intentionat, nu un curcubeu.
+
+Important, foloseste OKLCH in loc de HSL astfel incat treptele egale de luminozitate sa para egale. Pe masura ce luminozitatea se muta spre extreme, cromatica scade automat. Asa obtineti culoare care se simte intentionata in loc de calculata.
+
+## Incercati
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff asteptat:
+
+- Culoarea de brand mutata dintr-un hex hard-codat la `--color-accent: oklch(62% 0.18 240)`
+- Neutre tentuite cu 0.007 cromatica spre nuanta de brand
+- Butonul principal primeste accentul complet, butoanele secundare primesc ink/mist
+- Seria de grafice foloseste 3 nuante distincte, toate la luminozitate potrivita astfel incat nicio serie nu domina vizual
+- Ilustratia de stare goala preia o spalare usoara de accent
+
+## Capcane
+
+- **Rularea fara o nuanta de brand.** Colorize are nevoie de un punct de plecare. Daca `PRODUCT.md` nu specifica unul, va intreba. Nu il lasati sa aleaga din valorile implicite ale paletei de culori AI.
+- **Asteptarea sa repare problema paletei de culori AI.** Daca designul dumneavoastra are deja gradienti violet si neon cyan, aveti nevoie de `/impeccable quieter` mai intai, apoi colorize poate reconstrui.
+- **Utilizarea pe interfețe deja colorate.** Aceasta este o treaba pentru `/impeccable quieter`. Colorize adauga, nu scade.

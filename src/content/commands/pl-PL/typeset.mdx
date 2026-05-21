@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Napraw typografię, która wydaje się generyczna, niespójna lub przypadkowa.
+highlights:
+  - Tekst jest technicznie czytelny, ale nie przekonujący ani kontrolowany.
+  - Nagłówki i tekst główny zlewają się ze sobą.
+  - Powierzchnia potrzebuje silniejszego tonu przez typografię zamiast większej dekoracji.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Kiedy używać
+
+Sięgnij po `/impeccable typeset`, gdy tekst na stronie wygląda jak domyślna typografia zamiast zaprojektowanej typografii. Mętna hierarchia, trzy rozmiary, które wyglądają tak samo, tekst główny na 14px, font displayowy, który jest tak naprawdę po prostu Inter bold, nagłówki bez uwagi na kerning.
+
+Typowe sygnały: "hierarchia wydaje się płaska", "czytelność jest nie tak", "fonty wyglądają generycznie".
+
+## Jak to działa
+
+Umiejętność ocenia typografię w pięciu wymiarach:
+
+1. **Wybór fontów**: czy używasz niewidocznych domyślności (Inter, Roboto, Arial, Open Sans), czy krój pisma pasuje do marki, czy jest więcej niż 2 do 3 rodzin.
+2. **Hierarchia**: czy nagłówki, tekst główny i podpisy są wyraźnie różne na pierwszy rzut oka, czy kontrast rozmiarów to minimum 1.25x między stopniami, czy kontrasty grubości są czytelne.
+3. **Rozmiary i skala**: czy istnieje spójna skala typograficzna, czy tekst główny spełnia minimum 16px, czy skala jest stała-rem dla UI aplikacji czy płynna-clamp dla stron marketingowych.
+4. **Czytelność**: długość linii 45 do 75 znaków, line-height dostrojony do fontu i kontekstu, kontrast.
+5. **Spójność**: ten sam element używa tego samego traktowania wszędzie, brak jednorazowych nadpisań font-size.
+
+Następnie naprawia to, co znajdzie: wybiera wyraziste kroje pisma, buduje modułową skalę, poszerza kontrast hierarchii, ustawia właściwą długość linii i interlinię.
+
+## Wypróbuj
+
+```
+/impeccable typeset the article layout
+```
+
+Oczekiwany diff:
+
+- Font displayowy zamieniony z Inter 700 na prawdziwy krój displayowy
+- Skala typograficzna przebudowana: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, ratio 1.333
+- Tekst główny podbity z 14px do 16px
+- Długość linii ograniczona do 68ch na kolumnie artykułu
+- Line-height 1.6 dla tekstu głównego, 1.1 dla display
+- Usunięto cztery jednorazowe wartości `font-size` rozrzucone w stylach komponentów
+
+## Pułapki
+
+- **Prośba o nowy font bez kontekstu.** Typeset wybierze na podstawie głosu marki z `PRODUCT.md`. Jeśli nie uruchomiłeś `/impeccable teach`, sugestia będzie generyczna.
+- **Sięganie po typeset, gdy problemem jest układ.** Jeśli paragrafy są w porządku, ale strona wydaje się ciasna, potrzebujesz `/impeccable layout`.
+- **Oczekiwanie płynnych skal clamp na UI aplikacji.** Typeset używa stałych skal rem dla interfejsów aplikacji. Płynna typografia jest dla stron marketingowych i treściowych, gdzie długość linii drastycznie się różni.

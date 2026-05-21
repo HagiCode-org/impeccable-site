@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Javítsd az általános, inkonzisztens vagy véletlenszerű tipográfiát.
+highlights:
+  - A szöveg technikailag olvasható, de nem meggyőző vagy kontrollált.
+  - A címsorok és bekezdésszöveg egybeolvadnak.
+  - A felület erősebb tónust igényel tipográfia révén, nem több díszítést.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Mikor használd
+
+Nyúlj az `/impeccable typeset` parancshoz, amikor az oldalon lévő szöveg alapértelmezett tipográfiának néz ki a tervezett tipográfia helyett. Iszapos hierarchia, három méret, ami ugyanúgy néz ki, bekezdésszöveg 14px-en, egy display betű, ami valójában csak Inter bold, címsorok kerning figyelem nélkül.
+
+Gyakori indítók: "a hierarchia laposnak hat", "az olvashatóság rossz", "a betűk általánosnak néznek ki".
+
+## Hogyan működik
+
+A skill öt dimenzióban értékeli a tipográfiát:
+
+1. **Betűválasztások**: láthatatlan alapértékeket használsz-e (Inter, Roboto, Arial, Open Sans), a betűtípus illeszkedik-e a márkához, több mint 2-3 betűcsalád van-e.
+2. **Hierarchia**: a címsor, bekezdés és képaláírás egyértelműen különböző-e egy pillantásra, a méretkontraszt legalább 1.25x a lépések között, a súlykontrasztok olvashatóak-e.
+3. **Méretezés és skála**: van-e koherens típus-skála, a bekezdésszöveg eléri-e a 16px minimumot, a skála fix-rem az alkalmazás UI-okhoz vagy folyékony-clamp a marketing oldalakhoz.
+4. **Olvashatóság**: sörhossz 45-75 karakter, sormagasság a betű és kontextus szerint hangolva, kontraszt.
+5. **Konzisztencia**: ugyanaz az elem ugyanazt a kezelést kapja mindenhol, nincsenek egyszeri font-size felülbírálások.
+
+Ezután javítja, amit talál: jellegzetes betűtípusokat választ, moduláris skálát épít, szélesíti a hierarchia kontrasztot, beállítja a megfelelő sörhosszt és sorközt.
+
+## Próbáld ki
+
+```
+/impeccable typeset the article layout
+```
+
+Várható diff:
+
+- Display betű cserélve Inter 700-ról igazi display betűre
+- Típus-skála újraépítve: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, arány 1.333
+- Bekezdésszöveg megnövelve 14px-ről 16px-re
+- Sörhossz korlátozva 68ch-re a cikk oszlopán
+- Sormagasság 1.6 a bekezdéshez, 1.1 a display-hez
+- Négy egyszeri `font-size` érték eltávolítva a komponensstílusokból
+
+## Csapdák
+
+- **Új betűt kérni kontextus nélkül.** A Typeset a `PRODUCT.md` márka hang alapján választ. Ha nem futtattad az `/impeccable teach` parancsot, a javítás általános lesz.
+- **A typeset-hez nyúlni, ha a probléma az elrendezés.** Ha a bekezdések rendben vannak, de az oldal zsúfoltnak hat, az `/impeccable layout` kell.
+- **Folyékony clamp skálákat várni alkalmazás UI-okon.** A Typeset fix rem skálákat használ alkalmazás felületeken. A folyékony tipográfia marketing és tartalom oldalakra való, ahol a sörhossz drámaian változik.

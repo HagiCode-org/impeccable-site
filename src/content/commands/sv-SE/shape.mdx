@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Tanka innan du bygger. Producera en designbrief genom upptackt, inte gissning.
+highlights:
+  - Du vill ha planering utan implementering annu.
+  - Ratt layout eller ton ar fortfarande oklar.
+  - Flera intressenter behover enas om avsikt innan byggarbete borjar.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output of /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Syfte</span>
+        <span class="docs-viz-file-v">Lat engagerade prenumeranter andra vad de far utan att förlora dem till avregistrering.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anvandare</span>
+        <span class="docs-viz-file-v">Stressad, pa mobil, under mote. Laser snabbt, laget talamod.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Innehall</span>
+        <span class="docs-viz-file-v">4 sammanfattningstyper, 2 frekvenser, en avregistrera-allt langst ner.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Kansla</span>
+        <span class="docs-viz-file-v">Lugnt, trovärdigt, inga morka monster.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Begränsningar</span>
+        <span class="docs-viz-file-v">Mobil-forst. WCAG AA-kontrast. En kolumn, inga modaler.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Overlamna till <code>/impeccable</code>, <code>/impeccable craft</code> eller annat implementeringsflode.</div>
+  </div>
+  <p class="docs-viz-caption">En shape-brief ar en kompass, inte en spec. Den fangar avsikt, inte UI. Implementeringsfardigheter laser den innan en rad kod skrivs.</p>
+</div>
+
+## Nar du ska anvanda det
+
+`/impeccable shape` ar dar en funktion borjar. Innan nagon skriver kod, innan nagon tvistar om hero-behandlingen, innan nagon valjer ett typsnitt. Använd det for att tvinga fram en upptacksintervju om syfte, anvandare, innehall och begränsningar, sedan fanga svaren som en designbrief implementeringsfardigheterna kan luta sig mot.
+
+Använd det nar en funktion ar pa vag att borja, en ticket ar vag, eller du fangar dig sjalv skriva JSX for att lista ut vad produkten ska vara.
+
+## Hur det fungerar
+
+De flesta AI-genererade granssnitt misslyckas inte pa grund av dalig kod, utan pa grund av overhoppat tankande. Modellen hoppar till "har ar ett kortrutnat" utan att fraga "vad forsoker anvandaren utfora". `/impeccable shape` inverterar den ordningen.
+
+Fardigheten kör en strukturerad upptacksintervju i konversation. Den kommer inte att skriva kod under den har fasen. Fragorna cover:
+
+- **Syfte och kontext**: vad funktionen ar till for, vem som använder den, vilket sinneslage de ar i
+- **Innehall och data**: vad visas, realistiska intervall, kantfall, vad ar dynamiskt
+- **Designmal**: den enskilt viktigaste saken, den avsedda kanslan, referensexempel
+- **Begränsningar**: tekniska, innehalls-, tillganglighets-, lokaliserings-
+
+Du svarar naturligt. Fardigheten staller foljdsfragor, inte ett formulär. Pa slutet producerar den en designbrief: ett strukturerat artefakt du kan overlamna till `/impeccable` eller nagon annan implementeringsfärdighet.
+
+Obs: om du vill ha hela flodet (upptacksintervju, sedan rakt in i byggande), anvand `/impeccable craft` istallet. Den kör `/impeccable shape` internt, sedan fortsätter den till implementering med visuell iteration. `/impeccable shape` fristaende ar for nar du vill ha bara briefen, sa du kan ta den till valfritt implementeringssätt du foredrar.
+
+## Prova det
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Forventa en konversation med 5 till 10 fragor. Fardigheten fragar saker som "vem ar personen som oppnar det har, och ar de redan engagerade eller fortfarande nyfikna" och "vad hander nar anvandaren har avregistrerat fran allt, doljer vi funktionen eller visar nonting". Du svarar, och en brief materialiseras.
+
+Därifran kan du overlamna briefen till `/impeccable`, `/impeccable polish` eller nagon annan färdighet. Eller bara anvanda den som referens nar du bygger for hand.
+
+## Fallgropar
+
+- **Att hoppa over den for att det kanns langtigt.** Intervjun tar kanske 5 minuter. Omskrivningarna du undviker matts i timmar.
+- **Att behandla briefen som en spec.** Det ar en kompass, inte en checklista. Den fangar avsikt, inte UI.
+- **Att svara med "standard" eller "normalt".** Specificitet ar hela poängen. Om en anvandere "stressad, pa mobil, mellan möten", sag det. Det andrar allt nedstroms.

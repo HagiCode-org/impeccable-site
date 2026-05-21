@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Suunnittele ensimmäisen käyttökerran kokemuksia, tyhjiä tiloja ja polkuja arvoon.
+highlights:
+  - Uudet käyttäjät saapuvat ilman kontekstia.
+  - Tuote tarvitsee paremman ensimmäisen onnistuneen toiminnon.
+  - Tyhjät tilat ja asennusvaiheet opettavat liian vähän.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Milloin käyttää
+
+`/impeccable onboard` on hetkiin jotka päättävät pysyykö uusi käyttäjä mukana: ensimmäinen näyttö, tyhjä tila, asennustyönkulku, tuotekierros, "mitä teen nyt" -kuilu. Turvaudu siihen kun aktivointi on heikkoa, kun uudet käyttäjät putoavat ennen arvon saavuttamista, tai kun tuotteessasi on tyhjiä tiloja jotka sanovat "ei kohteita vielä" ja pysähtyvät siihen.
+
+## Miten se toimii
+
+Komento lähtee yhdestä kysymyksestä: mikä on aha-hetki, ja kuinka nopeasti uusi käyttäjä pääsee sinne. Jokainen suunnittelupäätös osoittaa siihen hetkeen.
+
+Se toimii pinnoilla jotka muokkaavat ensivaikutelmia:
+
+1. **Ensimmäisen käyttökerran kokemus**: hetket heti rekisteröitymisen jälkeen. Pitäisikö käyttäjän nähdä kierros, tyhjä kankaan, täytetty esimerkki vai ei mitään. Valitse lähestymistapa joka vastaa tuotetta.
+2. **Tyhjät tilat**: jokainen nolladatanäyttö suunnataan. Missä olen, miksi tämä on tyhjä, mitä teen seuraavaksi, miltä se näyttää kun se on täynnä.
+3. **Asennus ja käyttöönotto**: vaadittu konfiguraatio minimoidaan, oletukset ovat älykkäitä, jokainen vaihe selittää miksi se merkitsee.
+4. **Progressiivinen paljastaminen**: edistyneet ominaisuudet pysyvät poissa tieltä kunnes ne on ansaittu.
+5. **Aktivointitapahtumat**: hetki jolloin käyttäjä ensimmäisen kerran kokee ydin arvon instrumentoidaan ja juhlitaan, hiljaa.
+
+Komento vastustaa kahta yleistä vikatilaa: yliopastettu onboarding jossa käyttäjät klikkaavat karusellin läpi ennen kuin voivat koskea mihinkään, ja nolla-onboarding jossa käyttäjät pudotetaan tyhjään sovellukseen ja odotetaan heidän keksivän sen itse.
+
+## Kokeile
+
+```
+/impeccable onboard the editor
+```
+
+Tyypillinen tuloste:
+
+- Ensimmäinen käyttökerta: korvaa tyhjä editori täytetyllä esimerkkidokumentilla jota käyttäjä voi muokata. Peruuta-painike hylkää esimerkin, muokkaus korvaa sisällön käyttäjän työllä.
+- Tyhjä tila dokumenttilistassa: "Ei dokumentteja vielä. Luo ensimmäinen, tai tuo Notionista, Google Docsista tai Markdownista."
+- Asennus: supistettu 6 vaaditusta kentästä 1:een (työtilan nimi). Kaikella muulla on älykäs oletus ja sitä voi muokata myöhemmin asetuksissa.
+- Aktivointi: ensimmäisen kerran kun käyttäjä tallentaa dokumentin, hiljainen ilmoitus sanoo "Tallennettu. Työsi on nyt pilvessä." Kertaluonteinen, ei toistuva.
+
+## Sudenkuopat
+
+- **Tuotekierroksen lisääminen oletusvastauksena.** Useimmat tuotteet eivät tarvitse kierrosta. Ne tarvitsevat paremman ensimmäisen näytön. Kierrokset ovat kainalosauvoja.
+- **Onboardingin suunnittelu ilman aha-hetken määrittelyä.** Jos et voi sanoa yhdellä lauseella mitä käyttäjän pitäisi tuntea ensimmäisten 60 sekunnin aikana, mene takaisin `/impeccable shape`-komennon luo ensin.
+- **Onboardin ajaminen rikkinäisessä työnkulussa.** Korjaa työnkulku ensin. Onboarding ei voi pelastaa tuotetta jonka ydintoiminto on rikki.

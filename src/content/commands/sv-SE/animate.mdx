@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Ändamalsenlig rorelse som formedlar tillstand, inte dekoration.
+highlights:
+  - Granssnitt kanns livlosa eller abrupta mellan tillstand.
+  - Laddning, feedback eller overgangar behovr rorelse som forklarar vad som hander.
+  - Du vill ha disciplinerad animation med reduced-motion-fallbacks.
+related:
+  - delight
+---
+
+## Nar du ska anvanda det
+
+`/impeccable animate` ar for granssnitt som kanns livlosa, dar tillstandsandringar ar omedelbara och jarringa, dar laddning bara poppar in, dar anvandaren aldrig riktigt litar pa att deras klick registrerades. Anvand det for att addera de sma rorelserna som kommunicerar vad som hander: entrer, avslut, feedback, overgangar mellan tillstand.
+
+Anvand det inte for att addera studsar eller elastiska fjadrar for skull av energi. Det ar dekoration, och den har fardigheten kommer inte att ge dig det.
+
+## Hur det fungerar
+
+Fardigheten identifierar statiska ogonblick som skulle dra nytta av rorelse, sedan applicerar den dem med strikt disciplin:
+
+1. **Entrer och avslut**: element visas och lamnar med 200 till 300ms toningar plus subtil Y eller skala, aldrig layoutegenskaper.
+2. **Tillstandsfeedback**: hover, aktivt, fokus, laddning, framgang kommunicerar alltsa via rorelse istallet for plötsliga byten.
+3. **Overgangar mellan vyer**: delade-element-overgangar dar det ar meningsfullt, toning-genom annars.
+4. **Framsteg och laddning**: skelettskärmar, deterministiska staplar, rorelse som sager "jobbar fortfarande".
+5. **Reducerad rorelse**: varje animation har en `prefers-reduced-motion`-fallback.
+
+Lattning ar alltid exponentiell (ease-out-quart, quint eller expo) for att verkliga objekt decelererar smidigt. Ingen studsa, ingen elastisk, ingen linjär for nonting utom framstegsindikatorer.
+
+Fardigheten animerar `transform` och `opacity` enbart. Om du hittar dig sjalv animera `width`, `height`, `top` eller `left`, gör den fel. Anvand `grid-template-rows` for hojdovergangar.
+
+## Prova det
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typiska tilleagg:
+
+- E-postinmatning far en fokusglow pa focus-visible (opacitet + skugga, 180ms)
+- Skicka-knapp visar en spinner inuti sig sjalv pa laddningstillstand, inte en separat spinner bredvid
+- Framgangsskarm anger med opacitet + translateY(8px), 260ms, ease-out-quart
+- Felmeddelande glider ner med grid-template-rows (inte hojd), 220ms
+- `@media (prefers-reduced-motion: reduce)`-fallback for varje overgang
+
+## Fallgropar
+
+- **Att be om "mer animation".** Animate ar inte en ratt. Den adderar dar rorelse kommunicerar, inte overallt.
+- **Att ta bort reduced-motion-fallbackarna.** Fardigheten adderar dem automatiskt. Ickeforhandlingsbart for tillganglighet.

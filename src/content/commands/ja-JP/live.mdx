@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: ブラウザ上でUIを反復する。要素を選び、コメントを残し、3つのバリアントを取得する。1つを承認するとソースに書き込まれる。
+highlights:
+  - 開発サーバーがすでに存在する。
+  - レンダリングされたUI上で直接選択肢を比較したい。
+  - 最速の次のステップはガイド付きの視覚的実験。
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">アニメーションデモ付きの動作確認は <a href="/live-mode">/live-mode</a> を参照。このページはコマンド実行時にAIハーネスが読み込む内容のリファレンスです。</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Status: alpha.</strong> Live Modeはエンドツーエンドで動作し試す準備ができていますが、実際のリポジトリやフレームワーク設定に対するテストがまだ必要です。一般的でないセットアップでは粗い箇所が予想されますので、問題を報告してください。</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Modeサイクル中：ピッカーが選択した要素をアウトライン表示し、コンテキストバーに現在のバリアントを表示、グローバルバーが下部に固定。AcceptするとVariant 2がソースに書き戻されます。</p>
+</div>
+
+## いつ使うか
+
+デザインツールのように視覚的に何かを反復したいが、プロダクションコードを出力として維持したい場合に `/impeccable live` を使ってください。実装ステップへの往復なしの、Figmaのキャンバス的なフロー。
+
+次の用途に使ってください。
+
+- **実際の要素で方向性を探る。** ヒーローセクション、ニュースレターカード、価格ティア。実際のページ、実際のコンテキストで、 genuinely異なる3つのテイクを並べて。
+- **もう少しで正解のUIを仕上げる。** 何が違うかは分かるが、うまく言えない。要素を選び、「more playful」と書き込むか、気になる部分にストロークを引き、Goを押す。
+- **チーム内で議論している2つの方向性の簡単なA/B。** バリアントを生成し、何も承認せず、離れる。ポイントは比較でした。
+
+新規のグリーンフィールド機能（`/impeccable craft` を使ってください）やページ全体のリデザイン（`/impeccable` や専門の洗練コマンドを使ってください）には向いていません。
+
+## 仕組み
+
+1つのコマンドで起動中の開発サーバー上にピッカーオーバーレイを表示します。任意の要素を選択。横に小さなコンテキストバーが現れます。自由形式の説明を入力するか、アクションチップ（`bolder`、`quieter`、`distill`、`polish`、`typeset`、`colorize`、`layout`、`animate`、`delight`、`overdrive`）の1つを選択。オプションで最初に要素に直接コメントピンを追加したりストロークを描いたりすると、スキルはそれらを意図として読み取ります。
+
+Goを押す。3つの**プロダクション品質のバリアント**が生成され、それぞれが genuinely異なるデザインアーキタイプにアンカーされ（色の変奏3つではなく）、フレームワークのHMR経由でページにホットスワップされます。矢印キーで切り替え。1つを承認するとバリアントがソースに書き戻されます。3つすべて破棄すれば元のまま。
+
+Vite、Next.js（モノレポ含む）、SvelteKit、Astro、Nuxt、プレーンな静的HTMLをサポートします。開発サーバーに厳格なContent Security Policyがある場合、初回実行セットアップがそれを検出し、ピッカーがロードできるように開発専用の一度きりのパッチを提案します。`DESIGN.md` はビジュアル決定で優先され、`PRODUCT.md` は声で優先されます：両方があれば、バリアントは指示されなくてもブランドに合致します。
+
+## 試してみる
+
+```
+/impeccable live
+```
+
+開発サーバーURLを開き、ニュースレター登録カードを選び、`delight` チップをクリックし、Goを押す。3つのバリアントは、同じ処理の3つのバリエーションではなく、個性次元にわたって変化します（切手とポストカード風、タイポグラフィックサプライズ版、イラストアクセント版）。
+
+またはヒーローを選び、「more editorial, less SaaS」と入力し、Goを押す。3つのバリアントは同じアイデアの3つの色合いではなく、異なるエディトリアルアーキタイプ（ブロードシートマストヘッド、カタログ風スペック行、オーバーサイズグリフポスター）にアンカーされます。
+
+完了したらライブモードを停止：「stop live mode」と言う、タブを閉じる、またはピッカーバーの終了ボタンを押す。
+
+## 注意点
+
+- **まだ半分しか書けていないページで実行すること。** ライブバリアント生成にはコンテキストが必要です。要素にプレースホルダーコピー、汎用的なLorem ipsum、またはスタイルシート適用前のデフォルトフォーマットがある場合、バリアントはそれを反映します。まずコンテンツを埋めてください。
+- **マクロな決定を期待すること。** ライブモードは選択された単一要素を反復します。「価格ページ全体をやり直す」には `/impeccable` や `/impeccable craft` を使ってください。
+- **フォールバックメッセージを無視すること。** 要素が生成されたファイル（コンパイル済みテンプレート、ビルド出力）にある場合、ピッカーは明示的にその旨を伝え、acceptを本当のソースにルーティングすることを提案します。生成されたファイルにacceptを強制しないでください：次のビルドで消去されます。
+- **ブランド適合を気にする場合にPRODUCT.mdやDESIGN.mdなしで実行すること。** Liveは生成しますが、バリアントは汎用デフォルトに傾きます。結果がプロダクトらしく聞こえる必要があるなら、まず `/impeccable teach` と `/impeccable document` を実行してください。

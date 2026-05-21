@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: П'ятивимірна перевірка технічної якості з рівнями серйозності від P0 до P3.
+highlights:
+  - Вам потрібні конкретні проблеми та рівні серйозності, а не лише зворотний зв'язок на основі смаку.
+  - Ви готуєте функцію до злиття або релізу.
+  - Ви підозрюєте приховані проблеми на мобільних, у темних темах або для допоміжних потреб.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Доступність</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Продуктивність</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Тематизація</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Адаптивність</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Антипатерни</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">П'ять вимірів оцінено від 0 до 4, кожне знайдення позначене від P0 (блокує реліз) до P3 (обробка). Audit документує; він не виправляє. Направте знайдення до <code>/impeccable harden</code>, <code>/impeccable polish</code> або <code>/impeccable optimize</code>.</p>
+</div>
+
+## Коли використовувати
+
+`/impeccable audit` -- це технічний аналог `/impeccable critique`. Якщо `/impeccable critique` запитує "чи відчувається це правильно", `/impeccable audit` запитує "чи витримує це перевірку". Він запускає перевірки доступності, продуктивності, тематизації, адаптивного дизайну та антипатернів проти реалізації, оцінює кожен вимір від 0 до 4 і створює план з рівнями серйозності від P0 до P3.
+
+Використовуйте це перед релізом, під час спринту якості або щоразу, коли техлід каже "нам дійсно варто подивитися на доступність".
+
+## Як це працює
+
+Навичка сканує ваш код за п'ятьма вимірами:
+
+1. **Доступність**: контраст WCAG, ARIA, навігація з клавіатури, семантичний HTML, мітки форм.
+2. **Продуктивність**: тремтіння макета, дорогі анімації, відсутнє ліниве завантаження, вага бандлу.
+3. **Тематизація**: жорстко закодовані кольори, покриття темного режиму, узгодженість токенів.
+4. **Адаптивність**: поведінка контрольних точок, сенсорні цілі, обробка мобільного viewport.
+5. **Антипатерни**: ті самі детерміновані 25 перевірок, які запускає детектор.
+
+Кожен вимір отримує оцінку від 0 до 4. Кожне знайдення отримує рівень серйозності: P0 блокує реліз, P1 варто виправити цього спринту, P2 -- наступний цикл, P3 -- обробка. Ви отримуєте єдиний документ, який можна вставити в трекер квитків.
+
+Audit нічого не виправляє. Він документує. Направте знайдення до `/impeccable polish`, `/impeccable harden` або `/impeccable optimize` залежно від категорії.
+
+## Спробуйте
+
+```
+/impeccable audit the checkout flow
+```
+
+Очікуваний результат:
+
+```
+Accessibility: 2/4 (частково)
+  P0: Відсутні мітки форм на 4 полях вводу
+  P1: Контраст 3.1:1 для стану вимкненої кнопки
+  P2: Немає видимого індикатора фокусу на кастомному випадаючому списку
+
+Performance: 3/4 (добре)
+  P1: Hero-зображення не ліниво завантажується (340KB)
+  ...
+```
+
+Передайте P0 до `/impeccable harden`, тематизацію та типографіку P1 до `/impeccable typeset` та `/impeccable polish`, решту до `/impeccable polish`.
+
+## Підводні камені
+
+- **Плутання з `/impeccable critique`.** Audit -- це якість реалізації. Critique -- це якість дизайну. Запустіть обидва для повної картини.
+- **Виправлення P3 перед P0.** Шкала серйозності існує з причини. Починайте зверху.
+- **Пропуск вимірів, які ви вважаєте нормальними.** Тематизація та адаптивність -- це ті, які більшість людей вважають нормальними, поки вони не стають такими, що не є нормальними.

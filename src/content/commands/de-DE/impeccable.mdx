@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Die Design-Intelligenz hinter jedem Befehl.
+highlights:
+  - Sie wollen einen einzigen Einstiegspunkt für Layout, Typografie, Farbe, Bewegung und UX-Struktur zusammen.
+  - Sie erkunden eine Richtung und möchten, dass der Skill den richtigen Teil-Workflow wählt.
+  - Sie benötigen den breitesten Design-Kontext statt eines engen Einzelbefehls.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Wann man es verwendet
+
+`/impeccable` ist der Basis-Befehl. Rufen Sie ihn direkt auf, wenn Sie freies Design-Arbeit mit dem vollständigen Handbuch geladen haben möchten, ohne einen spezialisierten Befehl auszuwählen. Es ist der Fallback, auf den Sie zurückgreifen, wenn keiner der 23 Spezialisten (`audit`, `polish`, `critique` und die restlichen) sauber zu dem passt, was Sie versuchen zu tun.
+
+Greifen Sie direkt nach `/impeccable`, wenn:
+
+- **Sie nicht sicher sind, welcher Befehl passt.** Beschreiben Sie in einfachen Worten, was Sie wollen, und lassen Sie den Skill den richtigen Ansatz wählen.
+- **Die Arbeit mehrere Disziplinen umfasst.** „Diesen Hero-Bereich neu gestalten" berührt Layout, Typografie, Farbe und Bewegung. Ein einzelner Befehl kann das nicht abdecken.
+- **Sie die volle Design-Intelligenz ohne Einschränkungen möchten.** Jede Referenzdatei geladen, jedes Anti-Pattern geprüft, kein vorgegebener Workflow.
+
+Für strukturierte Abläufe greifen Sie zu den spezialisierten Befehlen in der Seitenleiste. Führen Sie `/impeccable teach` zuerst in jedem neuen Projekt aus, um PRODUCT.md und DESIGN.md anzulegen. `/impeccable craft` verknüpft ein Discovery-Interview mit einem vollständigen Build und visueller Live-Iteration. `/impeccable shape` erstellt einen Design Brief, ohne Code zu berühren. `/impeccable live` gibt Ihnen einen Browser-Picker mit drei Varianten pro Element. Die Evaluierungs- und Verfeinerungsbefehle (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` und die restlichen) besitzen jeweils einen spezifischen Teil der Arbeit.
+
+## Wie es funktioniert
+
+Die meisten KI-generierten UIs scheitern auf dieselbe Weise: generische Schriften, lila Farbverläufe, Kartenraster über Kartenraster, Glasmorphismus überall. `/impeccable` gibt Ihrer KI eine starke Haltung. Es lädt ein meinungsstarkes Design-Handbuch plus eine lange Liste von Anti-Patterns und drängt das Modell dann dazu, sich auf eine spezifische ästhetische Richtung festzulegen, bevor eine einzige Zeile Code geschrieben wird.
+
+Zwei Dateien im Projektverzeichnis prägen alles, was der Skill tut:
+
+- **`PRODUCT.md`** trägt Register (Marke vs. Produkt), Zielbenutzer, Markenpersönlichkeit, Anti-Referenzen, Design-Prinzipien. Beantwortet „Wer, was, warum".
+- **`DESIGN.md`** trägt Farben, Typografie, Elevation, Komponenten, Dos und Don'ts im sechsteiligen Google Stitch-Format. Beantwortet „Wie es aussieht".
+
+Jeder Befehl liest beide Dateien vor der Generierung. **Register** entscheidet, welche Standardwerte geladen werden. Brand (Marketing, Landing, Portfolio, wo Design DAS Produkt ist) und Product (App-UI, Dashboards, Tools, wo Design dem Produkt DIENGT) haben unterschiedliche Standards für Typografie, Bewegung, Farbe und Dichte. Die einmalige Angabe in PRODUCT.md bedeutet, dass `/impeccable typeset` keine redaktionellen Magazin-Schriften auf ein Dashboard anwendet und keine produktfluenten Standards auf eine Kampagnenseite. Siehe das [Brand vs. Produkt-Tutorial](/tutorials/brand-vs-product) für die Unterschiede.
+
+Bei der ersten Verwendung in einem Projekt führt der Skill automatisch den `teach`-Ablauf aus: ein kurzes Interview, das PRODUCT.md schreibt und dann an `/impeccable document` für DESIGN.md delegiert. Zukünftige Befehle lesen die Dateien ohne erneutes Nachfragen.
+
+## Ausprobieren
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Beide Prompts sind absichtlich vage. `/impeccable` wird eine starke ästhetische Richtung wählen, die zu Ihrem Register passt, sich auf nicht-standardmäßige Schriften festlegen, die KI-Farbpalette vermeiden und die Art spezifischer Entscheidungen treffen, die ein Designer treffen würde. Kein Befehlsname, den man zuerst wählen muss, kein schrittweiser Workflow, dem man folgen muss.
+
+Für visuelle Iteration im Browser statt im Chat:
+
+```
+/impeccable live
+```
+
+Wählen Sie ein beliebiges Element auf Ihrem laufenden Dev-Server. Hinterlassen Sie einen Kommentar oder eine Markierung. Erhalten Sie drei produktionsreife Varianten, die per HMR hot-swapped werden. Akzeptieren Sie die gewünschte, und sie wird in den Quellcode zurückgeschrieben.
+
+## Befehle als Kurzbefehle anheften
+
+v3.0 hat 18 eigenständige Skills in einem einzigen `/impeccable` mit 23 Unterbefehlen zusammengefasst. Wenn Sie die Kurzform eines bestimmten Befehls vermissen, heften Sie ihn zurück an:
+
+```
+/impeccable pin critique
+```
+
+Von nun an ruft `/critique` direkt `/impeccable critique` auf. Es schreibt einen leichtgewichtigen Weiterleitungs-Skill, der an den übergeordneten delegiert, sodass Updates am Skill durchfließen, ohne neu angeheftet werden zu müssen.
+
+Nützliche Pins zum Ausprobieren:
+
+- `/impeccable pin polish` für finale Durchgänge
+- `/impeccable pin audit` für deterministische Barrierefreiheits-/Performance-Prüfungen
+- `/impeccable pin live` für den Browser-Iterationsablauf
+- `/impeccable pin critique` für Design-Review
+
+Zum Entfernen: `/impeccable unpin critique`. Pins existieren als Verzeichnisse mit dem Präfix `i-` in Ihrem Harness-Skills-Ordner (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` usw.), Sie können sie also auch manuell löschen.
+
+## Fallstricke
+
+- **Es als Styleguide behandeln.** Es ist ein meinungsstarker Design-Partner, kein Linter. Die Standards existieren, um die Messlatte anzuheben, nicht um Ihr Urteil zu überstimmen. Wenn Sie einen echten Grund haben, sich dagegen zu wehren (Markenrichtlinie, Barrierefreiheits-Einschränkung, Nutzerforschung), wehren Sie sich und erklären Sie warum. Der Skill wird mit Ihnen arbeiten. Was zu schlechteren Ergebnissen führt, ist das Ignorieren der Meinung ohne Grund.
+- **Erwarten, dass es bestehenden Code repariert.** `/impeccable` ist für die Erstellung. Für die Verfeinerung greifen Sie stattdessen zu `/impeccable polish`, `/impeccable distill` oder `/impeccable critique`.
+- **Ausführen, bevor `teach` die Chance hatte, Kontext zu speichern.** In einem frischen Projekt wird es Sie mitten im Ablauf interviewen, was in Ordnung, aber langsamer ist. `/impeccable teach` explizit als allerersten Befehl auszuführen, ist ein kleines bisschen reibungsloser.
+- **Die Register-Frage überspringen.** Brand- und Product-Standards weichen genug voneinander ab, sodass die Ausführung mit dem falschen Register subtil fehlerhafte Ergebnisse liefert. Wenn `PRODUCT.md` kein `## Register`-Feld hat (Legacy), führen Sie `/impeccable teach` aus, um es hinzuzufügen.

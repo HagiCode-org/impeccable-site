@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Дизайн ревю с оценяване, тестове с персони и автоматизирано откриване.
+highlights:
+  - Искате констатации за слаби дизайн решения, не пренабиране от нулата.
+  - Имате нужда от оценяване, дизайн обосновка и вероятни следващи стъпки.
+  - Интерфейсът работи, но все още не се усеща правилно.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Присъда за AI отпадък</span>
+        <span class="docs-viz-critique-verdict-value">НЕУСПЕХ</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Хевристики (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Видимост на състоянието</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Съответствие с реалния свят</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Консистентност и стандарти</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Предотвратяване на грешки</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Разпознаване преди припомняне</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Персони</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Оценителят</span>
+              <span class="docs-viz-critique-persona-note">Сравнява ни с две алтернативи във вторник вечер.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Завръщащият се потребител</span>
+              <span class="docs-viz-critique-persona-note">Познава продукта, на мобилен, бърза.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Скептикът</span>
+              <span class="docs-viz-critique-persona-note">Виждал е всеки SaaS лендинг и му е скучно.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Двата прохода (LLM дизайн ревю плюс детерминистичният детектор) се сливат в един приоритизиран списък. Какво работи, какво да поправите и провокативните въпроси, които си струва да отговорите преди доставка.</p>
+</div>
+
+## Кога да се използва
+
+Обърнете се към `/impeccable critique`, когато искате честно второ мнение за нещо, което вече сте изградили. Не "работи ли", а "добро ли е". Умението оценява вашия интерфейс срещу 10-те хевристики на Nielsen, изпълнява проверки за когнитивно натоварване, тества през призмите на персони и кръстосано реферира автоматизиран детектор за 25 конкретни анти-модела.
+
+Използвайте го, когато страницата е функционално завършена и искате да знаете дали се чете като умишлена или като AI отпадък.
+
+## Как работи
+
+`/impeccable critique` изпълнява две независими оценки паралелно, за да не се влияят една от друга.
+
+Първата е **LLM дизайн ревю**: моделът чете вашия изходен код, визуално инспектира живата страница, ако е налична браузърна автоматизация, и преминава през пълния каталог DO/DON'T на умението impeccable. Оценява хевристиките на Nielsen, отчита неуспехите в когнитивното натоварване, проследява емоционалното пътуване през потока и маркира AI отпадък.
+
+Втората е **автоматизиран детектор** (`npx impeccable detect`), който детерминистично открива градиентен текст, лилави палитри, странични таб граници, вложени карти, проблеми с дължина на реда и другите видими отпечатъци на генеричен AI резултат.
+
+Двата доклада се сливат в един приоритизиран списък: какво работи, трите до петте неща, които се нуждаят от поправка, и провокативните въпроси, които си струва да отговорите преди доставка.
+
+## Пробвайте
+
+Насочете го към страница:
+
+```
+/impeccable critique the homepage hero
+```
+
+Получавате оценен доклад. Типична форма:
+
+- **Присъда за AI отпадък**: успех / неуспех с конкретните белези
+- **Хевристични оценки**: 10 числа, от 0 до 4
+- **Когнитивно натоварване**: брой неуспехи от 8
+- **Приоритетни проблеми**: три до пет елемента, всеки с какво, защо и поправка
+- **Въпроси за отговаряне**: тези, които интерфейсът сам не може да реши
+
+Оттам, комбинирайте с `/impeccable polish` или `/impeccable distill`, за да действате по поправките.
+
+## Клопки
+
+- **Изпълнение на недовършена работа.** Critique е за завършени страници. Празно състояние с три TODO-та ще се оцени зле, защото не е готово, не защото е лошо.
+- **Игнориране на въпросите накрая.** Те обикновено са поправките, които променят дизайна най-много.
+- **Третиране на хевристичните оценки като оценка.** Те са диагностични, не оценителни. 3/4 на хевристика, която има по-малко значение за вашия контекст, е нормално.

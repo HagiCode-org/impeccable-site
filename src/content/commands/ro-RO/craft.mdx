@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Modelati designul, apoi construiti-l, totul intr-un singur flux.
+highlights:
+  - Incepeti o functionalitate noua de la zero.
+  - Vreti descoperire, implementare si rafinare vizuala intr-o singura trecere.
+  - Preferati o bucla de constructie mai lenta dar mai deliberata.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Interviu de descoperire. Scop, utilizatori, restrictii, directie.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Incarcare referinte</span>
+      <span class="docs-viz-flow-hint">Spatiala, tipografie, miscare, culoare, interactiune.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Structura, ierarhie, tipografie, culoare, stari, miscare, responsiv.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterare vizuala</span>
+      <span class="docs-viz-flow-hint">Verificati in browser, rafinati pana se potriveste cu brief-ul.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Fiecare faza este nesaltabila. Pasul de descoperire este locul unde majoritatea iesirilor AI esueaza: pana cand exista cod, gandirea este deja fixata.</p>
+</div>
+
+## Cand se foloseste
+
+`/impeccable craft` este comanda de constructie end-to-end. Dati-i o descriere de functionalitate si ruleaza intregul pipeline: descoperire structurata, incarcare de referinte, implementare, iterare vizuala. Folositi-o cand incepeti o functionalitate noua de la zero si vreti intregul flux intr-o singura invocare.
+
+Apelati la ea cand:
+
+- **Construiti o functionalitate noua si vreti fluxul complet.** Nu doriti sa gestionati pasii dumneavoastra insiva.
+- **Stiti ce construiti dar nu cum ar trebui sa arate.** Faza de descoperire forteaza gandirea de design inainte ca implementarea sa o fixeze.
+- **Vreti iterare vizuala implicit.** `craft` verifica rezultatul intr-un browser si rafineaza pana cand finisajul este ridicat, in loc sa livreze prima versiune functionala.
+
+Daca doriti doar gandirea fara cod, folositi `/impeccable shape` independent. Daca aveti deja o viziune clara si doriti doar sa construiti, apelati `/impeccable` direct cu descrierea functionalitatii. `craft` se afla intre cele doua: structurat, complet, cu opinii.
+
+## Cum functioneaza
+
+`craft` ruleaza patru faze in ordine:
+
+1. **Modelati designul.** Ruleaza `/impeccable shape` intern: o scurta conversatie de descoperire despre scop, utilizatori, continut, restrictii si obiective. Rezultatul este un brief de design pe care il puteti citi si pe care il puteti contesta.
+2. **Incarcati referintele.** Pe baza brief-ului, aduce fisierele de referinta potrivite (spatiala, tipografie, miscare, culoare, interactiune, responsiv, scriere UX) astfel incat modelul are principiile relevante incarcate inainte de a incepe sa codeze.
+3. **Construiti.** Implementeaza functionalitatea intr-o ordine deliberata: intai structura, apoi spatieri si ierarhie, apoi tipografie si culoare, apoi stari, apoi miscare, apoi responsiv. Fiecare decizie traseaza inapoi la brief.
+4. **Iterare vizuala.** Deschide rezultatul intr-un browser, verifica-l fata de brief si catalogul de anti-modele, si rafineaza pana se potriveste cu intentia. Acest pas este critic. Prima versiune functionala nu este niciodata versiunea livrata.
+
+Faza de descoperire este nesaltabila si acesta este scopul. Majoritatea interfețelor UI generate de AI esueaza pentru ca nimeni nu a intrebat ce incerca utilizatorul sa realizeze inainte ca modelul sa inceapa sa scrie JSX. `craft` inverseaza asta.
+
+## Incercati
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Asteptati-va la un interviu de descoperire de 5 pana la 10 intrebari mai intai. Intrebari despre audienta dumneavoastra, personalitatea produsului, tonul emotional dorit, anti-referinte si restrictii. Apoi un brief de design. Apoi implementare, cu browserul verificat la fiecare etapa. Asteptati-va la multiple runde de iterare in faza de finisare vizuala.
+
+Intreaga rulare este mai lunga decat o comanda tipica deoarece include gandirea, constructia si rafinarea. Acesta este compromisul: mai multa structura upfront, mai putina curatare ulterior.
+
+## Capcane
+
+- **Utilizarea pentru modificari mici.** `craft` este pentru functionalitati noi, nu retusuri. Pentru cod existent, apelati la `/impeccable polish`, `/impeccable critique` sau o comanda de rafinare specifica in schimb.
+- **Grabirea fazei de descoperire.** Interviul pare lent comparat cu "doar incepe sa codezi". Nu este. Raspunderea atenta la intrebari produce un brief mai clar, care produce o constructie mai clara, care produce mai putine rescrieri.
+- **Omiterea iterarii vizuale.** Faza exista dintr-un motiv. Decalajul dintre "functioneaza tehnic" si "se simte bine" se inchide cu finisaj vizual, nu cu revizuire de cod. Lasati-o sa ruleze.

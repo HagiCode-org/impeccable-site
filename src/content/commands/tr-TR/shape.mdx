@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Oluşturmadan önce düşünün. Tahmin yerine keşif yoluyla tasarım brief'i oluşturun.
+highlights:
+  - Henüz uygulama olmadan planlama istiyorsunuz.
+  - Doğru düzen veya ton hala belirsiz.
+  - Birden fazla paydaşın, oluşturma çalışması başlamadan önce niyet üzerinde uzlaşması gerekiyor.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output of /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Purpose</span>
+        <span class="docs-viz-file-v">Bağlı abonelerin, abonelikten çıkmak yerine aldıklarını değiştirmesine izin vermek.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">User</span>
+        <span class="docs-viz-file-v">Aceleci, mobilde, toplantı ortasında. Hızlı okuyor, düşük sabır.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Content</span>
+        <span class="docs-viz-file-v">4 bülten türü, 2 sıklık, altta bir tümünden-çık seçeneği.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Feeling</span>
+        <span class="docs-viz-file-v">Sakin, güvenilir, karanlık desen yok.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Constraints</span>
+        <span class="docs-viz-file-v">Mobil öncelikli. WCAG AA kontrast. Tek sütun, modal yok.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Hand it to <code>/impeccable</code>, <code>/impeccable craft</code>, or any implementation flow.</div>
+  </div>
+  <p class="docs-viz-caption">Bir shape brief'i bir pusuladır, bir spesifikasyon değil. Niyeti yakalar, kullanıcı arayüzünü değil. Uygulama yetenekleri bir satır kod yazmadan önce onu okur.</p>
+</div>
+
+## Ne zaman kullanılır
+
+`/impeccable shape` bir özelliğin başladığı yerdir. Herkes kod yazmadan, herkes hero tasarımı hakkında tartışmadan, herkes yazı tipi seçmeden önce. Amaç, kullanıcılar, içerik ve kısıtlamalar hakkında bir keşif görüşmesini zorlamak, ardından yanıtları uygulama yeteneklerinin dayanabileceği bir tasarım brief'i olarak yakalamaktır.
+
+Bir özellik başlamak üzereyken, bir bilet belirsiz olduğunda veya ürünün ne olması gerektiğini anlamak için JSX yazdığınızı fark ettiğinizde kullanın.
+
+## Nasıl çalışır
+
+Çoğu AI tarafından oluşturulan kullanıcı arayüzü kötü kod nedeniyle değil, atlanan düşünce nedeniyle başarısız olur. Model "burada bir kart ızgarası var" demeden önce "kullanıcı ne başarmaya çalışıyor" diye sormaz. `/impeccable shape` bu sırayı tersine çevirir.
+
+Yetenek, görüşmede yapılandırılmış bir keşif görüşmesi çalıştırır. Bu aşamada kod yazmayacaktır. Sorular şunları kapsar:
+
+- **Amaç ve bağlam**: özellik ne için, kim kullanıyor, hangi zihin durumunda
+- **İçerik ve veri**: ne görüntüleniyor, gerçekçi aralıklar, uç durumlar, ne dinamik
+- **Tasarım hedefleri**: en önemli tek şey, hedeflenen duygu, referans örnekler
+- **Kısıtlamalar**: teknik, içerik, erişilebilirlik, yerelleştirme
+
+Doğal bir şekilde yanıtlayın. Yetenek bir form değil, takip soruları sorar. Sonunda bir tasarım brief'i üretir: `/impeccable` veya başka bir uygulama yeteneğine verebileceğiniz yapılandırılmış bir çıktı.
+
+Not: tam akışı istiyorsanız (keşif görüşmesi, ardından doğrudan oluşturma), bunun yerine `/impeccable craft` kullanın. Dahili olarak `/impeccable shape` komutunu çalıştırır, ardından görsel yineleme ile uygulamaya devam eder. Bağımsız `/impeccable shape`, sadece brief'i istediğinizde, böylece tercih ettiğiniz herhangi bir uygulama yaklaşımına götürebileceğinizde içindir.
+
+## Deneyin
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+5 ile 10 soruluk bir görüşme bekleyin. Yetenek "bu sayfayı açan kişi kim ve zaten bağlı mı yoksa hala meraklı mı" ve "kullanıcı her şeyden abonelikten çıktığında ne oluyor, özelliği gizliyoruz mu yoksa bir şey mi gösteriyoruz" gibi sorular sorar. Yanıtlayın ve bir brief ortaya çıkar.
+
+Oradan brief'i `/impeccable`, `/impeccable polish` veya başka bir yeteneğe verebilirsiniz. Ya da sadece elle oluştururken referans olarak kullanın.
+
+## Tuzaklar
+
+- **Yavaş hissettirdiği için atlamak.** Görüşme yaklaşık 5 dakika. Kaçındığınız yeniden yazımlar saatle ölçülür.
+- **Brief'i bir spesifikasyon olarak ele almak.** Bir pusuladır, bir kontrol listesi değil. Niyeti yakalar, kullanıcı arayüzünü değil.
+- **"Standart" veya "normal" ile yanıtlamak.** Spesifiklik tüm meseledir. Bir kullanıcı "aceleci, mobilde, toplantılar arasında" ise, söyleyin. Bu, aşağı akıştaki her şeyi değiştirir.

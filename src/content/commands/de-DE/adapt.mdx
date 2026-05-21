@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Designs über Bildschirme, Geräte und Kontexte zum Funktionieren bringen, ohne Features zu amputieren.
+highlights:
+  - Das aktuelle Layout bricht auf kleineren Bildschirmen zusammen.
+  - Das Produkt braucht eine durchdachtere Responsive-Strategie.
+  - Touch-Ziele, Dichte oder Inhaltsfluss variieren je nach Gerät.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Wann man es verwendet
+
+`/impeccable adapt` ist dafür gedacht, ein Design, das für einen Kontext gebaut wurde, für einen anderen funktionsfähig zu machen. Mobil von Desktop, Tablet von Mobil, Print von Web, Embedded von Standalone, E-Mail von Dashboard. Greifen Sie zu ihm, wenn das Quell-Design solide ist, aber an anderen Breakpoints, bei Touch oder in einem anderen Container zerfällt.
+
+Nicht zum Aufbau von Responsive from Scratch. Dafür starten Sie mit `/impeccable` und formen das Layout responsive-first. Adapt ist für das „wir haben nie an Mobil gedacht"-Nachholen.
+
+## Wie es funktioniert
+
+Der Skill arbeitet durch vier Dimensionen der kontextuellen Passung:
+
+1. **Breakpoints und fluide Layouts**: Mehrspaltig zu einspaltig zusammenfassen, Clamp-Bereiche anpassen, neue Breakpoints einführen, wo das Design wirklich bricht.
+2. **Touch-Ziele**: mindestens 44px Trefferfläche, ausreichender Abstand zwischen angrenzenden Zielen, größere Tapp-Zonen als visuelle Begrenzungen wo nötig.
+3. **Navigationsmuster**: Desktop-Sidebars werden zu mobiler Bottom-Nav oder Slide-Outs, dichte Toolbars kollabieren zu Menüs, Hover-Zustände bekommen Touch-Äquivalente.
+4. **Inhalts-Priorität**: entscheiden, was sichtbar sein muss, was in Aufklapp-Elemente kollabieren kann, was für diesen Kontext ganz entfernt werden kann.
+
+Die nicht verhandelbare Regel: anpassen, nicht amputieren. Kritische Funktionalität darf auf Mobil nicht einfach verschwinden, weil sie unpraktisch ist. Finden Sie einen Weg, sie unterzubringen, redesignen Sie die Interaktion oder überdenken Sie, ob sie auf dem Desktop wirklich kritisch war.
+
+## Ausprobieren
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Erwartete Änderungen:
+
+- Dreispaltiges Raster wird einspaltig mit Abschnittsüberschriften als klebrige Trenner
+- Sidebar-Navigation wechselt zu einem horizontalen Scroller über dem Inhalt
+- Schalter erhalten 8px vertikales Padding, damit sie 44px-Touch-Ziele erreichen
+- Inline-Hilfetext wechselt zu Tippen-zum-Anzeigen, nicht Hover
+- Der „Gefahrenzone"-Abschnitt wird auf Mobil vollständig statt kollabiert angezeigt, da er irreversible Aktionen enthält und Nutzer sie klar sehen sollen
+
+## Fallstricke
+
+- **Features amputieren.** Wenn die Mobilversion Dinge versteckt, die die Desktop-Version kann, ist das ein Rückschritt, keine Anpassung. Kämpfen Sie für das Feature.
+- **Mobil als „kleineren Desktop" behandeln.** Mobil ist ein anderer Kontext: Daumen, Unterbrechungen, kurze Sitzungen. Passen Sie sich dem Kontext an, nicht der Viewport-Breite.
+- **`/impeccable harden` danach überspringen.** Responsive Layouts decken Randfälle auf. Führen Sie das Hardening nach adapt aus, um die zu erfassen, die nur bei 320px auftauchen.

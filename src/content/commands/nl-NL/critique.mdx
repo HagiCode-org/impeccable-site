@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Een ontwerpbeoordeling met scoring, personatests en geautomatiseerde detectie.
+highlights:
+  - Je wilt bevindingen over zwakke ontwerpkeuzes, geen volledige herbouw vanaf nul.
+  - Je hebt scoring, ontwerpargumentatie en waarschijnlijke volgende stappen nodig.
+  - De interface werkt maar voelt nog steeds niet goed.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI-romp verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristieken (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Zichtbaarheid van status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Overeenkomst met de echte wereld</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistentie & standaarden</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Foutpreventie</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Herkenning boven herinnering</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Persona's</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">De beoordelaar</span>
+              <span class="docs-viz-critique-persona-note">Vergelijkt ons met twee alternatieven op een dinsdagavond.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">De terugkerende gebruiker</span>
+              <span class="docs-viz-critique-persona-note">Kent het product, op mobiel, haastig.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">De scepticus</span>
+              <span class="docs-viz-critique-persona-note">Heeft elke SaaS-landingspagina gezien en verveelt zich.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">De twee analyses (LLM-ontwerpbeoordeling plus de deterministische detector) worden samengevoegd tot één geprioriteerde lijst. Wat werkt, wat te repareren, en de prikkelende vragen die het waard zijn om te beantwoorden voordat je levert.</p>
+</div>
+
+## Wanneer te gebruiken
+
+Gebruik `/impeccable critique` wanneer je een eerlijke tweede mening wilt over iets dat je al hebt gebouwd. Niet "werkt het" maar "is het goed". De skill scoort je interface tegen Nielsens 10 heuristieken, voert cognitieve belastingcontroles uit, test door persoonlensen, en kruisverwijst met een geautomatiseerde detector voor 25 concrete anti-patronen.
+
+Gebruik het wanneer een pagina functioneel klaar is en je wilt weten of het opzettelijk overkomt of als AI-romp.
+
+## Hoe het werkt
+
+`/impeccable critique` voert twee onafhankelijke beoordelingen parallel uit zodat ze elkaar niet beïnvloeden.
+
+De eerste is een **LLM-ontwerpbeoordeling**: het model leest je broncode, inspecteert visueel de live pagina als browserautomatisering beschikbaar is, en doorloopt de volledige DO/DON'T-catalogus van de impeccable skill. Het scoort Nielsens heuristieken, telt cognitieve belastingsfouten, traceert de emotionele reis door de flow en markeert AI-romp.
+
+De tweede is een **geautomatiseerde detector** (`npx impeccable detect`) die deterministisch kleurovergangstekst, paarse paletten, zijtab-randen, geneste kaarten, regellengteproblemen en de andere zichtbare vingerafdrukken van generieke AI-output vindt.
+
+De twee rapporten worden samengevoegd tot één geprioriteerde lijst: wat werkt, de drie tot vijf dingen die gerepareerd moeten worden, en de prikkelende vragen die het waard zijn om te beantwoorden voordat je levert.
+
+## Probeer het
+
+Wijs het naar een pagina:
+
+```
+/impeccable critique the homepage hero
+```
+
+Je krijgt een gescoord rapport terug. Typische vorm:
+
+- **AI-romp verdict**: geslaagd / mislukt met de specifieke signalen
+- **Heuristiekscores**: 10 getallen, 0 tot 4
+- **Cognitieve belasting**: foutenaantal van 8
+- **Prioriteitsproblemen**: drie tot vijf items, elk met wat, waarom en oplossing
+- **Te beantwoorden vragen**: de vragen die de interface zelf niet voor je kan beslissen
+
+Van daaruit kun je combineren met `/impeccable polish` of `/impeccable distill` om de reparaties uit te voeren.
+
+## Valkuilen
+
+- **Het uitvoeren op onvolledig werk.** Critique is voor afgeronde pagina's. Een lege status met drie TODO's scoort slecht omdat het niet klaar is, niet omdat het slecht is.
+- **De vragen aan het einde negeren.** Ze zijn meestal de reparaties die het ontwerp het meest veranderen.
+- **De heuristiekscores behandelen als een cijfer.** Ze zijn diagnostisch, niet evaluatief. Een 3/4 op een heuristiek die minder belangrijk is voor jouw context is prima.

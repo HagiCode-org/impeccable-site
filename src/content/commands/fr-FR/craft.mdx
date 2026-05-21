@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Concevez, puis construisez, le tout en un seul flux.
+highlights:
+  - Vous démarrez une nouvelle fonctionnalité de zéro.
+  - Vous voulez découverte, implémentation et raffinement visuel en un seul passage.
+  - Vous préférez une boucle de construction plus lente mais plus délibérée.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Entretien de découverte. Objectif, utilisateurs, contraintes, direction.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Charger les références</span>
+      <span class="docs-viz-flow-hint">Spatial, typographie, mouvement, couleur, interaction.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Construire</span>
+      <span class="docs-viz-flow-hint">Structure, hiérarchie, typographie, couleur, états, mouvement, responsive.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Itérer visuellement</span>
+      <span class="docs-viz-flow-hint">Vérifier dans le navigateur, raffiner jusqu'à correspondance avec le cahier des charges.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Chaque phase est incontournable. L'étape de découverte est là où la plupart des sorties IA échouent : au moment où le code existe, la réflexion est figée.</p>
+</div>
+
+## Quand l'utiliser
+
+`/impeccable craft` est la commande de construction de bout en bout. Donnez-lui une description de fonctionnalité et elle exécute tout le pipeline : découverte structurée, chargement des références, implémentation, itération visuelle. Utilisez-la lorsque vous démarrez une nouvelle fonctionnalité de zéro et que vous voulez le flux complet en une seule invocation.
+
+Utilisez-la lorsque :
+
+- **Vous construisez une nouvelle fonctionnalité et voulez le flux complet.** Vous ne voulez pas gérer les étapes vous-même.
+- **Vous savez ce que vous construisez mais pas à quoi ça devrait ressembler.** La phase de découverte impose la réflexion de conception avant que l'implémentation ne la fige.
+- **Vous voulez l'itération visuelle par défaut.** `craft` vérifie le résultat dans un navigateur et raffine jusqu'à ce que la finition soit élevée, au lieu de livrer la première version fonctionnelle.
+
+Si vous ne voulez que la réflexion sans le code, utilisez `/impeccable shape` seul. Si vous avez déjà une vision claire et voulez juste construire, appelez `/impeccable` directement avec votre description de fonctionnalité. `craft` se situe entre les deux : structuré, complet, opinioné.
+
+## Comment ça marche
+
+`craft` exécute quatre phases dans l'ordre :
+
+1. **Concevoir.** Exécute `/impeccable shape` en interne : un court entretien de découverte sur l'objectif, les utilisateurs, le contenu, les contraintes et les buts. Le résultat est un cahier des charges de conception que vous pouvez lire et discuter.
+2. **Charger les références.** À partir du cahier des charges, charge les bons fichiers de référence (spatial, typographie, mouvement, couleur, interaction, responsive, rédaction UX) pour que le modèle ait les principes pertinents chargés avant de commencer à coder.
+3. **Construire.** Implémente la fonctionnalité dans un ordre délibéré : structure d'abord, puis espacement et hiérarchie, puis typographie et couleur, puis états, puis mouvement, puis responsive. Chaque décision remonte au cahier des charges.
+4. **Itération visuelle.** Ouvre le résultat dans un navigateur, le compare au cahier des charges et au catalogue d'anti-patterns, et raffine jusqu'à correspondance avec l'intention. Cette étape est critique. La première version fonctionnelle n'est jamais la version livrée.
+
+La phase de découverte est incontournable et c'est le but. La plupart des interfaces générées par l'IA échouent parce que personne n'a demandé ce que l'utilisateur essayait d'accomplir avant que le modèle ne commence à écrire du JSX. `craft` inverse cet ordre.
+
+## Essayez
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Attendez-vous d'abord à un entretien de découverte de 5 à 10 questions. Des questions sur votre audience, la personnalité du produit, le ton émotionnel souhaité, les anti-références et les contraintes. Puis un cahier des charges de conception. Ensuite l'implémentation, avec le navigateur vérifié à chaque étape. Attendez-vous à plusieurs cycles d'itération dans la phase de finition visuelle.
+
+L'ensemble de l'exécution est plus long qu'une commande typique car il inclut la réflexion, la construction et le raffinement. C'est le compromis : plus de structure en amont, moins de corrections en aval.
+
+## Pièges courants
+
+- **L'utiliser pour des petites modifications.** `craft` est pour les nouvelles fonctionnalités, pas les retouches. Pour du code existant, tournez-vous vers `/impeccable polish`, `/impeccable critique` ou une commande de raffinement spécifique.
+- **Bâcler la phase de découverte.** L'entretien semble lent comparé à « commencer directement à coder ». Il ne l'est pas. Répondre soigneusement aux questions produit un cahier des charges plus précis, qui produit une construction plus précise, qui produit moins de réécritures.
+- **Sauter l'itération visuelle.** Cette phase existe pour une raison. L'écart entre « techniquement fonctionnel » et « ça rend bien » se comble par la finition visuelle, pas par la revue de code. Laissez-la tourner.

@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Kafa karıştırıcı UX kopyasını yeniden yazın, böylece arayüzler kendilerini açıklar.
+highlights:
+  - Kullanıcılar belirsiz ifadeler nedeniyle tereddüt ediyor.
+  - Arayüz daha iyi talimat veya hata kopyası gerektiriyor.
+  - Ürün akışı iyi ama dil insanları yavaşlatıyor.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Ne zaman kullanılır
+
+`/impeccable clarify`, insanları durup düşünmeye iten arayüz metni içindir. Kafa karıştırıcı etiketler, belirsiz buton kopyaları, kullanıcıyı suçlayan hata mesajları, etiketi tekrarlayan araç ipuçları, hiçbir yararlı şey söylemeyen boş durumlar. Sorun düzen veya renk değil, kelimeler olduğunda kullanın.
+
+İyi tetikleyiciler: "kullanıcılar bu alanı anlamıyor", "hata mesajı yardımcı değil", "iyi buton kopyası yazamıyorum", "bu araç ipucu israf".
+
+## Nasıl çalışır
+
+Yetenek, çoğu UX kopyası sorununun yaşadığı yüzeylerde metni yeniden yazar:
+
+1. **Etiketler ve alan ipuçları**: doğrudan, spesifik, ne beklendiğini söyler.
+2. **Buton kopyası**: eylemi değil sonucu tanımlayan, fiil-öncelikli. "Tamam" değil "Değişiklikleri kaydet".
+3. **Hata mesajları**: neyin yanlış gittiğini, kimin suçu olduğunu ve ne yapılması gerektiğini açıklar. Asla kullanıcıyı suçlamaz.
+4. **Boş durumlar**: kullanıcıyı yönlendirir, durumun neden boş olduğunu açıklar, bir sonraki adım sunar.
+5. **Araç ipuçları ve yardımcı metin**: etiketin taşıyamayacağı bilgiyi ekler, asla tekrarlamaz.
+6. **Onay iletişim kutuları**: eylemi değil sonuçları adlandırır.
+
+Yetenek, sesi ayarlamak için `PRODUCT.md` dosyasındaki izleyici ve zihin durumunu kullanır. Teknik izleyici kesin dil alır. Tüketici izleyici düz konuşma alır. Aceleci kullanıcılar kısa metin alır. Endişeli kullanıcılar (ödeme, silme) güvence alır.
+
+## Deneyin
+
+```
+/impeccable clarify the billing form
+```
+
+Öncesi ve sonrası, tipik:
+
+- Etiket "Fatura adresi" → "Kartınızdaki adres"
+- Yer tutucu "KDV numaranızı girin" → "KDV No (isteğe bağlı, işletmeler için)"
+- Hata "Geçersiz giriş" → "Bu kart numarası 15 haneli. 14 hane girdiniz."
+- Buton "Gönder" → "29$ tahsil et ve abone ol"
+- Boş durum "Henüz işlem yok" → "İlk işleminiz ilk siparişinizden sonra burada görünecek."
+
+## Tuzaklar
+
+- **Daha net değil, daha zekice yazmak.** Clarify ses yükseltmeleri için değildir. Kopya zaten açıksa, bu yeteneğe başvurmayın. Kişilik istediğinizde `/impeccable delight` kullanın.
+- **İzleyici sorusunu atlamak.** Clarify kimin okuduğunu bilmeli. `PRODUCT.md` izleyici teknik seviyesini belirtmiyorsa, yeniden yazımlar genel olacaktır.
+- **Pazarlama kopyasında clarify çalıştırmak.** Clarify işlevsel UX metni içindir: etiketler, hatalar, talimatlar. Pazarlama kopyası farklı bir hamle setine ve insan bir yazara ihtiyaç duyar.

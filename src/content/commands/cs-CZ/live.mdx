@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Iterujte UI v prohlizeci. Vyberte prvek, pridajte komentar, ziskate tri varianty. Potvrdte jednu a ona se zapise do zdrojoveho kodu.
+highlights:
+  - Dev server jiz existuje.
+  - Chcete porovnat moznosti primo na vykreslenem UI.
+  - Nejrychlejsim dalsim krokem je ridena vizualni experimentace.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Vizte v akci, s animovanou demou, na <a href="/live-mode">/live-mode</a>. Tato stranka je referencni pro to, co vasi AI harness cte, kdyz se prikaz spusti.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Stav: alpha.</strong> Live Mode funguje end-to-end a je pripraven k vyzkouseni, ale stale potrebuje vice testovani na realnych repozitarich a konfiguracich frameworku. Ocekavejte drsne hrany u neobvyklych nastaveni a prosime hlaste, co se pokazi.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode uprostred cyklu: vyberovaci nastroj oramuje prvek, ktery jste vybrali, kontextovy panel ukazuje, na ktere variante jste, a globalni panel zusta pripnuty dole. Potvrzeni teto varianty zapise Variantu 2 zpet do zdrojoveho kodu.</p>
+</div>
+
+## Kdy pouzit
+
+Siahnete po `/impeccable live`, kdyz chcete iterovat na necem vizualne tak, jak byste to delali v designovem nastroji, ale zachovat produkci kod jako vystup. Pruchod podobny platne Figma bez cesty zpet k implementacnimu kroku.
+
+Pouzijte pro:
+
+- **Průzkum smeru na realnem prvku.** Hero sekce, newsletterova karta, cenova uroven. Tri skutecne odlisne navrhy, vedle sebe, na skutecne strance ve skutecnem kontextu.
+- **Leyteni UI, ktere je temer spravne.** Vite, co vypada spatne, ale nemuzete to presne rici. Vyberte prvek, naskicujte "vice hrave" nebo nakreslete caru pres cast, ktera vas otravuje, a stisknete Go.
+- **Rychly A/B test mezi dvema smerovy, o kterých se vas tym hada.** Vygenerujte varianty, nic nepotvrdte, odejdete. Bodem bylo srovnani.
+
+Neni pro nove zelene louky (siahnete po `/impeccable craft`) ani celostrankove redesigny (siahnete po `/impeccable` nebo specializovanem prikazu pro rafinaci).
+
+## Jak to funguje
+
+Jeden prikaz zobrazi vyberovy prekryv nad bezicim dev serverem. Vyberte jakykoli prvek. Vedle neho se zobrazi maly kontextovy panel. Napisete volny popis nebo vyberete jeden z akcnich chipu (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Volitelne muzete nejprve umistit pin s komentarem nebo nakreslit tahy primo na prvku a dovednost je precte jako umysl.
+
+Stisknete Go. Tri **varianty produkce kvality** se vygeneruji, kazda ukotvena ke skutecne odlisnemu designovemu archetypu (ne tri variace na barve) a hot-swapped do stranky pres HMR vaseho frameworku. Projizdetejte sipkami. Potvrdte jednu a varianta se zapise zpet do zdrojoveho kodu. Zahodte vsechny tri a original zustava.
+
+Podporuje Vite, Next.js (vcetne monorepos), SvelteKit, Astro, Nuxt a plain static HTML. Pokud ma vas dev server striktni Content Security Policy, nastaveni pri prvním spusteni to detekuje a nabidne jednorazovou, dev-only opravu, aby se vyberovaci nastroj mohl nacist. `DESIGN.md` ma prednost u vizualnich rozhodnuti, `PRODUCT.md` ma prednost u hlasu: pokud mate oboji, varianty zustavaji ve znacke bez toho, aby jim to bylo receno.
+
+## Vyzkousejte to
+
+```
+/impeccable live
+```
+
+Otevrete URL vaseho dev serveru, vyberte kartu pro prihlaseni k newsletteru, kliknete na chip `delight` a stisknete Go. Ziskate tri varianty, ktere se lisi napric dimenzemi osobnosti (pocit znacky a pohlednice, typograficke-prekvapeni verze, ilustrovany-akcent), ne tri variace na stejne uprave.
+
+Nebo vyberte hero, napisete "vice editorialne, mene SaaS", stisknete Go. Tri varianty se ukoti k ruznym editorialnim archetypum (zahlavi broadsheet, katalogove radky spec, poster s prehnanymi glyfy) misto trech odcieniu stejneho napadu.
+
+Zastavte live mode, az budete hotovi: reknete "stop live mode", zavrete kartu nebo stisknete tlacitko ukonceni na panelu vyberu.
+
+## Na co si dat pozor
+
+- **Spusteni na strance, ktera je jeste napul rozepsana.** Generovani variant v live rezimu potrebuje kontext. Pokud ma prvek zastupny text, obecny Lorem ipsum nebo prednastavene formatovani pred stylesheetem, varianty to odrazi. Nejprve vyplnte obsah.
+- **Ocekavani, ze udelá makro rozhodnuti.** Live mode iteruje na jednom vybraném prvku. Pro "predelat celou cenovou stranku" siahnete po `/impeccable` nebo `/impeccable craft`.
+- **Ignorovani zaloznich zprav.** Pokud prvek lezi v generovaném souboru (zkompilovana sablona, vystup sestavení), vyberovaci nastroj to rekne explicitne a nabidne presmerovani potvrzeni do skutecneho zdroje. Nevynucujte potvrzeni do generovaneho souboru: pristi sestaveni to smaze.
+- **Spusteni bez PRODUCT.md nebo DESIGN.md, kdyz vam zalezi na souladu se znackou.** Live stale generuje, ale varianty se prikloni k obecnym vychozim hodnotam. Spustte nejprve `/impeccable teach` a `/impeccable document`, pokud ma vysledek zni jako vas produkt.

@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Tek renkli arayüzlere gösterişsiz kalmadan stratejik renk ekleyin.
+highlights:
+  - Arayüz yetkin ama unutulmaz görünüyor.
+  - Tüm yapıyı yeniden yazmadan daha net vurgu gerekiyor.
+  - Mevcut palet hedeflenen ruh halini taşımıyor.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Ne zaman kullanılır
+
+`/impeccable colorize`, "her şey gri"e karşıt ağırlıktır. Bej bir duvar gibi okunan panolar, vurgusu olmayan formlar, herhangi bir SaaS ürünü olabilecek içerik sayfaları. Arayüz işlevsel ama duygusal olarak düz olduğunda ve AI renk paletine (mordan pembeye, camgöbeği neon, karanlık mod parıltısı) kaymadan sıcaklık istediğinizde kullanın.
+
+## Nasıl çalışır
+
+Yetenek önce varsa marka renginizi okur, ardından rengin yerini hak ettiği yere karar verir:
+
+1. **Birincil eylem** marka tonunun en güçlü ifadesini alır.
+2. **İkincil vurgular** soluk veya renklendirilmiş varyantlar alır, ikinci bir tam renk değil.
+3. **Nötrler** düşük kromada (yaklaşık 0.005 ile 0.01) marka tonuna doğru renklendirilir, bu piksel başına neredeyse görünmezdir ancak bilinçaltı uyum yaratır.
+4. **İçerik kategorileri** bir gökkuşağı değil, sınırlı, kasıtlı bir vurgu sistemi alır.
+
+Önemli bir nokta, eşit hafiflik adımlarının eşit görünmesi için HSL yerine OKLCH kullanır. Hafiflik uçlara doğru hareket ettikçe, kroma otomatik olarak düşer. Bu, hesaplanmış değil düşünülmüş hissettiren renk elde etmenin yoludur.
+
+## Deneyin
+
+```
+/impeccable colorize the dashboard
+```
+
+Beklenen değişiklikler:
+
+- Marka rengi sabit kodlanmış bir onaltılık değerden `--color-accent: oklch(62% 0.18 240)` değerine taşındı
+- Nötrler, marka tonuna doğru 0.007 kroma ile renklendirildi
+- Birincil buton tam vurguyu alır, ikincil butonlar mürekkep/sis alır
+- Grafik serisi 3 ayrı ton kullanır, hepsi eşleştirilmiş hafiflikte, böylece hiçbir seri görsel olarak baskın değil
+- Boş durum çizimi yumuşak bir vurgu yıkama alır
+
+## Tuzaklar
+
+- **Marka tonu olmadan çalıştırmak.** Colorize bir başlangıç noktasına ihtiyaç duyar. `PRODUCT.md` bir tane belirtmiyorsa, soracaktır. AI renk paleti varsayılanlarından seçmesine izin vermeyin.
+- **AI renk paleti sorununu düzeltmesini beklemek.** Tasarımınızda zaten mor gradyanlar ve camgöbeği neon varsa, önce `/impeccable quieter` komutuna, ardından colorize ile yeniden oluşturmaya ihtiyacınız var.
+- **Zaten renkli arayüzlerde kullanmak.** Bu bir `/impeccable quieter` işidir. Colorize ekler, çıkarmaz.

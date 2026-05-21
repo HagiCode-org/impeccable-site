@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Gor granssnitt produktionsklara. Kantfall, i18n, feltillstand, overflow.
+highlights:
+  - Den lyckliga vägen fungerar, men verkliga tillstand känns fortfarande sköra.
+  - Du behovr stanga leveransluckor fore release.
+  - Felhantering och robusthet betyder mer an att lägga till ny flair.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Nar du ska anvanda det
+
+`/impeccable harden` ar for dagen da ditt granssnitt möter verkligheten. Riktig anvandardata ar rörig: namn som ar 60 tecken langa, produkttitlar pa tyska, priser i miljarder, 500-fel, offlinelagen, hoger-till-vanster-text. Design som bara fungerar med perfekt data ar inte produktionsklar.
+
+Anvand det fore lansering, fore oppning for en ny marknad, eller nar som helst en felrapport borjar med "var anvandare hade ett riktigt langt namn och". For forstakörsfloden, tom-tillstand-aktivering och onboarding-design, anvand `/impeccable onboard` istallet.
+
+## Hur det fungerar
+
+Fardigheten arbetar genom fyra dimensioner av verklig robusthet:
+
+1. **Text- och dataextremer**. Lang text, kort text, specialtecken, emoji, RTL, nummer i miljarder, 1000-postlistor.
+2. **Felscenarier**. Natverksfel, API 4xx/5xx, valideringsfel, behorighetsfel, hastighetsbegränsningar, samtidiga operationer.
+3. **Internationalisering**. Langa oversattningar (tyska ar ofta 30% langre an engelska), RTL-sprak, datum- och nummerformat, valutasymboler, teckenuppsattningar.
+4. **Enhet och kontext**. Tryckmal, offlinebeteende, langsamma anslutningar, lagenergilage.
+
+For varje dimension identifierar den felläget, tillämpar sedan den konkreta losningen: overflow-hantering, informativ fel-UI, i18n-sakra layouter, pluralisering, fornuftiga fallbacks.
+
+## Prova det
+
+Borja med en sida och en dimension:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Forvintad utmatning:
+
+- `.user-name` har nu `text-overflow: ellipsis` med ett verktygstips for det fullständiga värdet
+- `.bio` bytte fran fast hojd till `max-height` med en "visa mer"-avslöjare
+- Lade till ett tomt tillstand for anvandare utan bio
+- Lade till ett skelettladdare for den asynkrona avatar-hamtningen
+- Testat vid namnlangder 1, 20, 60, 200 tecken
+
+Kor det per sida, inte allt pa en gang. Den forsta körningen ar den största; efterfoljande körningar hittar färre problem allteftersman monster stabiliseras.
+
+## Fallgropar
+
+- **Att vanta pa en felrapport.** Harden ar forebyggande. Om du haller pa att fixa samma typ av fel tva ganger, kor `/impeccable harden` over funktionen.
+- **Att behandla fel- och tomatillstand som en eftertanke.** De flesta hardening-arbeten ar fel- och tomatillstands-UI. Budgetera tid for det, inte bara ett `catch`-block.
+- **Att hoppa over i18n for att "vi ar endast engelska for narvarande".** i18n-sakra layouter ar fortfarande battre layouter. Flexibla behallare, korrekt textradbrytning, generos radhojd. Ingen av det skadar engelska.

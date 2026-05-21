@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Dodaj strategiczny kolor do monochromatycznych interfejsów bez wpadania w krzykliwość.
+highlights:
+  - Interfejs wygląda kompetentnie, ale jest niezapamiętywalny.
+  - Potrzebujesz wyraźniejszego akcentu bez przepisywania całej struktury.
+  - Obecna paleta nie niesie zamierzonego nastroju.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Kiedy używać
+
+`/impeccable colorize` jest przeciwagą dla "wszystko jest szare". Dashboardy, które czytają się jak beżowa ściana, formularze bez akcentu, strony treści, które mogłyby być dowolnym produktem SaaS. Sięgnij po nią, gdy interfejs jest funkcjonalny, ale emocjonalnie płaski, i chcesz ciepła bez wpadania w paletę kolorystyczną AI (fiolet-do-różowego, cyjanowy neon, dark mode z poświatą).
+
+## Jak to działa
+
+Umiejętność zaczyna od odczytania twojego koloru marki, jeśli taki istnieje, a potem decyduje, gdzie kolor zasługuje na swoje miejsce:
+
+1. **Główna akcja** dostaje najsilniejszą ekspresję odcienia marki.
+2. **Drugorzędne akcenty** dostaje wyciszone lub odcieniowe warianty, nie drugi pełny kolor.
+3. **Neutrale** dostają zabarwienie w kierunku odcienia marki przy niskiej chromie (około 0.005 do 0.01), co jest prawie niewidoczne na piksel, ale tworzy podświadomą spójność.
+4. **Kategorie treści** dostają ograniczony, celowy system akcentów, nie tęczę.
+
+Co ważne, używa OKLCH zamiast HSL, żeby równe kroki jasności wyglądały równie. Gdy jasność przesuwa się ku skrajnościom, chroma spada automatycznie. Tak otrzymujesz kolor, który wydaje się przemyślany, a nie wyliczony.
+
+## Wypróbuj
+
+```
+/impeccable colorize the dashboard
+```
+
+Oczekiwany diff:
+
+- Kolor marki przeniesiony z zakodowanego hex do `--color-accent: oklch(62% 0.18 240)`
+- Neutrale zabarwione chromą 0.007 w kierunku odcienia marki
+- Główny przycisk dostaje pełny akcent, drugorzędne przyciski dostają ink/mist
+- Seria wykresu używa 3 odrębnych odcieni, wszystkie przy dopasowanej jasności, więc żadna seria nie dominuje wizualnie
+- Ilustracja stanu pustego podbiera miękkie płukanie akcentem
+
+## Pułapki
+
+- **Uruchamianie bez odcienia marki.** Colorize potrzebuje punktu startowego. Jeśli `PRODUCT.md` go nie określa, zapyta. Nie pozwól mu wybrać z domyślnej palety kolorystycznej AI.
+- **Oczekiwanie, że naprawi problem palety AI.** Jeśli twój projekt już ma fioletowe gradienty i cyjanowy neon, potrzebujesz najpierw `/impeccable quieter`, a potem colorize może odbudować.
+- **Używanie na już kolorowych interfejsach.** To zadanie dla `/impeccable quieter`. Colorize dodaje, nie odejmuje.

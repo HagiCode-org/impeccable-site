@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Tona ner designer som skriker utan att forora deras avsikt.
+highlights:
+  - Starka idéer finns, men sidan ar for hogtljuten.
+  - Du behovr aterhallsamhet utan att bli smaklos.
+  - Den nuvarande tonen overväldigar lasning eller uppgiftsflode.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Nar du ska anvanda det
+
+`/impeccable quieter` ar motvikten till `/impeccable bolder`. Anvand det nar ett gransnitt ar visuellt aggressivt, overstimulerande eller forsoker gora for manga saker pa full volym. Neon pa mörkt, gradient-text overallt, 6 accentfarger, allting animerat, 20px skuggor. Använd quieter nar designen behovr andas och du vill ha forfining utan att forora standpunkten.
+
+Oven anvandbart nar `/impeccable bolder` gar lite for langt.
+
+## Hur det fungerar
+
+Fardigheten arbetar genom reduktion over fyra axlar:
+
+1. **Farg**: avmatta, sank kroma i OKLCH, dra tillbaka accenter till en enda primär plus dämpad stod. Inte mer an tva avsiktliga farger.
+2. **Kontrast**: mjuka upp extrema mörka och ljusa, dra in intervallet. Bakgrunder flyttas fran ren vit och ren svart till papper och bläck.
+3. **Dekoration**: ta bort skuggor som inte gor jobb, slopa kantlinjer som inte bar struktur, pensionera gradienter som existerar for energi snarare an hierarki.
+4. **Rorelse och effekt**: sakta ner animationer, ta bort nonting som automatiskt spelas, slopa parallax och oskerpa om de inte tjänar lasbarhet.
+
+Fardigheten bevarar designens avsikt. Om originalet hade en standpunkt, har den tystare versionen samma standpunkt med mer sjalvsakerhet. Forfining, inte neutralisering.
+
+## Prova det
+
+```
+/impeccable quieter the pricing page
+```
+
+Typisk diff:
+
+- Gradient-text pa priset borttagen, erstatt med solidt bläck vid en vikt tungre
+- Tre accentfarger reducerade till en (magenta), de andra tva blir neutrala varianter
+- Kortskuggor reducerade fran `0 20px 40px rgba(0,0,0,0.2)` till `0 1px 0 var(--color-mist)` (en harlinje)
+- Bakgrund byter fran mörk gradient till papper med en subtil gräddtvätt pa toppen
+- Hero-animation fran 1.2s easeOut med 3 fördröjda element till en enda 260ms toning-in
+
+## Fallgropar
+
+- **Over-applicering.** Quieter kan ta bort personlighet om du kor det pa nonting som redan var matat. Använd det nar designen ar for hogtljuten, inte nar den ar ratt assertiv.
+- **Att forvxla quieter med distill.** Quieter reducerer intensitet. Distill tar bort element. De ar olika rörelser.
+- **Att kora det som svar pa en kritik som sager "for upptagen".** Upptagen betyder vanligtvis for manga saker, inte for hogtljuten. Prova `/impeccable distill` forst.

@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Tinjauan desain dengan penilaian, uji persona, dan deteksi otomatis.
+highlights:
+  - Anda menginginkan temuan tentang pilihan desain yang lemah, bukan membangun ulang dari awal.
+  - Anda membutuhkan penilaian, penalaran desain, dan langkah selanjutnya yang mungkin.
+  - Antarmuka berfungsi tetapi masih terasa kurang tepat.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Verdict AI slop</span>
+        <span class="docs-viz-critique-verdict-value">GAGAL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristik (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibilitas status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Kesesuaian dengan dunia nyata</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Konsistensi & standar</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Pencegahan kesalahan</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Pengenalan daripada pengingat</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Persona</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Sang evaluator</span>
+              <span class="docs-viz-critique-persona-note">Membandingkan kita dengan dua alternatif pada Selasa malam.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Pengguna yang kembali</span>
+              <span class="docs-viz-critique-persona-note">Mengenal produk, di ponsel, terburu-buru.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Sang skeptis</span>
+              <span class="docs-viz-critique-persona-note">Sudah melihat setiap landing SaaS dan bosan.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Dua analisis (tinjauan desain LLM plus detektor deterministik) digabungkan menjadi satu daftar prioritas. Apa yang berfungsi, apa yang perlu diperbaiki, dan pertanyaan provokatif yang layak dijawab sebelum pengiriman.</p>
+</div>
+
+## Kapan menggunakannya
+
+Gunakan `/impeccable critique` ketika Anda menginginkan opini jujur kedua tentang sesuatu yang sudah Anda bangun. Bukan "apakah ini berfungsi" tetapi "apakah ini bagus". Skill menilai antarmuka Anda terhadap 10 heuristik Nielsen, menjalankan pemeriksaan beban kognitif, menguji melalui lensa persona, dan mereferensi silang detektor otomatis untuk 25 anti-pola konkret.
+
+Gunakan ketika sebuah halaman secara fungsional selesai dan Anda ingin tahu apakah terbaca sebagai disengaja atau sebagai AI slop.
+
+## Cara kerjanya
+
+`/impeccable critique` menjalankan dua penilaian independen secara paralel agar tidak saling memengaruhi.
+
+Yang pertama adalah **tinjauan desain LLM**: model membaca sumber Anda, memeriksa halaman langsung secara visual jika otomasi browser tersedia, dan menelusuri katalog LAKUKAN/JANGAN LAKUKAN skill impeccable secara lengkap. Skill menilai heuristik Nielsen, menghitung kegagalan beban kognitif, melacak perjalanan emosional melalui alur, dan menandai AI slop.
+
+Yang kedua adalah **detektor otomatis** (`npx impeccable detect`) yang secara deterministik menemukan teks gradien, palet ungu, batas tab samping, kartu bersarang, masalah panjang baris, dan sidik jari terlihat lainnya dari output AI generik.
+
+Dua laporan digabungkan menjadi satu daftar prioritas: apa yang berfungsi, tiga hingga lima hal yang perlu diperbaiki, dan pertanyaan provokatif yang layak dijawab sebelum pengiriman.
+
+## Cobalah
+
+Arahkan ke sebuah halaman:
+
+```
+/impeccable critique the homepage hero
+```
+
+Anda mendapatkan laporan bernilai. Bentuk tipikal:
+
+- **Verdict AI slop**: lolos / gagal dengan tanda spesifik
+- **Skor heuristik**: 10 angka, 0 hingga 4
+- **Beban kognitif**: jumlah kegagalan dari 8
+- **Masalah prioritas**: tiga hingga lima item, masing-masing dengan apa, mengapa, dan perbaikan
+- **Pertanyaan untuk dijawab**: pertanyaan yang antarmuka itu sendiri tidak dapat putuskan untuk Anda
+
+Dari sana, pasangkan dengan `/impeccable polish` atau `/impeccable distill` untuk bertindak pada perbaikan.
+
+## Jebakan
+
+- **Menjalankannya pada pekerjaan yang belum selesai.** Critique untuk halaman yang sudah jadi. Status kosong dengan tiga TODO akan mendapat skor buruk karena memang belum selesai, bukan karena buruk.
+- **Mengabaikan pertanyaan di akhir.** Mereka biasanya adalah perbaikan yang paling mengubah desain.
+- **Memperlakukan skor heuristik sebagai nilai.** Mereka diagnostik, bukan evaluatif. 3/4 pada heuristik yang kurang penting untuk konteks Anda tidak masalah.

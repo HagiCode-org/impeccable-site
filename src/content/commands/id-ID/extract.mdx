@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Tarik komponen, token, dan pola yang dapat digunakan kembali ke dalam sistem desain.
+highlights:
+  - Beberapa komponen menyelesaikan masalah yang sama secara berbeda.
+  - Token dan pola perlu dipusatkan.
+  - Anda menginginkan sistem visual yang lebih mudah dipelihara.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Temukan penyimpangan</span>
+      <span class="docs-viz-flow-hint">Nilai hex berulang, varian tombol, skala jarak, gaya teks.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Usulkan primitif</span>
+      <span class="docs-viz-flow-hint">Nama token, API komponen dengan varian + ukuran, gaya teks.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrasi lokasi panggilan</span>
+      <span class="docs-viz-flow-hint">Ganti CSS duplikat dengan primitif baru. Tidak ada kode yatim yang tertinggal.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Skill hanya mengekstrak apa yang digunakan tiga kali atau lebih dengan maksud yang sama. Dua penggunaan bukan pola, dan migrasi selalu terjadi dalam proses yang sama.</p>
+</div>
+
+## Kapan menggunakannya
+
+`/impeccable extract` untuk momen ketika codebase Anda secara tidak sengaja menjadi sistem desain. Gaya tombol berulang di 12 tempat. Tiga varian kartu yang sama. Warna hex tersebar di mana-mana. Jarak buatan tangan yang secara tidak sengaja cocok dengan skala. Gunakan ketika Anda ingin mengkonsolidasikan penyimpangan ini menjadi primitif yang dapat digunakan kembali.
+
+Gunakan setelah produk telah mengirim cukup fitur untuk mengungkapkan pola. Ekstraksi prematur menciptakan abstraksi yang tidak cocok dengan kenyataan.
+
+## Cara kerjanya
+
+Skill menemukan struktur sistem desain terlebih dahulu, kemudian mengidentifikasi peluang ekstraksi:
+
+1. **Token**: temukan nilai literal berulang (warna, jarak, radius, bayangan, ukuran font). Usulkan nama token, tambahkan ke sistem token, ganti penggunaan.
+2. **Komponen**: temukan pola UI yang berulang dengan variasi kecil (tombol, kartu, input, modal). Ekstrak ke komponen tunggal dengan varian, migrasi pemanggil.
+3. **Pola komposisi**: temukan pola tata letak atau interaksi yang berulang (baris formulir, grup toolbar, status kosong). Ekstrak ke primitif komposisi.
+4. **Gaya teks**: temukan kombinasi font-size + weight + line-height yang berulang. Ekstrak ke gaya teks.
+5. **Pola animasi**: temukan kombinasi easing, durasi, atau keyframe yang berulang. Ekstrak ke token gerak.
+
+Skill berhati-hati. Skill hanya mengekstrak hal yang digunakan tiga kali atau lebih, dengan maksud yang sama. Skill tidak pernah mengekstrak "karena mungkin digunakan kembali nanti". Abstraksi prematur lebih buruk daripada duplikasi.
+
+## Cobalah
+
+```
+/impeccable extract the button styles
+```
+
+Output yang diharapkan:
+
+- Ditemukan 14 instance tombol di 8 file
+- 4 varian berbeda: primary (accent terisi), secondary (berbatas), ghost (hanya teks), destructive (merah terisi)
+- Semua 4 varian menggunakan skala ukuran yang sama (kecil, default, besar)
+- Diekstrak ke `<Button variant="primary" size="default">` dengan gaya berbasis token
+- Dimigrasi 14 lokasi panggilan, menghapus ~180 baris CSS duplikat
+- Menambahkan 3 token yang hilang: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Jebakan
+
+- **Mengekstrak terlalu dini.** Dua penggunaan bukan pola. Tiga mungkin. Tunggu sampai polanya jelas.
+- **Terlalu menggeneralisasi.** Komponen yang diekstrak harus cocok dengan kasus penggunaan saat ini dengan dekat, bukan mengantisipasi setiap kemungkinan masa depan. Anda selalu dapat menambahkan varian nanti.
+- **Lupa migrasi.** Ekstraksi tanpa migrasi meninggalkan kode duplikat lama dan menciptakan cara ketiga melakukan hal yang sama. Selalu migrasi dalam proses yang sama.
+- **Mengekstrak hal yang berbeda maksudnya.** Dua tombol yang terlihat serupa tetapi melayani tujuan berbeda (aksi utama vs tautan bergaya tombol) mungkin harus tetap terpisah.

@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Miscare intentionata care transmite stare, nu decoratiune.
+highlights:
+  - Interfețele se simt lipsite de viata sau abrupte intre stari.
+  - Incarcarea, feedback-ul sau tranzitiile au nevoie de miscare care explica ce se intampla.
+  - Doriti animatie disciplinata cu fallback-uri reduced-motion.
+related:
+  - delight
+---
+
+## Cand se foloseste
+
+`/impeccable animate` este pentru interfețe care se simt lipsite de viata, unde schimbarile de stare sunt instantanee si socante, unde incarcarea pur si simplu apare, unde utilizatorul nu are incredere ca click-ul sau s-a inregistrat. Folositi-o pentru a adauga micile miscari care comunica ce se intampla: intrari, iesiri, feedback, tranzitii intre stari.
+
+Nu o folositi pentru a adauga bounce-uri sau arcuri elastice de dragul energiei. Aceasta este decoratiune, si acest skill nu vi le va oferi.
+
+## Cum functioneaza
+
+Skill-ul identifica momentele statice care ar beneficia de miscare, apoi le aplica cu disciplina stricta:
+
+1. **Intrari si iesiri**: elementele apar si pleaca cu estompari de 200 pana la 300ms plus Y sau scale subtil, niciodata proprietati de layout.
+2. **Feedback de stare**: hover, active, focus, incarcare, succes comunica prin miscare in loc de schimbari bruste.
+3. **Tranzitii intre vizualizari**: tranzitii cu elemente partajate unde are sens, fade-through in caz contrar.
+4. **Progres si incarcare**: ecrane skeleton, bare determinate, miscare care spune "inca lucrez".
+5. **Miscare redusa**: fiecare animatie are un fallback `prefers-reduced-motion`.
+
+Easing-ul este intotdeauna exponential (ease-out-quart, quint sau expo) deoarece obiectele reale decelereaza neted. Fara bounce, fara elastic, fara linear pentru nimic altceva decat indicatori de progres.
+
+Skill-ul animeaza doar `transform` si `opacity`. Daca va prindeti ca animati `width`, `height`, `top` sau `left`, faceti lucrul gresit. Folositi `grid-template-rows` pentru tranzitii de inaltime.
+
+## Incercati
+
+```
+/impeccable animate the sign-up flow
+```
+
+Adaugiri tipice:
+
+- Campul email primeste o stralucire de focus pe focus-visible (opacity + shadow, 180ms)
+- Butonul de trimitere afiseaza un spinner in interiorul sau pe starea de incarcare, nu un spinner separat langa el
+- Ecranul de succes intra cu opacity + translateY(8px), 260ms, ease-out-quart
+- Mesajul de eroare gliseaza in jos cu grid-template-rows (nu height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback pentru fiecare tranzitie
+
+## Capcane
+
+- **Cererea de "mai multa animatie".** Animate nu este un dial. Adauga unde miscarea comunica, nu peste tot.
+- **Eliminarea fallback-urilor reduced-motion.** Skill-ul le adauga automat. Non-negociabil pentru accesibilitate.

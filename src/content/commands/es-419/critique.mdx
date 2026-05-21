@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Una revision de diseno con puntuacion, pruebas de personas y deteccion automatizada.
+highlights:
+  - Quieres hallazgos sobre decisiones de diseno debiles, no una reconstruccion desde cero.
+  - Necesitas puntuacion, razonamiento de diseno y proximos pasos probables.
+  - La interfaz funciona pero todavia se siente incorrecta.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Veredicto de basura IA</span>
+        <span class="docs-viz-critique-verdict-value">FALLA</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristicas (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibilidad del estado</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Coincidencia con el mundo real</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistencia y estandares</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Prevencion de errores</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Reconocimiento sobre recuerdo</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">El evaluador</span>
+              <span class="docs-viz-critique-persona-note">Comparandonos con dos alternativas un martes por la tarde.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">El usuario que regresa</span>
+              <span class="docs-viz-critique-persona-note">Conoce el producto, en movil, con prisa.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">El esceptico</span>
+              <span class="docs-viz-critique-persona-note">Ha visto cada landing de SaaS y esta aburrido.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Las dos pasadas (revision de diseno LLM mas el detector determinista) se fusionan en una lista priorizada. Que funciona, que corregir y las preguntas provocadoras que vale la pena responder antes de lanzar.</p>
+</div>
+
+## Cuando usarlo
+
+Recurre a `/impeccable critique` cuando quieras una segunda opinion honesta sobre algo que ya construiste. No "funciona" sino "es bueno de verdad". La habilidad puntua tu interfaz contra las 10 heuristicas de Nielsen, ejecuta verificaciones de carga cognitiva, prueba a traves de lentes de personas y referenci a un detector automatizado para 25 anti-patrones concretos.
+
+Usalo cuando una pagina esta funcionalmente terminada y quieres saber si se lee como intencional o como basura de IA.
+
+## Como funciona
+
+`/impeccable critique` ejecuta dos evaluaciones independientes en paralelo para que no se sesguen mutuamente.
+
+La primera es una **revision de diseno LLM**: el modelo lee tu fuente, inspecciona visualmente la pagina en vivo si la automatizacion del navegador esta disponible, y recorre el catalogo completo de HACER/NO HACER de la habilidad impeccable. Puntua las heuristicas de Nielsen, cuenta fallos de carga cognitiva, traza el viaje emocional a traves del flujo y maraca basura de IA.
+
+La segunda es un **detector automatizado** (`npx impeccable detect`) que encontra deterministicamente texto con gradiente, paletas moradas, bordes de pestanas laterales, tarjetas anidadas, problemas de longitud de linea y las otras huellas visibles de salida generica de IA.
+
+Los dos informes se fusionan en una lista priorizada: que funciona, las tres a cinco cosas que necesitan correccion y las preguntas provocadoras que vale la pena responder antes de lanzar.
+
+## Probalo
+
+Apuntalo a una pagina:
+
+```
+/impeccable critique the homepage hero
+```
+
+Recibes un informe puntuado. Estructura tipica:
+
+- **Veredicto de basura IA**: aprobado / fallido con los indicadores especificos
+- **Puntuaciones heuristicas**: 10 numeros, de 0 a 4
+- **Carga cognitiva**: conteo de fallos de 8
+- **Problemas prioritarios**: tres a cinco elementos, cada uno con que, por que y correccion
+- **Preguntas para responder**: las que la interfaz misma no puede decidir por ti
+
+Desde ahi, combina con `/impeccable polish` o `/impeccable distill` para actuar sobre las correcciones.
+
+## Errores comunes
+
+- **Ejecutarlo sobre trabajo incompleto.** Critique es para paginas terminadas. Un estado vacio con tres TODOs puntuara mal porque no esta terminado, no porque sea malo.
+- **Ignorar las preguntas al final.** Suelen ser las correcciones que mas cambian el diseno.
+- **Tratar las puntuaciones heuristicas como una calificacion.** Son diagnosticas, no evaluativas. Un 3/4 en una heuristica que importa menos para tu contexto esta bien.

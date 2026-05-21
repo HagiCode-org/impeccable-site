@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Movimento finalizzato che comunica stato, non decorazione.
+highlights:
+  - Le interfacce sembrano prive di vita o brusche tra gli stati.
+  - Il caricamento, il feedback o le transizioni necessitano di movimento che spieghi cosa sta succedendo.
+  - Vuoi animazione disciplinata con fallback per movimento ridotto.
+related:
+  - delight
+---
+
+## Quando usarlo
+
+`/impeccable animate` è per interfacce che sembrano prive di vita, dove i cambi di stato sono istantanei e bruschi, dove il caricamento appare di colpo, dove l'utente non si fida mai del tutto che il suo clic sia stato registrato. Usalo per aggiungere i piccoli movimenti che comunicano cosa sta succedendo: entrate, uscite, feedback, transizioni tra stati.
+
+Non usarlo per aggiungere rimbalzi o molle elastiche per amore di energia. Quello è decorazione, e questa skill non te lo darà.
+
+## Come funziona
+
+La skill identifica i momenti statici che trarrebbero beneficio dal movimento, poi li applica con disciplina rigorosa:
+
+1. **Entrate e uscite**: gli elementi appaiono e scompaiono con fade da 200 a 300ms più sottile Y o scala, mai proprietà di layout.
+2. **Feedback di stato**: hover, active, focus, loading, success comunicano tutti tramite movimento invece di scambi improvvisi.
+3. **Transizioni tra viste**: transizioni shared-element dove ha senso, fade-through altrimenti.
+4. **Progresso e caricamento**: scheletri, barre determinate, movimento che dice "sto ancora lavorando".
+5. **Movimento ridotto**: ogni animazione ha un fallback `prefers-reduced-motion`.
+
+L'easing è sempre esponenziale (ease-out-quart, quint o expo) perché gli oggetti reali decelerano in modo fluido. Nessun rimbalzo, nessuna elasticità, nessun lineare per nulla tranne gli indicatori di progresso.
+
+La skill anima solo `transform` e `opacity`. Se ti trovi ad animare `width`, `height`, `top` o `left`, sta facendo la cosa sbagliata. Usa `grid-template-rows` per le transizioni di altezza.
+
+## Provalo
+
+```
+/impeccable animate the sign-up flow
+```
+
+Aggiunte tipiche:
+
+- L'input email ottiene un glow di focus su focus-visible (opacità + ombra, 180ms)
+- Il pulsante di invio mostra uno spinner al suo interno nello stato di caricamento, non uno spinner separato accanto
+- La schermata di successo entra con opacità + translateY(8px), 260ms, ease-out-quart
+- Il messaggio di errore scende con grid-template-rows (non height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback per ogni transizione
+
+## Insidie
+
+- **Chiedere "più animazione".** Animate non è una manopola. Aggiunge dove il movimento comunica, non ovunque.
+- **Rimuovere i fallback per movimento ridotto.** La skill li aggiunge automaticamente. Non negoziabile per l'accessibilità.

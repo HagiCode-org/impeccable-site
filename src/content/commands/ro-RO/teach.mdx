@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Invatati Impeccable pentru cine este produsul dumneavoastra, o data per proiect.
+highlights:
+  - Proiectul nu are inca un fisier de context de design.
+  - Diferiti contribuitori au nevoie de o singura sursa de adevar impartita.
+  - Doriti ca comenzile viitoare sa mosteneasca directia de brand si produs.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Incarcat la fiecare comanda</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Registru</span>
+        <span class="docs-viz-file-v">Produs. Designul serveste sarcina.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Utilizatori</span>
+        <span class="docs-viz-file-v">SRE-i in garda, citind rapid, adesea in intuneric.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Voce brand</span>
+        <span class="docs-viz-file-v">Calm, clinic, fara exagerare.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-referinte</span>
+        <span class="docs-viz-file-v">Gradienti violet. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Fiecare comanda citeste asta inainte de a scrie o linie de cod.</div>
+  </div>
+  <p class="docs-viz-caption">Un PRODUCT.md terminat. Doar strategie: cine, ce, de ce. Fara culori, fara fonturi, fara valori pixel, acelea traiesc in DESIGN.md.</p>
+</div>
+
+## Cand se foloseste
+
+Rulati `/impeccable teach` o data la inceputul unui proiect. Este rampa de acces. Fara ea, fiecare alta comanda va produce design care este tehnic competent dar generic tonal: voce SaaS stock, fonturi implicite sigure, paleta de culori AI. Cu ea, fiecare comanda citeste raspunsurile dumneavoastra inainte de a genera.
+
+Apelati la el cand:
+
+- **Tocmai ati instalat Impeccable intr-un proiect nou.** Primul lucru de rulat. Alte comenzi va vor impinge catre el daca omiteti.
+- **Directia de brand a proiectului s-a schimbat.** Pozitionare noua, audienta noua, voce noua. Re-rulati `teach` si contextul actualizat curge prin fiecare comanda.
+- **O alta comanda a spus "niciun context de design gasit"** si s-a oprit. Acesta este semnalul: rulati teach, apoi continuati.
+
+## Cum functioneaza
+
+Teach scrie doua fisiere complementare la radacina proiectului:
+
+- **`PRODUCT.md`** este fisierul strategic. Registru (brand sau produs), utilizatori tinta, scopul produsului, personalitatea brandului, anti-referinte, principii de design, nevoi de accesibilitate. Raspunde la "cine, ce, de ce".
+- **`DESIGN.md`** este fisierul vizual. Culori, tipografie, elevatie, componente, recomandari si restrictii. Raspunde la "cum arata". Scris de comanda delegata `/impeccable document` pe care teach o invoca la final.
+
+Fluxul scaneaza mai intai codul (README, package.json, componente, token-uri, asset-uri de brand) si formeaza o **ipoteza de registru**: brand (landing, marketing, portofoliu, unde designul ESTE produsul) sau produs (UI de aplicatie, dashboard-uri, instrumente, unde designul SERVESTE produsul). Registrul este prima intrebare pentru ca formeaza fiecare raspuns in aval: valori implicite de tipografie, energie de miscare, strategie de culoare, setul de referinte pe care comenzile precum `/impeccable typeset` le trag. Dupa registru, teach intreaba doar ce nu a putut deduce: utilizatori, personalitate in trei cuvinte reale, referinte si anti-referinte, cerinte de accesibilitate.
+
+PRODUCT.md este doar strategic. Fara culori, fara fonturi, fara valori pixel. Acelea traiesc in DESIGN.md. Mentinerile celor doua fisiere separate este intentionata: strategia poate ramane stabila in timp ce sistemul vizual evolueaza.
+
+## Incercati
+
+```
+/impeccable teach
+```
+
+Asteptati-va la un interviu de 5 pana la 8 minute. Prima intrebare este de obicei despre registru; restul sunt scurte. Teach va cita inapoi ce a dedus din codul dumneavoastra ("din rute, aceasta arata ca o suprafata de produs, potrivire?") astfel incat confirmati, nu incepeti de la zero.
+
+La final, teach ofera sa ruleze `/impeccable document` pentru dumneavoastra. Spuneti da cu exceptia cazului in care aveti un motiv specific sa amanati. Un DESIGN.md real este ceea ce mentine variantele, finisajele si auditurile on-brand.
+
+## Capcane
+
+- **Omiterea pentru a "doar incerca o comanda rapid".** Fiecare alta comanda va va intervieva in timpul rularii in schimb. Rularea teach mai intai este mai rapida, nu mai lenta.
+- **Oferirea de raspunsuri generice.** "Modern si curat" nu este util. "Cald, mecanic, cu opinii" este. Fiti specifici. Fiti dispusi sa nu fiti de acord cu valorile implicite sigure.
+- **Tratarea PRODUCT.md ca imuabil.** Fisierul este al dumneavoastra. Daca teach a pus ceva acolo care nu este chiar potrivit, editati-l. Fiecare comanda citeste fisierul curent.
+- **Listarea doar de adjective pentru referinte.** Branduri, produse, obiecte tiparite: numite, nu descrise. "Pagini de specimene Klim Type Foundry", nu "tehnic si curat". Anti-referintele ar trebui sa fie la fel de specifice.

@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Projektuj doswiadczenia pierwszego uruchomienia, stany puste i sciezki do wartosci.
+highlights:
+  - Nowi uzytkownicy przychodza bez kontekstu.
+  - Produkt potrzebuje lepszej pierwszej udanej akcji.
+  - Stany puste i kroki konfiguracji robia zbyt malo nauczania.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Kiedy uzywac
+
+`/impeccable onboard` jest na momenty, ktore decyduja o tym, czy nowy uzytkownik zostaje: pierwszy ekran, stan pusty, przeplyw konfiguracji, tour produktu, luka "co mam teraz zrobic". Sigmnij po to, gdy aktywacja jest slaba, gdy nowi uzytkownicy odpadaja przed dotarciem do wartosci lub gdy twoj produkt ma stany puste mowiace "brak elementow" i konczy na tym.
+
+## Jak to dziala
+
+Komenda zaczyna od jednego pytania: czym jest moment aha i jak szybko nowy uzytkownik moze sie tam dostac. Kazda decyzja projektowa celuje w ten moment.
+
+Dziala na powierzchniach, ktore ksztaltuja pierwsze wrazenia:
+
+1. **Doswiadczenie pierwszego uruchomienia**: momenty bezposrednio po rejestracji. Czy uzytkownik powinien widziec tour, puste plotno, wypelniony przyklad czy niczego. Wybierz podejscie, ktore pasuje do produktu.
+2. **Stany puste**: kazdy ekran bez danych jest orientowany. Gdzie jestem, dlaczego to jest puste, co mam zrobic dalej, jak bedzie wygladalo, gdy bedzie pelne.
+3. **Konfiguracja i instalacja**: wymagana konfiguracja jest zminimalizowana, domysly sa madrze, kazdy krok tlumaczy, dlaczego wazny.
+4. **Progresywne odkrywanie**: zaawansowane funkcje pozostaja z drogi, az zostana wypracowane.
+5. **Zdarzenia aktywacji**: moment, gdy uzytkownik po raz pierwszy doswiadcza rdzennej wartosci, jest instrumentowany i celebrany, po cichu.
+
+Komenda opiera sie dwom typowym trybom awarii: nadmiernie tutoriolizowany onboarding, gdzie uzytkownicy klikaja przez karuzele, zanim moga czegokolwiek dotknac, i zerowy onboarding, gdzie uzytkownicy sa wrzucani do pustej aplikacji i oczekuje sie od nich, ze sami to zrobia.
+
+## Wyprobuj
+
+```
+/impeccable onboard the editor
+```
+
+Typowy wynik:
+
+- Pierwsze uruchomienie: zastepuje pusty edytor wypelnionym przykladowym dokumentem, ktory uzytkownik moze modyfikowac. Przycisk anulowania odrzuca przyklad, edycja zastepuje tresc praca uzytkownika.
+- Stan pusty na liscie dokumentow: "Brak dokumentow. Stworz pierwszy lub zaimportuj z Notion, Google Docs lub Markdown."
+- Konfiguracja: zredukowana z 6 wymaganych pol do 1 (nazwa obszaru). Wszystko inne ma madry domysl i moze byc edytowane pozniej w ustawieniach.
+- Aktywacja: za pierwszym razem, gdy uzytkownik zapisze dokument, cichy toast mowi "Zapisano. Twoja praca jest teraz w chmurze." Jednorazowo, nie powtarzane.
+
+## Pulapki
+
+- **Dodawanie touru produktu jako domyslnej odpowiedzi.** Wiekszosc produktow nie potrzebuje touru. Potrzebuja lepszego pierwszego ekranu. Toure to kula.
+- **Projektowanie onboardingu bez definiowania momentu aha.** Jesli nie potrafisz w jednym zdaniu powiedziec, co uzytkownik powinien poczu w pierwszych 60 sekundach, wroc do `/impeccable shape` najpierw.
+- **Uruchamianie onboardingu na zepsutym przeplywie.** Najpierw napraw przeplyw. Onboarding nie moze uratowac produktu, gdzie rdzenna akcja jest zepsuta.

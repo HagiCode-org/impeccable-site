@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Khiến thiết kế hoạt động trên nhiều màn hình, thiết bị và ngữ cảnh mà không cắt bỏ tính năng.
+highlights:
+  - Bố cục hiện tại sụp đổ trên màn hình nhỏ hơn.
+  - Sản phẩm cần chiến lược responsive sâu sắc hơn.
+  - Vùng chạm, mật độ hoặc luồng nội dung thay đổi theo thiết bị.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable adapt` dành cho việc lấy một thiết kế được dựng cho một ngữ cảnh và làm cho nó hoạt động trong ngữ cảnh khác. Mobile từ desktop, tablet từ mobile, in từ web, nhúng từ độc lập, email từ bảng điều khiển. Sử dụng khi thiết kế gốc vững chắc nhưng tan vỡ ở các breakpoint khác, trên touch hoặc trong một container khác.
+
+Không dành cho xây dựng responsive từ đầu. Cho điều đó, hãy bắt đầu với `/impeccable` và định hình bố cục responsive-first. Adapt dành cho việc bổ sung "chúng ta chưa từng nghĩ về mobile".
+
+## Cách hoạt động
+
+Kỹ năng hoạt động qua bốn chiều của sự phù hợp ngữ cảnh:
+
+1. **Breakpoint và bố cục fluid**: thu gọn đa cột thành đơn, điều chỉnh phạm vi clamp, giới thiệu breakpoint mới nơi thiết kế thực sự gãy.
+2. **Vùng chạm**: vùng chạm tối thiểu 44px, khoảng cách đủ giữa các vùng chạm liền kề, vùng tap lớn hơn ranh giới trực quan nơi cần.
+3. **Mẫu điều hướng**: sidebar desktop thành bottom nav hoặc slide-out trên mobile, toolbar đặc dày thu gọn thành menu, trạng thái hover nhận tương đương touch.
+4. **Ưu tiên nội dung**: quyết định cái gì phải hiển thị, cái gì có thể thu gọn vào disclosure, cái gì có thể loại bỏ hoàn toàn cho ngữ cảnh đó.
+
+Quy tắc không thể thương lượng: thích ứng, không cắt bỏ. Chức năng quan trọng không thể biến mất trên mobile chỉ vì nó bất tiện. Tìm cách để phù hợp, thiết kế lại tương tác hoặc xem xét lại liệu nó có thực sự quan trọng trên desktop hay không.
+
+## Thử ngay
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Thay đổi kỳ vọng:
+
+- Lưới ba cột thành một cột với header phần đóng vai trò thanh chia cố định
+- Sidebar nav chuyển thành thanh cuộn ngang phía trên nội dung
+- Toggle thêm 8px padding dọc để đáp ứng vùng chạm 44px
+- Văn bản trợ giúp trực tiếp chuyển sang tap-to-reveal, không hover
+- Phần "Danger zone" mở rộng hoàn toàn trên mobile thay vì thu gọn, vì nó chứa hành động không thể đảo ngược và chúng ta muốn người dùng nhìn thấy chúng rõ ràng
+
+## Những cạm bẫy cần tránh
+
+- **Cắt bỏ tính năng.** Nếu phiên bản mobile ẩn những thứ phiên bản desktop có thể làm, đó là sự thoái bộ, không phải sự thích ứng. Chiến đấu cho tính năng.
+- **Coi mobile là "desktop nhỏ hơn".** Mobile là một ngữ cảnh khác: ngón tay cái, gián đoạn, phiên ngắn. Thích ứng với ngữ cảnh, không phải chiều rộng viewport.
+- **Bỏ qua `/impeccable harden` sau đó.** Bố cục responsive phơi bày trường hợp biên. Chạy hardening sau adapt để bắt những cái chỉ xuất hiện ở 320px.

@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Desenati experiente de prima utilizare, stari goale si drumuri catre valoare.
+highlights:
+  - Utilizatori noi sosesc fara context.
+  - Produsul are nevoie de o prima actiune reusita mai buna.
+  - Starile goale si pasii de configurare fac prea putina invatare.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Cand se foloseste
+
+`/impeccable onboard` este pentru momentele care decid daca un utilizator nou ramane: primul ecran, starea goala, fluxul de configurare, turul produsului, decalajul "ce fac acum". Apelati la el cand activarea este slaba, cand utilizatorii noi renunta inainte de a ajunge la valoare sau cand produsul dumneavoastra are stari goale care spun "nu exista articole inca" si se opresc acolo.
+
+## Cum functioneaza
+
+Comanda porneste de la o singura intrebare: care este momentul aha, si cat de repede poate ajunge un utilizator nou acolo. Fiecare decizie de design indica acel moment.
+
+Lucreaza pe suprafetele care formeaza primele impresii:
+
+1. **Experienta de prima utilizare**: momentele imediat dupa inregistrare. Ar trebui utilizatorul sa vada un tur, un canvas gol, un exemplu completat sau nimic. Alegeti abordarea care se potriveste produsului.
+2. **Stari goale**: fiecare ecran fara date este orientat. Unde sunt, de ce este gol, ce fac mai departe, cum va arata cand va fi plin.
+3. **Configurare si instalare**: configuratia necesara este minimizata, valorile implicite sunt inteligente, fiecare pas explica de ce conteaza.
+4. **Dezvaluire progresiva**: functionalitati avansate stau in afara drumului pana sunt castigate.
+5. **Evenimente de activare**: momentul in care un utilizator experimenteaza pentru prima data valoarea de baza este instrumentat si celebrat, discret.
+
+Comanda rezista doua moduri de esec comune: onboarding supra-tutorializat unde utilizatorii dau click prin carusel inainte de a atinge ceva, si zero-onboarding unde utilizatorii sunt aruncati intr-o aplicatie goala si asteptati sa isi dea seama.
+
+## Incercati
+
+```
+/impeccable onboard the editor
+```
+
+Iesire tipica:
+
+- Prima utilizare: inlocuieste editorul gol cu un document exemplu completat pe care utilizatorul il poate modifica. Butonul Cancel elimina exemplul, editarea inlocuieste continutul cu lucrarea utilizatorului.
+- Stare goala pe lista de documente: "Fara documente inca. Creati primul sau importati din Notion, Google Docs sau Markdown."
+- Configurare: redusa de la 6 campuri necesare la 1 (nume workspace). Tot restul are o valoare implicita inteligenta si poate fi editat mai tarziu in setari.
+- Activare: prima data cand un utilizator salveaza un document, un toast discret spune "Salvat. Lucrarea dumneavoastra este in cloud acum." Unica, nu repetata.
+
+## Capcane
+
+- **Adaugarea unui tur de produs ca raspuns implicit.** Majoritatea produselor nu au nevoie de tur. Au nevoie de un ecran initial mai bun. Tururile sunt carje.
+- **Designul de onboarding fara a defini momentul aha.** Daca nu puteti spune intr-o propozitie ce ar trebui sa simta utilizatorul in primele 60 de secunde, intoarceti-va la `/impeccable shape` mai intai.
+- **Rularea onboard pe un flux stricat.** Fixati fluxul mai intai. Onboarding nu poate salva un produs unde actiunea de baza este stricata.

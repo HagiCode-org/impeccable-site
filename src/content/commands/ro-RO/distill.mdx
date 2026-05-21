@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Scadere necrutatoare. Reduceti designurile la esenta lor.
+highlights:
+  - Pagina are prea multe idei concurente.
+  - Utilizatorii au nevoie de comprehensiune mai rapida, nu de mai multe functionalitati.
+  - Simplitatea este imbunatatirea, nu un compromis temporar.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Cand se foloseste
+
+`/impeccable distill` elimina ce nu ar trebui sa fie acolo. Butoane concurente, informatie redundanta, margini decorative, trei fonturi unde functioneaza unul, sase elemente de navigare unde trebuie sa fie trei. Folositi-l cand o interfata se simte aglomerata, incarcata sau ca incearca sa faca prea mult deodata.
+
+Apelati la el dupa ce `/impeccable critique` semnaleaza "incarcare cognitiva" sau "zgomot vizual", sau oricand o pagina a crescut prin acumulare si nimeni nu a facut editarea.
+
+## Cum functioneaza
+
+Skill-ul porneste de la o singura intrebare: care este singura treaba pe care aceasta interfata incearca sa o faca? Tot ce nu ajuta la acea treaba este pe lista de taiere.
+
+Lucreaza in doua treceri:
+
+1. **Evaluati sursele de complexitate**. Prea multe elemente, variatie excesiva, supraincarcare informationala, zgomot vizual, ierarhie confuza, feature creep. Numeste fiecare.
+2. **Editati necrutator**. Eliminati ce nu este esential. Combinati ce poate fi combinat. Ascundeti ce poate astepta. Consolidati variatia intr-un singur tratament. Angajati-va la un singur limbaj vizual.
+
+Principiul: fiecare element de pe pagina trebuie sa isi justifice existenta. Mai putine obstacole, nu mai putine functionalitati.
+
+## Incercati
+
+```
+/impeccable distill this dashboard
+```
+
+Inainte: patru stiluri de carduri, trei variante de butoane, doua tratamente de header, o bara laterala cu 14 elemente grupate in 5 sectiuni.
+
+Dupa o trecere `/distill`, modificari tipice:
+
+- Prabusirea celor patru stiluri de carduri intr-unul singur
+- Alegerea unei singure variante de buton, retrogradarea celorlalte la linkuri text
+- Unificarea headerelor
+- Gruparea barei laterale in 3 sectiuni, nu 5
+- Ascunderea optiunilor avansate in spatele unui disclosure
+
+Mai putine lucruri. Fiecare mai clar.
+
+## Capcane
+
+- **Confundarea distill cu delete.** Distill elimina obstacole. Nu elimina functionalitati de care utilizatorii au nevoie. Daca un utilizator se bazeaza pe ceva zilnic, gasiti o modalitate de a-l pastra discret, nu o modalitate de a-l taia.
+- **Rularea prea devreme.** Daca functionalitatea inca creste, distilarea acum inseamna distilarea aceluiasi lucru din nou saptamana viitoare. Asteptati pana cand forma este stabila.
+- **Asteptarea sa inlocuiasca munca de ierarhie.** Uneori remedierea potrivita nu este eliminarea lucrurilor, ci aranjarea lor. Apelati la `/impeccable layout` cand problema este layout-ul, nu cantitatea.

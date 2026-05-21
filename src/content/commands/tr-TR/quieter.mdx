@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Tasarımların niyetini kaybetmeden seslerini kısıntıya alın.
+highlights:
+  - Güçlü fikirler mevcut ama sayfa çok gürültülü.
+  - Sadeleşme olmadan tutumluluk gerekiyor.
+  - Mevcut ton okumayı veya görev akışını baskılıyor.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Ne zaman kullanılır
+
+`/impeccable quieter`, `/impeccable bolder` komutunun karşıt ağırlığıdır. Bir arayüz görsel olarak saldırgan, aşırı uyarıcı veya aynı anda çok fazla şeyi tam ses seviyesinde yapmaya çalışıyorsa kullanın. Koyu üzerinde neon, her yerde gradyan metin, 6 vurgu rengi, her şey animasyonlu, 20px gölgeler. Tasarımın nefes alması gerektiğinde ve bakış açısını kaybetmeden arıtma istediğinizde quieter'ı kullanın.
+
+Ayrıca `/impeccable bolder` biraz fazla ileri gittiğinde de kullanışlıdır.
+
+## Nasıl çalışır
+
+Yetenek dört eksen boyunca azaltma ile çalışır:
+
+1. **Renk**: doygunluğu azalt, OKLCH'de kromayı düşür, vurguları tek bir birincil artı susturulmuş desteğe geri çek. En fazla iki kasıtlı renk.
+2. **Kontrast**: aşırı karanlık ve aydınlıkları yumuşat, aralığı içeri çek. Arka planlar saf beyaz ve saf siyahtan kağıt ve mürekkebe taşınır.
+3. **Dekorasyon**: iş yapmayan gölgeleri kaldır, yapı taşımayan kenarlıkları bırak, hiyerarşi yerine enerji için var olan gradyanları emekli et.
+4. **Hareket ve efekt**: animasyonları yavaşlat, otomatik oynayan herhangi bir şeyi kaldır, okunabilirliğe hizmet etmedikleri sürece paralaks ve bulanıklığı bırak.
+
+Yetenek tasarımın niyetini korur. Orijinalin bir bakış açısı varsa, quieter versiyonu daha fazla güvenle aynı bakış açısına sahiptir. Arıtma, nötralleştirme değil.
+
+## Deneyin
+
+```
+/impeccable quieter the pricing page
+```
+
+Tipik değişiklikler:
+
+- Fiyat üzerindeki gradyan metin kaldırıldı, bir ağırlık daha ağır katı mürekkep ile değiştirildi
+- Üç vurgu rengi birine (macenta) indirildi, diğer ikisi nötr varyantlar oldu
+- Kart gölgeleri `0 20px 40px rgba(0,0,0,0.2)` değerinden `0 1px 0 var(--color-mist)` değerine (bir saç çizgisi) indirildi
+- Arka plan koyu gradyandan üstte hafif krem yıkama ile kağıda geçer
+- Hero animasyonu 3 kademeli öğeli 1.2s easeOut'dan tek 260ms fade-in'e
+
+## Tuzaklar
+
+- **Aşırı uygulamak.** Quieter, zaten ölçülmüş bir şey üzerinde çalıştırılırsa kişiliği soyabilir. Tasarım çok gürültülü olduğunda kullanın, doğru şekilde iddialı olduğunda değil.
+- **Quieter ile distill'i karıştırmak.** Quieter yoğunluğu azaltır. Distill öğeleri kaldırır. Bunlar farklı hamleler.
+- **"Çok kalabalık" diyen bir eleştiriye yanıt olarak çalıştırmak.** Kalabalık genellikle çok gürültülü değil, çok fazla şey demektir. Önce `/impeccable distill` deneyin.

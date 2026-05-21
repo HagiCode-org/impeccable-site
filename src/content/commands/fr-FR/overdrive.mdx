@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Pousser une interface au-delà des limites conventionnelles. Shaders, physique, 60fps, transitions cinématiques.
+highlights:
+  - L'expérience est censée sembler extraordinaire, pas simplement soignée.
+  - Un mouvement ou rendu riche fait partie du récit produit.
+  - L'équipe est prête à payer le prix de la complexité là où ça compte.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Quand l'utiliser
+
+`/impeccable overdrive` est pour les moments où vous voulez impressionner. Un hero qui utilise WebGL. Un tableau qui gère un million de lignes. Une boîte de dialogue qui se transforme à partir de son élément déclencheur. Un formulaire qui valide en temps réel avec un retour en flux. Une transition de page qui semble cinématique. Utilisez-le quand le budget du projet permet l'ambition technique et que le résultat doit paraître extraordinaire.
+
+Ne l'utilisez pas sur des outils opérateurs, des tableaux de bord ou quoi que ce soit où la fiabilité prime sur le spectacle. Overdrive brûle de la complexité pour l'effet, et ce compromis n'en vaut la peine que sur les moments qui comptent.
+
+## Comment ça marche
+
+La compétence choisit un moment à rendre extraordinaire et s'y engage, plutôt que de répartir l'effort sur toute l'interface. Elle fait ensuite appel à des techniques que la plupart des interfaces générées par IA n'utilisent jamais : shaders WebGL, physique de ressort, Scroll Timeline, View Transitions, animation sur canvas, filtres accélérés par GPU. Tout est budgétisé, profilé et testé à 60fps, avec des alternatives de mouvement réduit intégrées.
+
+La sortie overdrive est annoncée avec `──── ⚡ OVERDRIVE ────` pour que vous sachiez que vous entrez dans un mode plus ambitieux. Attendez-vous à des diffs plus grands, de nouvelles dépendances et une profondeur d'implémentation au-delà de ce que les autres compétences produisent.
+
+## Essayez
+
+```
+/impeccable overdrive the landing hero
+```
+
+Une exécution concrète pourrait remplacer un hero statique par un fond de shader WebGL piloté par la position de la souris, un titre de titrage qui se révèle avec un masque au scroll via l'API Scroll Timeline, et une View Transition sur le CTA qui se transforme en la page suivante. Plus une alternative de mouvement réduit qui remplace tout par une composition statique épurée.
+
+## Pièges courants
+
+- **L'utiliser partout.** Overdrive fonctionne parce qu'il est rare. Si chaque page a des moments cinématiques, aucun d'eux n'est cinématique.
+- **Livrer sans alternatives de mouvement réduit.** Non négociable. Overdrive les ajoute automatiquement ; ne les supprimez pas.
+- **Ignorer la performance.** Les moments extraordinaires doivent toujours atteindre 60fps. Si l'effet perd des images, coupez-le ou optimisez. Du spectacle lent est pire que du simple bien fait.
+- **Exécuter overdrive avant que l'interface de base ne soit solide.** Du spectacle sur des fondations cassées se lit comme une distraction, pas comme du plaisir.

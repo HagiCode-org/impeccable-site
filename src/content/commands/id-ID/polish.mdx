@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Tahap akhir yang teliti antara baik dan hebat.
+highlights:
+  - Penyejajaran, jarak, dan keputusan mikro masih terasa kasar.
+  - Fitur sudah dekat dengan pengiriman.
+  - Inkonsistensi kecil menurunkan kualitas yang dirasakan.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Kapan menggunakannya
+
+`/impeccable polish` adalah hal terakhir yang Anda jalankan sebelum pengiriman. Skill memburu detail-detail kecil yang memisahkan fitur yang dikirim dari fitur yang dipoles: kesalahan penyejajaran setengah piksel, jarak yang tidak konsisten, status fokus yang terlupakan, transisi pemuatan yang berkedip, salinan yang menyimpang nadanya. Skill juga menyelaraskan fitur dengan sistem desain Anda, mengganti nilai hard-coded dengan token, menukar komponen kustom dengan yang dibagikan, dan memperbaiki penyimpangan dari pola yang mapan.
+
+Gunakan ketika fitur secara fungsional selesai, tidak ada yang rusak, dan sesuatu masih terasa kurang tepat. Juga gunakan ketika fitur telah menyimpang dari sistem desain dan perlu ditarik kembali ke jalur.
+
+## Cara kerjanya
+
+Polish dimulai dengan menemukan sistem desain (token, skala jarak, komponen bersama), kemudian bekerja metodis melintasi enam dimensi:
+
+1. **Penyejajaran visual dan jarak**: kepatuhan grid piksel-sempurna, skala jarak yang konsisten, penyejajaran optik pada ikon.
+2. **Tipografi**: konsistensi hierarki, panjang baris, janda dan yatim, kerning pada headline.
+3. **Warna dan kontras**: penggunaan token, paritas tema, rasio WCAG, indikator fokus.
+4. **Status interaksi**: hover, focus, active, disabled, loading, error, success. Setiap status diperhitungkan.
+5. **Transisi dan gerak**: easing yang halus, tidak ada gangguan tata letak, menghormati `prefers-reduced-motion`.
+6. **Salinan**: suara yang konsisten, tense yang benar, tidak ada string placeholder, tidak ada TODO yang tersesat.
+
+Skill eksplisit tentang satu hal: polish adalah langkah terakhir, bukan yang pertama. Jika fitur belum secara fungsional selesai, memolesnya adalah pekerjaan yang sia-sia.
+
+## Cobalah
+
+```
+/impeccable polish the pricing page
+```
+
+Proses yang sehat terlihat seperti:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+Lima perbaikan kecil, tidak ada penulisan ulang. Itulah bentuk proses polish yang baik.
+
+## Jebakan
+
+- **Memoles pekerjaan yang belum selesai.** Jika ada TODO dalam kode, Anda belum siap. Jalankan `/impeccable polish` hanya pada fitur yang sudah selesai.
+- **Memperlakukan polish sebagai redesain.** Polish menyempurnakan apa yang ada. Jika Anda menemukan diri Anda membangun ulang tata letak, Anda membutuhkan `/impeccable critique` atau `/impeccable layout`.
+- **Menjalankan `/impeccable polish` tanpa `/impeccable audit` dulu.** Polish menangkap masalah berbasis rasa. Audit menangkap masalah yang terukur. Gunakan keduanya.

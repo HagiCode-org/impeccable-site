@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Napraw układ, odstępy i rytm wizualny.
+highlights:
+  - Stronie brakuje wyraźnego akcentu.
+  - Dobra treść istnieje, ale kompozycja ją ukrywa.
+  - Chcesz silniejszego przepływu przed dotykaniem koloru lub ruchu.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Kiedy używać
+
+`/impeccable layout` jest na strony, gdzie nic technicznie nie jest nie tak, ale też nic nie oddycha. Równe paddingi wszędzie, monotonne siatki kart, treść ciągnąca się od krawędzi do krawędzi, hierarchia oparta tylko na rozmiarze. Sięgnij po nią, gdy układ "wydaje się nie tak" i nie potrafisz tego wyartykułować.
+
+Dobre sygnały: "wszystko wydaje się stłoczone", "czyta się jak ściana", "nie wiem, gdzie najpierw patrzeć".
+
+## Jak to działa
+
+Umiejętność przechodzi przez pięć wymiarów układu:
+
+1. **Odstępy**: czy skala odstępów jest spójna, czy są przypadkowe luki 13px, czy powiązane elementy są zgrupowane ciasno z hojną przestrzenią między grupami, czy w ogóle istnieje jakikolwiek rytm.
+2. **Hierarchia wizualna**: czy wzrok ląduje na głównej akcji w ciągu 2 sekund, czy hierarchia wykonuje prawdziwą pracę, czy wszystko krzyczy.
+3. **Siatka i struktura**: czy istnieje podstawowa siatka, czy układ jest przypadkowy, czy elementy są wyrównane do linii bazowych.
+4. **Rytm**: czy strona naprzemiennie stosuje ciasne i hojne odstępy, czy wszystko jest jednostajne.
+5. **Gęstość**: czy układ jest ściśnięty czy rozrzutny, czy gęstość pasuje do typu treści.
+
+Naprawy zazwyczaj obejmują przebudowę skali odstępów, wprowadzenie asymetrii, zawalenie monotonnych siatek w mieszany układ z hero i elementami wspierającymi, i danie głównej akcji prawdziwej przestrzeni.
+
+## Wypróbuj
+
+```
+/impeccable layout the settings page
+```
+
+Typowe zmiany:
+
+- Skala odstępów ujednolicona do 8 / 16 / 24 / 48 / 96px
+- Przerwy między sekcjami na 48px, odstępy między wierszami na 16px, grupy pól formularza na 8px
+- Główne akcje wyciągnięte z przepływu formularza z buforem 32px
+- Dekoracyjne obramowania usunięte, zastąpione grupowaniem opartym na odstępach
+- Proporcje paska bocznego i głównej kolumny przebalansowane (280 / flex vs 25 / 75)
+
+## Pułapki
+
+- **Mylenie arrange z distill.** Jeśli problemem jest za dużo rzeczy, najpierw uruchom `/impeccable distill`. Layout jest do aranżowania tego, co już jest właściwym zbiorem.
+- **Oczekiwanie, że uratuje zepsutą siatkę.** Jeśli strona nie ma wcale siatki, arrange jedną zbuduje. Wiedz tylko, że diff będzie większy niż oczekujesz.
+- **Ignorowanie werdyktu hierarchii.** Jeśli arrange mówi "nic nie jest główne", żadna ilość pracy nad odstępami tego nie naprawi. Potrzebujesz decyzji treściowej, nie poprawki układu.

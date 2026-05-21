@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Zavaros UX-szövegek átírása, hogy a felületek önmagukat magyarázzák.
+highlights:
+  - A felhasználók haboznak, mert a megfogalmazás homályos.
+  - A felület jobb útmutató vagy hibaüzenet szöveget igényel.
+  - A termékfolyamat rendben van, de a nyelv lelassítja az embereket.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Mikor használd
+
+A `/impeccable clarify` az olyan felületszövegekre való, amitől az emberek megállnak és gondolkodnak. Zavaró címkék, kétértelmű gombszövegek, olyan hibaüzenetek, amelyek a felhasználót hibáztatják, eszköztippek, amelyek csak megismétlik a címkét, üres állapotok, amelyek semmi hasznosat nem mondanak. Akkor használd, amikor a probléma nem az elrendezés vagy a szín, hanem a szavak.
+
+Jó jelzések: „a felhasználók nem értik ezt a mezőt", „a hibaüzenet nem segít", „nem tudok jó gombszöveget írni", „ez az eszköztipp felesleges".
+
+## Hogyan működik
+
+A szakértelem átírja a szöveget azokon a felületeken, ahol a legtöbb UX-szövegprobléma megjelenik:
+
+1. **Címkék és mezőtippek**: közvetlen, konkrét, elmondják, mi az elvárás.
+2. **Gombszövegek**: ige első, a kimenetet írja le, nem a műveletet. „Változtatások mentése" nem „OK".
+3. **Hibaüzenetek**: elmagyarázzák, mi romlott el, ki a hibás, és mi a következő lépés. Soha ne hibáztassák a felhasználót.
+4. **Üres állapotok**: tájékoztatják a felhasználót, elmagyarázzák, miért üres az állapot, következő lépést ajánlanak.
+5. **Eszköztippek és súgószövegek**: olyan információt adnak, amit a címke nem tud hordozni, soha nem ismétlik meg.
+6. **Megerősítő párbeszédpanelek**: a következményeket nevezik meg, nem a műveletet.
+
+A szakértelem a `PRODUCT.md`-ben lévő közönséget és lelkiállapotot használja a hangnem beállításához. Technikai közönség precíz nyelvezetet kap. Fogyasztói közönség egyszerű beszédet. Sietségben lévő felhasználók rövid szöveget. Szorongó felhasználók (fizetés, törlés) megnyugtatást.
+
+## Próbáld ki
+
+```
+/impeccable clarify the billing form
+```
+
+Előtte és utána, tipikus:
+
+- Címke „Számlázási cím" → „A kártyán lévő cím"
+- Helyőrző „Adja meg az adószámát" → „Adószám (opcionális, vállalkozásoknak)"
+- Hiba „Érvénytelen bemenet" → „Ez a kártyaszám 15 számjegyes. Ön 14-et adott meg."
+- Gomb „Küldés" → „$29 terhelése és feliratkozás"
+- Üres állapot „Még nincs tranzakció" → „Az első terhelés az első rendelés után jelenik meg itt."
+
+## Gyakori buktatók
+
+- **Szellemesebb, nem tisztább írás.** A clarify nem hangnemváltásra való. Ha a szöveg már egyértelmű, ne használd ezt a szakértelmet. Használd a `/impeccable delight` parancsot, ha egyéniséget szeretnél.
+- **A közönség kérdésének kihagyása.** A clarify-nek tudnia kell, ki olvassa. Ha a `PRODUCT.md` nem határozza meg a közönség technikai szintjét, az átírások általánosak lesznek.
+- **A clarify futtatása marketing szövegre.** A clarify funkcionális UX-szövegre való: címkék, hibák, utasítások. A marketing szöveg másféle mozdulatokat és emberi írót igényel.

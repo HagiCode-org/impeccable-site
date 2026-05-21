@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Đánh giá thiết kế với chấm điểm, kiểm tra persona và phát hiện tự động.
+highlights:
+  - Bạn muốn phát hiện các lựa chọn thiết kế yếu, không phải dựng lại từ đầu.
+  - Bạn cần chấm điểm, lý luận thiết kế và các bước tiếp theo có thể thực hiện.
+  - Giao diện hoạt động nhưng vẫn cảm thấy không ổn.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Kết quả đánh giá AI slop</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristics (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Tầm nhìn trạng thái</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Tương thích thế giới thực</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Nhất quán & tiêu chuẩn</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Phòng ngừa lỗi</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Nhận biết thay vì ghi nhớ</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Người đánh giá</span>
+              <span class="docs-viz-critique-persona-note">So sánh chúng ta với hai lựa chọn thay thế vào một buổi tối thứ Ba.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Người dùng quay lại</span>
+              <span class="docs-viz-critique-persona-note">Đã quen sản phẩm, trên điện thoại, đang vội.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Người hoài nghi</span>
+              <span class="docs-viz-critique-persona-note">Đã thấy mọi landing SaaS và thấy chán.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Hai lần kiểm tra (đánh giá thiết kế LLM cộng với bộ phát hiện xác định) hợp nhất thành một danh sách ưu tiên. Những gì hoạt động, những gì cần sửa và những câu hỏi đáng trả lời trước khi phát hành.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+Sử dụng `/impeccable critique` khi bạn muốn một ý kiến thứ hai trung thực về thứ gì đó bạn đã dựng. Không phải "nó có hoạt động không" mà "nó có tốt không". Kỹ năng chấm điểm giao diện của bạn theo 10 heuristics của Nielsen, chạy kiểm tra tải nhận thức, kiểm tra qua lăng kính persona và tham chiếu chéo với bộ phát hiện tự động cho 25 phản mẫu cụ thể.
+
+Sử dụng khi một trang đã hoàn thành về mặt chức năng và bạn muốn biết nó đọc như một thiết kế có chủ đích hay chỉ là AI slop.
+
+## Cách hoạt động
+
+`/impeccable critique` chạy hai đánh giá độc lập song song để chúng không ảnh hưởng lẫn nhau.
+
+Đầu tiên là **đánh giá thiết kế LLM**: mô hình đọc source của bạn, kiểm tra trực quan trang trực tiếp nếu có tự động hóa trình duyệt, và duyệt qua danh mục NÊN/KHÔNG NÊN đầy đủ của kỹ năng impeccable. Nó chấm điểm heuristics của Nielsen, đếm các lỗi tải nhận thức, theo dõi hành trình cảm xúc qua luồng và gắn cờ AI slop.
+
+Thứ hai là **bộ phát hiện tự động** (`npx impeccable detect`) tìm kiếm xác định gradient text, bảng màu tím, viền side-tab, thẻ lồng nhau, vấn đề độ dài dòng và các dấu vết khác của đầu ra AI chung chung.
+
+Hai báo cáo hợp nhất thành một danh sách ưu tiên: những gì hoạt động, ba đến năm điều cần sửa và những câu hỏi đáng trả lời trước khi phát hành.
+
+## Thử ngay
+
+Trỏ nó vào một trang:
+
+```
+/impeccable critique the homepage hero
+```
+
+Bạn nhận lại một báo cáo đã chấm điểm. Cấu trúc điển hình:
+
+- **Kết quả AI slop**: pass / fail với các dấu hiệu cụ thể
+- **Điểm heuristic**: 10 con số, từ 0 đến 4
+- **Tải nhận thức**: số lỗi trên tổng số 8
+- **Vấn đề ưu tiên**: ba đến năm mục, mỗi mục có nội dung, lý do và cách sửa
+- **Câu hỏi cần trả lời**: những câu hỏi mà bản thân giao diện không thể tự quyết định
+
+Từ đó, kết hợp với `/impeccable polish` hoặc `/impeccable distill` để thực hiện các sửa đổi.
+
+## Những cạm bẫy cần tránh
+
+- **Chạy trên công việc chưa hoàn thiện.** Critique dành cho các trang đã hoàn thành. Một trạng thái trống với ba TODO sẽ bị chấm điểm thấp vì nó chưa xong, không phải vì nó tồi.
+- **Bỏ qua các câu hỏi ở cuối.** Chúng thường là những sửa đổi thay đổi thiết kế nhiều nhất.
+- **Coi điểm heuristic là điểm số.** Chúng mang tính chẩn đoán, không phải đánh giá. 3/4 trên một heuristic ít quan trọng hơn đối với ngữ cảnh của bạn là hoàn toàn ổn.

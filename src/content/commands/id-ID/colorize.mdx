@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Tambahkan warna strategis ke antarmuka monokrom tanpa menjadi berlebihan.
+highlights:
+  - Antarmuka terlihat kompeten tetapi mudah dilupakan.
+  - Anda membutuhkan penekanan yang lebih jelas tanpa menulis ulang seluruh struktur.
+  - Palet saat ini tidak membawa suasana yang diinginkan.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Kapan menggunakannya
+
+`/impeccable colorize` adalah penyeimbang untuk "segalanya abu-abu". Dasbor yang terbaca sebagai dinding krem, formulir tanpa aksen, halaman konten yang bisa menjadi produk SaaS apa pun. Gunakan ketika antarmuka fungsional tetapi emosional datar, dan Anda menginginkan kehangatan tanpa terjerumus ke palet warna AI (ungu-ke-pink, neon sian, cahaya mode gelap).
+
+## Cara kerjanya
+
+Skill dimulai dengan membaca warna brand Anda jika ada, kemudian memutuskan di mana warna mendapatkan tempatnya:
+
+1. **Aksi utama** mendapatkan ekspresi terkuat dari rona brand.
+2. **Aksen sekunder** mendapatkan varian yang diredam atau diwarnai, bukan warna penuh kedua.
+3. **Neutral** diwarnai menuju rona brand pada kroma rendah (sekitar 0.005 hingga 0.01), yang hampir tidak terlihat per piksel tetapi menciptakan kohesi bawah sadar.
+4. **Kategori konten** mendapatkan sistem aksen yang terbatas dan disengaja, bukan pelangi.
+
+Pentingnya, skill menggunakan OKLCH alih-alih HSL sehingga langkah terang yang sama terlihat sama. Saat terang bergerak menuju ekstrem, kroma turun secara otomatis. Beginilah cara Anda mendapatkan warna yang terasa dipertimbangkan alih-alih dihitung.
+
+## Cobalah
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff yang diharapkan:
+
+- Warna brand dipindahkan dari hex hard-coded ke `--color-accent: oklch(62% 0.18 240)`
+- Netral diwarnai dengan 0.007 kroma menuju rona brand
+- Tombol utama mendapatkan aksen penuh, tombol sekunder mendapatkan ink/mist
+- Seri grafik menggunakan 3 rona berbeda, semuanya pada terang yang cocok sehingga tidak ada seri yang mendominasi secara visual
+- Ilustrasi status kosong mendapatkan cuci aksen lembut
+
+## Jebakan
+
+- **Menjalankannya tanpa rona brand.** Colorize membutuhkan titik awal. Jika `PRODUCT.md` tidak menentukannya, skill akan bertanya. Jangan biarkan memilih dari default palet warna AI.
+- **Mengharapkannya memperbaiki masalah palet warna AI.** Jika desain Anda sudah memiliki gradien ungu dan neon sian, Anda butuh `/impeccable quieter` dulu, kemudian colorize dapat membangun ulang.
+- **Menggunakannya pada antarmuka yang sudah berwarna.** Itu tugas `/impeccable quieter`. Colorize menambahkan, tidak mengurangi.

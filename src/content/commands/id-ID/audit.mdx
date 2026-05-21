@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Pemeriksaan kualitas teknis lima dimensi dengan tingkat keparahan P0 hingga P3.
+highlights:
+  - Anda membutuhkan masalah konkret dan tingkat keparahan, bukan hanya umpan balik berbasis selera.
+  - Anda sedang menyiapkan fitur untuk merge atau rilis.
+  - Anda curiga ada kerusakan tersembunyi di mobile, tema gelap, atau kebutuhan bantuan.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Aksesibilitas</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performa</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Tema</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsif</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-pola</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Lima dimensi dinilai 0 hingga 4, setiap temuan ditandai P0 (menghalangi rilis) hingga P3 (penyempurnaan). Audit mendokumentasikan; tidak memperbaiki. Arahkan temuan ke <code>/impeccable harden</code>, <code>/impeccable polish</code>, atau <code>/impeccable optimize</code>.</p>
+</div>
+
+## Kapan menggunakannya
+
+`/impeccable audit` adalah pasangan teknis dari `/impeccable critique`. Jika `/impeccable critique` bertanya "apakah ini terasa benar", `/impeccable audit` bertanya "apakah ini kuat". Skill menjalankan pemeriksaan aksesibilitas, performa, tema, desain responsif, dan anti-pola terhadap implementasi, menilai setiap dimensi 0 hingga 4, dan menghasilkan rencana dengan peringkat keparahan P0 hingga P3.
+
+Gunakan sebelum pengiriman, selama sprint kualitas, atau setiap kali tech lead berkata "kita benar-benar harus melihat aksesibilitas".
+
+## Cara kerjanya
+
+Skill memindai kode Anda melintasi lima dimensi:
+
+1. **Aksesibilitas**: kontras WCAG, ARIA, navigasi keyboard, HTML semantik, label formulir.
+2. **Performa**: layout thrashing, animasi mahal, lazy loading yang hilang, bobot bundle.
+3. **Tema**: warna hard-coded, cakupan mode gelap, konsistensi token.
+4. **Responsif**: perilaku breakpoint, target sentuh, penanganan viewport mobile.
+5. **Anti-pola**: 25 pemeriksaan deterministik yang sama dengan yang dijalankan detektor.
+
+Setiap dimensi mendapat skor 0 hingga 4. Setiap temuan mendapat tingkat keparahan: P0 menghalangi rilis, P1 harus diperbaiki sprint ini, P2 siklus berikutnya, P3 adalah penyempurnaan. Anda mendapatkan kembali satu dokumen yang dapat Anda tempelkan ke pelacak tiket.
+
+Audit tidak memperbaiki apa pun. Skill mendokumentasikan. Arahkan temuan ke `/impeccable polish`, `/impeccable harden`, atau `/impeccable optimize` tergantung kategorinya.
+
+## Cobalah
+
+```
+/impeccable audit the checkout flow
+```
+
+Output yang diharapkan:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+Serahkan P0 ke `/impeccable harden`, P1 tema dan tipografi ke `/impeccable typeset` dan `/impeccable polish`, sisanya ke `/impeccable polish`.
+
+## Jebakan
+
+- **Membingungkannya dengan `/impeccable critique`.** Audit adalah kualitas implementasi. Critique adalah kualitas desain. Jalankan keduanya untuk gambaran lengkap.
+- **Memperbaiki P3 sebelum P0.** Skala keparahan ada untuk suatu alasan. Mulai dari atas.
+- **Melewatkan dimensi yang menurut Anda sudah baik.** Tema dan responsif adalah dimensi yang paling banyak diasumsikan baik oleh orang sampai ternyata tidak.

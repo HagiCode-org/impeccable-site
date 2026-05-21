@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Genera un DESIGN.md conforme a la especificación que captura tu sistema visual para que cada agente de IA mantenga la coherencia de marca.
+highlights:
+  - El código ya contiene un lenguaje de diseño real.
+  - Necesitas un resumen portátil de colores, tipografía, espaciado y componentes.
+  - El trabajo de diseño futuro se está desviando porque el sistema es implícito.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Quiet type, generous air, one committed accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Flat by default. Shadows appear only as a response to state.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tint neutrals toward the accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text for emphasis.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Las seis secciones son fijas, en un orden fijo, con nombres fijos. Junto a él, <code>DESIGN.json</code> se genera como archivo complementario legible por máquina para el panel de diseño del Modo Live.</p>
+</div>
+
+## Cuándo usarlo
+
+Ejecuta `/impeccable document` una vez que tengas suficiente sistema visual para documentar: colores, tipografía, al menos un botón y una tarjeta. El comando escanea tu código, extrae los tokens y patrones de componentes que encuentra, y escribe un `DESIGN.md` en la raíz del proyecto que sigue el [formato Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), seis secciones en un orden fijo, interoperable con cualquier otra herramienta compatible con DESIGN.md.
+
+Recurre a él cuando:
+
+- **Acabas de ejecutar `/impeccable teach`** y `PRODUCT.md` ya existe. Document es el archivo visual correspondiente.
+- **Un comando te sugirió usarlo.** Live, craft y polish leen DESIGN.md. Si no existe, la habilidad sugiere ejecutar document primero.
+- **El diseño se ha desviado** de un DESIGN.md anterior y el archivo ya no describe el sistema actual.
+- **Antes de una gran redisición**, para capturar el estado actual como referencia para la siguiente dirección.
+
+Para proyectos sin código aún (una ejecución fresca de `teach`, nada construido), existe un modo semilla: `/impeccable document --seed` hace cinco preguntas estratégicas rápidas (estrategia de color, dirección tipográfica, energía del movimiento, referencias y anti-referencias) y escribe un esqueleto. Vuelve a ejecutar en modo escaneo cuando haya código.
+
+## Cómo funciona
+
+La pasada de escaneo busca recursos de diseño en orden de prioridad: propiedades personalizadas CSS, configuración Tailwind, temas CSS-in-JS, archivos de tokens de diseño, código fuente de componentes, la hoja de estilos global, y finalmente estilos calculados del renderizado en vivo si hay un navegador disponible. Extrae automáticamente todo lo que puede, luego hace una pregunta agrupada para las partes que necesitan aporte creativo: la **Estrella Polar Creativa** (una única metáfora con nombre para todo el sistema, como "The Editorial Sanctuary"), nombres descriptivos de colores, la filosofía de elevación y el carácter de los componentes.
+
+El resultado es un DESIGN.md con exactamente seis secciones: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Los encabezados son fijos carácter por carácter para que el archivo sea analizable por otras herramientas. Junto a él, se escribe `DESIGN.json` como archivo complementario legible por máquina. Ese archivo es lo que el panel de diseño del modo live usa para renderizar los tiles de botón, input, nav y tarjeta *reales de este proyecto* en lugar de una aproximación genérica.
+
+Cada otro comando lee DESIGN.md al invocarse. Variantes, pulidos, auditorías y nuevas funcionalidades heredan el sistema visual sin que se lo digan.
+
+## Pruébalo
+
+```
+/impeccable document
+```
+
+En un proyecto con tokens ya definidos, esto toma unos dos minutos: el escaneo encuentra tu paleta y pila tipográfica, eliges una Estrella Polar entre 2 o 3 opciones, confirmas nombres descriptivos de colores ("Deep Muted Teal-Navy", no "blue-800"), y el archivo aparece en la raíz del proyecto.
+
+En un proyecto nuevo:
+
+```
+/impeccable document --seed
+```
+
+Cinco preguntas, unos cinco minutos. El archivo es un esqueleto, marcado con un comentario `<!-- SEED -->` para ser honesto sobre lo que es. Vuelve a ejecutar sin el flag una vez que hayas implementado los tokens.
+
+## Errores comunes
+
+- **Ejecutarlo demasiado pronto.** En un proyecto sin tokens implementados, el modo semilla es lo correcto. No fabriques una especificación completa que el código no pueda respaldar. Un DESIGN.md falso es peor que ningún DESIGN.md.
+- **Tratar DESIGN.md como documentación solo para humanos.** Es principalmente para la IA. Cada otro comando lo lee. La firmeza del formato ("nunca", "siempre", reglas con nombre) es intencionada.
+- **Añadir una sección de nivel superior Layout / Motion / Responsive.** La especificación tiene seis secciones, en un orden fijo, con nombres fijos. Incluye el contenido de layout o motion en Overview (reglas de filosofía) o Components (comportamiento por componente).
+- **Sobrescribir un DESIGN.md existente sin preguntar.** Document siempre confirma primero. Si quieres empezar de cero, renombra el archivo existente o dile explícitamente a la habilidad que lo sobrescriba.

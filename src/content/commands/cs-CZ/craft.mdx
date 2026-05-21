@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Utvorte design a pak jej sestavte, vse v jednom pruchodu.
+highlights:
+  - Zacinate novou funkci od nuly.
+  - Chcete discovery, implementaci a vizualni rafinaci v jednom pruchodu.
+  - Preferujete pomalejsi, ale uvazenejsi smycku sestaveni.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Discovery interview. Ucel, uzivatele, omezeni, smer.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Load references</span>
+      <span class="docs-viz-flow-hint">Prostorove, typograficke, pohybove, barevne, interakcni.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Struktura, hierarchie, typografie, barvy, stavy, pohyb, responsivita.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterate visually</span>
+      <span class="docs-viz-flow-hint">Zkontrolujte v prohlizeci, refinujte, dokud to nebude odpovidat briefu.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Kazda faze je nepreskocitelna. Discovery krok je misto, kde vetsina AI vystupu selhava: v dobe, kdy existuje kod, uvazovani je jiz fixovano.</p>
+</div>
+
+## Kdy pouzit
+
+`/impeccable craft` je kompletni sestavovaci prikaz. Dejte mu popis funkce a provede cely pipeline: strukturovane discovery, nacteni referenci, implementace, vizualni iterace. Pouzijte jej, kdyz zacinate novou funkci od nuly a chcete cely pracovni postup v jednom volani.
+
+Siahnete po nem kdyz:
+
+- **Sestavujete novou funkci a chcete cely tok.** Nechcete kroky ridit sami.
+- **Vite, co sestavujete, ale ne jak by to melo vypadat.** Discovery faze vynuti designove uvazeni pred tim, nez implementace zamkne rozhodnuti.
+- **Chcete vizualni iteraci jako vychozi nastaveni.** `craft` zkontroluje vysledek v prohlizeci a refinujte, dokud neni lesteni vysoke, misto odeslani prvni fungujici verze.
+
+Pokud chcete jen uvazovani bez kodu, pouzijte `/impeccable shape` samostatne. Pokud jiz mate jasnou vizi a chcete jen sestavit, zavolejte `/impeccable` primo s popisem funkce. `craft` je mezi tim: strukturovany, kompletni, nazorovy.
+
+## Jak to funguje
+
+`craft` provede ctyri faze v poradi:
+
+1. **Utvorte design.** Spusti `/impeccable shape` interne: kratky discovery rozhovor o ucelu, uzivatelich, obsahu, omezenich a cilech. Vystupem je designovy brief, ktery muzete precist a pripadne namitat.
+2. **Nactete reference.** Na zaklade briefu nacte spravne referencni soubory (prostorove, typograficke, pohybove, barevne, interakcni, responsivni, UX texty), aby mel model nactene relevantni principy pred zacatkem kodovani.
+3. **Sestavte.** Implementuje funkci v uvazenem poradi: struktura prvni, pak rozestupy a hierarchie, pak typografie a barvy, pak stavy, pak pohyb, pak responsivita. Kazde rozhodnuti se da vystopovat zpet k briefu.
+4. **Vizualni iterace.** Otevre vysledek v prohlizeci, zkontroluje jej proti briefu a katalogu anti-patternu a refinujte, dokud neodpovida umyslu. Tento krok je kriticly. Prvni fungujici verze niekdy neni odesilanou verzi.
+
+Discovery faze je nepreskocitelna a to je smysl. Vetsina AI generovanych UI selhava, protoze se nikdo nezeptal, co se uzivatel snazi dosahnout, nez model zacal psat JSX. `craft` to otaci.
+
+## Vyzkousejte to
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Ockejte nejprve 5 az 10 otazek discovery interview. Otazky o vasem publiku, osobnosti produktu, emocionalnim tonu, ktery chcete, anti-referencich a omezenich. Potom designovy brief. Potom implementace s kontrolou v prohlizeci v kazdem stavu. Ockejte vice kol iteraci ve fazi vizualniho lesteni.
+
+Cely prubeh je delsi nez typicky prikaz, protoze zahrnuje uvazovani, sestavovani i rafinaci. To je kompromis: vice predchozi struktury, mene nasledneho upratovani.
+
+## Na co si dat pozor
+
+- **Pouzivani pro male zmeny.** `craft` je pro nove funkce, ne pro drobne upravy. Pro existujici kod siahnete po `/impeccable polish`, `/impeccable critique` nebo konkretnim rafinacnim prikazu.
+- **Spechani v discovery fazi.** Interview se zda pomale v porovnani s "jen zacit kodovat". Neni. Peclive odpovidani na otazky produkuje ostrejsi brief, ktery produkuje ostrejsi sestaveni, ktere produkuje mene prepisovani.
+- **Preskoceni vizualni iterace.** Faze existuje z duvodu. Mezera mezi "technicky funguje" a "pripada spravne" se uzavira vizualnim lestenim, nikoli revizi kodu. Nechte ji probehnout.

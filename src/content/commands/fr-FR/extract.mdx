@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Extraire les composants réutilisables, tokens et patterns vers le système de design.
+highlights:
+  - Plusieurs composants résolvent le même problème différemment.
+  - Les tokens et patterns doivent être centralisés.
+  - Vous voulez un système visuel plus maintenable.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Repeated hex values, button variants, spacing scales, text styles.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Token names, component APIs with variant + size, text styles.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Replace duplicated CSS with the new primitives. No orphan code left behind.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">La compétence n'extrait que ce qui est utilisé trois fois ou plus avec la même intention. Deux utilisations ne font pas un pattern, et la migration se fait toujours dans la même passe.</p>
+</div>
+
+## Quand l'utiliser
+
+`/impeccable extract` est pour le moment où votre codebase est accidentellement devenu un système de design. Des styles de boutons répétés à 12 endroits. Trois variantes de la même carte. Des couleurs hex éparpillées partout. De l'espacement fait main qui correspond accidentellement à une échelle. Utilisez-le quand vous voulez consolider cette dérive en primitives réutilisables.
+
+Utilisez-le après qu'un produit a expédié suffisamment de fonctionnalités pour révéler les patterns. L'extraction prématurée crée des abstractions qui ne correspondent pas à la réalité.
+
+## Comment ça marche
+
+La compétence découvre d'abord la structure du système de design, puis identifie les opportunités d'extraction :
+
+1. **Tokens** : trouver les valeurs littérales répétées (couleurs, espacement, rayons, ombres, tailles de police). Proposer des noms de tokens, ajouter au système de tokens, remplacer les utilisations.
+2. **Composants** : trouver les patterns UI qui se répètent avec des variations mineures (boutons, cartes, inputs, modales). Extraire en un seul composant avec des variantes, migrer les appelants.
+3. **Patterns de composition** : trouver des patterns de mise en page ou d'interaction qui se répètent (lignes de formulaire, groupes de barre d'outils, états vides). Extraire en primitives de composition.
+4. **Styles de texte** : trouver les combinaisons répétées de font-size + weight + line-height. Extraire en styles de texte.
+5. **Patterns d'animation** : trouver les combinaisons répétées d'easing, de durée ou de keyframes. Extraire en tokens de mouvement.
+
+La compétence est prudente. Elle n'extrait que les choses utilisées trois fois ou plus, avec la même intention. Elle n'extrait jamais « parce que ça pourrait être réutilisé plus tard ». L'abstraction prématurée est pire que la duplication.
+
+## Essayez
+
+```
+/impeccable extract the button styles
+```
+
+Résultat attendu :
+
+- 14 instances de boutons trouvées dans 8 fichiers
+- 4 variantes distinctes : primary (filled accent), secondary (bordered), ghost (text-only), destructive (filled red)
+- Les 4 variantes utilisent la même échelle de taille (small, default, large)
+- Extraites en `<Button variant="primary" size="default">` avec des styles pilotés par tokens
+- 14 sites d'appel migrés, ~180 lignes de CSS dupliqué supprimées
+- 3 tokens manquants ajoutés : `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Pièges courants
+
+- **Extraire trop tôt.** Deux utilisations ne font pas un pattern. Trois, peut-être. Attendez que le pattern soit évident.
+- **Sur-généraliser.** Le composant extrait doit correspondre étroitement aux cas d'usage actuels, pas anticiper chaque futur cas possible. Vous pouvez toujours ajouter des variantes plus tard.
+- **Oublier la migration.** L'extraction sans migration laisse l'ancien code dupliqué en place et crée une troisième façon de faire la même chose. Migrez toujours dans la même passe.
+- **Extraire des choses qui diffèrent en intention.** Deux boutons qui se ressemblent mais servent des objectifs différents (action principale vs lien stylisé en bouton) devraient probablement rester séparés.

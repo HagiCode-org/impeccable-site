@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Extraia componentes, tokens e padrões reutilizáveis para o sistema de design.
+highlights:
+  - Múltiplos componentes estão a resolver o mesmo problema de formas diferentes.
+  - Tokens e padrões precisam de ser centralizados.
+  - Pretende um sistema visual mais sustentável.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Valores hex repetidos, variantes de botões, escalas de espaçamento, estilos de texto.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Nomes de tokens, APIs de componentes com variante + tamanho, estilos de texto.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Substituir CSS duplicado pelas novas primitivas. Sem código órfão deixado para trás.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">A competência apenas extrai o que é utilizado três ou mais vezes com a mesma intenção. Duas utilizações não são um padrão, e a migração acontece sempre na mesma passagem.</p>
+</div>
+
+## Quando utilizar
+
+`/impeccable extract` destina-se ao momento em que a sua base de código se tornou acidentalmente num sistema de design. Estilos de botões repetidos em 12 locais. Três variantes da mesma carta. Cores hex dispersas por todo o lado. Espaçamento artesanal que acidentalmente coincide com uma escala. Recorra a ele quando quiser consolidar esta deriva em primitivas reutilizáveis.
+
+Utilize-o depois de um produto ter lançado funcionalidades suficientes para revelar os padrões. Extração prematura cria abstrações que não correspondem à realidade.
+
+## Como funciona
+
+A competência descobre primeiro a estrutura do sistema de design, depois identifica oportunidades de extração:
+
+1. **Tokens**: encontrar valores literais repetidos (cores, espaçamento, raios, sombras, tamanhos de tipo de letra). Propor nomes de tokens, adicionar ao sistema de tokens, substituir utilizações.
+2. **Componentes**: encontrar padrões de UI que se repetem com variação menor (botões, cartas, inputs, modais). Extrair para um único componente com variantes, migrar os pontos de utilização.
+3. **Padrões de composição**: encontrar padrões de layout ou interação que se repetem (linhas de formulário, grupos de barras de ferramentas, estados vazios). Extrair para primitivas de composição.
+4. **Estilos de texto**: encontrar combinações repetidas de font-size + weight + line-height. Extrair para estilos de texto.
+5. **Padrões de animação**: encontrar combinações repetidas de easing, duração ou keyframes. Extrair para tokens de movimento.
+
+A competência é cautelosa. Apenas extrai coisas utilizadas três ou mais vezes, com a mesma intenção. Nunca extrai "porque pode vir a ser reutilizado". Abstração prematura é pior do que duplicação.
+
+## Experimente
+
+```
+/impeccable extract the button styles
+```
+
+Output esperado:
+
+- Encontradas 14 instâncias de botões em 8 ficheiros
+- 4 variantes distintas: primary (preenchido com destaque), secondary (com borda), ghost (apenas texto), destructive (preenchido vermelho)
+- Todas as 4 variantes utilizam a mesma escala de tamanho (small, default, large)
+- Extraído para `<Button variant="primary" size="default">` com estilos orientados por tokens
+- Migrados 14 pontos de utilização, removidas ~180 linhas de CSS duplicado
+- Adicionados 3 tokens em falta: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Armadilhas
+
+- **Extrair demasiado cedo.** Duas utilizações não são um padrão. Três podem ser. Espere até o padrão ser óbvio.
+- **Generalizar em excesso.** O componente extraído deve corresponder aos casos de uso atuais de perto, não antecipar todos os futuros possíveis. Pode sempre adicionar variantes depois.
+- **Esquecer a migração.** Extração sem migração deixa o código duplicado antigo e cria uma terceira forma de fazer a mesma coisa. Migrar sempre na mesma passagem.
+- **Extrair coisas que diferem na intenção.** Dois botões que parecem semelhantes mas servem propósitos diferentes (ação principal vs ligação estilizada como botão) provavelmente devem manter-se separados.

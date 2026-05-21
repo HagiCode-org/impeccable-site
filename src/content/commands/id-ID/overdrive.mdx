@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Dorong antarmuka melewati batas konvensional. Shader, fisika, 60fps, transisi sinematik.
+highlights:
+  - Pengalaman seharusnya terasa luar biasa, bukan hanya rapi.
+  - Gerak kaya atau rendering adalah bagian dari cerita produk.
+  - Tim bersedia membayar kompleksitas di tempat yang penting.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Kapan menggunakannya
+
+`/impeccable overdrive` untuk momen-momen di mana Anda ingin mengesankan. Hero yang menggunakan WebGL. Tabel yang menangani sejuta baris. Dialog yang berubah dari elemen pemicunya. Formulir yang memvalidasi secara real-time dengan umpan balik streaming. Transisi halaman yang terasa sinematik. Gunakan ketika anggaran proyek memungkinkan ambisi teknis dan hasilnya perlu terasa luar biasa.
+
+Jangan gunakan pada alat operator, dasbor, atau apa pun di mana keandalan mengalahkan tontonan. Overdrive membakar kompleksitas untuk efek, dan pertukaran itu hanya sepadan pada momen yang penting.
+
+## Cara kerjanya
+
+Skill memilih satu momen untuk dibuat luar biasa dan berkomitmen padanya, alih-alih menyebarkan upaya ke seluruh antarmuka. Kemudian skill meraih teknik yang tidak pernah disentuh sebagian besar UI yang dihasilkan AI: shader WebGL, fisika pegas, Scroll Timeline, View Transitions, animasi canvas, filter yang dipercepat GPU. Semuanya dianggarkan, diprofilkan, dan diuji pada 60fps, dengan fallback reduced-motion yang sudah terintegrasi.
+
+Output overdrive diumumkan dengan `──── OVERDRIVE ────` sehingga Anda tahu bahwa Anda memasuki mode yang lebih ambisius. Harapkan diff yang lebih besar, dependensi baru, dan kedalaman implementasi di luar apa yang dihasilkan skill lain.
+
+## Cobalah
+
+```
+/impeccable overdrive the landing hero
+```
+
+Satu proses konkret mungkin mengganti hero statis dengan latar belakang shader WebGL yang digerakkan oleh posisi mouse, headline display yang terungkap dengan masker saat scroll menggunakan Scroll Timeline API, dan View Transition pada CTA yang berubah menjadi halaman berikutnya. Ditambah fallback reduced-motion yang mengganti semuanya dengan komposisi statis yang bersih.
+
+## Jebakan
+
+- **Menggunakannya di mana-mana.** Overdrive bekerja karena jarang. Jika setiap halaman memiliki momen sinematik, tidak ada yang sinematik.
+- **Mengirim tanpa fallback reduced-motion.** Tidak dapat dinegosiasikan. Overdrive menambahkannya secara otomatis; jangan hapus.
+- **Mengabaikan performa.** Momen luar biasa masih perlu mencapai 60fps. Jika efek menjatuhkan frame, potong atau optimalkan. Tontonan lambat lebih buruk dari kesederhanaan yang dilakukan dengan baik.
+- **Menjalankan overdrive sebelum antarmuka dasar solid.** Tontonan di atas fondasi yang rusak terbaca sebagai gangguan, bukan delight.

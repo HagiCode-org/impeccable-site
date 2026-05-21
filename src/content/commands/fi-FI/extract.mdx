@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Vedä uudelleenkäytettäviä komponentteja, tokeneita ja malleja suunnittelujärjestelmään.
+highlights:
+  - Useat komponentit ratkaisevat saman ongelman eri tavalla.
+  - Tokenit ja mallit täytyy keskittää.
+  - Haluat ylläpidettävämmän visuaalisen järjestelmän.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Havaitse ajautuminen</span>
+      <span class="docs-viz-flow-hint">Toistuvia hex-arvoja, painikemuunnelmia, välistysasteikkoja, tekstityylejä.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Ehdota primitiivejä</span>
+      <span class="docs-viz-flow-hint">Token-nimet, komponentti-API:t variantin + koon kanssa, tekstityylit.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Siirrä kutsupaikat</span>
+      <span class="docs-viz-flow-hint">Korvaa monistettu CSS uusilla primitiiveillä. Ei orpoa koodia jää jälkeen.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Taito purkaa vain mitä on käytetty kolme tai useamman kertaa samalla tarkoituksella. Kaksi käyttökertaa ei ole malli, ja siirto tapahtuu aina samassa läpikäynnissä.</p>
+</div>
+
+## Milloin käyttää
+
+`/impeccable extract` on hetkeen jolloin koodipohjasi on vahingossa tullut suunnittelujärjestelmäksi. Toistuvia painiketyylejä 12 paikassa. Kolme muunnelmaa samasta kortista. Hex-värejä siroteltu kaikkialle. Käsintehdyn välistys joka vahingossa vastaa asteikkoa. Turvaudu siihen kun halaat tiivistää tämän ajautumisen uudelleenkäytettäviksi primitiiveiksi.
+
+Käytä sitä kun tuote on lähettänyt tarpeeksi ominaisuuksia paljastamaan mallit. Ennenaikainen purku luo abstraktioita jotka eivät vastaa todellisuutta.
+
+## Miten se toimii
+
+Taito löytää suunnittelujärjestelmän rakenteen ensin, sitten tunnistaa purkumahdollisuudet:
+
+1. **Tokenit**: löydä toistuvat literaalialat (värit, välistys, säteet, varjot, fonttikoot). Ehdota token-nimiä, lisää token-järjestelmään, korvaa käytöt.
+2. **Komponentit**: löydä käyttöliittymämalleja jotka toistuvat pienellä vaihtelulla (painikkeet, kortit, syötteet, modaalit). Purkaa yksittäiseksi komponentiksi varianttien kanssa, siirrä kutsujat.
+3. **Koostumusmallit**: löydä asettelu- tai vuorovaikutusmalleja jotka toistuvat (lomakerivit, työkalupalkkiryhmät, tyhjät tilat). Purkaa koostumusprimitiiveiksi.
+4. **Tyyppityylit**: löydä toistuvia font-size + weight + line-height -yhdistelmiä. Purkaa tekstityyleiksi.
+5. **Animaatiomallit**: löydä toistuvia helpotus-, kesto- tai avainkuva-yhdistelmiä. Purkaa liiketokeneiksi.
+
+Taito on varovainen. Se purkaa vain asioita joita käytetään kolme tai useamman kertaa samalla tarkoituksella. Se ei koskaan pura "koska sitä ehkä tarvitaan myöhemmin". Ennenaikainen abstraktio on huonompi kuin monistaminen.
+
+## Kokeile
+
+```
+/impeccable extract the button styles
+```
+
+Odotettu tuloste:
+
+- Löydetty 14 painikeinstanssia 8 tiedostossa
+- 4 erillistä muunnelmaa: ensisijainen (täytetty aksentti), toissijainen (reunallinen), aave (vain teksti), tuhoava (täytetty punainen)
+- Kaikki 4 muunnelmaa käyttävät samaa kokoasteikkoa (pieni, oletus, suuri)
+- Purettu `<Button variant="primary" size="default">`-komponentiksi token-vetoisten tyylien kanssa
+- Siirretty 14 kutsupaikkaa, poistettu noin 180 riviä monistettua CSS:ää
+- Lisätty 3 puuttuvaa tokenia: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Sudenkuopat
+
+- **Purku liian aikaisin.** Kaksi käyttökertaa ei ole malli. Kolme saattaa olla. Odota kunnes malli on ilmeinen.
+- **Yliyleistäminen.** Puretun komponentin tulisi vastata nykyisiä käyttötapauksia tiiviisti, ei ennakoida jokaista mahdollista tulevaa. Voit aina lisätä muunnelmia myöhemmin.
+- **Siirron unohtaminen.** Purku ilman siirtoa jättää vanhan monistetun koodin ympärille ja luo kolmannen tavan tehdä sama asia. Siirrä aina samassa läpikäynnissä.
+- **Asioiden purku jotka eroavat tarkoitukseltaan.** Kaksi painiketta jotka näyttävät samankaltaisilta mutta palvelevat eri tarkoituksia (ensisijainen toiminto vs. painikkeena tyylitelty linkki) tulisi todennäköisesti pitää erillään.

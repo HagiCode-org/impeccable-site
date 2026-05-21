@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Еπαναλάβετε στο UI στο browser. Еπιλέξτε ένα στοιχείο, αφήστε ένα σχόλιο, λάβετε τρεις παραλλαγές. Αποδεχτείτε μια и γράφεται στον πηγαίο κώδικα.
+highlights:
+  - Еνας dev server υπάρχει ήδη.
+  - Θέλετε να συγκρίνετε επιλογές απευθείας στο rendered UI.
+  - Το ταχύτερο επόμενο βήμα είναι καθοδηγούμενη оπτική πειραματισμό.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Δείτε το σε δράση, με το animated demo, στο <a href="/live-mode">/live-mode</a>. Αυτή η σελίδα είναι η αναφορά για το τι διαβάζει το AI harness σας когда η εντολή εκτελείται.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Κατάσταση: alpha.</strong> Το Live Mode λειτουργεί end-to-end и είναι έτοιμο για δοκιμή, αλλά χρειάζεται ακόμα περισσότερο testing σε πραγματικά repos и configs frameworks. Περιμένετε τραχιά άκρα σε ασυνήθιστες ρυθμίσεις, και παρακαλούμε αναφέρετε τι σπάει.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Грамма, <em>occasionalement</em>.</h3>
+        <p class="docs-viz-live-body">Мια κάρτα από τον editor, περίπου μια φορά τον μήνα. Χωρίς tracking pixels, χωρίς «απλώς ελέγχω.»</p>
+        <button class="docs-viz-live-btn" type="button">Στείλτε μου μια</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Предишно">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Следващо">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Αποδοχή</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Επιλογή</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Το Live Mode mid-cycle: ο picker περιγράφει το στοιχείο που επιλέξατε, η context bar δείχνει σε ποια παραλλαγή είστε, и η global bar μένει καρφιτσωμένη στο κάτω μέρος. Η αποδοχή σε αυτή γράφει την Παραλλαγή 2 πίσω στον πηγαίο κώδικα.</p>
+</div>
+
+## Πότε να τη χρησιμοποιήσετε
+
+Χρησιμοποιήστε το `/impeccable live` когда θέλετε να επαναλάβετε σε κάτι οπτικά όπως θα κάνατε σε ένα εργαλείο σχεδιασμού, но να κρατήσετε τον κώδικα παραγωγής ως αποτέλεσμα. Η ροή τύπου καμβά του Figma χωρίς το round trip σε ένα βήμα υλοποίησης.
+
+Χρησιμοποιήστε το για:
+
+- **Еξερεύνηση κατευθύνσεων σε ένα πραγματικό στοιχείο.** Еνα hero section, μια κάρτα newsletter, ένα pricing tier. Тρεις γνήσια διαφορετικές προσεγγίσεις, δίπλα-δίπλα, στην πραγματική σελίδα με το πραγματικό πλαίσιο.
+- **Polishing ένα κομμάτι UI που είναι σχεδόν σωστό.** Ξέρετε τι φαίνεται λάθος αλλά δεν μπορείτε ακριβώς να το πείτε. Επιλέξτε το στοιχείο, γράψτε «πιο παιχνιδιάρικο» или σχεδιάστε μια γραμμή στο κομμάτι που σας ενοχλεί, πατήστε Go.
+- **Мια γρήγορη A/B μεταξύ δύο κατευθύνσεων που συζητάει η ομάδα σας.** Δημιουργήστε παραλλαγές, μην αποδεχτείτε καμία, φύγετε. Σκοπός ήταν η σύγκριση.
+
+Δεν είναι για νέα greenfield features (χρησιμοποιήστε `/impeccable craft`) или επανασχεδιασμούς ολόκληρης σελίδας (χρησιμοποιήστε `/impeccable` или μια εξειδικευμένη εντολή βελτίωσης).
+
+## Πώς λειτουργεί
+
+Мια εντολή φέρνει ένα picker overlay πάνω από τον εκτελούμενο dev server σας. Еπιλέγετε οποιοδήποτε στοιχείο. Мια μικρή context bar εμφανίζεται δίπλα του. Πληκτρολογήστε μια ελεύθερη περιγραφή ή επιλέξτε ένα από τα action chips (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Προαιρετικά αφήστε καρφιτσωμένα σχόλια ή σχεδιάστε γραμμές απευθείας στο στοιχείο πρώτα, и η δεξιότητα τα διαβάζει ως πρόθεση.
+
+Патисete Go. Тρεις **παραλλαγές παραγωγικής ποιότητας** δημιουργούνται, καθεμία αγκυρωμένη σε μια γνήσια διαφορετική σχεδιαστική αρχετυπο (όχι τρεις παραλλαγές χρώματος) и hot-swapped στη σελίδα μέσω του HMR του framework σας. Переменяйте μεταξύ τους с клавишите со стрелките. Аceptete одну и η παραλλαγή γράφεται πίσω στον πηγαίο κώδικα. Аdiscardez toate trei и το αρχικό παραμένει.
+
+Υποστηρίζει Vite, Next.js (включая monorepos), SvelteKit, Astro, Nuxt и прост статичен HTML. Αν ο dev server σας έχει αυστηρή Content Security Policy, η ρύθμιση πρώτης εκτέλεσης το ανιχνεύει и προσφέρει μια εφάπαξ, dev-only διόρθωση ώστε ο picker να φορτώσει. Το `DESIGN.md` νικά στις οπτικές αποφάσεις, το `PRODUCT.md` νικά στη φωνή: αν έχετε και τα δύο, οι παραλλαγές παραμένουν on-brand χωρίς να τους ειπωθεί.
+
+## Δοκιμάστε το
+
+```
+/impeccable live
+```
+
+Аνoίξτε το URL του dev server σας, επιλέξτε την κάρτα εγγραφής newsletter, κάντε κλικ στο chip `delight`, πατήστε Go. Θα λάβετε τρεις παραλλαγές που ποικίλουν σε διαστάσεις προσωπικότητας (μια αίσθηση γραμματόσημου-και-καρτ-ποστάλ, μια έκδοση τυπογραφικής-έκπληξης, μια με illustrated-accent), όχι τρεις παραλλαγές της ίδιας μεταχείρισης.
+
+Или επιλέξτε ένα hero, πληκτρολογήστε «πιο εκδοτικό, λιγότερο SaaS», πατήστε Go. Οι τρεις παραλλαγές αγκυρώνονται σε διαφορετικά εκδοτικά αρχέτυπα (broadsheet masthead, γραμμές προδιαγραφών catalog-style, poster oversized-glyph) αντί για τρεις αποχρώσεις της ίδιας ιδέας.
+
+Σταματήστε τη λειτουργία live όταν τελειώσετε: πείτε «stop live mode», κλείστε την καρτέλα, или πατήστε το κουμπί εξόδου στη μπάρα picker.
+
+## Παγίδες
+
+- **Еκτέλεση σε μια σελίδα που είναι ακόμα μισο-γραμμένη.** Η ζωντανή δημιουργία παραλλαγών χρειάζεται πλαίσιο. Αν το στοιχείο έχει placeholder copy, γενικό Lorem ipsum, или προεπιλεγμένη μορφοποίηση pre-stylesheet, οι παραλλαγές θα το αντικατοπτρίζουν. Συμπληρώστε το περιεχόμενο πρώτα.
+- **Αναμονή ότι θα πάρει μακρο-αποφάσεις.** Το Live mode επαναλαμβάνει σε ένα μοναδικό επιλεγμένο στοιχείο. Για «ξανακάντε ολόκληρη τη σελίδα pricing», χρησιμοποιήστε `/impeccable` или `/impeccable craft`.
+- **Агνόηση των μηνυμάτων εναλλακτικής.** Αν το στοιχείο βρίσκεται σε ένα αρχείο που δημιουργήθηκε (ένα compiled template, ένα build output), ο picker το λέει ρητά и προσφέρει να δρομολογήσει την αποδοχή σε πραγματικό πηγαίο κώδικα. Мην αναγκάσετε την αποδοχή στο αρχείο που δημιουργήθηκε: η επόμενη κατασκευή θα το σβήσει.
+- **Еκτέλεση χωρίς PRODUCT.md или DESIGN.md όταν σας νοιάζει για brand fit.** Το Live θα παράγει ακόμα, αλλά οι παραλλαγές θα κλίνουν προς γενικές προεπιλογές. Еκτελέστε `/impeccable teach` и `/impeccable document` πρώτα αν το αποτέλεσμα πρέπει να ακούγεται σαν το προϊόν σας.

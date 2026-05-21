@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Chuyển động có mục đích truyền tải trạng thái, không phải trang trí.
+highlights:
+  - Giao diện cảm thấy vô hồn hoặc gián đoạn giữa các trạng thái.
+  - Tải, phản hồi hoặc chuyển đổi cần chuyển động giải thích điều đang xảy ra.
+  - Bạn muốn animation có kỷ luật với các fallback reduced-motion.
+related:
+  - delight
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable animate` dành cho giao diện cảm thấy vô hồn, nơi thay đổi trạng thái là tức thì và giật cục, nơi tải vừa mới xuất hiện, nơi người dùng không bao giờ hoàn toàn tin rằng cú click của họ đã được đăng ký. Sử dụng để thêm các chuyển động nhỏ truyền tải điều đang xảy ra: vào, ra, phản hồi, chuyển đổi giữa các trạng thái.
+
+Đừng sử dụng để thêm hiệu ứng nảy hoặc elastic spring chỉ vì năng lượng. Đó là trang trí, và kỹ năng này sẽ không cung cấp cho bạn.
+
+## Cách hoạt động
+
+Kỹ năng xác định các khoảnh khắc tĩnh sẽ được hưởng lợi từ chuyển động, sau đó áp dụng chúng với kỷ luật nghiêm ngặt:
+
+1. **Vào và ra**: phần tử xuất hiện và biến mất với fade 200 đến 300ms cộng với Y hoặc scale tinh tế, không bao giờ thuộc tính layout.
+2. **Phản hồi trạng thái**: hover, active, focus, loading, success đều truyền tải qua chuyển động thay vì hoán đổi đột ngột.
+3. **Chuyển đổi giữa các khung nhìn**: shared-element transitions nơi phù hợp, fade-through trong trường hợp khác.
+4. **Tiến trình và tải**: skeleton screen, thanh tiến trình xác định, chuyển động nói "vẫn đang xử lý".
+5. **Reduced motion**: mọi animation có fallback `prefers-reduced-motion`.
+
+Easing luôn theo cấp số nhân (ease-out-quart, quint, hoặc expo) vì vật thể thực giảm tốc mượt mà. Không bounce, không elastic, không linear cho bất cứ thứ gì ngoại trừ chỉ báo tiến trình.
+
+Kỹ năng chỉ animate `transform` và `opacity`. Nếu bạn thấy đang animate `width`, `height`, `top`, hoặc `left`, đó là làm sai. Sử dụng `grid-template-rows` cho chuyển đổi chiều cao.
+
+## Thử ngay
+
+```
+/impeccable animate the sign-up flow
+```
+
+Các bổ sung điển hình:
+
+- Input email nhận hiệu ứng phát sáng focus khi focus-visible (opacity + shadow, 180ms)
+- Nút submit hiển thị spinner bên trong nó ở trạng thái loading, không phải spinner riêng bên cạnh
+- Màn hình thành công vào với opacity + translateY(8px), 260ms, ease-out-quart
+- Thông báo lỗi trượt xuống với grid-template-rows (không phải height), 220ms
+- Fallback `@media (prefers-reduced-motion: reduce)` cho mọi chuyển đổi
+
+## Những cạm bẫy cần tránh
+
+- **Yêu cầu "thêm animation".** Animate không phải một núm xoay. Nó thêm nơi chuyển động truyền tải, không phải ở mọi nơi.
+- **Loại bỏ các fallback reduced-motion.** Kỹ năng thêm chúng tự động. Không thể thương lượng đối với khả năng tiếp cận.

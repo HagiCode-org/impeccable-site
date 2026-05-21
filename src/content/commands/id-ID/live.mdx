@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Iterasi UI di browser. Pilih elemen, berikan komentar, dapatkan tiga varian. Terima satu dan itu akan menulis ke sumber.
+highlights:
+  - Dev server sudah ada.
+  - Anda ingin membandingkan opsi langsung pada UI yang di-render.
+  - Langkah selanjutnya tercepat adalah eksperimen visual terpandu.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Lihat aksinya, dengan demo animasi, di <a href="/live-mode">/live-mode</a>. Halaman ini adalah referensi untuk apa yang dibaca harness AI Anda saat perintah dijalankan.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Status: alpha.</strong> Live Mode bekerja end-to-end dan siap dicoba, tetapi masih membutuhkan lebih banyak pengujian terhadap repo dunia nyata dan konfigurasi framework. Harapkan tepi kasar pada pengaturan yang tidak umum, dan silakan laporkan apa yang rusak.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode di tengah siklus: picker menguraikan elemen yang Anda pilih, bilah konteks menunjukkan varian mana yang Anda lihat, dan bilah global tetap tersemat di bagian bawah. Terima pada ini menulis Varian 2 kembali ke sumber.</p>
+</div>
+
+## Kapan menggunakannya
+
+Gunakan `/impeccable live` ketika Anda ingin mengiterasi sesuatu secara visual seperti yang Anda lakukan di alat desain, tetapi tetap mempertahankan kode produksi sebagai output. Alur seperti kanvas Figma tanpa perjalanan bolak-balik ke langkah implementasi.
+
+Gunakan untuk:
+
+- **Menjelajahi arah pada elemen nyata.** Bagian hero, kartu newsletter, tingkat harga. Tiga pendekatan yang benar-benar berbeda, berdampingan, pada halaman sebenarnya dengan konteks sebenarnya.
+- **Memoles sepotong UI yang hampir tepat.** Anda tahu apa yang terasa kurang tapi tidak bisa mengatakannya. Pilih elemennya, coret "lebih playful" atau gambar garis melalui bagian yang mengganggu, tekan Go.
+- **A/B cepat antara dua arah yang diperdebatkan tim Anda.** Hasilkan varian, jangan terima apa pun, pergi. Tujuannya adalah perbandingan.
+
+BUKAN untuk fitur greenfield baru (gunakan `/impeccable craft`) atau redesain seluruh halaman (gunakan `/impeccable` atau perintah penyempurnaan khusus).
+
+## Cara kerjanya
+
+Satu perintah memunculkan overlay picker di atas dev server yang sedang berjalan. Anda memilih elemen apa saja. Bilah konteks kecil muncul di sebelahnya. Ketik deskripsi bebas atau pilih salah satu chip aksi (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Opsional jatuhkan pin komentar atau gambar coretan langsung pada elemen dulu, dan skill membacanya sebagai maksud.
+
+Tekan Go. Tiga **varian berkualitas produksi** dihasilkan, masing-masing berlabuh ke arketipe desain yang benar-benar berbeda (bukan tiga variasi warna) dan ditukar secara langsung ke halaman melalui HMR framework Anda. Putar melalui mereka dengan tombol panah. Terima satu dan varian ditulis kembali ke sumber. Buang ketiganya dan yang asli tetap.
+
+Mendukung Vite, Next.js (termasuk monorepo), SvelteKit, Astro, Nuxt, dan HTML statis biasa. Jika dev server Anda memiliki Content Security Policy ketat, pengaturan pertama kali mendeteksinya dan menawarkan patch satu kali khusus dev sehingga picker dapat dimuat. `DESIGN.md` menang pada keputusan visual, `PRODUCT.md` menang pada suara: jika Anda memiliki keduanya, varian tetap on-brand tanpa diberi tahu.
+
+## Cobalah
+
+```
+/impeccable live
+```
+
+Buka URL dev server Anda, pilih kartu pendaftaran newsletter, klik chip `delight`, tekan Go. Anda akan mendapatkan tiga varian yang bervariasi melintasi dimensi kepribadian (nuansa prangko-dan-kartupos, versi kejutan-tipografi, satu aksen-ilustrasi), bukan tiga variasi perlakuan yang sama.
+
+Atau pilih hero, ketik "lebih editorial, kurang SaaS", tekan Go. Tiga varian berlabuh ke arketipe editorial yang berbeda (masthead koran, baris spesifikasi gaya katalog, poster glyph oversize) alih-alih tiga nuansa ide yang sama.
+
+Hentikan mode live setelah selesai: katakan "stop live mode", tutup tab, atau tekan tombol keluar pada bilah picker.
+
+## Jebakan
+
+- **Menjalankannya pada halaman yang masih setengah jadi.** Pembuatan varian live membutuhkan konteks. Jika elemen memiliki salinan placeholder, Lorem ipsum generik, atau format default pra-stylesheet, varian akan mencerminkan itu. Isi kontennya dulu.
+- **Mengharapkannya membuat keputusan makro.** Mode live mengiterasi pada satu elemen yang dipilih. Untuk "buat ulang seluruh halaman harga", gunakan `/impeccable` atau `/impeccable craft`.
+- **Mengabaikan pesan fallback.** Jika elemen hidup dalam file yang dihasilkan (template yang dikompilasi, output build), picker mengatakannya secara eksplisit dan menawarkan untuk merutekan penerimaan ke sumber sebenarnya. Jangan paksa penerimaan ke file yang dihasilkan: build berikutnya akan menghapusnya.
+- **Menjalankannya tanpa PRODUCT.md atau DESIGN.md ketika Anda peduli tentang kesesuaian brand.** Live masih akan menghasilkan, tetapi varian akan condong ke default generik. Jalankan `/impeccable teach` dan `/impeccable document` dulu jika hasilnya perlu terdengar seperti produk Anda.

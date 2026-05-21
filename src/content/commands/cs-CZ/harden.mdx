@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Zpristupnete rozhrani pro produkci. Okrajove pripady, i18n, chybove stavy, preteceni.
+highlights:
+  - Stastna cesta funguje, ale realne stavy stale vypadaji krehce.
+  - Potrebujete uzavrit mezery pred vydanim.
+  - Zpracovani chyb a odolnost znameji vice nez pridavani noveho lesku.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Kdy pouzit
+
+`/impeccable harden` je pro den, kdy vase rozhrani potka realitu. Skutecna uzivatelska data jsou neporadna: jmena dlouha 60 znaku, nazvy produktu v nemcine, ceny v miliardach, chyby 500, offline režimy, text zprava doleva. Designy, ktere funguji jen s perfektmi daty, nejsou pripravene na produkci.
+
+Siahnete po nem pred spustením, pred vstupem na nový trh, nebo kdykoliv zacne hlaseni o chybe slovy "nas uzivatel mel opravdu dlouhe jmeno a". Pro pruchody prvniho spusteni, aktivaci prazdnych stavu a design onboardingu siahnete po `/impeccable onboard`.
+
+## Jak to funguje
+
+Dovednost pracuje ctyrmi dimenzemi realne odolnosti:
+
+1. **Textove a datove extrémy**. Dlouhy text, kratky text, specialni znaky, emoji, RTL, cisla v miliardach, seznamy s 1000 polozkami.
+2. **Chybove scenare**. Sitiove poruchy, API 4xx/5xx, chyby validace, chyby opravneni, limity rychlosti, soubezne operace.
+3. **Internacionalizace**. Dlouhe preklady (nemcina je casto o 30 % delsi nez anglictina), jazyky RTL, formaty data a cisel, symboly men, znakove sady.
+4. **Zarizeni a kontext**. Dotykove cile, chovani offline, pomale pripojeni, rezim nizke spotreby.
+
+Pro kazdou dimenzi identifikuje rezim selhani a pak aplikuje konkretni opravu: zpracovani preteceni, informativni chybove UI, i18n-bezpecne layouty, pluralizaci, rozumne zalozni varianty.
+
+## Vyzkousejte to
+
+Zacnete s jednou strankou a jednou dimenzi:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Ocekavany vystup:
+
+- `.user-name` nyni ma `text-overflow: ellipsis` s tooltipem pro plnou hodnotu
+- `.bio` prepnuto z pevne vysky na `max-height` s rozbalenim "zobrazit vice"
+- Pridan prazdny stav pro uzivatele bez bio
+- Pridan skeleton loader pro asynchronni nacitani avataru
+- Testovano na delkach jmena 1, 20, 60, 200 znaku
+
+Spustte po strankach, ne vse najednou. Prvni spusteni je nejvetsi; nasledna spusteni najdou mene problemu, jak se vzory upevnuji.
+
+## Na co si dat pozor
+
+- **Cekani na hlaseni o chybe.** Harden je preventivni. Pokud opravujete stejnou tridu chyb dvakrat, spustte `/impeccable harden` napric funkci.
+- **Zachazeni s chybovymi a prazdnymi stavy jako dodatecnosti.** Vetsina prace na hardeningu je UI chybovych a prazdnych stavu. Naplanujte na to cas, ne jen blok `catch`.
+- **Preskoceni i18n s tim, ze "jsme zatim jen v anglictine".** i18n-bezpecne layouty jsou stale lepsi layouty. Flexibilni kontejnery, spravne zalamovani textu, stedre line-height. Nic z toho neuskodi anglictine.

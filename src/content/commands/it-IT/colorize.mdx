@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Aggiungi colore strategico alle interfacce monocromatiche senza diventare pacchiano.
+highlights:
+  - L'interfaccia sembra competente ma dimenticabile.
+  - Hai bisogno di un'enfasi più chiara senza riscrivere l'intera struttura.
+  - La palette attuale non trasmette l'umore desiderato.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Quando usarlo
+
+`/impeccable colorize` è il contraltare a "tutto è grigio". Dashboard che si leggono come un muro beige, form senza accento, pagine di contenuto che potrebbero essere di qualsiasi prodotto SaaS. Ricorri a colorize quando l'interfaccia è funzionale ma piatta dal punto di vista emotivo, e vuoi calore senza scivolare nella palette colori IA (viola-rosa, ciano neon, glow in dark mode).
+
+## Come funziona
+
+La skill inizia leggendo il tuo colore brand se ne esiste uno, poi decide dove il colore guadagna il suo posto:
+
+1. **L'azione primaria** ottiene l'espressione più forte della tonalità brand.
+2. **Gli accenti secondari** ottengono varianti smorzate o tinte, non un secondo colore pieno.
+3. **I neutrali** vengono tinti verso la tonalità brand a crominanza bassa (circa 0.005-0.01), quasi invisibile per pixel ma crea coesione subconscia.
+4. **Le categorie di contenuto** ottengono un sistema di accenti limitato e intenzionale, non un arcobaleno.
+
+È importante che usa OKLCH anziché HSL affinché i gradini di luminosità uguali sembrino uguali. Man mano che la luminosità si sposta verso gli estremi, la crominanza si abbassa automaticamente. Ecco come ottieni colore che sembra considerato invece che calcolato.
+
+## Provalo
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff atteso:
+
+- Colore brand spostato da un hex hard-coded a `--color-accent: oklch(62% 0.18 240)`
+- Neutrali tinti con 0.007 crominanza verso la tonalità brand
+- Il pulsante primario ottiene l'accento pieno, i pulsanti secondari ottengono ink/mist
+- La serie del grafico usa 3 tonalità distinte, tutte a luminosità corrispondente così nessuna serie domina visivamente
+- L'illustrazione dello stato vuoto prende un leggero lavaggio d'accento
+
+## Insidie
+
+- **Eseguirlo senza una tonalità brand.** Colorize ha bisogno di un punto di partenza. Se `PRODUCT.md` non ne specifica uno, lo chiederà. Non lasciarlo scegliere dai valori predefiniti della palette colori IA.
+- **Aspettarsi che risolva il problema della palette colori IA.** Se il tuo design ha già gradienti viola e ciano neon, ti serve prima `/impeccable quieter`, poi colorize può ricostruire.
+- **Usarlo su interfacce già colorate.** Quello è un lavoro per `/impeccable quieter`. Colorize aggiunge, non sottrae.

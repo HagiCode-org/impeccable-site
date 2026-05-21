@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Iteroi käyttöliittymää selaimessa. Valitse elementti, jätä kommentti, saa kolme muunnelmaa. Hyväksy yksi ja se kirjoittaa lähdekoodiin.
+highlights:
+  - Dev-palvelin on jo olemassa.
+  - Haluat vertailla vaihtoehtoja suoraan renderöidyllä käyttöliittymällä.
+  - Nopein seuraava askel on ohjattua visuaalista kokeilua.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Katso se toiminnassa, animoidun demon kanssa, osoitteessa <a href="/live-mode">/live-mode</a>. Tämä sivu on viite sille mitä tekoälyharvesterisi lukee kun komento suoritetaan.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Tila: alfa.</strong> Live Mode toimii päästä päähän ja on valmis kokeiltavaksi, mutta se tarvitsee yhä enemmän testausta todellisten repojen ja framework-konfiguraatioiden kanssa. Odota karkeita reunoja epätavallisissa asennuksissa, ja ilmoita mikä rikkoutuu.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">Nro 04</span>
+        <h3 class="docs-viz-live-title">Kirjeitä, <em>ajoittain</em>.</h3>
+        <p class="docs-viz-live-body">Postikortti toimittajalta, noin kerran kuussa. Ei seurantapikseleitä, ei "tarkistan vain."</p>
+        <button class="docs-viz-live-btn" type="button">Lähetä minulle</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Edellinen">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Seuraava">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Hyväksy</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Valitse</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode keskellä sykliä: valitsin ääriviivoaa valitsemasi elementin, kontekstipalkki näyttää millä muunnelmalla olet, ja globaali palkki pysyy kiinnitettynä alaosaan. Hyväksyminen tässä kirjoittaa Muunnelma 2:n takaisin lähdekoodiin.</p>
+</div>
+
+## Milloin käyttää
+
+Turvaudu `/impeccable live`-komentoon kun haluat iteroida jotain visuaalisesti samalla tavalla kuin tekisit suunnittelutyökalussa, mutta pitäen tuotantokoodin tulosteena. Figma-mainen työnkulku ilman edestakaista matkaa toteutusvaiheeseen.
+
+Käytä sitä:
+
+- **Suuntien tutkimiseen todellisella elementillä.** Hero-osa, uutiskirjekortti, hinnoittelutaso. Kolme aidosti erilaista otetta, rinnakkain, todellisella sivulla todellisessa kontekstissa.
+- **Melkein oikean käyttöliittymän viimeistelyyn.** Tiedät mikä tuntuu pielessä mutta et osaa aivan sanoa sitä. Valitse elementti, piirrä "leikkisämpi" tai vedä viiva kohdan läpi joka häiritsee, paina Go.
+- **Nopeaan A/B-vertailuun kahden suunnan välillä josta tiimisi väittelee.** Luo muunnelmat, älä hyväksy mitään, kävele pois. Pointti oli vertailu.
+
+Se EI ole uusiin vihreän kentän ominaisuuksiin (turvaudu `/impeccable craft`) tai koko sivun uudelleensuunnitteluun (turvaudu `/impeccable` tai erikoistuneeseen hienosäätökomentoon).
+
+## Miten se toimii
+
+Yksi komento tuo esiin valitsin-kerroksen käynnissä olevan dev-palvelimesi päälle. Valitset minkä tahansa elementin. Pieni kontekstipalkki ilmestyy sen viereen. Kirjoita vapaamuotoinen kuvaus tai valitse yksi toimintosiruista (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Valinnaisesti pudota kommenttinasta tai piirrä viivoja suoraan elementille ensin, ja taito lukee ne tarkoituksena.
+
+Paina Go. Kolme **tuotantolaatuista muunnelmaa** luodaan, kukin ankkuroituna aidosti erilaiseen suunnitteluarkkityyppiin (ei kolmeen väririffiin) ja vaihdetaan kuumaan sivuun frameworkisi HMR:n kautta. Selaa niitä nuolinäppäimillä. Hyväksy yksi ja muunnelma kirjoitetaan takaisin lähdekoodiin. Hylkää kaikki kolme ja alkuperäinen pysyy.
+
+Se tukee Viteä, Next.js:ää (mukaan lukien monorepot), SvelteKitiä, Astroa, Nuxtia ja tavallista staattista HTML:ää. Jos dev-palvelimellasi on tiukka Content Security Policy, ensimmäisen käyttökerran asennus havaitsee sen ja tarjoaa kertaluonteisen, vain dev-pohjaisen korjauksen jotta valitsin voi latautua. `DESIGN.md` voittaa visuaalisissa päätöksissä, `PRODUCT.md` voittaa äänessä: jos sinulla on molemmat, muunnelmat pysyvät brändissä ilman että niille tarvitsee kertoa.
+
+## Kokeile
+
+```
+/impeccable live
+```
+
+Avaa dev-palvelimesi URL, valitse uutiskirjerekisteröitymiskortti, klikkaa `delight`-sirua, paina Go. Saat kolme muunnelmaa jotka vaihtelevat persoonallisuusdimensioissa (postimerkki-ja-postikortti-tunne, typografinen-yllätys-versio, kuvitettu-aksentti-versio), ei kolmea riffiä samasta käsittelystä.
+
+Tai valitse hero, kirjoita "enemmän toimituksellinen, vähemmän SaaS", paina Go. Kolme muunnelmaa ankkuroituvat erilaisiin toimituksellisiin arkkityyppeihin (lehtipääkirjoitus, luettelotyyliset erittelyrivit, ylikokoiset-kirjainmerkki-juliste) kolmen saman idean sävyn sijaan.
+
+Lopeta live-tila kun olet valmis: sano "lopeta live-tila", sulje välilehti tai paina poistumispainiketta valitsinpalkissa.
+
+## Sudenkuopat
+
+- **Ajaminen sivulla joka on yhä puolivalmis.** Live-muunnelman luonti tarvitsee kontekstia. Jos elementillä on paikkamerkkitekstiä, geneeristä Lorem ipsumia tai pre-tyylitiedoston oletusmuotoilua, muunnelmat heijastavat sitä. Täytä sisältö ensin.
+- **Odotus, että se tekee makropäätöksiä.** Live-tilan iteraatio kohdistuu yhteen valittuun elementtiin. "Tee koko hinnoittelusivu uudelleen" -tapauksessa turvaudu `/impeccable` tai `/impeccable craft` -komentoon.
+- **Varaviestien sivuuttaminen.** Jos elementti asuu generoidussa tiedostossa (käännetty mallipohja, rakennustuloste), valitsin sanoo sen eksplisiittisesti ja tarjoaa reitittää hyväksymisen todelliseen lähdekoodiin. Älä pakota hyväksymistä generoituun tiedostoon: seuraava rakennus pyyhkii sen.
+- **Ajaminen ilman PRODUCT.md tai DESIGN.md kun brändisopivuus merkitsee.** Live luo yhä, mutta muunnelmat nojaavat geneerisiin oletuksiin. Suorita `/impeccable teach` ja `/impeccable document` ensin jos tuloksen täytyy kuulostaa tuotteeltasi.

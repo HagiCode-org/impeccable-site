@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Javítsd az elrendezést, térközt és vizuális ritmust.
+highlights:
+  - Az oldalnak nincs egyértelmű hangsúlya.
+  - Jó tartalom létezik, de a kompozíció elrejti.
+  - Erősebb áramlást szeretnél, mielőtt színhez vagy mozgáshoz nyúlsz.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Mikor használd
+
+Az `/impeccable layout` olyan oldalakra való, ahol semmi sem technikailag rossz, de semmi sem lélegzik sem. Egyenletes térköz mindenhol, monoton kártyarácsok, tartalom, amely széltől szélig fut, hierarchia, amely egyedül a méretre támaszkodik. Nyúlj hozzá, amikor egy elrendezés "nem jó" és nem tudod megfogalmazni, miért.
+
+Jó indítók: "minden zsúfoltnak hat", "olyan, mint egy fal", "nem tudom, hova nézzek először".
+
+## Hogyan működik
+
+A skill öt elrendezési dimenzión megy végig:
+
+1. **Térköz**: a térköz-skála konzisztens-e vagy vannak random 13px rések, a kapcsolódó elemek szorosan csoportosulnak-e bőséges térrel a csoportok között, van-e egyáltalán ritmus.
+2. **Vizuális hierarchia**: a szem 2 másodpercen belül az elsődleges akcióra landol-e, a hierarchia valódi munkát végez-e vagy minden kiabál.
+3. **Rács és szerkezet**: van-e alapul szolgáló rács vagy az elrendezés véletlenszerű, az elemek alapvonalhoz vannak-e igazítva.
+4. **Ritmus**: az oldal váltakozik-e szoros és bőséges térköz között, vagy minden egyenletes.
+5. **Sűrűség**: az elrendezés túlzsúfolt vagy pazarló, a sűrűség egyezik-e a tartalomtípussal.
+
+A javítások általában a térköz-skála újraépítését, aszimmetria bevezetését, monoton rácsok összevonását vegyes elrendezésbe hero és támogató elemekkel, és az elsődleges akció valódi térrel való ellátását jelentik.
+
+## Próbáld ki
+
+```
+/impeccable layout the settings page
+```
+
+Tipikus változtatások:
+
+- Térköz-skála egységesítve 8 / 16 / 24 / 48 / 96px-re
+- Szakasz-szünetek 48px-nél, sorközök 16px-nél, űrlapmező-csoportok 8px-nél
+- Elsődleges akciók kiemelve az űrlapfolyamból 32px pufferrel
+- Dekoratív szegélyek eltávolítva, térköz-vezérelt csoportosításra cserélve
+- Oldalsáv és fő oszlop arányok újraegyensúlyozva (280 / flex vs 25 / 75)
+
+## Csapdák
+
+- **Összetéveszteni az arrange-t a distill-lel.** Ha a probléma az, hogy túl sok dolog van, futtasd először az `/impeccable distill`-t. A Layout a már megfelelő készlet elrendezésére való.
+- **Azt várni tőle, hogy megmentsen egy törött rácsot.** Ha az oldalon egyáltalán nincs rács, az arrange fog egyet építeni. Csak tudd, hogy a diff nagyobb lesz, mint várod.
+- **A hierarchia ítélet figyelmen kívül hagyása.** Ha az arrange azt mondja, "semmi sem elsődleges", semennyi térköz-munka nem oldja meg. Tartalmi döntésre van szükséged, nem elrendezési módosításra.

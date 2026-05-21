@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Pridat strategie barvy jednoduchym rozhranim bez prehnanosti.
+highlights:
+  - Rozhrani vypada kompetentne, ale zapomenutelne.
+  - Potrebujete jasnejsi duraz bez prepisovani cele struktury.
+  - Soucasna paleta nepřenasi zamýšlenou naladu.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Kdy pouzit
+
+`/impeccable colorize` je protivaha k "vse je sede". Dashboardy, ktere se ctou jako bezova zed, formulary bez akcentu, obsahove stranky, ktere by mohly byt jakykoli SaaS produkt. Siahnete po nem, kdyz je rozhrani funkcni, ale emocionalne ploche, a chcete teplo bez prechodu do AI palety barev (fialova azruzova, kyanova neon, dark mode glow).
+
+## Jak to funguje
+
+Dovednost zacne ctenim barvy znacky, pokud existuje, a pak se rozhodne, kde barva ziska sve misto:
+
+1. **Primarni akce** ziska najsilnejsi vyraznost odstinu znacky.
+2. **Sekundarni akcenty** ziska tlumene nebo tuntovane varianty, ne druhou plnou barvu.
+3. **Neutralni** ziska tintovani smerem k odstinu znacky pri nizke chromatickosti (kolem 0.005 az 0.01), coz je skoro neviditelne na pixel, ale vytvari podvedomou soudrzneost.
+4. **Kategorie obsahu** ziska omezeny, umyslny akcentovy system, ne duhu.
+
+Dulezite je, ze pouziva OKLCH misto HSL, takze stejne kroky svetlosti vypadaji stejne. Jak se svetlost blizi k extremum, chromatickosti klesa automaticky. Takto ziskate barvu, ktera pripada uvazena, misto vypoctena.
+
+## Vyzkousejte to
+
+```
+/impeccable colorize the dashboard
+```
+
+Ocekavany diff:
+
+- Barva znacky presunuta z hard-coded hex do `--color-accent: oklch(62% 0.18 240)`
+- Neutralni tuntovane s 0.007 chromatickosti smerem k odstinu znacky
+- Primarni tlacitko ziska plny akcent, sekundarni tlacitka ziska ink/mist
+- Serie grafu pouziva 3 odlisne odtiny, vsechny pri shodne svetlosti, takze zadna serie vizualne nedominuje
+- Ilustrace prazdneho stavu prebira jemny akcentovy prani
+
+## Na co si dat pozor
+
+- **Spusteni bez odstinu znacky.** Colorize potrebuje vychozi bod. Pokud `PRODUCT.md` nenipecifikuje jeden, zepta se. Nenechte jej vybrat z vychozich hodnot AI palety barev.
+- **Ocekavani, ze opravi problem AI palety barev.** Pokud vas design jiz ma fialove gradienty a kyanovy neon, potrebujete nejprve `/impeccable quieter`, pak colorize muze znovu vybudovat.
+- **Pouzivani na jiz barevnych rozhranich.** To je uloha pro `/impeccable quieter`. Colorize pridava, neodcitava.

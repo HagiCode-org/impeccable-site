@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Uma revisão de design com pontuação, testes de personas e deteção automatizada.
+highlights:
+  - Pretende conclusões sobre escolhas de design fracas, não uma reconstrução do zero.
+  - Necessita de pontuação, raciocínio de design e prováveis próximos passos.
+  - O interface funciona mas continua a parecer incorreto.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heurísticas (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibility of status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match with real world</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistency & standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Error prevention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recognition over recall</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The evaluator</span>
+              <span class="docs-viz-critique-persona-note">Comparing us to two alternatives on a Tuesday evening.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The returning user</span>
+              <span class="docs-viz-critique-persona-note">Knows the product, on mobile, in a hurry.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The skeptic</span>
+              <span class="docs-viz-critique-persona-note">Has seen every SaaS landing and is bored.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">As duas passagens (revisão de design por LLM mais o detetor determinístico) fundem-se numa lista priorizada. O que está a funcionar, o que corrigir e as questões provocativas que vale a pena responder antes de lançar.</p>
+</div>
+
+## Quando utilizar
+
+Recorra ao `/impeccable critique` quando pretende uma segunda opinião honesta sobre algo que já construiu. Não "funciona" mas "é bom de verdade". A competência pontua o seu interface face às 10 heurísticas de Nielsen, executa verificações de carga cognitiva, testa através de lentes de personas e referencia cruzada com um detetor automatizado para 25 anti-padrões concretos.
+
+Utilize-o quando uma página está funcionalmente concluída e pretende saber se se lê como intencional ou como conteúdo gerado por IA.
+
+## Como funciona
+
+`/impeccable critique` executa duas avaliações independentes em paralelo para que não se influenciem mutuamente.
+
+A primeira é uma **revisão de design por LLM**: o modelo lê o seu código-fonte, inspeciona visualmente a página ativa se a automatização do navegador estiver disponível, e percorre o catálogo completo de REGRAS DO que fazer e do que NÃO fazer da competência impeccable. Pontua as heurísticas de Nielsen, conta falhas de carga cognitiva, traça a jornada emocional ao longo do fluxo e sinaliza conteúdo de baixa qualidade gerado por IA.
+
+A segunda é um **detetor automatizado** (`npx impeccable detect`) que encontra de forma determinística texto com gradiente, paletas púrpura, bordas de separadores laterais, cartas aninhadas, problemas de comprimento de linha e as outras impressões digitais visíveis de output genérico de IA.
+
+Os dois relatórios fundem-se numa lista priorizada: o que está a funcionar, as três a cinco coisas que precisam de correção, e as questões provocativas que vale a pena responder antes de lançar.
+
+## Experimente
+
+Aponte para uma página:
+
+```
+/impeccable critique the homepage hero
+```
+
+Recebe um relatório pontuado. Formato típico:
+
+- **Veredicto de AI slop**: passou / falhou com os indícios específicos
+- **Pontuações heurísticas**: 10 números, de 0 a 4
+- **Carga cognitiva**: contagem de falhas em 8
+- **Problemas prioritários**: três a cinco itens, cada um com o quê, porquê e correção
+- **Questões a responder**: as que o próprio interface não consegue decidir por si
+
+A partir daí, combine com `/impeccable polish` ou `/impeccable distill` para agir sobre as correções.
+
+## Armadilhas
+
+- **Executá-lo sobre trabalho incompleto.** Critique destina-se a páginas concluídas. Um estado vazio com três TODOs pontuará mal porque não está concluído, não porque é mau.
+- **Ignorar as questões no final.** São geralmente as correções que mais mudam o design.
+- **Tratar as pontuações heurísticas como uma nota.** São de diagnóstico, não avaliativas. Um 3/4 numa heurística menos relevante para o seu contexto é aceitável.

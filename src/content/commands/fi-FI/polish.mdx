@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Määrätietoinen viimeinen läpikäynti hyvän ja erinomaisen välillä.
+highlights:
+  - Kohdistus, välistys ja mikro-päätökset tuntuvat yhä karkeilta.
+  - Ominaisuus on lähellä lähettämistä.
+  - Pienet epäjohdonmukaisuudet vetävät havaittua laatua alaspäin.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Milloin käyttää
+
+`/impeccable polish` on viimeinen asia jonka ajat ennen lähettämistä. Se metsästää pienet yksityiskohdat jotka erottavat lähetetyn ominaisuuden viimeistellystä: puolen pikselin kohdistusvirheet, epäjohdonmukainen välistys, unohdetut fokus-tilat, lataussiirtymät jotka välkyttävät, teksti joka ajelehtii sävyssä. Se myös kohdistaa ominaisuuden suunnittelujärjestelmääsi kanssa, korvaten kovakoodatut arvot tokeneilla, vaihtaen mukautettuja komponentteja jaettuihin, ja korjaten ajautumisen vakiintuneista malleista.
+
+Turvaudu siihen kun ominaisuus on toiminnallisesti valmis, mikään ei ole rikki, ja jokin tuntuu yhä pielessä. Myös silloin kun ominaisuus on ajautunut suunnittelujärjestelmästä ja täytyy vetää takaisin linjaan.
+
+## Miten se toimii
+
+Polish aloittaa löytämällä suunnittelujärjestelmän (tokenit, välistysasteikko, jaetut komponentit), sitten työskentelee menetelmällisesti kuuden dimension läpi:
+
+1. **Visuaalinen kohdistus ja välistys**: pikselintarkka ruudukko, johdonmukainen välistysasteikko, optinen kohdistus kuvakkeissa.
+2. **Typografia**: hierarkian johdonmukaisuus, rivinpituus, lesket ja orvot, kerning otsikoissa.
+3. **Väri ja kontrasti**: token-käyttö, teemapariteetti, WCAG-suhteet, fokus-indikaattorit.
+4. **Vuorovaikutustilat**: hover, focus, active, disabled, lataus, virhe, onnistuminen. Jokainen tila huomioitu.
+5. **Siirtymät ja liike**: tasainen helpotus, ei asettelun tärinää, `prefers-reduced-motion`-kunnioitus.
+6. **Teksti**: johdonmukainen ääni, oikea aika, ei paikkamerkkijonoja, ei eksyneitä TODO:ja.
+
+Taito on nimenomainen yhdestä asiasta: polish on viimeinen askel, ei ensimmäinen. Jos ominaisuus ei ole toiminnallisesti valmis, sen viimeistely on haaskattua työtä.
+
+## Kokeile
+
+```
+/impeccable polish the pricing page
+```
+
+Terveellinen ajo näyttää tältä:
+
+```
+Visuaalinen kohdistus: korjattu 3 ruudukon ulkopuolista elementtiä (8px perusviiva)
+Typografia: tiivistetty h1 kerning, korjattu leski suosituksesta
+Vuorovaikutus: lisätty hover-tila FAQ-kohteisiin, fokusrengas sähköpostisyötteeseen
+Liike: pehmustettu modaalinen saapuminen, lisätty reduced-motion-varajärjestelmä
+Teksti: poistettu yksi "Lorem ipsum" - eksynyt, kohdistettu painikeääni
+```
+
+Viisi pientä korjausta, ei uudelleenkirjoituksia. Se on hyvän polish-läpikäynnin muoto.
+
+## Sudenkuopat
+
+- **Keskeneräisen työn viimeistely.** Jos koodissa on TODO:ja, et ole valmis. Suorita `/impeccable polish` vain valmiille ominaisuuksille.
+- **Polishin kohteleminen uudelleensuunnitteluna.** Polish hienosäätää mitä on olemassa. Jos huomaat uudelleenarkkitehtoivasi asettelua, tarvitsit `/impeccable critique` tai `/impeccable layout`.
+- **`/impeccable polish` ilman `/impeccable audit` ensin.** Polish nappaa tuntemukseen perustuvat ongelmat. Audit nappaa mitattavat. Käytä molempia.

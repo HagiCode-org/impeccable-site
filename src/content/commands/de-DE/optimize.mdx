@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: UI-Performance diagnostizieren und beheben, von LCP bis Bundle-Größe.
+highlights:
+  - Das Interface fühlt sich langsam, ruckelig oder schwer an.
+  - Sie müssen Kosten reduzieren, ohne das Design auszuhöhlen.
+  - Performance ist jetzt ein sichtbares Produkt-Problem.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Wann man es verwendet
+
+`/impeccable optimize` ist für Interfaces, die sich langsam anfühlen. First Paint dauert ewig, Scrollen ruckelt, Bilder popen spät auf, Interaktionen fühlen sich träge an, das Bundle liefert 800KB JavaScript. Verwenden Sie es, wenn die Web Vitals schlecht sind oder wenn Nutzer sich beschweren, dass alles schleppend ist.
+
+Nicht als verfrühte Optimierung verwenden. Wenn LCP bei 1,1s und INP bei 80ms liegt, stoppen. Die Design-Arbeit ist wichtiger.
+
+## Wie es funktioniert
+
+Der Skill arbeitet durch fünf Performance-Dimensionen:
+
+1. **Laden und Web Vitals**: LCP, INP, CLS. Identifizieren, was den First Paint blockiert, was die Interaktion verzögert, was Layout verschiebt.
+2. **Rendering**: unnötiges Neu-Rendern, fehlende Memoisierung, teure Abstimmung, Layout-Thrash in Schleifen.
+3. **Animationen**: wird eine Layout-Eigenschaft animiert, werden nur Transform und Opacity berührt, hilft oder schadet `will-change` hier.
+4. **Bilder und Assets**: Lazy Loading, responsive Bilder (`srcset`, `sizes`), moderne Formate (WebP, AVIF), Dimensionen gesetzt zur CLS-Vermeidung.
+5. **Bundle-Größe**: ungenutzte Imports, übergroße Abhängigkeiten, fehlendes Code-Splitting, Totcode.
+
+Der Skill misst vorher und nachher. Jede Korrektur wird quantifiziert. Wenn eine Änderung eine Metrik nicht bewegt, wird sie zurückgesetzt.
+
+## Ausprobieren
+
+```
+/impeccable optimize the homepage
+```
+
+Erwartete Struktur:
+
+```
+LCP: 3,2s → 1,4s
+  - Hero-Bild vorgeladen (-800ms)
+  - Render-blockierendes Font-Stylesheet entfernt (-240ms)
+  - Analytics-Skript zurückgestellt (-180ms)
+
+INP: 240ms → 90ms
+  - Scroll-Handler entprellt
+  - Teures Listen-Rendering memoisiert
+  - Synchrones Layout-Lesen in Event-Loop entfernt
+
+CLS: 0,18 → 0,02
+  - Dimensionen für Hero-Bild und Logo gesetzt
+  - Platz für asynchrones Header-Badge reserviert
+
+Bundle: 340KB → 180KB
+  - Ungenutzten lodash-Import entfernt (52KB)
+  - Playground-Route aufgeteilt (78KB)
+  - Veralteten Icon-Satz entfernt (30KB)
+```
+
+## Fallstricke
+
+- **Optimieren vor Messen.** Ohne Baseline-Metriken können Sie nicht sagen, was geholfen hat. Führen Sie `/impeccable optimize` mit spezifischen Web-Vitals-Zahlen aus, nicht mit Bauchgefühl.
+- **Winzige Verbesserungen jagen.** Eine 20ms-Verbesserung beim INP, die eine Woche dauert, lohnt sich selten. Optimize hat abnehmende Erträge; wissen Sie, wann Sie aufhören sollen.
+- **Vergessen, nach jeder Änderung neu zu messen.** Der Build könnte die Dinge verschlechtert haben, auf eine Weise, die der Skill nicht vorhergesagt hat. Überprüfen.

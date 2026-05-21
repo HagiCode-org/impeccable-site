@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: La inteligencia de diseño detrás de cada comando.
+highlights:
+  - Necesitas un punto de entrada que cubra layout, tipografía, color, movimiento y estructura UX al mismo tiempo.
+  - Estás explorando una dirección y quieres que el skill elija el sub-workflow adecuado.
+  - Necesitas el contexto de diseño más amplio en lugar de un pase estrecho de un solo comando.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Cuándo usarlo
+
+<code>/impeccable</code> es el comando principal. Llámalo directamente cuando quieras trabajo de diseño libre con la guía completa cargada, sin necesidad de elegir un comando especializado. Es la opción a la que recurres cuando ninguno de los 23 especialistas (<code>audit</code>, <code>polish</code>, <code>critique</code> y el resto) se ajusta con precisión a lo que intentas hacer.
+
+Recurre a <code>/impeccable</code> directamente cuando:
+
+- **No estás seguro de qué comando encaja.** Describe lo que quieres en lenguaje natural y deja que el skill elija el enfoque adecuado.
+- **El trabajo abarca múltiples disciplinas.** "Rehaz esta sección hero" toca layout, tipografía, color y movimiento. Un solo comando no puede abarcarlo todo.
+- **Quieres la inteligencia de diseño completa sin restricciones.** Todos los archivos de referencia cargados, todos los anti-patrones verificados, sin flujo de trabajo preestablecido.
+
+Para flujos estructurados, recurre a los comandos especializados en la barra lateral. Ejecuta <code>/impeccable teach</code> primero en cualquier proyecto nuevo para establecer PRODUCT.md y DESIGN.md. <code>/impeccable craft</code> encadena una entrevista de discovery con una construcción completa e iteración visual en vivo. <code>/impeccable shape</code> produce un brief de diseño sin tocar código. <code>/impeccable live</code> te da un selector en el navegador con tres variantes por elemento. Los comandos de evaluación y refinamiento (<code>audit</code>, <code>critique</code>, <code>polish</code>, <code>typeset</code>, <code>layout</code>, <code>colorize</code> y el resto) se encargan cada uno de una parte específica del trabajo.
+
+## Cómo funciona
+
+La mayoría de las UIs generadas por IA fracasan de la misma manera: fuentes genéricas, degradados violeta, grids de tarjetas sobre tarjetas, glassmorphism por todas partes. <code>/impeccable</code> le da a tu IA un punto de vista fuerte. Carga un manual de diseño con opinión explícita y una larga lista de anti-patrones, luego empuja al modelo a comprometerse con una dirección estética específica antes de escribir una sola línea de código.
+
+Dos archivos en la raíz de tu proyecto determinan todo lo que hace el skill:
+
+- **<code>PRODUCT.md</code>** define el registro (brand vs product), usuarios objetivo, personalidad de marca, anti-referencias, principios de diseño. Responde a "quién, qué, por qué".
+- **<code>DESIGN.md</code>** define colores, tipografía, elevación, componentes, lo que sí y lo que no, en formato Google Stitch de seis secciones. Responde a "cómo se ve".
+
+Cada comando lee ambos archivos antes de generar. **El registro** decide qué valores por defecto se cargan. Brand (marketing, landing, portfolio, donde el diseño ES el producto) y product (UI de app, dashboards, herramientas, donde el diseño SIRVE al producto) tienen valores por defecto diferentes para tipografía, movimiento, color y densidad. Especificarlo una vez en PRODUCT.md significa que <code>/impeccable typeset</code> no impondrá fuentes de revista editorial en un dashboard, ni impondrá valores por defecto de product en una página de campaña. Consulta el [tutorial de brand vs product](/tutorials/brand-vs-product) para ver cómo divergen.
+
+En el primer uso en un proyecto, el skill ejecuta automáticamente el flujo <code>teach</code>: una entrevista corta que escribe PRODUCT.md y luego delega a <code>/impeccable document</code> para DESIGN.md. Los comandos futuros leen los archivos sin preguntar de nuevo.
+
+## Pruébalo
+
+~~~
+/impeccable redo this hero section
+~~~
+
+~~~
+/impeccable build me a pricing page for a developer tool
+~~~
+
+Ambos prompts son vagos a propósito. <code>/impeccable</code> elegirá una dirección estética fuerte consistente con tu registro, se comprometerá con fuentes no predeterminadas, evitará la paleta de colores de IA y tomará el tipo de decisiones específicas que tomaría un diseñador real. Sin necesidad de elegir un comando primero, sin flujo de trabajo paso a paso que seguir.
+
+Para iteración visual en el navegador en lugar de chat:
+
+~~~
+/impeccable live
+~~~
+
+Elige cualquier elemento en tu servidor de desarrollo en ejecución. Deja un comentario o trazo. Obtén tres variantes de calidad de producción intercambiadas en caliente vía HMR. Acepta la que quieras y se escribe de vuelta al código fuente.
+
+## Vuelve a fijar comandos como atajos
+
+v3.0 consolidó 18 skills independientes en un solo <code>/impeccable</code> con 23 subcomandos. Si extrañas la forma corta de un comando específico, vuelvelo a fijar:
+
+~~~
+/impeccable pin critique
+~~~
+
+A partir de ahora, <code>/critique</code> invoca <code>/impeccable critique</code> directamente. Escribe un skill de redirección ligero que delega al skill padre, por lo que las actualizaciones fluyen sin necesidad de volver a fijar.
+
+Pines útiles para probar:
+
+- <code>/impeccable pin polish</code> para trabajo de pase final
+- <code>/impeccable pin audit</code> para verificaciones deterministas de a11y/perf
+- <code>/impeccable pin live</code> para el flujo de iteración en el navegador
+- <code>/impeccable pin critique</code> para revisión de diseño
+
+Para eliminar: <code>/impeccable unpin critique</code>. Los pines existen como directorios prefijados con <code>i-</code> en la carpeta de skills de tu harness (<code>.claude/skills/i-critique/</code>, <code>.cursor/skills/i-critique/</code>, etc.), así que también puedes eliminarlos manualmente.
+
+## Errores comunes
+
+- **Tratarlo como una guía de estilos.** Es un compañero de diseño con opinión, no un linter. Los valores por defecto existen para elevar el piso, no para imponerse sobre tu criterio. Si tienes una razón real para disentir (guía de marca, restricción de accesibilidad, investigación de usuarios), disiente y explica por qué. El skill trabajará contigo. Lo que produce peores resultados es ignorar la opinión sin una razón.
+- **Esperar que arregle código existente.** <code>/impeccable</code> está orientado a la creación. Para refinamiento, recurre a <code>/impeccable polish</code>, <code>/impeccable distill</code> o <code>/impeccable critique</code>.
+- **Ejecutarlo antes de que <code>teach</code> haya guardado contexto.** En un proyecto nuevo te entrevistará sobre la marcha, lo cual funciona pero es más lento. Ejecutar <code>/impeccable teach</code> explícitamente como tu primer comando es un poco más fluido.
+- **Saltarse la pregunta de registro.** Los valores por defecto de brand y product divergen lo suficiente como para que ejecutarse con el registro incorrecto produzca resultados sutilmente desacertados. Si <code>PRODUCT.md</code> no tiene un campo <code>## Register</code> (formato heredado), ejecuta <code>/impeccable teach</code> para añadirlo.

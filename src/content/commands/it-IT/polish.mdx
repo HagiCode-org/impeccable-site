@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Il meticoloso passaggio finale tra buono e eccellente.
+highlights:
+  - Allineamento, spaziatura e micro-decisioni sembrano ancora grezzi.
+  - La funzionalità è quasi pronta per la spedizione.
+  - Piccole incoerenze stanno trascinando verso il basso la qualità percepita.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Quando usarlo
+
+`/impeccable polish` è l'ultima cosa che esegui prima della spedizione. Dà la caccia ai piccoli dettagli che separano una funzionalità spedita da una rifinita: disallineamenti di mezzo pixel, spaziatura incoerente, stati focus dimenticati, transizioni di caricamento che lampeggiano, copy che deriva nel tono. Allinea anche la funzionalità con il tuo design system, sostituendo valori hard-coded con token, scambiando componenti personalizzati con quelli condivisi e correggendo qualsiasi deriva dai pattern stabiliti.
+
+Ricorri a polish quando la funzionalità è funzionalmente completa, nulla è rotto e qualcosa ancora sembra fuori posto. Ricorri a polish anche quando una funzionalità è derivata dal design system e deve essere riportata in riga.
+
+## Come funziona
+
+Polish inizia scoprendo il design system (token, scala di spaziatura, componenti condivisi), poi lavora metodicamente su sei dimensioni:
+
+1. **Allineamento visivo e spaziatura**: aderenza pixel-perfect alla griglia, scala di spaziatura coerente, allineamento ottico sulle icone.
+2. **Tipografia**: coerenza della gerarchia, lunghezza riga, vedove e orfani, crenaggio sui titoli.
+3. **Colore e contrasto**: utilizzo dei token, parità dei temi, rapporti WCAG, indicatori di focus.
+4. **Stati di interazione**: hover, focus, active, disabled, loading, error, success. Ogni stato considerato.
+5. **Transizioni e movimento**: easing fluido, nessun jank di layout, rispetto per `prefers-reduced-motion`.
+6. **Copy**: voce coerente, tempo verbale corretto, nessuna stringa segnaposto, nessun TODO sparso.
+
+La skill è esplicita su una cosa: polish è l'ultimo passo, non il primo. Se la funzionalità non è funzionalmente completa, rifinirla è lavoro sprecato.
+
+## Provalo
+
+```
+/impeccable polish the pricing page
+```
+
+Una buona esecuzione appare così:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+Cinque piccole correzioni, nessuna riscrittura. Questa è la forma di un buon passaggio di polish.
+
+## Insidie
+
+- **Rifinire lavoro non completato.** Se ci sono TODO nel codice, non sei pronto. Esegui `/impeccable polish` solo su funzionalità finite.
+- **Trattare polish come redesign.** Polish rifinisce ciò che esiste. Se ti trovi a riarchitettare un layout, ti serviva `/impeccable critique` o `/impeccable layout`.
+- **Eseguire `/impeccable polish` senza `/impeccable audit` prima.** Polish cattura problemi basati sulla sensazione. Audit cattura quelli misurabili. Usa entrambi.

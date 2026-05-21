@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Una revisione del design con punteggi, test persona e rilevamento automatizzato.
+highlights:
+  - Vuoi risultati su scelte di design deboli, non una ricostruzione da zero.
+  - Hai bisogno di punteggi, ragionamento di design e probabili passi successivi.
+  - L'interfaccia funziona ma sembra ancora fuori luogo.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Verdetto AI slop</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Euristiche (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibilità dello stato</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Corrispondenza col mondo reale</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Coerenza e standard</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Prevenzione errori</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Riconoscimento anziché richiamo</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Il valutatore</span>
+              <span class="docs-viz-critique-persona-note">Ci sta comparando con due alternative in un martedì sera.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">L'utente di ritorno</span>
+              <span class="docs-viz-critique-persona-note">Conosce il prodotto, su mobile, di fretta.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Lo scettico</span>
+              <span class="docs-viz-critique-persona-note">Ha visto ogni landing SaaS ed è annoiato.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">I due passaggi (revisione design LLM più il rilevatore deterministico) si fondono in una lista priorizzata. Cosa funziona, cosa correggere e le domande provocatorie meritevoli di risposta prima della spedizione.</p>
+</div>
+
+## Quando usarlo
+
+Ricorri a `/impeccable critique` quando vuoi un'opinione onesta e seconda su qualcosa che hai già costruito. Non "funziona" ma "è davvero buono". La skill valuta la tua interfaccia rispetto alle 10 euristiche di Nielsen, esegue controlli sul carico cognitivo, testa attraverso lenti persona e confronta i risultati con un rilevatore automatizzato per 25 anti-pattern concreti.
+
+Usalo quando una pagina è funzionalmente completata e vuoi sapere se appare intenzionale o come scarto IA.
+
+## Come funziona
+
+`/impeccable critique` esegue due valutazioni indipendenti in parallelo per non influenzarsi a vicenda.
+
+La prima è una **revisione design LLM**: il modello legge il tuo sorgente, ispeziona visivamente la pagina dal vivo se l'automazione del browser è disponibile, e percorre il catalogo completo DO/DON'T della skill impeccable. Punteggia le euristiche di Nielsen, conta i fallimenti di carico cognitivo, traccia il percorso emotivo attraverso il flusso e segnala AI slop.
+
+La seconda è un **rilevatore automatizzato** (`npx impeccable detect`) che trova deterministicamente testo con gradiente, palette viola, bordi laterali a tab, card annidate, problemi di lunghezza riga e le altre impronte visibili dell'output IA generico.
+
+I due report si fondono in una lista priorizzata: cosa funziona, le tre-cinque cose da correggere e le domande provocatorie meritevoli di risposta prima della spedizione.
+
+## Provalo
+
+Puntalo a una pagina:
+
+```
+/impeccable critique the homepage hero
+```
+
+Ricevi un report con punteggi. Forma tipica:
+
+- **Verdetto AI slop**: superato / fallito con gli indicatori specifici
+- **Punteggi euristiche**: 10 numeri, da 0 a 4
+- **Carico cognitivo**: conteggio fallimenti su 8
+- **Problemi prioritari**: tre-cinque elementi, ciascuno con cosa, perché e correzione
+- **Domande a cui rispondere**: quelle che l'interfaccia stessa non può decidere per te
+
+Da lì, abbina con `/impeccable polish` o `/impeccable distill` per agire sulle correzioni.
+
+## Insidie
+
+- **Eseguirlo su lavoro incompleto.** Critique è per pagine finite. Uno stato vuoto con tre TODO riceverà un punteggio basso perché non è completato, non perché è sbagliato.
+- **Ignorare le domande alla fine.** Sono spesso le correzioni che cambiano maggiormente il design.
+- **Trattare i punteggi euristici come un voto.** Sono diagnostici, non valutativi. Un 3/4 su un'euristica meno rilevante per il tuo contesto va benissimo.

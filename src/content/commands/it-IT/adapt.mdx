@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Fai funzionare i design su schermi, dispositivi e contesti diversi senza amputare funzionalità.
+highlights:
+  - Il layout attuale collassa su schermi più piccoli.
+  - Il prodotto ha bisogno di una strategia responsive più riflessiva.
+  - Target touch, densità o flusso di contenuto variano per dispositivo.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Quando usarlo
+
+`/impeccable adapt` è per prendere un design costruito per un contesto e farlo funzionare in un altro. Mobile da desktop, tablet da mobile, stampa da web, incorporato da standalone, email da dashboard. Ricorri a adapt quando il design sorgente è solido ma si spezza ad altri breakpoint, sul touch o in un contenitore diverso.
+
+Non per costruire responsive da zero. Per quello, inizia con `/impeccable` e definisci il layout responsive-first. Adapt è per il recupero "non abbiamo mai pensato al mobile".
+
+## Come funziona
+
+La skill lavora su quattro dimensioni di adattamento contestuale:
+
+1. **Breakpoint e layout fluido**: collasso multi-colonna in singola, aggiustamento dei range clamp, introduzione di nuovi breakpoint dove il design si rompe genuinamente.
+2. **Target touch**: aree di tocco minime di 44px, spaziatura sufficiente tra target adiacenti, zone di tocco più ampie dei confini visivi dove necessario.
+3. **Pattern di navigazione**: sidebar desktop diventano navigazione bottom mobile o slide-out, toolbar dense collassano in menu, stati hover ottengono equivalenti touch.
+4. **Priorità del contenuto**: decidere cosa deve essere visibile, cosa può collassare in disclosure, cosa può essere rimosso interamente per quel contesto.
+
+La regola non negoziabile: adatta, non amputare. Le funzionalità critiche non possono scomparire su mobile solo perché sono scomode. Trova un modo per inserirle, ridisegna l'interazione o riconsidera se erano davvero critiche su desktop.
+
+## Provalo
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Modifiche attese:
+
+- La griglia a tre colonne diventa colonna singola con intestazioni di sezione che fungono da divisori fissi
+- La navigazione sidebar si sposta in uno scorrimento orizzontale sopra il contenuto
+- I toggle guadagnano 8px di padding verticale per raggiungere i target touch di 44px
+- Il testo di aiuto inline si sposta in tap-to-reveal, non hover
+- La sezione "Danger zone" si espande completamente su mobile invece di collassare, perché contiene azioni irreversibili e vogliamo che gli utenti le vedano chiaramente
+
+## Insidie
+
+- **Amputare funzionalità.** Se la versione mobile nasconde cose che la versione desktop può fare, quella è una regressione, non un adattamento. Combatti per la funzionalità.
+- **Trattare il mobile come "desktop più piccolo".** Il mobile è un contesto diverso: pollici, interruzioni, sessioni brevi. Adatta al contesto, non alla larghezza del viewport.
+- **Saltare `/impeccable harden` dopo.** I layout responsive rivelano casi limite. Esegui l'harden dopo adapt per catturare quelli che si mostrano solo a 320px.

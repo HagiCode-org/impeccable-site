@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Perbaiki tipografi yang terasa generik, tidak konsisten, atau tidak disengaja.
+highlights:
+  - Teks secara teknis dapat dibaca tetapi tidak persuasif atau terkendali.
+  - Heading dan body copy menyatu menjadi satu sama lain.
+  - Tampilan membutuhkan nada yang lebih kuat melalui tipografi daripada dekorasi tambahan.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Kapan menggunakannya
+
+Gunakan `/impeccable typeset` ketika teks di halaman terlihat seperti tipografi default alih-alih tipografi yang dirancang. Hierarki yang kabur, tiga ukuran yang terlihat sama, body copy di 14px, font display yang sebenarnya hanya Inter bold, headline tanpa perhatian kerning.
+
+Pemicu umum: "hierarki terasa datar", "keterbacaan kurang tepat", "font terlihat generik".
+
+## Cara kerjanya
+
+Skill menilai tipografi melintasi lima dimensi:
+
+1. **Pilihan font**: apakah Anda menggunakan default yang tidak terlihat (Inter, Roboto, Arial, Open Sans), apakah typeface cocok dengan brand, apakah ada lebih dari 2 hingga 3 family.
+2. **Hierarki**: apakah heading, body, dan caption jelas berbeda pada pandangan pertama, apakah kontras ukuran setidaknya 1.25x antara langkah, apakah kontras bobot dapat dibaca.
+3. **Ukuran dan skala**: apakah ada skala tipografi yang koheren, apakah teks body memenuhi minimum 16px, apakah skala fixed-rem untuk UI aplikasi atau fluid-clamp untuk halaman pemasaran.
+4. **Keterbacaan**: panjang baris 45 hingga 75 karakter, line-height disesuaikan untuk font dan konteks, kontras.
+5. **Konsistensi**: elemen yang sama menggunakan perlakuan yang sama di mana-mana, tidak ada override font-size satu kali.
+
+Kemudian skill memperbaiki apa yang ditemukannya: memilih typeface yang khas, membangun skala modular, memperlebar kontras hierarki, mengatur panjang baris dan leading yang tepat.
+
+## Cobalah
+
+```
+/impeccable typeset the article layout
+```
+
+Diff yang diharapkan:
+
+- Font display diganti dari Inter 700 ke font display yang nyata
+- Skala tipografi dibangun ulang: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, rasio 1.333
+- Teks body dinaikkan dari 14px ke 16px
+- Panjang baris dibatasi ke 68ch pada kolom artikel
+- Line-height 1.6 untuk body, 1.1 untuk display
+- Menghapus empat nilai `font-size` satu kali yang tersebar di gaya komponen
+
+## Jebakan
+
+- **Meminta font baru tanpa konteks.** Typeset akan memilih berdasarkan suara brand di `PRODUCT.md`. Jika Anda belum menjalankan `/impeccable teach`, saran akan generik.
+- **Menggunakan typeset ketika masalahnya adalah tata letak.** Jika paragraf baik-baik saja tetapi halaman terasa sesak, Anda butuh `/impeccable layout`.
+- **Mengharapkan skala fluid clamp pada UI aplikasi.** Typeset menggunakan skala rem tetap untuk antarmuka aplikasi. Tipografi fluid untuk halaman pemasaran dan konten di mana panjang baris sangat bervariasi.

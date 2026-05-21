@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Rescrieti textul UX confuz astfel incat interfețele sa se explice singure.
+highlights:
+  - Utilizatorii ezita pentru ca formularea este vaga.
+  - Interfata are nevoie de text instructional sau de eroare mai bun.
+  - Fluxul produsului este in regula, dar limbajul incetineste oamenii.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Cand se foloseste
+
+`/impeccable clarify` este pentru textul de interfata care face oamenii sa se opreasca si sa gandeasca. Etichete confuze, text de buton ambiguu, mesaje de eroare care dau vina pe utilizator, tooltip-uri care repeta eticheta, stari goale care nu spun nimic util. Folositi-l cand problema nu este layout-ul sau culoarea, ci cuvintele.
+
+Declanse bune: "utilizatorii nu inteleg acest camp", "mesajul de eroare nu este util", "nu pot scrie text bun de buton", "acest tooltip este o pierdere de timp".
+
+## Cum functioneaza
+
+Skill-ul rescrie textul pe suprafetele unde traiesc majoritatea problemelor de copy UX:
+
+1. **Etichete si indicatii de camp**: directe, specifice, spun ce se asteapta.
+2. **Text de buton**: verb primul, descrie rezultatul, nu actiunea. "Salveaza modificarile" nu "OK".
+3. **Mesaje de eroare**: explica ce a mers gresit, a cui este vina si ce sa faceti mai departe. Nu dati niciodata vina pe utilizator.
+4. **Stari goale**: orienteaza utilizatorul, explicati de ce starea este goala, oferiti un pas urmator.
+5. **Tooltip-uri si text de ajutor**: adaugati informatie pe care eticheta nu o poate purta, nu o restatati.
+6. **Dialoguri de confirmare**: numiti consecintele, nu actiunea.
+
+Skill-ul foloseste audienta si starea mentala din `PRODUCT.md` pentru a ajusta vocea. Audienta tehnica primeste limbaj precis. Audienta de consum primeste vorbire simpla. Utilizatori in graba primesc text scurt. Utilizatori anxiosi (plata, stergere) primesc asigurare.
+
+## Incercati
+
+```
+/impeccable clarify the billing form
+```
+
+Inainte si dupa, tipic:
+
+- Eticheta "Adresa de facturare" → "Adresa de pe cardul dumneavoastra"
+- Placeholder "Introduceti ID-ul TVA" → "ID TVA (optional, pentru afaceri)"
+- Eroare "Intrare invalida" → "Acest numar de card are 15 cifre. Ati introdus 14."
+- Buton "Trimite" → "Debitati 29$ si abonati-va"
+- Stare goala "Fara tranzactii inca" → "Prima dumneavoastra incasare va aparea aici dupa prima comanda."
+
+## Capcane
+
+- **Scrierea mai degraba isteta decat mai clara.** Clarify nu este pentru upgrade-uri de voce. Daca copy-ul este deja clar, nu apelati la acest skill. Folositi `/impeccable delight` in schimb cand doriti personalitate.
+- **Omiterea intrebarii despre audienta.** Clarify trebuie sa stie cine citeste. Daca `PRODUCT.md` nu specifica nivelul tehnic al audientei, rescrierile vor fi generice.
+- **Rularea clarify pe copy de marketing.** Clarify este pentru text UX functional: etichete, erori, instructiuni. Copy-ul de marketing are nevoie de un set diferit de miscari si un scriitor uman.

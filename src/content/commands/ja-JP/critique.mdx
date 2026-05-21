@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: スコアリング、ペルソナテスト、自動検出を備えたデザインレビュー。
+highlights:
+  - ゼロからの再ビルドではなく、弱いデザイン選択に関する知見が欲しい。
+  - スコアリング、デザイン推論、および次に取るべきステップが必要。
+  - インターフェースは動くが、まだ何かが違和感がある。
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristics (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibility of status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match with real world</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistency & standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Error prevention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recognition over recall</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The evaluator</span>
+              <span class="docs-viz-critique-persona-note">火曜の夜に2つの代替製品と比較している。</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The returning user</span>
+              <span class="docs-viz-critique-persona-note">プロダクトを知っていて、モバイルで、急いでいる。</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The skeptic</span>
+              <span class="docs-viz-critique-persona-note">あらゆるSaaSランディングを見てきていて飽きている。</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">2つのパス（LLMデザインレビューと決定論的検出器）が1つの優先順位付きリストに統合されます。何が機能しているか、何を修正すべきか、そして出荷前に答える価値のある挑発的な質問。</p>
+</div>
+
+## いつ使うか
+
+すでにビルドしたものについて率直な第二意見が欲しい場合に `/impeccable critique` を使ってください。「動くか」ではなく「良いか」を評価します。スキルはNielsenの10ヒューリスティクスに対してインターフェースをスコアリングし、認知負荷チェックを実行し、ペルソナレンズでテストし、25の具体的なアンチパターンに対する自動検出器と交差参照します。
+
+ページが機能的に完成しており、それが意図的か、AIの粗製濫造かを知りたい場合に使ってください。
+
+## 仕組み
+
+`/impeccable critique` は相互にバイアスをかけないよう、2つの独立した評価を並行して実行します。
+
+1つ目は**LLMデザインレビュー**です：モデルがソースを読み、ブラウザ自動化が利用可能であれば実際のページを視覚的に検査し、impeccableスキルの完全なDO/DON'Tカタログを歩査します。Nielsenのヒューリスティクスをスコアリングし、認知負荷の失敗をカウントし、フローを通じた感情の旅を追跡し、AIの粗製濫造をフラグ付けします。
+
+2つ目は**自動検出器**（`npx impeccable detect`）で、グラデーションテキスト、紫色のパレット、サイドタブのボーダー、入れ子カード、行の長さの問題、およびその他の汎用的なAI出力の目に見える痕跡を決定論的に見つけます。
+
+2つのレポートは1つの優先順位付きリストに統合されます：機能していること、修正が必要な3〜5項目、出荷前に答える価値のある挑発的な質問。
+
+## 試してみる
+
+ページを指定して実行：
+
+```
+/impeccable critique the homepage hero
+```
+
+スコア付きレポートが返されます。典型的な形式：
+
+- **AI slop判定**：合格/不合格と具体的な兆候
+- **ヒューリスティクススコア**：10個の数値、0〜4
+- **認知負荷**：8項目中の失敗数
+- **優先課題**：3〜5項目、各項目に内容、理由、修正方法
+- **回答すべき質問**：インターフェース自体では決定できないもの
+
+そこから `/impeccable polish` や `/impeccable distill` と組み合わせて修正を実行します。
+
+## 注意点
+
+- **未完成の作品に実行すること。** Critiqueは完成したページ向けです。TODOが3つある空のステートは、悪いからではなく未完成だから低くスコアリングされます。
+- **末尾の質問を無視すること。** それらは通常、デザインを最も大きく変える修正です。
+- **ヒューリスティクススコアを成績として扱うこと。** 診断用であり、評価用ではありません。コンテキストにとって重要性の低いヒューリスティクスでの3/4は問題ありません。

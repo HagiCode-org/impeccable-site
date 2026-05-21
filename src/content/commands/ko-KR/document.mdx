@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: 사양을 준수하는 DESIGN.md를 생성하여 시각적 시스템을 포착하고 모든 AI 에이전트가 온브랜드를 유지하게 합니다.
+highlights:
+  - 코드베이스에 이미 진짜 디자인 언어가 포함되어 있습니다.
+  - 색상, 타입, 간격, 컴포넌트의 이동 가능한 요약이 필요합니다.
+  - 시스템이 암묵적이어서 향후 디자인 작업이 어긋나고 있습니다.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Quiet type, generous air, one committed accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Flat by default. Shadows appear only as a response to state.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tint neutrals toward the accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text for emphasis.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">6개 섹션은 고정되어 있고, 고정된 순서로, 고정된 이름으로 되어 있습니다. 함께 <code>DESIGN.json</code>이 Live Mode 디자인 패널을 위한 기계 판독 가능한 사이드카로 제공됩니다.</p>
+</div>
+
+## 사용 시기
+
+문서화할 만큼 충분한 시각적 시스템이 있을 때 `/impeccable document`를 실행하세요: 색상, 타이포그래피, 최소한 버튼과 카드. 이 명령은 코드베이스를 스캔하고, 발견한 토큰과 컴포넌트 패턴을 추출하며, [Google Stitch DESIGN.md 형식](https://stitch.withgoogle.com/docs/design-md/format/)을 따르는 `DESIGN.md`를 프로젝트 루트에 작성합니다. 6개 섹션이 고정된 순서로, 다른 모든 DESIGN.md 인식 도구와 상호 운용됩니다.
+
+다음 경우에 사용하세요:
+
+- **막 `/impeccable teach`를 실행했고** `PRODUCT.md`가 이제 존재합니다. Document가 그에 맞는 시각적 사이드 파일입니다.
+- **명령이 안내했을 때.** Live, craft, polish 모두 DESIGN.md를 읽습니다. 없다면 스킬이 먼저 document를 실행하라고 제안합니다.
+- **디자인이** 이전 DESIGN.md에서 어긋났고 파일이 실제 시스템을 더 이상 설명하지 못할 때.
+- **대규모 재설계 전,** 다음 방향의 레퍼런스로 현재 상태를 포착하기 위해.
+
+아직 코드가 없는 프로젝트(새 `teach` 실행, 빌드된 것 없음)에는 시드 모드가 있습니다: `/impeccable document --seed`가 5개의 빠른 전략 질문(색상 전략, 타입 방향, 모션 에너지, 레퍼런스, 안티 레퍼런스)을 묻고 뼈대를 작성합니다. 코드가 있으면 스캔 모드로 다시 실행하세요.
+
+## 작동 방식
+
+스캔 패스는 우선순위 순으로 디자인 에셋을 찾습니다: CSS 커스텀 프로퍼티, Tailwind 설정, CSS-in-JS 테마, 디자인 토큰 파일, 컴포넌트 소스, 글로벌 스타일시트, 그리고 마지막으로 브라우저가 사용 가능하면 라이브 렌더링된 출력의 계산 스타일. 가능한 모든 것을 자동 추출한 다음, 창작적 입력이 필요한 부분에 대해 하나의 그룹 질문을 합니다: **Creative North Star**(전체 시스템에 대한 단일 명명된 은유, "The Editorial Sanctuary"처럼), 설명적 색상 이름, 엘리베이션 철학, 컴포넌트 성격.
+
+출력은 정확히 6개 섹션의 DESIGN.md입니다: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. 헤더는 문자 그대로 고정되어 파일이 다른 도구로 파싱 가능합니다. 그와 함께 기계 판독 가능한 사이드카로 `DESIGN.json`이 작성됩니다. 이 사이드카가 라이브 모드 디자인 패널에서 일반적 근사가 아닌 *이 프로젝트의* 실제 버튼, 입력, 내비게이션, 카드 타일을 렌더링하는 데 사용하는 것입니다.
+
+다른 모든 명령은 호출 시 DESIGN.md를 읽습니다. 변형, polish, audit, 새 기능 모두 지시 없이 시각적 시스템을 상속받습니다.
+
+## 직접 해보기
+
+```
+/impeccable document
+```
+
+토큰이 이미 정의된 프로젝트에서는 약 2분이 걸립니다: 스캔이 팔레트와 타입 스택을 찾고, 2~3개 옵션에서 North Star를 고르고, 설명적 색상 이름을 확인하고("Deep Muted Teal-Navy", "blue-800"이 아닌), 파일이 프로젝트 루트에 생성됩니다.
+
+새 프로젝트에서는:
+
+```
+/impeccable document --seed
+```
+
+5개 질문, 약 5분. 파일은 뼈대이며, `<!-- SEED -->` 주석으로 표시되어 스스로가 무엇인지 정직합니다. 토큰을 구현한 후 플래그 없이 다시 실행하세요.
+
+## 주의 사항
+
+- **너무 이르게 실행하기.** 구현된 토큰이 없는 프로젝트에서는 시드 모드가 맞습니다. 코드가 뒷받침할 수 없는 전체 스펙을 조작하지 마세요. 가짜 DESIGN.md는 DESIGN.md가 없는 것보다 더 나쁩니다.
+- **DESIGN.md를 인간 전용 문서로 취급하기.** 주로 AI를 위한 것입니다. 다른 모든 명령이 읽습니다. 형식의 강제성("never", "always", Named Rules)은 의도적입니다.
+- **Layout / Motion / Responsive 최상위 섹션 추가하기.** 스펙은 6개 섹션이며, 고정된 순서로, 고정된 이름입니다. 레이아웃이나 모션 콘텐츠를 Overview(철학 수준 규칙) 또는 Components(컴포넌트별 동작)에 접으세요.
+- **기존 DESIGN.md를 조용히 덮어쓰기.** Document는 항상 먼저 확인합니다. 새로 시작하고 싶다면 기존 파일을 옮기거나 스킬에 명시적으로 덮어쓰라고 지시하세요.

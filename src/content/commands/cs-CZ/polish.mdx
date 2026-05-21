@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Peclivy finalni pruchod mezi dobrym a skvelým.
+highlights:
+  - Zarovnani, rozestupy a mikro-rozhodnuti stale vypadaji drsne.
+  - Funkce je blizko vydani.
+  - Male nekonzistence stahuji vnimanou kvalitu dolu.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Kdy pouzit
+
+`/impeccable polish` je to posledni, co spustite pred vydanim. Nahani detaily, ktere oddeluji vydavanou funkci od leštěne: nepresnosti na pul pixelu, nekonzistentni rozestupy, zapomenute stavy focusu, nacitaci prechody, ktere blikaji, text, ktery odchyluje v tone. Take zarovnava funkci s vasim designovym systemem, nahrazuje hard-coded hodnoty tokeny, vymenuje vlastní komponenty za sdilene a opravuje jakoukoli drift od established vzorů.
+
+Siahnete po nem, kdyz je funkce funkcne kompletni, nic neni rozbito a neco stale vypada spatne. Take siahnete po nem, kdyz se funkce odchylila od designoveho systemu a musi byt pritazena zpet do linie.
+
+## Jak to funguje
+
+Polish zacina objevovanim designoveho systemu (tokeny, meritko rozestupu, sdilene komponenty) a pak pracuje metodicky napric sesti dimenzemi:
+
+1. **Vizualni zarovnani a rozestupy**: dokonalá prilnost k mřízce na urovni pixelu, konzistentni meritko rozestupu, opticke zarovnani na ikonach.
+2. **Typografie**: konzistence hierarchie, delka radku, vdovy a sirotci, kerning na zahlavich.
+3. **Barva a kontrast**: pouzivani tokenu, parita tem, pomery WCAG, indikatory focusu.
+4. **Interakcni stavy**: hover, focus, active, disabled, loading, error, success. Kazdy stav zuctovan.
+5. **Prechody a pohyb**: plynule easing, zadne trhani layoutu, respektovani `prefers-reduced-motion`.
+6. **Text**: konzistentni hlas, spravny cas, zadne zastupne retezce, zadne bloudici TODO.
+
+Dovednost je explicitni k jedne veci: polish je posledni krok, ne prvni. Pokud funkce neni funkcne kompletni, lešteni je promarnenou praci.
+
+## Vyzkousejte to
+
+```
+/impeccable polish the pricing page
+```
+
+Zdravy pruchod vypada takto:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+Pet malych oprav, zadne prepisy. To je tvar dobreho pruchodu leštenim.
+
+## Na co si dat pozor
+
+- **Lešteni prace, ktera neni hotova.** Pokud jsou v kodu TODO, nejste pripraveni. Spustte `/impeccable polish` pouze na dokoncenych funkci.
+- **Zachazeni s leštenim jako redesignem.** Polish rafinuje to, co existuje. Pokud se priznite, ze predelavate architekturu layoutu, potrebovali jste `/impeccable critique` nebo `/impeccable layout`.
+- **Spusteni `/impeccable polish` bez `/impeccable audit` predtim.** Polish odhaluje problemy založene na pocitu. Audit odhaluje meritelne. Pouzijte oboji.

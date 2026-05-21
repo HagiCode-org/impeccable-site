@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Lặp trên UI trong trình duyệt. Chọn phần tử, thả bình luận, nhận ba biến thể. Chấp nhận một và nó ghi vào source.
+highlights:
+  - Dev server đã tồn tại.
+  - Bạn muốn so sánh các lựa chọn trực tiếp trên UI đã render.
+  - Bước tiếp theo nhanh nhất là thử nghiệm trực quan có hướng dẫn.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">&#x25B8;</span>
+  <span class="docs-live-callout-text">Xem nó hoạt động, với bản demo hoạt hình, tại <a href="/live-mode">/live-mode</a>. Trang này là tài liệu tham khảo cho những gì AI harness đọc khi lệnh chạy.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">&#x25B8;</span>
+  <span class="docs-live-callout-text"><strong>Trạng thái: alpha.</strong> Live Mode hoạt động end-to-end và sẵn sàng thử, nhưng vẫn cần thêm kiểm thử trên các repo thực tế và cấu hình framework. Kỳ vọng những điểm thô trên thiết lập không phổ biến, vui lòng báo cáo những gì bị hỏng.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">&#x2039;</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">&#x203A;</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">&#x2715;</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode giữa chu kỳ: bộ chọn phác thảo phần tử bạn đã chọn, thanh ngữ cảnh hiển thị biến thể bạn đang xem và thanh toàn cục ghim ở dưới cùng. Chấp nhận trên biến thể này sẽ ghi Biến thể 2 ngược vào source.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+Sử dụng `/impeccable live` khi bạn muốn lặp trên thứ gì đó trực quan giống như cách bạn làm trong công cụ thiết kế, nhưng giữ code sản xuất làm đầu ra. Luồng giống canvas của Figma mà không cần chuyến khứ hồi đến bước triển khai.
+
+Sử dụng cho:
+
+- **Khám phá hướng trên phần tử thực tế.** Một hero section, một thẻ newsletter, một pricing tier. Ba cách tiếp cận thực sự khác biệt, cạnh nhau, trên trang thực tế với ngữ cảnh thực tế.
+- **Polish một phần UI gần như đúng.** Bạn biết cái gì cảm thấy không ổn nhưng không thể nói rõ. Chọn phần tử, viết "hơi khó hiểu hơn" hoặc vẽ một nét qua phần gây khó chịu, nhấn Go.
+- **Một A/B nhanh giữa hai hướng đội ngũ đang tranh luận.** Tạo biến thể, không chấp nhận cái nào, bỏ đi. Mục đích là sự so sánh.
+
+KHÔNG dành cho tính năng mới greenfield (sử dụng `/impeccable craft`) hoặc thiết kế lại toàn trang (sử dụng `/impeccable` hoặc một lệnh tinh chỉnh chuyên biệt).
+
+## Cách hoạt động
+
+Một lệnh gọi lên lớp phủ picker trên dev server đang chạy. Bạn chọn bất kỳ phần tử nào. Một thanh ngữ cảnh nhỏ xuất hiện bên cạnh. Nhập mô tả tự do hoặc chọn một trong các chip hành động (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Tùy chọn thả ghim bình luận hoặc vẽ nét trực tiếp lên phần tử trước và kỹ năng đọc chúng như ý định.
+
+Nhấn Go. Ba **biến thể chất lượng sản xuất** được tạo, mỗi biến thể neo vào một kiểu thiết kế thực sự khác biệt (không phải ba cách xử lý màu) và hoán đổi nóng vào trang qua HMR của framework. Xoay qua chúng bằng phím mũi tên. Chấp nhận một và biến thể được ghi ngược vào source. Loại bỏ cả ba và bản gốc ở lại.
+
+Nó hỗ trợ Vite, Next.js (bao gồm monorepo), SvelteKit, Astro, Nuxt và HTML tĩnh. Nếu dev server của bạn có Content Security Policy nghiêm ngặt, thiết lập chạy đầu tiên sẽ phát hiện và đề xuất bản vá một lần chỉ dành cho dev để picker có thể tải. `DESIGN.md` thắng trên quyết định trực quan, `PRODUCT.md` thắng trên giọng điệu: nếu bạn có cả hai, biến thể giữ đúng thương hiệu mà không cần được nói.
+
+## Thử ngay
+
+```
+/impeccable live
+```
+
+Mở URL dev server, chọn thẻ đăng ký newsletter, click chip `delight`, nhấn Go. Bạn sẽ nhận ba biến thể khác nhau theo các chiều cá tính (cảm giác tem-bưu thiếp, phiên bản bất ngờ kiểu chữ, một phiên bản với minh họa nhấn), không phải ba cách xử lý giống nhau.
+
+Hoặc chọn hero, nhập "hơi biên tập hơn, bớt SaaS", nhấn Go. Ba biến thể neo vào các kiểu biên tập khác nhau (masthead broadsheet, hàng đặc tả kiểu catalog, poster glyph quá cỡ) thay vì ba sắc thái của cùng một ý tưởng.
+
+Dừng live mode khi xong: nói "stop live mode", đóng tab hoặc nhấn nút thoát trên thanh picker.
+
+## Những cạm bẫy cần tránh
+
+- **Chạy trên trang vẫn đang viết dở.** Tạo biến thể live cần ngữ cảnh. Nếu phần tử có văn bản giữ chỗ, Lorem ipsum chung chung hoặc định dạng mặc định trước stylesheet, biến thể sẽ phản ánh điều đó. Điền nội dung trước.
+- **Kỳ vọng nó đưa ra quyết định vĩ mô.** Live mode lặp trên một phần tử được chọn. Cho "làm lại toàn bộ trang giá", sử dụng `/impeccable` hoặc `/impeccable craft` thay thế.
+- **Bỏ qua thông báo fallback.** Nếu phần tử nằm trong tệp đã tạo (template đã biên dịch, đầu ra build), picker nói rõ ràng và đề nghị chuyển accept vào source thật. Đừng ép accept vào tệp đã tạo: lần build tiếp theo sẽ xóa nó.
+- **Chạy mà không có PRODUCT.md hoặc DESIGN.md khi bạn quan tâm đến sự phù hợp thương hiệu.** Live vẫn sẽ tạo, nhưng biến thể sẽ nghiêng về mặc định chung chung. Chạy `/impeccable teach` và `/impeccable document` trước nếu kết quả cần giống sản phẩm của bạn.

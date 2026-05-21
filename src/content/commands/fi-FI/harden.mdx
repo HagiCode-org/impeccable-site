@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Tee käyttöliittymistä tuotantovalmiita. Reunatapaukset, i18n, virhetilat, ylivuoto.
+highlights:
+  - Onnistunut polku toimii, mutta todellisen maailman tilat näyttävät yhä haurailta.
+  - Tarvitset sulkea julkaisukuilut ennen julkaisua.
+  - Virhekäsittely ja luotettavuus merkitsevät enemmän kuin uuden loiston lisääminen.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Milloin käyttää
+
+`/impeccable harden` on päivään jolloin käyttöliittymäsi kohtaa todellisuuden. Oikean käyttäjän data on sotkuista: 60 merkkiä pitkiä nimiä, tuotenimiiä saksaksi, hintoja miljardeissa, 500-virheitä, offline-tilat, oikealta-vasemmalle-tekstiä. Suunnitelmat jotka toimivat vain täydellisellä datalla eivät ole tuotantovalmiita.
+
+Turvaudu siihen ennen lanseerausta, ennen uuden markkinaan avaamista, tai aina kun virheraportti alkaa "meidän käyttäjällä oli tosi pitkä nimi ja". Ensimmäisen käyttökerran työnkuluille, tyhjän tilan aktivoinnille ja onboarding-suunnittelulle turvaudu `/impeccable onboard`-komentoon.
+
+## Miten se toimii
+
+Taito käy läpi neljän todellisen maailman sitkeysdimenssiota:
+
+1. **Tekstin ja datan ääripäät**. Pitkä teksti, lyhyt teksti, erikoismerkit, emoji, RTL, miljardien numerot, 1000-kohteen listat.
+2. **Virheskenaariot**. Verkkohäiriöt, API 4xx/5xx, validointivirheet, käyttöoikeusvirheet, nopeusrajat, samanaikaiset operaatiot.
+3. **Kansainvälistäminen**. Pitkät käännökset (saksa on usein 30% pidempi kuin englanti), RTL-kielet, päivämäärä- ja numeromuodot, valuuttasymbolit, merkistöt.
+4. **Laite ja konteksti**. Kosketuskohteet, offline-toiminta, hitaat yhteydet, virransäästötila.
+
+Kullekin dimensiolle se tunnistaa vikatilan, sitten soveltaa konkreettisen korjauksen: ylivuotokäsittelyn, informatiivisen virhekäyttöliittymän, i18n-turvalliset asettelut, monikkomuodot, järkevät varajärjestelmät.
+
+## Kokeile
+
+Aloita yhdellä sivulla ja yhdellä dimensiolla:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Odotettu tuloste:
+
+- `.user-name` on nyt `text-overflow: ellipsis` työkaluvihjeellä koko arvolle
+- `.bio` vaihtunut kiinteästä korkeudesta `max-height`-arvoon "näytä lisää" -paljastuksen kanssa
+- Lisätty tyhjä tila käyttäjille joilla ei ole elämäkertaa
+- Lisätty luurankolataaja asynkroniselle avatar-haulle
+- Testattu nimipituuksilla 1, 20, 60, 200 merkkiä
+
+Suorita se sivu kerrallaan, ei kaikki kerralla. Ensimmäinen ajo on suurin; seuraavat löytävät vähemmän ongelmia kun kuviot vakiintuvat.
+
+## Sudenkuopat
+
+- **Virheraportin odottaminen.** Harden on ennaltaehkäisevää. Jos huomaat korjaavasi samaa virheluokkaa kahdesti, suorita `/impeccable harden` koko ominaisuuden yli.
+- **Virhe- ja tyhjien tilojen kohteleminen jälkikäteisenä.** Suurin osa hardening-työstä on virhe- ja tyhjän tilan käyttöliittymää. Budjetoi aikaa sille, ei vain `catch`-lohkolle.
+- **i18n:n ohittaminen koska "olemme vain englanniksi nyt".** i18n-turvalliset asettelut ovat yhä parempia asetteluja. Joustavat säiliöt, oikea tekstin rivitys, antelias rivinkorkeus. Mikään niistä ei vahingoita englantia.

@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Tasarımı şekillendirin, ardından tek akışta oluşturun.
+highlights:
+  - Sıfırdan yeni bir özellik başlatıyorsunuz.
+  - Keşif, uygulama ve görsel iyileştirmeyi tek geçişte istiyorsunuz.
+  - Daha yavaş ama daha bilinçli bir oluşturma döngüsünü tercih ediyorsunuz.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Keşif görüşmesi. Amaç, kullanıcılar, kısıtlamalar, yön.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Load references</span>
+      <span class="docs-viz-flow-hint">Mekansal, tipografi, hareket, renk, etkileşim.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Yapı, hiyerarşi, tipografi, renk, durumlar, hareket, responsive.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterate visually</span>
+      <span class="docs-viz-flow-hint">Tarayıcıda kontrol edin, brief ile eşleşene kadar iyileştirin.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Her aşama atlanamaz. Keşif adımı, çoğu AI çıktısının başarısız olduğu yerdir: kod oluştuğunda, düşünce sabitlenmiştir.</p>
+</div>
+
+## Ne zaman kullanılır
+
+`/impeccable craft` uçtan uca oluşturma komutudur. Bir özellik açıklaması verin ve tüm boru hattını çalıştırır: yapılandırılmış keşif, referans yükleme, uygulama, görsel yineleme. Sıfırdan yeni bir özellik başlatırken ve tüm iş akışını tek çağrıda istediğinizde kullanın.
+
+Şu durumlarda kullanın:
+
+- **Yeni bir özellik oluşturuyor ve tam akışı istiyorsunuz.** Adımları kendiniz yönetmek istemiyorsunuz.
+- **Ne oluşturacağınızı biliyorsunuz ama nasıl görünmesi gerektiğinden emin değilsiniz.** Keşif aşaması, tasarım düşüncesini uygulama sabitlemeden önce zorlar.
+- **Varsayılan olarak görsel yineleme istiyorsunuz.** `craft` sonucu tarayıcıda kontrol eder ve cilası yüksek olana kadar iyileştirir, ilk çalışan sürümü göndermek yerine.
+
+Sadece kod olmadan düşünmeyi istiyorsanız, bağımsız olarak `/impeccable shape` kullanın. Zaten net bir vizyonunuz varsa ve sadece oluşturmak istiyorsanız, özellik açıklamanızla doğrudan `/impeccable` komutunu çağırın. `craft` aradadır: yapılandırılmış, eksiksiz, görüşlü.
+
+## Nasıl çalışır
+
+`craft` sırasıyla dört aşama çalıştırır:
+
+1. **Tasarımı şekillendir.** Dahili olarak `/impeccable shape` komutunu çalıştırır: amaç, kullanıcılar, içerik, kısıtlamalar ve hedeflar hakkında kısa bir keşif görüşmesi. Çıktı, okuyabileceğiniz ve geri itebileceğiniz bir tasarım brief'idir.
+2. **Referansları yükle.** Brief'e dayalı olarak doğru referans dosyalarını çeker (mekansal, tipografi, hareket, renk, etkileşim, responsive, UX yazımı), böylece model kodlamaya başlamadan önce ilgili ilkelere sahip olur.
+3. **Oluştur.** Özelliği belirli bir sırayla uygular: önce yapı, ardından aralık ve hiyerarşi, ardından tipografi ve renk, ardından durumlar, ardından hareket, ardından responsive. Her karar brief'e dayanır.
+4. **Görsel yineleme.** Sonucu tarayıcıda açar, brief ve anti-pattern kataloğuna karşı kontrol eder ve niyet ile eşleşene kadar iyileştirir. Bu adım kritiktir. İlk çalışan sürüm asla gönderilen sürüm değildir.
+
+Keşif aşaması atlanamaz ve mesele de budur. Çoğu AI tarafından oluşturulan kullanıcı arayüzü, model JSX yazmaya başlamadan önce kullanıcının ne başarmaya çalıştığını kimse sormadığı için başarısız olur. `craft` bunu tersine çevirir.
+
+## Deneyin
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Önce 5 ile 10 soruluk bir keşif görüşmesi bekleyin. Hedef kitleniz, ürünün kişiliği, istediğiniz duygusal ton, anti-referanslar ve kısıtlamalar hakkında sorular. Ardından bir tasarım brief'i. Ardından, her aşamada tarayıcı kontrol edilerek uygulama. Görsel cilalama aşamasında birden fazla yineleme turu bekleyin.
+
+Tüm çalışma, düşünmeyi, oluşturmayı ve iyileştirmeyi içerdiği için tipik bir komuttan daha uzundur. Takas budur: daha fazla ön yapı, daha az sonradan temizlik.
+
+## Tuzaklar
+
+- **Küçük değişiklikler için kullanmak.** `craft` yeni özellikler içindir, dokunuşlar için değil. Mevcut kod için `/impeccable polish`, `/impeccable critique` veya belirli bir iyileştirme komutunu kullanın.
+- **Keşif aşamasını aceleye getirmek.** Görüşme, "hemen kod yazmaya başla" ile karşılaştırıldığında yavaş hissettirir. Öyle değildir. Soruları dikkatlice yanıtlamak daha keskin bir brief, daha keskin bir oluşturma ve daha az yeniden yazım üretir.
+- **Görsel yinelemeyi atlamak.** Aşama bir nedenle var. "Teknik olarak çalışıyor" ile "doğru hissettiriyor" arasındaki boşluk, kod incelemesiyle değil, görsel cilalama ile kapatılır. Çalışmasına izin verin.

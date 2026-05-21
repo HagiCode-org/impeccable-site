@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Yeniden kullanılabilir bileşenleri, token'ları ve kalıpları tasarım sistemine çıkarın.
+highlights:
+  - Birden fazla bileşen aynı sorunu farklı şekilde çözüyor.
+  - Token'ların ve kalıpların merkezi hale getirilmesi gerekiyor.
+  - Daha sürdürülebilir bir görsel sistem istiyorsunuz.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Tekrarlanan onaltılık değerler, düğme varyantları, aralık ölçekleri, metin stilleri.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Token adları, varyant ve boyut içeren bileşen API'leri, metin stilleri.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Çoğaltılmış CSS'yi yeni ilkel öğelerle değiştirin. Artık öksüz kod kalmasın.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Beceri, yalnızca aynı niyetle üç veya daha fazla kez kullanılan öğeleri çıkarır. İki kullanım bir kalıp değildir ve geçiş her zaman aynı geçişte gerçekleşir.</p>
+</div>
+
+## Ne zaman kullanılır
+
+`/impeccable extract`, kod tabanınızın kazara bir tasarım sistemine dönüştüğü an içindir. 12 yerde tekrarlanan düğme stilleri. Aynı kartın üç varyantı. Her yere serpiştirilmiş onaltılık renkler. Yanlışlıkla bir ölçeğe uyan el yapımı aralık. Bu sapmayı yeniden kullanılabilir ilkel öğeler halinde birleştirmek istediğinizde kullanın.
+
+Kalıpları ortaya çıkaracak kadar yeterli özellik gönderildikten sonra kullanın. Erken çıkarma, gerçeğe uymayan soyutlamalar oluşturur.
+
+## Nasıl çalışır
+
+Beceri önce tasarım sistemi yapısını keşfeder, ardından çıkarma fırsatlarını belirler:
+
+1. **Token'lar**: tekrarlanan değişmez değerleri bulun (renkler, aralıklar, yarıçaplar, gölgeler, yazı tipi boyutları). Token adları önerin, token sistemine ekleyin, kullanımları değiştirin.
+2. **Bileşenler**: küçük farklılıklarla tekrarlanan UI kalıplarını bulun (düğmeler, kartlar, girişler, modallar). Varyantları olan tek bir bileşene çıkarın, çağıranları taşıyın.
+3. **Bileşim kalıpları**: tekrarlanan düzen veya etkileşim kalıplarını bulun (form satırları, araç çubuğu grupları, boş durumlar). Bileşim ilkel öğelerine çıkarın.
+4. **Metin stilleri**: tekrarlanan yazı tipi boyutu + ağırlık + satır yüksekliği kombinasyonlarını bulun. Metin stilleri olarak çıkarın.
+5. **Animasyon kalıpları**: tekrarılan kolaylaştırma, süre veya anahtar kare kombinasyonlarını bulun. Hareket token'larına çıkarın.
+
+Beceri dikkatlidir. Yalnızca aynı niyetle üç veya daha fazla kez kullanılan öğeleri çıkarır. "Daha sonra yeniden kullanılabilir" diye asla çıkarma yapmaz. Erken soyutlama, çoğaltmadan daha kötüdür.
+
+## Deneyin
+
+```
+/impeccable extract the button styles
+```
+
+Beklenen çıktı:
+
+- 8 dosyada 14 düğme örneği bulundu
+- 4 farklı varyant: primary (dolu vurgu), secondary (kenarlıklı), ghost (yalnızca metin), destructive (dolu kırmızı)
+- 4 varyantın tümü aynı boyut ölçeğini kullanıyor (small, default, large)
+- Token odaklı stillerle `<Button variant="primary" size="default">` olarak çıkarıldı
+- 14 çağrı noktası taşındı, ~180 satır çoğaltılmış CSS kaldırıldı
+- 3 eksik token eklendi: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Tuzaklar
+
+- **Çok erken çıkarmak.** İki kullanım bir kalıp değildir. Üç olabilir. Kalıp belirgin olana kadar bekleyin.
+- **Aşırı genelleştirmek.** Çıkarılan bileşen, mevcut kullanım durumlarına yakın olarak uymalıdır, olası her gelecekteki kullanım durumunu öngörmemelidir. Varyantları daha sonra her zaman ekleyebilirsiniz.
+- **Geçişi unutmak.** Geçiş olmadan çıkarma, eski çoğaltılmış kodu etrafta bırakır ve aynı şeyi yapmanın üçüncü bir yolunu oluşturur. Her zaman aynı geçişte taşıyın.
+- **Niyeti farklı olan öğeleri çıkarmak.** Benzeyen ama farklı amaçlara hizmet eden iki düğme (birincil eylem vs. düğme olarak biçimlendirilmiş bağlantı) muhtemelen ayrı kalmalıdır.

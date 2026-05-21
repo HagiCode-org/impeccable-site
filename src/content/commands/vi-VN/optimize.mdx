@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Chẩn đoán và sửa hiệu suất UI từ LCP đến kích thước bundle.
+highlights:
+  - Giao diện cảm thấy chậm, giật hoặc nặng.
+  - Bạn cần giảm chi phí mà không phá bỏ thiết kế.
+  - Hiệu suất giờ là vấn đề sản phẩm có thể nhìn thấy.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable optimize` dành cho giao diện cảm thấy chậm. First paint mất mãi mãi, cuộn bị giật, hình ảnh xuất hiện muộn, tương tác cảm thấy lag, bundle gửi 800KB JavaScript. Sử dụng khi Web Vitals tồi hoặc khi người dùng phàn nàn về sự chậm chạp.
+
+Đừng sử dụng như tối ưu hóa sớm. Nếu LCP là 1.1s và INP là 80ms, dừng lại. Công việc thiết kế quan trọng hơn.
+
+## Cách hoạt động
+
+Kỹ năng hoạt động qua năm chiều hiệu suất:
+
+1. **Tải và Web Vitals**: LCP, INP, CLS. Xác định cái gì đang chặn first paint, cái gì đang làm chậm tương tác, cái gì đang dịch chuyển layout.
+2. **Render**: re-render không cần thiết, thiếu memoization, reconciliation tốn kém, layout thrash trong vòng lặp.
+3. **Animation**: có thứ gì đang animate thuộc tính layout không, transform và opacity có phải thứ duy nhất bị chạm không, `will-change` giúp hay hại ở đây.
+4. **Hình ảnh và tài sản**: lazy loading, hình ảnh responsive (`srcset`, `sizes`), định dạng hiện đại (WebP, AVIF), kích thước được đặt để ngăn CLS.
+5. **Kích thước bundle**: import không sử dụng, dependency quá lớn, thiếu code-splitting, dead code.
+
+Kỹ năng đo lường trước và sau. Mọi sửa đổi được lượng hóa. Nếu một thay đổi không cải thiện chỉ số, nó được hoàn lại.
+
+## Thử ngay
+
+```
+/impeccable optimize the homepage
+```
+
+Cấu trúc kỳ vọng:
+
+```
+LCP: 3.2s -> 1.4s
+  - Hero image preloaded (-800ms)
+  - Removed render-blocking font stylesheet (-240ms)
+  - Deferred analytics script (-180ms)
+
+INP: 240ms -> 90ms
+  - Debounced scroll handler
+  - Memoized expensive list render
+  - Removed synchronous layout read in event loop
+
+CLS: 0.18 -> 0.02
+  - Set dimensions on hero image and logo
+  - Reserved space for async header badge
+
+Bundle: 340KB -> 180KB
+  - Removed unused lodash import (52KB)
+  - Code-split the playground route (78KB)
+  - Dropped deprecated icon set (30KB)
+```
+
+## Những cạm bẫy cần tránh
+
+- **Tối ưu hóa trước khi đo lường.** Không có chỉ số cơ sở, bạn không thể biết cái gì giúp ích. Chạy `/impeccable optimize` với số liệu Web Vitals cụ thể, không phải cảm nhận.
+- **Săn lùng những cải thiện nhỏ.** Cải thiện INP 20ms mất một tuần hiếm khi đáng giá. Optimize có lợi ích giảm dần; biết khi nào dừng.
+- **Quên đo lại sau mỗi thay đổi.** Bản dựng có thể làm mọi thứ tồi tệ hơn theo cách kỹ năng không dự đoán. Xác minh.

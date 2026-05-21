@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Inteligenta de design din spatele fiecarei comenzi.
+highlights:
+  - Vrei un singur punct de intrare pentru layout, tipografie, culoare, miscare si structura UX impreuna.
+  - Explorati o directie si vreti ca skill-ul sa aleaga sub-fluxul potrivit.
+  - Aveti nevoie de cel mai larg context de design, nu de o singura comanda ingusta.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Cand se foloseste
+
+`/impeccable` este comanda de baza. Apelati-o direct cand doriti lucrari de design liber cu ghidul complet incarcat, fara a alege o comanda specializata. Este alternativa la care apelati cand niciunul dintre cei 23 specialisti (`audit`, `polish`, `critique` si restul) nu se potriveste clar cu ceea ce incercati sa faceti.
+
+Apelati direct `/impeccable` cand:
+
+- **Nu sunteti sigur ce comanda se potriveste.** Descrieti ce doriti in engleza simpla si lasati skill-ul sa aleaga abordarea potrivita.
+- **Lucrarea acopera mai multe discipline.** "Refaceti aceasta sectiune hero" atinge layout, tipografie, culoare si miscare. O singura comanda nu poate acoperi asta.
+- **Vreti inteligenta de design completa fara restrictii.** Fiecare fisier de referinta incarcat, fiecare anti-model verificat, fara flux predefinit.
+
+Pentru fluxuri structurate, apelati la comenzile specializate din bara laterala. Rulati `/impeccable teach` mai intai pe orice proiect nou pentru a stabili PRODUCT.md si DESIGN.md. `/impeccable craft` inlantuieste un interviu de descoperire intr-o constructie completa cu iterare vizuala live. `/impeccable shape` produce un brief de design fara a atinge codul. `/impeccable live` va ofera un selector de browser cu trei variante per element. Comenzile de evaluare si rafinare (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` si restul) detin fiecare o bucata specifica din lucru.
+
+## Cum functioneaza
+
+Majoritatea interfețelor UI generate de AI esueaza la fel: fonturi generice, gradienti violet, griduri de carduri peste griduri de carduri, glassmorphism peste tot. `/impeccable` ofera AI-ului dumneavoastra un punct de vedere puternic. Incarca un manual de design cu opinii plus o lista lunga de anti-modele, apoi impinge modelul sa se angajeze la o directie estetica specifica inainte de a scrie o singura linie de cod.
+
+Doua fisiere la radacina proiectului dumneavoastra formeaza tot ceea ce face skill-ul:
+
+- **`PRODUCT.md`** poarta registrul (brand vs produs), utilizatorii tinta, personalitatea brandului, anti-referinte, principii de design. Raspunde la "cine, ce, de ce".
+- **`DESIGN.md`** poarta culori, tipografie, elevatie, componente, recomandari si restrictii, in formatul Google Stitch cu sase sectiuni. Raspunde la "cum arata".
+
+Fiecare comanda citeste ambele fisiere inainte de generare. **Registrul** decide ce valori implicite se incarca. Brand (marketing, landing, portofoliu, unde designul ESTE produsul) si produs (UI de aplicatie, dashboard-uri, instrumente, unde designul SERVESTE produsul) au valori implicite diferite pentru tipografie, miscare, culoare si densitate. Specificarea lui o singura data in PRODUCT.md inseamna ca `/impeccable typeset` nu va impune fonturi de revista editoriala pe un dashboard si nu va impune valori implicite specifice produsului pe o pagina de campanie. Consultati [tutorialul brand vs produs](/tutorials/brand-vs-product) pentru a vedea cum difera cele doua.
+
+La prima utilizare intr-un proiect, skill-ul ruleaza automat fluxul `teach`: un scurt interviu care scrie PRODUCT.md si apoi deleaga catre `/impeccable document` pentru DESIGN.md. Comenzile viitoare vor citi fisierele fara a mai intreba din nou.
+
+## Incercati
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Ambele prompturi sunt vagi intentionat. `/impeccable` va alege o directie estetica puternica consistenta cu registrul dumneavoastra, se va angaja la fonturi non-implicite, va evita paleta de culori AI si va face genul de alegeri specifice pe care un designer le-ar face. Niciun nume de comanda de ales mai intai, niciun flux pas cu pas de urmat.
+
+Pentru iterare vizuala in browser in loc de chat:
+
+```
+/impeccable live
+```
+
+Selectati orice element pe serverul dumneavoastra de dezvoltare in executie. Adaugati un comentariu sau o linie. Primiti trei variante de calitate de productie interschimbate la cald prin HMR. Acceptati-o pe cea dorita si se scrie in sursa.
+
+## Fixati comenzile inapoi ca scurtaturi
+
+v3.0 a consolidat 18 skill-uri independente intr-un singur `/impeccable` cu 23 sub-comenzi. Daca va lipseste forma scurta a unei comenzi specifice, fixati-o inapoi:
+
+```
+/impeccable pin critique
+```
+
+De acum inainte, `/critique` apeleaza direct `/impeccable critique`. Scrie un skill de redirectionare usor care deleaga catre parinte, deci actualizarile skill-ului se propaga fara re-fixare.
+
+Fixari utile de incercat:
+
+- `/impeccable pin polish` pentru lucrari de pas final
+- `/impeccable pin audit` pentru verificari deterministe de a11y/performanta
+- `/impeccable pin live` pentru fluxul de iterare in browser
+- `/impeccable pin critique` pentru revizuire de design
+
+Pentru eliminare: `/impeccable unpin critique`. Fixarile exista ca directoare prefixate cu `i-` in folderul de skill-uri al harness-ului (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` etc.), deci le puteti sterge si manual.
+
+## Capcane
+
+- **Tratarea ca ghid de stil.** Este un partener de design cu opinii, nu un linter. Valorile implicite exista pentru a ridica nivelul de baza, nu pentru a inlocui judecata dumneavoastra. Daca aveti un motiv real sa va opuneti (ghid de brand, restrictie de accesibilitate, cercetare utilizator), opuneti-va si explicati de ce. Skill-ul va lucra cu dumneavoastra. Ceea ce produce rezultate mai slabe este ignorarea opiniei fara un motiv.
+- **Asteptarea sa repare cod existent.** `/impeccable` este pentru creare. Pentru rafinare, apelati la `/impeccable polish`, `/impeccable distill` sau `/impeccable critique` in schimb.
+- **Rularea inainte ca `teach` sa fi avut ocazia salveze contextul.** Pe un proiect nou va va intervieva in timpul rularii, ceea ce este in regula dar mai lent. Rularea `/impeccable teach` explicit ca prima comanda este putin mai rapida.
+- **Omiterea intrebarii despre registru.** Valorile implicite pentru brand si produs difera suficient incat rularea pe registrul gresit produce rezultate subtil nepotrivite. Daca `PRODUCT.md` nu are un camp `## Register` (mostenire), rulati `/impeccable teach` pentru a-l adauga.

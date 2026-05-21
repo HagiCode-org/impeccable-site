@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Primero da forma al diseño, luego constrúyelo, todo en un solo flujo.
+highlights:
+  - Estás comenzando una función nueva desde cero.
+  - Quieres discovery, implementación y refinamiento visual en un solo pase.
+  - Prefieres un ciclo de construcción más lento pero más deliberado.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Entrevista de discovery. Propósito, usuarios, restricciones, dirección.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Cargar referencias</span>
+      <span class="docs-viz-flow-hint">Espacial, tipografía, movimiento, color, interacción.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Construir</span>
+      <span class="docs-viz-flow-hint">Estructura, jerarquía, tipo, color, estados, movimiento, responsive.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iteración visual</span>
+      <span class="docs-viz-flow-hint">Verificar en el navegador, refinar hasta que coincida con el brief.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Cada fase es innegable. La etapa de discovery es donde la mayoría de los resultados de IA fracasan: para cuando existe código, el pensamiento ya está bloqueado.</p>
+</div>
+
+## Cuándo usarlo
+
+<code>/impeccable craft</code> es el comando de construcción de extremo a extremo. Dale una descripción de función y ejecuta todo el pipeline: discovery estructurado, carga de referencias, implementación, iteración visual. Úsalo cuando estés comenzando una función nueva desde cero y quieras todo el flujo de trabajo en una sola invocación.
+
+Recurre a él cuando:
+
+- **Estás construyendo una función nueva y quieres el flujo completo.** No quieres gestionar los pasos tú mismo.
+- **Sabes qué estás construyendo pero no cómo debería verse.** La fase de discovery fuerza el pensamiento de diseño antes de que la implementación lo bloquee.
+- **Quieres iteración visual por defecto.** <code>craft</code> verifica el resultado en un navegador y refina hasta que el nivel de acabado sea alto, en lugar de entregar la primera versión funcional.
+
+Si solo quieres el pensamiento sin el código, usa <code>/impeccable shape</code> de forma independiente. Si ya tienes una visión clara y solo quieres construir, llama a <code>/impeccable</code> directamente con tu descripción de función. <code>craft</code> está en medio: estructurado, completo, con opinión.
+
+## Cómo funciona
+
+<code>craft</code> ejecuta cuatro fases en orden:
+
+1. **Dar forma al diseño.** Ejecuta <code>/impeccable shape</code> internamente: una breve conversación de discovery sobre propósito, usuarios, contenido, restricciones y objetivos. El resultado es un brief de diseño que puedes leer y rebatir.
+2. **Cargar referencias.** Basado en el brief, incorpora los archivos de referencia adecuados (espacial, tipografía, movimiento, color, interacción, responsive, escritura UX) para que el modelo tenga los principios relevantes cargados antes de comenzar a codificar.
+3. **Construir.** Implementa la función en un orden deliberado: primero estructura, luego espaciado y jerarquía, luego tipo y color, luego estados, luego movimiento, luego responsive. Cada decisión se remonta al brief.
+4. **Iteración visual.** Abre el resultado en un navegador, lo verifica contra el brief y el catálogo de anti-patrones, y refina hasta que coincida con la intención. Este paso es crítico. La primera versión funcional nunca es la versión final.
+
+La fase de discovery no se puede saltar y ese es el punto. La mayoría de las UIs generadas por IA fracasan porque nadie preguntó qué intentaba lograr el usuario antes de que el modelo empezara a escribir JSX. <code>craft</code> invierte ese orden.
+
+## Pruébalo
+
+~~~
+/impeccable craft a pricing page for a developer tool
+~~~
+
+Espera primero una entrevista de discovery de 5 a 10 preguntas. Preguntas sobre tu audiencia, la personalidad del producto, el tono emocional que deseas, anti-referencias y restricciones. Luego un brief de diseño. Luego implementación, con el navegador verificado en cada etapa. Espera múltiples rondas de iteración en la fase de acabado visual.
+
+La ejecución completa es más larga que un comando típico porque incluye el pensamiento, la construcción y el refinamiento. Ese es el intercambio: más estructura al inicio, menos correcciones después.
+
+## Errores comunes
+
+- **Usarlo para cambios pequeños.** <code>craft</code> es para funciones nuevas, no para retoques. Para código existente, recurre a <code>/impeccable polish</code>, <code>/impeccable critique</code> o un comando de refinamiento específico.
+- **Apresurar la fase de discovery.** La entrevista parece lenta comparada con "simplemente empezar a codificar". No lo es. Responder las preguntas con cuidado produce un brief más preciso, que produce una construcción más precisa, que produce menos reescrituras.
+- **Saltarse la iteración visual.** La fase existe por una razón. La brecha entre "tcnicamente funciona" y "se siente bien" se cierra con acabado visual, no con revisión de código. Deja que se ejecute.

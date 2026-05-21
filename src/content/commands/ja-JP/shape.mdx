@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: ビルドの前に考える。推測ではなくディスカバリーを通じてデザインブリーフを作成する。
+highlights:
+  - 実装前にまず計画を立てたい。
+  - 適切なレイアウトやトーンがまだ不明確。
+  - ビルド作業を始める前に、複数のステークホルダーで意図をすり合わせる必要がある。
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output of /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Purpose</span>
+        <span class="docs-viz-file-v">コミット済みの購読者が受信内容を変更でき、配信停止に逃げずに済むようにする。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">User</span>
+        <span class="docs-viz-file-v">急いでいる、モバイル、会議中。高速に読み、忍耐力が低い。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Content</span>
+        <span class="docs-viz-file-v">4つのダイジェストタイプ、2つの頻度、下部に1つの全オプトアウト。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Feeling</span>
+        <span class="docs-viz-file-v">穏やか、信頼感、ダークパターンなし。</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Constraints</span>
+        <span class="docs-viz-file-v">モバイルファースト。WCAG AAコントラスト。1カラム、モーダルなし。</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">これを <code>/impeccable</code>、<code>/impeccable craft</code>、または任意の実装フローに渡す。</div>
+  </div>
+  <p class="docs-viz-caption">シェイプブリーフはコンパスであり、仕様ではありません。UIではなく意図を捉えます。実装スキルは1行のコードを書く前にこれを読み込みます。</p>
+</div>
+
+## いつ使うか
+
+`/impeccable shape` は機能の出発点です。誰かがコードを書く前に、ヒーローの扱いについて議論する前に、フォントを選ぶ前に。目的、ユーザー、コンテンツ、制約についてのディスカバリー会話を強制し、その回答を実装スキルが頼れるデザインブリーフとしてキャプチャするために使います。
+
+機能が始まろうとしているとき、チケットが曖昧なとき、JSXを書いてプロダクトがどうあるべきかを探ろうとしていることに気づいたときに使ってください。
+
+## 仕組み
+
+AI生成UIの大部分は、悪いコードが原因ではなく、思考がスキップされたことが原因で失敗します。モデルは「ユーザーが何を達成しようとしているか」を聞かずに「カードグリッドをどうぞ」と飛びます。`/impeccable shape` はその順序を逆転させます。
+
+スキルは会話形式で構造化されたディスカバリーインタビューを実行します。このフェーズでコードを書くことはありません。質問は以下をカバーします。
+
+- **目的とコンテキスト**：機能の目的、誰が使うか、どのような精神状態か
+- **コンテンツとデータ**：何を表示するか、現実的な範囲、エッジケース、何が動的か
+- **デザインゴール**：最も重要な1つ、意図する感覚、参考例
+- **制約**：技術的、コンテンツ、アクセシビリティ、ローカライゼーション
+
+自然に答えてください。スキルはフォームではなくフォローアップ質問をします。最後にデザインブリーフが生成されます：`/impeccable` や他の実装スキルに渡せる構造化された成果物です。
+
+注意：フルフロー（ディスカバリーインタビュー→そのままビルド）を使いたい場合は、代わりに `/impeccable craft` を使ってください。内部的に `/impeccable shape` を実行した後、視覚的な反復を伴う実装に進みます。`/impeccable shape` の単体実行は、ブリーフだけが欲しい場合、つまりお好みの実装アプローチに持ち込むためのものです。
+
+## 試してみる
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+5〜10問の会話が始まります。スキルは「このページを開く人は誰で、すでにコミットしているのか、それともまだ興味を探っている段階か」や「すべての配信を解除したユーザーには、機能を隠すか何かを表示するか」のような質問をします。あなたが答えると、ブリーフが現れます。
+
+そこからブリーフを `/impeccable`、`/impeccable polish`、または他のスキルに渡せます。手でビルドする際の参照として使うのもよいでしょう。
+
+## 注意点
+
+- **遅いからとスキップすること。** インタビューは5分程度です。回避できる書き直しは時間単位で測られます。
+- **ブリーフを仕様として扱うこと。** ブリーフはコンパスであり、チェックリストではありません。UIではなく意図を捉えます。
+- **「標準的」や「普通」と答えること。** 具体性が全目的です。ユーザーが「急いでいる、モバイル、会議の合間」ならそう言ってください。下流のすべてが変わります。

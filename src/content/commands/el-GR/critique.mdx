@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Μια σχεδιαστική αξιολόγηση με βαθμολόγηση, τεστ προσώπων και αυτοματοποιημένη ανίχνευση.
+highlights:
+  - Θέλετε ευρήματα για αδύλες σχεδιαστικές επιλογές, όχι ανακατασκευή από την αρχή.
+  - Χρειάζεστε βαθμολόγηση, σχεδιαστική συλλογισμένη и πιθανά επόμενα βήματα.
+  - Η διεπαφή λειτουργεί αλλά εξακολουθεί να μη φαίνεται σωστή.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Αξιολόγηση AI slop</span>
+        <span class="docs-viz-critique-verdict-value">ΑΠΟΤΥΧΙΑ</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">ευρεστικές (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Ορατότητα κατάστασης</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Αντιστοιχία με τον πραγματικό κόσμο</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Συνοχή και πρότυπα</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Πρόληψη σφαλμάτων</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Αναγνώριση αντί ανάκληση</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Πρόσωπα</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Ο αξιολογητής</span>
+              <span class="docs-viz-critique-persona-note">Μας συγκρίνει με δύο εναλλακτικές ένα βράδυ Τρίτης.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Ο επιστρέφων χρήστης</span>
+              <span class="docs-viz-critique-persona-note">Γνωρίζει το προϊόν, σε κινητό, βιαστικός.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Ο σκεπτικιστής</span>
+              <span class="docs-viz-critique-persona-note">Έχει δει κάθε SaaS landing και έχει βαρεθεί.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Τα δύο περάσματα (αξιολόγηση σχεδιασμού LLM και ο ντετερμινιστικός ανιχνευτής) συγχωνεύονται σε μια προταξινομημένη λίστα. Τι λειτουργεί, τι να διορθώσετε, και οι προκλητικές ερωτήσεις που αξίζει να απαντηθούν πριν την αποστολή.</p>
+</div>
+
+## Πότε να τη χρησιμοποιήσετε
+
+Χρησιμοποιήστε το `/impeccable critique` όταν θέλετε μια ειλικρινή δεύτερη άποψη για κάτι που έχετε ήδη κατασκευάσει. Όχι «λειτουργεί» αλλά «είναι καλό». Η δεξιότητα βαθμολογεί τη διεπαφή σας με τις 10 ευρεστικές μεθόδους του Nielsen, εκτελεί ελέγχους γνωστικού φορτίου, δοκιμάζει μέσα από φακούς προσώπων, και διασταυρώνει με έναν αυτοματοποιημένο ανιχνευτή για 25 συγκεκριμένα αντι-πρότυπα.
+
+Χρησιμοποιήστε το όταν μια σελίδα είναι λειτουργικά ολοκληρωμένη και θέλετε να γνωρίζετε αν διαβάζεται ως σκόπιμη ή ως AI slop.
+
+## Πώς λειτουργεί
+
+Το `/impeccable critique` εκτελεί δύο ανεξάρτητες αξιολογήσεις παράλληλα ώστε να μην επηρεάσουν η μία την άλλη.
+
+Η πρώτη είναι μια **αξιολόγηση σχεδιασμού LLM**: το μοντέλο διαβάζει τον πηγαίο κώδικά σας, επιθεωρεί οπτικά τη ζωντανή σελίδα αν υπάρχει διαθέσιμος αυτοματισμός browser, και διασχίζει τον πλήρη κατάλογο ΚΑΝΕ/ΜΗΝ της δεξιότητας impeccable. Βαθμολογεί τις ευρεστικές του Nielsen, μετρά τις αποτυχίες γνωστικού φορτίου, ανιχνεύει το συναισθηματικό ταξίδι μέσα από τη ροή, και επισημαίνει AI slop.
+
+Η δεύτερη είναι ένας **αυτοματοποιημένος ανιχνευτής** (`npx impeccable detect`) που ντετερμινιστικά βρίσκει gradient text, μοβ παλέτες, περίγραμμα side-tab, ένθετες κάρτες, προβλήματα μήκους γραμμής, и άλλα ορατά αποτυπώματα γενικού AI output.
+
+Οι δύο αναφορές συγχωνεύονται σε μια προταξινομημένη λίστα: τι λειτουργεί, τα τρία έως πέντε πράγματα που χρειάζονται διόρθωση, и τις προκλητικές ερωτήσεις που αξίζει να απαντηθούν πριν την αποστολή.
+
+## Δοκιμάστε το
+
+Στοχεύστε σε μια σελίδα:
+
+```
+/impeccable critique the homepage hero
+```
+
+Λαμβάνετε μια βαθμολογημένη αναφορά. Τυπική δομή:
+
+- **Αξιολόγηση AI slop**: επιτυχία / αποτυχία με τα συγκεκριμένα σημάδια
+- **Βαθμολογίες ευρεστικών**: 10 αριθμοί, 0 έως 4
+- **Γνωστικό φορτίο**: αριθμός αποτυχιών από 8
+- **Προτεραιότητες**: τρία έως πέντε στοιχεία, καθένα με τι, γιατί και διόρθωση
+- **Ερωτήσεις προς απάντηση**: αυτές που η ίδια η διεπαφή δεν μπορεί να αποφασίσει για εσάς
+
+Από εκεί, συνδυάστε με `/impeccable polish` ή `/impeccable distill` για να δράσετε στις διορθώσεις.
+
+## Παγίδες
+
+- **Εκτέλεση σε ημιτελή εργασία.** Η Critique είναι για ολοκληρωμένες σελίδες. Ένα κενό state με τρία TODOs θα βαθμολογηθεί χαμηλά επειδή δεν είναι ολοκληρωμένο, όχι επειδή είναι κακό.
+- **Αγνόηση των ερωτήσεων στο τέλος.** Είναι συνήθως οι διορθώσεις που αλλάζουν τον σχεδιασμό περισσότερο.
+- **Αντιμετώπιση των βαθμολογιών ευρεστικών ως βαθμό.** Είναι διαγνωστικές, όχι αξιολογικές. Ένα 3/4 σε μια ευρεστική που έχει μικρότερη σημασία για το πλαίσιό σας είναι μια χαρά.

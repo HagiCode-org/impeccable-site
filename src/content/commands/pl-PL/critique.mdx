@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Przegląd projektowy z oceną, testami person i automatyczną detekcją.
+highlights:
+  - Chcesz ustaleń o słabych decyzjach projektowych, nie przebudowy od zera.
+  - Potrzebujesz oceny, uzasadnienia projektowego i prawdopodobnych następnych kroków.
+  - Interfejs działa, ale wciąż wydaje się nie tak.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Werdykt AI slop</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heurystyki (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Widoczność statusu</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Zgodność z realnym światem</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Spójność i standardy</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Zapobieganie błędom</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Rozpoznawanie nad przypominaniem</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Persony</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Ewaluator</span>
+              <span class="docs-viz-critique-persona-note">Porównuje nas z dwiema alternatywami we wtorkowy wieczór.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Powracający użytkownik</span>
+              <span class="docs-viz-critique-persona-note">Zna produkt, na telefonie, w pośpiechu.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Skeptyk</span>
+              <span class="docs-viz-critique-persona-note">Widział każdy landing SaaS i jest znudzony.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Dwa przebiegi (przegląd projektowy LLM plus detektor deterministyczny) łączą się w jedną priorytetyzowaną listę. Co działa, co naprawić, i prowokacyjne pytania, na które warto odpowiedzieć przed wysłaniem.</p>
+</div>
+
+## Kiedy używać
+
+Sięgnij po `/impeccable critique`, gdy chcesz szczerej drugiej opinii na temat czegoś, co już zbudowałeś. Nie "czy to działa", ale "czy to jest dobre". Umiejętność ocenia twój interfejs względem 10 heurystyk Nielsena, uruchamia sprawdzenia obciążenia poznawczego, testuje przez pryzmat person i odsyła do automatycznego detektora pod kątem 25 konkretnych antywzorców.
+
+Użyj, gdy strona jest funkcjonalnie gotowa i chcesz wiedzieć, czy czyta się jako zamierzone, czy jako AI slop.
+
+## Jak to działa
+
+`/impeccable critique` uruchamia dwie niezależne oceny równolegle, żeby się nawzajem nie obciążały.
+
+Pierwsza to **przegląd projektowy LLM**: model czyta twoje źródło, wizualnie bada żywą stronę, jeśli dostępna jest automatyzacja przeglądarki, i przechodzi pełny katalog DO/NIE umiejętności impeccable. Ocenia heurystyki Nielsena, liczy błędy obciążenia poznawczego, śledzi emocjonalną podróż przez przepływ i flaguje AI slop.
+
+Druga to **automatyczny detektor** (`npx impeccable detect`), który deterministycznie znajduje gradient text, fioletowe palety, obramowania side-tab, zagnieżdżone karty, problemy z długością linii i inne widoczne odciski generycznego wyniku AI.
+
+Dwa raporty łączą się w jedną priorytetyzowaną listę: co działa, trzy do pięciu rzeczy do naprawienia, i prowokacyjne pytania, na które warto odpowiedzieć przed wysłaniem.
+
+## Wypróbuj
+
+Skieruj na stronę:
+
+```
+/impeccable critique the homepage hero
+```
+
+Otrzymasz oceniony raport. Typowy kształt:
+
+- **Werdykt AI slop**: pass / fail z konkretnymi sygnałami
+- **Oceny heurystyk**: 10 liczb, od 0 do 4
+- **Obciążenie poznawcze**: liczba błędów z 8
+- **Priorytetowe problemy**: trzy do pięciu pozycji, każda z co, dlaczego i jak naprawić
+- **Pytania do odpowiedzenia**: te, których sam interfejs nie może za ciebie zdecydować
+
+Stamtąd połącz z `/impeccable polish` lub `/impeccable distill`, aby działać na podstawie poprawek.
+
+## Pułapki
+
+- **Uruchamianie na niedokończonej pracy.** Critique jest na gotowe strony. Pusty stan z trzema TODO oceni się źle, bo nie jest gotowy, nie dlatego, że jest zły.
+- **Ignorowanie pytań na końcu.** Zazwyczaj to poprawki, które najbardziej zmieniają projekt.
+- **Traktowanie ocen heurystyk jako stopnia.** Są diagnostyczne, nie ewaluacyjne. 3/4 na heurystyce, która ma mniejsze znaczenie w twoim kontekście, jest w porządku.

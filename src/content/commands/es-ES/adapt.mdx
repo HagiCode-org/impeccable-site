@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Haz que los diseños funcionen en distintas pantallas, dispositivos y contextos sin amputar funcionalidades.
+highlights:
+  - El diseño actual se rompe en pantallas más pequeñas.
+  - El producto necesita una estrategia responsive más pensada.
+  - Los objetivos táctiles, la densidad o el flujo de contenido varían según el dispositivo.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Cuándo usarlo
+
+`/impeccable adapt` sirve para tomar un diseño construido para un contexto y hacerlo funcionar en otro. De escritorio a móvil, de móvil a tablet, de web a impresión, de independiente a embebido, de panel a correo. Úsalo cuando el diseño original es sólido pero se desmorona en otros puntos de corte, en táctil, o en un contenedor distinto.
+
+No sirve para construir responsive desde cero. Para eso, comienza con `/impeccable` y define el diseño pensando primero en responsive. Adapt es para rellenar eso de "nunca pensamos en el móvil".
+
+## Cómo funciona
+
+La habilidad trabaja a través de cuatro dimensiones de adecuación al contexto:
+
+1. **Puntos de corte y diseño fluido**: colapsar multicolumna a columna única, ajustar rangos de clamp, introducir nuevos puntos de corte donde el diseño se rompe genuinamente.
+2. **Objetivos táctiles**: áreas de toque mínimas de 44px, espacio suficiente entre objetivos adyacentes, zonas de toque más grandes que los límites visuales cuando sea necesario.
+3. **Patrones de navegación**: las barras laterales de escritorio se convierten en navegación inferior o menús deslizantes en móvil, las barras de herramientas densas se colapsan en menús, los estados hover obtienen equivalentes táctiles.
+4. **Prioridad de contenido**: decidir qué debe ser visible, qué puede colapsar en secciones desplegables, qué puede eliminarse por completo para ese contexto.
+
+La regla innegociable: adapta, no amputes. Las funcionalidades críticas no pueden desaparecer en móvil solo porque son incómodas. Encuentra la forma de integrarlas, rediseña la interacción, o replantea si realmente eran críticas en escritorio.
+
+## Pruébalo
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Cambios esperados:
+
+- La cuadrícula de tres columnas pasa a una sola columna con encabezados de sección como divisores fijos
+- La navegación lateral se mueve a un desplazamiento horizontal sobre el contenido
+- Los interruptores ganan 8px de padding vertical para alcanzar los 44px de objetivo táctil
+- El texto de ayuda en línea pasa a pulsar para revelar, en lugar de hover
+- La sección "Zona de peligro" se expande completamente en móvil en lugar de colapsarse, porque contiene acciones irreversibles y queremos que los usuarios las vean claramente
+
+## Errores comunes
+
+- **Amputar funcionalidades.** Si la versión móvil oculta cosas que la versión de escritorio puede hacer, eso es una regresión, no una adaptación. Lucha por la funcionalidad.
+- **Tratar el móvil como "escritorio más pequeño".** El móvil es un contexto diferente: pulgares, interrupciones, sesiones cortas. Adapta al contexto, no al ancho de viewport.
+- **Saltarse `/impeccable harden` después.** Los diseños responsive revelan casos límite. Ejecuta el endurecimiento después de adaptar para capturar los que solo aparecen a 320px.

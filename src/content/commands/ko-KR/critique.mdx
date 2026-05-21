@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: 점수 책정, 페르소나 테스트, 자동 감지가 포함된 디자인 리뷰.
+highlights:
+  - 처음부터 다시 빌드하는 것이 아닌, 약한 디자인 선택에 대한 분석을 원합니다.
+  - 점수, 디자인 근거, 가능한 다음 단계가 필요합니다.
+  - 인터페이스는 작동하지만 여전히 어딘가 어색합니다.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristics (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibility of status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match with real world</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistency & standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Error prevention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recognition over recall</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The evaluator</span>
+              <span class="docs-viz-critique-persona-note">Comparing us to two alternatives on a Tuesday evening.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The returning user</span>
+              <span class="docs-viz-critique-persona-note">Knows the product, on mobile, in a hurry.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The skeptic</span>
+              <span class="docs-viz-critique-persona-note">Has seen every SaaS landing and is bored.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">두 패스(LLM 디자인 리뷰와 결정론적 감지기)가 하나의 우선순위 목록으로 병합됩니다. 잘 된 점, 수정할 점, 출시 전에 답해볼 만한 도발적인 질문들.</p>
+</div>
+
+## 사용 시기
+
+이미 만든 것에 대해 솔직한 제2의 의견을 원할 때 `/impeccable critique`를 사용하세요. "작동하는가"가 아니라 "괜찮은가"를 묻는 것입니다. 스킬은 인터페이스를 Nielsen의 10가지 휴리스틱에 대해 평가하고, 인지 부하 검사를 실행하며, 페르소나 렌즈로 테스트하고, 25가지 구체적 안티패턴에 대한 자동 감지기를 교차 참조합니다.
+
+페이지가 기능적으로 완성되었고 의도적으로 보이는지 AI 결과물처럼 보이는지 알고 싶을 때 사용하세요.
+
+## 작동 방식
+
+`/impeccable critique`는 상호 편향을 피하기 위해 두 가지 독립적인 평가를 병렬로 실행합니다.
+
+첫 번째는 **LLM 디자인 리뷰**: 모델이 소스를 읽고, 브라우저 자동화가 가능하면 실제 페이지를 시각적으로 검사하며, impeccable 스킬의 전체 DO/DON'T 카탈로그를 순회합니다. Nielsen 휴리스틱에 점수를 매기고, 인지 부하 실패를 세고, 흐름의 감정적 여정을 추적하며, AI 결과물을 표시합니다.
+
+두 번째는 **자동 감지기**(`npx impeccable detect`)로, 그라데이션 텍스트, 보라색 팔레트, 사이드 탭 보더, 중첩 카드, 줄 길이 문제 및 일반적인 AI 출력의 기타 가시적 지문을 결정론적으로 찾아냅니다.
+
+두 보고서는 하나의 우선순위 목록으로 병합됩니다: 잘 된 점, 수정이 필요한 3~5가지, 출시 전에 답해볼 만한 도발적인 질문들.
+
+## 직접 해보기
+
+페이지를 가리키세요:
+
+```
+/impeccable critique the homepage hero
+```
+
+점수가 매겨진 보고서를 받게 됩니다. 일반적인 형태:
+
+- **AI slop 판정**: 합격/불합격과 구체적 근거
+- **휴리스틱 점수**: 10개 숫자, 0~4
+- **인지 부하**: 8개 중 실패 수
+- **우선 이슈**: 3~5개 항목, 각각 무엇이, 왜, 수정 방법 포함
+- **답해야 할 질문**: 인터페이스 자체가 결정할 수 없는 것들
+
+그 다음, `/impeccable polish`나 `/impeccable distill`과 함께 수정 사항을 실행하세요.
+
+## 주의 사항
+
+- **미완성 작업에 실행하기.** Critique는 완성된 페이지용입니다. TODO 세 개가 있는 빈 상태는 나쁘지 않아서 점수가 낮은 것이 아니라, 완성되지 않아서 점수가 낮은 것입니다.
+- **끝의 질문 무시하기.** 보통 디자인을 가장 많이 바꾸는 수정 사항들입니다.
+- **휴리스틱 점수를 성적으로 취급하기.** 진단용이지 평가용이 아닙니다. 문맥상 덜 중요한 휴리스틱에서 3/4를 받는 것은 괜찮습니다.

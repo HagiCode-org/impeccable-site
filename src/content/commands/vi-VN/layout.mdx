@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Sửa bố cục, khoảng cách và nhịp điệu trực quan.
+highlights:
+  - Trang thiếu điểm nhấn rõ ràng.
+  - Nội dung tốt tồn tại, nhưng cách sắp xếp đang che khuất nó.
+  - Bạn muốn luồng mạnh hơn trước khi chạm vào màu sắc hoặc chuyển động.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable layout` dành cho các trang không có gì sai về mặt kỹ thuật nhưng cũng không có gì được thở. Padding bằng nhau ở khắp nơi, lưới thẻ đơn điệu, nội dung chạy từ mép này sang mép kia, phân cấp chỉ dựa vào kích thước. Sử dụng khi bố cục "cảm thấy không ổn" và bạn không thể diễn đạt tại sao.
+
+Dấu hiệu tốt để sử dụng: "mọi thứ cảm thấy chật chội", "nó đọc như một bức tường", "tôi không biết nên nhìn vào đâu trước".
+
+## Cách hoạt động
+
+Kỹ năng chạy qua năm chiều bố cục:
+
+1. **Khoảng cách**: tỷ lệ khoảng cách có nhất quán hay có các khoảng 13px ngẫu nhiên, các phần tử liên quan có được nhóm chặt với khoảng rộng giữa các nhóm không, có nhịp điệu nào không.
+2. **Phân cấp trực quan**: mắt có hạ cánh trên hành động chính trong 2 giây không, phân cấp đang làm việc thực sự hay mọi thứ đang la hét.
+3. **Lưới và cấu trúc**: có lưới cơ bản hay bố cục ngẫu nhiên, các phần tử có căn chỉnh theo đường baseline không.
+4. **Nhịp điệu**: trang có xen kẽ giữa khoảng cách hẹp và rộng, hay mọi thứ đều đều.
+5. **Mật độ**: bố cục có chật chội hay lãng phí, mật độ có phù hợp với loại nội dung không.
+
+Các sửa đổi thường liên quan đến xây dựng lại tỷ lệ khoảng cách, tạo tính bất đối xứng, thu gọn lưới đơn điệu thành bố cục pha trộn với hero và các phần tử hỗ trợ, và dành không gian thực sự cho hành động chính.
+
+## Thử ngay
+
+```
+/impeccable layout the settings page
+```
+
+Thay đổi điển hình:
+
+- Tỷ lệ khoảng cách thống nhất thành 8 / 16 / 24 / 48 / 96px
+- Ngắt phần tại 48px, khoảng cách hàng tại 16px, nhóm trường biểu mẫu tại 8px
+- Hành động chính được đưa ra khỏi luồng biểu mẫu với bộ đệm 32px
+- Viền trang trí được loại bỏ, thay bằng phân nhóm dựa trên khoảng cách
+- Tỷ lệ cột bên và cột chính được cân bằng lại (280 / flex vs 25 / 75)
+
+## Những cạm bẫy cần tránh
+
+- **Nhầm lẫn sắp xếp với chắt lọc.** Nếu vấn đề là quá nhiều thứ, hãy chạy `/impeccable distill` trước. Layout dành cho sắp xếp những gì đã là tập hợp đúng.
+- **Kỳ vọng nó cứu một lưới hỏng.** Nếu trang hoàn toàn không có lưới, sắp xếp sẽ xây dựng một cái. Chỉ cần biết rằng diff sẽ lớn hơn bạn kỳ vọng.
+- **Bỏ qua kết quả phân cấp.** Nếu sắp xếp nói "không có gì là chính", không có lượng công việc khoảng cách nào sửa được điều đó. Bạn cần một quyết định nội dung, không phải tinh chỉnh bố cục.

@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Nådesløs subtraktion. Strip designs til deres essens.
+highlights:
+  - Siden har for mange konkurrerende ideer.
+  - Brugere har brug for hurtigere forståelse, ikke flere features.
+  - Enkelhed er forbedringen, ikke et midlertidigt kompromis.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable distill` fjerner det der ikke bør være der. Konkurrerende knapper, overflødig information, dekorative kanter, tre skrifttyper hvor en virker, seks navigationselementer hvor tre hører til. Brug den, når en grænseflade føles rodet, travlt, eller som om den prøver at gøre for meget på én gang.
+
+Grib efter den efter `/impeccable critique` markerer "kognitiv belastning" eller "visuel støj", eller hver gang en side er vokset ved tilvækst, og ingen har foretaget redigeringen.
+
+## Hvordan det virker
+
+Færdigheden starter fra ét spørgsmål: hvad er det eneste job, denne grænseflade prøver at gøre? Alt der ikke hjælper det job, er på blokken.
+
+Den arbejder i to gennemkørsler:
+
+1. **Vurdér kompleksitetskilderne**. For mange elementer, overdreven variation, informationsbelastning, visuel støj, forvirrende hierarki, feature-creep. Navngiv hver enkelt.
+2. **Redigér nådesløst**. Fjern det der ikke er essentielt. Kombinér det der kan kombineres. Skjul det der kan vente. Konsolidér variation til en enkelt behandling. Forpligt dig til et enkelt visuelt sprog.
+
+Princippet: hvert element på siden skal retfærdiggøre sin eksistens. Færre forhindringer, ikke færre features.
+
+## Prøv det
+
+```
+/impeccable distill this dashboard
+```
+
+Før: fire kort-stile, tre knap-varianter, to header-behandlinger, en sidebjælke med 14 elementer grupperet i 5 sektioner.
+
+Efter en `/distill`-gennemkørsel, typiske ændringer:
+
+- Saml de fire kort-stile til en
+- Vælg en knap-variant, degrader de andre til tekstlinks
+- Foren headerne
+- Gruppér sidebjælken i 3 sektioner, ikke 5
+- Skjul avancerede indstillinger bag en disclosure
+
+Færre ting. Hver tydeligere.
+
+## Faldgruber
+
+- **Forveksling af distill med delete.** Distill fjerner forhindringer. Den fjerner ikke features, brugere har brug for. Hvis en bruger er afhængig af noget dagligt, så find en måde at beholde det stille på, ikke en måde at skære det væk.
+- **At køre den for tidligt.** Hvis featuren stadig vokser, betyder destillation nu, at du destiller det samme igen næste uge. Vent til formen er stabil.
+- **At forvente at den erstatter hierarkiarbejde.** Nogle gange er den rigtige løsning ikke at fjerne ting, det er at arrangere dem. Grib efter `/impeccable layout`, når problemet er layout, ikke mængde.

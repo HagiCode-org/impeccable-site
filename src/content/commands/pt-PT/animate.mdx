@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Movimento intencional que comunica estado, não decoração.
+highlights:
+  - Os interfaces parecem sem vida ou bruscos entre estados.
+  - O carregamento, feedback ou transições necessitam de movimento que explique o que está a acontecer.
+  - Pretende animação disciplinada com alternativas para movimento reduzido.
+related:
+  - delight
+---
+
+## Quando utilizar
+
+`/impeccable animate` destina-se a interfaces que parecem sem vida, onde as mudanças de estado são instantâneas e bruscas, onde o carregamento simplesmente aparece, onde o utilizador nunca tem a certeza de que o seu clique foi registado. Utilize-o para adicionar os pequenos movimentos que comunicam o que está a acontecer: entradas, saídas, feedback, transições entre estados.
+
+Não o utilize para adicionar saltos ou molas elásticas pelo energy. Isso é decoração, e esta competência não lha dará.
+
+## Como funciona
+
+A competência identifica momentos estáticos que beneficiariam de movimento, e depois aplica-o com disciplina rigorosa:
+
+1. **Entradas e saídas**: elementos aparecem e saem com fades de 200 a 300ms mais Y subtil ou escala, nunca propriedades de layout.
+2. **Feedback de estado**: hover, ativo, focus, carregamento, sucesso comunicam todos através de movimento em vez de trocas súbitas.
+3. **Transições entre vistas**: transições de elemento partilhado onde faz sentido, fade-through caso contrário.
+4. **Progresso e carregamento**: ecrãs skeleton, barras determinadas, movimento que diz "ainda a trabalhar".
+5. **Movimento reduzido**: cada animação tem uma alternativa `prefers-reduced-motion`.
+
+O easing é sempre exponencial (ease-out-quart, quint ou expo) porque objetos reais desaceleram suavemente. Sem bounce, sem elástico, sem linear para nada exceto indicadores de progresso.
+
+A competência anima apenas `transform` e `opacity`. Se se encontrar a animar `width`, `height`, `top` ou `left`, está a fazer a coisa errada. Utilize `grid-template-rows` para transições de altura.
+
+## Experimente
+
+```
+/impeccable animate the sign-up flow
+```
+
+Adições típicas:
+
+- Campo de email recebe um brilho de focus em focus-visible (opacity + shadow, 180ms)
+- Botão de submissão mostra um spinner dentro de si próprio no estado de carregamento, não um spinner separado ao lado
+- Ecrã de sucesso entra com opacity + translateY(8px), 260ms, ease-out-quart
+- Mensagem de erro desliza para baixo com grid-template-rows (não height), 220ms
+- Alternativa `@media (prefers-reduced-motion: reduce)` para cada transição
+
+## Armadilhas
+
+- **Pedir "mais animação".** Animate não é um botão regulável. Adiciona onde o movimento comunica, não em todo o lado.
+- **Remover as alternativas de movimento reduzido.** A competência adiciona-as automaticamente. Não negociável para acessibilidade.

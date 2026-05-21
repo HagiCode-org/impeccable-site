@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Desain pengalaman pertama kali, status kosong, dan jalur menuju nilai.
+highlights:
+  - Pengguna baru datang tanpa konteks.
+  - Produk membutuhkan aksi sukses pertama yang lebih baik.
+  - Status kosong dan langkah penyiapan melakukan terlalu sedikit pengajaran.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Kapan menggunakannya
+
+`/impeccable onboard` untuk momen-momen yang menentukan apakah pengguna baru bertahan: layar pertama, status kosong, alur penyiapan, tur produk, celah "apa yang harus saya lakukan sekarang". Gunakan ketika aktivasi lemah, ketika pengguna baru berhenti sebelum mencapai nilai, atau ketika produk Anda memiliki status kosong yang mengatakan "belum ada item" dan berhenti di situ.
+
+## Cara kerjanya
+
+Perintah dimulai dari satu pertanyaan: apa momen aha, dan seberapa cepat pengguna baru bisa mencapainya. Setiap keputusan desain mengarah ke momen itu.
+
+Skill bekerja melintasi permukaan yang membentuk kesan pertama:
+
+1. **Pengalaman pertama kali**: momen-momen segera setelah pendaftaran. Haruskah pengguna melihat tur, kanvas kosong, contoh yang terisi, atau tidak sama sekali. Pilih pendekatan yang cocok dengan produk.
+2. **Status kosong**: setiap layar nol-data diorientasikan. Di mana saya, mengapa ini kosong, apa yang harus saya lakukan selanjutnya, seperti apa tampilannya setelah penuh.
+3. **Penyiapan dan instalasi**: konfigurasi yang diperlukan diminimalkan, default cerdas, setiap langkah menjelaskan mengapa penting.
+4. **Pengungkapan progresif**: fitur lanjutan tetap di luar jalan sampai layak.
+5. **Peristiwa aktivasi**: momen ketika pengguna pertama kali mengalami nilai inti diinstrumentasikan dan dirayakan, dengan tenang.
+
+Perintah menolak dua mode kegagalan umum: onboarding yang terlalu banyak tutorial di mana pengguna mengklik carousel sebelum dapat menyentuh apa pun, dan zero-onboarding di mana pengguna dijatuhkan ke aplikasi kosong dan diharapkan mencari tahu sendiri.
+
+## Cobalah
+
+```
+/impeccable onboard the editor
+```
+
+Output tipikal:
+
+- Pertama kali: mengganti editor kosong dengan dokumen contoh yang terisi yang dapat dimodifikasi pengguna. Tombol batal membuang contoh, edit mengganti konten dengan karya pengguna.
+- Status kosong pada daftar dokumen: "Belum ada dokumen. Buat yang pertama, atau impor dari Notion, Google Docs, atau Markdown."
+- Penyiapan: dikurangi dari 6 kolom wajib menjadi 1 (nama workspace). Semuanya memiliki default cerdas dan dapat diedit nanti di pengaturan.
+- Aktivasi: pertama kali pengguna menyimpan dokumen, toast tenang mengatakan "Tersimpan. Karya Anda sekarang di cloud." Satu kali, tidak diulang.
+
+## Jebakan
+
+- **Menambahkan tur produk sebagai jawaban default.** Sebagian besar produk tidak membutuhkan tur. Mereka membutuhkan layar pertama yang lebih baik. Tur adalah tongkat penopang.
+- **Merancang onboarding tanpa mendefinisikan momen aha.** Jika Anda tidak bisa mengatakan dalam satu kalimat apa yang harus dirasakan pengguna dalam 60 detik pertama, kembali ke `/impeccable shape` dulu.
+- **Menjalankan onboard pada alur yang rusak.** Perbaiki alurnya dulu. Onboarding tidak dapat menyelamatkan produk di mana aksi inti rusak.

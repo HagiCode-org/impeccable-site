@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Spraw, by projekty dzialaly na roznych ekranach, urzadzeniach i w roznych kontekstach bez amputowania funkcji.
+highlights:
+  - Obecny uklad zawala sie na mniejszych ekranach.
+  - Produkt potrzebuje przemyślaniejszej strategii responsywnej.
+  - Cele dotykowe, gestosc i przeplyw tresci roznia sie w zaleznosci od urzadzenia.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Kiedy uzywac
+
+`/impeccable adapt` sluzy do brania projektu zbudowanego dla jednego kontekstu i przystosowywania go do innego. Z desktopu na mobile, z mobile na tablet, z webu do druku, z samodzielnego do osadzonego, z dashboardu do emaila. Sigmnij po to, gdy projekt zrodlowy jest solidny, ale rozpada sie na innych punktach przerwania, przy dotyku lub w innym kontenerze.
+
+Nie do budowania responsywnosci od zera. Do tego zacznij od `/impeccable` i ksztaltuj uklad z mysla o responsywnosci. Adapt jest do nadrabiania "nigdy nie myslelismy o mobile".
+
+## Jak to dziala
+
+Umiejetnosc przechodzi przez cztery wymiary dopasowania kontekstowego:
+
+1. **Punkty przerwania i plywny uklad**: zwiniecie wielokolumnowego do jednokolumnowego, dostosowanie zakresow clamp, wprowadzenie nowych punktow przerwania tam, gdzie projekt rzeczywiscie sie psuje.
+2. **Cele dotykowe**: minimalne 44px obszary nacisku, wystarczajace odstepy miedzy sasiednimi celami, wieksze strefy tapu niz wizualne granice tam, gdzie to potrzebne.
+3. **Wzorce nawigacji**: paski boczne desktopa staja sie mobilna dolna nawigacja lub wysuwanymi panelami, gestkie paski narzedziowe zwijaja sie do menu, stany hover dostaja odpowiedniki dotykowe.
+4. **Priorytet tresci**: decydowanie, co musi byc widoczne, co mozna zwijac do sekcji rozwijanych, co mozna calkowicie usunac dla danego kontekstu.
+
+Nienegocjowalna zasada: adaptuj, nie amputuj. Krytyczna funkcjonalnosc nie moze zniknac na mobile tylko dlatego, ze jest niewygodna. Znajdz sposob, by ja dopasowac, przeprojektuj interakcje lub przemysl, czy na desktopie byla naprawde krytyczna.
+
+## Wyprobuj
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Oczekiwane zmiany:
+
+- Siatka trzykolumnowa staje sie jednokolumnowa z naglowkami sekcji jako przyklejonymi dzielnikami
+- Nawigacja boczna przechodzi do poziomego przewijaka nad trescia
+- Przelaczniki zyskuja 8px paddingu pionowego, aby spelnic 44px cele dotykowe
+- Tekst pomocy liniowej przechodzi do trybu tapnij-aby-odkryc, zamiast hover
+- Sekcja "Strefa niebezpieczna" rozszerza sie calkowicie na mobile zamiast sie zwijac, poniewaz zawiera nieodwracalne akcje i chcemy, by uzytkownicy widzieli je wyraznie
+
+## Pulapki
+
+- **Amputowanie funkcji.** Jesli mobilna wersja ukrywa to, co wersja desktopowa potrafi, to regres, nie adaptacja. Walcz o funkcje.
+- **Traktowanie mobile jako "mniejszego desktopu".** Mobile to inny kontekst: kciuki, przerwania, krotkie sesje. Adaptuj do kontekstu, nie do szerokosci viewportu.
+- **Pomijanie `/impeccable harden` po adaptacji.** Responsywne uklady odkrywaja przypadki brzegowe. Uruchom hardening po adapt, aby zlapac te, ktore pojawiaja sie dopiero na 320px.

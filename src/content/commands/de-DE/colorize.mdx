@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Strategische Farbe zu monochromen Interfaces hinzufügen, ohne grell zu wirken.
+highlights:
+  - Das Interface wirkt kompetent, aber vergessen.
+  - Sie brauchen klarere Hervorhebung, ohne die gesamte Struktur umzuschreiben.
+  - Die aktuelle Palette vermittelt nicht die angestrebte Stimmung.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Wann man es verwendet
+
+`/impeccable colorize` ist das Gegengewicht zu „alles ist grau". Dashboards die als beige-Wand wirken, Formulare ohne Akzent, Content-Seiten die jedes beliebige SaaS-Produkt sein könnten. Greifen Sie zu ihm, wenn das Interface funktional, aber emotional flach ist, und Sie Wärme möchten, ohne in die KI-Farbpalette (Lila-zu-Pink, Cyan-Neon, Dark-Mode-Glow) abzurutschen.
+
+## Wie es funktioniert
+
+Der Skill beginnt mit dem Lesen Ihrer Markenfarbe, falls eine existiert, und entscheidet dann, wo Farbe ihren Platz verdient:
+
+1. **Primäre Aktion** bekommt den stärksten Ausdruck des Marken-Farbtons.
+2. **Sekundäre Akzente** bekommen gedämpfte oder getönte Varianten, nicht eine zweite Vollfarbe.
+3. **Neutrale** werden zum Marken-Farbton bei niedriger Chroma (ca. 0,005 bis 0,01) getönt, was pro Pixel fast unsichtbar ist, aber unterschwellig Kohäsion erzeugt.
+4. **Inhaltskategorien** bekommen ein begrenztes, intentionales Akzent-System, keinen Regenbogen.
+
+Wichtig: Er verwendet OKLCH statt HSL, sodass gleiche Helligkeitsstufen auch gleich aussehen. Wenn die Helligkeit sich den Extremen nähert, fällt die Chroma automatisch ab. So entsteht Farbe, die durchdacht statt berechnet wirkt.
+
+## Ausprobieren
+
+```
+/impeccable colorize the dashboard
+```
+
+Erwartetes Diff:
+
+- Markenfarbe von einem hartcodierten Hex zu `--color-accent: oklch(62% 0.18 240)` verschoben
+- Neutrale mit 0,007 Chroma zum Marken-Farbton getönt
+- Primärer Button bekommt den vollen Akzent, sekundäre Buttons bekommen Ink/Mist
+- Diagramm-Serie verwendet 3 unterschiedliche Farbtöne, alle auf gleicher Helligkeit, sodass keine Serie visuell dominiert
+- Empty-State-Illustration erhält einen sanften Akzent-Waschgang
+
+## Fallstricke
+
+- **Ausführung ohne Marken-Farbton.** Colorize braucht einen Startpunkt. Wenn `PRODUCT.md` keinen spezifiziert, wird es fragen. Lassen Sie es nicht aus den KI-Farbpaletten-Standards wählen.
+- **Erwarten, dass es das KI-Farbpaletten-Problem behebt.** Wenn Ihr Design bereits lila Farbverläufe und Cyan-Neon hat, brauchen Sie zuerst `/impeccable quieter`, dann kann colorize neu aufbauen.
+- **Verwendung auf bereits farbigen Interfaces.** Das ist ein Job für `/impeccable quieter`. Colorize fügt hinzu, es subtrahiert nicht.

@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Kecerdasan desain di balik setiap perintah.
+highlights:
+  - Anda menginginkan satu titik masuk untuk tata letak, tipografi, warna, gerak, dan struktur UX secara bersamaan.
+  - Anda sedang menjelajahi arah dan ingin skill memilih sub-alur kerja yang tepat.
+  - Anda membutuhkan konteks desain terluas daripada sekadar sekali perintah yang sempit.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Kapan menggunakannya
+
+`/impeccable` adalah perintah utama. Panggil langsung ketika Anda ingin pekerjaan desain bebas dengan buku panduan lengkap yang dimuat, tanpa harus memilih perintah khusus. Ini adalah pilihan alternatif saat tidak ada satu pun dari 23 spesialis (`audit`, `polish`, `critique`, dan lainnya) yang cocok dengan apa yang ingin Anda lakukan.
+
+Gunakan `/impeccable` langsung ketika:
+
+- **Anda tidak yakin perintah mana yang cocok.** Jelaskan apa yang Anda inginkan dalam bahasa biasa dan biarkan skill memilih pendekatan yang tepat.
+- **Pekerjaan mencakup berbagai disiplin.** "Buat ulang bagian hero ini" menyentuh tata letak, tipografi, warna, dan gerak. Satu perintah tidak bisa menguasai semuanya.
+- **Anda menginginkan kecerdasan desain penuh tanpa batasan.** Setiap file referensi dimuat, setiap anti-pola diperiksa, tanpa alur kerja yang telah ditentukan.
+
+Untuk alur terstruktur, gunakan perintah khusus di sidebar. Jalankan `/impeccable teach` terlebih dahulu di setiap proyek baru untuk membuat PRODUCT.md dan DESIGN.md. `/impeccable craft` menggabungkan wawancara discovery menjadi build lengkap dengan iterasi visual langsung. `/impeccable shape` menghasilkan brief desain tanpa menyentuh kode. `/impeccable live` memberi Anda pemilih browser dengan tiga varian per elemen. Perintah evaluasi dan penyempurnaan (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize`, dan lainnya) masing-masing menguasai bagian spesifik dari pekerjaan.
+
+## Cara kerjanya
+
+Sebagian besar UI yang dihasilkan AI gagal dengan cara yang sama: font generik, gradien ungu, grid kartu di atas grid kartu, glassmorphism di mana-mana. `/impeccable` memberikan AI Anda sudut pandang yang kuat. Skill ini memuat buku panduan desain yang berpendapat plus daftar panjang anti-pola, kemudian mendorong model untuk berkomitmen pada arah estetika tertentu sebelum menulis satu baris kode pun.
+
+Dua file di root proyek Anda membentuk segala sesuatu yang dilakukan skill:
+
+- **`PRODUCT.md`** membawa register (brand vs produk), pengguna target, kepribadian brand, anti-referensi, prinsip desain. Menjawab "siapa, apa, mengapa".
+- **`DESIGN.md`** membawa warna, tipografi, elevasi, komponen, hal yang boleh dan tidak boleh dilakukan, dalam format enam bagian Google Stitch. Menjawab "bagaimana tampilannya".
+
+Setiap perintah membaca kedua file sebelum menghasilkan output. **Register** menentukan default mana yang dimuat. Brand (pemasaran, landing, portofolio, di mana desain ADALAH produk) dan produk (UI aplikasi, dasbor, alat, di mana desain MELAYANI produk) memiliki default berbeda untuk tipografi, gerak, warna, dan kepadatan. Menentukannya sekali di PRODUCT.md berarti `/impeccable typeset` tidak akan mendorong font majalah editorial ke dasbor, dan tidak akan mendorong default fasih produk ke halaman kampanye. Lihat [tutorial brand vs produk](/tutorials/brand-vs-product) untuk mengetahui bagaimana keduanya berbeda.
+
+Pada penggunaan pertama dalam proyek, skill menjalankan alur `teach` secara otomatis: wawancara singkat yang menulis PRODUCT.md dan kemudian mendelegasikan ke `/impeccable document` untuk DESIGN.md. Perintah berikutnya membaca file tersebut tanpa bertanya lagi.
+
+## Cobalah
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Kedua prompt sengaja dibuat samar. `/impeccable` akan memilih arah estetika yang kuat sesuai dengan register Anda, berkomitmen pada font non-default, menghindari palet warna AI, dan membuat jenis keputusan spesifik yang akan dibuat seorang desainer. Tidak perlu memilih nama perintah terlebih dahulu, tidak ada alur kerja langkah demi langkah yang harus diikuti.
+
+Untuk iterasi visual di browser daripada chat:
+
+```
+/impeccable live
+```
+
+Pilih elemen apa saja di dev server yang sedang berjalan. Berikan komentar atau coretan. Dapatkan tiga varian berkualitas produksi yang ditukar secara langsung melalui HMR. Terima yang Anda inginkan dan itu akan ditulis kembali ke sumber.
+
+## Sematkan perintah sebagai pintasan
+
+v3.0 menggabungkan 18 skill mandiri menjadi satu `/impeccable` dengan 23 sub-perintah. Jika Anda merindukan bentuk pendek dari perintah tertentu, sematkan kembali:
+
+```
+/impeccable pin critique
+```
+
+Mulai sekarang, `/critique` memanggil `/impeccable critique` secara langsung. Ini menulis skill redirect ringan yang mendelegasikan ke induknya, sehingga pembaruan pada skill mengalir tanpa perlu menyematkan ulang.
+
+Pintasan yang berguna untuk dicoba:
+
+- `/impeccable pin polish` untuk pekerjaan tahap akhir
+- `/impeccable pin audit` untuk pemeriksaan a11y/perf deterministik
+- `/impeccable pin live` untuk alur iterasi browser
+- `/impeccable pin critique` untuk tinjauan desain
+
+Untuk menghapus: `/impeccable unpin critique`. Pin disimpan sebagai direktori dengan awalan `i-` di folder skill harness Anda (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, dll.), jadi Anda juga bisa menghapusnya secara manual.
+
+## Jebakan
+
+- **Memperlakukannya seperti panduan gaya.** Ini adalah mitra desain yang berpendapat, bukan linter. Default ada untuk menaikkan standar minimum, bukan untuk mengesampingkan penilaian Anda. Jika Anda memiliki alasan nyata untuk menolak (pedoman brand, batasan aksesibilitas, riset pengguna), tolak dan jelaskan mengapa. Skill akan bekerja sama dengan Anda. Apa yang menghasilkan output lebih buruk adalah mengabaikan pendapat tanpa alasan.
+- **Bermaksud memperbaiki kode yang sudah ada.** `/impeccable` untuk kreasi. Untuk penyempurnaan, gunakan `/impeccable polish`, `/impeccable distill`, atau `/impeccable critique`.
+- **Menjalankannya sebelum `teach` sempat menyimpan konteks.** Pada proyek baru, skill akan mewawancarai Anda di tengah proses, yang tidak masalah tetapi lebih lambat. Menjalankan `/impeccable teach` secara eksplisit sebagai perintah pertama Anda sedikit lebih lancar.
+- **Melewatkan pertanyaan register.** Default brand dan produk cukup berbeda sehingga menjalankan pada register yang salah menghasilkan output yang sedikit tidak tepat. Jika `PRODUCT.md` tidak memiliki bidang `## Register` (versi lama), jalankan `/impeccable teach` untuk menambahkannya.

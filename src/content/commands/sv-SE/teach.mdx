@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Lär Impeccable vem din produkt ar for, en gang per projekt.
+highlights:
+  - Projektet har ingen designkontextfil ännu.
+  - Olika bidragsgivare behovr en gemensam sanningskalla.
+  - Du vill att framtida kommandon ska ärva varumarkes- och produktriktning.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Loaded on every command</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Design serves the task.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">SREs on call, reading fast, often in the dark.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">Calm, clinical, no hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">Purple gradients. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Every command reads this before writing a line of code.</div>
+  </div>
+  <p class="docs-viz-caption">En fardig PRODUCT.md. Endast strategi: vem, vad, varfor. Inga farger, inga typsnitt, inga pixelvarden, de lever i DESIGN.md.</p>
+</div>
+
+## Nar du ska anvanda det
+
+Kor `/impeccable teach` en gang i borjan av ett projekt. Det ar pa-rampen. Utan det kommer alla andra kommandon att producera design som ar tekniskt kompetent men generiskt tonad: standard-SaaS-rost, sakra standard-typsnitt, AI-fargpaletten. Med den laser varje kommando dina svar fore den genererar.
+
+Anvand det nar:
+
+- **Du precis installerade Impeccable i ett nytt projekt.** Forsta saken att kora. Andra kommandon kommer att halsa dig mot den om du hoppar over.
+- **Projektets varumarkesriktning har skiftat.** Ny positionering, ny publik, ny rost. Kor `teach` igen och den uppdaterade kontexten flodar genom varje kommando.
+- **Ett annat kommando sager "ingen designkontext hittades"** och stannade. Det ar signalen: kor teach, sedan ateruppta.
+
+## Hur det fungerar
+
+Teach skriver tva komplementara filer i projektroten:
+
+- **`PRODUCT.md`** ar den strategiska filen. Register (varumärke eller produkt), malanvandare, produktens syfte, varumarkespersonlighet, antireferenser, designprinciper, tillganglighetsbehov. Svarar pa "vem, vad, varfor".
+- **`DESIGN.md`** ar den visuella filen. Farger, typografi, hojd, komponenter, bor och bor inte. Svarar pa "hur det ser ut". Skriven av det delegerade `/impeccable document`-kommandot, som teach anropar i slutet.
+
+Flodet skannar kodbasen forst (README, package.json, komponenter, tokens, varumarkestillgangar) och bildar en **registerhypotes**: varumärke (landningssida, marknadsforing, portfolio, dar design AR produkten) eller produkt (app-UI, instrumentpaneler, verktyg, dar design TJANAR produkten). Register ar den forsta fragan, for att den formar varje nedstromssvar: typografistandardvarden, rorelseenergi, fargstrategi, den referensuppsattning som kommandon som `/impeccable typeset` hollar fran. Efter register staller teach bara vad den inte kunde ha ut: anvandare, personlighet i tre riktiga ord, referenser och antireferenser, tillganglighetskrav.
+
+PRODUCT.md ar endast strategisk. Inga farger, inga typsnitt, inga pixelvarden. De lever i DESIGN.md. Att halla de tva filerna separata ar avsiktligt: strategi kan halle stabil medan det visuella systemet utvecklas.
+
+## Prova det
+
+```
+/impeccable teach
+```
+
+Forvinta en intervju pa 5 till 8 minuter. Den forsta fragan ar vanligtvis om register; resten ar korta. Teach kommer att citera tillbaka vad den halle ut fran din kod ("fran rutterna ser det har ut som en produktyta, stammer det?") sa du bekräftar, inte borjar fran grunden.
+
+Pa slutet erbjuder teach att kora `/impeccable document` at dig. Sager ja om du inte har en specifik anledning att vanta. En riktig DESIGN.md ar det som haller varianter, poleringar och revisioner pa varumarket.
+
+## Fallgropar
+
+- **Att hoppa over den for att "bara prova ett kommando snabbt".** Varje annat kommando kommer att intervjua dig under flygning istallet. Att kora teach forst ar snabbare, inte langsammare.
+- **Att ge generiska svar.** "Modern och ren" ar inte anvandbart. "Varm, mekanisk, meningsfull" ar det. Var specifik. Var villig att oense med sakra standardvarden.
+- **Att behandla PRODUCT.md som oforanderlig.** Filen ar din. Om teach lade in nagot dar som inte ar helt ratt, redigera den. Varje kommando laser den aktuella filen.
+- **Att lista bara adjektiv for referenser.** Varumarken, produkter, tryckta objekt: namngivna, inte beskrivna. "Klim Type Foundry specimen-sidor", inte "teknisk och ren". Antireferenser bor vara lika specifika.

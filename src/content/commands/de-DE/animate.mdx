@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Zweckmäßige Bewegung, die Zustände vermittelt, keine Dekoration.
+highlights:
+  - Interfaces wirken leblos oder abrupt zwischen Zuständen.
+  - Ladevorgänge, Feedback oder Übergänge brauchen Bewegung, die erklärt, was passiert.
+  - Sie möchten disziplinierte Animation mit Reduced-Motion-Fallbacks.
+related:
+  - delight
+---
+
+## Wann man es verwendet
+
+`/impeccable animate` ist für Interfaces, die leblos wirken, bei denen Zustandsänderungen sofort und ruckartig sind, wo Laden einfach auftaucht, wo der Nutzer nie ganz vertraut, dass sein Klick registriert wurde. Verwenden Sie es, um die kleinen Bewegungen hinzuzufügen, die kommunizieren, was passiert: Eintritte, Austritte, Feedback, Übergänge zwischen Zuständen.
+
+Verwenden Sie es nicht, um Bounces oder elastische Sprünge um der Dynamik willen hinzuzufügen. Das ist Dekoration, und dieser Skill wird sie Ihnen nicht geben.
+
+## Wie es funktioniert
+
+Der Skill identifiziert statische Momente, die von Bewegung profitieren würden, und wendet sie mit strenger Disziplin an:
+
+1. **Eintritte und Austritte**: Elemente erscheinen und verschwinden mit 200 bis 300ms Fades plus subtilem Y oder Scale, niemals Layout-Eigenschaften.
+2. **Zustands-Feedback**: Hover, Active, Focus, Laden, Erfolg kommunizieren alle über Bewegung statt über plötzliche Wechsel.
+3. **Übergänge zwischen Ansichten**: Shared-Element-Übergänge wo es sinnvoll ist, Fade-through sonst.
+4. **Fortschritt und Laden**: Skeleton-Screens, bestimmte Balken, Bewegung die sagt „ich arbeite noch".
+5. **Reduzierte Bewegung**: jede Animation hat einen `prefers-reduced-motion`-Fallback.
+
+Das Easing ist immer exponentiell (ease-out-quart, quint oder expo), weil echte Objekte sanft abbremsen. Kein Bounce, kein elastisch, kein linear für irgendetwas außer Fortschrittsanzeigen.
+
+Der Skill animiert nur `transform` und `opacity`. Wenn Sie feststellen, dass `width`, `height`, `top` oder `left` animiert werden, tut er etwas Falsches. Verwenden Sie `grid-template-rows` für Höhenübergänge.
+
+## Ausprobieren
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typische Ergänzungen:
+
+- E-Mail-Eingabe bekommt ein Focus-Glow bei focus-visible (Opacity + Shadow, 180ms)
+- Submit-Button zeigt einen Spinner in sich selbst im Ladezustand, keinen separaten Spinner daneben
+- Erfolgsbildschirm tritt ein mit Opacity + translateY(8px), 260ms, ease-out-quart
+- Fehlermeldung gleitet herunter mit grid-template-rows (nicht height), 220ms
+- `@media (prefers-reduced-motion: reduce)`-Fallback für jeden Übergang
+
+## Fallstricke
+
+- **Nach „mehr Animation" fragen.** Animate ist kein Regler. Es fügt Bewegung dort hinzu, wo sie kommuniziert, nicht überall.
+- **Die Reduced-Motion-Fallbacks entfernen.** Der Skill fügt sie automatisch hinzu. Für Barrierefreiheit nicht verhandelbar.

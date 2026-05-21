@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Projete experiências de primeiro uso, estados vazios e caminhos para o valor.
+highlights:
+  - Novos usuários estão chegando sem contexto.
+  - O produto precisa de uma melhor primeira ação bem-sucedida.
+  - Estados vazios e etapas de configuração estão ensinando pouco demais.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Quando usar
+
+`/impeccable onboard` é para os momentos que decidem se um novo usuário vai ficar: a primeira tela, o estado vazio, o fluxo de configuração, o tour do produto, a lacuna do "o que eu faço agora". Use quando a ativação está fraca, quando novos usuários desistem antes de alcançar o valor, ou quando seu produto tem estados vazios que dizem "nenhum item ainda" e param por aí.
+
+## Como funciona
+
+O comando parte de uma pergunta: qual é o momento aha, e quão rápido um novo usuário pode chegar lá. Cada decisão de design aponta para esse momento.
+
+Ele trabalha nas superfícies que moldam as primeiras impressões:
+
+1. **Experiência de primeiro uso**: os momentos imediatamente após o cadastro. O usuário deve ver um tour, uma tela em branco, um exemplo preenchido ou nada. Escolha a abordagem que combina com o produto.
+2. **Estados vazios**: toda tela com zero dados é orientada. Onde estou, por que está vazio, o que faço agora, como vai ficar quando estiver cheio.
+3. **Configuração e instalação**: configuração obrigatória é minimizada, padrões são inteligentes, cada etapa explica por que importa.
+4. **Divulgação progressiva**: funcionalidades avançadas ficam fora do caminho até serem merecidas.
+5. **Eventos de ativação**: o momento em que um usuário experimenta o valor central pela primeira vez é instrumentado e celebrado, discretamente.
+
+O comando resiste a dois modos de falha comuns: onboarding super-tutorializado onde usuários clicam através de um carrossel antes de poder tocar em qualquer coisa, e zero-onboarding onde usuários são largados em um app vazio e espera-se que descubram sozinhos.
+
+## Experimente
+
+```
+/impeccable onboard the editor
+```
+
+Saída típica:
+
+- Primeiro uso: substitui editor vazio por um documento de exemplo preenchido que o usuário pode modificar. Botão Cancelar descarta o exemplo, Editar substitui o conteúdo pelo trabalho do usuário.
+- Estado vazio na lista de documentos: "Nenhum documento ainda. Crie seu primeiro, ou importe do Notion, Google Docs ou Markdown."
+- Configuração: reduzido de 6 campos obrigatórios para 1 (nome do workspace). Todo o resto tem um padrão inteligente e pode ser editado depois nas configurações.
+- Ativação: na primeira vez que um usuário salva um documento, um toast discreto diz "Salvo. Seu trabalho está na nuvem agora." Único, não repetido.
+
+## Armadilhas
+
+- **Adicionar um tour do produto como resposta padrão.** A maioria dos produtos não precisa de um tour. Precisa de uma melhor primeira tela. Tours são muleta.
+- **Projetar onboarding sem definir o momento aha.** Se você não consegue dizer em uma frase o que o usuário deve sentir nos primeiros 60 segundos, volte para `/impeccable shape` primeiro.
+- **Executar onboard em um fluxo quebrado.** Corrija o fluxo primeiro. Onboarding não pode salvar um produto onde a ação central está quebrada.

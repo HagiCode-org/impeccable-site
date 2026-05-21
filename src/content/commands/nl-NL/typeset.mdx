@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Repareer typografie die generiek, inconsistent of toevallig aanvoelt.
+highlights:
+  - Tekst is technisch leesbaar maar niet overtuigend of gecontroleerd.
+  - Koppen en broodtekst vloeien in elkaar over.
+  - Het oppervlak heeft een sterkere toon nodig door typografie in plaats van meer decoratie.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Wanneer te gebruiken
+
+Gebruik `/impeccable typeset` wanneer de tekst op een pagina eruitziet als standaardtypografie in plaats van ontworpen typografie. Troebele hiërarchie, drie formaten die er hetzelfde uitzien, broodtekst op 14px, een display-lettertype dat eigenlijk gewoon Inter bold is, koppen zonder kerning-aandacht.
+
+Veelvoorkomende signalen: "hiërarchie voelt plat", "leesbaarheid is niet goed", "lettertypes zien er generiek uit".
+
+## Hoe het werkt
+
+De skill beoordeelt typografie over vijf dimensies:
+
+1. **Lettertypekeuzes**: gebruik je onzichtbare standaardwaarden (Inter, Roboto, Arial, Open Sans), past het lettertype bij het merk, zijn er meer dan 2 tot 3 families.
+2. **Hiërarchie**: zijn kop, broodtekst en bijschrift in één oogopslag duidelijk verschillend, is het formaatcontrast minstens 1.25x tussen stappen, zijn gewichtcontrasten leesbaar.
+3. **Grootte en schaal**: is er een samenhangende typeschaal, voldoet broodtekst aan het minimum van 16px, is de schaal fixed-rem voor app-UI's of fluid-clamp voor marketingpagina's.
+4. **Leesbaarheid**: regellengte 45 tot 75 tekens, line-height afgestemd op lettertype en context, contrast.
+5. **Consistentie**: hetzelfde element krijgt overal dezelfde behandeling, geen eenmalige font-size overschrijvingen.
+
+Het herstelt vervolgens wat het vindt: kiest onderscheidende lettertypes, bouwt een modulaire schaal, verbreedt hiërarchiecontrast, stelt juiste regellengte en interlinie in.
+
+## Probeer het
+
+```
+/impeccable typeset the article layout
+```
+
+Verwachte diff:
+
+- Display-lettertype gewisseld van Inter 700 naar een echt display-lettertype
+- Typeschaal herbouwd: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, verhouding 1.333
+- Broodtekst verhoogd van 14px naar 16px
+- Regellengte beperkt tot 68ch op de artikelskolom
+- Line-height 1.6 voor broodtekst, 1.1 voor display
+- Vier eenmalige `font-size`-waarden verwijderd die verspreid waren over componentstijlen
+
+## Valkuilen
+
+- **Vragen om een nieuw lettertype zonder context.** Typeset kiest op basis van de merkstem in `PRODUCT.md`. Als je `/impeccable teach` niet hebt uitgevoerd, zal de suggestie generiek zijn.
+- `/impeccable typeset` gebruiken wanneer het probleem lay-out is. Als alinea's goed zijn maar de pagina krap aanvoelt, heb je `/impeccable layout` nodig.
+- **Fluid clamp-schalen verwachten op app-UI's.** Typeset gebruikt vaste rem-schalen voor app-interfaces. Fluïde typografie is voor marketing- en contentpagina's waar de regellengte sterk varieert.

@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Fixa layout, avstand och visuell rytm.
+highlights:
+  - Sidan saknar tydlig betoning.
+  - Bra innehall finns, men kompositionen doljer det.
+  - Du vill ha starkare flode fore du ror farg eller rorelse.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Nar du ska anvanda det
+
+`/impeccable layout` ar for sidor dar ingenting ar tekniskt fel men ingenting andas heller. Likformig padding overallt, monotona kortrutnät, innehall som gar fran kant till kant, hierarki som förlitar sig pa storlek ensam. Använd det nar en layout "kanns fel" och du inte kan artikulera varfor.
+
+Bra trigger: "allt kanns overfyllt", "det las som en vagg", "jag vet inte vart jag ska titta forst".
+
+## Hur det fungerar
+
+Fardigheten gar genom fem layoutdimensioner:
+
+1. **Avstand**: ar avstandsskalan konsekvent eller finns det slumpmassiga 13px-gap, ar relaterade element tätt grupperade med generöst utrymme mellan grupper, finns det nagon rytm alls.
+2. **Visuell hierarki**: landar ogat pa den primara atgarden inom 2 sekunder, gör hierarkin riktigt jobb eller ropar allting.
+3. **Rutnat och struktur**: finns det ett underliggande rutnat eller ar layouten slumpmassig, ar element justerade till baslinjer.
+4. **Rytm**: alternerar sidan mellan tatta och generösa avstand, eller ar allting likformigt.
+5. **Densitet**: ar layouten trang eller ar den slösande, matchar densiteten innehallstypen.
+
+Fixar involger vanligtvis att aterbygga avstandsskalan, introducera asymmetri, kollapsa monotona rutnat till en blandad layout med hero och stodelement, och ge den primara atgarden riktigt utrymme.
+
+## Prova det
+
+```
+/impeccable layout the settings page
+```
+
+Typiska andringar:
+
+- Avstandsskala enhetlig till 8 / 16 / 24 / 48 / 96px
+- Sektionsbrytningar pa 48px, radgap pa 16px, formulärfältgrupper pa 8px
+- Primära atgarder utdragna fran formulärflodet med 32px-buffert
+- Dekorativa kantlinjer borttagna, erstatta med avstandsdriven gruppering
+- Sidofalt- och huvudkolumnproportioner rebalanserade (280 / flex vs 25 / 75)
+
+## Fallgropar
+
+- **Att forvxla arrange med distill.** Om problemet ar for manga saker, kor `/impeccable distill` forst. Layout ar for att arrangera det som redan ar ratt set.
+- **Att forventa att den raddar ett trasigt rutnat.** Om sidan inte har nonting rutnat alls, kommer arrange att bygga ett. Bara vet att diffen kommer att vara större an du forvantar dig.
+- **Att ignorera hierarkiomdomet.** Om arrange sager "ingenting ar primart", fixar inget avstundsarbete det. Du behovr ett innehallsbeslut, inte en layoutjustering.

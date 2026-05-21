@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Pense antes de construir. Produza um briefing de design através de descoberta, não por tentativa e erro.
+highlights:
+  - Pretende planeamento sem implementação por enquanto.
+  - O layout ou tom adequado ainda não está claro.
+  - Múltiplos intervenientes precisam de alinhar a intenção antes de iniciar a construção.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output of /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Purpose</span>
+        <span class="docs-viz-file-v">Let committed subscribers change what they get without losing them to unsubscribe.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">User</span>
+        <span class="docs-viz-file-v">Rushed, on mobile, mid-meeting. Reading fast, low patience.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Content</span>
+        <span class="docs-viz-file-v">4 digest types, 2 cadences, one opt-out-all at the bottom.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Feeling</span>
+        <span class="docs-viz-file-v">Calm, trustworthy, no dark patterns.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Constraints</span>
+        <span class="docs-viz-file-v">Mobile-first. WCAG AA contrast. One column, no modals.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Hand it to <code>/impeccable</code>, <code>/impeccable craft</code>, or any implementation flow.</div>
+  </div>
+  <p class="docs-viz-caption">Um briefing shape é uma bússola, não uma especificação. Captura a intenção, não o interface. As competências de implementação leem-no antes de escrever uma linha de código.</p>
+</div>
+
+## Quando utilizar
+
+`/impeccable shape` é onde uma funcionalidade começa. Antes de alguém escrever código, antes de alguém discutir o tratamento do hero, antes de alguém escolher um tipo de letra. Utilize-o para forçar uma conversa de descoberta sobre propósito, utilizadores, conteúdo e restrições, e depois capturar as respostas como um briefing de design em que as competências de implementação se podem apoiar.
+
+Recorra a ele sempre que uma funcionalidade está prestes a começar, um ticket é vago, ou se surpreender a escrever JSX para descobrir o que o produto deve ser.
+
+## Como funciona
+
+A maioria dos interfaces gerados por IA falham não por mau código, mas por pensamento omitido. O modelo salta para "aqui está uma grelha de cartas" sem perguntar "o que é que o utilizador está a tentar realizar". `/impeccable shape` inverte essa ordem.
+
+A competência executa uma entrevista de descoberta estruturada em conversa. Não escreverá código durante esta fase. As perguntas abrangem:
+
+- **Propósito e contexto**: para que serve a funcionalidade, quem a utiliza, em que estado de espírito estão
+- **Conteúdo e dados**: o que é apresentado, intervalos realistas, casos limite, o que é dinâmico
+- **Objetivos de design**: a coisa mais importante, o sentimento pretendido, exemplos de referência
+- **Restrições**: técnicas, de conteúdo, de acessibilidade, de localização
+
+Responda naturalmente. A competência faz perguntas de acompanhamento, não um formulário. No final, produz um briefing de design: um artefacto estruturado que pode entregar ao `/impeccable` ou a qualquer outra competência de implementação.
+
+Nota: se pretende o fluxo completo (entrevista de descoberta, seguida de construção imediata), utilize `/impeccable craft`. Este executa `/impeccable shape` internamente e depois prossegue para a implementação com iteração visual. `/impeccable shape` de forma autónoma destina-se a quando pretende apenas o briefing, para o poder levar à abordagem de implementação que preferir.
+
+## Experimente
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Espere uma conversa com 5 a 10 perguntas. A competência pergunta coisas como "quem é a pessoa que abre isto, e já está comprometida ou ainda está curiosa" e "o que acontece quando o utilizador cancelou a subscrição de tudo, escondemos a funcionalidade ou mostramos algo". Responda, e um briefing toma forma.
+
+A partir daí pode entregar o briefing ao `/impeccable`, `/impeccable polish` ou a qualquer outra competência. Ou simplesmente utilizá-lo como referência enquanto constrói manualmente.
+
+## Armadilhas
+
+- **Saltá-lo porque parece lento.** A entrevista demora talvez 5 minutos. As reescritas que evita medem-se em horas.
+- **Tratar o briefing como uma especificação.** É uma bússola, não uma lista de verificação. Captura a intenção, não o interface.
+- **Responder com "padrão" ou "normal".** A especificidade é todo o ponto. Se um utilizador está "apressado, no telemóvel, entre reuniões", diga-o. Isso muda tudo o que vem a seguir.

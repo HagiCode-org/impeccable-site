@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Dæmp designs der råber uden at miste deres intention.
+highlights:
+  - Stærke ideer er til stede, men siden er for højlydt.
+  - Du har brug for tilbageholdenhed uden at blive kedelig.
+  - Den nuværende tone overvælder læsning eller opgaveflow.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable quieter` er modvægten til `/impeccable bolder`. Grib efter den, når en grænseflade er visuelt aggressiv, overstimulerende, eller prøver at gøre for mange ting ved fuld volumen. Neon på mørk, gradient-tekst overalt, 6 accent-farver, alt animeret, 20px skygger. Brug quieter, når designet har brug for at ånde, og du vil have forfining uden at miste synspunktet.
+
+Også nyttig efter `/impeccable bolder` går lidt for vidt.
+
+## Hvordan det virker
+
+Færdigheden arbejder ved reduktion på fire akser:
+
+1. **Farve**: afmæt, sænk kroma i OKLCH, træk accenter tilbage til en enkelt primær plus dæmpet støtte. Ikke mere end to bevidste farver.
+2. **Kontrast**: blød ekstreme mørke og lyse, træk området ind. Baggrunde bevæger sig fra rent hvid og rent sort til papir og blæk.
+3. **Dekoration**: fjern skygger der ikke gør arbejde, drop kanter der ikke bærer struktur, pensioner farveovergange der findes for energi frem for hierarki.
+4. **Bevægelse og effekt**: sænk animationshastighed ned, fjern alt der afspilles automatisk, drop parallax og sløring medmindre de tjener læsbarhed.
+
+Færdigheden bevarer designets intention. Hvis det originale havde et synspunkt, har den mere stille version det samme synspunkt med mere selvtillid. Forfining, ikke neutralisering.
+
+## Prøv det
+
+```
+/impeccable quieter the pricing page
+```
+
+Typisk diff:
+
+- Gradient-tekst på prisen fjernet, erstattet med solid blæk ved en vægt tungere
+- Tre accent-farver reduceret til en (magenta), de to andre bliver neutrale varianter
+- Kort-skygger reduceret fra `0 20px 40px rgba(0,0,0,0.2)` til `0 1px 0 var(--color-mist)` (en hårfin streg)
+- Baggrund skifter fra mørk gradient til papir med en subtil creme-vask i toppen
+- Hero-animation fra 1.2s easeOut med 3 forskudte elementer til en enkelt 260ms fade-in
+
+## Faldgruper
+
+- **Over-anvendelse.** Quieter kan fjerne personlighed, hvis du kører den på noget der allerede var mådeholdent. Brug den, når designet er for højt, ikke når det er korrekt bestemt.
+- **Forveksling af quieter med distill.** Quieter reducerer intensitet. Distill fjerner elementer. Det er forskellige bevægelser.
+- **At køre den som reaktion på en kritik der siger "for travlt".** Travlt betyder normalt for mange ting, ikke for højt. Prøv `/impeccable distill` først.

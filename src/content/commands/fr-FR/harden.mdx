@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Rendre les interfaces prêtes pour la production. Cas limites, i18n, états d'erreur, débordement.
+highlights:
+  - Le chemin nominal fonctionne, mais les états du monde réel semblent encore fragiles.
+  - Vous devez combler les lacunes avant la livraison.
+  - La gestion des erreurs et la résilience importent plus que d'ajouter de l'éclat.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Quand l'utiliser
+
+`/impeccable harden` est pour le jour où votre interface rencontre la réalité. Les vraies données utilisateur sont chaotiques : des noms de 60 caractères, des titres de produit en allemand, des prix dans les milliards, des erreurs 500, des modes hors-ligne, du texte droite-à-gauche. Les designs qui ne fonctionnent qu'avec des données parfaites ne sont pas prêts pour la production.
+
+Utilisez-le avant un lancement, avant l'ouverture à un nouveau marché, ou à chaque fois qu'un rapport de bug commence par « notre utilisateur avait un nom vraiment long et ». Pour les parcours de première utilisation, l'activation des états vides et le design d'onboarding, tournez-vous vers `/impeccable onboard` à la place.
+
+## Comment ça marche
+
+La compétence travaille sur quatre dimensions de résilience au monde réel :
+
+1. **Extrêmes de texte et de données**. Texte long, texte court, caractères spéciaux, emoji, RTL, nombres dans les milliards, listes de 1000 éléments.
+2. **Scénarios d'erreur**. Pannes réseau, API 4xx/5xx, erreurs de validation, erreurs de permission, limites de débit, opérations concurrentes.
+3. **Internationalisation**. Traductions longues (l'allemand est souvent 30 % plus long que l'anglais), langues RTL, formats de date et de nombre, symboles monétaires, jeux de caractères.
+4. **Appareil et contexte**. Cibles tactiles, comportement hors-ligne, connexions lentes, mode basse consommation.
+
+Pour chaque dimension, elle identifie le mode de défaillance, puis applique la correction concrète : gestion du débordement, UI d'erreur informative, mises en page compatibles i18n, pluralisation, replis sensés.
+
+## Essayez
+
+Commencez avec une page et une dimension :
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Résultat attendu :
+
+- `.user-name` a maintenant `text-overflow: ellipsis` avec une infobulle pour la valeur complète
+- `.bio` est passé d'une hauteur fixe à `max-height` avec un disclosure « afficher plus »
+- Ajout d'un état vide pour les utilisateurs sans bio
+- Ajout d'un skeleton loader pour le fetch asynchrone de l'avatar
+- Testé avec des longueurs de nom de 1, 20, 60 et 200 caractères
+
+Exécutez page par page, pas tout d'un coup. La première exécution est la plus importante ; les exécutions suivantes trouvent moins de problèmes à mesure que les patterns se solidifient.
+
+## Pièges courants
+
+- **Attendre un rapport de bug.** Harden est préventif. Si vous vous surprenez à corriger la même classe de bug deux fois, exécutez `/impeccable harden` sur toute la fonctionnalité.
+- **Traiter les états d'erreur et vides comme une pensée après coup.** La plupart du travail de durcissement est l'UI des états d'erreur et vides. Prévoyez du temps pour cela, pas juste un bloc `catch`.
+- **Sauter l'i18n parce que « on est anglais uniquement pour le moment ».** Les mises en page compatibles i18n sont quand même de meilleures mises en page. Conteneurs flexibles, retour à la ligne approprié, interligne généreux. Rien de tout cela ne nuit à l'anglais.

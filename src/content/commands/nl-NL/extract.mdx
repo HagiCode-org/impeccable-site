@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Haal herbruikbare componenten, tokens en patronen in het ontwerpsysteem.
+highlights:
+  - Meerdere componenten lossen hetzelfde probleem verschillend op.
+  - Tokens en patronen moeten worden gecentraliseerd.
+  - Je wilt een beter onderhoudbaar visueel systeem.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Drift ontdekken</span>
+      <span class="docs-viz-flow-hint">Herhaalde hex-waarden, knopvarianten, spatiëringsschalen, tekststijlen.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Primitieven voorstellen</span>
+      <span class="docs-viz-flow-hint">Token-namen, component-API's met variant + grootte, tekststijlen.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Aanroeppunten migreren</span>
+      <span class="docs-viz-flow-hint">Gedupliceerde CSS vervangen door de nieuwe primitieven. Geen wees-code achtergelaten.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">De skill extraheert alleen wat drie of meer keer wordt gebruikt met dezelfde intentie. Twee gebruiken zijn geen patroon, en migratie gebeurt altijd in dezelfde passage.</p>
+</div>
+
+## Wanneer te gebruiken
+
+`/impeccable extract` is voor het moment waarop je codebase per ongeluk een ontwerpsysteem is geworden. Herhaalde knopstijlen op 12 plekken. Drie varianten van dezelfde kaart. Hex-kleuren verspreid overal. Handgemaakte spatiëring die per ongeluk een schaal matcht. Gebruik het wanneer je deze drift wilt consolideren in herbruikbare primitieven.
+
+Gebruik het nadat een product genoeg functies heeft geleverd om de patronen te onthullen. Vroegtijdige extractie creëert abstracties die niet overeenkomen met de realiteit.
+
+## Hoe het werkt
+
+De skill ontdekt eerst de structuur van het ontwerpsysteem en identificeert vervolgens extractiemogelijkheden:
+
+1. **Tokens**: herhaalde letterlijke waarden vinden (kleuren, spatiëring, radii, schaduwen, lettergroottes). Token-namen voorstellen, toevoegen aan het tokensysteem, gebruik vervangen.
+2. **Componenten**: UI-patronen vinden die herhalen met kleine variatie (knoppen, kaarten, invoervelden, modals). Extraheren naar een enkel component met varianten, aanroepers migreren.
+3. **Compositiepatronen**: lay-out of interactiepatronen vinden die herhalen (formulierrijen, werkbalkgroepen, lege statussen). Extraheren naar compositieprimitieven.
+4. **Tekststijlen**: herhaalde font-size + weight + line-height combinaties vinden. Extraheren naar tekststijlen.
+5. **Animatiepatronen**: herhaalde easing, duration of keyframe combinaties vinden. Extraheren naar bewegingstokens.
+
+De skill is voorzichtig. Het extraheert alleen dingen die drie of meer keer worden gebruikt, met dezelfde intentie. Het extraheert nooit "omdat het later hergebruikt zou kunnen worden". Vroegtijdige abstractie is erger dan duplicatie.
+
+## Probeer het
+
+```
+/impeccable extract the button styles
+```
+
+Verwachte output:
+
+- 14 knop-instanties gevonden over 8 bestanden
+- 4 verschillende varianten: primary (gevuld accent), secondary (omrand), ghost (alleen-tekst), destructive (gevuld rood)
+- Alle 4 varianten gebruiken dezelfde grootenschaal (small, default, large)
+- Geextraheerd naar `<Button variant="primary" size="default">` met token-gedreven stijlen
+- 14 aanroeppunten gemigreerd, ~180 regels gedupliceerde CSS verwijderd
+- 3 ontbrekende tokens toegevoegd: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Valkuilen
+
+- **Te vroeg extraheren.** Twee gebruiken zijn geen patroon. Drie kan het zijn. Wacht tot het patroon voor de hand liggend is.
+- **Over-generaliseren.** De geextraheerde component moet nauw aansluiten bij de huidige gebruikssituaties, niet anticiperen op elke mogelijke toekomstige. Je kunt altijd later varianten toevoegen.
+- **De migratie vergeten.** Extractie zonder migratie laat de oude gedupliceerde code bestaan en creëert een derde manier om hetzelfde te doen. Migreer altijd in dezelfde passage.
+- **Dingen extraheren die verschillen in intentie.** Twee knoppen die er hetzelfde uitzien maar verschillende doeleinden dienen (primaire actie vs link gestileerd als knop) moeten waarschijnlijk gescheiden blijven.

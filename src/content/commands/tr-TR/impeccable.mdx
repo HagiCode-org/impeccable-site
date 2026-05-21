@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Her komutun arkasındaki tasarım zekası.
+highlights:
+  - Düzen, tipografi, renk, hareket ve UX yapısını tek seferde yönetmek istiyorsunuz.
+  - Bir yön keşfediyor ve doğru alt iş akışını seçmesini istiyorsunuz.
+  - Dar, tek komutluk bir geçiş yerine en geniş tasarım bağlamına ihtiyacınız var.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Ne zaman kullanılır
+
+`/impeccable` ana komuttur. Tam kılavuz kitap yüklü halde, uzmanlaşmış bir komut seçmeden serbest tasarım çalışması yapmak istediğinizde doğrudan çağırın. 23 uzmandan (audit, polish, critique ve diğerleri) hiçbiri yapmak istediğiniz şeye tam olarak uymadığında başvuracağınız yedektir.
+
+Şu durumlarda doğrudan `/impeccable` komutunu kullanın:
+
+- **Hangi komutun uyduğundan emin değilsiniz.** Ne istediğinizi düz İngilizce olarak açıklayın ve yeteneğin doğru yaklaşımı seçmesine izin verin.
+- **Çalışma birden fazla disiplini kapsıyor.** "Bu hero bölümünü yeniden yap" layout, tipografi, renk ve harekete dokunur. Tek bir komut bunu üstlenemez.
+- **Kısıtlama olmadan tam tasarım zekası istiyorsunuz.** Her referans dosyası yüklü, her anti-pattern kontrol edilmiş, önceden ayarlanmış iş akışı yok.
+
+Yapılandırılmış akışlar için kenar çubuğundaki uzmanlaşmış komutları kullanın. Yeni bir projede PRODUCT.md ve DESIGN.md oluşturmak için önce `/impeccable teach` komutunu çalıştırın. `/impeccable craft`, bir keşif görüşmesini canlı görsel yinelemeyle tam bir yapıya dönüştürür. `/impeccable shape` koda dokunmadan bir tasarım brief'i oluşturur. `/impeccable live` her öğe için üç varyantlı bir tarayıcı seçici sunar. Değerlendirme ve iyileştirme komutları (audit, critique, polish, typeset, layout, colorize ve diğerleri) işin belirli bir dilimine odaklanır.
+
+## Nasıl çalışır
+
+Çoğu AI tarafından oluşturulan kullanıcı arayüzü aynı şekilde başarısız olur: genel yazı tipler, mor gradyanlar, kart içinde kart ızgaraları, her yerde cam efektisi. `/impeccable` AI'nıza güçlü bir bakış açısı kazandırır. Görüşlü bir tasarım el kitabı ve uzun bir anti-pattern listesi yükler, ardından modeli tek bir satır kod yazmadan belirli bir estetik yöne commit olmaya iter.
+
+Proje kökünüzdeki iki dosya, yeteneğin yaptığı her şeyi şekillendirir:
+
+- **`PRODUCT.md`** kayıt (marka veya ürün), hedef kullanıcılar, marka kişiliği, anti-referanslar, tasarım ilkelerini taşır. "Kim, ne, neden" sorularını yanıtlar.
+- **`DESIGN.md`** renkleri, tipografiyi, yüksekliği, bileşenleri, yapılması ve yapılmaması gerekenleri altı bölümlük Google Stitch formatında taşır. "Nasıl göründüğünü" yanıtlar.
+
+Her komut üretmeden önce her iki dosyayı da okur. **Kayıt**, hangi varsayılanların yükleneceğini belirler. Marka (pazarlama, açılış sayfası, portfolyo, tasarımın ürünün kendisi olduğu yerler) ve ürün (uygulama arayüzü, panolar, araçlar, tasarımın ürüne hizmet ettiği yerler) tipografi, hareket, renk ve yoğunluk için farklı varsayılanlara sahiptir. PRODUCT.md'de bir kez belirtmek, `/impeccable typeset` komutunun bir panoda editöryal-dergi yazı tiplerini önermemesini ve bir kampanya sayfasında ürün-akıcı varsayılanları önermemesini sağlar. İki yönün nasıl ayrıldığını görmek için [marka ve ürün eğitimine](/tutorials/brand-vs-product) bakın.
+
+Bir projede ilk kullanımda, yetenek otomatik olarak `teach` akışını çalıştırır: PRODUCT.md'yi yazan kısa bir görüşme ve ardından DESIGN.md için `/impeccable document` komutuna devreden bir süreç. Sonraki komutlar dosyaları tekrar sormadan okur.
+
+## Deneyin
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Her iki komut da kasıtlı olarak belirsizdir. `/impeccable`, kaydınızla tutarlı güçlü bir estetik yön seçecek, varsayılan olmayan yazı tiplerine commit olacak, AI renk paletinden kaçınacak ve bir tasarımcının yapacağı türden spesifik kararlar alacaktır. Önce seçilecek komut adı yok, takip edilecek adım adım iş akışı yok.
+
+Sohbet yerine tarayıcıda görsel yineleme için:
+
+```
+/impeccable live
+```
+
+Çalışan geliştirme sunucunuzdaki herhangi bir öğeyi seçin. Bir yorum veya çizgi bırakın. HMR ile anında değiştirilen üç üretim kalitesinde varyant alın. İstediğinizi kabul edin ve kaynak koda yazılır.
+
+## Komutları kısayol olarak sabitleyin
+
+v3.0, 18 bağımsız yeteneği 23 alt komutlu tek bir `/impeccable` olarak birleştirdi. Belirli bir komutun kısa formunu özlüyorsanız, geri sabitleyin:
+
+```
+/impeccable pin critique
+```
+
+Artık `/critique` doğrudan `/impeccable critique` komutunu çağırır. Yeteneğe devreden hafif bir yönlendirme yeteneği yazar, böylece yetenek akışındaki güncellemeler yeniden sabitleme gerektirmeden aktarılır.
+
+Denemek için yararlı sabitlemeler:
+
+- Son geçiş çalışması için `/impeccable pin polish`
+- Belirleyici erişilebilirlik performans kontrolleri için `/impeccable pin audit`
+- Tarayıcı yineleme akışı için `/impeccable pin live`
+- Tasarım incelemesi için `/impeccable pin critique`
+
+Kaldırmak için: `/impeccable unpin critique`. Sabitlemeler, harness yetenekler klasörünüzde `i-` öneki ile dizinler olarak yaşar (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` vb.), bu nedenle bunları manuel olarak da silebilirsiniz.
+
+## Tuzaklar
+
+- **Bir stil kılavuzu gibi davranmak.** Bu görüşlü bir tasarım ortağıdır, bir linter değil. Varsayılanlar zemini yükseltmek için vardır, kararlarınızın yerine geçmek için değil. Gerçek bir geri itme nedeniniz varsa (marka kılavuzu, erişilebilirlik kısıtlaması, kullanıcı araştırması), geri itin ve nedenini açıklayın. Yetenek sizinle çalışacaktır. Daha kötü çıktı üreten şey, neden olmadan görüşü görmezden gelmektir.
+- **Mevcut kodu düzeltmesini beklemek.** `/impeccable` oluşturma içindir. İyileştirme için `/impeccable polish`, `/impeccable distill` veya `/impeccable critique` komutlarını kullanın.
+- **`teach` komutunun bağlam kaydetme şansı olmadan çalıştırmak.** Yeni bir projede görüşmeyi uçuş sırasında yapacaktır, bu sorun değil ama daha yavaştır. İlk komutunuz olarak açıkça `/impeccable teach` çalıştırmak biraz daha akıcıdır.
+- **Kayıt sorusunu atlamak.** Marka ve ürün varsayılanları, yanlış kayıtta çalıştırmanın ince şekilde yanlış çıktı üretecek kadar birbirinden ayrılır. `PRODUCT.md`'de `## Register` alanı yoksa (eski sürüm), eklemek için `/impeccable teach` komutunu çalıştırın.

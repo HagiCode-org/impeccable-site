@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Luo vaatimustenmukainen DESIGN.md joka tallentaa visuaalisen järjestelmäsi niin että jokainen tekoälyagentti pysyy brändissä.
+highlights:
+  - Koodipohja sisältää jo todellisen suunnittelukielen.
+  - Tarvitset kannettavan yhteenvedon väreistä, tyypistä, välistyksestä ja komponenteista.
+  - Tuleva suunnittelutyö ajautuu koska järjestelmä on implisiittinen.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch -formaatti</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Yleiskatsaus</span>
+      </div>
+      <p class="docs-viz-designmd-note">Luova Pohjotähti: <em>"Toimituksellinen pyhäkkö."</em> Hiljaista typografiaa, anteliasta tilaa, yksi sitoutunut aksentti.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Värit</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typografia</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Korkeus</span>
+      </div>
+      <p class="docs-viz-designmd-note">Oletuksena tasainen. Varjot ilmestyvät vain vasteena tilaan.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Komponentit</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Tilaa</span>
+        <span class="docs-viz-designmd-chip">suodatin</span>
+        <span class="docs-viz-designmd-card">kortti</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Tehdään ja ei-tehdä</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Sävytä neutraalit aksenttisävyä kohti.</span>
+        <span class="docs-viz-designmd-dont">Liukuväriteksti korostukseen.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Kuusi osiota ovat kiinteät, kiinteässä järjestyksessä, kiinteillä nimillä. Rinnalla <code>DESIGN.json</code> toimitetaan koneluettavana sidecar-tiedostona Live Mode -suunnittelupaneelille.</p>
+</div>
+
+## Milloin käyttää
+
+Suorita `/impeccable document` kun sinulla on tarpeeksi visuaalista järjestelmää dokumentoitavaksi: värejä, typografiaa, vähintään painike ja kortti. Komento skannaa koodipohjasi, purkaa tokenit ja komponenttimallit joita se löytää, ja kirjoittaa `DESIGN.md`:n projektin juureen joka seuraa [Google Stitch DESIGN.md -formaattia](https://stitch.withgoogle.com/docs/design-md/format/), kuusi osiota kiinteässä järjestyksessä, yhteensopiva jokaisen muun DESIGN.md-tietoisen työkalun kanssa.
+
+Turvaudu siihen kun:
+
+- **Suoritit juuri `/impeccable teach`-komennon** ja `PRODUCT.md` on nyt olemassa. Document on vastaava visuaalisen puolen tiedosto.
+- **Komento ohjasi sinua siihen.** Live, craft ja polish kaikki lukevat DESIGN.md:tä. Jos se puuttuu, taito ehdottaa documentin suorittamista ensin.
+- **Suunnittelu on ajautunut** vanhemmasta DESIGN.md:stä ja tiedosto ei enää kuvaa live-järjestelmää.
+- **Ennen suurta uudelleensuunnittelua**, nykyisen tilan tallentamiseksi viitteeksi seuraavalle suunnalle.
+
+Projekteille joissa ei ole koodia vielä (tuore `teach`-ajo, mitään ei rakennettu), on siementila: `/impeccable document --seed` kysyy viisi nopeaa strategista kysymystä (väristrategia, tyyppisuunta, liike-energia, viitteet, anti-viitteet) ja kirjoittaa rungon. Suorita uudelleen skannaus-tilassa kun koodia on.
+
+## Miten se toimii
+
+Skannausläpikäynti löytää suunnitteluresursseja prioriteettijärjestyksessä: CSS-mukautetut ominaisuudet, Tailwind-konfiguraatio, CSS-in-JS-teemat, suunnittelutoken-tiedostot, komponenttilähde, globaali tyylitiedosto ja lopuksi lasketut tyylit live-renderöidystä tulosteesta jos selain on saatavilla. Se autopurkaa kaiken mitä voi, sitten kysyy yhden ryhmitellyn kysymyksen osille jotka tarvitsevat luovaa syötettä: **Luova Pohjotähti** (yksi nimetty metafora koko järjestelmälle, kuten "Toimituksellinen pyhäkkö"), kuvaavat värien nimet, korkeusfilosofia ja komponenttiluonne.
+
+Tuloste on DESIGN.md tasan kuudella osiolla: Yleiskatsaus, Värit, Typografia, Korkeus, Komponentit, Tehdään ja ei-tehdä. Otsikot ovat kiinteitä merkki merkiltä niin että tiedosto on jäsennettävissä muilla työkaluilla. Sen rinnalla `DESIGN.json` kirjoitetaan koneluettavana sidecar-tiedostona. Se sidecar on mitä live-tilan suunnittelupaneeli käyttää renderöidäkseen *tämän projektin* todelliset painike-, syöte-, nav- ja korttilaattojen sijaan yleistä likiarvoa.
+
+Jokainen muu komento lukee DESIGN.md:n kutsuttaessa. Muunnelmat, viimeistelyt, arvioinnit ja uudet ominaisuudet perivät visuaalisen järjestelmän ilman että niille tarvitsee kertoa.
+
+## Kokeile
+
+```
+/impeccable document
+```
+
+Projektissa jossa tokenit on jo määritelty, tämä kestää noin kaksi minuuttia: skannaus löytää palettisi ja tyyppipinosi, valitset Pohjotähden 2 tai 3 vaihtoehdosta, vahvistat kuvaavat värien nimet ("Syvä pehmeä sinivihreä", ei "blue-800"), ja tiedosto laskeutuu projektin juureen.
+
+Tuoreessa projektissa:
+
+```
+/impeccable document --seed
+```
+
+Viisi kysymystä, noin viisi minuuttia. Tiedosto on runko, merkitty `<!-- SEED -->`-kommentilla joten se on rehellinen siitä mitä se on. Suorita uudelleen ilman lippua kun olet toteuttanut tokenit.
+
+## Sudenkuopat
+
+- **Ajaminen liian aikaisin.** Projektissa jossa ei ole toteutettuja tokeneita, siementila on oikea. Älä fabrikoi täyttä määrittelyä jota koodi ei voi taustaa. Väärä DESIGN.md on huonompi kuin ei DESIGN.md:tä.
+- **DESIGN.md:n kohteleminen dokumentaationa vain ihmisille.** Se on ensisijaisesti tekoälylle. Jokainen muu komento lukee sen. Formaan jämäkkyys ("ei koskaan", "aina", Nimetyt Säännöt) on tarkoituksellista.
+- **Asettelu / Liike / Responsiivinen -tason osion lisääminen.** Määrittelyssä on kuusi osiota, kiinteässä järjestyksessä, kiinteillä nimillä. Taita asettelu- tai liikesisältö Yleiskatsaukseen (filosofiatason säännöt) tai Komponentteihin (per komponentti -käyttäytyminen).
+- **Olemassa olevan DESIGN.md:n ylikirjoittaminen hiljaisesti.** Document vahvistaa aina ensin. Jos haluat aloittaa puhtaalta pöydältä, nimeä olemassa oleva tiedosto pois tai kerro taidolle eksplisiittisesti ylikirjoittaa.

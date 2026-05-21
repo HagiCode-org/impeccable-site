@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: 빌드하기 전에 생각하세요. 추측이 아닌 디스커버리로 디자인 브리프를 만듭니다.
+highlights:
+  - 아직 구현 없이 기획만 원합니다.
+  - 올바른 레이아웃이나 톤이 아직 불명확합니다.
+  - 빌드 작업 전에 여러 이해관계자가 의도에 합의해야 합니다.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output of /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Purpose</span>
+        <span class="docs-viz-file-v">Let committed subscribers change what they get without losing them to unsubscribe.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">User</span>
+        <span class="docs-viz-file-v">Rushed, on mobile, mid-meeting. Reading fast, low patience.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Content</span>
+        <span class="docs-viz-file-v">4 digest types, 2 cadences, one opt-out-all at the bottom.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Feeling</span>
+        <span class="docs-viz-file-v">Calm, trustworthy, no dark patterns.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Constraints</span>
+        <span class="docs-viz-file-v">Mobile-first. WCAG AA contrast. One column, no modals.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Hand it to <code>/impeccable</code>, <code>/impeccable craft</code>, or any implementation flow.</div>
+  </div>
+  <p class="docs-viz-caption">shape 브리프는 나침반이자 spec이 아닙니다. UI가 아닌 의도를 담습니다. 구현 스킬들은 한 줄의 코드를 작성하기 전 이것을 읽습니다.</p>
+</div>
+
+## 사용 시기
+
+`/impeccable shape`은 기능이 시작되는 곳입니다. 누군가 코드를 작성하기 전, 히어로 처리를 놓고 논쟁하기 전, 폰트를 고르기 전. 목적, 사용자, 콘텐츠, 제약에 대한 디스커버리 대화를 강제하고, 그 답을 구현 스킬이 활용할 수 있는 디자인 브리프로 포착할 때 사용하세요.
+
+기능이 막 시작하려 할 때, 티켓이 모호할 때, 또는 제품이 무엇이 되어야 하는지 파악하려고 JSX를 작성하고 있는 자신을 발견했을 때 사용하세요.
+
+## 작동 방식
+
+대부분의 AI 생성 UI가 실패하는 이유는 나쁜 코드가 아니라 건너뛴 사고 때문입니다. 모델은 "사용자가 무엇을 달성하려는가"를 묻지 않고 "카드 그리드가 여기 있습니다"로 바로 넘어갑니다. `/impeccable shape`은 그 순서를 뒤바꿉니다.
+
+스킬은 대화에서 구조화된 디스커버리 인터뷰를 진행합니다. 이 단계에서는 코드를 작성하지 않습니다. 질문 내용:
+
+- **목적과 맥락**: 기능의 용도, 사용자, 사용자의 심리 상태
+- **콘텐츠와 데이터**: 표시되는 내용, 현실적인 범위, 엣지 케이스, 동적인 것
+- **디자인 목표**: 가장 중요한 한 가지, 의도한 느낌, 레퍼런스 예시
+- **제약**: 기술적, 콘텐츠, 접근성, 현지화
+
+자연스럽게 답하세요. 스킬은 양식이 아닌 후속 질문을 합니다. 마지막에 디자인 브리프를 생성합니다: `/impeccable`이나 다른 구현 스킬에 전달할 수 있는 구조화된 산출물입니다.
+
+참고: 전체 흐름(디스커버리 인터뷰 후 바로 빌드)을 원한다면 `/impeccable craft`를 대신 사용하세요. 내부적으로 `/impeccable shape`을 실행한 후 시각적 반복과 함께 구현을 계속합니다. `/impeccable shape` 단독은 브리프만 원할 때, 즉 원하는 구현 방식에 상관없이 가져갈 수 있는 브리프를 원할 때 사용합니다.
+
+## 직접 해보기
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+5~10개 질문의 대화가 예상됩니다. 스킬은 "이것을 여는 사람은 누구이며, 이미 정착한 사용자인가요, 아니면 아직 호기심 단계인가요" 또는 "사용자가 모든 것을 구독 취소하면 어떻게 하나요, 기능을 숨기나요, 아니면 무언가를 보여주나요" 같은 질문을 합니다. 답하면 브리프가 만들어집니다.
+
+거기서 브리프를 `/impeccable`, `/impeccable polish`, 또는 다른 스킬에 전달할 수 있습니다. 아니면 직접 빌드하면서 레퍼런스로 사용해도 됩니다.
+
+## 주의 사항
+
+- **느리다고 느껴서 건너뛰기.** 인터뷰는 길어야 5분입니다. 피하는 재작성은 시간 단위로 측정됩니다.
+- **브리프를 spec으로 취급하기.** 브리프는 나침반이자 체크리스트가 아닙니다. UI가 아닌 의도를 담습니다.
+- **"표준"이나 "일반적"이라고 답하기.** 구체성이 핵심입니다. 사용자가 "급하게, 모바일로, 회의 사이에" 있다면 그렇게 말하세요. 그것이 이후 모든 것을 바꿉니다.

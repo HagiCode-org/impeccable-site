@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Få designs til at fungere på tværs af skærme, enheder og kontekster uden at amputere features.
+highlights:
+  - Det nuværende layout kollapser på mindre skærme.
+  - Produktet har brug for en mere gennemtænkt responsiv strategi.
+  - Touch-mål, tæthed eller indholdsflow varierer efter enhed.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable adapt` er til at tage et design bygget til én kontekst og få det til at fungere i en anden. Mobil fra desktop, tablet fra mobil, print fra web, indlejret fra selvstændig, e-mail fra dashboard. Grib efter den, når kildedesignet er solidt, men falder fra hinanden ved andre breakpoints, på touch, eller i en anden beholder.
+
+Ikke til at bygge responsivt fra bunden. Til det, start med `/impeccable` og form layoutet responsivt-først. Adapt er til "vi tænkte aldrig på mobil"-efterfyldningen.
+
+## Hvordan det virker
+
+Færdigheden arbejder gennem fire dimensioner af kontekstuel tilpasning:
+
+1. **Breakpoints og flydende layout**: samler multi-kolonne til enkelt, justerer clamp-intervaller, introducerer nye breakpoints, hvor designet reelt bryder.
+2. **Touch-mål**: minimum 44px treffelter, tilstrækkelig afstand mellem tilstødende mål, større trykzoner end visuelle grænser, hvor det er nødvendigt.
+3. **Navigationsmønstre**: desktop-sidebjælker bliver til mobil-bund-navigation eller slide-outs, tætte værktøjslinjer kollapser til menuer, hover-tilstande får touch-modstykker.
+4. **Indholdsprioritet**: beslut hvad der skal være synligt, hvad der kan kollapse til disclosures, hvad der kan fjernes helt for den kontekst.
+
+Den ufravigelige regel: tilpas, amputer ikke. Kritisk funktionalitet kan ikke forsvinde på mobil, bare fordi det er ubekvemt. Find en måde at passe det ind på, redesign interaktionen, eller overvej om det virkelig var kritisk på desktop.
+
+## Prøv det
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Forventede ændringer:
+
+- Tre-kolonne grid bliver til enkelt kolonne med sektionsoverskrifter som klæbrige delere
+- Sidebjælke-navigation flytter til en horisontal scroller over indholdet
+- Tilføjelser får 8px vertikal padding, så de opfylder 44px touch-mål
+- Inline hjælpetekst flytter til tryk-for-at-afsløre, ikke hover
+- "Farezone"-sektionen udvides fuldt på mobil i stedet for at kollapse, fordi den indeholder uigenkaldelige handlinger, og vi vil have at brugerne ser dem tydeligt
+
+## Faldgruper
+
+- **Amputering af features.** Hvis mobil-versionen skjuler ting, desktop-versionen kan gøre, er det en regression, ikke en tilpasning. Kæmp for featuren.
+- **At behandle mobil som "mindre desktop".** Mobil er en anden kontekst: tomler, afbrydelse, korte sessioner. Tilpas til konteksten, ikke til viewport-bredden.
+- **At springe `/impeccable harden` over bagefter.** Responsive layouts afslører kant-tilfælde. Kør hærdning efter adapt for at fange dem der kun vises ved 320px.

@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Δημιουργήστε ένα DESIGN.md συμβατό με προδιαγραφές που καταγράφει το οπτικό σας σύστημα ώστε κάθε AI agent να παραμένει on-brand.
+highlights:
+  - Η βάση κώδικα περιέχει ήδη μια πραγματική σχεδιαστική γλώσσα.
+  - Χρειάζεστε μια φορητή σύνοψη χρωμάτων, τυπογραφίας, διακένου и components.
+  - Мェλλοντική σχεδιαστική εργασία εκτρέπεται επειδή το σύστημα είναι σιωπηλό.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Μορφή Google Stitch</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Еπισκόπηση</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>«Το Εκδοτικό Καταφύγιο.»</em> Ήσυχη τυπογραφία, γενναιόδωρος αέρας, ένα δεσμευμένο accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Χρώματα</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Тυπογραφία</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Ανύψωση</span>
+      </div>
+      <p class="docs-viz-designmd-note">Επίπεδο από προεπιλογή. Скиές εμφανίζονται μόνο ως απάντηση σε κατάσταση.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Πρέπει / Δεν πρέπει</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Хρωματίστε τα ουδέτερα προς την απόχρωση accent.</span>
+        <span class="docs-viz-designmd-dont">Gradient text για έμφαση.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Οι έξι ενότητες είναι σταθερές, σε σταθερή σειρά, με σταθερά ονόματα. Δίπλα, το <code>DESIGN.json</code> αποστέλλεται ως μηχανογνώσιμο sidecar για τον πίνακα σχεδιασμού Live Mode.</p>
+</div>
+
+## Πότε να τη χρησιμοποιήσετε
+
+Εκτελέστε `/impeccable document` μόλις έχετε αρκετό οπτικό σύστημα για να τεκμηριώσετε: χρώματα, τυπογραφία, τουλάχιστον ένα κουμπί и μια κάρτα. Η εντολή σαρώνει τη βάση κώδικά σας, εξάγει τα tokens и τα μοτίβα components που βρίσκει, и γράφει ένα `DESIGN.md` στη ρίζа του έργου που ακολουθεί τη [μορφή Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), έξι ενότητες σε σταθερή σειρά, διαλειτουργικό με κάθε άλλο εργαλείο που αναγνωρίζει DESIGN.md.
+
+Χρησιμοποιήστε το когда:
+
+- **Мόλις εκτελέσατε `/impeccable teach`** и το `PRODUCT.md` υπάρχει πλέον. Το Document είναι το αντίστοιχο οπτικό αρχείο.
+- **Мια εντολή σας ώθησε προς αυτό.** Live, craft и polish διαβάζουν όλα το DESIGN.md. Αν λείπει, η δεξιότητα προτείνει να εκτελέσετε document πρώτα.
+- **Ο σχεδιασμός έχει εκτραπεί** από ένα παλιότερο DESIGN.md и το αρχείο δεν περιγράφει πλέον το ζωντανό σύστημα.
+- **Πριν έναν μεγάλο επανασχεδιασμό**, για να καταγράψετε την τρέχουσα κατάσταση ως αναφορά για την επόμενη κατεύθυνση.
+
+Για έργα χωρίς κώδικα ακόма (φρέσκια εκτέλεση `teach`, τίποτα κατασκευασμένο), υπάρχει λειτουργία seed: `/impeccable document --seed` κάνει πέντε γρήγορες στρατηγικές ερωτήσεις (στρατηγική χρώματος, κατεύθυνση τυπογραφίας, ενέργεια κίνησης, αναφορές, анти-αναφορές) и γράφει ένα σκαλωσιά. Еπανεκτελέστε σε λειτουργία σάρωσης μόλις υπάρχει κώδικας.
+
+## Πώς λειτουργεί
+
+Το πέρασμα σάρωσης βρίσκει σχεδιαστικά assets με σειρά προτεραιότητας: CSS custom properties, Tailwind config, CSS-in-JS themes, αρχεία design tokens, πηγαίος κώδικας components, το καθολικό stylesheet, и τελικά υπολογισμένα στυλ από το ζωντανό rendered output αν είναι διαθέσιμος browser. Αυτο-εξάγει ό,τι μπορεί, μετά κάνει μια ομαδοποιημένη ερώτηση για τα μέρη που χρειάζονται δημιουργική είσοδο: το **Creative North Star** (μια μοναδική ονομασία μεταφοράς για όλο το σύστημα, όπως «Το Εκδοτικό Καταφύγιο»), περιγραφικά ονόματα χρωμάτων, τη φιλοσοφία ανύψωσης, и τον χαρακτήρα components.
+
+Το αποτέλεσμα είναι ένα DESIGN.md με ακριβώς έξι ενότητες: Еπισκόπηση, Χρώματα, Тυπογραφία, Ανύψωση, Components, Πρέπει / Δεν πρέπει. Οι κεφαλίδες είναι σταθερές χαρακτήρα-προς-χαρακτήρα ώστε το αρχείο να είναι αναλύσιμο από άλλα εργαλεία. Δίπλα του, το `DESIGN.json` γράφεται ως μηχανογνώσιο sidecar. Αυτό το sidecar είναι αυτό που χρησιμοποιεί ο πίνακας σχεδιασμού live-mode για να αποδώσει τα πραγματικά κουμπιά, inputs, nav и tiles κάρτας *αυτόύ του έργου* αντί για μια γενική προσέγγιση.
+
+Каждая άλλη εντολή διαβάζει το DESIGN.md κατά την κλήση. Παραλλαγές, polish, audits и νέα features κληρονομούν το οπτικό σύστημα χωρίς να τους ειπωθεί.
+
+## Δοκιμάστε το
+
+```
+/impeccable document
+```
+
+Σε ένα έργο με tokens ήδη καθορισμένα, αυτό παίρνει περίπου δύο λεπτά: η σάρωση βρίσκει την παλέτα и τη στοίβα τυπογραφίας σας, επιλέγετε ένα North Star από 2 или 3 επιλογές, επιβεβαιώνετε περιγραφικά ονόματα χρωμάτων («Deep Muted Teal-Navy», όχι «blue-800»), и το αρχείο προσγειώνεται στη ρίζα του έργου.
+
+Σε ένα φρέσκο έργο:
+
+```
+/impeccable document --seed
+```
+
+Πέντε ερωτήσεις, περίπου πέντε λεπτά. Το αρχείο είναι μια σκαλωσιά, σημειωμένη με ένα `<!-- SEED -->` σχόλιο ώστε να είναι ειλικρινές για το что είναι. Еπανεκτελέστε χωρίς τη σημαία μόλις έχετε υλοποιήσει tokens.
+
+## Παγίδες
+
+- **Еκτέλεση πολύ νωρίς.** Σε ένα έργο χωρίς υλοποιημένα tokens, η λειτουργία seed είναι σωστή. Μην fabricated ένα πλήρες spec που ο κώδικας δεν μπορεί να στηρίξει. Ένα ψεύτικο DESIGN.md είναι χειρότερο από κανένα DESIGN.md.
+- **Αντιμετώπιση του DESIGN.md ως τεκμηρίωση μόνο για ανθρώπους.** Είναι κυρίως για το AI. Каждая άλλη εντολή το διαβάζει. Η επιβολή της μορφής («ποτέ», «πάντα», Оνομαστικοί Кανόνες) είναι σκόπιμη.
+- **Προσθήκη ενότητας Layout / Motion / Responsive κορυφαίου επιπέδου.** Το spec έχει έξι ενότητες, σε σταθερή σειρά, με σταθερά ονόματα. Аναδιπλώστε περιεχόμενο layout ή motion στην Еπισκόπηση (κανόνες επιπέδου φιλοσοφίας) ή στα Components (συμπεριφορά ανά component).
+- **Еπικάλυψη ενός υπάρχοντος DESIGN.md σιωπηλά.** Το Document επιβεβαιώνει πάντα πρώτα. Αν θέλετε να ξεκινήσετε φρέσκα, μετονομάστε το υπάρχον αρχείο εκτός δρόμου или πείτε ρητά στη δεξιότητα να επικαλύψει.

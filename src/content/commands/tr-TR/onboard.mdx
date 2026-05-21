@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: İlk çalıştırma deneyimlerini, boş durumları ve değere giden yolları tasarlayın.
+highlights:
+  - Yeni kullanıcılar bağlam olmadan geliyor.
+  - Ürünün daha iyi bir ilk başarılı eyleme ihtiyacı var.
+  - Boş durumlar ve kurulum adımları çok az öğretme yapıyor.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Ne zaman kullanılır
+
+`/impeccable onboard`, yeni bir kullanıcının kalıp kalmayacağına karar veren anlar içindir: ilk ekran, boş durum, kurulum akışı, ürün turu, "şimdi ne yapacağım" boşluğu. Etkinleştirme zayıfsa, yeni kullanıcılar değere ulaşmadan önce düşüyorsa veya ürününüzde "henüz öğe yok" diyen ve orada duran boş durumlar varsa kullanın.
+
+## Nasıl çalışır
+
+Komut tek bir sorudan başlar: aha anı nedir ve yeni bir kullanıcı buna ne kadar hızlı ulaşabilir. Her tasarım kararı o anı hedefler.
+
+İlk izlenimleri şekillendiren yüzeyler boyunca çalışır:
+
+1. **İlk çalıştırma deneyimi**: kayıttan hemen sonraki anlar. Kullanıcı bir tur mu görmeli, boş bir tuval mi, doldurulmuş bir örnek mi, yoksa hiçbir şey mi. Ürünle eşleşen yaklaşımı seçin.
+2. **Boş durumlar**: her sıfır veri ekranı yönlendirilir. Neredeyim, neden boş, sırada ne yapmalıyorum, dolduğunda nasıl görünecek.
+3. **Kurulum ve yükleme**: gerekli yapılandırma en aza indirilir, varsayılanlar akıllıdır, her adım neden önemli olduğunu açıklar.
+4. **Kademeli açığa çıkarma**: gelişmiş özellikler, kazanılana kadar yoldan uzak tutulur.
+5. **Etkinleştirme olayları**: bir kullanıcının çekirdek değeri ilk deneyimlediği an ölçülür ve sessizce kutlanır.
+
+Komut, iki yaygın hata moduna karşı koyar: kullanıcıların herhangi bir şeye dokunmadan önce bir carousel'i tıklayarak geçtiği aşırı öğreticili onboarding ve kullanıcıların boş bir uygulamaya bırakılıp çözmeleri beklenen sıfır onboarding.
+
+## Deneyin
+
+```
+/impeccable onboard the editor
+```
+
+Tipik çıktı:
+
+- İlk çalıştırma: boş düzenleyiciyi kullanıcının değiştirebileceği doldurulmuş bir örnek belgeyle değiştirir. İptal düğmesi örneği atar, düzenleme içeriği kullanıcının çalışmasıyla değiştirir.
+- Belge listesinde boş durum: "Henüz belge yok. İlk belgenizi oluşturun veya Notion, Google Docs veya Markdown'tan içe aktarın."
+- Kurulum: 6 zorunlu alandan 1'e düşürüldü (çalışma alanı adı). Diğer her şeyin akıllı bir varsayılanı var ve daha sonra ayarlarda düzenlenebilir.
+- Etkinleştirme: bir kullanıcı belgeyi ilk kaydettiğinde, sessiz bir bildirim "Kaydedildi. Çalışmanız artık bulutta." der. Bir kerelik, tekrarlanmaz.
+
+## Tuzaklar
+
+- **Varsayılan yanıt olarak ürün turu eklemek.** Çoğu ürünün bir tura ihtiyacı yoktur. Daha iyi bir ilk ekrana ihtiyaçları vardır. Turlar bir koltuk değneğidir.
+- **Aha anını tanımlamadan onboarding tasarlamak.** Kullanıcının ilk 60 saniyede ne hissetmesi gerektiğini tek bir cümlede söyleyemiyorsanız, önce `/impeccable shape` komutuna geri dönün.
+- **Bozuk bir akışta onboarding çalıştırmak.** Önce akışı düzeltin. Onboarding, çekirdek eylemin bozuk olduğu bir ürünü kurtaramaz.

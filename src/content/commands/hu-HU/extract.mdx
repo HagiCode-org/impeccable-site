@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Újrafelhasználható komponensek, tokenek és minták kinyerése a dizájnsystembe.
+highlights:
+  - Több komponens ugyanazt a problémát máshogy oldja meg.
+  - A tokeneket és mintákat centralizálni kell.
+  - Jobban karbantartható vizuális rendszert szeretnél.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Eltérés felfedezése</span>
+      <span class="docs-viz-flow-hint">Ismétlődő hex-értékek, gombváltozatok, térközskála, szövegstílusok.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Primitívek javaslata</span>
+      <span class="docs-viz-flow-hint">Tokennevek, komponens API-k változóval + mérettel, szövegstílusok.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Hívóhelyek migrálása</span>
+      <span class="docs-viz-flow-hint">A duplikált CSS cseréje az új primitívekre. Semmi árva kód nem marad.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">A szakértelem csak azt vonja ki, ami három vagy több alkalommal fordul elő ugyanazzal a szándékkal. Két használat nem minta, és a migráció mindig ugyanabban a menetben történik.</p>
+</div>
+
+## Mikor használd
+
+A `/impeccable extract` abban a pillanatban jön jól, amikor a kódbázisodból véletlenül dizájnrendszer lett. Ismétlődő gombstílusok 12 helyen. Három változata ugyanannak a kártyának. Hex-színek szétszórva. Kézzel gyártott térközök, amelyek véletlenül illeszkednek egy skálára. Nyúlj hozzá, amikor ezt a sodródást újrafelhasználható primitívekbe szeretnéd összevonni.
+
+Használd, miután egy termék elég funkciót szállított ahhoz, hogy a minták kiderüljenek. A korai kinyerés olyan absztrakciókat hoz létre, amelyek nem fedik a valóságot.
+
+## Hogyan működik
+
+A szakértelem először felfedezi a dizájnrendszer szerkezetét, majd azonosítja a kinyerési lehetőségeket:
+
+1. **Tokenek**: ismétlődő literálértékek (színek, térközök, sugarak, árnyékok, betűméretek) keresése. Tokennevek javaslása, hozzáadás a tokenrendszerhez, használatok cseréje.
+2. **Komponensek**: ismétlődő UI-minták keresése, amelyek kis eltéréssel fordulnak elő (gombok, kártyák, beviteli mezők, modálok). Kinyerés egyetlen komponensbe változatokkal, hívóhelyek migrálása.
+3. **Kompozíciós minták**: ismétlődő elrendezési vagy interakciós minták (formsorok, eszköztár-csoportok, üres állapotok). Kinyerés kompozíciós primitívekbe.
+4. **Szövegstílusok**: ismétlődő betűméret + vastagság + sormagasság kombinációk. Kinyerés szövegstílusokba.
+5. **Animációs minták**: ismétlődő enyhítési, időtartam- vagy kulcskocka-kombinációk. Kinyerés mozgás tokenekbe.
+
+A szakértelem óvatos. Csak olyan dolgokat von ki, amelyek három vagy több alkalommal fordulnak elő, ugyanazzal a szándékkal. Soha nem von ki „azért, mert esetleg később is kellene". A korai absztrakció rosszabb, mint a duplikáció.
+
+## Próbáld ki
+
+```
+/impeccable extract the button styles
+```
+
+Várható kimenet:
+
+- 14 gurba példány található 8 fájlban
+- 4 különálló változat: elsődleges (kitöltött akcentus), másodlagos (keretezett), szellem (csak szöveg), pusztító (kitöltött piros)
+- Mind a 4 változat ugyanazt a méretskáát használja (kicsi, alapértelmezett, nagy)
+- Kinyerve `<Button variant="primary" size="default">` formátumba tokenvezérelt stílusokkal
+- 14 hívóhely migrálva, ~180 sor duplikált CSS eltávolítva
+- 3 hiányzó token hozzáadva: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Gyakori buktatók
+
+- **Túl korai kinyerés.** Két használat nem minta. Három lehet az. Várj, amíg a minta nyilvánvaló.
+- **Túlzott általánosítás.** A kinyert komponensnek szorosan illeszkednie kell az aktuális felhasználási esetekhez, nem kell minden lehetséges jövőbelit előre látnia. Később mindig hozzáadhatsz változatokat.
+- **A migráció elfelejtése.** A kinyerés migráció nélkül maga körül hagyja a régi duplikált kódot, és létrehoz egy harmadik módot is ugyanannak a dolognak a megoldására. Mindig migrálj ugyanabban a menetben.
+- **Olyan dolgok kinyerése, amelyek szándékban eltérnek.** Két gomb, amely hasonlóan néz ki, de más célt szolgál (elsődleges művelet vs. gombként formázott hivatkozás), valószínűleg maradjon külön.

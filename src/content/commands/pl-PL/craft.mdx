@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Ukształtuj projekt, a potem zbuduj go, wszystko w jednym przepływie.
+highlights:
+  - Zaczynasz nową funkcję od zera.
+  - Chcesz odkrywanie, implementację i udoskonalanie wizualne w jednym przebiegu.
+  - Preferujesz wolniejszą, ale bardziej przemyślaną pętlę budowania.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Wywiad odkrywczy. Cel, użytkownicy, ograniczenia, kierunek.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Load references</span>
+      <span class="docs-viz-flow-hint">Przestrzenne, typografia, ruch, kolor, interakcja.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Struktura, hierarchia, typografia, kolor, stany, ruch, responsywność.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterate visually</span>
+      <span class="docs-viz-flow-hint">Sprawdź w przeglądarce, udoskonalaj aż będzie pasować do briefu.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Każda faza jest niepomijalna. Krok odkrywczy to moment, gdzie większość wyników AI zawodzi: zanim pojawi się kod, myślenie jest już zablokowane.</p>
+</div>
+
+## Kiedy używać
+
+`/impeccable craft` to komenda budowania end-to-end. Podaj opis funkcji, a ona uruchomi cały proces: ustrukturyzowane odkrywanie, ładowanie referencji, implementację, iterację wizualną. Użyj jej, gdy zaczynasz nową funkcję od zera i chcesz całego przepływu w jednym wywołaniu.
+
+Sięgnij po nią, gdy:
+
+- **Budujesz nową funkcję i chcesz pełnego przepływu.** Nie chcesz zarządzać krokami samodzielnie.
+- **Wiesz, co budujesz, ale nie jak to powinno wyglądać.** Faza odkrywcza wymusza myślenie projektowe, zanim implementacja je zablokuje.
+- **Chcesz iteracji wizualnej domyślnie.** `craft` sprawdza wynik w przeglądarce i udoskonala aż poziom wykończenia jest wysoki, zamiast wysyłać pierwszą działającą wersję.
+
+Jeśli chcesz tylko myślenia bez kodu, użyj `/impeccable shape` samodzielnie. Jeśli masz już jasną wizję i chcesz po prostu budować, wywołaj `/impeccable` bezpośrednio z opisem funkcji. `craft` znajduje się pomiędzy: ustrukturyzowany, kompletny, opiniotwórczy.
+
+## Jak to działa
+
+`craft` uruchamia cztery fazy po kolei:
+
+1. **Ukształtuj projekt.** Uruchamia `/impeccable shape` wewnętrznie: krótka rozmowa odkrywcza o celu, użytkownikach, treści, ograniczeniach i celach. Wynikiem jest brief projektowy, który możesz przeczytać i zakwestionować.
+2. **Załaduj referencje.** Na podstawie briefu ściąga odpowiednie pliki referencyjne (przestrzenne, typografia, ruch, kolor, interakcja, responsywność, pisanie UX), żeby model miał załadowane odpowiednie zasady, zanim zacznie kodować.
+3. **Zbuduj.** Implementuje funkcję w przemyślanej kolejności: najpierw struktura, potem odstępy i hierarchia, potem typografia i kolor, potem stany, potem ruch, potem responsywność. Każda decyzja odsyła do briefu.
+4. **Iteracja wizualna.** Otwiera wynik w przeglądarce, sprawdza go względem briefu i katalogu antywzorców, i udoskonala aż pasuje do intencji. Ten krok jest krytyczny. Pierwsza działająca wersja nigdy nie jest wersją wysłaną.
+
+Faza odkrywcza jest niepomijalna i to jest sens. Większość interfejsów generowanych przez AI zawodzi, bo nikt nie zapytał, co użytkownik próbuje osiągnąć, zanim model zaczął pisać JSX. `craft` odwraca tę kolejność.
+
+## Wypróbuj
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Oczekuj najpierw wywiadu odkrywczego z 5 do 10 pytaniami. Pytania o twoją grupę docelową, osobowość produktu, ton emocjonalny, antyreferencje i ograniczenia. Potem brief projektowy. Potem implementację, z przeglądarką sprawdzaną na każdym etapie. Oczekuj wielu rund iteracji w fazie wykończenia wizualnego.
+
+Cały przebieg jest dłuższy niż typowa komenda, bo obejmuje myślenie, budowanie i udoskonalanie. To jest kompromis: więcej struktury na początku, mniej poprawek poźniej.
+
+## Pułapki
+
+- **Używanie do małych zmian.** `craft` jest do nowych funkcji, nie poprawek. Dla istniejącego kodu sięgnij po `/impeccable polish`, `/impeccable critique` lub konkretną komendę udoskonalającą.
+- **Śpieszenie się z fazą odkrywczą.** Wywiad wydaje się wolny w porównaniu do "po prostu zacznij kodować". Nie jest. Staranne odpowiedzi na pytania dają ostrzejszy brief, który daje ostrzejszą budowę, która daje mniej przeredaktowań.
+- **Pomijanie iteracji wizualnej.** Ta faza istnieje z powodu. Przepaść między "technicznie działa" a "wydaje się właściwie" jest zamykana przez wykończenie wizualne, nie przegląd kodu. Pozwól jej działać.

@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Extrae componentes, tokens y patrones reutilizables hacia el sistema de diseño.
+highlights:
+  - Múltiples componentes resuelven el mismo problema de forma diferente.
+  - Los tokens y patrones necesitan centralizarse.
+  - Quieres un sistema visual más mantenible.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Repeated hex values, button variants, spacing scales, text styles.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Token names, component APIs with variant + size, text styles.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Replace duplicated CSS with the new primitives. No orphan code left behind.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">La habilidad solo extrae lo que se usa tres o más veces con la misma intención. Dos usos no son un patrón, y la migración siempre ocurre en la misma pasada.</p>
+</div>
+
+## Cuándo usarlo
+
+`/impeccable extract` es para el momento en que tu código se ha convertido accidentalmente en un sistema de diseño. Estilos de botones repetidos en 12 lugares. Tres variantes de la misma tarjeta. Colores hex esparcidos por todas partes. Espaciado hecho a mano que casualmente coincide con una escala. Úsalo cuando quieras consolidar esta deriva en primitivas reutilizables.
+
+Úsalo después de que un producto haya lanzado suficientes funcionalidades como para revelar los patrones. La extracción prematura crea abstracciones que no coinciden con la realidad.
+
+## Cómo funciona
+
+La habilidad primero descubre la estructura del sistema de diseño, luego identifica oportunidades de extracción:
+
+1. **Tokens**: encuentra valores literales repetidos (colores, espaciado, radios, sombras, tamaños de fuente). Propone nombres de tokens, los añade al sistema de tokens, reemplaza los usos.
+2. **Componentes**: encuentra patrones de UI que se repiten con variaciones menores (botones, tarjetas, inputs, modales). Extrae en un único componente con variantes, migra los usos.
+3. **Patrones de composición**: encuentra patrones de layout o interacción que se repiten (filas de formularios, grupos de barras de herramientas, estados vacíos). Extrae en primitivas de composición.
+4. **Estilos de texto**: encuentra combinaciones repetidas de font-size + weight + line-height. Extrae en estilos de texto.
+5. **Patrones de animación**: encuentra combinaciones repetidas de easing, duración o keyframes. Extrae en tokens de movimiento.
+
+La habilidad es cautelosa. Solo extrae cosas usadas tres o más veces, con la misma intención. Nunca extrae "porque podría reutilizarse más adelante". La abstracción prematura es peor que la duplicación.
+
+## Pruébalo
+
+```
+/impeccable extract the button styles
+```
+
+Resultado esperado:
+
+- 14 instancias de botones encontradas en 8 archivos
+- 4 variantes distintas: primary (relleno acento), secondary (con borde), ghost (solo texto), destructive (relleno rojo)
+- Las 4 variantes usan la misma escala de tamaño (small, default, large)
+- Extraídas en `<Button variant="primary" size="default">` con estilos basados en tokens
+- 14 puntos de uso migrados, eliminadas ~180 líneas de CSS duplicado
+- Añadidos 3 tokens faltantes: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Errores comunes
+
+- **Extraer demasiado pronto.** Dos usos no son un patrón. Tres podrían serlo. Espera hasta que el patrón sea obvio.
+- **Sobregeneralizar.** El componente extraído debería coincidir estrechamente con los casos de uso actuales, no anticipar todos los futuros posibles. Siempre puedes añadir variantes después.
+- **Olvidar la migración.** La extracción sin migración deja el código duplicado antiguo y crea una tercera forma de hacer lo mismo. Siempre migra en la misma pasada.
+- **Extraer cosas que difieren en intención.** Dos botones que parecen similares pero sirven propósitos diferentes (acción principal vs enlace estilizado como botón) probablemente deberían permanecer separados.

@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Adicione cor estratégica a interfaces monocromáticas sem ficar chamativo.
+highlights:
+  - A interface parece competente, mas esquecível.
+  - Você precisa de ênfase mais clara sem reescrever toda a estrutura.
+  - A paleta atual não transmite o clima pretendido.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Quando usar
+
+`/impeccable colorize` é o contrapeso para "tudo é cinza". Dashboards que parecem uma parege bege, formulários sem cor de destaque, páginas de conteúdo que poderiam ser de qualquer produto SaaS. Use quando a interface é funcional, mas emocionalmente plana, e você quer calor sem cair na paleta de cores da IA (roxo-para-rosa, ciano neon, brilho no modo escuro).
+
+## Como funciona
+
+A skill começa lendo sua cor de marca, se existir, depois decide onde a cor ganha seu lugar:
+
+1. **Ação primária** recebe a expressão mais forte do tom da marca.
+2. **Acentos secundários** recebem variantes muted ou tingidas, não uma segunda cor completa.
+3. **Neutros** são tingidos em direção ao tom da marca com croma baixo (cerca de 0.005 a 0.01), o que é quase invisível por pixel, mas cria coesão subconsciente.
+4. **Categorias de conteúdo** recebem um sistema de acentos limitado e intencional, não um arco-íris.
+
+Importante, ela usa OKLCH em vez de HSL para que passos de luminosidade iguais pareçam iguais. Conforme a luminosidade se move em direção aos extremos, o croma cai automaticamente. É assim que você obtém cor que parece considerada em vez de computada.
+
+## Experimente
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff esperado:
+
+- Cor de marca movida de um hex fixo para `--color-accent: oklch(62% 0.18 240)`
+- Neutros tingidos com 0.007 de croma em direção ao tom da marca
+- Botão primário recebe o acento completo, botões secundários recebem ink/mist
+- Série do gráfico usa 3 tons distintos, todos com luminosidade equivalente para que nenhuma série domine visualmente
+- Ilustração do estado vazio recebe um lavagem suave de acento
+
+## Armadilhas
+
+- **Executar sem um tom de marca.** Colorize precisa de um ponto de partida. Se o `PRODUCT.md` não especifica um, ele perguntará. Não deixe escolher entre os padrões da paleta de cores da IA.
+- **Esperar que resolva o problema da paleta de cores da IA.** Se seu design já tem gradientes roxos e ciano neon, você precisa de `/impeccable quieter` primeiro, depois colorize pode reconstruir.
+- **Usar em interfaces já coloridas.** Isso é trabalho para `/impeccable quieter`. Colorize adiciona, não subtrai.

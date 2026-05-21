@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: De ontwerpintelligentie achter elk commando.
+highlights:
+  - Je wilt één ingangspunt voor lay-out, typografie, kleur, beweging en UX-structuur samen.
+  - Je bent een richting aan het verkennen en wilt dat de skill het juiste sub-werkschema kiest.
+  - Je hebt de breedste ontwerpcontext nodig in plaats van een beperkte eenmalige bewerking.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Wanneer te gebruiken
+
+`/impeccable` is het hoofdcommando. Roep het direct aan als je vrije-vorm ontwerpwerk wilt met het volledige handboek geladen, zonder een gespecialiseerd commando te kiezen. Het is de fallback die je gebruikt wanneer geen van de 23 specialisten (`audit`, `polish`, `critique` en de rest) precies past bij wat je probeert te doen.
+
+Gebruik `/impeccable` direct wanneer:
+
+- **Je niet zeker weet welk commando past.** Beschrijf wat je wilt in gewone taal en laat de skill de juiste aanpak kiezen.
+- **Het werk meerdere disciplines omvat.** "Maak deze hero-sectie opnieuw" raakt lay-out, typografie, kleur en beweging. Eén commando kan dat niet alleen bevatten.
+- **Je de volledige ontwerpintelligentie wilt zonder beperkingen.** Elk referentiebestand geladen, elk anti-patroon gecontroleerd, geen vooraf ingesteld werkschema.
+
+Voor gestructureerde werkschema's kun je de gespecialiseerde commando's in de zijbalk gebruiken. Voer eerst `/impeccable teach` uit op elk nieuw project om PRODUCT.md en DESIGN.md aan te maken. `/impeccable craft` koppelt een discovery-interview aan een volledige build met live visuele iteratie. `/impeccable shape` produceert een ontwerpbrief zonder code aan te raken. `/impeccable live` geeft je een browser-picker met drie varianten per element. De evaluatie- en verfijningscommando's (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` en de rest) dragen elk een specifiek deel van het werk.
+
+## Hoe het werkt
+
+De meeste AI-gegenereerde UI's falen op dezelfde manier: generieke lettertypes, paarse kleurovergangen, kaartgrids op kaartgrids, overal glassmorfisme. `/impeccable` geeft je AI een sterk standpunt. Het laadt een eigenwijs ontwerphandboek plus een lange lijst met anti-patronen, en dwingt het model om zich te committeren aan een specifieke esthetische richting voordat er een enkele regel code wordt geschreven.
+
+Twee bestanden in de hoofdmap van je project bepalen alles wat de skill doet:
+
+- **`PRODUCT.md`** bevat register (brand vs product), doelgebruikers, merkpersoonlijkheid, anti-referenties, ontwerpprincipes. Beantwoordt "wie, wat, waarom".
+- **`DESIGN.md`** bevat kleuren, typografie, elevatie, componenten, do's en don'ts, in het zes-delige Google Stitch-formaat. Beantwoordt "hoe het eruitziet".
+
+Elk commando leest beide bestanden voordat er iets wordt gegenereerd. **Register** bepaalt welke standaardwaarden worden geladen. Brand (marketing, landingspagina's, portfolio's, waar ontwerp HET product is) en product (app-UI, dashboards, tools, waar ontwerp het product DIENT) hebben verschillende standaardwaarden voor typografie, beweging, kleur en dichtheid. Als je het eenmaal opgeeft in PRODUCT.md, betekent dit dat `/impeccable typeset` geen redactionele tijdschriftlettertypes op een dashboard zal toepassen, en geen product-standaardwaarden op een campagnepagina. Zie de [brand vs product tutorial](/tutorials/brand-vs-product) voor hoe de twee uit elkaar lopen.
+
+Bij eerste gebruik in een project voert de skill automatisch de `teach`-flow uit: een kort interview dat PRODUCT.md schrijft en vervolgens delegeert naar `/impeccable document` voor DESIGN.md. Toekomstige commando's lezen de bestanden zonder opnieuw te vragen.
+
+## Probeer het
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Beide prompts zijn bewust vaag. `/impeccable` kiest een sterke esthetische richting die consistent is met je register, commit aan niet-standaard lettertypes, vermijdt het AI-kleurenpalet en maakt de specifieke keuzes die een ontwerper zou maken. Geen commandonaam om eerst te kiezen, geen stap-voor-stap werkschema om te volgen.
+
+Voor visuele iteratie in de browser in plaats van chat:
+
+```
+/impeccable live
+```
+
+Kies elk element op je draaiende dev-server. Plaats een opmerking of arcering. Krijg drie productiekwaliteit varianten direct ingewisseld via HMR. Accepteer degene die je wilt en het wordt teruggestuurd naar de broncode.
+
+## Pin commando's terug als snelkoppelingen
+
+v3.0 consolideerde 18 zelfstandige skills tot een enkele `/impeccable` met 23 sub-commando's. Als je de korte vorm van een specifiek commando mist, pin het dan terug:
+
+```
+/impeccable pin critique
+```
+
+Vanaf nu roept `/critique` direct `/impeccable critique` aan. Het schrijft een lichte omleidingsskill die delegeert naar de parent, zodat updates van de skill doorstromen zonder opnieuw te pinnen.
+
+Handige pins om te proberen:
+
+- `/impeccable pin polish` voor eindbewerking
+- `/impeccable pin audit` voor deterministische a11y/perf-controles
+- `/impeccable pin live` voor de browser-iteratieflow
+- `/impeccable pin critique` voor ontwerpbeoordeling
+
+Om te verwijderen: `/impeccable unpin critique`. Pins bestaan als mappen met het voorvoegsel `i-` in je harness skills-map (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, etc.), dus je kunt ze ook handmatig verwijderen.
+
+## Valkuilen
+
+- **Het behandelen als een stijlgids.** Het is een eigenzinnige ontwerppartner, geen linter. De standaardwaarden bestaan om de lat te verhogen, niet om jouw oordeel te overrulen. Als je een echte reden hebt om tegen te spreken (merkrichtlijn, toegankelijkheidsbeperking, gebruikersonderzoek), spreek dan tegen en leg uit waarom. De skill werkt met je mee. Wat voor slechtere output zorgt, is de mening negeren zonder reden.
+- **Verwachten dat het bestaande code repareert.** `/impeccable` is voor creatie. Voor verfijning kun je beter `/impeccable polish`, `/impeccable distill` of `/impeccable critique` gebruiken.
+- **Het uitvoeren voordat `teach` de kans heeft gehad om context op te slaan.** Op een vers project interviewt het je ter plekke, wat prima is maar trager. `/impeccable teach` expliciet uitvoeren als je allereerste commando is een klein beetje soepeler.
+- **De registervraag overslaan.** Brand- en product-standaardwaarden wijken zoveel af dat uitvoeren op het verkeerde register subtiel verkeerde output oplevert. Als `PRODUCT.md` geen `## Register` veld heeft (legacy), voer dan `/impeccable teach` uit om het toe te voegen.

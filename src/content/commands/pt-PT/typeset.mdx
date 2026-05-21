@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Corrija tipografia que parece genérica, inconsistente ou acidental.
+highlights:
+  - O texto é tecnicamente legível mas não é persuasivo nem controlado.
+  - Títulos e corpo do texto colapsam uns sobre os outros.
+  - A superfície precisa de um tom mais forte através do tipo em vez de mais decoração.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Quando utilizar
+
+Recorra ao `/impeccable typeset` quando o texto numa página parece tipografia predefinida em vez de tipografia desenhada. Hierarquia turva, três tamanhos que parecem iguais, corpo do texto a 14px, um tipo de destaque que é apenas Inter bold, manchetes sem atenção ao kerning.
+
+Acionadores comuns: "a hierarquia parece plana", "a legibilidade está errada", "os tipos de letra parecem genéricos".
+
+## Como funciona
+
+A competência avalia a tipografia em cinco dimensões:
+
+1. **Escolha de tipos de letra**: está a utilizar padrões invisíveis (Inter, Roboto, Arial, Open Sans), o tipo de letra corresponde à marca, existem mais de 2 a 3 famílias.
+2. **Hierarquia**: títulos, corpo e legendas são claramente diferentes à primeira vista, o contraste de tamanho é pelo menos 1.25x entre degraus, os contrastes de peso são legíveis.
+3. **Dimensionamento e escala**: existe uma escala tipográfica coerente, o corpo do texto cumpre o mínimo de 16px, a escala é fixa-rem para interfaces de aplicações ou fluida-clamp para páginas de marketing.
+4. **Legibilidade**: comprimento de linha de 45 a 75 caracteres, entrelinha ajustada ao tipo de letra e contexto, contraste.
+5. **Consistência**: o mesmo elemento utiliza o mesmo tratamento em todo o lado, sem sobreposições pontuais de font-size.
+
+De seguida, corrige o que encontra: escolhe tipos de letra distintivos, constrói uma escala modular, alarga o contraste de hierarquia, define o comprimento de linha e entrelinha adequados.
+
+## Experimente
+
+```
+/impeccable typeset the article layout
+```
+
+Diff esperado:
+
+- Tipo de destaque trocado de Inter 700 para um tipo de destaque verdadeiro
+- Escala tipográfica reconstruída: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, rácio 1.333
+- Corpo do texto aumentado de 14px para 16px
+- Comprimento de linha limitado a 68ch na coluna do artigo
+- Entrelinha 1.6 para o corpo, 1.1 para destaque
+- Removidos quatro valores pontuais de `font-size` dispersos nos estilos dos componentes
+
+## Armadilhas
+
+- **Pedir um novo tipo de letra sem contexto.** Typeset escolherá com base na voz da marca do `PRODUCT.md`. Se ainda não executou `/impeccable teach`, a sugestão será genérica.
+- **Recorrer ao typeset quando o problema é o layout.** Se os parágrafos estão bem mas a página parece apertada, o que pretende é `/impeccable layout`.
+- **Esperar escalas fluidas clamp em interfaces de aplicações.** Typeset utiliza escalas fixas rem para interfaces de aplicações. Tipografia fluida é para páginas de marketing e conteúdo onde o comprimento de linha varia drasticamente.

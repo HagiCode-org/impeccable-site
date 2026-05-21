@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: 產生符合規範的 DESIGN.md，捕捉你的視覺系統，讓每個 AI 代理保持品牌一致。
+highlights:
+  - 程式庫中已經存在一個真正的設計語言。
+  - 你需要一個色彩、字型、間距和元件的便攜摘要。
+  - 未來的設計工作正在偏離，因為系統是隱性的。
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch 格式</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">創意北極星：<em>"The Editorial Sanctuary."</em> 安靜的字型、充裕的留白、一個堅定的重點色。</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">預設扁平。陰影僅作為狀態的回應出現。</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">將中性色向重點色調偏色。</span>
+        <span class="docs-viz-designmd-dont">用漸層文字來強調。</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">六個段落是固定的，按固定順序，使用固定名稱。同時，<code>DESIGN.json</code> 作為機器可讀的附帶檔案，供即時模式的設計面板使用。</p>
+</div>
+
+## 何時使用
+
+當你已經有足夠的視覺系統可以記錄時，執行 `/impeccable document`：色彩、字型、至少一個按鈕和一張卡片。指令掃描你的程式庫，提取找到的 token 和元件模式，並在專案根目錄寫入一個遵循 [Google Stitch DESIGN.md 格式](https://stitch.withgoogle.com/docs/design-md/format/) 的 `DESIGN.md`，六個段落按固定順序排列，可與每個其他 DESIGN.md 感知的工具互通。
+
+以下情況請使用：
+
+- **你剛執行了 `/impeccable teach`** 且 `PRODUCT.md` 現在存在。Document 是對應的視覺端檔案。
+- **一個指令提示你執行。** Live、craft 和 polish 都會讀取 DESIGN.md。如果它不存在，技能會建議先執行 document。
+- **設計已經偏離**了舊的 DESIGN.md，檔案不再描述實際系統。
+- **在大規模重新設計之前**，捕捉當前狀態作為下一個方向的參考。
+
+對於尚無程式碼的專案（全新的 `teach` 執行，尚未建構任何東西），有一個種子模式：`/impeccable document --seed` 問五個快速的策略性問題（色彩策略、字型方向、動態能量、參考、反面參考）並寫入一個鷹架。一旦有了程式碼，重新以掃描模式執行。
+
+## 運作方式
+
+掃描階段按優先順序找到設計資產：CSS 自訂屬性、Tailwind 設定、CSS-in-JS 主題、設計 token 檔案、元件原始碼、全域樣式表，最後是如果瀏覽器可用時從即時渲染輸出的計算樣式。它自動提取所有能提取的東西，然後為需要創意輸入的部分問一組分組問題：**創意北極星**（整個系統的單一命名隱喻，如「編輯聖殿」）、描述性的色彩名稱、高度哲學，以及元件性格。
+
+輸出是一個正好六個段落的 DESIGN.md：Overview、Colors、Typography、Elevation、Components、Do's and Don'ts。標題逐字元固定，以便檔案可被其他工具解析。同時寫入 `DESIGN.json` 作為機器可讀的附帶檔案。該附帶檔案是即時模式設計面板用來渲染*這個專案*的實際按鈕、輸入框、導航和卡片磁磚，而非通用近似版本的東西。
+
+每個其他指令在呼叫時讀取 DESIGN.md。變體、打磨、審查和新功能無需被告知即可繼承視覺系統。
+
+## 試試看
+
+```
+/impeccable document
+```
+
+在一個已經定義了 token 的專案上，這大約需要兩分鐘：掃描找到你的色盤和字型堆疊，你從 2 或 3 個選項中選擇一個北極星，確認描述性的色彩名稱（「深沉柔和的藍綠」，而非「blue-800」），檔案就落在專案根目錄。
+
+在全新專案上：
+
+```
+/impeccable document --seed
+```
+
+五個問題，大約五分鐘。檔案是一個鷹架，標記了 `<!-- SEED -->` 註解，誠實標示它的本質。一旦你實作了 token，不帶 flag 重新執行。
+
+## 注意事項
+
+- **太早執行。** 在一個沒有實作 token 的專案上，種子模式是正確的。不要捏造程式碼無法支撐的完整規格。假的 DESIGN.md 比沒有 DESIGN.md 更糟糕。
+- **把 DESIGN.md 當作僅供人類的文件。** 它主要是給 AI 的。每個其他指令都讀取它。格式中的強制性（「絕不」、「總是」、命名規則）是刻意的。
+- **添加 Layout / Motion / Responsive 作為頂層段落。** 規格有六個段落，按固定順序，使用固定名稱。將版面或動態內容折疊到 Overview（哲學層級的規則）或 Components（每個元件的行為）中。
+- **無聲地覆寫現有的 DESIGN.md。** Document 總是先確認。如果你想重新開始，將現有檔案重新命名移開，或明確告訴技能要覆寫。

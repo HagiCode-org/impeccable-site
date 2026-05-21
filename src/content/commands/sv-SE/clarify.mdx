@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Skriv om forvirrande UX-kopiering sa att granssnitt forklarar sig sjalva.
+highlights:
+  - Anvandare tvekar for att formuleringen ar vag.
+  - Gransnittet behovr battre instruktions- eller felkopiering.
+  - Produktflodet ar bra, men spraket saktar ner manniskor.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Nar du ska anvanda det
+
+`/impeccable clarify` ar for granssnittstext som gor att manniskor stannar och tanker. Forvirrande etiketter, tvetydig knappkopiering, felmeddelanden som skyller pa anvandaren, tooltips som upprepar etiketten, tomma tillstand som sager nonting anvandbart. Använd det nar problemet inte ar layouten eller fargen, det ar orden.
+
+Bra trigger: "anvandare forstar inte det har faltet", "felmeddelandet ar inte hjalpsamt", "jag kan inte skriva bra knappkopiering", "den har tooltipen ar bortkastad".
+
+## Hur det fungerar
+
+Fardigheten skriver om text over de ytor dar de flesta UX-kopieringsproblem bor:
+
+1. **Etiketter och falthintar**: direkt, specifik, sager vad som forvantas.
+2. **Knappkopiering**: verb-forst, beskriver utfallet, inte atgarden. "Spara andringar" inte "OK".
+3. **Felmeddelanden**: forklarar vad som gick fel, vems fel det ar och vad som ska goras harnast. Aldrig skylla pa anvandaren.
+4. **Tomma tillstand**: orientera anvandaren, forklara varfor tillstandet ar tomt, erbjuda ett nasta steg.
+5. **Tooltips och hjalptext**: addera information etiketten inte kan bar, aldrig aterge den.
+6. **Bekraftelsedialoger**: namnge konsekvenserna, inte atgarden.
+
+Fardigheten anvander publiken och sinneslaget fran `PRODUCT.md` for att stalla in rosten. Teknisk publik far precist sprak. Konsumentpublik far talsprakt. Stressade anvandare far kort text. Angsliga anvandare (betalning, radering) far trygghet.
+
+## Prova det
+
+```
+/impeccable clarify the billing form
+```
+
+Fore och efter, typiskt:
+
+- Etikett "Billing address" -> "Address pa ditt kort"
+- Platshallare "Enter your VAT ID" -> "VAT ID (frivilligt, for foretag)"
+- Fel "Invalid input" -> "Det har kortnumret ar 15 siffror. Du angav 14."
+- Knapp "Submit" -> "Debitera 29 kr och prenumerera"
+- Tomt tillstand "No transactions yet" -> "Din forsta debitering kommer att visas har efter din forsta bestallning."
+
+## Fallgropar
+
+- **Att skriva smartare, inte tydligare.** Clarify ar inte for rostuppgraderingar. Om kopieringen redan ar tydlig, anvand inte den har färdigheten. Använd `/impeccable delight` istallet nar du vill ha personlighet.
+- **Att hoppa over publikfragan.** Clarify behovr veta vem som laser. Om `PRODUCT.md` inte anger publikens tekniska niva, kommer omskrivningarna att vara generiska.
+- **Att kora clarify pa marknadsforingskopiering.** Clarify ar for funktionell UX-text: etiketter, fel, instruktioner. Marknadsforingskopiering behovr en annan uppsattning rörelser och en mansklig skrivare.

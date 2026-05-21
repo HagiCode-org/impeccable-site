@@ -1,0 +1,133 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Designova inteligence za kazdym prikazem.
+highlights:
+  - Chcete jeden vstupni bod pro layout, typografii, barvy, pohyb a UX strukturu dohromady.
+  - Zkoumate smer a chcete, aby dovednost vybrala spravny pod-pracovni postup.
+  - Potrebujete sirokevy designovy kontext misto uzkeho jednoprikazoveho pruchodu.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accessibility</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performance</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patterns</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Pet dimenzi hodnocenych 0 az 4, kazdy nalezek oznacen P0 (blokuje vydani) az P3 (lesteni). Audit dokumentuje; neopravuje. Smerujte nalezy do <code>/impeccable harden</code>, <code>/impeccable polish</code> nebo <code>/impeccable optimize</code>.</p>
+</div>
+
+## Kdy pouzit
+
+`/impeccable` je hlavni prikaz. Zavolejte jej primo, kdyz chcete volnou designovou praci s nactenym kompletnim navodem, bez vyberu specializovaneho prikazu. Je to zalozni moznost, ktere siahnete, kdyz zadny z 23 specialistu (`audit`, `polish`, `critique` a ostatni) presne neodpovida tomu, co se snazite udelat.
+
+Siahnete po `/impeccable` primo kdyz:
+
+- **Nevite, ktery prikaz se hodi.** Popiste, co chcete, prostym jazykem a nechte dovednost vybrat spravny pristup.
+- **Prace zahrnuje vice oblasti.** "Predelejte tuto hero sekci" se dotyka layoutu, typografie, barev a pohybu. Jeden prikaz to nemuze pokryt.
+- **Chcete plnou designovou inteligenci bez omezeni.** Vsechny referencni soubory nacteny, vsechny anti-patterny zkontrolovany, zadny prednastaveny pracovni postup.
+
+Pro strukturovane postupy siahnete po specializovanych prikazech v postrannim panelu. Nejprve spustte `/impeccable teach` v kazdem novem projektu pro vytvoreni PRODUCT.md a DESIGN.md. `/impeccable craft` spojuje discovery interview s kompletnim sestavenim a vizualni iteraci. `/impeccable shape` vytvari designovy brief bez zasahu do kodu. `/impeccable live` vam poskytne vyber prvku v prohlizeci se tremi variantami pro kazdy prvek. Prikazy pro hodnoceni a rafinaci (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` a dalsi) kazdy pokryvaji konkretni cast prace.
+
+## Jak to funguje
+
+Vetsina AI generovanych UI selhava stejnym zpusobem: obecne fonty, fialove gradienty, karty na kartach, vsude glassmorphism. `/impeccable` dava vasemu AI silny vlastni hledisko. Nacte prvni rady designovou prirucku a dlouhy seznam anti-patternu, pak tla model, aby se zavazal ke konkretnimu estetickemu smeru jeste pred napsanim jedineho radku kodu.
+
+Dva soubory v korenovem adresari vaseho projektu tvori vse, co dovednost dela:
+
+- **`PRODUCT.md`** nese registr (brand vs product), cilove uzivatele, osobnost znacky, anti-reference, designove principy. Odpovida na "kdo, co, proc".
+- **`DESIGN.md`** nese barvy, typografii, elevaci, komponenty, do's and don'ts v sestisekcnovem Google Stitch formatu. Odpovida na "jak to vypada".
+
+Kazdy prikaz cte oba soubory pred generovanim. **Registr** rozhoduje, ktere vychozi hodnoty se nactou. Brand (marketing, landing, portfolio, kde design JE produkt) a product (aplikacni UI, dashboardy, nastroje, kde design SLOUZI produktu) maji ruzne vychozi hodnoty pro typografii, pohyb, barvy a hustotu. Jedno zadani v PRODUCT.md znamena, ze `/impeccable typeset` nebude tisknout editorial-magazine fonty na dashboard a nebude tisknout produktu prizpusobene vychozi hodnoty na kampanovou stranku. Prohlédnete si [navod brand vs product](/tutorials/brand-vs-product), jak se tyto dva pristupy lisi.
+
+Pri prvnim pouziti v projektu dovednost automaticky spusti tok `teach`: kratke interview, ktere zapise PRODUCT.md a pak prenese na `/impeccable document` pro DESIGN.md. Budouci prikazy ctou soubory bez opakovaneho dotazovani.
+
+## Vyzkousejte to
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Oba zadani jsou umyslne neurcite. `/impeccable` vybere silny esteticky smer souladny s vasim registrem, zavaze se k ne-defaultnim fontum, vyhne se AI palete barev a udelat specificke volby, ktere by udelal designer. Zadne jmeno prikazu k vyberu, zadny krok za krokem pracovni postup k dodrzovani.
+
+Pro vizualni iteraci v prohlizeci misto chatu:
+
+```
+/impeccable live
+```
+
+Vyberte jakykoli prvek na bezicim dev serveru. Pridajte komentar nebo nakreslete caru. Ziskate tri produkce kvalitni varianty vlozene pres HMR. Potvrdte tu, kterou chcete, a ona se zapise do zdrojoveho kodu.
+
+## Pripnete si prikazy zpet jako zkratky
+
+v3.0 sloucila 18 samostatnych dovednosti do jedineho `/impeccable` s 23 pod-prikazy. Pokud vam chyba kratka forma konkretniho prikazu, pripnete si ji zpet:
+
+```
+/impeccable pin critique
+```
+
+Odted `/critique` vyvola `/impeccable critique` primo. Zapise odlehcenou presmerovavajici dovednost, ktera deleguje na rodice, takze aktualizace dovednosti projdou bez opetovneho pripinani.
+
+Uzitecne piny k vyzkouseni:
+
+- `/impeccable pin polish` pro praci v poslednim pruchodu
+- `/impeccable pin audit` pro deterministicka a11y/perf kontroly
+- `/impeccable pin live` pro prohlizeci iteracni tok
+- `/impeccable pin critique` pro designovy review
+
+Pro odebrani: `/impeccable unpin critique`. Piny jsou ulozene jako adresare s predponou `i-` ve vasi harness slozce dovednosti (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` atd.), takze je muzete smazat i rucne.
+
+## Na co si dat pozor
+
+- **Zachazet s tim jako se style guide.** Je to prvni rady designovy partner, nikoli linter. Vychozi hodnoty existuji pro zvyseni urovne podlahy, nikoli pro prepisovani vaseho usudku. Pokud mate skutecny duvod namitat (navod značky, omezeni pristupnosti, uzivatelsky vyzkum), namitejte a vysvetlete proc. Dovednost s vami bude spolupracovat. Co produkuje horsi vystup, je ignorovani nazoru bez duvodu.
+- **Ocekavat, ze opravi existujici kod.** `/impeccable` je pro tvorbu. Pro rafinaci siahnete po `/impeccable polish`, `/impeccable distill` nebo `/impeccable critique`.
+- **Spusteni predtim, nez ma `teach` sanci ulozit kontext.** Na novem projektu vas provede interview za behu, coz je v poradku, ale pomalejsi. Spusteni `/impeccable teach` explicitne jako vas uplne prvni prikaz je o neco plynulejsi.
+- **Preskoceni otazky registru.** Brand a product vychozi hodnoty se dost lisi, takze beh na spatnem registru produkuje jemne spatny vystup. Pokud `PRODUCT.md` nema pole `## Register` (legacy), spustte `/impeccable teach` pro jeho pridani.

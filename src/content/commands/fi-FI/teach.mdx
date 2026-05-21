@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Opetta Impeccableille kuka tuotteesi käyttäjä on, kerran per projekti.
+highlights:
+  - Projektilta puuttuu suunnittelukontekstitiedosto vielä.
+  - Eri avustajat tarvitsevat yhden jaetun totuuden lähteen.
+  - Haluat tulevien komentojen perivän brändin ja tuotesuunnan.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Ladataan jokaisessa komennossa</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Rekisteri</span>
+        <span class="docs-viz-file-v">Tuote. Suunnittelu palvelee tehtävää.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Käyttäjät</span>
+        <span class="docs-viz-file-v">Hälytyksellä olevat SRE:t, lukevat nopeasti, usein pimeässä.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brändiääni</span>
+        <span class="docs-viz-file-v">Rauhallinen, kliininen, ei markkinointia.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-viitteet</span>
+        <span class="docs-viz-file-v">Violetit liukuvärit. Lasimofismi. "Tee tuottavuudestasi enemmän."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Jokainen komento lukee tämän ennen yhdenkään koodirivin kirjoittamista.</div>
+  </div>
+  <p class="docs-viz-caption">Valmis PRODUCT.md. Vain strategia: kuka, mitä, miksi. Ei värejä, ei fontteja, ei pikseliarvoja, ne asuvat DESIGN.md:ssa.</p>
+</div>
+
+## Milloin käyttää
+
+Suorita `/impeccable teach` kerran projektin alussa. Se on sisäänpääsy. Ilman sitä jokainen muu komento tuottaa suunnittelua joka on teknisesti asiantuntevaa mutta geneerisesti sävytettyä: perus-SaaS-ääni, turvalliset oletusfontit, tekoälyn väripalettia. Sen kanssa jokainen komento lukee vastauksesi ennen tuottamista.
+
+Turvaudu siihen kun:
+
+- **Olet juuri asentanut Impeccablen uuteen projektiin.** Ensimmäinen asia ajettavaksi. Muut komennot ohjaavat sinua siihen jos ohitat.
+- **Projektin brändisuunta on muuttunut.** Uusi positonointi, uusi yleisö, uusi ääni. Suorita `teach` uudelleen ja päivitetty konteksti virtaa läpi jokaiseen komentoon.
+- **Toinen komento sanoi "suunnittelukontekstia ei löytynyt"** ja pysähtyi. Se on signaali: suorita teach, sitten jatka.
+
+## Miten se toimii
+
+Teach kirjoittaa kaksi täydentävää tiedostoa projektin juureen:
+
+- **`PRODUCT.md`** on strateginen tiedosto. Rekisteri (brändi tai tuote), kohdekäyttäjät, tuotteen tarkoitus, brändipersoonallisuus, anti-viitteet, suunnitteluperiaatteet, saavutettavuustarpeet. Vastaa kysymykseen "kuka, mitä, miksi".
+- **`DESIGN.md`** on visuaalinen tiedosto. Värit, typografia, korkeus, komponentit, tehdään- ja ei-tehdä -säännöt. Vastaa kysymykseen "miten se näyttää". Kirjoitetaan delegoidun `/impeccable document`-komennon toimesta, jonka teach kutsuu lopuksi.
+
+Työnkulku skannaa koodipohjan ensin (README, package.json, komponentit, tokenit, brändi-resurssit) ja muodostaa **rekisterihypoteesia**: brändi (laskeutumissivut, markkinointi, portfolio, jossa suunnittelu ON tuote) tai tuote (sovelluskäyttöliittymä, kojelaudat, työkalut, joissa suunnittelu PALVELEE tuotetta). Rekisteri on ensimmäinen kysymys, koska se muokkaa jokaista alavirran vastausta: typografiaoletukset, liike-energia, väristrategia, viitejoukko jonka komennot kuten `/impeccable typeset` lataavat. Rekisterin jälkeen teach kysyy vain mitä se ei voinut päätellä: käyttäjät, persoonallisuus kolmella todellisella sanalla, viitteet ja anti-viitteet, saavutettavuusvaatimukset.
+
+PRODUCT.md on vain strateginen. Ei värejä, ei fontteja, ei pikseliarvoja. Ne asuvat DESIGN.md:ssa. Kahden tiedoston erillään pitäminen on tarkoituksellista: strategia voi pysyä vakaana kun visuaalinen järjestelmä kehittyy.
+
+## Kokeile
+
+```
+/impeccable teach
+```
+
+Odota 5-8 minuutin haastattelu. Ensimmäinen kysymys on yleensä rekisteristä; loput ovat lyhyitä. Teach siteeraa takaisin mitä se päätteli koodistasi ("reiteistä tämä näyttää tuotepinnalta, täsmää?") joten olet vahvistamassa, ei aloittamassa tyhjästä.
+
+Lopuksi teach tarjoaa suorittaa `/impeccable document`-komennon puolestasi. Sano kyllä ellet ole erityinen syy viivyttää. Todellinen DESIGN.md on mikä pitää muunnelmat, viimeistelyt ja arvioinnit brändissä.
+
+## Sudenkuopat
+
+- **Ohittaminen "kokeillaksesi komentoa nopeasti".** Jokainen muu komento haastattelee sinua lennosta sen sijaan. Teachin suorittaminen ensin on nopeampaa, ei hitaampaa.
+- **Geneeristen vastausten antaminen.** "Moderni ja puhdas" ei ole hyödyllistä. "Lämmin, mekaaninen, mielipiteellinen" on. Ole yksityiskohtainen. Ole valmis eristäytymään turvallisista oletuksista.
+- **PRODUCT.md:n kohteleminen muuttumattomana.** Tiedosto on sinun. Jos teach laittoi sinne jotain joka ei ole aivan oikein, muokkaa sitä. Jokainen komento lukee nykyisen tiedoston.
+- **Vain adjektiivien listaaminen viitteiksi.** Brändit, tuotteet, painetut esineet: nimettyjä, ei kuvailtuja. "Klim Type Foundry -näytesivut", ei "tekninen ja puhdas". Anti-viitteiden tulisi olla yhtä yksityiskohtaisia.

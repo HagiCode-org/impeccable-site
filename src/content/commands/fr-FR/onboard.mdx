@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Concevoir les expériences de première utilisation, les états vides et les parcours vers la valeur.
+highlights:
+  - De nouveaux utilisateurs arrivent sans contexte.
+  - Le produit a besoin d'une meilleure première action réussie.
+  - Les états vides et les étapes de configuration font trop peu d'enseignement.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Quand l'utiliser
+
+`/impeccable onboard` est pour les moments qui déterminent si un nouvel utilisateur reste : le premier écran, l'état vide, le parcours de configuration, la visite guidée du produit, le vide du « qu'est-ce que je fais maintenant ». Utilisez-le quand l'activation est faible, quand les nouveaux utilisateurs abandonnent avant d'atteindre la valeur, ou quand votre produit a des états vides qui disent « aucun élément pour le moment » et s'arrêtent là.
+
+## Comment ça marche
+
+La commande part d'une seule question : quel est le moment aha, et combien vite un nouvel utilisateur peut-il y arriver. Chaque décision de design pointe vers ce moment.
+
+Elle travaille sur les surfaces qui façonnent les premières impressions :
+
+1. **Expérience de première utilisation** : les moments immédiatement après l'inscription. L'utilisateur devrait-il voir une visite guidée, un canvas vide, un exemple rempli, ou rien du tout. Choisissez l'approche qui correspond au produit.
+2. **États vides** : chaque écran sans données est orienté. Où suis-je, pourquoi est-ce vide, que dois-je faire ensuite, à quoi ça ressemblera une fois rempli.
+3. **Configuration et installation** : la configuration requise est minimisée, les valeurs par défaut sont intelligentes, chaque étape explique pourquoi elle compte.
+4. **Divulgation progressive** : les fonctionnalités avancées restent en retrait jusqu'à ce qu'elles soient méritées.
+5. **Événements d'activation** : le moment où un utilisateur expérimente pour la première fois la valeur fondamentale est instrumenté et célébré, discrètement.
+
+La commande résiste à deux modes de défaillance courants : l'onboarding sur-tutorialisé où les utilisateurs cliquent à travers un carrousel avant de pouvoir toucher à quoi que ce soit, et le zéro-onboarding où les utilisateurs sont largués dans une app vide et censés comprendre par eux-mêmes.
+
+## Essayez
+
+```
+/impeccable onboard the editor
+```
+
+Résultat typique :
+
+- Première utilisation : remplace l'éditeur vide par un exemple de document rempli que l'utilisateur peut modifier. Le bouton Annuler rejette l'exemple, l'édition remplace le contenu par le travail de l'utilisateur.
+- État vide sur la liste de documents : « Aucun document pour le moment. Créez le vôtre, ou importez depuis Notion, Google Docs, ou Markdown. »
+- Configuration : réduction de 6 champs obligatoires à 1 (nom de l'espace de travail). Tout le reste a une valeur par défaut intelligente et peut être modifié plus tard dans les paramètres.
+- Activation : la première fois qu'un utilisateur enregistre un document, un toast discret dit « Enregistré. Votre travail est dans le cloud maintenant. » Ponctuel, non répété.
+
+## Pièges courants
+
+- **Ajouter une visite guidée du produit comme réponse par défaut.** La plupart des produits n'ont pas besoin d'une visite guidée. Ils ont besoin d'un meilleur premier écran. Les visites guidées sont une béquille.
+- **Concevoir l'onboarding sans définir le moment aha.** Si vous ne pouvez pas dire en une phrase ce que l'utilisateur devrait ressentir dans les 60 premières secondes, revenez d'abord à `/impeccable shape`.
+- **Exécuter onboard sur un flux cassé.** Corrigez le flux d'abord. L'onboarding ne peut pas sauver un produit où l'action fondamentale est cassée.

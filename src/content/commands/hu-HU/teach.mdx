@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Tanítsd meg Impeccable-nek, kinek szól a terméked, projektenként egyszer.
+highlights:
+  - A projektnek még nincs dizájnkontextus-fájlja.
+  - Különböző közreműködőknek egy közös igazságforrásra van szükségük.
+  - Azt szeretnéd, hogy a jövőbeli parancsok örököljék a márka- és termékirányt.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Betöltve minden parancsnál</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Regiszter</span>
+        <span class="docs-viz-file-v">Termék. A dizájn a feladatot szolgálja.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Felhasználók</span>
+        <span class="docs-viz-file-v">Ügyeletes SRE-k, gyorsan olvasnak, gyakran sötétben.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Márkahang</span>
+        <span class="docs-viz-file-v">Nyugodt, klinikus, sallang nélkül.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-referenciák</span>
+        <span class="docs-viz-file-v">Lila gradiensek. Glassmorfizmus. „Turbózd a termelékenységed."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Minden parancs beolvassa ezt, mielőtt egyetlen sor kódot írna.</div>
+  </div>
+  <p class="docs-viz-caption">Egy kész PRODUCT.md. Csak stratégia: kik, mik, miért. Nincsenek színek, nincsenek betűk, nincsenek képpont-értékek, azok a DESIGN.md-ben élnek.</p>
+</div>
+
+## Mikor használd
+
+Futtasd a `/impeccable teach` parancsot egyszer a projekt elején. Ez a felhajtórámpa. Nelküle minden más parancs olyan dizájnt fog készíteni, ami technikailag kompetens, de generikus hangú: stock SaaS hangnem, biztonságos alapértelmezett betűk, az AI színpalettája. Veled minden parancs a válaszaidat olvassa be, mielőtt generálna.
+
+Nyúlj hozzá, amikor:
+
+- **Éppen telepítetted az Impeccable-t egy új projektben.** Ez az első, amit futtatni kell. Más parancsok figyelmeztetnek rá, ha kihagyod.
+- **A projekt márkairánya megváltozott.** Új pozicionálás, új közönség, új hang. Futtasd újra a teach-et, és a frissített kontextus végigfolyik minden parancson.
+- **Egy másik parancs azt mondta, „nincs dizájnkontextus"** és megállt. Ez a jel: futtasd a teach-et, majd folytasd.
+
+## Hogyan működik
+
+A teach két kiegészítő fájlt ír a projekt gyökerébe:
+
+- **`PRODUCT.md`** a stratégiai fájl. Regiszter (márka vagy termék), célközönség, termék célja, márka személyisége, anti-referenciák, dizájnelvek, hozzáférhetőségi igények. Megválaszolja: „kik, mik, miért".
+- **`DESIGN.md`** a vizuális fájl. Színek, tipográfia, kiemelés, komponensek, tennivalók és tilalmak. Megválaszolja: „hogyan néz ki". A delegált `/impeccable document` parancs írja, amelyet a teach a végén meghív.
+
+A folyamat először átvizsgálja a kódbázist (README, package.json, komponensek, tokenek, márkaeszközök), és kialakít egy **regiszter-hipotézist**: márka (landing, marketing, portfólió, ahol a dizájn MAGA a termék) vagy termék (alkalmazás UI, irányítópultok, eszközök, ahol a dizájn SZOLGÁLJA a terméket). A regiszter az első kérdés, mert minden lefelé irányuló választ formál: tipográfiai alapértékek, mozgásenergia, színstratégia, az a referenciahalmaz, amelyből a `/impeccable typeset`hez hasonló parancsok merítenek. A regiszter után a teach csak azt kérdezi meg, amit nem tudott kikövetkeztetni: felhasználók, személyiség három valódi szóban, referenciák és anti-referenciák, hozzáférhetőségi követelmények.
+
+A PRODUCT.md csak stratégiai. Nincsenek színek, nincsenek betűk, nincsenek képpont-értékek. Azok a DESIGN.md-ben élnek. A két fájl szétválasztása szándékos: a stratégia stabil maradhat, miközben a vizuális rendszer fejlődik.
+
+## Próbáld ki
+
+```
+/impeccable teach
+```
+
+Számíts 5-8 perces interjúra. Az első kérdés általában a regiszterről szól; a többi rövid. A teach visszhangozza, amit a kódból kikövetkeztetett („az útvonalak alapján ez termékszerű felület, stimmel?"), így te csak megerősítesz, nem a nulláról kezded.
+
+A végén a teach felajánlja, hogy lefuttatja a `/impeccable document` parancsot. Mondj igent, hacsak nincs konkrét okod a késleltetésre. Egy valódi DESIGN.md tartja a variánsokat, polírozásokat és auditokat márka-helyesen.
+
+## Gyakori buktatók
+
+- **Kihagyása, hogy „csak próbáljunk ki egy parancsot gyorsan".** Minden más parancs menet közben fog interjúvolni. A teach előzetes futtatása gyorsabb, nem lassabb.
+- **Általános válaszok adása.** A „modern és letisztult" nem hasznos. A „meleg, mechanikus, véleményes" az. Légy konkrét. Legyél hajlandó nem egyetérteni a biztonságos alapértékekkel.
+- **A PRODUCT.md megváltoztathatatlanként kezelése.** A fájl a tiéd. Ha a teach olyat tett bele, ami nem egészen stimmel, szerkeszd. Minden parancs az aktuális fájlt olvassa.
+- **Csak melléknevek felsorolása referenciaként.** Márkák, termékek, nyomtatott objektumok: megnevezve, nem leírva. „Klim Type Foundry szpécsimen oldalak", nem „technikai és letisztult". Az anti-referenciák legyenek ugyanilyen specifikusak.

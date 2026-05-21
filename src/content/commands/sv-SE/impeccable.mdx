@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Designintelligensen bakom alla kommandon.
+highlights:
+  - Du vill ha en ingång för layout, typografi, färg, rörelse och UX-struktur tillsammans.
+  - Du utforskar en riktning och vill att färdigheten ska välja rätt arbetsflöde.
+  - Du behöver bredare designkontext snarare än en smal ett-kommando-genomgång.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Nar du ska anvanda det
+
+`/impeccable` ar hemkommandot. Anropat direkt nar du vill gora frihandsdesignarbete med den fulla handboken laddad, utan att valja ett specialiserat kommando. Det ar den reservlosningen du tar nar ingen av de 23 specialiserna (`audit`, `polish`, `critique` och resten) renodlat mappar mot vad du forsoker gora.
+
+Anvand `/impeccable` direkt nar:
+
+- **Du inte ar saker pa vilket kommando som passar.** Beskriv vad du vill pa vanlig svenska och lat fardigheten valja ratt tillvagagangssatt.
+- **Arbetet spänner over flera discipliner.** "Gor om den har hero-sektionen" beror layout, typografi, farg och rorelse. Ett kommando kan inte aga det.
+- **Du vill ha full designintelligens utan begransningar.** Varje referensfil laddad, varje antimönster kontrollerat, inget forinstallt arbetsflode.
+
+For strukturerade floden, anvand de specialiserade kommandona i sidofaltet. Kor `/impeccable teach` forst i alla nya projekt for att etablera PRODUCT.md och DESIGN.md. `/impeccable craft` kedjar en upptacksintervju till en full bygge med live visuell iteration. `/impeccable shape` producerar en designbrief utan att rora kod. `/impeccable live` ger dig en webblasarvaljare med tre varianter per element. Utvarderings- och forfiningskommandona (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` och resten) ager vardera en specifik del av arbetet.
+
+## Hur det fungerar
+
+De flesta AI-genererade granssnitt misslyckas pa samma satt: generiska typsnitt, lila gradienter, kortrutnat pa kortrutnat, glassmorphism overallt. `/impeccable` ger din AI en stark asikt. Den laddar en opinionsbildande designhandbok plus en lang lista med antimönster, och pushar sedan modellen att ata sig en specifik estetisk riktning innan en enda rad kod skrivs.
+
+Tva filer i projektroten formar allt fardigheten gor:
+
+- **`PRODUCT.md`** bar register (varumärke vs produkt), malanvandare, varumarkespersonlighet, antireferenser, designprinciper. Svarar pa "vem, vad, varfor".
+- **`DESIGN.md`** bar farger, typografi, hojd, komponenter, bor och bor inte, i sex-sektions Google Stitch-formatet. Svarar pa "hur det ser ut".
+
+Varje kommando laser bada filerna innan generering. **Register** bestammer vilka standardvarden som laddas. Varumärke (marknadsforing, landningssida, portfolio, dar design AR produkten) och produkt (app-UI, instrumentpaneler, verktyg, dar design TJANAR produkten) har olika standardvarden for typ, rorelse, farg och densitet. Att ange det en gang i PRODUCT.md betyder att `/impeccable typeset` inte kommer att trycka pa redaktionella magasin-typsnitt pa en instrumentpanel, och inte heller trycka pa produktfluenta standardvarden pa en kampanjsida. Se [varumärke vs produkt-handledningen](/tutorials/brand-vs-product) for hur de tva divergerar.
+
+Vid forsta anvandning i ett projekt kor fardigheten `teach`-flodet automatiskt: en kort intervju som skriver PRODUCT.md och sedan delegerar till `/impeccable document` for DESIGN.md. Framtida kommandon laser filerna utan att fraga igen.
+
+## Prova det
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Bada prompter ar vagga med vilje. `/impeccable` kommer att valja en stark estetisk riktning konsistent med ditt register, ata sig till icke-standard typsnitt, undvika AI-fargpaletten och fatta de specifika val som en designer skulle gora. Inget kommandonamn att valja forst, inget steg-for-steg-arbetsflode att folja.
+
+For visuell iteration i webblasaren snarare an chat:
+
+```
+/impeccable live
+```
+
+Valj ett element pa din körande dev-server. Dropp en kommentar eller streck. Fa tre produktionskvalitetsvarianter hot-swappade via HMR. Acceptera den du vill och den skrivs tillbaka till kallkoden.
+
+## Fäst kommandon som genvägar
+
+v3.0 konsoliderade 18 fristående färdigheter till en enda `/impeccable` med 23 underkommandon. Om du saknar den korta formen av ett specifikt kommando, fäst det tillbaka:
+
+```
+/impeccable pin critique
+```
+
+Från och med nu anropar `/critique` `/impeccable critique` direkt. Den skriver en lättviktig omdirigeringsfärdighet som delegerar till föräldern, så uppdateringar av färdigheten flödar genom utan att fästa igen.
+
+Användbara fästen att prova:
+
+- `/impeccable pin polish` for slutgiltigt arbete
+- `/impeccable pin audit` for deterministiska a11y/prestandakontroller
+- `/impeccable pin live` for webblasariterationsflodet
+- `/impeccable pin critique` for designgranskning
+
+For att ta bort: `/impeccable unpin critique`. Fästen lever som kataloger prefixade med `i-` i din harness-färdighetsmapp (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, etc.), så du kan också ta bort dem manuellt.
+
+## Fallgropar
+
+- **Att behandla det som en stilguide.** Det ar en opinionsbildande designpartner, inte en linter. Standardvarden existerar for att hoja golvet, inte for att overtrumfa ditt omdome. Om du har en verklig anledning att ga emot (varumärkesriktlinje, tillganglighetskrav, anvandarforskning), ga emot och forklara varfor. Fardigheten kommer att samarbeta med dig. Det som ger samre resultat ar att ignorera asikten utan anledning.
+- **Att forventa att den fixar befintlig kod.** `/impeccable` ar for skapande. For forfining, anvand `/impeccable polish`, `/impeccable distill` eller `/impeccable critique` istallet.
+- **Att kora den innan `teach` har haft chans att spara kontext.** I ett nytt projekt kommer den att intervjua dig pa flying, vilket fungerar men ar langsammare. Att kora `/impeccable teach` explicit som ditt allra forsta kommando ar lite smidigare.
+- **Att hoppa over registerfragan.** Varumärke- och produktstandardvärden divergerar tillrackligt for att kora pa fel register ger subtilt felaktiga resultat. Om `PRODUCT.md` saknar ett `## Register`-falt (legacy), kor `/impeccable teach` for att lägga till det.

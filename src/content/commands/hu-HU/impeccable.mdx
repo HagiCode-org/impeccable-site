@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: A tervezési intelligencia minden parancs mögött.
+highlights:
+  - Egyetlen belépési pontot keresel az elrendezés, tipográfia, szín, mozgás és UX szerkezet számára.
+  - Egy irányt vizsgálsz, és azt akarod, hogy a skill válassza ki a megfelelő almunkafolyamatot.
+  - A legátfogóbb tervezési kontextusra van szükséged egy szűk, egyparancsos kezelés helyett.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Mikor használd
+
+Az `/impeccable` az alapparancs. Közvetlenül hívd, ha formamentes tervezési munkát szeretnél a teljes kézikönyv betöltésével, anélkül, hogy egy specializált parancsot választanál. Ez az a tartalék, amelyhez akkor nyúlsz, amikor a 23 specialista (`audit`, `polish`, `critique` és a többi) nem felel meg tisztán annak, amit megpróbálsz elérni.
+
+Nyúlj közvetlenül az `/impeccable`-hez, ha:
+
+- **Nem vagy biztos benne, melyik parancs illik a feladathoz.** Írd le egyszerű angolul, amit szeretnél, és hagyd, hogy a skill válassza ki a megfelelő megközelítést.
+- **A munka több területet fed át.** A "csináld újra ezt a hero szekciót" érinti az elrendezést, tipográfiát, színt és mozgást. Egyetlen parancs nem tudja ezt egyedül kezelni.
+- **A teljes tervezési intelligenciát akarod korlátozások nélkül.** Minden referenciafájl betöltve, minden antipattern ellenőrizve, nincs előre beállított munkafolyamat.
+
+Strukturált folyamatokhoz nyúlj az oldalsáv specializált parancsaihoz. Futassd le az `/impeccable teach` parancsot először minden új projekten, hogy létrejöjjön a PRODUCT.md és a DESIGN.md. Az `/impeccable craft` egy felfedező interjút egy teljes építéssel és élő vizuális iterációval láncol össze. Az `/impeccable shape` egy tervezési rövidítést hoz létre kód érintése nélkül. Az `/impeccable live` egy böngészőválasztót ad elemenként három variánssal. Az értékelési és finomítási parancsok (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` és a többi) mindegyike a munka egy saját szeletét végzi.
+
+## Hogyan működik
+
+A legtöbb AI által generált felhasználói felület ugyanúgy hiúság meg: általános betűk, lila gradiensek, kártyarácsok kártyarácsokon, glassmorfizma mindenhol. Az `/impeccable` erős álláspontot ad az AI-dnak. Betölt egy véleményes tervezési kézikönyvet és egy hosszú antipattern-listát, majd arra kényszeríti a modellt, hogy elköteleződjön egy konkrét esztétikai irány mellett, mielőtt egyetlen sor kódot is írna.
+
+Két fájl a projekt gyökerében határozza meg mindazt, amit a skill tesz:
+
+- **`PRODUCT.md`** hordozza a regisztert (márka vs. termék), a célfelhasználókat, a márka személyiségét, anti-referenciákat, tervezési elveket. Megválaszolja a "ki, mi, miért" kérdéseket.
+- **`DESIGN.md`** hordozza a színeket, tipográfiát, kiemelést, komponenseket, ajánlásokat és kerülendő dolgokat a hatrészes Google Stitch formátumban. Megválaszolja a "hogyan néz ki" kérdést.
+
+Minden parancs beolvassa mindkét fájlt a generálás előtt. A **regiszter** eldönti, mely alapértémezések töltődnek be. A márka (marketing, landing, portfólió, ahol a tervezés MAGA a termék) és a termék (alkalmazás UI, irányítópultok, eszközök, ahol a tervezés KISZOLGÁLJA a terméket) különböző alapértékeket használ a tipográfiához, mozgáshoz, színhez és sűrűséghez. A PRODUCT.md-ben történő egyszeri megadás azt jelenti, hogy az `/impeccable typeset` nem fog szerkesztői magazin betűket erőltetni egy irányítópultra, és nem fog termék-fluens alapértékeket erőltetni egy kampányoldalra. Lásd a [márka vs. termék oktatóanyagot](/tutorials/brand-vs-product) a kettő eltéréséről.
+
+Első használatkor a projektben a skill automatikusan lefuttatja a `teach` folyamatot: egy rövid interjút, amely létrehozza a PRODUCT.md-t, majd delegálja az `/impeccable document` parancsot a DESIGN.md számára. A későbbi parancsok újra kérdezés nélkül beolvassák a fájlokat.
+
+## Próbáld ki
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Mindkét prompt szándékosan homályos. Az `/impeccable` erős, a regisztereddel összhangban álló esztétikai irányt választ, nem alapértelmezett betűkhez kötelezi el magát, elkerüli az AI színpalettát, és olyan konkrét döntéseket hoz, amilyeneket egy tervező hozna. Nincs először választandó parancsnév, nincs lépésről lépésre követendő munkafolyamat.
+
+Böngészőben történő vizuális iterációhoz a chat helyett:
+
+```
+/impeccable live
+```
+
+Válassz ki bármelyik elemet a futó fejlesztői szervereden. Dobj le egy kommentet vagy vonalat. Kapj három gyártási minőségű variánst, amelyeket HMR-en keresztül azonnal cserélnek. Fogadd el azt, amelyiket akarod, és az visszakerül a forráskódba.
+
+## Rögzíts parancsokat vissza gyorsbillentyűként
+
+A v3.0 18 önálló skillt vont össze egyetlen `/impeccable` parancsba 23 alparanccsal. Ha hiányzik egy adott parancs rövid formája, rögzítsd vissza:
+
+```
+/impeccable pin critique
+```
+
+Ezentúl a `/critique` közvetlenül meghívja az `/impeccable critique` parancsot. Egy könnyű átirányító skillt ír, amely delegál a szülőhöz, így a skill frissítései átfolynak újra-rögzítés nélkül.
+
+Hasznos rögzítések kipróbálásához:
+
+- `/impeccable pin polish` a végső simításhoz
+- `/impeccable pin audit` determinisztikus a11y/perf ellenőrzésekhez
+- `/impeccable pin live` a böngészős iterációs folyamathoz
+- `/impeccable pin critique` tervezési értékeléshez
+
+Eltávolításhoz: `/impeccable unpin critique`. A rögzítések `i-` előtaggal ellátott könyvtárakként élnek a harness skills mappádban (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` stb.), így manuálisan is törölheted őket.
+
+## Csapdák
+
+- **Stílus útmutatóként kezelni.** Ez egy véleményes tervezési partner, nem linter. Az alapértékezések a szint emelésére léteznek, nem az ítéleted felülbírálására. Ha valós okod van arra, hogy visszavágj (márkautasítás, akadálymentességi korlátozás, felhasználói kutatás), vágj vissza és magyarázd el, miért. A skill együtt fog működni veled. Ami rosszabb eredményt hoz, az az indoklás nélküli figyelmen kívül hagyás.
+- **Azt várni tőle, hogy meglévő kódot javítson.** Az `/impeccable` alkotásra való. Finomításhoz nyúlj az `/impeccable polish`, `/impeccable distill` vagy `/impeccable critique` parancsokhoz.
+- **A `teach` futtatása előtt, mielőtt az kontextust menthetne.** Egy friss projekten menet közben interjúvolni fog, ami rendben van, de lassabb. Az `/impeccable teach` explicit futtatása legelső parancsként egy picit simább.
+- **A regiszterkérdés átugrása.** A márka és termék alapértékezések annyira eltérnek, hogy a rossz regiszteren való futtatás finoman hibás eredményt hoz. Ha a `PRODUCT.md`-ben nincs `## Register` mező (örökölt), futtasd az `/impeccable teach` parancsot a hozzáadásához.

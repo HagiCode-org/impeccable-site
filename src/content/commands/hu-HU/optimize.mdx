@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: UI teljesítmény diagnosztizálása és javítása az LCP-től a csomagméretig.
+highlights:
+  - A felület lassúnak, akadozónak vagy nehéznek érzi magát.
+  - Költségcsökkentésre van szükség a dizájn kibelezése nélkül.
+  - A teljesítmény már látható termékprobléma.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Mikor használd
+
+A `/impeccable optimize` az olyan felületekhez való, amelyek lassúnak érzik magukat. Az első festés örökké tart, a görgetés akadozik, a képek késve jelennek meg, az interakciók késleltetettek, a csomag 800KB JavaScriptet szállít. Használd, amikor a Web Vitals rosszak, vagy amikor a felhasználók panaszkodnak, hogy minden lassú.
+
+Ne használd előzetes optimalizációként. Ha az LCP 1.1s és az INP 80ms, állj. A dizájnmunka fontosabb.
+
+## Hogyan működik
+
+A szakértelem öt teljesítmény-dimenzió mentén dolgozik:
+
+1. **Betöltés és Web Vitals**: LCP, INP, CLS. Azonosítja, mi blokkolja az első festést, mi késlelteti az interakciót, mi tolja el az elrendezést.
+2. **Renderelés**: felesleges újra-renderelések, hiányzó memoizáció, költséges egyeztetés, elrendezés-zajongás ciklusokban.
+3. **Animációk**: animál-e bármi elrendezési tulajdonságot, csak a transform és opacity érintett-e, segít vagy árt-e a `will-change` itt.
+4. **Képek és erőforrások**: lusta betöltés, reszponzív képek (`srcset`, `sizes`), modern formátumok (WebP, AVIF), méretek beállítva a CLS megelőzésére.
+5. **Csomagméret**: nem használt importok, túlméretezett függőségek, hiányzó kódosztás, halott kód.
+
+A szakértelem előtte és utána mér. Minden javítás kvantifikálva van. Ha egy változtatás nem mozgat meg egy metrikát, visszaáll.
+
+## Próbáld ki
+
+```
+/impeccable optimize the homepage
+```
+
+Várható alak:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero kép előre betöltve (-800ms)
+  - Render-blokkoló betűtípus stíluslap eltávolítva (-240ms)
+  - Analitikai szkript halasztva (-180ms)
+
+INP: 240ms → 90ms
+  - Scroll kezelő debouncolva
+  - Költséges lista render memoizálva
+  - Szinkron elrendezés-olvasás eltávolítva az eseményhurokból
+
+CLS: 0.18 → 0.02
+  - Méretek beállítva a hero képen és a logón
+  - Hely fenntartva az aszinkron fejléc-jelvénynek
+
+Csomag: 340KB → 180KB
+  - Nem használt lodash import eltávolítva (52KB)
+  - A playground útvonal kódosztva (78KB)
+  - Elavult ikonkészlet eldobva (30KB)
+```
+
+## Gyakori buktatók
+
+- **Optimalizálás mérés előtt.** Alapmetrikák nélkül nem mondható meg, mi segített. Futtasd az `/impeccable optimize` parancsot konkrét Web Vitals számokkal, nem megérzésekkel.
+- **Apró nyereségek hajszolása.** Egy 20ms-os INP javítás, ami egy hetet vesz igénybe, ritkán megéri. Az optimalizálásnak csökkenő hozama van; tudd, mikor kell abbahagyni.
+- **Az újramérés elfelejtése minden változtatás után.** A build rosszabbá is teheti a dolgokat, olyan módon, amit a szakértelem nem jósolt meg. Ellenőrizd.

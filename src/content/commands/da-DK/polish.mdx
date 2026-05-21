@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Den omhyggelige afsluttende gennemkørsel mellem godt og fremragende.
+highlights:
+  - Justering, afstand og mikro-beslutninger føles stadig rå.
+  - Featuren er tæt på at blive sendt.
+  - Små inkonsistenser trækker opfattet kvalitet ned.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable polish` er det sidste du kører før afsendelse. Den jager de små detaljer der adskiller en sendt feature fra en poleret: halvpixel-misjusteringer, inkonsistent afstand, glemte fokus-tilstande, indlæsningsovergange der blinker, tekst der driver i tone. Den justerer også featuren til dit designsystem, erstatter hårdkodede værdier med tokens, bytter specialkomponenter ud med delte, og retter enhver afvigelse fra etablerede mønstre.
+
+Grib efter den, når featuren er funktionelt komplet, intet er ødelagt, og noget stadig føles forkert. Også når en feature har afveget fra designsystemet og skal trækkes tilbage på sporet.
+
+## Hvordan det virker
+
+Polish starter med at opdage designsystemet (tokens, afstandsskala, delte komponenter), derefter arbejder metodisk på tværs af seks dimensioner:
+
+1. **Visuel justering og afstand**: pixel-perfect gitter-overholdelse, konsistent afstandsskala, optisk justering på ikoner.
+2. **Typografi**: hierarki-konsistens, linjelængde, enker og hittebørn, kerning på overskrifter.
+3. **Farve og kontrast**: token-brug, tema-paritet, WCAG-forhold, fokusindikatorer.
+4. **Interaktionstilstande**: hover, fokus, aktiv, deaktiveret, indlæsning, fejl, succes. Hver tilstand taget højde for.
+5. **Overgange og bevægelse**: glat easing, intet layout-bankedøre, respekt for `prefers-reduced-motion`.
+6. **Tekst**: konsistent stemme, korrekt tid, ingen placeholder-strenge, ingen herreløse TODO'er.
+
+Færdigheden er eksplicit om én ting: polish er det sidste trin, ikke det første. Hvis featuren ikke er funktionelt komplet, er polering spildt arbejde.
+
+## Prøv det
+
+```
+/impeccable polish the pricing page
+```
+
+En sund kørsel ser sådan ud:
+
+```
+Visuel justering: rettede 3 elementer uden for gitteret (8px grundlinje)
+Typografi: strammede h1-kerning, rettede enke på testimonial
+Interaktion: tilføjede hover-tilstand på FAQ-elementer, fokus-ring på e-mail-input
+Bevægelse: blødere modal-indgang, tilføjede reduced-motion-fallback
+Tekst: fjernede en efterladt "Lorem ipsum", justerede knap-stemme
+```
+
+Fem små rettelser, ingen omskrivninger. Det er formen på en god polish-gennemkørsel.
+
+## Faldgruper
+
+- **Polering af arbejde der ikke er færdigt.** Hvis der er TODO'er i koden, er du ikke klar. Kør kun `/impeccable polish` på færdige features.
+- **At behandle polish som redesign.** Polish forfiner det der findes. Hvis du opdager at du omstrukturerer et layout, havde du brug for `/impeccable critique` eller `/impeccable layout` i stedet.
+- **At køre `/impeccable polish` uden `/impeccable audit` først.** Polish fanger følelsesbaserede problemer. Audit fanger målbare. Brug begge.

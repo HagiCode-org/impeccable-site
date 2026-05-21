@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Prizpusobte designy ruznym obrazovkam, zarizenim a kontextum bez amputace funkci.
+highlights:
+  - Soucasny layout se na mensich obrazovkach hrouti.
+  - Produkt potrebuje promyslenejsi responsivni strategii.
+  - Dotykove cile, hustota nebo tok obsahu se lisi podle zarizeni.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Kdy pouzit
+
+`/impeccable adapt` je pro prevzeti designu vytvoreneho pro jeden kontext a jeho zprovozneni v jiném. Mobil z desktopu, tablet z mobilu, tisk z webu, embedded ze samostatneho, email z dashboardu. Siahnete po nem, kdyz zdrojovy design je pevny, ale pada na jinych breakpointech, pri dotyku nebo v jiném kontejneru.
+
+Neni pro tvorbu responsivniho designu od nuly. Pro to zacnete s `/impeccable` a tvarujte layout responzivne prvni. Adapt je pro "na mobil jsme nikdy nemysleli" dorovnani.
+
+## Jak to funguje
+
+Dovednost pracuje ctyrmi dimenzemi kontextualniho prizpusobeni:
+
+1. **Breakpointy a tekuty layout**: zbalte vice sloupcu do jednoho, upravte rozsahy clamp, zavedte nove breakpointy tam, kde se design skutecne hrouti.
+2. **Dotykove cile**: minimalne 44px zasahove oblasti, dostatecne rozestupy mezi sousedními cili, vetsi dotykove zony nez vizualni hranice tam, kde je treba.
+3. **Navigacni vzory**: desktopove bocni panely se stavaji mobilním spodním menu nebo vysouvacimi panely, hutne panely nastroju se zbaluji do menu, stavy po najeti maji dotykove ekvivalenty.
+4. **Priorita obsahu**: rozhodnete, co musi byt videt, co se muze zbalit do rozbalovacich sekci, co lze pro dany kontext uplne odebrat.
+
+Nezmenne pravidlo: prizpusobujte, ne amputujte. Kriticke funkcionality nemohou zmizet na mobilu jen proto, ze je to neprakticne. Najdete zpusob, jak ji vmestnat, predesignujte interakci nebo preuvazte, zda byla na desktopu skutecne kriticalna.
+
+## Vyzkousejte to
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Ocekavane zmeny:
+
+- Trisloupcovy grid se stava jednim sloupcem se zahlavimi sekci jako lepicími oddelovaci
+- Bocni navigace se presouva do horizontalniho scrollovani nad obsahem
+- Prepinace ziskavaji 8px vertikalni padding, aby splnovaly 44px dotykove cile
+- Inline text napovedy se presouva na klepnutim-pro-zobrazeni, misto po najeti
+- Sekce "Danger zone" se na mobilu plne rozbaluje misto zbaleni, protoze obsahuje nevratne akce a chceme, aby je uzivatele jasne videli
+
+## Na co si dat pozor
+
+- **Amputovani funkci.** Pokud mobilni verze skryva veci, ktere desktopova verze umi, je to regres, nikoli prizpusobeni. Bojujte za funkci.
+- **Zachazeni s mobilem jako s "mensim desktopem".** Mobil je jiny kontext: palce, preruseni, kratke relace. Prizpusobte se kontextu, nikoli sirce viewportu.
+- **Preskoceni `/impeccable harden` poté.** Responsivni layouty odhaluji okrajove pripady. Spustte hardening po adapt pro odchyceni tech, ktere se projevi az na 320px.

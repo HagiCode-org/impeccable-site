@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Iteruj UI w przegladarce. Wybierz element, zostaw komentarz, otrzymaj trzy warianty. Zaakceptuj jeden i zapisuje sie do zrodla.
+highlights:
+  - Serwer deweloperski juz istnieje.
+  - Chcesz porownac opcje bezposrednio na wyrenderowanym UI.
+  - Najszybszym nastepnym krokiem jest kierowane eksperymentowanie wizualne.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Zobacz to w akcji, z animowanym demo, na <a href="/live-mode">/live-mode</a>. Ta strona to referencja tego, co czyta twoje narzedzie AI, gdy komenda dziala.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Status: alpha.</strong> Live Mode dziala calosciowo i jest gotowy do wyprobowania, ale wciaz potrzebuje wiecej testow na prawdziwych repozytoriach i konfiguracjach frameworkow. Spodziewaj sie szorstkich krawedzi przy nietypowych konfiguracjach i zglaszaj, co sie psuje.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">Nr 04</span>
+        <h3 class="docs-viz-live-title">Listy, <em>czasem</em>.</h3>
+        <p class="docs-viz-live-body">Pocztowka od redaktora, mniej wiecej raz na miesiac. Zadnych pikseli sledzacych, zadnego "tylko sprawdzam."</p>
+        <button class="docs-viz-live-btn" type="button">Wyslij mi jedna</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Poprzedni">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Nastepny">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Akceptuj</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Wybierz</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode w trakcie cyklu: wybierak podswietla wybrany element, pasek kontekstowy pokazuje, na ktorym wariancie jestes, a pasek globalny pozostaje przypniety na dole. Akceptacja tego zapisuje Wariant 2 do zrodla.</p>
+</div>
+
+## Kiedy uzywac
+
+Sigmnij po `/impeccable live`, gdy chcesz iterowac na czyms wizualnie tak, jak w narzedziu projektowym, ale z utrzymaniem kodu produkcyjnego jako wyniku. Przeplyw w stylu plotna Figma bez podrozy w obie strony do kroku implementacji.
+
+Uzyj do:
+
+- **Eksplorowania kierunkow na rzeczywistym elemencie.** Sekcja hero, karta newslettera, poziom cenowy. Trzy genuinely rozne podejscia, obok siebie, na aktualnej stronie z aktualnym kontekstem.
+- **Polerowania kawalka UI, ktory jest prawie dobry.** Wiesz, co czujesz nie tak, ale nie potrafisz tego dokladnie powiedziec. Wybierz element, nabazgraj "bardziej zabawnie" lub narysuj kreske przez cos, co cie denerwuje, wcisnij Go.
+- **Szybkiego A/B miedzy dwoma kierunkami, o ktorych dyskutuje twoj zespol.** Wygeneruj warianty, nic nie akceptuj, odejdz. Chodzilo o porownanie.
+
+NIE jest do nowych funkcji greenfield (sigmnij po `/impeccable craft`) ani calostronicowych przeprojektowan (sigmnij po `/impeccable` lub specjalistycznej komendzie udoskonalajacej).
+
+## Jak to dziala
+
+Jedna komenda wywoluje nakladke wybieraka na szczycie twojego dzialajacego serwera deweloperskiego. Wybierasz dowolny element. Pojawia sie maly pasek kontekstowy obok niego. Wpisujesz swobodny opis lub wybierasz jeden z chipow akcji (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Opcjonalnie zostawiasz piny z komentarzami lub rysujesz kreski bezposrednio na elemencie, a umiejetnosc odczytuje je jako intencje.
+
+Wcisnij Go. Trzy **warianty jakosci produkcyjnej** zostaja wygenerowane, kazdy zakotwiczony w genuinely roznym archetypie projektowym (nie trzy wariacje na temat koloru) i podmienione na goraco na stronie przez HMR twojego frameworka. Przegladaj je strzalkami. Zaakceptuj jeden, a wariant zostanie zapisany do zrodla. Odrzuc wszystkie trzy, a oryginal zostaje.
+
+Obsluguje Vite, Next.js (wlacznie z monorepos), SvelteKit, Astro, Nuxt i zwykly statyczny HTML. Jesli twoj serwer deweloperski ma scista Content Security Policy, konfiguracja pierwszego uruchomienia wykrywa to i oferuje jednorazowa, tylko-dev latke, aby wybierak mogl sie zaladowac. `DESIGN.md` wygrywa na decyzjach wizualnych, `PRODUCT.md` wygrywa na glosie: jesli masz oba, warianty zostaja na-brand bez bycia o tym informowanym.
+
+## Wyprobuj
+
+```
+/impeccable live
+```
+
+Otworz URL swojego serwera deweloperskiego, wybierz karte zapisu do newslettera, kliknij chip `delight`, wcisnij Go. Otrzymasz trzy warianty rozniace sie na wymiarach osobowosci (pieczec-i-pocztowka, typograficzna-niespodzianka, z-ilustrowanym-akcentem), nie trzy wariacje tego samego traktowania.
+
+Albo wybierz hero, wpisz "bardziej redakcyjnie, mniej SaaS", wcisnij Go. Trzy warianty zakotwiczone w roznych archetypach redakcyjnych (szeszlap tytulowy broadsheet, wiersze spec-katalogu, plakat z przerosnietym glifem) zamiast trzech odcieni tego samego pomyslu.
+
+Zatrzymaj tryb live, gdy skonczysz: powiedz "stop live mode", zamknij zakladke lub wcisnij przycisk wyjscia na pasku wybieraka.
+
+## Pulapki
+
+- **Uruchamianie na stronie, ktora jest jeszcze w polowie napisana.** Generowanie wariantow na zywo potrzebuje kontekstu. Jesli element ma tekst zastepczy, generyczny Lorem ipsum lub formatowanie domyslne przed-stylesheet, warianty to odzwierciedla. Najpierw wypelnij tresc.
+- **Oczekiwanie, ze podejmie makro decyzje.** Tryb live iteruje na pojedynczym wybranym elemencie. Do "zrob calkiem nowa strone cenowa" sigmnij po `/impeccable` lub `/impeccable craft` zamiast tego.
+- **Ignorowanie komunikatow awaryjnych.** Jesli element zyje w wygenerowanym pliku (skompilowany szablon, wynik budowania), wybierak mowi o tym wprost i oferuje przekierowanie akceptu do prawdziwego zrodla. Nie wymuszaj akceptu do wygenerowanego pliku: nastepne budowanie go wymaze.
+- **Uruchamianie bez PRODUCT.md lub DESIGN.md, gdy zalezy ci na dopasowaniu do marki.** Live nadal wygeneruje, ale warianty beda sklonne do generycznych ustawien domyslnych. Uruchom najpierw `/impeccable teach` i `/impeccable document`, jesli wynik ma brzmiec jak twoj produkt.

@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Düzen, aralık ve görsel ritmi düzeltin.
+highlights:
+  - Sayfada net vurgu eksik.
+  - İyi içerik var ama kompozisyon onu gizliyor.
+  - Renk veya harekete dokunmadan önce daha güçlü akış istiyorsunuz.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Ne zaman kullanılır
+
+`/impeccable layout`, hiçbir şey teknik olarak yanlış değil ama hiçbir şey nefes de almıyor olan sayfalar içindir. Her yerde eşit dolgu, monoton kart ızgaraları, kenardan kenara uzanan içerik, hiyerarşisi yalnızca boyuta dayanan sayfalar. Bir düzen "yanlış hissettiriyor" ve nedenini ifade edemiyorsanız kullanın.
+
+İyi tetikleyiciler: "her şey kalabalık hissettiriyor", "duvar gibi okunuyor", "önce nereye bakacağımı bilmiyorum".
+
+## Nasıl çalışır
+
+Yetenek beş düzen boyutundan geçer:
+
+1. **Aralık**: aralık ölçeği tutarlı mı yoksa rastgele 13px boşluklar mı var, ilgili öğeler gruplar arasında bol alanla sıkıca gruplandırılmış mı, hiç ritim var mı.
+2. **Görsel hiyerarşi**: göz 2 saniye içinde birincil eyleme ulaşıyor mu, hiyerarşi gerçek iş yapıyor mu yoksa her şey mi bağırıyor.
+3. **Izgara ve yapı**: altta yatan bir ızgara mı var yoksa düzen rastgele mi, öğeler temel çizgilerine hizalı mı.
+4. **Ritim**: sayfa sıkı ve bol aralık arasında geçiş yapıyor mu, yoksa her şey tek tip mi.
+5. **Yoğunluk**: düzen sıkışık mı yoksa israflı mı, yoğunluk içerik türüne uygun mu.
+
+Düzeltmeler genellikle aralık ölçeğini yeniden oluşturmayı, asimetri eklemeyi, monoton ızgaraları hero ve destekleyici öğeleri olan karma bir düzene dönüştürmeyi ve birincil eyleme gerçek alan vermeyi içerir.
+
+## Deneyin
+
+```
+/impeccable layout the settings page
+```
+
+Tipik değişiklikler:
+
+- Aralık ölçeği 8 / 16 / 24 / 48 / 96px olarak birleştirildi
+- Bölüm sonları 48px, satır boşlukları 16px, form alanı grupları 8px
+- Birincil eylemler 32px tampon ile form akışından çıkarıldı
+- Dekoratif kenarlıklar kaldırıldı, aralık odaklı gruplama ile değiştirildi
+- Kenar çubuğu ve ana sütun oranları yeniden dengelendi (280 / flex vs 25 / 75)
+
+## Tuzaklar
+
+- **Layout ile distill'i karıştırmak.** Sorun çok fazla şeyse, önce `/impeccable distill` komutunu çalıştırın. Layout, zaten doğru set olanları düzenlemek içindir.
+- **Bozuk bir ızgarayı kurtarmasını beklemek.** Sayfada hiç ızgara yoksa, layout bir tane oluşturur. Düzeltmenin beklediğinizden daha büyük olacağını bilin.
+- **Hiyerarşi kararını görmezden gelmek.** Layout "hiçbir şey birincil değil" derse, hiçbir aralık çalışması bunu düzeltmez. Bir düzen incelemesi değil, bir içerik kararı gerekir.

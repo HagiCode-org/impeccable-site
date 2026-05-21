@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Impeccable'a ürününüzün kimin için olduğunu öğretin, proje başına bir kez.
+highlights:
+  - Projenin henüz bir tasarım bağlam dosyası yok.
+  - Farklı katılımcıların bir paylaşılan doğruluk kaynağına ihtiyacı var.
+  - Gelecekteki komutların markayı ve ürün yönünü devralmasını istiyorsunuz.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Loaded on every command</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Design serves the task.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">SREs on call, reading fast, often in the dark.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">Calm, clinical, no hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">Purple gradients. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Every command reads this before writing a line of code.</div>
+  </div>
+  <p class="docs-viz-caption">Tamamlanmış bir PRODUCT.md. Yalnızca strateji: kim, ne, neden. Renk yok, yazı tipleri yok, piksel değerleri yok; bunlar DESIGN.md dosyasında bulunur.</p>
+</div>
+
+## Ne zaman kullanılır
+
+Bir projenin başında `/impeccable teach` komutunu bir kez çalıştırın. Bu, giriş rampasıdır. Bu olmadan, diğer tüm komutlar teknik olarak yetkin ancak genel olarak tonlanmış tasarım üretecektir: standart SaaS sesi, güvenli varsayılan yazı tipleri, AI renk paleti. Bu ile, her komut oluşturmadan önce cevaplarınızı okur.
+
+Şu durumlarda kullanın:
+
+- **Impeccable'ı yeni bir projeye yeni kurduk.** Çalıştırılacak ilk şey. Atlarsanız, diğer komutlar sizi bu dosyaya yönlendirecektir.
+- **Projenin marka yönü değişti.** Yeni konumlandırma, yeni kitle, yeni ses. `teach` komutunu yeniden çalıştırın ve güncellenmiş bağlam her komuta akar.
+- **Başka bir komut "tasarım bağlamı bulunamadı" dedi** ve durdu. Bu sinyaldir: teach komutunu çalıştırın, ardından devam edin.
+
+## Nasıl çalışır
+
+Teach, proje kökünde iki tamamlayıcı dosya yazar:
+
+- **`PRODUCT.md`** stratejik dosyadır. Kayıt (marka veya ürün), hedef kullanıcılar, ürün amacı, marka kişiliği, anti-referanslar, tasarım ilkeleri, erişilebilirlik ihtiyaçları. "Kim, ne, neden" sorularını yanıtlar.
+- **`DESIGN.md`** görsel dosyadır. Renkler, tipografi, yükseltme, bileşenler, yapılması ve yapılmaması gerekenler. "Nasıl göründüğünü" yanıtlar. Teach'in sonunda çağırdığı devredilen `/impeccable document` komutu tarafından yazılır.
+
+Akış önce kod tabanını tarar (README, package.json, bileşenler, token'lar, marka varlıkları) ve bir **kayıt hipotezi** oluşturur: marka (açılış, pazarlama, portfolyo, tasarımın ürün OLAN yerleri) veya ürün (uygulama UI'ı, gösterge panelleri, araçlar, tasarımın ürünü HİZMET ETTİĞİ yerler). Kayıt, her aşağı akış cevabını şekillendirdiği için ilk sorudur: tipografi varsayılanları, hareket enerjisi, renk stratejisi, `/impeccable typeset` gibi komutların çektiği referans seti. Kayıttan sonra, teach yalnızca çıkarsayamadığı soruları sorar: kullanıcılar, üç gerçek kelimede kişilik, referanslar ve anti-referanslar, erişilebilirlik gereksinimleri.
+
+PRODUCT.md yalnızca stratejiktir. Renk yok, yazı tipleri yok, piksel değerleri yok. Bunlar DESIGN.md dosyasında bulunur. İki dosyayı ayrı tutmak kasıtlıdır: görsel sistem gelişirken strateji kararlı kalabilir.
+
+## Deneyin
+
+```
+/impeccable teach
+```
+
+5 ila 8 dakikalık bir görüşme bekleyin. İlk soru genellikle kayıt hakkındadır; geri kalanlar kısadır. Teach, kodunuzdan çıkarsadığını alıntılayarak geri sunar ("rotalardan, bu bir ürün yüzeyi gibi görünüyor, eşleşiyor mu?") böylece sıfırdan başlamak yerine onaylıyorsunuz.
+
+Sonunda, teach sizin için `/impeccable document` komutunu çalıştırmayı teklif eder. Özel bir nedeniniz yoksa evet deyin. Gerçek bir DESIGN.md, varyantların, cilaların ve denetimlerin markaya sadık kalmasını sağlayan şeydir.
+
+## Tuzaklar
+
+- **"Sadece bir komutu hızlıca denemek için" atlamak.** Diğer tüm komutlar uçuş ortasında sizi görüşme yapacaktır. Önce teach komutunu çalıştırmak daha hızlıdır, daha yavaş değil.
+- **Genel yanıtlar vermek.** "Modern ve temiz" kullanışlı değildir. "Sıcak, mekanik, görüşlü" kullanışlıdır. Spesifik olun. Güvenli varsayılanlara karşı çıkmaya istekli olun.
+- **PRODUCT.md'yi değiştirilemez olarak görmek.** Dosya sizindir. Teach'in oraya tam olarak doğru olmayan bir şey koyduysa, düzenleyin. Her komut geçerli dosyayı okur.
+- **Referanslar için yalnızca sıfatları listelemek.** Markalar, ürünler, basılı nesneler: adlandırılmış, tanımlanmamış. "Klim Type Foundry örnek sayfaları", "teknik ve temiz" değil. Anti-referanslar da aynı ölçüde spesifik olmalıdır.

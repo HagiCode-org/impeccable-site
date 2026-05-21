@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Korjaa asettelu, välistys ja visuaalinen rytmi.
+highlights:
+  - Sivulta puuttuu selkeä painotus.
+  - Hyvää sisältöä on, mutta sommittelu piilottaa sen.
+  - Haluat vahvemman virran ennen värin tai liikkeen koskemista.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Milloin käyttää
+
+`/impeccable layout` on sivuille joissa mikään ei ole teknisesti väärin mutta mikään ei myöskään hengitä. Yhtäläistä täytettä kaikkialla, yksitoikkoisia korttiruskeita, sisältöä joka juoksee laidasta laitaan, hierarkia joka luottaa kokoon yksinään. Turvaudu siihen kun asettelu "tuntuu väärältä" etkä osaa artikuloida miksi.
+
+Hyvät herätteet: "kaikki tuntuu ahtaalta", "se lukee kuin seinä", "en tiedä mihin katsoa ensin".
+
+## Miten se toimii
+
+Taito käy läpi viisi asetteludimensiota:
+
+1. **Välistys**: onko välistysasteikko johdonmukainen vai onko satunnaisia 13px välejä, ovatko samankaltaiset elementit ryhmitelty tiiviisti anteliseen tilaan ryhmien välillä, onko mitään rytmiä lainkaan.
+2. **Visuaalinen hierarkia**: osuuko katse ensisijaiseen toimintoon 2 sekunnissa, tekeekö hierarkia oikeasti työtä vai huutavatko kaikki.
+3. **Ruudukko ja rakenne**: onko taustalla oleva ruudukko vai onko asettelu satunnaista, onko elementit kohdistettu peruslinjoihin.
+4. **Rytmi**: vuorottelevako sivu tiukan ja anteliaan välistyksen välillä vai onko kaikki tasaisesti.
+5. **Tiheys**: onko asettelu ahdas vai tuhlaileva, vastaako tiheys sisältötyyppiä.
+
+Korjaukset sisältävät yleensä välistysasteikon uudelleenrakentamisen, epäsymmetrian tuomisen, yksitoikkoisten ruudukoiden tiivistämisen sekoitetuksi asetteluksi hero- ja tukielementeillä, ja ensisijaisen toiminnon antamisen oikeata tilaa.
+
+## Kokeile
+
+```
+/impeccable layout the settings page
+```
+
+Tyypilliset muutokset:
+
+- Välistysasteikko yhdenmukaistettu 8 / 16 / 24 / 48 / 96px
+- Osionkatkot 48px:ssä, rivivälit 16px:ssä, lomakekenttäryhmät 8px:ssä
+- Ensisijaiset toiminnot nostettu pois lomaketyönkulusta 32px puskurilla
+- Koristeelliset reunat poistettu, korvattu välistyspohjaisella ryhmittelyllä
+- Sivupalkin ja pääsarakkeen suhteet tasapainotettu uudelleen (280 / flex vs 25 / 75)
+
+## Sudenkuopat
+
+- **Sekoittaminen distillin kanssa.** Jos ongelma on liian monia asioita, suorita `/impeccable distill` ensin. Layout on jo oikean joukon järjestämiseen.
+- **Odotus, että se pelastaa rikkinäisen ruudukon.** Jos sivulla ei ole ruudukkoa lainkaan, arrange rakentaa sellaisen. Tiedä vain että diff tulee olemaan odotettua suurempi.
+- **Hierarkiadiagnoosin sivuuttaminen.** Jos arrange sanoo "mikään ei ole ensisijainen", mikään määrä välistystyötä ei korjaa sitä. Tarvitset sisältöpäätöksen, et asettelun hienosäätöä.

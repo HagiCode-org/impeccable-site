@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Faceti interfețele pregatite de productie. Cazuri limita, i18n, stari de eroare, depasire.
+highlights:
+  - Calea fericita functioneaza, dar starile din lumea reala inca arata fragile.
+  - Trebuie sa inchideti decalajele de lansare inainte de release.
+  - Gestionarea erorilor si rezilienta conteaza mai mult decat adaugarea de nou stralucire.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Cand se foloseste
+
+`/impeccable harden` este pentru ziua in care interfata dumneavoastra intalneste realitatea. Datele reale ale utilizatorilor sunt dezordonate: nume de 60 de caractere, titluri de produse in germana, preturi in miliarde, erori 500, moduri offline, text de la dreapta la stanga. Designurile care functioneaza doar cu date perfecte nu sunt pregatite de productie.
+
+Apelati la el inainte de lansare, inainte de deschiderea catre o piata noua sau oricand un raport de bug incepe cu "utilizatorul nostru avea un nume foarte lung si". Pentru fluxuri de prima utilizare, activare de stari goale si design de onboarding, apelati la `/impeccable onboard` in schimb.
+
+## Cum functioneaza
+
+Skill-ul lucreaza prin patru dimensiuni de rezilienta in lumea reala:
+
+1. **Extreme de text si date**. Text lung, text scurt, caractere speciale, emoji, RTL, numere in miliarde, liste de 1000 de elemente.
+2. **Scenarii de eroare**. Esecuri de retea, API 4xx/5xx, erori de validare, erori de permisiune, limite de rata, operatiuni concurente.
+3. **Internationalizare**. Traduceri lungi (germana este adesea cu 30% mai lunga decat engleza), limbi RTL, formate de data si numere, simboluri monetare, seturi de caractere.
+4. **Dispozitiv si context**. Tinte tactile, comportament offline, conexiuni lente, mod de economisire a energiei.
+
+Pentru fiecare dimensiune identifica modul de esec, apoi aplica remedierea concreta: gestionare depasire, UI de eroare informativ, layout-uri sigure i18n, pluralizare, alternative rezonabile.
+
+## Incercati
+
+Incepeti cu o pagina si o dimensiune:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Iesire asteptata:
+
+- `.user-name` are acum `text-overflow: ellipsis` cu un tooltip pentru valoarea completa
+- `.bio` a trecut de la inaltime fixa la `max-height` cu un disclosure "aratati mai mult"
+- Adaugata o stare goala pentru utilizatorii fara bio
+- Adaugat un loader skeleton pentru fetch-ul asincron al avatarului
+- Testat la lungimi de nume de 1, 20, 60, 200 de caractere
+
+Rulati-o per-pagina, nu tot deodata. Prima rulare este cea mai mare; rularile ulterioare gasesc mai putine probleme pe masura ce tiparele se solidifica.
+
+## Capcane
+
+- **Asteptarea unui raport de bug.** Harden este preventiv. Daca va prindeti reparand aceeasi clasa de bug de doua ori, rulati `/impeccable harden` pe functionalitate.
+- **Tratarea starilor de eroare si goale ca dupa-gandire.** Majoritatea muncii de intarire este UI de stare de eroare si stare goala. Bugetati timp pentru asta, nu doar un bloc `catch`.
+- **Omiterea i18n pentru ca "suntem doar in engleza deocamdata".** Layout-urile sigure i18n sunt inca layout-uri mai bune. Containere flexibile, impachetare text adecvata, inaltime linie generoasa. Nimic din asta nu raneste engleza.

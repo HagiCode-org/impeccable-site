@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Célzott mozgás, amely állapotot közöl, nem díszít.
+highlights:
+  - A felületek életlennek vagy hirtelennek hatnak az állapotváltásoknál.
+  -Betöltés, visszajelzés vagy átmenetek olyan mozgást igényelnek, amely elmagyarázza, mi történik.
+  - Fegyelmezett animációt szeretnél reduced-motion tartalékkal.
+related:
+  - delight
+---
+
+## Mikor használd
+
+Az `/impeccable animate` olyan felületekre való, amelyek életlennek hatnak, ahol az állapotváltások azonnaliak és zavaróak, ahol a betöltés csak felugrik, ahol a felhasználó sosem egészen bízik abban, hogy a kattintása regisztrálva lett. Használd a kis mozgások hozzáadásához, amelyek közlik, mi történik: megjelenések, eltűnések, visszajelzések, átmenetek állapotok között.
+
+Ne használd pattanások vagy rugós rugalmasságok hozzáadására az energia kedvéért. Az díszítés, és ezt a skill nem fogja megadni neked.
+
+## Hogyan működik
+
+A skill azonosítja a statikus pillanatokat, amelyek hasznát vennék a mozgásnak, majd szigorú fegyelemmel alkalmazza azokat:
+
+1. **Megjelenések és eltűnések**: az elemek 200-300ms-os áttűnéssel és finom Y vagy scale mozgással jelennek meg és távoznak, sosem elrendezési tulajdonságokkal.
+2. **Állapot visszajelzés**: hover, aktív, fókusz, betöltés, siker mind mozgáson keresztül kommunikálnak hirtelen cserék helyett.
+3. **Átmenetek nézetek között**: megosztott-elem átmenetek, ahol értelmes, egyébként fade-through.
+4. **Előrehaladás és betöltés**: csontváz képernyők, meghatározott sávok, olyan mozgás, amely azt mondja "még dolgozom".
+5. **Csökkentett mozgás**: minden animációnak van `prefers-reduced-motion` tartaléka.
+
+A könnyítés mindig exponenciális (ease-out-quart, quint vagy expo), mert a valós tárgyak simán lassulnak. Nincs pattanás, nincs rugó, nincs lineáris semmire, kivéve az előrehaladás-jelzőket.
+
+A skill kizárólag `transform` és `opacity` értékeket animál. Ha azt találod, hogy `width`, `height`, `top` vagy `left` értékeket animál, akkor rosszul csinálja. Használj `grid-template-rows`-t a magasság átmenetekhez.
+
+## Próbáld ki
+
+```
+/impeccable animate the sign-up flow
+```
+
+Tipikus kiegészítések:
+
+- Email beviteli mező kap egy fókusz ragyogást focus-visible esetén (opacity + shadow, 180ms)
+- Submit gomb betöltési állapotban egy pörgetőt mutat önmagán belül, nem külön pörgetőt mellette
+- Sikeres képernyő opacity + translateY(8px)-szel lép be, 260ms, ease-out-quart
+- Hibaüzenet lecsúszik grid-template-rows-szal (nem height), 220ms
+- `@media (prefers-reduced-motion: reduce)` tartalék minden átmenethez
+
+## Csapdák
+
+- **"Több animációt" kérni.** Az Animate nem egy tekerőgomb. Ott ad hozzá mozgást, ahol az kommunikál, nem mindenhol.
+- **A reduced-motion tartalékok eltávolítása.** A skill automatikusan hozzáadja őket. Nem tárgyalható az akadálymentesség érdekében.

@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Doelgerichte beweging die status overbrengt, geen decoratie.
+highlights:
+  - Interfaces voelen levenloos of abrupt bij statusovergangen.
+  - Laden, feedback of overgangen hebben beweging nodig die uitlegt wat er gebeurt.
+  - Je wilt gedisciplineerde animatie met reduced-motion fallbacks.
+related:
+  - delight
+---
+
+## Wanneer te gebruiken
+
+`/impeccable animate` is voor interfaces die levenloos aanvoelen, waar statusovergangen direct en schokkerig zijn, waar laden gewoon verschijnt, waar de gebruiker nooit helemaal vertrouwt dat zijn klik is geregistreerd. Gebruik het om de kleine bewegingen toe te voegen die communiceren wat er gebeurt: entrees, uitgangen, feedback, overgangen tussen statussen.
+
+Gebruik het niet om stuiters of elastische veren toe te voegen omwille van energie. Dat is decoratie, en deze skill zal het je niet geven.
+
+## Hoe het werkt
+
+De skill identificeert statische momenten die baat zouden hebben bij beweging, en past ze toe met strikte discipline:
+
+1. **Entrees en uitgangen**: elementen verschijnen en verdwijnen met 200 tot 300ms fades plus subtiele Y of schaal, nooit lay-outeigenschappen.
+2. **Statusfeedback**: hover, active, focus, laden, succes communiceren allemaal via beweging in plaats van plotselinge wisselingen.
+3. **Overgangen tussen weergaven**: shared-element-overgangen waar het zinvol is, anders fade-through.
+4. **Voortgang en laden**: skeletschermen, deterministische balken, beweging die zegt "nog bezig".
+5. **Reduced motion**: elke animatie heeft een `prefers-reduced-motion` fallback.
+
+Easing is altijd exponentieel (ease-out-quart, quint of expo) omdat echte objecten vloeiend vertragen. Geen bounce, geen elastisch, geen lineair voor iets behalve voortgangsindicatoren.
+
+De skill animeert alleen `transform` en `opacity`. Als je jezelf betrapt op het animeren van `width`, `height`, `top` of `left`, dan doet het het verkeerde. Gebruik `grid-template-rows` voor hoogte-overgangen.
+
+## Probeer het
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typische toevoegingen:
+
+- E-mailinvoer krijgt een focus-gloed bij focus-visible (opacity + schaduw, 180ms)
+- Verzendknop toont een spinner in zichzelf bij laadstatus, geen aparte spinner ernaast
+- Succes-scherm verschijnt met opacity + translateY(8px), 260ms, ease-out-quart
+- Foutmelding schuift naar beneden met grid-template-rows (niet height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback voor elke overgang
+
+## Valkuilen
+
+- **Vragen om "meer animatie".** Animate is geen draaiknop. Het voegt beweging toe waar het communiceert, niet overal.
+- **De reduced-motion fallbacks verwijderen.** De skill voegt ze automatisch toe. Niet-onderhandelbaar voor toegankelijkheid.

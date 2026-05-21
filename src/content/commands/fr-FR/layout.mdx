@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Corriger la mise en page, l'espacement et le rythme visuel.
+highlights:
+  - La page manque d'emphase claire.
+  - Le contenu est bon, mais la composition le masque.
+  - Vous voulez un flux plus fort avant de toucher à la couleur ou au mouvement.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Quand l'utiliser
+
+`/impeccable layout` est pour les pages où rien n'est techniquement mauvais mais où rien ne respire non plus. Padding égal partout, grilles de cartes monotones, contenu qui court de bord en bord, hiérarchie qui repose uniquement sur la taille. Utilisez-le quand une mise en page « semble bizarre » et que vous n'arrivez pas à articuler pourquoi.
+
+Bons déclencheurs : « tout semble à l'étroit », « ça se lit comme un mur », « je ne sais pas où regarder en premier ».
+
+## Comment ça marche
+
+La compétence passe en revue cinq dimensions de mise en page :
+
+1. **Espacement** : l'échelle d'espacement est-elle cohérente ou y a-t-il des espaces aléatoires de 13px, les éléments liés sont-ils groupés étroitement avec un espace généreux entre les groupes, y a-t-il un rythme quelconque.
+2. **Hiérarchie visuelle** : l'œil se pose-t-il sur l'action principale en moins de 2 secondes, la hiérarchie fait-elle un vrai travail ou tout crie-t-il en même temps.
+3. **Grille et structure** : existe-t-il une grille sous-jacente ou la mise en page est-elle aléatoire, les éléments sont-ils alignés sur des lignes de base.
+4. **Rythme** : la page alterne-t-elle entre espacement serré et généreux, ou tout est-il uniforme.
+5. **Densité** : la mise en page est-elle à l'étroit ou gaspille-t-elle l'espace, la densité correspond-elle au type de contenu.
+
+Les corrections impliquent généralement de reconstruire l'échelle d'espacement, d'introduire de l'asymétrie, de réduire les grilles monotones en une mise en page mixte avec un hero et des éléments de soutien, et de donner un vrai espace à l'action principale.
+
+## Essayez
+
+```
+/impeccable layout the settings page
+```
+
+Modifications typiques :
+
+- Échelle d'espacement unifiée à 8 / 16 / 24 / 48 / 96px
+- Sauts de section à 48px, espaces entre lignes à 16px, groupes de champs de formulaire à 8px
+- Actions principales sorties du flux du formulaire avec un tampon de 32px
+- Bordures décoratives supprimées, remplacées par un regroupement basé sur l'espacement
+- Proportions de la barre latérale et de la colonne principale rééquilibrées (280 / flex vs 25 / 75)
+
+## Pièges courants
+
+- **Confondre layout avec distill.** Si le problème est qu'il y a trop de choses, exécutez `/impeccable distill` d'abord. Layout sert à arranger ce qui est déjà le bon ensemble.
+- **S'attendre à ce qu'il sauve une grille cassée.** Si la page n'a aucune grille, layout en construira une. Sachez simplement que le diff sera plus grand que prévu.
+- **Ignorer le verdict de hiérarchie.** Si layout dit « rien n'est principal », aucune quantité de travail d'espacement ne corrige cela. Il faut une décision de contenu, pas un ajustement de mise en page.

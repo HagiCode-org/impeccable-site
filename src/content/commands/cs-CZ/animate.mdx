@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Ucelny pohyb, ktery sdeluje stav, nikoli dekorace.
+highlights:
+  - Rozhrani pripada zivotnejsi nebo prudke mezi stavy.
+  - Nacitani, zpetna vazba nebo prechody potrebuji pohyb, ktery vysvetluje, co se deje.
+  - Chcete disciplinovanou animaci s fallbacky pro reduced-motion.
+related:
+  - delight
+---
+
+## Kdy pouzit
+
+`/impeccable animate` je pro rozhrani, ktera pripadaji bez zivota, kde jsou zmeny stavu okamzite a trhavne, kde nacitani jen vyskoci, kde uzivatel nikdy doveruje, ze jeho klik byl registrovan. Pouzijte jej pro pridani malych pohybu, ktere komunikuji, co se deje: vstupy, vystupy, zpetna vazba, prechody mezi stavy.
+
+Nepouzivejte jej pro pridani odskoku nebo elastickych pruzin pro ucel energie. To je dekorace a tato dovednost vam to nedoda.
+
+## Jak to funguje
+
+Dovednost identifikuje staticke momenty, ktere by prospely pohybu, a pak je aplikuje se striktni disciplinou:
+
+1. **Vstupy a vystupy**: prvky se objevuji a odchazeji s 200 az 300ms pruhlednosti plus jemny Y nebo meritko, nikdy layout vlastnosti.
+2. **Zpetna vazba stavu**: hover, active, focus, nacitani, uspech vse komunikuje prostrednictvim pohybu misto nahrlych vymen.
+3. **Prechody mezi pohledy**: shared-element prechody, kde to dava smysl, fade-through jinak.
+4. **Prubeh a nacitani**: skeleton obrazovky, deterministicke pruhy, pohyb, ktery rika " stale pracuje".
+5. **Snizeny pohyb**: kazda animace ma fallback `prefers-reduced-motion`.
+
+Easing je vzdy exponencialni (ease-out-quart, quint nebo expo), protoze skutecne objekty plynule zpomaluj. Zadny odskok, zadny elasticky, zadny linearni pro nic jineho nez indikatory prubehu.
+
+Dovednost animuje pouze `transform` a `opacity`. Pokud zjistite, ze animujete `width`, `height`, `top` nebo `left`, dela to spatne. Pouzijte `grid-template-rows` pro prechody vysky.
+
+## Vyzkousejte to
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typicke pridani:
+
+- Emailovy vstup ziska focus glow pri focus-visible (pruhlednost + stin, 180ms)
+- Odesilaci tlacitko zobrazi spinner uvnitr sebe pri stavu nacitani, nikoli samostatny spinner vedle nej
+- Obrazovka uspechu vstoupí s pruhlednosti + translateY(8px), 260ms, ease-out-quart
+- Chybova zprava sjede dolu s grid-template-rows (ne height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback pro kazdy prechod
+
+## Na co si dat pozor
+
+- **Zadost o "vice animaci".** Animate neni ciselnik. Pridava tam, kde pohyb komunikuje, ne vsude.
+- **Odstraneni fallbacku pro snizeny pohyb.** Dovednost je pridava automaticky. Neprijemne pro pristupnost.

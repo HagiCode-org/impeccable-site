@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Tervek működtetése különböző képernyőkön, eszközökön és környezetekben, funkciók csonkolása nélkül.
+highlights:
+  - A jelenlegi elrendezés összeroskad kisebb képernyőkön.
+  - A termék átgondoltabb reszponzív stratégiát igényel.
+  - Az érintési célpontok, sűrűség vagy tartalomfolyam eszközönként változnak.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Mikor használd
+
+A `/impeccable adapt` arra szolgál, hogy egy adott környezetre készült teret egy másik környezetben is működőképessé tegye. Mobil asztaliból, tablet mobilból, nyomtatott webesből, beágyazott önállóból, e-mail irányítópultból. Akkor nyúlj hozzá, amikor a forrásterő stabil, de más töréspontokon, érintésre vagy más tárolóban szétesik.
+
+Nem az a célja, hogy a nulláról építsen reszponzív elrendezést. Ehhez kezdje a `/impeccable` paranccsal, és reszponzív-first szemlélettel formálja az elrendezést. Az adapt a „soha nem gondoltunk a mobilra" jellegű utólagos pótlásokhoz van.
+
+## Hogyan működik
+
+A szakértelem négy dimenzió mentén vizsgálja a környezeti illeszkedést:
+
+1. **Töréspontok és folyékony elrendezés**: többoszlopos elrendezés összevonása eggyé, clamp-tartományok igazítása, új töréspontok bevezetése ott, ahol a terv valóban megszakad.
+2. **Érintési célpontok**: minimum 44px találati terület, megfelelő távolság a szomszédos célpontok között, nagyobb koppintási zónák a vizuális határoknál, ahol szükséges.
+3. **Navigációs minták**: az asztali oldalsáv mobil esetén alsó navigáció vagy csúsztatható panel lesz, a sűrű eszköztárak menüvé összevonódnak, a lebegő állapotok érintési megfelelőket kapnak.
+4. **Tartalomprioritás**: eldöntendő, mi látszódjon folyamatosan, mi hajtható össze felfedhetővé, mi távolítható el teljesen az adott környezetben.
+
+A meg nem alkuvó szabály: alkalmazkodj, de ne csonkolj. A kritikus funkciók nem tűnhetnek el mobilon csak azért, mert kényelmetlenek. Találj módot, hogy elférjen, tervezd újra az interakciót, vagy gondold újra, hogy valóban kritikus volt-e asztali környezetben.
+
+## Próbáld ki
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Várható változások:
+
+- A háromoszlopos rács egyetlen oszloppá válik, a szakaszfejlécek ragadós elválasztóként működnek
+- Az oldalsáv-navigáció a tartalom feletti vízszintes görgetősávba kerül
+- A kapcsolók 8px függőleges paddinget kapnak, hogy megfeleljenek a 44px-es érintési célpontoknak
+- A soron belüli súgószöveg koppintásra megjelenítővé válik, nem lebegőre
+- A „Veszélyes zóna" szakasz mobilon teljesen kinyílik összecsukás helyett, mert visszavonhatatlan műveleteket tartalmaz, és szeretnénk, ha a felhasználók tisztán látnák azokat
+
+## Gyakori buktatók
+
+- **Funkciók csonkolása.** Ha a mobil verzió elrejti azt, amit az asztali tud, az nem alkalmazkodás, hanem hiba. Harcolj a funkcióért.
+- **A mobil „kisebb asztalként" kezelése.** A mobil más környezet: hüvelykujjak, megszakítások, rövid munkamenetek. A környezethez alkalmazkodj, nem a nézetablak szélességéhez.
+- **A `/impeccable harden` kihagyása utána.** A reszponzív elrendezések szélsőséges eseteket hoznak felszínre. Futtasd a hardeninget az adapt után, hogy elkapd azokat, amelyek csak 320px-en jelentkeznek.

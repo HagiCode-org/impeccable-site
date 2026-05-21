@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Trí tuệ thiết kế đằng sau mọi lệnh.
+highlights:
+  - Bạn muốn một điểm truy cập duy nhất cho bố cục, kiểu chữ, màu sắc, chuyển động và cấu trúc UX cùng lúc.
+  - Bạn đang khám phá một hướng đi và muốn kỹ năng tự chọn quy trình phụ phù hợp.
+  - Bạn cần bối cảnh thiết kế rộng nhất thay vì một lệnh chuyên biệt hẹp.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable` là lệnh gốc. Gọi trực tiếp khi bạn muốn thiết kế tự do với toàn bộ sổ tay đã được tải, mà không cần chọn một lệnh chuyên biệt. Đây là lệnh dự phòng khi không có bất kỳ lệnh chuyên biệt nào trong số 23 lệnh (`audit`, `polish`, `critique` và các lệnh khác) phù hợp rõ ràng với những gì bạn đang cố gắng làm.
+
+Sử dụng `/impeccable` trực tiếp khi:
+
+- **Bạn không chắc lệnh nào phù hợp.** Mô tả những gì bạn muốn bằng tiếng Anh đơn giản và để kỹ năng chọn cách tiếp cận đúng.
+- **Công việc trải dài trên nhiều lĩnh vực.** "Làm lại phần hero này" liên quan đến bố cục, kiểu chữ, màu sắc và chuyển động. Một lệnh không thể bao quát tất cả.
+- **Bạn muốn toàn bộ trí tuệ thiết kế mà không có ràng buộc.** Mọi tệp tham chiếu được tải, mọi phản mẫu được kiểm tra, không có quy trình preset.
+
+Đối với các luồng có cấu trúc, hãy sử dụng các lệnh chuyên biệt trong thanh bên. Chạy `/impeccable teach` trước trên bất kỳ dự án mới nào để thiết lập PRODUCT.md và DESIGN.md. `/impeccable craft` kết nối một cuộc phỏng vấn khám phá thành một bản dựng hoàn chỉnh với lặp trực quan trực tiếp. `/impeccable shape` tạo bản tóm tắt thiết kế mà không cần chạm vào code. `/impeccable live` cung cấp cho bạn bộ chọn trình duyệt với ba biến thể cho mỗi phần tử. Các lệnh đánh giá và tinh chỉnh (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` và các lệnh khác) mỗi lệnh đảm nhận một phần cụ thể của công việc.
+
+## Cách hoạt động
+
+Hầu hết các UI do AI tạo ra đều thất bại theo cùng một cách: font chữ chung chung, gradient tím, lưới thẻ chồng lưới thẻ, hiệu ứng kính mờ ở khắp mọi nơi. `/impeccable` cung cấp cho AI của bạn một quan điểm thiết kế mạnh mẽ. Nó tải một sổ tay thiết kế có chủ đích cùng với danh sách dài các phản mẫu, sau đó thúc đẩy mô hình cam kết với một hướng thẩm mỹ cụ thể trước khi viết một dòng code nào.
+
+Hai tệp ở thư mục gốc dự án định hình mọi thứ mà kỹ năng thực hiện:
+
+- **`PRODUCT.md`** chứa register (thương hiệu hay sản phẩm), người dùng mục tiêu, tính cách thương hiệu, phản-tham chiếu, nguyên tắc thiết kế. Trả lời câu hỏi "ai, cái gì, tại sao".
+- **`DESIGN.md`** chứa màu sắc, kiểu chữ, đổ bóng, thành phần, nên và không nên, theo định dạng Google Stitch sáu phần. Trả lời câu hỏi "trông như thế nào".
+
+Mọi lệnh đều đọc cả hai tệp trước khi tạo kết quả. **Register** quyết định các giá trị mặc định nào được tải. Thương hiệu (marketing, landing, portfolio, nơi thiết kế CHÍNH LÀ sản phẩm) và sản phẩm (giao diện ứng dụng, bảng điều khiển, công cụ, nơi thiết kế PHỤC VỤ sản phẩm) có các giá trị mặc định khác nhau cho kiểu chữ, chuyển động, màu sắc và mật độ. Chỉ định một lần trong PRODUCT.md nghĩa là `/impeccable typeset` sẽ không đẩy font tạp chí biên tập lên bảng điều khiển, và sẽ không đẩy giá trị mặc định phù hợp sản phẩm lên trang chiến dịch. Xem [hướng dẫn brand vs product](/tutorials/brand-vs-product) để hiểu hai hướng này khác biệt như thế nào.
+
+Khi sử dụng lần đầu trong một dự án, kỹ năng tự động chạy luồng `teach`: một cuộc phỏng vấn ngắn ghi PRODUCT.md và sau đó ủy quyền cho `/impeccable document` để tạo DESIGN.md. Các lệnh sau đó sẽ đọc các tệp mà không cần hỏi lại.
+
+## Thử ngay
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Cả hai prompt đều cố tình mơ hồ. `/impeccable` sẽ chọn một hướng thẩm mỹ mạnh mẽ phù hợp với register của bạn, cam kết sử dụng font không mặc định, tránh bảng màu AI và đưa ra những lựa chọn cụ thể mà một nhà thiết kế sẽ đưa ra. Không cần chọn tên lệnh trước, không cần theo quy trình từng bước.
+
+Đối với lặp trực quan trong trình duyệt thay vì chat:
+
+```
+/impeccable live
+```
+
+Chọn bất kỳ phần tử nào trên dev server đang chạy. Thả bình luận hoặc vẽ nét. Nhận ba biến thể chất lượng sản xuất được hoán đổi nóng qua HMR. Chấp nhận biến thể bạn muốn và nó sẽ ghi ngược vào source.
+
+## Ghim lệnh trở lại làm phím tắt
+
+v3.0 đã gộp 18 kỹ năng độc lập thành một `/impeccable` duy nhất với 23 lệnh con. Nếu bạn muốn dạng viết tắt của một lệnh cụ thể, ghim nó lại:
+
+```
+/impeccable pin critique
+```
+
+Từ giờ trở đi, `/critique` sẽ gọi trực tiếp `/impeccable critique`. Nó ghi một kỹ năng chuyển tiếp nhẹ sẽ ủy quyền cho lệnh gốc, do đó các cập nhật kỹ năng sẽ tự động được áp dụng mà không cần ghim lại.
+
+Các ghim hữu ích để thử:
+
+- `/impeccable pin polish` cho công việc duyệt cuối
+- `/impeccable pin audit` cho kiểm tra a11y/perf xác định
+- `/impeccable pin live` cho luồng lặp trình duyệt
+- `/impeccable pin critique` cho đánh giá thiết kế
+
+Để gỡ bỏ: `/impeccable unpin critique`. Các ghim tồn tại dưới dạng thư mục có tiền tố `i-` trong thư mục kỹ năng harness của bạn (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, v.v.), vì vậy bạn cũng có thể xóa chúng thủ công.
+
+## Những cạm bẫy cần tránh
+
+- **Coi nó như một hướng dẫn kiểu dáng.** Đây là một đối tác thiết kế có quan điểm, không phải công cụ kiểm tra lỗi. Các giá trị mặc định tồn tại để nâng tiêu chuẩn tối thiểu, không phải để ghi đè đánh giá của bạn. Nếu bạn có lý do chính đáng để phản đối (hướng dẫn thương hiệu, ràng buộc khả năng tiếp cận, nghiên cứu người dùng), hãy phản đối và giải thích lý do. Kỹ năng sẽ hợp tác với bạn. Điều tạo ra kết quả tồi tệ hơn là bỏ qua quan điểm mà không có lý do.
+- **Mong đợi nó sửa code hiện có.** `/impeccable` dành cho sáng tạo. Để tinh chỉnh, hãy sử dụng `/impeccable polish`, `/impeccable distill`, hoặc `/impeccable critique` thay thế.
+- **Chạy trước khi `teach` có cơ hội lưu ngữ cảnh.** Trên một dự án mới, nó sẽ phỏng vấn bạn ngay giữa quá trình, điều này vẫn ổn nhưng chậm hơn. Chạy `/impeccable teach` rõ ràng là lệnh đầu tiên sẽ mượt mà hơn một chút.
+- **Bỏ qua câu hỏi về register.** Giá trị mặc định cho thương hiệu và sản phẩm khác biệt đủ để chạy sai register tạo ra kết quả sai lệch tinh tế. Nếu `PRODUCT.md` không có trường `## Register` (phiên bản cũ), hãy chạy `/impeccable teach` để thêm.

@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Kéo thành phần dùng lại, token và mẫu vào hệ thống thiết kế.
+highlights:
+  - Nhiều thành phần đang giải quyết cùng một vấn đề theo cách khác nhau.
+  - Token và mẫu cần được tập trung hóa.
+  - Bạn muốn một hệ thống trực quan dễ bảo trì hơn.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Discover drift</span>
+      <span class="docs-viz-flow-hint">Giá trị hex lặp lại, biến thể nút, tỷ lệ khoảng cách, kiểu văn bản.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propose primitives</span>
+      <span class="docs-viz-flow-hint">Tên token, API thành phần với variant + size, kiểu văn bản.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrate call sites</span>
+      <span class="docs-viz-flow-hint">Thay thế CSS trùng lặp bằng primitive mới. Không để code mồ côi.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Kỹ năng chỉ trích xuất những gì được sử dụng ba lần hoặc hơn với cùng ý định. Hai lần sử dụng không phải mẫu và việc di chuyển luôn diễn ra trong cùng một lần.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+`/impeccable extract` dành cho khoảnh khắc codebase của bạn tình cờ trở thành hệ thống thiết kế. Kiểu nút lặp lại ở 12 nơi. Ba biến thể của cùng một thẻ. Mã hex rải rác khắp nơi. Khoảng cách tự làm khớp với một tỷ lệ. Sử dụng khi bạn muốn củng cố sự trôi dạt này thành các primitive dùng lại.
+
+Sử dụng sau khi sản phẩm đã phát hành đủ tính năng để lộ các mẫu. Trích xuất sớm tạo abstraction không khớp với thực tế.
+
+## Cách hoạt động
+
+Kỹ năng khám phá cấu trúc hệ thống thiết kế trước, sau đó xác định cơ hội trích xuất:
+
+1. **Token**: tìm giá trị literal lặp lại (màu sắc, khoảng cách, bán kính, shadow, kích thước font). Đề xuất tên token, thêm vào hệ thống token, thay thế cách sử dụng.
+2. **Thành phần**: tìm mẫu UI lặp lại với biến thể nhỏ (nút, thẻ, input, modal). Trích xuất thành một thành phần duy nhất với các variant, di chuyển nơi gọi.
+3. **Mẫu kết hợp**: tìm mẫu bố cục hoặc tương tác lặp lại (hàng biểu mẫu, nhóm toolbar, trạng thái trống). Trích xuất thành primitive kết hợp.
+4. **Kiểu văn bản**: tìm tổ hợp font-size + weight + line-height lặp lại. Trích xuất thành kiểu văn bản.
+5. **Mẫu animation**: tìm tổ hợp easing, duration hoặc keyframe lặp lại. Trích xuất thành token chuyển động.
+
+Kỹ năng thận trọng. Nó chỉ trích xuất thứ được sử dụng ba lần hoặc hơn, với cùng ý định. Nó không bao giờ trích xuất "vì có thể được dùng lại sau". Abstraction sớm tệ hơn trùng lặp.
+
+## Thử ngay
+
+```
+/impeccable extract the button styles
+```
+
+Kết quả kỳ vọng:
+
+- Tìm thấy 14 instance nút trên 8 tệp
+- 4 biến thể riêng biệt: primary (filled accent), secondary (bordered), ghost (text-only), destructive (filled red)
+- Tất cả 4 biến thể sử dụng cùng tỷ lệ kích thước (small, default, large)
+- Trích xuất thành `<Button variant="primary" size="default">` với kiểu token-driven
+- Di chuyển 14 call site, loại bỏ khoảng 180 dòng CSS trùng lặp
+- Thêm 3 token còn thiếu: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Những cạm bẫy cần tránh
+
+- **Trích xuất quá sớm.** Hai lần sử dụng không phải mẫu. Ba có thể là. Đợi cho đến khi mẫu rõ ràng.
+- **Quá tổng quát hóa.** Thành phần trích xuất nên khớp chặt với các trường hợp sử dụng hiện tại, không dự đoán mọi trường hợp tương lai có thể có. Bạn luôn có thể thêm variant sau.
+- **Quên việc di chuyển.** Trích xuất mà không di chuyển để lại code trùng lặp cũ và tạo ra cách thứ ba làm cùng một việc. Luôn di chuyển trong cùng một lần.
+- **Trích xuất thứ khác biệt về ý định.** Hai nút trông giống nhưng phục vụ mục đích khác (hành động chính vs liên kết được tạo kiểu như nút) nên có thể giữ riêng.

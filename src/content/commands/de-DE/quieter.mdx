@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Designs dämpfen, die schreien, ohne ihre Absicht zu verlieren.
+highlights:
+  - Starke Ideen sind vorhanden, aber die Seite ist zu laut.
+  - Sie brauchen Zurückhaltung, ohne blass zu werden.
+  - Der aktuelle Ton überfordert das Lesen oder den Aufgabenablauf.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Wann man es verwendet
+
+`/impeccable quieter` ist das Gegengewicht zu `/impeccable bolder`. Greifen Sie zu ihm, wenn ein Interface visuell aggressiv, überreizend ist oder zu viele Dinge mit voller Lautstärke gleichzeitig versucht. Neon auf Dunkel, überall Farbverlaufstext, 6 Akzentfarben, alles animiert, 20px-Schatten. Verwenden Sie quieter, wenn das Design atmen muss und Sie Verfeinerung möchten, ohne den Standpunkt zu verlieren.
+
+Auch nützlich, wenn `/impeccable bolder` ein bisschen zu weit gegangen ist.
+
+## Wie es funktioniert
+
+Der Skill arbeitet durch Reduktion über vier Achsen:
+
+1. **Farbe**: entsättigen, Chroma in OKLCH senken, Akzente auf ein einziges Primär plus gedämpfte Unterstützung zurückziehen. Nicht mehr als zwei intentionale Farben.
+2. **Kontrast**: extreme Dunks und Helles abmildern, den Bereich zusammenziehen. Hintergründe wechseln von reinweiß und reinweiß zu Papier und Tinte.
+3. **Dekoration**: Schatten entfernen, die keine Arbeit leisten, Rahmen fallen lassen, die keine Struktur tragen, Farbverläufe in den Ruhestand schicken, die für Energie statt Hierarchie existieren.
+4. **Bewegung und Effekt**: Animationen verlangsamen, alles entfernen, was automatisch abspielt, Parallax und Blur fallen lassen, es sei denn, sie dienen der Lesbarkeit.
+
+Der Skill bewahrt die Absicht des Designs. Wenn das Original einen Standpunkt hatte, hat die leisere Version denselben Standpunkt mit mehr Selbstvertrauen. Verfeinerung, nicht Neutralisierung.
+
+## Ausprobieren
+
+```
+/impeccable quieter the pricing page
+```
+
+Typisches Diff:
+
+- Farbverlaufstext beim Preis entfernt, ersetzt durch einfarbige Tinte in einer Gewichtstufe schwerer
+- Drei Akzentfarben auf eine reduziert (Magenta), die anderen zwei werden neutrale Varianten
+- Karten-Schatten reduziert von `0 20px 40px rgba(0,0,0,0.2)` auf `0 1px 0 var(--color-mist)` (eine Haarlinie)
+- Hintergrund wechselt von dunklem Farbverlauf zu Papier mit einem subtilen Creme-Waschgang oben
+- Hero-Animation von 1,2s easeOut mit 3 gestaffelten Elementen zu einem einzelnen 260ms Fade-in
+
+## Fallstricke
+
+- **Übermäßige Anwendung.** Quieter kann Persönlichkeit entfernen, wenn Sie es auf etwas anwenden, das bereits zurückhaltend war. Verwenden Sie es, wenn das Design zu laut ist, nicht wenn es korrekt selbstbewusst ist.
+- **Verwechslung von quieter mit distill.** Quieter reduziert Intensität. Distill entfernt Elemente. Das sind unterschiedliche Vorgänge.
+- **Ausführung als Reaktion auf ein Kritik, die „zu beschäftigt" sagt.** Beschäftigt bedeutet meist zu viele Dinge, nicht zu laut. Versuchen Sie zuerst `/impeccable distill`.

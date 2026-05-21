@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Das Design formen, dann umsetzen - alles in einem Ablauf.
+highlights:
+  - Sie beginnen ein neues Feature von Null an.
+  - Sie möchten Discovery, Implementierung und visuelle Verfeinerung in einem Durchgang.
+  - Sie bevorzugen eine langsamere, aber bewusstere Build-Schleife.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Discovery-Interview. Zweck, Nutzer, Einschränkungen, Richtung.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Referenzen laden</span>
+      <span class="docs-viz-flow-hint">Raum, Typografie, Bewegung, Farbe, Interaktion.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Build</span>
+      <span class="docs-viz-flow-hint">Struktur, Hierarchie, Typografie, Farbe, Zustände, Bewegung, Responsive.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Visuell iterieren</span>
+      <span class="docs-viz-flow-hint">Im Browser prüfen, verfeinern, bis es zum Brief passt.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Jede Phase ist obligatorisch. Die Discovery-Phase ist der Punkt, an dem die meisten KI-Ergebnisse scheitern: Wenn der Code einmal existiert, ist das Denken bereits festgelegt.</p>
+</div>
+
+## Wann man es verwendet
+
+`/impeccable craft` ist der End-to-End-Build-Befehl. Geben Sie ihm eine Feature-Beschreibung und er führt die gesamte Pipeline aus: strukturierte Discovery, Referenz-Loading, Implementierung, visuelle Iteration. Verwenden Sie ihn, wenn Sie ein neues Feature von Null an beginnen und den gesamten Workflow in einem Aufruf möchten.
+
+Greifen Sie zu ihm, wenn:
+
+- **Sie ein neues Feature bauen und den vollständigen Ablauf möchten.** Sie möchten die Schritte nicht selbst verwalten.
+- **Sie wissen, was Sie bauen, aber nicht, wie es aussehen soll.** Die Discovery-Phase erzwingt das Design-Denken, bevor die Implementierung es festlegt.
+- **Sie standardmäßig visuelle Iteration möchten.** `craft` prüft das Ergebnis in einem Browser und verfeinert es, bis der Feinschliff hoch ist, anstatt die erste funktionierende Version auszuliefern.
+
+Wenn Sie nur das Denken ohne den Code möchten, verwenden Sie `/impeccable` standalone. Wenn Sie bereits eine klare Vision haben und nur bauen möchten, rufen Sie `/impeccable` direkt mit Ihrer Feature-Beschreibung auf. `craft` liegt dazwischen: strukturiert, vollständig, meinungsstark.
+
+## Wie es funktioniert
+
+`craft` führt vier Phasen in Reihenfolge aus:
+
+1. **Das Design formen.** Führt intern `/impeccable shape` aus: ein kurzes Discovery-Gespräch über Zweck, Nutzer, Inhalte, Einschränkungen und Ziele. Das Ergebnis ist ein Design Brief, den Sie lesen und kommentieren können.
+2. **Referenzen laden.** Basierend auf dem Brief werden die richtigen Referenzdateien geladen (Raum, Typografie, Bewegung, Farbe, Interaktion, Responsive, UX-Writing), damit das Modell die relevanten Prinzipien geladen hat, bevor es mit dem Coden beginnt.
+3. **Build.** Implementiert das Feature in einer bewussten Reihenfolge: zuerst Struktur, dann Abstände und Hierarchie, dann Typografie und Farbe, dann Zustände, dann Bewegung, dann Responsive. Jede Entscheidung lässt sich auf den Brief zurückführen.
+4. **Visuelle Iteration.** Öffnet das Ergebnis in einem Browser, prüft es gegen den Brief und den Anti-Pattern-Katalog und verfeinert es, bis es der Absicht entspricht. Dieser Schritt ist entscheidend. Die erste funktionierende Version ist niemals die ausgelieferte Version.
+
+Die Discovery-Phase ist nicht überspringbar, und das ist der Punkt. Die meisten KI-generierten UIs scheitern, weil niemand gefragt hat, was der Nutzer zu erreichen versucht, bevor das Modell mit dem Schreiben von JSX begonnen hat. `craft` kehrt das um.
+
+## Ausprobieren
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Erwarten Sie zuerst ein Discovery-Interview mit 5 bis 10 Fragen. Fragen zu Ihrer Zielgruppe, der Persönlichkeit des Produkts, dem gewünschten emotionalen Ton, Anti-Referenzen und Einschränkungen. Dann ein Design Brief. Dann Implementierung, wobei der Browser in jeder Stufe geprüft wird. Erwarten Sie mehrere Iterationsrunden in der visuellen Verfeinerungsphase.
+
+Der gesamte Durchlauf ist länger als ein typischer Befehl, da er das Denken, das Bauen und das Verfeinern umfasst. Das ist der Kompromiss: mehr Vorstruktur, weniger Nacharbeit.
+
+## Fallstricke
+
+- **Verwendung für kleine Änderungen.** `craft` ist für neue Features, nicht für Kosmetik. Für bestehenden Code greifen Sie stattdessen zu `/impeccable polish`, `/impeccable critique` oder einem spezifischen Verfeinerungsbefehl.
+- **Die Discovery-Phase überstürzen.** Das Interview fühlt sich langsam an im Vergleich zu „einfach anfangen zu coden". Ist es nicht. Das sorgfältige Beantworten der Fragen produces einen schärferen Brief, der einen schärferen Build produces, der weniger Neu-Schreibvorgänge produces.
+- **Die visuelle Iteration überspringen.** Die Phase existiert aus einem Grund. Die Lücke zwischen „funktioniert technisch" und „fühlt sich richtig an" wird durch visuellen Feinschliff geschlossen, nicht durch Code-Review. Lassen Sie es laufen.

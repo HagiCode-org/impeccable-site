@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Herschrijf verwarrende UX-tekst zodat interfaces zichzelf uitleggen.
+highlights:
+  - Gebruikers aarzelen omdat de formulering vaag is.
+  - De interface heeft betere instructie- of fouttekst nodig.
+  - De productflow is goed, maar de taal vertraagt mensen.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Wanneer te gebruiken
+
+`/impeccable clarify` is voor interfacetekst die mensen laat stoppen en nadenken. Verwarrende labels, dubbelzinnige knoptekst, foutmeldingen die de gebruiker de schuld geven, tooltips die het label herhalen, lege statussen die niets nuttigs zeggen. Gebruik het wanneer het probleem niet de lay-out of de kleur is, maar de woorden.
+
+Goede signalen: "gebruikers begrijpen dit veld niet", "de foutmelding is niet behulpzaam", "ik kan geen goede knoptekst schrijven", "deze tooltip is nutteloos".
+
+## Hoe het werkt
+
+De skill herschrijft tekst op de oppervlakken waar de meeste UX-tekstproblemen leven:
+
+1. **Labels en veldhints**: direct, specifiek, zeggen wat er verwacht wordt.
+2. **Knoptekst**: werkwoord eerst, beschrijft het resultaat, niet de actie. "Wijzigingen opslaan" niet "OK".
+3. **Foutmeldingen**: leggen uit wat er mis ging, wiens schuld het is, en wat de volgende stap is. Gebruiker nooit de schuld geven.
+4. **Lege statussen**: oriënteren de gebruiker, leggen uit waarom de status leeg is, bieden een volgende stap.
+5. **Tooltips en helptekst**: voegen informatie toe die het label niet kan dragen, herhalen het nooit.
+6. **Bevestigingsdialogen**: benoemen de consequenties, niet de actie.
+
+De skill gebruikt de doelgroep en geestesgesteldheid uit `PRODUCT.md` om de toon af te stemmen. Technische doelgroep krijgt precieze taal. Consumenten-doelgroep krijgt gewone spreektaal. Haastige gebruikers krijgen korte tekst. Bezorgde gebruikers (betaling, verwijdering) krijgen geruststelling.
+
+## Probeer het
+
+```
+/impeccable clarify the billing form
+```
+
+Voor en na, typisch:
+
+- Label "Factuuradres" -> "Adres op je kaart"
+- Placeholder "Voer je BTW-nummer in" -> "BTW-nummer (optioneel, voor zakelijk)"
+- Fout "Ongeldige invoer" -> "Dit kaartnummer heeft 15 cijfers. Je hebt er 14 ingevoerd."
+- Knop "Verzenden" -> "La $29 af en abonneer"
+- Lege status "Nog geen transacties" -> "Je eerste afschrijving verschijnt hier na je eerste bestelling."
+
+## Valkuilen
+
+- **Slimmere tekst schrijven in plaats van duidelijkere.** Clarify is niet voor stem-upgrades. Als de tekst al duidelijk is, gebruik deze skill dan niet. Gebruik `/impeccable delight` wanneer je persoonlijkheid wilt.
+- **De doelgroeppvraag overslaan.** Clarify moet weten wie leest. Als `PRODUCT.md` het technische niveau van de doelgroep niet specificeert, zullen de herschrijvingen generiek zijn.
+- **Clarify uitvoeren op marketingtekst.** Clarify is voor functionele UX-tekst: labels, fouten, instructies. Marketingtekst vereist een andere set vaardigheden en een menselijke schrijver.

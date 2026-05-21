@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Skrupulatny ostatni przebieg pomiedzy dobrym a swietnym.
+highlights:
+  - Wyrownanie, odstepy i mikro-decyzje nadal wygldaja surowo.
+  - Funkcja jest blisko wysylki.
+  - Male niespojnosci ciagna percepcje jakosci w dol.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Kiedy uzywac
+
+`/impeccable polish` to ostatnia rzecz, ktora uruchamiasz przed wysylka. Poluje na male detale, ktore oddzielaja wyslana funkcje od wypolerowanej: niepolowiczne pikseli niewyrownania, niespojne odstepy, zapomniane stany focusu, ladowanie przejsciami, ktore migaja, tekst, ktory dryfuje w tonie. Rowmiez wyrownuje funkcje z twoim systemem projektowym, zastepujac hardcodowane wartosci tokenami, zamieniajac komponenty wlasne na wspoldzielone i naprawiajac jakikolwiek dryf od ustanowionych wzorcow.
+
+Sigmnij po to, gdy funkcja jest funkcjonalnie kompletna, nic nie jest zepsute, a cos nadal wydaje sie nie tak. Sigmnij rowniez po to, gdy funkcja odjechala od systemu projektowego i musi byc wciagnieta z powrotem na linie.
+
+## Jak to dziala
+
+Polish zaczyna od odkrycia systemu projektowego (tokeny, skala odstepow, wspoldzielone komponenty), potem pracuje metodycznie na szesciu wymiarach:
+
+1. **Wyrownanie wizualne i odstepy**: dokladna do piksela adhezja do siatki, spojna skala odstepow, optyczne wyrownanie ikon.
+2. **Typografia**: spojne hierarchie, dlugosc linii, wdowy i sieroty, kerning na naglowkach.
+3. **Kolor i kontrast**: uzycie tokenow, paritet tematu, proporcje WCAG, wskazniki focusu.
+4. **Stany interakcji**: hover, focus, active, disabled, loading, error, success. Kazdy stan uwzgledniony.
+5. **Przejscia i ruch**: plynnne easing, bez zatur ukladu, poszanowanie `prefers-reduced-motion`.
+6. **Tekst**: spojny glos, prawidlowy czas, brak tekstow zastepczych, brak zabdych TODO.
+
+Umiejetnosc jest wprost o jednej rzeczy: polish to ostatni krok, nie pierwszy. Jesli funkcja nie jest funkcjonalnie kompletna, polerowanie jej to zmarnowana praca.
+
+## Wyprobuj
+
+```
+/impeccable polish the pricing page
+```
+
+Zdrowy przebieg wyglada tak:
+
+```
+Wyrownanie wizualne: naprawiono 3 elementy poza siatka (8px baseline)
+Typografia: zaciesniono kerning h1, naprawiono wdowe na referencji
+Interakcje: dodano stan hover na elementach FAQ, piercien focusu na email input
+Ruch: zmiemczono wejscie modala, dodano fallback reduced-motion
+Tekst: usunieto jednego "Lorem ipsum", wyrownano glos przycisku
+```
+
+Piec malych poprawek, zerowych przeredaktowan. Taki ksztalt ma dobry przebieg polish.
+
+## Pulapki
+
+- **Polerowanie czegos, co nie jest skonczone.** Jesli w kodzie sa TODO, nie jestes gotowy. Uruchom `/impeccable polish` tylko na skonczonych funkcjach.
+- **Traktowanie polish jako przeprojektowania.** Polish udoskonalane to, co istnieje. Jesli zastanawiasz sie nad rearchitektura ukladu, potrzebujesz `/impeccable critique` lub `/impeccable layout` zamiast tego.
+- **Uruchamianie `/impeccable polish` bez `/impeccable audit` najpierw.** Polish lapie problemy oparte na czuciu. Audit lapie mierzalne. Uzyj obu.

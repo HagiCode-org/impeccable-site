@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Denk voordat je bouwt. Produceer een ontwerpbrief door discovery, niet door giswerk.
+highlights:
+  - Je wilt planning zonder nog te implementeren.
+  - De juiste lay-out of toon is nog onduidelijk.
+  - Meerdere belanghebbenden moeten overeenstemming bereiken over de intentie voordat het bouwwerk begint.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output van /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Doel</span>
+        <span class="docs-viz-file-v">Vastgelegde abonnees laten veranderen wat ze ontvangen zonder ze te verliezen aan uitschrijven.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Gebruiker</span>
+        <span class="docs-viz-file-v">Haastig, op mobiel, midden in een vergadering. Leest snel, weinig geduld.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Inhoud</span>
+        <span class="docs-viz-file-v">4 samenvattingstypes, 2 frequenties, één alles-uitschakelen onderaan.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Gevoel</span>
+        <span class="docs-viz-file-v">Kalm, betrouwbaar, geen donkere patronen.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Beperkingen</span>
+        <span class="docs-viz-file-v">Mobile-first. WCAG AA contrast. Eén kolom, geen modals.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Geef het aan <code>/impeccable</code>, <code>/impeccable craft</code> of een andere implementatieflow.</div>
+  </div>
+  <p class="docs-viz-caption">Een shape-brief is een kompas, geen specificatie. Het legt intentie vast, geen UI. Implementatieskills lezen het voordat er een regel code wordt geschreven.</p>
+</div>
+
+## Wanneer te gebruiken
+
+`/impeccable shape` is waar een functie begint. Voordat iemand code schrijft, voordat iemand ruzie maakt over de hero-behandeling, voordat iemand een lettertype kiest. Gebruik het om een discovery-gesprek af te dwingen over doel, gebruikers, inhoud en beperkingen, en leg de antwoorden vast als een ontwerpbrief waarop de implementatieskills kunnen leunen.
+
+Gebruik het wanneer een functie gaat beginnen, een ticket vaag is, of je jezelf betrapt op het schrijven van JSX om uit te zoeken wat het product moet zijn.
+
+## Hoe het werkt
+
+De meeste AI-gegenereerde UI's falen niet door slechte code, maar door overgeslagen denken. Het model springt naar "hier is een kaartgrid" zonder te vragen "wat probeert de gebruiker te bereiken". `/impeccable shape` keert die volgorde om.
+
+De skill voert een gestructureerd discovery-interview in gespreksvorm. Het schrijft geen code tijdens deze fase. De vragen gaan over:
+
+- **Doel en context**: waar de functie voor is, wie het gebruikt, in welke gemoedstoestand ze verkeren
+- **Inhoud en data**: wat wordt weergegeven, realistische bereiken, edge cases, wat dynamisch is
+- **Ontwerpdoelen**: het allereenbelangrijkste, het beoogde gevoel, referentievoorbeelden
+- **Beperkingen**: technisch, inhoudelijk, toegankelijkheid, lokalisatie
+
+Je beantwoordt natuurlijk. De skill stelt vervolgvragen, geen formulier. Aan het einde produceert het een ontwerpbrief: een gestructureerd artefact dat je kunt doorgeven aan `/impeccable` of een andere implementatieskill.
+
+Opmerking: als je de volledige flow wilt (discovery-interview, dan direct door naar bouwen), gebruik dan `/impeccable craft`. Het voert `/impeccable shape` intern uit en gaat dan door naar implementatie met visuele iteratie. `/impeccable shape` zelfstandig is voor wanneer je alleen de brief wilt, zodat je het mee kunt nemen naar welke implementatiebenadering je ook verkiest.
+
+## Probeer het
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Verwacht een gesprek van 5 tot 10 vragen. De skill stelt dingen als "wie is de persoon die dit opent, en zijn ze al vastgelegd of nog nieuwsgierig" en "wat gebeurt er als de gebruiker van alles heeft uitgeschreven, verbergen we de functie of tonen we iets". Jij beantwoordt, en een brief ontstaat.
+
+Van daaruit kun je de brief doorgeven aan `/impeccable`, `/impeccable polish` of een andere skill. Of gebruik het gewoon als referentie terwijl je handmatig bouwt.
+
+## Valkuilen
+
+- **Het overslaan omdat het traag aanvoelt.** Het interview duurt misschien 5 minuten. De herschrijvingen die je voorkomt worden in uren gemeten.
+- **De brief behandelen als een specificatie.** Het is een kompas, geen checklist. Het legt intentie vast, geen UI.
+- **Antwoorden met "standaard" of "normaal".** Specificiteit is het hele punt. Als een gebruiker "haastig, op mobiel, tussen vergaderingen" is, zeg dat dan. Dat verandert alles stroomafwaarts.

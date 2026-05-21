@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Korjaa typografiaa joka tuntuu geneeriseltä, epäjohdonmukaiselta tai satunnaiselta.
+highlights:
+  - Teksti on teknisesti luettavaa mutta ei vakuuttavaa tai hallittua.
+  - Otsikot ja leipäteksti sulautuvat toisiinsa.
+  - Pinta tarvitsee vahvemman sävyn typografian kautta, ei enempää koristelua.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Milloin käyttää
+
+Turvaudu `/impeccable typeset`-komentoon kun sivun teksti näyttää oletustypografialta suunnitellun typografian sijaan. Mutta hierarkia, kolme kokoa jotka näyttävät samalta, leipäteksti 14px:ssä, näyttöfontti joka on oikeasti vain Inter bold, otsikot ilman kerning-huomiota.
+
+Yleiset herätteet: "hierarkia tuntuu litteältä", "luettavuus on pielessä", "fontit näyttävät geneerisiltä".
+
+## Miten se toimii
+
+Taito arvioi typografiaa viiden dimension läpi:
+
+1. **Fonttivalinnat**: käytätkö näkymättömiä oletuksia (Inter, Roboto, Arial, Open Sans), vastaako kirjasin brändiä, onko enemmän kuin 2-3 perhettä.
+2. **Hierarkia**: ovatko otsikko, leipäteksti ja kuvateksti selvästi erilaisia yhdellä vilkaisulla, onko kokokontrasti vähintään 1.25x askelten välillä, ovatko painokontrastit luettavia.
+3. **Koot ja asteikko**: onko yhtenäinen tyyppiasteikko, täyttääkö leipäteksti 16px-minimin, onko asteikko kiinteä-rem sovelluskäyttöliittymille tai neste-clamp markkinointisivuille.
+4. **Luettavuus**: rivinpituus 45-75 merkkiä, rivinkorkeus viritetty fontille ja kontekstille, kontrasti.
+5. **Johdonmukaisuus**: sama elementti käyttää samaa käsittelyä kaikkialla, ei yksittäisiä font-size-ylikirjoituksia.
+
+Se sitten korjaa mitä löytää: valitsee tunnusomaisia kirjasimia, rakentaa modulaarisen asteikon, laajentaa hierarkiakontrastia, asettaa oikean rivinpituuden ja johtamisen.
+
+## Kokeile
+
+```
+/impeccable typeset the article layout
+```
+
+Odotettu diff:
+
+- Näyttöfontti vaihdettu Inter 700:sta oikeaan näyttöfonttiin
+- Tyyppiasteikko rakennettu uudelleen: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, suhde 1.333
+- Leipäteksti nostettu 14px:stä 16px:iin
+- Rivinpituus rajoitettu 68ch:hen artikkelisarakkeessa
+- Rivinkorkeus 1.6 leipätekstille, 1.1 näytölle
+- Neljä yksittäistä `font-size`-arvoa poistettu komponenttityyleistä
+
+## Sudenkuopat
+
+- **Uuden fontin pyytäminen ilman kontekstia.** Typeset valitsee `PRODUCT.md`-brändiäänen perusteella. Jos et ole suorittanut `/impeccable teach`-komentoa, ehdotus on geneerinen.
+- **Typesetin käyttö kun ongelma on asettelussa.** Jos kappaleet ovat kunnossa mutta sivu tuntuu ahtaalta, haluat `/impeccable layout`.
+- **Neste-clamp-asteikkojen odottaminen sovelluskäyttöliittymissä.** Typeset käyttää kiinteitä rem-asteikkoja sovelluskäyttöliittymissä. Nestetypografia on markkinointi- ja sisältösivuille, joilla rivinpituus vaihtelee dramaattisesti.

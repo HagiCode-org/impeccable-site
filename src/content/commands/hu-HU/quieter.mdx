@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Halkítsd le a kiabáló dizájnjokat szándékuk elvesztése nélkül.
+highlights:
+  - Erős ötletek jelen vannak, de az oldal túl hangos.
+  - Visszafogásra van szükséged látsivá válás nélkül.
+  - A jelenlegi tónus elnyomja az olvasást vagy a feladatfolyamatot.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Mikor használd
+
+Az `/impeccable quieter` az `/impeccable bolder` ellenpontja. Nyúlj hozzá, amikor egy felület vizuálisan agresszív, túlingerlő, vagy túl sok mindent próbál teljes hangerővel csinálni. Neon sötéten, gradiens szöveg mindenhol, 6 hangsúly szín, minden animált, 20px árnyékok. Használd a quieter-t, amikor a dizájnnak lélegeznie kell, és finomítást szeretnél az álláspont elvesztése nélkül.
+
+Az `/impeccable bolder` után is hasznos, ha egy kicsit túl messzire ment.
+
+## Hogyan működik
+
+A skill csökkentés révén dolgozik négy tengely mentén:
+
+1. **Szín**: deszaturnálás, krominancia csökkentése OKLCH-ben, hangsúlyok visszahúzása egyetlen elsődlegesre tompított támogatással. Legfeljebb két szándékos szín.
+2. **Kontraszt**: extrém sötétek és világosak lágyítása, a tartomány behúzása. A hátterek tiszta fehérről és feketéről papírra és tinta-ra mozognak.
+3. **Díszítés**: olyan árnyékok eltávolítása, amelyek nem végeznek munkát, olyan szegélyek elhagyása, amelyek nem hordoznak szerkezetet, olyan gradiensek nyugdíjazása, amelyek hierarchia helyett energiáért léteznek.
+4. **Mozgás és effekt**: animációk lassítása, automatikusan lejátszó dolgok eltávolítása, parallax és blur elhagyása, kivéve, ha az olvashatóságot szolgálják.
+
+A skill megőrzi a dizájn szándékát. Ha az eredetinek volt álláspontja, a csendesebb verziónak ugyanaz az álláspontja több magabiztossággal. Finomítás, nem semlegesítés.
+
+## Próbáld ki
+
+```
+/impeccable quieter the pricing page
+```
+
+Tipikus diff:
+
+- Gradiens szöveg az áron eltávolítva, szilárd tinta-ra cserélve egy súlyossal nehezebbre
+- Három hangsúly szín egyre (magenta) csökkentve, a másik kettő semleges variánssá válik
+- Kártya árnyékok `0 20px 40px rgba(0,0,0,0.2)`-ről `0 1px 0 var(--color-mist)`-re (hajszálvonal) csökkentve
+- Háttér sötét gradiensről papírra vált finom krém lemosattal felül
+- Hero animáció 1.2s easeOut-ról 3交错 elemből egyetlen 260ms-os fade-in-re
+
+## Csapdák
+
+- **Túlzott alkalmazás.** A Quieter elveheti a személyiséget, ha valamin futtatod, ami már mérsékelt volt. Akkor használd, amikor a dizájn túl hangos, nem amikor helyesen határozott.
+- **Összetéveszteni a quieter-t a distill-lel.** A Quieter csökkenti az intenzitást. A Distill eltávolít elemeket. Különböző mozgások.
+- **"Túl zsúfolt" kritikára reagálva futtatni.** Zsúfolt általában túl sok dolgot jelent, nem túl hangosat. Próbáld először az `/impeccable distill`-t.

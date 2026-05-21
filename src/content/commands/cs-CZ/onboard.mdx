@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Navrhnete pruchody prvnim spustenim, prazdne stavy a cesty k hodnote.
+highlights:
+  - Nove uzivatele prichazeji bez kontextu.
+  - Produkt potrebuje lepsi prvni uspesnou akci.
+  - Prazdne stavy a kroky nastaveni nedelaji dostatek vyuky.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Kdy pouzit
+
+`/impeccable onboard` je pro okamziky, ktere rozhoduji o tom, zda novy uzivatel zustane: prvni obrazovka, prazdny stav, pruchod nastavenim, produktova prohlidka, mezera "co mam delat ted". Siahnete po nem, kdyz je aktivace slaba, kdyz novy uzivatele odpadavaji pred dosazenim hodnoty, nebo kdyz vas produkt ma prazdne stavy, ktere rika "zatim zadne polozky" a tam konci.
+
+## Jak to funguje
+
+Prikaz zacina jednou otazkou: jake je aha moment a jak rychle se k nemu novy uzivatel muze dostat. Kazde designove rozhodnuti miri na tento moment.
+
+Pracuje napric povrchy, ktere tvari prvni dojem:
+
+1. **Prvni spusteni**: okamziky bezprostredne po registraci. Ma uzivatel videt pruchod, prazdne platno, vyplneny priklad nebo nic z toho. Vyberte pristup, ktery odpovida produktu.
+2. **Prazdne stavy**: kazda obrazovka s nulovymi daty je zorientovana. Kde jsem, proc je to prazdne, co mam delat dale, jak to bude vypadat, az to bude plne.
+3. **Nastaveni a instalace**: pozadovana konfigurace je minimalizovana, vychozi hodnoty jsou chytre, kazdy krok vysvetluje, proc je duolezity.
+4. **Progresivni odhalovani**: pokrocile funkce zustavaji v ceste, dokud nejsou zaslouzene.
+5. **Aktivacni udalosti**: okamzik, kdy uzivatel poprve zazije zakladni hodnotu, je nastrojovany a oslaveny, potichu.
+
+Prikaz odolava dvema beznum režimum selhani: pretizeni tutorialu, kde uzivatele proklikavaji karuselem, nez se mohou cehokoli dotknout, a nulove onboardingu, kde uzivatele jsou shozem do prazdne aplikace a ocekava se, ze si to vyresi sami.
+
+## Vyzkousejte to
+
+```
+/impeccable onboard the editor
+```
+
+Typicky vystup:
+
+- Prvni spusteni: nahradi prazdny editor vyplnenym prikladovym dokumentem, ktery uzivatel muze upravovat. Tlacitko pro zruseni zahodi priklad, editace nahradi obsah praci uzivatele.
+- Prazdny stav v seznamu dokumentu: "Zatim zadne dokumenty. Vytvorte svuj prvni nebo importujte z Notion, Google Docs nebo Markdown."
+- Nastaveni: redukovano ze 6 pozadovanych poli na 1 (nazev pracovniho prostoru). Vse ostatni ma chytre vychozi hodnoty a muze byt editovano pozdeji v nastaveni.
+- Aktivace: poprve, kdy uzivatel ulozi dokument, potichu toast rekne "Ulozeno. Vase prace je nyni v cloudu." Jednorazove, neopakovane.
+
+## Na co si dat pozor
+
+- **Pridavani produktove prohlidky jako vychozi odpovedi.** Vetsina produktu nepotrebuje pruchod. Potrebuji lepsi prvni obrazovku. Prohlidky jsou berlicky.
+- **Navrhovani onboardingu bez definice aha momentu.** Pokud nemuzete rici jednou vetou, co ma uzivatel ctit v prvních 60 sekundach, vratte se nejprve k `/impeccable shape`.
+- **Spusteni onboardingu na rozbiten pruchodu.** Opravte pruchod jako prvni. Onboarding nemuze zachranit produkt, kde je zakladni akce rozbita.

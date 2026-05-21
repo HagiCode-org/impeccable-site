@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Nådeløs subtraksjon. Strip design til sitt vesen.
+highlights:
+  - Siden har for mange konkurrerende ideer.
+  - Brukerne trenger raskere forståelse, ikke flere funksjoner.
+  - Enkelhet er forbedringen, ikke en midlertidig kompromiss.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Når du skal bruke den
+
+`/impeccable distill` fjerner det som ikke bør være der. Konkurrerende knapper, overflødig informasjon, dekorative kanter, tre fonter der én virker, seks navigasjonselementer der tre hører hjemme. Bruk den når et grensesnitt føles rotete, travel, eller som om det prøver å gjøre for mye på en gang.
+
+Bruk den etter at `/impeccable critique` flagger "kognitiv belastning" eller "visuell støy", eller når som helst en side har vokst ved akkumulering og ingen har gjort redigeringen.
+
+## Hvordan det fungerer
+
+Ferdigheten starter med ett spørsmål: hva er den eneste jobben dette grensesnittet prøver å gjøre? Alt som ikke hjelper den jobben er til for avliving.
+
+Den virker i to gjennomganger:
+
+1. **Vurder kompleksitetskildene**. For mange elementer, overdreven variasjon, informasjonsoverflod, visuell støy, forvirrende hierarki, funksjonskryp. Navngi hver av dem.
+2. **Rediger nådeløst**. Fjern det som ikke er vesentlig. Kombiner det som kan kombineres. Skjul det som kan vente. Konsolider variasjon til én enkelt behandling. Forplikt deg til ett visuelt språk.
+
+Prinsippet: hvert element på siden må rettferdiggjøre sin eksistens. Færre hindringer, ikke færre funksjoner.
+
+## Prøv det
+
+```
+/impeccable distill this dashboard
+```
+
+Før: fire kortstiler, tre knappevarianter, to headerbehandlinger, et sidefelt med 14 elementer gruppert i 5 seksjoner.
+
+Etter en `/distill`-gjennomgang, typiske endringer:
+
+- Kollaps de fire kortstilene til én
+- Velg én knappevariant, degradere de andre til tekstlenker
+- Foren headerne
+- Grupper sidefeltet i 3 seksjoner, ikke 5
+- Skjul avanserte alternativer bak en utvidelseskontroll
+
+Færre ting. Hver tydeligere.
+
+## Fallgruver
+
+- **Å forveksle distill med sletting.** Distill fjerner hindringer. Den fjerner ikke funksjoner brukere trenger. Hvis en bruker stoler på noe daglig, finn en måte å beholde det stille på, ikke en måte å kutte det.
+- **Å kjøre den for tidlig.** Hvis funksjonen fortsatt vokser, betyr destillering nå at du destillerer det samme igjen neste uke. Vent til formen er stabil.
+- **Å forvente at den erstatter hierarkiarbeid.** Noen ganger er riktig fiks ikke å fjerne ting, det er å arrangere dem. Bruk `/impeccable layout` når problemet er layout, ikke mengde.

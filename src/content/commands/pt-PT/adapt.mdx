@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Faça os designs funcionar em diferentes ecrãs, dispositivos e contextos sem amputar funcionalidades.
+highlights:
+  - O layout atual colapsa em ecrãs mais pequenos.
+  - O produto precisa de uma estratégia responsiva mais ponderada.
+  - Alvos de toque, densidade ou fluxo de conteúdo variam por dispositivo.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Quando utilizar
+
+`/impeccable adapt` destina-se a pegar num design construído para um contexto e fazê-lo funcionar noutro. Móvel a partir de desktop, tablet a partir de móvel, impressão a partir de web, embutido a partir de autónomo, email a partir de painel de controlo. Recorra a ele quando o design de origem é sólido mas se desmorona noutros breakpoints, em toque, ou num contentor diferente.
+
+Não serve para construir responsivo do zero. Para isso, comece com `/impeccable` e molde o layout responsivo em primeiro lugar. Adapt serve para o retrocesso de "nunca pensámos no móvel".
+
+## Como funciona
+
+A competência trabalha através de quatro dimensões de adequação contextual:
+
+1. **Breakpoints e layout fluido**: colapsar multicoluna para coluna única, ajustar intervalos de clamp, introduzir novos breakpoints onde o design genuinamente se quebra.
+2. **Alvos de toque**: áreas de toque mínimas de 44px, espaçamento suficiente entre alvos adjacentes, zonas de toque maiores que os limites visuais onde necessário.
+3. **Padrões de navegação**: barras laterais de desktop tornam-se navegação inferior móvel ou slide-outs, barras de ferramentas densas colapsam em menus, estados de hover recebem equivalentes de toque.
+4. **Prioridade de conteúdo**: decidir o que deve ser visível, o que pode colapsar em disclosures, o que pode ser removido inteiramente para esse contexto.
+
+A regra não negociável: adapte, não ampute. Funcionalidade crítica não pode desaparecer no móvel apenas porque é inconveniente. Encontre forma de a encaixar, redesenhe a interação, ou reconsidere se era realmente crítica no desktop.
+
+## Experimente
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Alterações esperadas:
+
+- Grelha de três colunas torna-se coluna única com cabeçalhos de secção a funcionar como divisores fixos
+- Navegação da barra lateral muda para um scrolled horizontal acima do conteúdo
+- Toggles ganham 8px de padding vertical para cumprirem alvos de toque de 44px
+- Texto de ajuda inline muda para toque-para-revelar, não hover
+- A secção "Danger zone" expande-se totalmente no móvel em vez de colapsar, porque contém ações irreversíveis e queremos que os utilizadores as vejam claramente
+
+## Armadilhas
+
+- **Amputar funcionalidades.** Se a versão móvel esconde coisas que a versão desktop consegue fazer, isso é uma regressão, não uma adaptação. Lute pela funcionalidade.
+- **Tratar o móvel como "desktop mais pequeno".** Móvel é um contexto diferente: polegares, interrupções, sessões curtas. Adapte ao contexto, não à largura da viewport.
+- **Saltar `/impeccable harden` depois.** Layouts responsivos revelam casos limite. Execute hardening após adapt para apanhar os que só aparecem a 320px.

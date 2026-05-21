@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Corrija tipografia que parece genérica, inconsistente ou acidental.
+highlights:
+  - O texto é tecnicamente legível, mas não é persuasivo ou controlado.
+  - Títulos e corpo do texto estão se fundindo uns com os outros.
+  - A superfície precisa de tom mais forte através do tipo em vez de mais decoração.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Quando usar
+
+Use `/impeccable typeset` quando o texto em uma página parece tipografia padrão em vez de tipografia projetada. Hierarquia confusa, três tamanhos que parecem iguais, corpo do texto em 14px, uma fonte de display que na verdade é apenas Inter bold, manchetes sem atenção ao kerning.
+
+Gatilhos comuns: "a hierarquia parece plana", "a leiturabilidade está estranha", "as fontes parecem genéricas".
+
+## Como funciona
+
+A skill avalia a tipografia em cinco dimensões:
+
+1. **Escolhas de fontes**: você está usando padrões invisíveis (Inter, Roboto, Arial, Open Sans), a fonte combina com a marca, há mais de 2 a 3 famílias.
+2. **Hierarquia**: título, corpo e legenda são claramente diferentes à primeira vista, o contraste de tamanho é pelo menos 1.25x entre os degraus, os contrastes de peso são legíveis.
+3. **Tamanho e escala**: existe uma escala tipográfica coerente, o corpo do texto atende ao mínimo de 16px, a escala é rem fixo para UIs de app ou clamp fluido para páginas de marketing.
+4. **Leiturabilidade**: comprimento de linha de 45 a 75 caracteres, line-height ajustado para a fonte e contexto, contraste.
+5. **Consistência**: o mesmo elemento usa o mesmo tratamento em todos os lugares, sem valores isolados de font-size.
+
+Depois, ela corrige o que encontra: escolhe fontes distintas, constrói uma escala modular, amplia o contraste de hierarquia, define comprimento de linha e entrelinha adequados.
+
+## Experimente
+
+```
+/impeccable typeset the article layout
+```
+
+Diff esperado:
+
+- Fonte de display trocada de Inter 700 para uma fonte de display de verdade
+- Escala tipográfica reconstruída: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, proporção 1.333
+- Corpo do texto aumentado de 14px para 16px
+- Comprimento de linha limitado a 68ch na coluna do artigo
+- Line-height 1.6 para corpo, 1.1 para display
+- Removidos quatro valores isolados de `font-size` espalhados nos estilos dos componentes
+
+## Armadilhas
+
+- **Pedir uma nova fonte sem contexto.** Typeset escolherá com base na voz da marca do `PRODUCT.md`. Se você não executou `/impeccable teach`, a sugestão será genérica.
+- **Usar typeset quando o problema é layout.** Se os parágrafos estão bons mas a página parece apertada, você quer `/impeccable layout`.
+- **Esperar escalas fluidas clamp em UIs de app.** Typeset usa escalas rem fixas para interfaces de app. Tipografia fluida é para páginas de marketing e conteúdo onde o comprimento da linha varia dramaticamente.

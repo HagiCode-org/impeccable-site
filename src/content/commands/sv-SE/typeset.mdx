@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Fixa typografi som kanns generisk, inkonsekvent eller oavsiktlig.
+highlights:
+  - Texten ar tekniskt läsbar men inte overtalande eller kontrollerad.
+  - Rubriker och brodtext flyter samman.
+  - Ytan behovr starkare ton genom typ snarare an mer dekoration.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Nar du ska anvanda det
+
+Anvand `/impeccable typeset` nar texten pa en sida ser ut som standardtypografi istallet for designad typografi. Grumlig hierarki, tre storlekar som ser likadana ut, brodtext pa 14px, ett display-typsnitt som faktiskt bara ar Inter bold, rubriker utan kerning-uppmarksamhet.
+
+Vanliga trigger: "hierarkin kanns platt", "lasbarheten ar fel", "typsnitten ser generiska ut".
+
+## Hur det fungerar
+
+Fardigheten bedomer typografi over fem dimensioner:
+
+1. **Typsnittsval**: anvander du osynliga standardvarden (Inter, Roboto, Arial, Open Sans), matchar typsnittet varumarket, finns det fler an 2 till 3 familjer.
+2. **Hierarki**: ar rubriker, brodtext och bildtext tydligt olika vid en blick, ar storlekskontrasten minst 1.25x mellan steg, ar viktkontraster lasbara.
+3. **Storlek och skala**: finns det en sammanhangande typskala, moter brodtexten 16px minimum, ar skalan fast-rem for app-UI eller fluid-clamp for marknadsforingssidor.
+4. **Lasbarhet**: radlangd 45 till 75 tecken, radhojd avstämd for typsnitt och kontext, kontrast.
+5. **Konsekvens**: samma element anvander samma behandling overallt, inga engangsfont-size-overrides.
+
+Den fixar sedan vad den hittar: valjer distinkta typsnitt, bygger en modulär skala, breddar hierarkikontrasten, satter ratt radlangd och radavstand.
+
+## Prova det
+
+```
+/impeccable typeset the article layout
+```
+
+Forvantad diff:
+
+- Display-typsnitt bytt fran Inter 700 till ett riktigt display-typsnitt
+- Typskalan ombyggd: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, kvot 1.333
+- Brodtext hojd fran 14px till 16px
+- Radlangd begransad till 68ch pa artikelkolumnen
+- Radhojd 1.6 for brodtext, 1.1 for display
+- Borttagna fyra engangsvarde for `font-size` utspridda i komponentstilar
+
+## Fallgropar
+
+- **Att be om ett nytt typsnitt utan kontext.** Typeset kommer att valja baserat pa `PRODUCT.md` varumarkesrost. Om du inte har kort `/impeccable teach` kommer forslaget att vara generiskt.
+- **Att na typeset nar problemet ar layout.** Om styckena ar bra men sidan kanns trangt, vill du ha `/impeccable layout`.
+- **Att forventa fluida clamp-skalor pa app-UI.** Typeset anvander fasta rem-skalor for appgranssnitt. Fluid typografi ar for marknadsforings- och innehallssidor dar radlangden varierar dramatiskt.

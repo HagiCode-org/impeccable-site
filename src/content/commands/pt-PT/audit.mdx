@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Verificação de qualidade técnica em cinco dimensões com gravidade P0 a P3.
+highlights:
+  - Necessita de problemas concretos e gravidade, não apenas feedback baseado em gosto.
+  - Está a preparar uma funcionalidade para merge ou lançamento.
+  - Suspeita de problemas ocultos em dispositivos móveis, temas escuros ou necessidades de acessibilidade.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accessibility</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performance</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patterns</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Cinco dimensões pontuadas de 0 a 4, cada descoberta etiquetada de P0 (bloqueia o lançamento) a P3 (polimento). Audit documenta; não corrige. Encaminhe as descobertas para <code>/impeccable harden</code>, <code>/impeccable polish</code> ou <code>/impeccable optimize</code>.</p>
+</div>
+
+## Quando utilizar
+
+`/impeccable audit` é o equivalente técnico de `/impeccable critique`. Onde `/impeccable critique` pergunta "isto parece correto", `/impeccable audit` pergunta "isto resiste". Executa verificações de acessibilidade, desempenho, temas, design responsivo e anti-padrões contra a implementação, pontua cada dimensão de 0 a 4, e produz um plano com classificações de gravidade P0 a P3.
+
+Utilize-o antes de lançar, durante um sprint de qualidade, ou sempre que um líder técnico diz "devíamos mesmo olhar para a acessibilidade".
+
+## Como funciona
+
+A competência analisa o seu código em cinco dimensões:
+
+1. **Acessibilidade**: contraste WCAG, ARIA, navegação por teclado, HTML semântico, etiquetas de formulário.
+2. **Desempenho**: thrashing de layout, animações pesadas, carregamento preguiçoso em falta, peso do bundle.
+3. **Temas**: cores hardcoded, cobertura do modo escuro, consistência de tokens.
+4. **Responsivo**: comportamento em breakpoints, alvos de toque, gestão da viewport móvel.
+5. **Anti-padrões**: as mesmas 25 verificações determinísticas que o detetor executa.
+
+Cada dimensão recebe uma pontuação de 0 a 4. Cada descoberta recebe uma gravidade: P0 bloqueia o lançamento, P1 deve ser corrigido neste sprint, P2 é para o próximo ciclo, P3 é polimento. Recebe um único documento que pode colar num gestor de tickets.
+
+Audit não corrige nada. Documenta. Encaminhe as descobertas para `/impeccable polish`, `/impeccable harden` ou `/impeccable optimize` dependendo da categoria.
+
+## Experimente
+
+```
+/impeccable audit the checkout flow
+```
+
+Output esperado:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+Entregue os P0s ao `/impeccable harden`, os P1s de temas e tipografia ao `/impeccable typeset` e `/impeccable polish`, o restante ao `/impeccable polish`.
+
+## Armadilhas
+
+- **Confundi-lo com `/impeccable critique`.** Audit é qualidade de implementação. Critique é qualidade de design. Execute ambos para uma visão completa.
+- **Corrigir P3s antes de P0s.** A escala de gravidade existe por uma razão. Comece pelo topo.
+- **Saltar as dimensões que pensa estarem bem.** Temas e responsivo são as que a maioria das pessoas assume estarem bem até descobrirem que não estão.

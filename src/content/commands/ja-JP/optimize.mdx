@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: LCPからバンドルサイズまで、UIパフォーマンスの診断と修正。
+highlights:
+  - インターフェースが遅い、カクつく、または重く感じる。
+  - デザインを削ぎ落とすことなくコストを下げる必要がある。
+  - パフォーマンスが目に見えるプロダクト問題になっている。
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## いつ使うか
+
+`/impeccable optimize` はインターフェースが遅く感じる時に使います。ファーストペイントが永遠にかかる、スクロールがカクつく、画像が遅れて表示される、インタラクションがもたつく、バンドルが800KBのJavaScriptを出荷している。Web Vitalsが悪い時や、ユーザーがもたつきを訴えている時に使ってください。
+
+早すぎる最適化として使わないでください。LCPが1.1sでINPが80msなら、止めてください。デザインの仕事の方が重要です。
+
+## 仕組み
+
+スキルは5つのパフォーマンス次元で動作します。
+
+1. **ローディングとWeb Vitals**：LCP、INP、CLS。ファーストペイントをブロックしているもの、インタラクションを遅らせているもの、レイアウトをシフトさせているものを特定。
+2. **レンダリング**：不要な再レンダリング、欠落したメモ化、高価な和解、ループ内のレイアウトスラッシング。
+3. **アニメーション**：レイアウトプロパティをアニメーションしているものはないか、transformとopacityだけが触れられているか、`will-change` がここでは助けになるか邪魔になるか。
+4. **画像とアセット**：遅延ロード、レスポンシブ画像（`srcset`、`sizes`）、モダンフォーマット（WebP、AVIF）、CLS防止のための寸法設定。
+5. **バンドルサイズ**：未使用のインポート、大きすぎる依存関係、欠落したコード分割、デッドコード。
+
+スキルは前後で測定します。すべての修正は定量化されます。変更がメトリックを動かさない場合、ロールバックされます。
+
+## 試してみる
+
+```
+/impeccable optimize the homepage
+```
+
+期待される形式：
+
+```
+LCP: 3.2s → 1.4s
+  - Hero image preloaded (-800ms)
+  - Removed render-blocking font stylesheet (-240ms)
+  - Deferred analytics script (-180ms)
+
+INP: 240ms → 90ms
+  - Debounced scroll handler
+  - Memoized expensive list render
+  - Removed synchronous layout read in event loop
+
+CLS: 0.18 → 0.02
+  - Set dimensions on hero image and logo
+  - Reserved space for async header badge
+
+Bundle: 340KB → 180KB
+  - Removed unused lodash import (52KB)
+  - Code-split the playground route (78KB)
+  - Dropped deprecated icon set (30KB)
+```
+
+## 注意点
+
+- **測定せずに最適化すること。** ベースラインメトリックなしでは、何が効いたか分かりません。感覚ではなく、具体的なWeb Vitalsの数値で `/impeccable optimize` を実行してください。
+- **小さな改善を追い求めること。** INPの20ms改善に1週間かけるのはめったに価値がありません。Optimizeには収穫逓減があります。止めどきを知ってください。
+- **各変更後に再測定し忘れること。** ビルドがスキルが予測しなかった方法で事態を悪化させた可能性があります。確認してください。

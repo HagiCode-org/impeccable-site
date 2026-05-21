@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Tervezési értékelés pontozással, személytesztekkel és automatizált detektálással.
+highlights:
+  - Gyenge tervezési döntésekről akarsz megállapításokat, nem a nulláról történő újraépítést.
+  - Pontszámokra, tervezési érvelésre és valószínű következő lépésekre van szükséged.
+  - A felület működik, de még mindig nem érzi jónak magát.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop ítélet</span>
+        <span class="docs-viz-critique-verdict-value">ELÉGTELEN</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heurisztikák (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Rendszerállapot láthatósága</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Egyezés a való világgal</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Konzisztencia és szabványok</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Hibamegelőzés</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Felismerés a felidézés felett</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Személyek</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Az értékelő</span>
+              <span class="docs-viz-critique-persona-note">Két alternatívával hasonlít össze minket egy keddi estén.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">A visszatérő felhasználó</span>
+              <span class="docs-viz-critique-persona-note">Ismeri a terméket, mobilon, siet.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">A szkeptikus</span>
+              <span class="docs-viz-critique-persona-note">Látta már az összes SaaS landingot és unatkozik.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">A két futás (LLM tervezési értékelés és a determinisztikus detektor) egyetlen priorizált listává olvad össze. Mi működik, mit kell javítani, és a provokatív kérdések, amelyeket érdemes megválaszolni a szállítás előtt.</p>
+</div>
+
+## Mikor használd
+
+Nyúlj az `/impeccable critique` parancshoz, amikor őszinte másodvéleményt akarsz valamiről, amit már megépítettél. Nem azt, hogy "működik-e", hanem hogy "jó-e". A skill pontozza a felületedet Nielsen 10 heurisztikája ellen, kognitív terhelés-ellenőrzéseket futtat, személylencséken keresztül tesztel, és kereszthivatkozik egy automatizált detektort 25 konkrét antipattern számára.
+
+Akkor használd, amikor egy oldal funkcionálisan kész, és tudni akarod, hogy szándékosnak hat-e vagy AI szemétnek.
+
+## Hogyan működik
+
+Az `/impeccable critique` két független értékelést futtat párhuzamosan, hogy ne befolyásolják egymást.
+
+Az első egy **LLM tervezési értékelés**: a modell elolvassa a forráskódodat, vizuálisan megvizsgálja az élő oldalt, ha böngésző-automatizáció elérhető, és végigmegy az impeccable skill teljes DO/DON'T katalógusán. Pontozza Nielsen heurisztikáit, megszámolja a kognitív terhelési hibákat, nyomon követi az érzelmi utazást a folyamon, és jelzi az AI szemetet.
+
+A második egy **automatizált detektor** (`npx impeccable detect`), amely determinisztikusan megtalálja a gradiens szöveget, lila palettákat, oldalsó tab szegélyeket, egymásba ágyazott kártyákat, sörhossz problémákat és az általános AI kimenet egyéb látható ujjlenyomatait.
+
+A két jelentés egyetlen priorizált listává olvad össze: mi működik, a három-öt dolog, amit javítani kell, és a provokatív kérdések, amelyeket érdemes megválaszolni a szállítás előtt.
+
+## Próbáld ki
+
+Irányítsd egy oldalra:
+
+```
+/impeccable critique the homepage hero
+```
+
+Egy pontozott jelentést kapsz vissza. Tipikus formátum:
+
+- **AI slop ítélet**: átment / megbukott a konkrét jelzőkkel
+- **Heurisztika pontszámok**: 10 szám, 0-tól 4-ig
+- **Kognitív terhelés**: hibaszám a 8-ból
+- **Prioritási problémák**: három-öt tétel, mindegyik azzal, hogy mi, miért és a javítás
+- **Megválaszolandó kérdések**: azok, amelyeket a felület maga nem tud eldönteni
+
+Onnan párosítsd az `/impeccable polish` vagy `/impeccable distill` paranccsal a javítások végrehajtásához.
+
+## Csapdák
+
+- **Befejezetlen munkán futtatni.** A Critique befejezett oldalakra való. Egy üres állapot három TODO-val rosszul fog pontozni, mert nem kész, nem pedig azért, mert rossz.
+- **A végén lévő kérdések figyelmen kívül hagyása.** Ezek általában azok a javítások, amelyek a legtöbbet változtatnak a dizájnon.
+- **A heurisztika pontszámokat osztályzatként kezelni.** Diagnosztikai célúak, nem értékelő jellegűek. Egy 3/4 egy olyan heurisztikán, amely kevésbé fontos a kontextusodban, teljesen rendben van.

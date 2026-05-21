@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Formáld a dizájnt, aztán építsd meg, mindezt egyetlen folyamatban.
+highlights:
+  - Új funkciót indítasz a nulláról.
+  - Felfedezést, megvalósítást és vizuális finomítást szeretnél egy menetben.
+  - Lassabb, de átgondoltabb építési ciklust részesítesz előnyben.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Felfedező interjú. Cél, felhasználók, korlátozások, irány.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Referenciák betöltése</span>
+      <span class="docs-viz-flow-hint">Térbeli, tipográfiai, mozgás, szín, interakció.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Építés</span>
+      <span class="docs-viz-flow-hint">Szerkezet, hierarchia, tipográfia, szín, állapotok, mozgás, reszponzivitás.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Vizuális iteráció</span>
+      <span class="docs-viz-flow-hint">Ellenőrzés böngészőben, finomítás, amíg nem egyezik a rövidítéssel.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Minden fázis kihagyhatatlan. A felfedezési lépés az, ahol a legtöbb AI kimenet elbukik: mire a kód létezik, a gondolkodás már rögzítve van.</p>
+</div>
+
+## Mikor használd
+
+Az `/impeccable craft` a végponttól végpontig tartó építési parancs. Adj meg egy funkcióleírást, és lefuttatja a teljes folyamatot: strukturált felfedezés, referencia-betöltés, megvalósítás, vizuális iteráció. Akkor használd, amikor egy új funkciót a nulláról kezdesz és a teljes munkafolyamatot egyetlen meghívásban szeretnéd.
+
+Nyúlj hozzá, ha:
+
+- **Új funkciót építesz és a teljes folyamatot akarod.** Nem akarod magad kezelni a lépéseket.
+- **Tudod, mit építesz, de nem, hogyan kellene kinéznie.** A felfedezési fázis rákényszeríti a tervezési gondolkodást, mielőtt a megvalósítás rögzítené.
+- **Vizuális iterációt szeretnél alapértelmezettként.** A `craft` ellenőrzi az eredményt böngészőben és addig finomít, amíg a kidolgozottság magas nem lesz, ahelyett, hogy az első működő verziót szállítaná.
+
+Ha csak a gondolkodást akarod kód nélkül, használd az `/impeccable shape` parancsot önállóan. Ha már van tiszta víziód és csak építeni akarsz, hívd az `/impeccable` parancsot közvetlenül a funkcióleírásoddal. A `craft` a kettő között helyezkedik el: strukturált, teljes, véleményes.
+
+## Hogyan működik
+
+A `craft` négy fázist futtat le sorrendben:
+
+1. **A dizájn formálása.** Belsőleg futtatja az `/impeccable shape` parancsot: egy rövid felfedező beszélgetés a célról, felhasználókról, tartalomról, korlátozásokról és célokról. A kimenet egy tervezési rövidítés, amit elolvashatsz és amire reagálhatsz.
+2. **Referenciák betöltése.** A rövidítés alapján behúzza a megfelelő referenciafájlokat (térbéli, tipográfiai, mozgás, szín, interakció, reszponzív, UX írás), hogy a modellnek a megfelelő elvek álljanak rendelkezésére a kódolás megkezdése előtt.
+3. **Építés.** Átgondolt sorrendben valósítja meg a funkciót: először a szerkezet, majd térköz és hierarchia, majd tipográfia és szín, majd állapotok, majd mozgás, majd reszponzivitás. Minden döntés visszavezethető a rövidítésre.
+4. **Vizuális iteráció.** Megnyitja az eredményt böngészőben, ellenőrzi a rövidítés és az antipattern-katalógus ellen, és finomít, amíg meg nem felel a szándéknak. Ez a lépés kritikus. Az első működő verzió sosem a szállított verzió.
+
+A felfedezési fázis kihagyhatatlan, és ez a lényeg. A legtöbb AI által generált felhasználói felület azért hiúság meg, mert senki nem kérdezte meg, mit próbál elérni a felhasználó, mielőtt a modell elkezdetett JSX-t írni. A `craft` megfordítja ezt.
+
+## Próbáld ki
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Számíts egy 5-10 kérdéses felfedező interjúra először. Kérdések a közönségedről, a termék személyiségéről, a kívánt érzelmi tónusról, anti-referenciákról és korlátozásokról. Aztán egy tervezési rövidítés. Aztán megvalósítás, minden szakaszban böngésző-ellenőrzéssel. Számíts több iterációs körre a vizuális finomítási fázisban.
+
+A teljes futás hosszabb, mint egy tipikus parancs, mert tartalmazza a gondolkodást, az építést és a finomítást. Ez az üzlet: több előzetes struktúra, kevesebb utólagos javítás.
+
+## Csapdák
+
+- **Kis változtatásokra használni.** A `craft` új funkciókhoz való, nem finomításokhoz. Meglévő kódhoz nyúlj az `/impeccable polish`, `/impeccable critique` vagy egy specifikus finomítási parancshoz.
+- **A felfedezési fázis siettetése.** Az interjú lassúnak tűnik a "csak kezdj el kódolni"hez képest. Pedig nem az. A kérdések gondos megválaszása élesebb rövidítést eredményez, amely élesebb építést eredményez, amely kevesebb újraírást eredményez.
+- **A vizuális iteráció átugrása.** A fázis okból létezik. A szakadék a "technikailag működik" és a "jól érzi magát az ember" között vizuális finomítással záródik, nem kód-ellenőrzéssel. Hagyd futni.

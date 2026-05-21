@@ -1,0 +1,52 @@
+---
+slug: typeset
+title: Typeset
+summary: Reparati tipografia care pare generica, inconsistenta sau accidentala.
+highlights:
+  - Textul este tehnic lizibil dar nu convingator sau controlat.
+  - Titlurile si textul de corp se prabusesc unul in celalalt.
+  - Suprafata are nevoie de un ton mai puternic prin tipografie, nu mai multa decoratiune.
+related:
+  - layout
+  - bolder
+  - polish
+---
+
+## Cand se foloseste
+
+Apelati la `/impeccable typeset` cand textul de pe o pagina arata ca tipografie implicita in loc de tipografie de design. Ierarhie neclara, trei dimensiuni care arata la fel, text de corp la 14px, un font de display care este de fapt doar Inter bold, titluri fara atentie la kerning.
+
+Declanse obisnuite: "ierarhia se simte plata", "lizibilitatea este nepotrivita", "fonturile arata generice".
+
+## Cum functioneaza
+
+Skill-ul evalueaza tipografia pe cinci dimensiuni:
+
+1. **Alegeri de fonturi**: folositi valori implicite invizibile (Inter, Roboto, Arial, Open Sans), se potriveste fontul cu brandul, exista mai mult de 2 pana la 3 familii.
+2. **Ierarhie**: titlurile, corpul si caption-urile sunt clar diferite dintr-o privire, contrastul de dimensiune este de cel putin 1.25x intre trepte, contrastul de greutate este lizibil.
+3. **Dimensionare si scara**: exista o scara de tip coerenta, textul de corp atinge minimum 16px, scara este fix-rem pentru UI-uri de aplicatie sau fluid-clamp pentru pagini de marketing.
+4. **Lizibilitate**: lungime linie 45 pana la 75 de caractere, inaltime linie ajustata pentru font si context, contrast.
+5. **Consistenta**: acelasi element foloseste acelasi tratament peste tot, nicio suprascriere font-size unica.
+
+Apoi repara ce gaseste: alege fonturi distincte, construieste o scara modulara, mareste contrastul de ierarhie, seteaza lungimea liniei si interliniul corespunzatoare.
+
+## Incercati
+
+```
+/impeccable typeset the article layout
+```
+
+Diff asteptat:
+
+- Font de display inlocuit din Inter 700 la un font de display real
+- Scara de tip reconstruita: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, ratie 1.333
+- Text de corp marit de la 14px la 16px
+- Lungime linie limitata la 68ch pe coloana articolului
+- Inaltime linie 1.6 pentru corp, 1.1 pentru display
+- Eliminate patru valori `font-size` unice imprastiate in stilurile componentelor
+
+## Capcane
+
+- **Cererea unui font nou fara context.** Typeset va alege pe baza vocii de brand din `PRODUCT.md`. Daca nu ati rulat `/impeccable teach`, sugestia va fi generica.
+- **Apelarea la typeset cand problema este layout-ul.** Daca paragrafele sunt in regula dar pagina se simte aglomerata, doriti `/impeccable layout`.
+- **Asteptarea de scari fluid clamp pe UI-uri de aplicatie.** Typeset foloseste scari fixe rem pentru interfețe de aplicatie. Tipografia fluida este pentru pagini de marketing si continut unde lungimea liniei variaza dramatic.

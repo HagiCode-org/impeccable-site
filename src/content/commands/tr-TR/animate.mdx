@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Durum ileten, dekorasyon değil amaçlı hareket.
+highlights:
+  - Arayüzler durumlar arasında cansız veya anlık hissettiriyor.
+  - Yükleme, geri bildirim veya geçişlerin ne olduğunu açıklayan harekete ihtiyacı var.
+  - Azaltılmış hareket geri dönüşleriyle disiplinli animasyon istiyorsunuz.
+related:
+  - delight
+---
+
+## Ne zaman kullanılır
+
+`/impeccable animate`, durum değişikliklerinin anlık ve sarsıcı olduğu, yüklemenin sadece belirdiği, kullanıcının tıklamasının kaydedildiğine hiç tam olarak güvenemediği cansız hissettiren arayüzler içindir. Neler olduğunu ileten küçük hareketleri eklemek için kullanın: girişler, çıkışlar, geri bildirim, durumlar arası geçişler.
+
+Enerji için sekme veya elastik yay eklemek için kullanmayın. Bu dekorasyondur ve bu yetenek size bunu vermeyecektir.
+
+## Nasıl çalışır
+
+Yetenek, hareketten yararlanacak statik anları tanımlar, ardından katı disiplinle uygular:
+
+1. **Girişler ve çıkışlar**: öğeler 200 ile 300ms solma artı ince Y veya ölçek ile belirir ve ayrılır, asla düzen özellikleri.
+2. **Durum geri bildirimi**: hover, active, focus, loading, success tümü hareket yoluyla iletişim kurar, ani değişimler yerine.
+3. **Görünümler arası geçişler**: mantıklı yerlerde paylaşılan öğe geçişleri, değilse fade-through.
+4. **İlerleme ve yükleme**: iskelet ekranlar, belirli çubuklar, "hala çalışıyor" diyen hareket.
+5. **Azaltılmış hareket**: her animasyonun bir `prefers-reduced-motion` geri dönüşü vardır.
+
+Yumuşatma her zaman üsteldir (ease-out-quart, quint veya expo), çünkü gerçek nesneler pürüzsüz bir şekilde yavaşlar. Sekme yok, elastik yok, ilerleme göstergeleri dışında hiçbir şey için doğrusal yok.
+
+Yetenek yalnızca `transform` ve `opacity` özelliklerini canlandırır. Kendinizi `width`, `height`, `top` veya `left` özelliklerini canlandırırken bulursanız, yanlış şey yapıyor demektir. Yükseklik geçişleri için `grid-template-rows` kullanın.
+
+## Deneyin
+
+```
+/impeccable animate the sign-up flow
+```
+
+Tipik eklemeler:
+
+- E-posta girişi focus-visible üzerinde bir odak parıltısı alır (opacity + shadow, 180ms)
+- Gönder butonu yükleme durumunda yanında ayrı bir spinner değil, kendisi içinde bir spinner gösterir
+- Başarılı ekran opacity + translateY(8px), 260ms, ease-out-quart ile girer
+- Hata mesajı grid-template-rows (height değil) ile aşağı kayar, 220ms
+- Her geçiş için `@media (prefers-reduced-motion: reduce)` geri dönüşü
+
+## Tuzaklar
+
+- **"Daha fazla animasyon" istemek.** Animate bir kadran değildir. Hareketin iletişim kurduğu yere ekler, her yere değil.
+- **Azaltılmış hareket geri dönüşlerini kaldırmak.** Yetenek bunları otomatik olarak ekler. Erişilebilirlik için pazarlıksız.

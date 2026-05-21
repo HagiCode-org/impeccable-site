@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Prepiste matouci UX text tak, aby se rozhrani vysvetlovalo samo.
+highlights:
+  - Uzivatele vahaji, protoze formulace jsou nejednoznacne.
+  - Rozhrani potrebuje lepsi instrukcni nebo chybovy text.
+  - Tok produktu je v poradku, ale jazyk lidi zpomaluje.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Kdy pouzit
+
+`/impeccable clarify` je pro texty v rozhrani, ktere nuti lidi zastavit a premyslet. Matouci popisky, nejednoznacne texty tlacitek, chybove zpravy, ktere vinit uzivatele, tooltipy, ktere opakuji popisek, prazdne stavy, ktere nerikaji nic uzitecneho. Pouzijte jej, kdyz problem neni v layoutu nebo barve, ale ve slovech.
+
+Dobre spoustace: "uzivatele nerozumi tomuto poli", "chybova zprava neni uzitecna", "nemohu napsat dobry text tlacitka", "tento tooltip je zbytecny".
+
+## Jak to funguje
+
+Dovednost prepisuje text napric povrchy, kde bydli vetsina problemu UX textu:
+
+1. **Popisky a napovedy poli**: prime, specificke, rikaji, co se ocekava.
+2. **Texty tlacitek**: sloveso prvni, popisuje vysledek, nikoli akci. "Ulozit zmeny" ne "OK".
+3. **Chybove zpravy**: vysvetluji, co se pokazilo, cije je to chyba a co delat dale. Nikdy nevitit uzivatele.
+4. **Prazdne stavy**: orientuji uzivatele, vysvetluji, proc je stav prazdny, nabizeji dalsi krok.
+5. **Tooltipy a pomocny text**: pridavaji informace, ktere popisek nese nestaci, nikdy je neopakuji.
+6. **Potvrzovaci dialogy**: jmenuji dusledky, nikoli akci.
+
+Dovednost pouziva publikum a mentalni stav z `PRODUCT.md` pro ladeni hlasu. Technicke publikum ziska presny jazyk. Spotrebitelske publikum ziska srozumitelnou reci. Spěchajici uzivatele ziskeji kratky text. Uzkostlivi uzivatele (platba, mazani) ziskeji uklidneni.
+
+## Vyzkousejte to
+
+```
+/impeccable clarify the billing form
+```
+
+Pred a po, typicke:
+
+- Popisek "Billing address" → "Adresa na karte"
+- Placeholder "Enter your VAT ID" → "DIC (volitelne, pro firmy)"
+- Chyba "Invalid input" → "Toto cislo karty ma 15 cislic. Zadali jste 14."
+- Tlacitko "Submit" → "Strhnout 29 Kc a odebirat"
+- Prazdny stav "No transactions yet" → "Vase prvni platba se objevi zde po prvni objednavce."
+
+## Na co si dat pozor
+
+- **Psani chytrejsiho misto srozumitelnejsiho.** Clarify neni pro vylepseni hlasu. Pokud je text jiz jasny, nesahnete po teto dovednosti. Pouzijte `/impeccable delight`, kdyz chcete osobnost.
+- **Preskoceni otazky na publikum.** Clarify potrebuje vedet, kdo cte. Pokud `PRODUCT.md` neurcuje technickou uroven publika, prepisy budou obecne.
+- **Spusteni clarify na marketingovy text.** Clarify je pro funkcni UX text: popisky, chyby, instrukce. Marketingovy text potrebuje jinou sadu nastroju a lidskeho spisovatele.

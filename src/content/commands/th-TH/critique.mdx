@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: รีวิวการออกแบบพร้อมการให้คะแนน การทดสอบเพอร์โซนา และการตรวจจับอัตโนมัติ
+highlights:
+  - คุณต้องการข้อค้นพบเกี่ยวกับการเลือกออกแบบที่อ่อนแอ ไม่ใช่การสร้างใหม่จากศูนย์
+  - คุณต้องการการให้คะแนน การให้เหตุผลด้านการออกแบบ และขั้นตอนถัดไปที่เป็นไปได้
+  - อินเทอร์เฟซทำงานได้แต่ยังรู้สึกว่าไม่ถูกต้อง
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdict</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristics (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Visibility of status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match with real world</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Consistency & standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Error prevention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Recognition over recall</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The evaluator</span>
+              <span class="docs-viz-critique-persona-note">Comparing us to two alternatives on a Tuesday evening.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The returning user</span>
+              <span class="docs-viz-critique-persona-note">Knows the product, on mobile, in a hurry.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">The skeptic</span>
+              <span class="docs-viz-critique-persona-note">Has seen every SaaS landing and is bored.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">สองพาส (รีวิวด้านการออกแบบ LLM บวกตัวตรวจจับแบบกำหนดได้) รวมเป็นรายการที่จัดลำดับความสำคัญ สิ่งที่ทำงาน สิ่งที่ต้องแก้ และคำถามที่น่าสนใจที่คุ้มค่าตอบก่อนส่งมอบ</p>
+</div>
+
+## เมื่อไรควรใช้
+
+ใช้ `/impeccable critique` เมื่อคุณต้องการความเห็นที่ซื่อสัตย์ครั้งที่สองเกี่ยวกับสิ่งที่คุณสร้างไปแล้ว ไม่ใช่ "มันทำงานได้ไหม" แต่ "มันดีไหม" สกิลให้คะแนนอินเทอร์เฟซของคุณตามฮิวริสติก 10 ข้อของ Nielsen รันการตรวจสอบภาระทางปัญญา ทดสอบผ่านเลนส์เพอร์โซนา และอ้างอิงข้ามกับตัวตรวจจับอัตโนมัติสำหรับแอนตี้แพทเทิร์น 25 แบบที่เป็นรูปธรรม
+
+ใช้เมื่อหน้าทำงานได้แล้วและคุณต้องการรู้ว่ามันดูเหมือนตั้งใจหรือเป็น AI slop
+
+## วิธีการทำงาน
+
+`/impeccable critique` รันการประเมินสองแบบอิสระแบบขนานเพื่อไม่ให้มีอคติต่อกัน
+
+แบบแรกคือ **รีวิวด้านการออกแบบ LLM**: โมเดลอ่านซอร์สของคุณ ตรวจสอบภาพหน้าจริงหากมีระบบอัตโนมัติเบราว์เซอร์ และเดินผ่านแคตตาล็อก DO/DON'T ของสกิล impeccable ให้คะแนนฮิวริสติกของ Nielsen นับความล้มเหลวด้านภาระทางปัญญา ติดตามการเดินทางทางอารมณ์ผ่านโฟลว์ และตั้งค่าสัญญาณ AI slop
+
+แบบที่สองคือ **ตัวตรวจจับอัตโนมัติ** (`npx impeccable detect`) ที่หาข้อความไล่สี พาเลตสีม่วง ขอบแท็บด้านข้าง การ์ดซ้อนกัน ปัญหาความยาวบรรทัด และลายนิ้วมือที่มองเห็นได้อื่นๆ ของผลลัพธ์ AI ทั่วไปแบบกำหนดได้
+
+รายงานทั้งสองรวมเป็นรายการที่จัดลำดับความสำคัญ: สิ่งที่ทำงาน สามถึงห้าสิ่งที่ต้องแก้ และคำถามที่น่าสนใจที่คุ้มค่าตอบก่อนส่งมอบ
+
+## ลองใช้งาน
+
+ชี้ไปที่หน้า:
+
+```
+/impeccable critique the homepage hero
+```
+
+คุณจะได้รับรายงานที่มีคะแนน รูปร่างทั่วไป:
+
+- **ผลการตัดสิน AI slop**: ผ่าน / ไม่ผ่าน พร้อมสัญญาณเฉพาะ
+- **คะแนนฮิวริสติก**: 10 ตัวเลข 0 ถึง 4
+- **ภาระทางปัญญา**: จำนวนความล้มเหลวจาก 8
+- **ปัญหาลำดับความสำคัญ**: สามถึงห้ารายการ แต่ละรายการพร้อมสิ่งที่เป็น เหตุผล และวิธีแก้
+- **คำถามที่ต้องตอบ**: คำถามที่อินเทอร์เฟซเองไม่สามารถตัดสินใจแทนคุณได้
+
+จากนั้น จับคู่กับ `/impeccable polish` หรือ `/impeccable distill` เพื่อดำเนินการแก้ไข
+
+## ข้อควรระวัง
+
+- **รันบนงานที่ยังไม่เสร็จ** Critique มีไว้สำหรับหน้าที่เสร็จแล้ว สเตทว่างที่มี TODO สามรายการจะได้คะแนนแย่เพราะมันยังไม่เสร็จ ไม่ใช่เพราะมันแย่
+- **เพิกเฉอคำถามท้ายรายงาน** พวกมันมักเป็นสิ่งที่เปลี่ยนการออกแบบมากที่สุด
+- **ถือว่าคะแนนฮิวริสติกเป็นเกรด** พวกมันเป็นการวินิจฉัย ไม่ใช่การประเมิน 3/4 บนฮิวริสติกที่สำคัญน้อยกว่าสำหรับบริบทของคุณก็ใช้ได้

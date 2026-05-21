@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Repareer lay-out, spatiëring en visueel ritme.
+highlights:
+  - De pagina mist duidelijke nadruk.
+  - Goede inhoud bestaat, maar de compositie verbergt het.
+  - Je wilt een sterkere flow voordat je kleur of beweging aanraakt.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Wanneer te gebruiken
+
+`/impeccable layout` is voor pagina's waar technisch niets mis is maar niets ook ademt. Overal gelijke padding, monotone kaartgrids, inhoud die van rand tot rand loopt, hiërarchie die alleen op grootte vertrouwt. Gebruik het wanneer een lay-out "niet goed voelt" en je niet kunt articuleren waarom.
+
+Goede signalen: "alles voelt druk", "het leest als een muur", "ik weet niet waar ik eerst moet kijken".
+
+## Hoe het werkt
+
+De skill doorloopt vijf lay-outdimensies:
+
+1. **Spatiëring**: is de spatiëringsschaal consistent of zijn er willekeurige 13px-gaten, zijn gerelateerde elementen strak gegroepeerd met royale ruimte tussen groepen, is er überhaupt ritme.
+2. **Visuele hiërarchie**: landt het oog op de primaire actie binnen 2 seconden, doet de hiërarchie echt werk of schreeuwt alles.
+3. **Grid en structuur**: is er een onderliggend grid of is de lay-out willekeurig, zijn elementen uitgelijnd op basislijnen.
+4. **Ritme**: wisselt de pagina tussen strakke en royale spatiëring, of is alles uniform.
+5. **Dichtheid**: is de lay-out krap of is het verspillend, komt de dichtheid overeen met het inhoudstype.
+
+Reparaties houden meestal in dat de spatiëringsschaal wordt herbouwd, asymmetrie wordt geïntroduceerd, monotone grids worden omgezet in een gemengde lay-out met hero- en ondersteunende elementen, en de primaire actie echte ruimte krijgt.
+
+## Probeer het
+
+```
+/impeccable layout the settings page
+```
+
+Typische wijzigingen:
+
+- Spatiëringsschaal verenigd tot 8 / 16 / 24 / 48 / 96px
+- Sectiebreuken op 48px, rijgaten op 16px, formulierveldgroepen op 8px
+- Primaire acties uit de formulierflow gehaald met een buffer van 32px
+- Decoratieve randen verwijderd, vervangen door spatiëring-gedreven groepering
+- Zijbalk- en hoofdkolomverhoudingen herverdeeld (280 / flex vs 25 / 75)
+
+## Valkuilen
+
+- **Verwarring tussen arrange en distill.** Als het probleem te veel dingen is, voer dan eerst `/impeccable distill` uit. Layout is voor het rangschikken van wat al de juiste set is.
+- **Verwachten dat het een kapot grid redt.** Als de pagina helemaal geen grid heeft, zal arrange er een bouwen. Weet alleen dat de diff groter zal zijn dan je verwacht.
+- **Het hiërarchie-oordeel negeren.** Als arrange zegt "niets is primair", dan lost geen enkele spatiëringsarbeid dat op. Je hebt een inhoudelijke beslissing nodig, geen lay-outaanpassing.

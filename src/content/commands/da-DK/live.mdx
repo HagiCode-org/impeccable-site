@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Iterer på UI i browseren. Vælg et element, slip en kommentar, få tre varianter. Accepter en, og den skriver til kilde.
+highlights:
+  - En dev-server findes allerede.
+  - Du vil sammenligne muligheder direkte på renderet UI.
+  - Det hurtigste næste skridt er guidet visuel eksperimentering.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Se den i aktion, med den animerede demo, på <a href="/live-mode">/live-mode</a>. Denne side er referencen for, hvad din AI-harness læser, når kommandoen kører.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Status: alpha.</strong> Live Mode virker ende-til-ende og er klar til at prøve, men den har stadig brug for mere test mod virkelige repos og framework-konfigurationer. Forvent ru kanter på ukonventionelle opsætninger, og rapporter gerne hvad der går i stykker.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode midt i en cyklus: pickeren fremhæver det element du valgte, kontekstbjælken viser hvilken variant du er på, og den globale bjælke forbliver fastgjort i bunden. Accepter på denne skriver Variant 2 tilbage til kilde.</p>
+</div>
+
+## Hvornår du skal bruge den
+
+Grib efter `/impeccable live`, når du vil iterere på noget visuelt på den måde du ville i et designværktøj, men beholde produktionskode som output. Det canvas-lignende flow fra Figma uden returen til et implementeringstrin.
+
+Brug den til:
+
+- **At udforske retninger på et rigtigt element.** En hero-sektion, et nyhedsbrevskort, en prisniveau. Tre genuint forskellige tilgange, side om side, på den faktiske side med den faktiske kontekst.
+- **At polere et stykke UI der næsten er rigtigt.** Du ved hvad der føles forkert, men kan ikke helt sige det. Vælg elementet, krible "mere legende" eller tegn en streg gennem det der irriterer dig, tryk Go.
+- **En hurtig A/B mellem to retninger dit team diskuterer.** Generer varianter, accepter ingen, gå væk. Pointen var sammenligningen.
+
+Den er IKKE til nye grønne features (grib efter `/impeccable craft`) eller hel-side-redesigns (grib efter `/impeccable` eller en specialiseret forfin-kommando).
+
+## Hvordan det virker
+
+En kommando bringer en picker-overlay oven på din kørende dev-server. Du vælger et hvilket som helst element. En lille kontekstbjælke vises ved siden af. Skriv en fri beskrivelse eller vælg en af handlingschipsene (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Eventuelt drop kommentar-pins eller tegn streger direkte på elementet først, og færdigheden læser dem som intention.
+
+Tryk Go. Tre **produktionskvalitetsvarianter** genereres, hver forankret til en genuint forskellig design-arketype (ikke tre riffar på farve) og hot-swappet ind på siden via dit frameworks HMR. Cykl dem med piletasterne. Accepter en, og varianten skrives tilbage til kilde. Kassér alle tre, og originalen forbliver.
+
+Den understøtter Vite, Next.js (inklusive monorepos), SvelteKit, Astro, Nuxt og almindelig statisk HTML. Hvis din dev-server har en streng Content Security Policy, opdager den førstegangopsætningen det og tilbyder en engangs, kun-dev-lappeløsning, så pickeren kan indlæses. `DESIGN.md` vinder på visuelle beslutninger, `PRODUCT.md` vinder på stemme: hvis du har begge, forbliver varianter on-brand uden at blive fortalt.
+
+## Prøv det
+
+```
+/impeccable live
+```
+
+Åbn din dev-server-URL, vælg nyhedsbrevs-tilmeldingskortet, klik `delight`-chippet, tryk Go. Du får tre varianter der varierer på tværs af personlighedsdimensioner (et frimærke-og-postkort-følelse, en typografisk-overraskelse-version, en med illustreret accent), ikke tre riffar på samme behandling.
+
+Eller vælg en hero, skriv "mere redaktionel, mindre SaaS", tryk Go. De tre varianter forankrer til forskellige redaktionelle arketyper (broadsheet-masthead, katalog-stil spec-rækker, overdimensioneret-glyph plakat) frem for tre nuancer af samme idé.
+
+Stop live mode, når du er færdig: sig "stop live mode", luk fanen, eller tryk exit-knappen på picker-bjælken.
+
+## Faldgruper
+
+- **At køre den på en side der stadig er halvskrevet.** Live variantgenerering har brug for kontekst. Hvis elementet har placeholder-tekst, generisk Lorem ipsum, eller pre-stylesheet standardformatering, vil varianter afspejle det. Udfyld indholdet først.
+- **At forvente at den træffer makro-beslutninger.** Live mode itererer på et enkelt valgt element. For "omgør hele prissiden", grib efter `/impeccable` eller `/impeccable craft` i stedet.
+- **At ignorere fallback-beskederne.** Hvis elementet lever i en genereret fil (en kompileret skabelon, et build-output), siger pickeren det eksplicit og tilbyder at rute accepten ind i reel kilde. Tving ikke accepten ind i den genererede fil: næste build vil slette den.
+- **At køre den uden PRODUCT.md eller DESIGN.md, når du bekymrer dig om brand-fit.** Live vil stadig generere, men varianterne vil leane mod generiske standarder. Kør `/impeccable teach` og `/impeccable document` først, hvis resultatet skal lyde som dit produkt.

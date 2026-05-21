@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Impeccableにプロダクトの対象者を教える。プロジェクトごとに1回。
+highlights:
+  - プロジェクトにまだデザインコンテキストファイルがない。
+  - 異なる貢献者が1つの信頼できる情報源を必要としている。
+  - 今後のコマンドにブランドとプロダクトの方向性を継承させたい。
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Loaded on every command</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Design serves the task.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">SREs on call, reading fast, often in the dark.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">Calm, clinical, no hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">Purple gradients. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Every command reads this before writing a line of code.</div>
+  </div>
+  <p class="docs-viz-caption">完成したPRODUCT.md。戦略のみ：誰に、何を、なぜ。色、フォント、ピクセル値はなく、それらはDESIGN.mdにあります。</p>
+</div>
+
+## いつ使うか
+
+プロジェクトの開始時に `/impeccable teach` を1回実行してください。これが入り口です。これなしでは、他のすべてのコマンドは技術的に有能だが汎用的なトーンのデザインを生成します：ありふれたSaaSの声、安全なデフォルトフォント、AIカラーパレット。これがあれば、すべてのコマンドが生成前にあなたの回答を読み込みます。
+
+次のような場合に使ってください。
+
+- **新しいプロジェクトにImpeccableをインストールしたばかり。** 最初に実行するもの。スキップすると他のコマンドが促します。
+- **プロジェクトのブランド方向性が変わった。** 新しいポジショニング、新しいオーディエンス、新しい声。teachを再実行すると、更新されたコンテキストがすべてのコマンドに流れます。
+- **別のコマンドが「design context not found」と言って停止した。** それがシグナルです：teachを実行してから再開してください。
+
+## 仕組み
+
+Teachはプロジェクトルートに2つの補完的なファイルを書き込みます。
+
+- **`PRODUCT.md`** は戦略ファイル。レジスター（brandかproductか）、ターゲットユーザー、プロダクトの目的、ブランドパーソナリティ、アンチリファレンス、デザイン原則、アクセシビリティニーズ。「誰に、何を、なぜ」に答えます。
+- **`DESIGN.md`** はビジュアルファイル。カラー、タイポグラフィ、エレベーション、コンポーネント、推奨事項と非推奨事項。「どう見えるか」に答えます。teachが最後に呼び出す `/impeccable document` コマンドによって書き込まれます。
+
+フローはまずコードベース（README、package.json、コンポーネント、トークン、ブランドアセット）をスキャンし、**レジスターハイポシスス**を形成します：brand（ランディング、マーケティング、ポートフォリオなど、デザインがプロダクトそのもの）かproduct（アプリUI、ダッシュボード、ツールなど、デザインがプロダクトを支える）か。レジスターは最初の質問です。なぜなら、下流のすべての回答を形作るからです：タイポグラフィのデフォルト、モーションのエネルギー、カラー戦略、`/impeccable typeset` のようなコマンドが引き出す参照セット。レジスターの後、teachは推測できなかったことだけを聞きます：ユーザー、3つの実際の言葉でのパーソナリティ、リファレンスとアンチリファレンス、アクセシビリティ要件。
+
+PRODUCT.mdは戦略のみです。色、フォント、ピクセル値はありません。それらはDESIGN.mdにあります。2つのファイルを分けておくことは意図的です：ビジュアルシステムが進化しても、戦略は安定したままにできます。
+
+## 試してみる
+
+```
+/impeccable teach
+```
+
+5〜8分のインタビューが期待されます。最初の質問は通常レジスターについてで、残りは短いです。Teachはコードから推測したことを引用し（「ルートを見ると、これはプロダクトサーフェスのようです、合ってますか？」）、ゼロから始めるのではなく確認する形式を取ります。
+
+最後に、teachは `/impeccable document` の実行を提案します。特定の理由で保留にしない限り、yesと言ってください。本物のDESIGN.mdは、バリアント、ポリッシュ、監査をブランドに合わせておくために不可欠です。
+
+## 注意点
+
+- **「ちょっとだけコマンドを試すために」スキップすること。** 他のすべてのコマンドは飛行中にインタビューを始めます。まずteachを実行する方が遅くではなく速いです。
+- **汎用的な回答を与えること。** 「Modern and clean」は有用ではありません。「Warm, mechanical, opinionated」が有用です。具体的に。安全なデフォルトに異議を唱える勇気を持ってください。
+- **PRODUCT.mdを不変として扱うこと。** ファイルはあなたのものです。teachが入れたものが正確でない場合は、編集してください。すべてのコマンドは現在のファイルを読み込みます。
+- **リファレンスに形容詞だけを列挙すること。** ブランド、プロダクト、印刷物：名前を挙げて、説明しないで。「Klim Type Foundry specimen pages」であって「technical and clean」ではありません。アンチリファレンスも同様に具体的に。

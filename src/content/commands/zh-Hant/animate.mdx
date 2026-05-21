@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: 傳達狀態的有目的動態，而非裝飾。
+highlights:
+  - 介面在狀態之間感覺死氣沉沉或突兀。
+  - 載入、回饋或過渡需要能解釋正在發生什麼的動態。
+  - 你想要有紀律的動畫，附帶減少動態的後備方案。
+related:
+  - delight
+---
+
+## 何時使用
+
+`/impeccable animate` 適用於感覺死氣沉沉的介面，狀態變化瞬間且突兀，載入內容就那樣蹦出來，使用者永遠不太確定自己的點擊是否已註冊。用它來添加能溝通正在發生什麼的小動態：進場、退場、回饋、狀態之間的過渡。
+
+不要用它來添加彈跳或彈性彈簧效果以追求活力。那是裝飾，而這個技能不會給你那些。
+
+## 運作方式
+
+技能識別能從動態中受益的靜態時刻，然後以嚴格的紀律應用它們：
+
+1. **進場和退場**：元素以 200 到 300ms 的淡入加上微妙的 Y 或縮放出現和消失，絕不使用版面屬性。
+2. **狀態回饋**：hover、active、focus、loading、success 都透過動態而非突然替換來溝通。
+3. **視圖之間的過渡**：在合理的地方使用共享元素過渡，否則使用淡入穿透。
+4. **進度和載入**：骨架螢幕、確定性進度條、表示「仍在處理中」的動態。
+5. **減少動態**：每個動畫都有 `prefers-reduced-motion` 後備方案。
+
+緩動始終是指數型的（ease-out-quart、quint 或 expo），因為真實物體平穩減速。不使用彈跳、不使用彈性、除了進度指示器外不使用線性。
+
+技能只對 `transform` 和 `opacity` 做動畫。如果你發現自己在對 `width`、`height`、`top` 或 `left` 做動畫，那就是在做錯的事。高度過渡請使用 `grid-template-rows`。
+
+## 試試看
+
+```
+/impeccable animate the sign-up flow
+```
+
+典型新增：
+
+- 電子郵件輸入框在 focus-visible 時獲得焦點光暈（opacity + shadow，180ms）
+- 提交按鈕在 loading 狀態時在自身內部顯示 spinner，而不是旁邊的獨立 spinner
+- 成功畫面以 opacity + translateY(8px) 進場，260ms，ease-out-quart
+- 錯誤訊息以 grid-template-rows（非 height）向下滑出，220ms
+- 每個過渡都有 `@media (prefers-reduced-motion: reduce)` 後備方案
+
+## 注意事項
+
+- **要求「更多動畫」。** Animate 不是一個旋鈕。它只在動態能溝通的地方添加，不是到處添加。
+- **移除減少動態的後備方案。** 技能會自動添加它們。這對無障礙性來說是不可協商的。

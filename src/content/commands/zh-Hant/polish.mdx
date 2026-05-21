@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: 從好到卓越之間的細緻最終打磨。
+highlights:
+  - 對齊、間距和微觀決策仍然感覺粗糙。
+  - 功能即將交付。
+  - 小小的不一致正在拖累感知品質。
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## 何時使用
+
+`/impeccable polish` 是你在交付前最後執行的東西。它追蹤那些區分已交付功能和精緻功能的小細節：半像素的對齊偏差、不一致的間距、被遺忘的焦點狀態、會閃爍的載入過渡、語調飄移的文案。它也會將功能與你的設計系統對齊，用 token 替換硬編碼值、將自訂元件替換為共享元件，以及修正偏離既有模式的任何部分。
+
+當功能在功能上已完成、沒有東西壞掉、但仍有些東西感覺不對時使用。也當功能偏離設計系統且需要重新拉回軌道時使用。
+
+## 運作方式
+
+Polish 首先發現設計系統（token、間距比例、共享元件），然後系統性地在六個維度上進行處理：
+
+1. **視覺對齊和間距**：像素完美的網格貼合、一致的間距比例、圖示的光學對齊。
+2. **字型排版**：層次一致性、行長、寡婦和孤行、標題的 kerning。
+3. **色彩和對比**：token 使用、主題一致性、WCAG 比率、焦點指示器。
+4. **互動狀態**：hover、focus、active、disabled、loading、error、success。每個狀態都考慮到。
+5. **過渡和動態**：平滑緩動、無版面抖動、尊重 `prefers-reduced-motion`。
+6. **文案**：一致的語氣、正確的時態、沒有佔位字串、沒有散落的 TODO。
+
+技能明確了一件事：polish 是最後一步，不是第一步。如果功能在功能上尚未完成，打磨它是浪費工作。
+
+## 試試看
+
+```
+/impeccable polish the pricing page
+```
+
+一次健康的執行看起來像：
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+五個小修復，沒有重寫。這就是一次好的 polish 處理的樣子。
+
+## 注意事項
+
+- **打磨尚未完成的工作。** 如果程式碼中有 TODO，你還沒準備好。僅在完成的功能上執行 `/impeccable polish`。
+- **把 polish 當作重新設計。** Polish 精煉已存在的東西。如果你發現自己在重新架構版面，你需要的是 `/impeccable critique` 或 `/impeccable layout`。
+- **沒有先執行 `/impeccable audit` 就執行 `/impeccable polish`。** Polish 捕捉基於感覺的問題。Audit 捕捉可量化的問題。兩者都用。

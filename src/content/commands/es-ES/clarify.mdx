@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Reescribe textos UX confusos para que las interfaces se expliquen por sí solas.
+highlights:
+  - Los usuarios dudan porque la redacción es vaga.
+  - La interfaz necesita mejores textos instructivos o de error.
+  - El flujo del producto está bien, pero el lenguaje ralentiza a las personas.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Cuándo usarlo
+
+`/impeccable clarify` es para textos de interfaz que hacen que la gente se detenga a pensar. Etiquetas confusas, textos de botones ambiguos, mensajes de error que culpan al usuario, tooltips que repiten la etiqueta, estados vacíos que no dicen nada útil. Úsalo cuando el problema no es el diseño ni el color, son las palabras.
+
+Buenos detonantes: "los usuarios no entienden este campo", "el mensaje de error no es útil", "no puedo escribir un buen texto de botón", "este tooltip es una pérdida de tiempo".
+
+## Cómo funciona
+
+La habilidad reescribe el texto en las superficies donde viven la mayoría de los problemas de copy UX:
+
+1. **Etiquetas y pistas de campo**: directas, específicas, dicen lo que se espera.
+2. **Texto de botones**: verbo primero, describe el resultado, no la acción. "Guardar cambios" no "OK".
+3. **Mensajes de error**: explican qué salió mal, de quién es la culpa y qué hacer a continuación. Nunca culpan al usuario.
+4. **Estados vacíos**: orientan al usuario, explican por qué el estado está vacío, ofrecen un siguiente paso.
+5. **Tooltips y texto de ayuda**: añaden información que la etiqueta no puede llevar, nunca la repiten.
+6. **Diálogos de confirmación**: nombran las consecuencias, no la acción.
+
+La habilidad usa la audiencia y el estado mental de `PRODUCT.md` para ajustar la voz. Una audiencia técnica recibe lenguaje preciso. Una audiencia general recibe lenguaje llano. Usuarios con prisa reciben textos cortos. Usuarios ansiosos (pago, eliminación) reciben tranquilidad.
+
+## Pruébalo
+
+```
+/impeccable clarify the billing form
+```
+
+Antes y después, típico:
+
+- Etiqueta "Billing address" → "Dirección de tu tarjeta"
+- Placeholder "Enter your VAT ID" → "NIF/CIF (opcional, para empresas)"
+- Error "Invalid input" → "Este número de tarjeta tiene 15 dígitos. Has introducido 14."
+- Botón "Submit" → "Cobrar 29€ y suscribirse"
+- Estado vacío "No transactions yet" → "Tu primer cargo aparecerá aquí después de tu primer pedido."
+
+## Errores comunes
+
+- **Escribir de forma más ingeniosa, no más clara.** Clarify no es para mejorar la voz. Si el texto ya es claro, no uses esta habilidad. Usa `/impeccable delight` cuando busques personalidad.
+- **Saltarse la pregunta sobre la audiencia.** Clarify necesita saber quién está leyendo. Si `PRODUCT.md` no especifica el nivel técnico de la audiencia, las reescrituras serán genéricas.
+- **Ejecutar clarify en textos de marketing.** Clarify es para texto UX funcional: etiquetas, errores, instrucciones. El copy de marketing necesita un conjunto diferente de movimientos y un escritor humano.

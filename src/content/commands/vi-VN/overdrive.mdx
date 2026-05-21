@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Đẩy giao diện vượt qua giới hạn thông thường. Shader, vật lý, 60fps, chuyển đổi điện ảnh.
+highlights:
+  - Trải nghiệm đáng lẽ phải cảm thấy phi thường, không chỉ gọn gàng.
+  - Chuy động hoặc render phong phú là một phần của câu chuyện sản phẩm.
+  - Đội ngũ sẵn sàng trả giá bằng độ phức tạp ở nơi cần thiết.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable overdrive` dành cho những khoảnh khắc bạn muốn gây ấn tượng. Một hero sử dụng WebGL. Một bảng xử lý một triệu hàng. Một dialog biến hình từ phần tử kích hoạt. Một biểu mẫu xác thực thời gian thực với phản hồi streaming. Một chuyển đổi trang cảm thấy điện ảnh. Sử dụng khi ngân sách dự án cho phép tham vọng kỹ thuật và kết quả cần cảm thấy phi thường.
+
+Đừng sử dụng trên công cụ thao tác, bảng điều khiển hoặc bất cứ thứ gì nơi độ tin cậy vượt hơn spectacle. Overdrive đốt độ phức tạp cho hiệu ứng, và sự đánh đổi đó chỉ đáng ở những khoảnh khắc quan trọng.
+
+## Cách hoạt động
+
+Kỹ năng chọn một khoảnh khắc để làm phi thường và cam kết với nó, thay vì phân tán nỗ lực trên toàn bộ giao diện. Sau đó nó sử dụng các kỹ thuật mà hầu hết UI do AI tạo ra không bao giờ chạm tới: WebGL shader, spring physics, Scroll Timeline, View Transitions, canvas animation, bộ lọc tăng tốc GPU. Mọi thứ đều được lập ngân sách, lập hồ sơ và kiểm tra ở 60fps, với fallback reduced-motion được tích hợp sẵn.
+
+Đầu ra Overdrive được công bố với `──── OVERDRIVE ────` để bạn biết đang bước vào chế độ tham vọng hơn. Kỳ vọng diff lớn hơn, dependency mới và độ sâu triển khai vượt xa những gì các kỹ năng khác tạo ra.
+
+## Thử ngay
+
+```
+/impeccable overdrive the landing hero
+```
+
+Một lần chạy cụ thể có thể thay thế hero tĩnh bằng nền shader WebGL điều khiển bởi vị trí chuột, một tiêu đề display tiết lộ bằng mask khi cuộn sử dụng Scroll Timeline API và View Transition trên CTA biến hình thành trang tiếp theo. Cộng với fallback reduced-motion hoán đổi tất cả thành bố cục tĩnh sạch.
+
+## Những cạm bẫy cần tránh
+
+- **Sử dụng ở mọi nơi.** Overdrive hoạt động vì nó hiếm. Nếu mọi trang đều có khoảnh khắc điện ảnh, không khoảnh khắc nào là điện ảnh.
+- **Phát hành mà không có fallback reduced-motion.** Không thể thương lượng. Overdrive thêm chúng tự động; đừng loại bỏ.
+- **Bỏ qua hiệu suất.** Khoảnh khắc phi thường vẫn cần đạt 60fps. Nếu hiệu ứng làm rớt frame, cắt bỏ hoặc tối ưu. Spectacle chậm tệ hơn cái đơn giản làm tốt.
+- **Chạy overdrive trước khi giao diện cơ sở vững chắc.** Spectacle trên nền tảng hỏng đọc như sự phân tâm, không phải delight.

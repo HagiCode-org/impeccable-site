@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Ret layout, afstand og visuel rytme.
+highlights:
+  - Siden mangler tydelig fremhævning.
+  - Indholdet er der, men sammensætningen skjuler det.
+  - Du vil have stærkere flow før du rører ved farve eller bevægelse.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Hvornår du skal bruge den
+
+`/impeccable layout` er til sider, hvor intet teknisk er galt, men intet heller ånder. Ens padding overalt, monotone kort-grids, indhold der løber fra kant til kant, hierarki der kun stoler på størrelse. Brug den, når et layout "føles forkert", og du ikke kan sætte ord på hvorfor.
+
+Gode udløsere: "alt føles overfyldt", "det læser som en mur", "jeg ved ikke, hvor jeg skal kigge først".
+
+## Hvordan det virker
+
+Færdigheden gennemgår fem layout-dimensioner:
+
+1. **Afstand**: er afstandsskalaen konsistent, eller er der tilfældige 13px-mellemrum, er relaterede elementer grupperet tæt med gavmelig afstand mellem grupper, er der overhovedet en rytme.
+2. **Visuelt hierarki**: lander øjet på den primære handling inden for 2 sekunder, gør hierarkiet reel forskel, eller råber alt på én gang.
+3. **Gitter og struktur**: er der et underliggende gitter, eller er layoutet tilfældigt, er elementer justeret til grundlinjer.
+4. **Rytme**: skifter siden mellem tæt og gavmelig afstand, eller er alt ensartet.
+5. **Tæthed**: er layoutet klemt, eller er det spildende, matcher tætheden indholdstypen.
+
+Rettelser involverer typisk genopbygning af afstandsskalaen, introduktion af asymmetri, samling af monotone grids til et blandet layout med hero- og støtteelementer, og at give den primære handling reel plads.
+
+## Prøv det
+
+```
+/impeccable layout the settings page
+```
+
+Typiske ændringer:
+
+- Afstandsskala forenet til 8 / 16 / 24 / 48 / 96px
+- Sektionskift ved 48px, rækkemellemrum ved 16px, formularfeltgrupper ved 8px
+- Primære handlinger trukket ud af formularflowet med 32px buffer
+- Dekorative kanter fjernet, erstattet med afstandsdrevet gruppering
+- Sidebjælke- og hovedkolonneproportioner genbalanceret (280 / flex vs 25 / 75)
+
+## Faldgruber
+
+- **Forveksling af layout med distill.** Hvis problemet er for mange ting, så kør `/impeccable distill` først. Layout er til at arrangere det, der allerede er det rigtige sæt.
+- **At forvente at det redder et ødelagt gitter.** Hvis siden slet ikke har et gitter, vil layout bygge et. Bare vær klar over, at diffen bliver større end forventet.
+- **At ignorere hierarki-dommen.** Hvis layout siger "intet er primært", kan ingen mængde afstandsarbejde løse det. Du har brug for en indholdsbeslutning, ikke en layout-justering.

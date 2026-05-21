@@ -1,0 +1,74 @@
+---
+slug: extract
+title: Extract
+summary: Extrageti componente reutilizabile, token-uri si tipare in sistemul de design.
+highlights:
+  - Componente multiple rezolva aceeasi problema diferit.
+  - Token-urile si tiparele trebuie sa fie centralizate.
+  - Doriti un sistem vizual mai mentenabil.
+related:
+  - document
+  - polish
+  - harden
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Descoperiti derivarea</span>
+      <span class="docs-viz-flow-hint">Valori hex repetate, variante de butoane, scale de spatieri, stiluri de text.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Propuneti primitive</span>
+      <span class="docs-viz-flow-hint">Nume token-uri, API-uri componente cu varianta + dimensiune, stiluri de text.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Migrati locatiile de apel</span>
+      <span class="docs-viz-flow-hint">Inlocuiti CSS duplicat cu noile primitive. Niciun cod orfan ramas in urma.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Skill-ul extrage doar ce este folosit de trei sau mai multe ori cu aceeasi intentie. Doua utilizari nu sunt un tipar, iar migrarea se intampla intotdeauna in aceeasi trecere.</p>
+</div>
+
+## Cand se foloseste
+
+`/impeccable extract` este pentru momentul in care codul dumneavoastra a devenit accidental un sistem de design. Stiluri de butoane repetate in 12 locuri. Trei variante ale aceluiasi card. Culori hex imprastiate peste tot. Spatieri facute manual care accidental se potrivesc cu o scara. Apelati la el cand doriti sa consolidati aceasta derivare in primitive reutilizabile.
+
+Folositi-o dupa ce un produs a livrat suficiente functionalitati pentru a dezvalui tiparele. Extractia prematura creeaza abstractii care nu se potrivesc cu realitatea.
+
+## Cum functioneaza
+
+Skill-ul descopera structura sistemului de design mai intai, apoi identifica oportunitatile de extractie:
+
+1. **Token-uri**: gasiti valori literale repetate (culori, spatieri, raze, umbre, dimensiuni font). Propuneti nume de token-uri, adaugati la sistemul de token-uri, inlocuiti utilizari.
+2. **Componente**: gasiti tipare UI care se repeta cu variatie minora (butoane, carduri, inputuri, modale). Extrageti intr-o singura componenta cu variante, migrati apelanții.
+3. **Tipare de compunere**: gasiti tipare de layout sau interactiune care se repeta (randuri de formular, grupuri de toolbar, stari goale). Extrageti in primitive de compunere.
+4. **Stiluri de text**: gasiti combinatii repetate de font-size + weight + line-height. Extrageti in stiluri de text.
+5. **Tipare de animatie**: gasiti combinatii repetitive de easing, durata sau keyframe. Extrageti in token-uri de miscare.
+
+Skill-ul este cautious. Extrage doar lucruri folosite de trei sau mai multe ori, cu aceeasi intentie. Nu extrage niciodata "pentru ca ar putea fi reutilizat mai tarziu". Abstractia prematura este mai rea decat duplicarea.
+
+## Incercati
+
+```
+/impeccable extract the button styles
+```
+
+Iesire asteptata:
+
+- Gasite 14 instante de butoane in 8 fisiere
+- 4 variante distincte: primar (accent umplut), secundar (marginuit), ghost (doar text), distructiv (rosu umplut)
+- Toate 4 variante folosesc aceeasi scara de dimensiuni (mic, implicit, mare)
+- Extras in `<Button variant="primary" size="default">` cu stiluri conduse de token-uri
+- Migrat 14 locatii de apel, eliminate ~180 linii de CSS duplicat
+- Adaugat 3 token-uri lipsa: `--button-radius`, `--button-padding-y`, `--button-padding-x`
+
+## Capcane
+
+- **Extractia prea devreme.** Doua utilizari nu sunt un tipar. Trei ar putea fi. Asteptati pana cand tiparul este evident.
+- **Supra-generalizarea.** Componenta extrasa ar trebui sa se potriveasca strans cu cazurile de utilizare curente, nu sa anticipeze fiecare posibilitate viitoare. Puteti adauga intotdeauna variante mai tarziu.
+- **Uitarea migrarii.** Extractia fara migrare lasa codul duplicat vechi in jur si creeaza o a treia cale de a face acelasi lucru. Migrati intotdeauna in aceeasi trecere.
+- **Extragerea lucrurilor care difera in intentie.** Doua butoane care arata similar dar servesc scopuri diferite (actiune primara vs link stilizat ca buton) ar trebui probabil sa ramana separate.

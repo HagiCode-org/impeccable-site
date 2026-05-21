@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: Iteráció a felületen a böngészőben. Válassz egy elemet, adj hozzá megjegyzést, kapj három változatot. Fogadd el valamelyiket, és a forrásba írja.
+highlights:
+  - Már létezik egy fejlesztői szerver.
+  - Közvetlenül a renderelt felületen szeretnél összehasonlítani opciókat.
+  - A leggyorsabb következő lépés az irányított vizuális kísérletezés.
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">Lásd működés közben, az animált demóval, a <a href="/live-mode">/live-mode</a> oldalon. Ez az oldal a referencia arra, hogy mit olvas az AI rendszer, amikor a parancs fut.</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>Állapot: alfa.</strong> A Live Mode végponttól végpontig működik és készen áll a kipróbálásra, de még több tesztelésre szorul valós repók és keretrendszer-konfigurációk ellen. Számíts durva élekre a szokatlan beállításoknál, és kérlek, jelentsd, mi romlik el.</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Levelek, <em>alkalmanként</em>.</h3>
+        <p class="docs-viz-live-body">Képeslap a szerkesztőtől, nagyjából havonta egyszer. Nincs követő pixel, nincs „csak jelentkezem".</p>
+        <button class="docs-viz-live-btn" type="button">Küldj nekem egyet</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Előző">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Következő">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Elfogadás</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Kiválasztás</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">A Live Mode félúton a ciklusban: a választó körvonalazza a kiválasztott elemet, a környezeti sáv mutatja, melyik változaton vagy, és a globális sáv alul rögzítve marad. Az elfogadás ezen a ponton a 2. variánst visszaírja a forrásba.</p>
+</div>
+
+## Mikor használd
+
+Nyúlj a `/impeccable live` parancshoz, amikor vizuálisan szeretnél iterálni valamin, úgy, ahogy egy tervezőeszközben tennéd, de a kimenet továbbra is gyártási kód marad. A vászonhoz hasonló Figma-élmény az implementációs lépés oda-vissza utazása nélkül.
+
+Használd ilyen esetekre:
+
+- **Irányok felfedezése egy valós elemen.** Egy hero szekció, egy hírlevél-kártya, egy árazási szint. Három valóban különböző megközelítés, egymás mellett, a tényleges oldalon a tényleges környezetben.
+- **Egy majdnem jó felületi elem polírozása.** Érzed, mi a baj, de nem tudod pontosan megfogalmazni. Válaszd ki az elemet, firkáld rá, hogy „játékosabb", vagy húzz egy vonalat a zavaró részen, és nyomj Go-t.
+- **Gyors A/B összehasonlítás két irány között, amiről a csapat vitatkozik.** Generálj variánsokat, ne fogadj el semmit, menj tovább. A lényeg az összehasonlítás volt.
+
+NEM való új zöldmezős funkciókhoz (ahasználd a `/impeccable craft` parancsot) vagy egész oldalas átdizájnhoz (ahasználd a `/impeccable` parancsot vagy egy specializált refine parancsot).
+
+## Hogyan működik
+
+Egyetlen parancs felhoz egy választó overlay-t a futó fejlesztői szerveredre. Válassz bármelyik elemet. Egy kis környezeti sáv jelenik meg mellette. Írj egy szabad formátumú leírást, vagy válassz egyet az művelet chipek közül (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`). Opcionálisan tegyél megjegyzés-pinokat vagy húzz vonalakat közvetlenül az elemre, és a szakértelem ezeket szándékként olvassa.
+
+Nyomj Go-t. Három **gyártási minőségű variáns** generálódik, mindegyik egy valóban különböző dizájn archetípushoz rögzítve (nem három szín-változat), és a keretrendszered HMR-én keresztül az oldalba cserélődik. Lépkedj köztük a nyílbillentyűkkel. Fogadj el egyet, és a variáns visszaírásra kerül a forrásba. Dobd el mindhármat, és az eredeti marad.
+
+Támogatja a Vite, Next.js (monorepókat is beleértve), SvelteKit, Astro, Nuxt és sima statikus HTML rendszereket. Ha a fejlesztői szervered szigorú Content Security Policy-vel rendelkezik, az első futtatás észleli, és egyszeri, csak fejlesztői javaslatot tesz, hogy a választó be tudjon tölteni. A `DESIGN.md` nyer a vizuális döntéseknél, a `PRODUCT.md` nyer a hangnemnél: ha mindkettő megvan, a variánsok márka-helyesek maradnak anélkül, hogy mondanád.
+
+## Próbáld ki
+
+```
+/impeccable live
+```
+
+Nyisd meg a fejlesztői szerver URL-t, válaszd ki a hírlevél-feliratkozási kártyát, kattints a `delight` chipre, nyomj Go-t. Három variánst kapsz, amelyek személyiség-dimenziók mentén változnak (bélyeg-és-képeslap érzés, tipográfiai meglepetés verzió, illusztrált akcentus), nem a ugyanazon kezelés három változata.
+
+Vagy válassz egy herot, írd be, hogy „szerkesztőiesebb, kevésbé SaaS", nyomj Go-t. A három variáns különböző szerkesztői archetípusokhoz rögzül (széles lap masthead, katalógus-stílusú spec sorok, túlméretezett glyph poszter), nem ugyanazon ötlet három árnyalata.
+
+Állítsd le a live mode-ot, ha végeztél: mondd, hogy „állítsd le a live mode-ot", zárd be a lapot, vagy nyomd meg a kilépés gombot a választó sávon.
+
+## Gyakori buktatók
+
+- **Olyan oldalon futtatva, ami még félkész.** A live variáns-generálás kontextusra van szüksége. Ha az elem helyőrző szöveget, általános Lorem ipsumot vagy stíluslap előtti alapértelmezett formázást tartalmaz, a variánsok ezt tükrözik. Először töltsd ki a tartalmat.
+- **Arra számítani, hogy makro döntéseket hoz.** A live mode egyetlen kiválasztott elemen iterál. A „csináld újra az egész árazási oldalt" feladathoz használd a `/impeccable` vagy `/impeccable craft` parancsot.
+- **A tartalék üzenetek figyelmen kívül hagyása.** Ha az elem egy generált fájlban van (fordított sablon, build kimenet), a választó ezt kifejezetten jelzi, és felajánlja, hogy az elfogadást az igazi forrásba irányítsa. Ne kényszerítsd az elfogadást a generált fájlba: a következő build letörli.
+- **PRODUCT.md vagy DESIGN.md nélkül futtatva, amikor a márka-illeszkedés számít.** A Live akkor is generál, de a variánsok általános alapértékek felé hajlanak. Futtasd először a `/impeccable teach` és `/impeccable document` parancsokat, ha az eredménynek a terméked hangján kell szólnia.

@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Khiến giao diện sẵn sàng sản xuất. Trường hợp biên, i18n, trạng thái lỗi, tràn nội dung.
+highlights:
+  - Happy path hoạt động, nhưng các trạng thái thực tế vẫn trông mong manh.
+  - Bạn cần đóng các khoảng trống trước khi phát hành.
+  - Xử lý lỗi và khả năng phục hồi quan trọng hơn thêm flair mới.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable harden` dành cho ngày giao diện của bạn gặp thực tế. Dữ liệu người dùng thực lộn xộn: tên dài 60 ký tự, tiêu đề sản phẩm bằng tiếng Đức, giá trị tỷ tỷ, lỗi 500, chế độ ngoại tuyến, văn bản từ phải sang trái. Thiết kế chỉ hoạt động với dữ liệu hoàn hảo thì chưa sẵn sàng sản xuất.
+
+Sử dụng trước khi ra mắt, trước khi mở sang thị trường mới, hoặc bất cứ khi nào một báo cáo lỗi bắt đầu bằng "người dùng của chúng ta có một cái tên thực sự dài và". Đối với luồng first-run, kích hoạt trạng thái trống và thiết kế onboarding, hãy sử dụng `/impeccable onboard` thay thế.
+
+## Cách hoạt động
+
+Kỹ năng hoạt động qua bốn chiều của khả năng phục hồi thực tế:
+
+1. **Cực trị văn bản và dữ liệu**. Văn bản dài, văn bản ngắn, ký tự đặc biệt, emoji, RTL, số tỷ tỷ, danh sách 1000 mục.
+2. **Kịch bản lỗi**. Lỗi mạng, API 4xx/5xx, lỗi xác thực, lỗi quyền, giới hạn tốc độ, thao tác đồng thời.
+3. **Quốc tế hóa**. Bản dịch dài (tiếng Đức thường dài hơn tiếng Anh 30%), ngôn ngữ RTL, định dạng ngày và số, ký hiệu tiền tệ, bộ ký tự.
+4. **Thiết bị và ngữ cảnh**. Vùng chạm, hành vi ngoại tuyến, kết nối chậm, chế độ tiết kiệm pin.
+
+Cho mỗi chiều nó xác định chế độ lỗi, sau đó áp dụng sửa đổi cụ thể: xử lý tràn, UI lỗi thông tin, bố cục an toàn i18n, số nhiều, fallback hợp lý.
+
+## Thử ngay
+
+Bắt đầu với một trang và một chiều:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Kết quả kỳ vọng:
+
+- `.user-name` giờ có `text-overflow: ellipsis` với tooltip cho giá trị đầy đủ
+- `.bio` chuyển từ chiều cao cố định sang `max-height` với disclosure "hiển thị thêm"
+- Thêm trạng thái trống cho người dùng không có bio
+- Thêm skeleton loader cho việc tải avatar bất đồng bộ
+- Kiểm tra ở độ dài tên 1, 20, 60, 200 ký tự
+
+Chạy theo từng trang, không phải tất cả cùng lúc. Lần chạy đầu là lớn nhất; các lần chạy tiếp theo tìm ít vấn đề hơn khi các mẫu củng cố.
+
+## Những cạm bẫy cần tránh
+
+- **Chờ báo cáo lỗi.** Harden mang tính phòng ngừa. Nếu bạn thấy mình sửa cùng một loại lỗi hai lần, hãy chạy `/impeccable harden` trên toàn bộ tính năng.
+- **Coi trạng thái lỗi và trống là chuyện phụ.** Hầu hết công việc hardening là UI trạng thái lỗi và trống. Dành thời gian cho nó, không chỉ một khối `catch`.
+- **Bỏ qua i18n vì "chúng ta chỉ dùng tiếng Anh hiện tại".** Bố cục an toàn i18n vẫn là bố cục tốt hơn. Container linh hoạt, ngắt dòng đúng, line-height rộng rãi. Không cái nào gây hại cho tiếng Anh.

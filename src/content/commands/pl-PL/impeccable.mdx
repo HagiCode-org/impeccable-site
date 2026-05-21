@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: Inteligencja projektowa stojaca za kazda komenda.
+highlights:
+  - Chcesz jednego punktu wejścia dla układu, typografii, koloru, ruchu i struktury UX.
+  - Eksplorujesz kierunek i chcesz, aby umiejętność wybrała odpowiedni pod-przepływ pracy.
+  - Potrzebujesz najszerszego kontekstu projektowego zamiast wąskiego podejścia jednej komendy.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Kiedy używać
+
+`/impeccable` to komenda domowa. Wywołaj ją bezpośrednio, gdy chcesz swobodnej pracy projektowej z załadowanym pełnym podręcznikiem, bez wybierania specjalistycznej komendy. To rozwiązanie awaryjne, po które sięgasz, gdy żadne z 23 specjalistycznych narzędzi (`audit`, `polish`, `critique` i pozostałe) nie pasuje dokładnie do tego, co próbujesz zrobić.
+
+Sięgnij po `/impeccable` bezpośrednio, gdy:
+
+- **Nie jesteś pewien, która komenda pasuje.** Opisz, czego chcesz, w zwykłym języku i pozwól umiejętności wybrać odpowiednie podejście.
+- **Praca obejmuje wiele dyscyplin.** "Przerób tę sekcję hero" dotyka układu, typografii, koloru i ruchu. Jedna komenda nie może tego objąć.
+- **Chcesz pełną inteligencję projektową bez ograniczeń.** Każdy plik referencyjny załadowany, każdy antywzór sprawdzony, brak z góry ustalonego przepływu pracy.
+
+Dla ustrukturyzowanych przepływów sięgnij po specjalistyczne komendy na pasku bocznym. Najpierw uruchom `/impeccable teach` w każdym nowym projekcie, aby utworzyć PRODUCT.md i DESIGN.md. `/impeccable craft` łączy wywiad odkrywczy w pełną budowę z iteracją wizualną na żywo. `/impeccable shape` tworzy brief projektowy bez dotykania kodu. `/impeccable live` daje ci wybierak w przeglądarce z trzema wariantami na element. Komendy ewaluacji i udoskonalania (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` i pozostałe) odpowiadają za konkretny wycinek pracy.
+
+## Jak to działa
+
+Większość interfejsów generowanych przez AI zawodzi tak samo: generyczne fonty, fioletowe gradienty, siatki kart na siatkach kart, glassmorphism wszędzie. `/impeccable` daje twojemu AI wyrazisty punkt widzenia. Ładuje opiniotwórczy podręcznik projektowy plus długą listę antywzorców, a następnie nakłania model do opowiedzenia się za konkretnym kierunkiem estetycznym, zanim napisze choć jedną linijkę kodu.
+
+Dwa pliki w głównym katalogu projektu kształtują wszystko, co umiejętność robi:
+
+- **`PRODUCT.md`** niesie rejestr (marka vs produkt), docelowych użytkowników, osobowość marki, antyreferencje, zasady projektowe. Odpowiada na "kto, co, dlaczego".
+- **`DESIGN.md`** niesie kolory, typografię, elewację, komponenty, zalecenia i zakazy, w sześciosekcjowym formacie Google Stitch. Odpowiada na "jak to wygląda".
+
+Każda komenda czyta oba pliki przed generowaniem. **Rejestr** decyduje, które wartości domyślne się ładują. Marka (marketing, landing, portfolio, gdzie projekt JEST produktem) i produkt (UI aplikacji, dashboardy, narzędzia, gdzie projekt SŁUŻY produktowi) mają różne domyślności dla typografii, ruchu, koloru i gęstości. Jednorazowe określenie tego w PRODUCT.md oznacza, że `/impeccable typeset` nie narzuci fontów redakcyjno-magazynowych na dashboardzie i nie narzuci domyślności produktowych na stronie kampanii. Zobacz [samouczek marka vs produkt](/tutorials/brand-vs-product), by zrozumieć, jak te dwa podejścia się rozchodzą.
+
+Przy pierwszym użyciu w projekcie umiejętność uruchamia automatycznie przepływ `teach`: krótki wywiad, który zapisuje PRODUCT.md, a następnie deleguje do `/impeccable document` dla DESIGN.md. Kolejne komendy czytają pliki bez ponownego pytania.
+
+## Wypróbuj
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Oba prompty są celowo nieprecyzyjne. `/impeccable` wybierze mocny kierunek estetyczny zgodny z twoim rejestrem, zdecyduje się na niedomyślne fonty, uniknie palety kolorystycznej AI i podejmie takie konkretne decyzje, jakie podjąłby projektant. Nie musisz najpierw wybierać nazwy komendy ani podążać za krok po kroku ustrukturyzowanym przepływem.
+
+Do iteracji wizualnej w przeglądarce zamiast w czacie:
+
+```
+/impeccable live
+```
+
+Wybierz dowolny element na działającym serwerze deweloperskim. Zostaw komentarz lub szkic. Otrzymasz trzy warianty jakości produkcyjnej podmienione na gorąco przez HMR. Zaakceptuj ten, który chcesz, a on zapisze się do pliku źródłowego.
+
+## Przypnij komendy z powrotem jako skróty
+
+v3.0 skonsolidowała 18 samodzielnych umiejętności w pojedyncze `/impeccable` z 23 pod-komendami. Jeśli brakuje ci krótkiej formy konkretnej komendy, przypnij ją z powrotem:
+
+```
+/impeccable pin critique
+```
+
+Od teraz `/critique` wywołuje `/impeccable critique` bezpośrednio. Tworzy lekką umiejętność przekierowującą, która deleguje do rodzica, więc aktualizacje umiejętności przepływają bez ponownego przypinania.
+
+Przydatne piny do wypróbowania:
+
+- `/impeccable pin polish` do pracy końcowej
+- `/impeccable pin audit` do deterministycznych sprawdzeń a11y/wydajności
+- `/impeccable pin live` do przepływu iteracji w przeglądarce
+- `/impeccable pin critique` do przeglądu projektu
+
+Aby usunąć: `/impeccable unpin critique`. Piny istnieją jako katalogi z prefiksem `i-` w folderze umiejętności twojego narzędzia (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/` itd.), więc możesz je również usunąć ręcznie.
+
+## Pułapki
+
+- **Traktowanie tego jak przewodnika stylu.** To opiniotwórczy partner projektowy, nie linter. Domyślności istnieją, by podnieść poprzeczkę, nie by nadpisać twój osąd. Jeśli masz powód, by się nie zgadzać (wytyczne marki, ograniczenia dostępności, badania użytkowników), nie zgadzaj się i wyjaśnij dlaczego. Umiejętność z tobą współpracuje. To, co daje gorsze rezultaty, to ignorowanie opinii bez powodu.
+- **Oczekiwanie, że naprawi istniejący kod.** `/impeccable` służy do tworzenia. Do udoskonalania sięgnij po `/impeccable polish`, `/impeccable distill` lub `/impeccable critique`.
+- **Uruchamianie przed tym, jak `teach` zdąży zapisać kontekst.** W świeżym projekcie przeprowadzi z tobą wywiad w locie, co jest w porządku, ale wolniejsze. Uruchomienie `/impeccable teach` jako pierwszej komendy jest odrobinę płynniejsze.
+- **Pomijanie pytania o rejestr.** Domyślności marki i produktu rozchodzą się na tyle, że praca na złym rejestrze daje subtelnie nietrafiony wynik. Jeśli `PRODUCT.md` nie ma pola `## Register` (starsza wersja), uruchom `/impeccable teach`, aby je dodać.

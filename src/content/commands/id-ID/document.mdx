@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Hasilkan DESIGN.md yang sesuai spesifikasi yang menangkap sistem visual Anda sehingga setiap agen AI tetap on-brand.
+highlights:
+  - Codebase sudah mengandung bahasa desain nyata.
+  - Anda membutuhkan ringkasan portabel dari warna, tipografi, jarak, dan komponen.
+  - Pekerjaan desain di masa depan menyimpang karena sistemnya implisit.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Format Google Stitch</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Ikhtisar</span>
+      </div>
+      <p class="docs-viz-designmd-note">Bintang Utara Kreatif: <em>"The Editorial Sanctuary."</em> Tipografi tenang, ruang luas, satu aksen yang berkomitmen.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Warna</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Tipografi</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevasi</span>
+      </div>
+      <p class="docs-viz-designmd-note">Datar secara default. Bayangan muncul hanya sebagai respons terhadap status.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Komponen</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Berlangganan</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">kartu</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Hal yang boleh dan tidak boleh dilakukan</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Warnai netral menuju rona aksen.</span>
+        <span class="docs-viz-designmd-dont">Teks gradien untuk penekanan.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Enam bagian bersifat tetap, dalam urutan tetap, dengan nama tetap. Di sampingnya, <code>DESIGN.json</code> dikirim sebagai sidecar yang dapat dibaca mesin untuk panel desain Live Mode.</p>
+</div>
+
+## Kapan menggunakannya
+
+Jalankan `/impeccable document` setelah Anda memiliki cukup sistem visual untuk didokumentasikan: warna, tipografi, setidaknya tombol dan kartu. Perintah memindai codebase Anda, mengekstrak token dan pola komponen yang ditemukannya, dan menulis `DESIGN.md` di root proyek yang mengikuti [format DESIGN.md Google Stitch](https://stitch.withgoogle.com/docs/design-md/format/), enam bagian dalam urutan tetap, interoperabel dengan setiap alat lain yang sadar DESIGN.md.
+
+Gunakan ketika:
+
+- **Anda baru menjalankan `/impeccable teach`** dan `PRODUCT.md` sekarang ada. Document adalah file sisi visual yang cocok.
+- **Sebuah perintah mendorong Anda ke sini.** Live, craft, dan polish semuanya membaca DESIGN.md. Jika hilang, skill menyarankan menjalankan document dulu.
+- **Desain telah menyimpang** dari DESIGN.md yang lebih tua dan file tidak lagi menggambarkan sistem yang hidup.
+- **Sebelum redesain besar**, untuk menangkap kondisi saat ini sebagai referensi untuk arah berikutnya.
+
+Untuk proyek tanpa kode (proses `teach` baru, belum ada yang dibangun), ada mode seed: `/impeccable document --seed` mengajukan lima pertanyaan strategis cepat (strategi warna, arah tipografi, energi gerak, referensi, anti-referensi) dan menulis kerangka. Jalankan kembali dalam mode scan setelah ada kode.
+
+## Cara kerjanya
+
+Proses scan menemukan aset desain dalam urutan prioritas: CSS custom properties, konfigurasi Tailwind, tema CSS-in-JS, file token desain, sumber komponen, stylesheet global, dan akhirnya gaya yang dihitung dari output render langsung jika browser tersedia. Skill mengekstrak otomatis semua yang bisa, kemudian mengajukan satu pertanyaan terkelompok untuk bagian yang membutuhkan input kreatif: **Bintang Utara Kreatif** (metafora tunggal bernama untuk seluruh sistem, seperti "The Editorial Sanctuary"), nama warna deskriptif, filosofi elevasi, dan karakter komponen.
+
+Output adalah DESIGN.md dengan tepat enam bagian: Ikhtisar, Warna, Tipografi, Elevasi, Komponen, Hal yang boleh dan tidak boleh dilakukan. Header tetap karakter-per-karakter sehingga file dapat diurai oleh alat lain. Di sampingnya, `DESIGN.json` ditulis sebagai sidecar yang dapat dibaca mesin. Sidecar itulah yang digunakan panel desain live-mode untuk merender tombol, input, nav, dan kartu tile *proyek ini* yang sebenarnya alih-alih aproksimasi generik.
+
+Setiap perintah lain membaca DESIGN.md saat pemanggilan. Varian, polish, audit, dan fitur baru mewarisi sistem visual tanpa diberi tahu.
+
+## Cobalah
+
+```
+/impeccable document
+```
+
+Pada proyek dengan token yang sudah didefinisikan, ini membutuhkan waktu sekitar dua menit: scan menemukan palet dan tumpukan tipografi Anda, Anda memilih Bintang Utara dari 2 atau 3 opsi, mengkonfirmasi nama warna deskriptif ("Deep Muted Teal-Navy", bukan "blue-800"), dan file mendarat di root proyek.
+
+Pada proyek baru:
+
+```
+/impeccable document --seed
+```
+
+Lima pertanyaan, sekitar lima menit. File adalah kerangka, ditandai dengan komentar `<!-- SEED -->` sehingga jujur tentang apa adanya. Jalankan kembali tanpa flag setelah Anda mengimplementasikan token.
+
+## Jebakan
+
+- **Menjalankannya terlalu dini.** Pada proyek tanpa token yang diimplementasikan, mode seed benar. Jangan fabrikasi spesifikasi lengkap yang tidak dapat didukung oleh kode. DESIGN.md palsu lebih buruk daripada tidak ada DESIGN.md.
+- **Memperlakukan DESIGN.md sebagai dokumentasi untuk manusia saja.** Ini terutama untuk AI. Setiap perintah lain membacanya. Kekuatan format ("tidak pernah", "selalu", Aturan Bernama) disengaja.
+- **Menambahkan bagian Tingkat Atas Tata Letak / Gerak / Responsif.** Spesifikasi memiliki enam bagian, dalam urutan tetap, dengan nama tetap. Lipat konten tata letak atau gerak ke Ikhtisar (aturan tingkat filosofi) atau Komponen (perilaku per-komponen).
+- **Menimpa DESIGN.md yang ada secara diam-diam.** Document selalu mengkonfirmasi dulu. Jika Anda ingin mulai segar, ganti nama file yang ada ke lokasi lain atau beri tahu skill secara eksplisit untuk menimpa.

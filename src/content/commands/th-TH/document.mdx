@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: สร้าง DESIGN.md ที่สอดคล้องกับสเปคซึ่งบันทึกระบบภาพของคุณเพื่อให้ทุกเอเจนต์ AI อยู่ในแบรนด์
+highlights:
+  - โค้ดเบสมีภาษาการออกแบบจริงอยู่แล้ว
+  - คุณต้องการสรุปพกพาของสี ตัวอักษร ระยะห่าง และคอมโพเนนต์
+  - งานออกแบบในอนาคตกำลังเบี่ยงเบนเพราะระบบเป็นนัย
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> ตัวอักษรเงียบ อากาศอุดม สีเน้นเดียวที่มุ่งมั่น</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">แบนโดยดีฟอลต์ เงาปรากฏเฉพาะเป็นการตอบสนองต่อสถานะ</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">ปรับโทนกลางๆ ไปทางเฉดสีเน้น</span>
+        <span class="docs-viz-designmd-dont">ข้อความไล่สีเพื่อเน้น</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">หกส่วนถูกกำหนดไว้ ในลำดับที่กำหนดไว้ ด้วยชื่อที่กำหนดไว้ ควบคู่กันนั้น <code>DESIGN.json</code> ถูกส่งมอบเป็นไซด์แคร์แบบอ่านได้ด้วยเครื่องสำหรับแผงการออกแบบ Live Mode</p>
+</div>
+
+## เมื่อไรควรใช้
+
+รัน `/impeccable document` เมื่อคุณมีระบบภาพเพียงพอที่จะบันทึก: สี ตัวอักษร อย่างน้อยปุ่มและการ์ด คำสั่งสแกนโค้ดเบสของคุณ ดึงโทเคนและรูปแบบคอมโพเนนต์ที่พบ และเขียน `DESIGN.md` ที่รูทโปรเจกต์ตาม [รูปแบบ Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/) หกส่วนในลำดับที่กำหนดไว้ ทำงานร่วมกันได้กับทุกเครื่องมือที่รู้จัก DESIGN.md
+
+ใช้เมื่อ:
+
+- **คุณเพิ่งรัน `/impeccable teach`** และ `PRODUCT.md` มีอยู่แล้ว Document คือไฟล์ด้านภาพที่ตรงกัน
+- **คำสั่งเตือนคุณ** Live, craft และ polish ทั้งหมดอ่าน DESIGN.md หากมันหายไป สกิลแนะนำให้รัน document ก่อน
+- **การออกแบบเบี่ยงเบน** จาก DESIGN.md เก่าแล้วไฟล์ไม่ได้อธิบายระบบจริงอีกต่อไป
+- **ก่อนการออกแบบใหม่ครั้งใหญ่** เพื่อบันทึกสถานะปัจจุบันเป็นข้อมูลอ้างอิงสำหรับทิศทางถัดไป
+
+สำหรับโปรเจกต์ที่ยังไม่มีโค้ด (รัน `teach` ใหม่ ยังไม่ได้สร้างอะไร) มีโหมด seed: `/impeccable document --seed` ถามห้าคำถามกลยุทธ์ที่รวดเร็ว (กลยุทธ์สี ทิศทางตัวอักษร พลังงานการเคลื่อนไหว การอ้างอิง การอ้างอิงตรงข้าม) และเขียนโครง รันใหม่ในโหมดสแกนเมื่อมีโค้ดแล้ว
+
+## วิธีการทำงาน
+
+พาสสแกนหาสินทรัพย์การออกแบบตามลำดับความสำคัญ: CSS custom properties, การตั้งค่า Tailwind, ธีม CSS-in-JS, ไฟล์โทเคนการออกแบบ, ซอร์สคอมโพเนนต์, สไตล์ชีตส่วนกลาง และสุดท้ายสไตล์ที่คำนวณจากผลลัพธ์ที่เรนเดอร์จริงหากมีเบราว์เซอร์ มันดึงอัตโนมัติทุกอย่างที่สามารถ แล้วถามคำถามกลุ่มเดียวสำหรับส่วนที่ต้องการข้อมูลเชิงสร้างสรรค์: **Creative North Star** (อุปมาอุปไมยที่มีชื่อเดียวสำหรับทั้งระบบ เช่น "The Editorial Sanctuary") ชื่อสีแบบอธิบาย ปรัชญาระดับความสูง และลักษณะคอมโพเนนต์
+
+ผลลัพธ์คือ DESIGN.md ที่มีหกส่วนพอดี: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts ส่วนหัวถูกกำหนดอักขระต่ออักขระเพื่อให้ไฟล์สามารถแยกวิเคราะห์ได้ด้วยเครื่องมืออื่น ควบคู่กันนั้น `DESIGN.json` ถูกเขียนเป็นไซด์แคร์แบบอ่านได้ด้วยเครื่อง ไซด์แคร์นั้นคือสิ่งที่แผงการออกแบบโหมดไลฟ์ใช้เรนเดอร์ปุ่ม อินพุต นำทาง และไทล์การ์ดของ *โปรเจกต์นี้* จริงๆ แทนที่จะเป็นการประมาณแบบทั่วไป
+
+ทุกคำสั่งอื่นอ่าน DESIGN.md เมื่อเรียกใช้ ตัวแปร การปรับแต่ง การตรวจสอบ และฟีเจอร์ใหม่สืบทอดระบบภาพโดยไม่ต้องบอก
+
+## ลองใช้งาน
+
+```
+/impeccable document
+```
+
+บนโปรเจกต์ที่มีโทเคนกำหนดไว้แล้ว ใช้เวลาประมาณสองนาที: สแกนหาพาเลตและสแตกตัวอักษรของคุณ คุณเลือก North Star จาก 2-3 ตัวเลือก ยืนยันชื่อสีแบบอธิบาย ("Deep Muted Teal-Navy" ไม่ใช่ "blue-800") แล้วไฟล์ลงที่รูทโปรเจกต์
+
+บนโปรเจกต์ใหม่:
+
+```
+/impeccable document --seed
+```
+
+ห้าคำถาม ประมาณห้านาที ไฟล์เป็นโครง ทำเครื่องหมายด้วยความคิดเห็น `<!-- SEED -->` เพื่อให้ซื่อสัตย์เกี่ยวกับสิ่งที่มันเป็น รันใหม่โดยไม่มีแฟลกเมื่อคุณสร้างโทเคนแล้ว
+
+## ข้อควรระวัง
+
+- **รันเร็วเกินไป** บนโปรเจกต์ที่ไม่มีโทเคนที่สร้างแล้ว โหมด seed ถูกต้อง อย่าสร้างสเปคเต็มรูปแบบที่โค้ดไม่สามารถสนับสนุนได้ DESIGN.md ปลอมแย่กว่าไม่มี DESIGN.md
+- **ถือว่า DESIGN.md เป็นเอกสารสำหรับมนุษย์เท่านั้น** มันเป็นหลักสำหรับ AI ทุกคำสั่งอื่นอ่านมัน ความแรงของรูปแบบ ("never", "always", Named Rules) เป็นการตั้งใจ
+- **เพิ่มส่วน Layout / Motion / Responsive ระดับบนสุด** สเปคมีหกส่วน ในลำดับที่กำหนดไว้ ด้วยชื่อที่กำหนดไว้ พับเนื้อหาเลย์เอาต์หรือการเคลื่อนไหวเข้าใน Overview (กฎระดับปรัชญา) หรือ Components (พฤติกรรมต่อคอมโพเนนต์)
+- **เขียนทับ DESIGN.md ที่มีอยู่แบบเงียบๆ** Document ยืนยันเสมอก่อนเสมอ หากคุณต้องการเริ่มใหม่ เปลี่ยนชื่อไฟล์เดิมหรือบอกสกิลอย่างชัดเจนให้เขียนทับ

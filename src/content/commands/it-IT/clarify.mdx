@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Riscrivi il copy UX confuso in modo che le interfacce si spieghino da sole.
+highlights:
+  - Gli utenti esitano perché la formulazione è vaga.
+  - L'interfaccia ha bisogno di copy di istruzioni o di errore migliore.
+  - Il flusso del prodotto va bene, ma il linguaggio rallenta le persone.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Quando usarlo
+
+`/impeccable clarify` è per il testo dell'interfaccia che fa fermare le persone a pensare. Etichette confuse, copy dei pulsanti ambiguo, messaggi di errore che danno la colpa all'utente, tooltip che ripetono l'etichetta, stati vuoti che non dicono nulla di utile. Usalo quando il problema non è il layout o il colore, sono le parole.
+
+Buoni trigger: "gli utenti non capiscono questo campo", "il messaggio di errore non è d'aiuto", "non riesco a scrivere un buon copy per il pulsante", "questo tooltip è inutile".
+
+## Come funziona
+
+La skill riscrive il testo sulle superfici dove vivono la maggior parte dei problemi di copy UX:
+
+1. **Etichette e suggerimenti dei campi**: diretti, specifici, dicono cosa ci si aspetta.
+2. **Copy dei pulsanti**: verbo per primo, descrive il risultato, non l'azione. "Salva modifiche" non "OK".
+3. **Messaggi di errore**: spiegano cosa è andato storto, di chi è la colpa e cosa fare dopo. Non dare mai la colpa all'utente.
+4. **Stati vuoti**: orientano l'utente, spiegano perché lo stato è vuoto, offrono un passo successivo.
+5. **Tooltip e testo di aiuto**: aggiungono informazioni che l'etichetta non può portare, mai riaffermarla.
+6. **Finestre di conferma**: nominano le conseguenze, non l'azione.
+
+La skill usa il pubblico e lo stato mentale da `PRODUCT.md` per calibrare la voce. Pubblico tecnico riceve linguaggio preciso. Pubblico consumer riceve linguaggio semplice. Utenti di fretta ricevono testo breve. Utenti ansiosi (pagamento, eliminazione) ricevono rassicurazione.
+
+## Provalo
+
+```
+/impeccable clarify the billing form
+```
+
+Prima e dopo, tipico:
+
+- Etichetta "Billing address" -> "Indirizzo sulla tua carta"
+- Segnaposto "Enter your VAT ID" -> "Partita IVA (opzionale, per aziende)"
+- Errore "Invalid input" -> "Questo numero di carta ha 15 cifre. Ne hai inserite 14."
+- Pulsante "Submit" -> "Addebita 29€ e iscriviti"
+- Stato vuoto "No transactions yet" -> "Il tuo primo addebito apparirà qui dopo il tuo primo ordine."
+
+## Insidie
+
+- **Scrivere in modo più furbo, non più chiaro.** Clarify non serve per migliorare la voce. Se il copy è già chiaro, non usare questa skill. Usa `/impeccable delight` quando vuoi personalità.
+- **Saltare la domanda sul pubblico.** Clarify deve sapere chi sta leggendo. Se `PRODUCT.md` non specifica il livello tecnico del pubblico, le riscritture saranno generiche.
+- **Eseguire clarify su copy marketing.** Clarify è per testo UX funzionale: etichette, errori, istruzioni. Il copy marketing ha bisogno di un set di mosse diverso e di un scrittore umano.

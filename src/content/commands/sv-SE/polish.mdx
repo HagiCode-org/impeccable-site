@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Det metodiska sista passet mellan bra och utmarkt.
+highlights:
+  - Justering, avstand och mikrobeslut känns fortfarande grova.
+  - Funktionen ar nära att levereras.
+  - Små inkonsekvenser drar ner upplevd kvalitet.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Nar du ska anvanda det
+
+`/impeccable polish` ar det sista du kor fore leverans. Den jagar de sma detaljerna som skiljer en levererad funktion fran en polerad: halvpixel-feljusteringar, inkonsekventa avstand, glomda focustillstand, laddningsovergangar som blinkar, text som driver i ton. Den ocksa anpassar funktionen till ditt designsystem, ersatter hardkodade varden med tokens, byter ut custom-komponenter mot delade, och fixar eventuell drift fran etablerade monster.
+
+Anvand det nar funktionen ar funktionellt komplett, ingenting ar trasigt, och nagot fortfarande känns av. Ocksa anvand det nar en funktion har drivit fran designsystemet och behovr dras tillbaka i linje.
+
+## Hur det fungerar
+
+Polish borjar med att upptacka designsystemet (tokens, avstandsskala, delade komponenter), sedan arbetar den metodiskt over sex dimensioner:
+
+1. **Visuell justering och avstand**: pixel-perfect rutnat-efterlevnad, konsekvent avstandsskala, optisk justering pa ikoner.
+2. **Typografi**: hierarkiconsistens, radlangd, anhorig- och föräldralosar, kerning pa rubriker.
+3. **Farg och kontrast**: token-anvandning, temaparitet, WCAG-kvoter, focusindikatorer.
+4. **Interaktionstillstand**: hover, focus, active, disabled, loading, error, success. Varje tillstand redovisat.
+5. **Overgangar och rorelse**: jamn easing, ingen layout-hack, respekt for `prefers-reduced-motion`.
+6. **Text**: konsekvent rost, ratt tempus, inga platshallarestrangar, inga losa TODO:er.
+
+Fardigheten ar uttrycklig om en sak: polish ar det sista steget, inte det forsta. Om funktionen inte ar funktionellt komplett, ar polering slöseri med tid.
+
+## Prova det
+
+```
+/impeccable polish the pricing page
+```
+
+En hälsosam körning ser ut sa har:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+Fem sma fixar, inga omskrivningar. Det ar formen pa ett bra poleringspass.
+
+## Fallgropar
+
+- **Att polera arbete som inte ar klart.** Om det finns TODO:er i koden, ar du inte redo. Kor `/impeccable polish` endast pa fardiga funktioner.
+- **Att behandla polish som omdesign.** Polish forfinar det som finns. Om du haller pa att omformge en layout, behovdde du `/impeccable critique` eller `/impeccable layout` istallet.
+- **Att kora `/impeccable polish` utan `/impeccable audit` forst.** Polish fanger kanslobaserade problem. Audit fanger mätbara sadana. Anvand bada.

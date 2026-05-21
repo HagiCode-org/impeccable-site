@@ -1,0 +1,66 @@
+---
+slug: optimize
+title: Optimize
+summary: Diagnostica e correggi la performance UI da LCP a dimensione bundle.
+highlights:
+  - L'interfaccia sembra lenta, scattosa o pesante.
+  - Hai bisogno di ridurre i costi senza sventrare il design.
+  - La performance è diventata un problema di prodotto visibile.
+related:
+  - audit
+  - harden
+  - animate
+---
+
+## Quando usarlo
+
+`/impeccable optimize` è per interfacce che sembrano lente. Il first paint ci mette un'eternità, lo scrolling è scattoso, le immagini compaiono in ritardo, le interazioni sembrano pigre, il bundle spedisce 800KB di JavaScript. Usalo quando i Web Vitals sono pessimi o quando gli utenti si lamentano che le cose sono lente.
+
+Non usarlo come ottimizzazione prematura. Se LCP è 1.1s e INP è 80ms, fermati. Il lavoro di design conta di più.
+
+## Come funziona
+
+La skill lavora su cinque dimensioni di performance:
+
+1. **Caricamento e Web Vitals**: LCP, INP, CLS. Identifica cosa blocca il first paint, cosa ritarda l'interazione, cosa sposta il layout.
+2. **Rendering**: re-render non necessari, memoizzazione mancante, reconciliation costosa, layout thrash nei cicli.
+3. **Animazioni**: qualcosa sta animando proprietà di layout, transform e opacity sono le uniche cose toccate, `will-change` aiuta o danneggia qui.
+4. **Immagini e asset**: lazy loading, immagini responsive (`srcset`, `sizes`), formati moderni (WebP, AVIF), dimensioni impostate per prevenire CLS.
+5. **Dimensione bundle**: import non utilizzati, dipendenze oversize, code-splitting mancante, codice morto.
+
+La skill misura prima e dopo. Ogni correzione è quantificata. Se una modifica non muove una metrica, viene ripristinata.
+
+## Provalo
+
+```
+/impeccable optimize the homepage
+```
+
+Forma attesa:
+
+```
+LCP: 3.2s → 1.4s
+  - Hero image preloaded (-800ms)
+  - Removed render-blocking font stylesheet (-240ms)
+  - Deferred analytics script (-180ms)
+
+INP: 240ms → 90ms
+  - Debounced scroll handler
+  - Memoized expensive list render
+  - Removed synchronous layout read in event loop
+
+CLS: 0.18 → 0.02
+  - Set dimensions on hero image and logo
+  - Reserved space for async header badge
+
+Bundle: 340KB → 180KB
+  - Removed unused lodash import (52KB)
+  - Code-split the playground route (78KB)
+  - Dropped deprecated icon set (30KB)
+```
+
+## Insidie
+
+- **Ottimizzare prima di misurare.** Senza metriche di base, non puoi dire cosa ha aiutato. Esegui `/impeccable optimize` con numeri specifici di Web Vitals, non impressioni.
+- **Inseguire piccole vittorie.** Un miglioramento di 20ms su INP che richiede una settimana raramente vale la pena. Optimize ha rendimenti decrescenti; sapere quando fermarsi.
+- **Dimenticare di misurare di nuovo dopo ogni modifica.** La build potrebbe aver peggiorato le cose in modo che la skill non aveva previsto. Verifica.

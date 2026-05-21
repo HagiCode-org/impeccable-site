@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Atténuer les designs qui crient sans perdre leur intention.
+highlights:
+  - De bonnes idées sont présentes, mais la page est trop bruyante.
+  - Vous avez besoin de retenue sans devenir fade.
+  - Le ton actuel submerge la lecture ou le flux de tâches.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Quand l'utiliser
+
+`/impeccable quieter` est le contre-poids de `/impeccable bolder`. Utilisez-le quand une interface est visuellement agressive, surstimulante, ou essaie de faire trop de choses à plein volume. Du néon sur fond sombre, du texte en dégradé partout, 6 couleurs d'accent, tout animé, des ombres de 20px. Utilisez quieter quand le design a besoin de respirer et que vous voulez du raffinement sans perdre le point de vue.
+
+Utile aussi quand `/impeccable bolder` va un peu trop loin.
+
+## Comment ça marche
+
+La compétence travaille par réduction sur quatre axes :
+
+1. **Couleur** : désaturer, baisser le chroma en OKLCH, ramener les accents à un primaire unique plus un soutien atténué. Pas plus de deux couleurs intentionnelles.
+2. **Contraste** : adoucir les extrêmes sombres et clairs, resserrer la plage. Les fonds passent du blanc pur et noir pur au papier et à l'encre.
+3. **Décoration** : supprimer les ombres qui ne font pas de travail, abandonner les bordures qui ne portent pas la structure, retirer les dégradés qui existent pour l'énergie plutôt que pour la hiérarchie.
+4. **Mouvement et effet** : ralentir les animations, supprimer tout ce qui se joue automatiquement, abandonner le parallaxe et le flou sauf s'ils servent la lisibilité.
+
+La compétence préserve l'intention du design. Si l'original avait un point de vue, la version plus calme a le même point de vue avec plus de confiance. Du raffinement, pas de la neutralisation.
+
+## Essayez
+
+```
+/impeccable quieter the pricing page
+```
+
+Diff typique :
+
+- Texte en dégradé sur le prix supprimé, remplacé par de l'encre solide une graisse plus lourde
+- Trois couleurs d'accent réduites à une (magenta), les deux autres deviennent des variantes neutres
+- Ombres des cartes réduites de `0 20px 40px rgba(0,0,0,0.2)` à `0 1px 0 var(--color-mist)` (un filet)
+- Fond passe d'un dégradé sombre au papier avec un léger lavage crème en haut
+- Animation hero de 1.2s easeOut avec 3 éléments décalés à un unique fondu de 260ms
+
+## Pièges courants
+
+- **En abuser.** Quietter peut dépouiller la personnalité si vous l'exécutez sur quelque chose qui était déjà mesuré. Utilisez-le quand le design est trop bruyant, pas quand il est justement affirmé.
+- **Confondre quieter et distill.** Quieter réduit l'intensité. Distill supprime des éléments. Ce sont deux mouvements différents.
+- **L'exécuter en réponse à une critique qui dit « trop chargé ».** Chargé veut souvent dire trop de choses, pas trop fort. Essayez `/impeccable distill` d'abord.

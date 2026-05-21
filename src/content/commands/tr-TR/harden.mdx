@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Arayüzleri üretime hazırlayın. Sınır durumları, uluslararasılaştırma, hata durumları, taşma.
+highlights:
+  - Mutlu yol çalışıyor, ancak gerçek dünyadaki durumlar hâlâ kırılgan görünüyor.
+  - Yayın öncesinde gönderim boşluklarını kapatmanız gerekiyor.
+  - Hata işleme ve dayanıklılık, yeni gösteriş eklemekten daha önemli.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Ne zaman kullanılır
+
+`/impeccable harden`, arayüzünüzün gerçeklikle buluştuğu gün içindir. Gerçek kullanıcı verileri dağınıktır: 60 karakterlik isimler, Almanca ürün başlıkları, milyarlarca fiyat, 500 hataları, çevrimdışı modlar, sağdan sola metin. Yalnızca mükemmel verilerle çalışan tasarımlar üretime hazır değildir.
+
+Yayın öncesinde, yeni bir pazar açmadan önce veya bir hata raporunun "kullanıcımızın gerçekten uzun bir adı vardı ve" şeklinde başladığı herhangi bir zamanda kullanın. İlk çalıştırma akışları, boş durum etkinleştirmesi ve onboarding tasarımı için bunun yerine `/impeccable onboard` komutunu kullanın.
+
+## Nasıl çalışır
+
+Beceri, gerçek dünya dayanıklılığının dört boyutunu ele alır:
+
+1. **Metin ve veri uç değerleri**. Uzun metin, kısa metin, özel karakterler, emoji, RTL, milyarlarca sayılar, 1000 öğelik listeler.
+2. **Hata senaryoları**. Ağ arızaları, API 4xx/5xx, doğrulama hataları, izin hataları, hız sınırları, eşzamanlı işlemler.
+3. **Uluslararasılaştırma**. Uzun çeviriler (Almanca genellikle İngilizceden %30 daha uzundur), RTL dilleri, tarih ve sayı biçimleri, para birimi sembolleri, karakter setleri.
+4. **Cihaz ve bağlam**. Dokunma hedefleri, çevrimdışı davranış, yavaş bağlantılar, düşük güç modu.
+
+Her boyut için hata modunu belirler, ardından somut düzeltmeyi uygular: taşma işleme, bilgilendirici hata UI'ı, i18n güvenli düzenler, çoğullaştırma, makul geri düşüşler.
+
+## Deneyin
+
+Tek bir sayfa ve tek bir boyutla başlayın:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Beklenen çıktı:
+
+- `.user-name` artık tam değer için bir araç ipucuyla birlikte `text-overflow: ellipsis` içeriyor
+- `.bio` sabit yükseklikten, "daha fazla göster" açıklamasıyla `max-height` değerine geçti
+- Biyografisi olmayan kullanıcılar için bir boş durum eklendi
+- Asenkron avatar çekimi için bir iskelet yükleyici eklendi
+- 1, 20, 60, 200 karakterlik ad uzunluklarında test edildi
+
+Tek seferde tümünü değil, sayfa sayfa çalıştırın. İlk çalıştırma en büyüğüdür; sonraki çalıştırmalar kalıplar sağlamlaştıkça daha az sorun bulur.
+
+## Tuzaklar
+
+- **Bir hata raporunu beklemek.** Harden önleyicidir. Aynı sınıf hatayı iki kez düzelttiğinizi fark ederseniz, özellik genelinde `/impeccable harden` çalıştırın.
+- **Hata ve boş durumları sonradan düşünülecek ayrıntılar olarak görmek.** Sertleştirme işinin çoğu hata ve boş durum UI'ıdır. Sadece bir `catch` bloğu değil, bunun için zaman ayırın.
+- **"Şimdilik sadece İngilizce'yiz" diyerek i18n'i atlamak.** i18n güvenli düzenler yine de daha iyi düzenlerdir. Esnek konteynerlar, uygun metin kaydırma, cömert satır yüksekliği. Bunların hiçbiri İngilizceye zarar vermez.

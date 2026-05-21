@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Naucte Impeccable, pro koho je vas produkt, jednou za projekt.
+highlights:
+  - Projekt nema zatim zadny soubor designoveho kontextu.
+  - Ruzni prispievatele potrebuji jeden sdileny zdroj pravdy.
+  - Chcete, aby budouci prikazy dily znacku a smer produktu.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Loaded on every command</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Design serves the task.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">SREs on call, reading fast, often in the dark.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">Calm, clinical, no hype.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">Purple gradients. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Every command reads this before writing a line of code.</div>
+  </div>
+  <p class="docs-viz-caption">Dokonceny PRODUCT.md. Pouze strategie: kdo, co, proc. Žadne barvy, zadne fonty, zadne pixelove hodnoty, ty bydli v DESIGN.md.</p>
+</div>
+
+## Kdy pouzit
+
+Spustte `/impeccable teach` jednou na zacatku projektu. Je to vstupni rampa. Bez nej bude kazdy dalsi prikaz produkovat design, ktery je technicky kompetentni, ale obecne tonovany: stock SaaS hlas, bezpecne vychozi fonty, AI barevna paleta. S nim kazdy prikaz cte vase odpovedi, nez zacne generovat.
+
+Siahnete po nem kdyz:
+
+- **Prave jste nainstalovali Impeccable v novém projektu.** Prvni vec ke spusteni. Ostatni prikazy vas k tomu naviguji, pokud to preskocite.
+- **Smer znacky projektu se zmenil.** Nova pozicovani, nove publikum, novy hlas. Znovu spustte `teach` a aktualizovany kontext protece kazdym prikazem.
+- **Jiny prikaz rekl "nebyl nalezen zadny designovy kontext"** a zastavil se. To je signal: spustte teach a pak pokracujte.
+
+## Jak to funguje
+
+Teach zapise dva doplnujici se soubory v korenu projektu:
+
+- **`PRODUCT.md`** je strategicky soubor. Registr (znacka nebo produkt), cilovi uzivatele, ucel produktu, osobnost znacky, anti-reference, designove principy, potreby pristupnosti. Odpovida na "kdo, co, proc".
+- **`DESIGN.md`** je vizualni soubor. Barvy, typografie, elevace, komponenty, do's and don'ts. Odpovida na "jak to vypada". Zapsano delegovanym prikazem `/impeccable document`, ktery teach vyvola na konci.
+
+Tok nejprve proskenuje kodovou zakladnu (README, package.json, komponenty, tokeny, znackove prvky) a vytvori **hypotezu registru**: znacka (landing, marketing, portfolio, kde design JE produkt) nebo produkt (aplikacni UI, dashboardy, nastroje, kde design SLOUZI produktu). Registr je prvni otazka, protoze tvari kazdou odpoved v prubehu: vychozi hodnoty typografie, energie pohybu, barevna strategie, sada referenci, ze kterych cerpaji prikazy jako `/impeccable typeset`. Po registru se teach pta jen na to, co nemohl odvodit: uzivatele, osobnost ve trech skutecnych slovech, reference a anti-reference, pozadavky na pristupnost.
+
+PRODUCT.md je pouze strategicke. Žadne barvy, zadne fonty, zadne pixelove hodnoty. Ty bydli v DESIGN.md. Udrzovani dvou souboru oddelene je umyslne: strategie muze zustat stabilni, zatimco se vizualni system vyviji.
+
+## Vyzkousejte to
+
+```
+/impeccable teach
+```
+
+Ockejte interview na 5 az 8 minut. Prvni otazka je obvykle o registru; zbytek je kratky. Teach vam zpet cituje, co si odvodil z vaseho kodu ("z tras to vypada jako produktovy povrch, souhlasi?"), takze potvrzujete, nezadne zacate od nuly.
+
+Na konci teach nabidne spusteni `/impeccable document` za vas. Reknete ano, pokud nemate konkretni duvod pockat. Skutecny DESIGN.md je to, co udrzuje varianty, lešteni a audity ve znacke.
+
+## Na co si dat pozor
+
+- **Preskoceni pro "jen rychle vyzkouseni prikazu".** Kazdy dalsi prikaz vas bude interviewovat za letu misto toho. Spusteni teach jako prvni je rychlejsi, ne pomalejsi.
+- **Davani obecnych odpovedi.** "Moderna a cista" neni uzitecne. "Teple, mechanicka, nazorova" je. Budte konkretni. Budte ochotni nesouhlasit s bezpečnymi vychozimi hodnotami.
+- **Zachazeni s PRODUCT.md jako nemennym.** Soubor je vas. Pokud teach vlozil neco, co neni uplne spravne, upravte to. Kazdy prikaz cte aktualni soubor.
+- **Vypisovani jen pridavnych jmen pro reference.** Znacky, produkty, tisknute objekty: pojmenovane, ne popsane. "Klim Type Foundry specimen pages", ne "technicka a cista". Anti-reference by mely byt stejne specificke.

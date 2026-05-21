@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Kirjoita hämmentävä UX-teksti uudelleen niin että käyttöliittymät selittävät itsensä.
+highlights:
+  - Käyttäjät epäröivät koska sanamuotoilu on epäselvää.
+  - Käyttöliittymä tarvitsee parempaa ohje- tai virhetekstiä.
+  - Tuotetyönkulku on kunnossa, mutta kieli hidastaa ihmisiä.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Milloin käyttää
+
+`/impeccable clarify` on käyttöliittymätekstille joka saa ihmiset pysähtymään ja ajattelemaan. Sekavia tunnisteita, monitulkintaisia painiketekstejä, virheilmoituksia jotka syyttävät käyttäjää, työkaluvihjeitä jotka toistavat tunnisteen, tyhjiä tiloja jotka eivät sano mitään hyödyllistä. Käytä sitä kun ongelma ei ole asettelu tai väri, vaan sanat.
+
+Hyvät herätteet: "käyttäjät eivät ymmärrä tätä kenttää", "virheilmoitus ei ole hyödyllinen", "en osaa kirjoittaa hyvää painiketekstiä", "tämä työkaluvihje on turha".
+
+## Miten se toimii
+
+Taito kirjoittaa tekstin uudelleen pinnoilla joissa useimmat UX-tekstiongelmat asuvat:
+
+1. **Tunnisteet ja kenttävihjeet**: suoraa, tarkkaa, sanoo mitä odotetaan.
+2. **Painiketeksti**: verbi ensin, kuvaa tulosta, ei toimintaa. "Tallenna muutokset" ei "OK".
+3. **Virheilmoitukset**: selittää mikä meni pieleen, kenen syy se on, ja mitä tehdä seuraavaksi. Ei koskaan syytä käyttäjää.
+4. **Tyhjät tilat**: suuntaa käyttäjän, selittää miksi tila on tyhjä, tarjoaa seuraavan askeleen.
+5. **Työkaluvihjeet ja ohjeteksti**: lisää tietoa jota tunniste ei voi kantaa, ei koskaan toista sitä.
+6. **Vahvistusdialogit**: nimeää seuraukset, ei toimintaa.
+
+Taito käyttää yleisöä ja mielentilaa `PRODUCT.md`:stä äänen virittämiseen. Tekninen yleisö saa tarkkaa kieltä. Kuluttajayleisö saa selkokielistä puhetta. Kiireiset käyttäjät saavat lyhyttä tekstiä. Ahdistuneet käyttäjät (maksu, poisto) saavat vahvistusta.
+
+## Kokeile
+
+```
+/impeccable clarify the billing form
+```
+
+Ennen ja jälkeen, tyypillinen:
+
+- Tunniste "Laskutusosoite" -> "Kortin osoite"
+- Paikkamerkki "Syötä ALV-tunnuksesi" -> "ALV-tunnus (valinnainen, yrityksille)"
+- Virhe "Virheellinen syöte" -> "Tämä korttinumero on 15 numeroa. Syötit 14."
+- Painike "Lähetä" -> "Veloita 29$ ja tilaa"
+- Tyhjä tila "Ei tapahtumia vielä" -> "Ensimmäinen veloitus näkyy tässä ensimmäisen tilauksen jälkeen."
+
+## Sudenkuopat
+
+- **Nokkelammin kirjoittaminen, ei selkeämmin.** Clarify ei ole äänen päivityksille. Jos teksti on jo selkeää, älä turvaudu tähän taitoon. Käytä `/impeccable delight` kun haluat persoonallisuutta.
+- **Yleisökysymyksen ohittaminen.** Clarify tarvitsee tietää kuka lukee. Jos `PRODUCT.md` ei määrittele yleisön teknistä tasoa, uudelleenkirjoitukset ovat geneerisiä.
+- **Clarifyn ajaminen markkinointitekstille.** Clarify on toiminnalliselle UX-tekstille: tunnisteet, virheet, ohjeet. Markkinointiteksti tarvitsee erilaisen joukon liikkeitä ja ihmiskirjoittajan.

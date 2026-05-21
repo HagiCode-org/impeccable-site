@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: İyi ile mükemmel arasındaki titiz son geçiş.
+highlights:
+  - Hizalama, aralık ve mikro kararlar hâlâ kaba hissettiriyor.
+  - Özellik gönderilmeye yakın.
+  - Küçük tutarsızlıklar algılanan kaliteyi aşağı çekiyor.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Ne zaman kullanılır
+
+`/impeccable polish`, göndermeden önce çalıştırdığınız son şeydir. Gönderilmiş bir özellik ile cilalanmış bir özellik arasındaki küçük ayrıntıları avlar: yarım piksel hizasızlıkları, tutarsız aralıklar, unutulmuş odak durumları, parlayan yükleme geçişleri, seste sapma gösteren metinler. Ayrıca özelliği tasarım sisteminizle hizalar, sabit kodlanmış değerleri token'larla değiştirir, özel bileşenleri paylaşılan olanlarla değiştirir ve yerleşik kalıplardan herhangi bir sapmayı düzeltir.
+
+Özellik işlevsel olarak tamamlandığında, hiçbir şey bozulmadığında ve bir şey hâlâ yanlış hissettirdiğinde kullanın. Ayrıca bir özellik tasarım sisteminden sapma gösterdiğinde ve tekrar hizaya çekilmesi gerektiğinde kullanın.
+
+## Nasıl çalışır
+
+Polish, önce tasarım sistemini keşfeder (token'lar, aralık ölçeği, paylaşılan bileşenler), ardından altı boyut boyunca metodik olarak çalışır:
+
+1. **Görsel hizalama ve aralık**: piksel mükemmel ızgara uyumu, tutarlı aralık ölçeği, ikonlarda optik hizalama.
+2. **Tipografi**: hiyerarşi tutarlılığı, satır uzunluğu, dullar ve yetimler, manşetlerde karakter aralığı.
+3. **Renk ve kontrast**: token kullanımı, tema eşliği, WCAG oranları, odak göstergeleri.
+4. **Etkileşim durumları**: hover, focus, active, disabled, loading, error, success. Her durum hesaba katılmış.
+5. **Geçişler ve hareket**: yumuşak kolaylaştırma, düzen sarsıntısı yok, `prefers-reduced-motion` saygısı.
+6. **Metin**: tutarlı ses, doğru zaman, yer tutucu dize yok, başıboş TODO yok.
+
+Beceri bir şey konusunda açıktır: polish son adımdır, ilk değil. Özellik işlevsel olarak tamamlanmamışsa, cilalamak israf edilen iştir.
+
+## Deneyin
+
+```
+/impeccable polish the pricing page
+```
+
+Sağlıklı bir çalışma şuna benzer:
+
+```
+Visual alignment: fixed 3 off-grid elements (8px baseline)
+Typography: tightened h1 kerning, fixed widow on testimonial
+Interaction: added hover state on FAQ items, focus ring on email input
+Motion: softened modal entrance, added reduced-motion fallback
+Copy: removed one "Lorem ipsum" stray, aligned button voice
+```
+
+Beş küçük düzeltme, yeniden yazım yok. İyi bir cila geçişinin şekli budur.
+
+## Tuzaklar
+
+- **Tamamlanmamış işi cilalamak.** Kodda TODO'lar varsa, hazır değilsiniz. `/impeccable polish` komutunu yalnızca bitmiş özelliklerde çalıştırın.
+- **Cilalamayı yeniden tasarım olarak görmek.** Cilalama mevcut olanı rafine eder. Kendinizi bir düzeni yeniden mimarlık yaparken bulursanız, bunun yerine `/impeccable critique` veya `/impeccable layout` komutuna ihtiyacınız vardı.
+- **Önce `/impeccable audit` yapmadan `/impeccable polish` çalıştırmak.** Cilalama his tabanlı sorunları yakalar. Denetim ölçülebilir olanları yakalar. İkisini birden kullanın.

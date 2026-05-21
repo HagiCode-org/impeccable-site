@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Lisää strategista väriä yksivärisiin käyttöliittymiin menettämättä makua.
+highlights:
+  - Käyttöliittymä näyttää asiantuntevalta mutta unohtumattomalta.
+  - Tarvitset selkeämpää painotusta koko rakenteen uudelleenkirjoittamatta.
+  - Nykyinen paletti ei välitä tarkoitettua tunnelmaa.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Milloin käyttää
+
+`/impeccable colorize` on vastapaino "kaikki on harmaata" -ongelmalle. Kojelaudat jotka lukevat beessiseinänä, lomakkeet ilman aksenttia, sisältösivut jotka voisivat olla mikä tahansa SaaS-tuote. Turvaudu siihen kun käyttöliittymä on toiminnallinen mutta emotionaalisesti litteä, ja haluat lämpöä ilman vajoamista tekoälyn väripalettiin (violetti-vaaleanpunainen, syaani-neon, tumman tilan hehku).
+
+## Miten se toimii
+
+Taito aloittaa lukemalla brändivärin jos sellainen on olemassa, sitten päättää missä väri ansaitsee paikkansa:
+
+1. **Ensisijainen toiminto** saa vahvimman ilmaisun brändisävyssä.
+2. **Toissijaiset aksentit** saavat pehmeitettyjä tai sävytettyjä muunnelmia, ei toista täyttä väriä.
+3. **Neutraalit** sävytetään brändisävyä kohti matalalla kromalla (noin 0.005-0.01), mikä on lähes näkymätöntä pikseliä kohti mutta luo alitajuisen yhtenäisyyden.
+4. **Sisältöluokat** saavat rajoitetun, tarkoituksellisen aksenttijärjestelmän, ei sateenkaarta.
+
+Tärkeää, se käyttää OKLCH:ta HSL:n sijaan niin että yhtäläiset vaaleusaskeleet näyttävät yhtäläisiltä. Kun vaaleus liikkuu ääripäihin, kroma laskee automaattisesti. Näin saat väriä joka tuntuu harkitulta laskennallisen sijaan.
+
+## Kokeile
+
+```
+/impeccable colorize the dashboard
+```
+
+Odotettu diff:
+
+- Brändiväri siirretty kovakoodatusta hex:stä `--color-accent: oklch(62% 0.18 240)`-muotoon
+- Neutraalit sävytetty 0.007 kromalla brändisävyä kohti
+- Ensisijainen painike saa täyden aksentin, toissijaiset painikkeet saavat muste/utua
+- Kaaviosarjat käyttävät 3 erillistä sävyä, kaikki samassa vaaluudessa jotta yksikään sarja ei visuaalisesti dominoi
+- Tyhjän tilan kuvitus saa pehmeän aksenttipesun
+
+## Sudenkuopat
+
+- **Ajaminen ilman brändisävyä.** Colorize tarvitsee lähtökohdan. Jos `PRODUCT.md` ei määrittele sellaista, se kysyy. Älä anna sen valita tekoälyn väripaletin oletuksista.
+- **Odotus, että se korjaa tekoälyn väripaletin ongelman.** Jos suunnittelussasi on jo violetit liukuvärit ja syaani-neon, tarvitset `/impeccable quieter`-komentoa ensin, sitten colorize voi rakentaa uudelleen.
+- **Käyttö jo värikkäissä käyttöliittymissä.** Se on `/impeccable quieter`-komennon työ. Colorize lisää, se ei vähennä.

@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Tulis ulang salinan UX yang membingungkan agar antarmuka menjelaskan dirinya sendiri.
+highlights:
+  - Pengguna ragu-ragu karena kata-katanya samar.
+  - Antarmuka membutuhkan salinan instruksional atau kesalahan yang lebih baik.
+  - Alur produk baik, tetapi bahasanya memperlambat orang.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Kapan menggunakannya
+
+`/impeccable clarify` untuk teks antarmuka yang membuat orang berhenti dan berpikir. Label membingungkan, salinan tombol ambigu, pesan kesalahan yang menyalahkan pengguna, tooltip yang mengulang label, status kosong yang tidak mengatakan apa-apa yang berguna. Gunakan ketika masalahnya bukan tata letak atau warna, tetapi kata-katanya.
+
+Pemicu yang baik: "pengguna tidak memahami kolom ini", "pesan kesalahan tidak membantu", "saya tidak bisa menulis salinan tombol yang baik", "tooltip ini sia-sia".
+
+## Cara kerjanya
+
+Skill menulis ulang teks di seluruh permukaan tempat sebagian besar masalah salinan UX berada:
+
+1. **Label dan petunjuk kolom**: langsung, spesifik, mengatakan apa yang diharapkan.
+2. **Salinan tombol**: didahului kata kerja, menggambarkan hasil, bukan aksi. "Simpan perubahan" bukan "OK".
+3. **Pesan kesalahan**: jelaskan apa yang salah, siapa yang salah, dan apa yang harus dilakukan selanjutnya. Jangan pernah menyalahkan pengguna.
+4. **Status kosong**: orientasikan pengguna, jelaskan mengapa status kosong, tawarkan langkah selanjutnya.
+5. **Tooltip dan teks bantuan**: tambahkan informasi yang tidak dapat dibawa oleh label, jangan pernah menyatakan ulang.
+6. **Dialog konfirmasi**: sebutkan konsekuensinya, bukan aksinya.
+
+Skill menggunakan audiens dan kondisi mental dari `PRODUCT.md` untuk menyesuaikan suara. Audiens teknis mendapatkan bahasa yang presisi. Audiens konsumen mendapatkan bahasa sederhana. Pengguna yang terburu-buru mendapatkan teks pendek. Pengguna yang cemas (pembayaran, penghapusan) mendapatkan kepastian.
+
+## Cobalah
+
+```
+/impeccable clarify the billing form
+```
+
+Sebelum dan sesudah, tipikal:
+
+- Label "Alamat penagihan" menjadi "Alamat pada kartu Anda"
+- Placeholder "Masukkan ID PPN Anda" menjadi "ID PPN (opsional, untuk bisnis)"
+- Kesalahan "Input tidak valid" menjadi "Nomor kartu ini 15 digit. Anda memasukkan 14."
+- Tombol "Kirim" menjadi "Bayar $29 dan berlangganan"
+- Status kosong "Belum ada transaksi" menjadi "Tagihan pertama Anda akan muncul di sini setelah pesanan pertama Anda."
+
+## Jebakan
+
+- **Menulis lebih cerdas, bukan lebih jelas.** Clarify bukan untuk peningkatan suara. Jika salinan sudah jelas, jangan gunakan skill ini. Gunakan `/impeccable delight` ketika Anda menginginkan kepribadian.
+- **Melewatkan pertanyaan audiens.** Clarify perlu tahu siapa yang membaca. Jika `PRODUCT.md` tidak menentukan tingkat teknis audiens, penulisan ulang akan generik.
+- **Menjalankan clarify pada salinan pemasaran.** Clarify untuk teks UX fungsional: label, kesalahan, instruksi. Salinan pemasaran membutuhkan seperangkat langkah yang berbeda dan penulis manusia.

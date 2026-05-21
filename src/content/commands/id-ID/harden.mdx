@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Buat antarmuka siap produksi. Kasus tepi, i18n, status kesalahan, overflow.
+highlights:
+  - Jalur bahagia berfungsi, tetapi status dunia nyata masih terlihat rapuh.
+  - Anda perlu menutup celah pengiriman sebelum rilis.
+  - Penanganan kesalahan dan ketahanan lebih penting daripada menambah gaya baru.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Kapan menggunakannya
+
+`/impeccable harden` untuk hari ketika antarmuka Anda bertemu kenyataan. Data pengguna nyata berantakan: nama yang panjangnya 60 karakter, judul produk dalam bahasa Jerman, harga dalam miliaran, error 500, mode offline, teks kanan-ke-kiri. Desain yang hanya bekerja dengan data sempurna belum siap produksi.
+
+Gunakan sebelum peluncuran, sebelum membuka pasar baru, atau setiap kali laporan bug dimulai dengan "pengguna kami memiliki nama yang sangat panjang dan". Untuk alur pertama kali, aktivasi status kosong, dan desain onboarding, gunakan `/impeccable onboard`.
+
+## Cara kerjanya
+
+Skill bekerja melalui empat dimensi ketahanan dunia nyata:
+
+1. **Ekstrem teks dan data**. Teks panjang, teks pendek, karakter khusus, emoji, RTL, angka dalam miliaran, daftar 1000 item.
+2. **Skenario kesalahan**. Kegagalan jaringan, API 4xx/5xx, kesalahan validasi, kesalahan izin, batas rate, operasi bersamaan.
+3. **Internasionalisasi**. Terjemahan panjang (Jerman sering 30% lebih panjang dari bahasa Inggris), bahasa RTL, format tanggal dan angka, simbol mata uang, set karakter.
+4. **Perangkat dan konteks**. Target sentuh, perilaku offline, koneksi lambat, mode daya rendah.
+
+Untuk setiap dimensi skill mengidentifikasi mode kegagalan, kemudian menerapkan perbaikan konkret: penanganan overflow, UI kesalahan yang informatif, tata letak aman-i18n, pluralisasi, fallback yang wajar.
+
+## Cobalah
+
+Mulai dengan satu halaman dan satu dimensi:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Output yang diharapkan:
+
+- `.user-name` sekarang memiliki `text-overflow: ellipsis` dengan tooltip untuk nilai lengkap
+- `.bio` diganti dari tinggi tetap ke `max-height` dengan disclosure "tampilkan selengkapnya"
+- Menambahkan status kosong untuk pengguna tanpa bio
+- Menambahkan skeleton loader untuk pengambilan avatar asinkron
+- Diuji pada panjang nama 1, 20, 60, 200 karakter
+
+Jalankan per halaman, tidak sekaligus. Proses pertama adalah yang terbesar; proses berikutnya menemukan lebih sedikit masalah saat pola menguat.
+
+## Jebakan
+
+- **Menunggu laporan bug.** Harden bersifat pencegahan. Jika Anda menemukan diri Anda memperbaiki kelas bug yang sama dua kali, jalankan `/impeccable harden` di seluruh fitur.
+- **Memperlakukan status kesalahan dan kosong sebagai afterthought.** Sebagian besar pekerjaan hardening adalah UI status kesalahan dan kosong. Alokasikan waktu untuk itu, bukan hanya blok `catch`.
+- **Melewatkan i18n karena "kami hanya bahasa Inggris untuk saat ini".** Tata letak aman-i18n tetap lebih baik. Kontainer fleksibel, pembungkusan teks yang tepat, line-height yang luas. Tidak satu pun dari itu merugikan bahasa Inggris.

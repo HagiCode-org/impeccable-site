@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: 五維度技術品質檢查，附 P0 到 P3 嚴重程度分級。
+highlights:
+  - 你需要具體的問題和嚴重程度，不僅僅是基於品味的回饋。
+  - 你正在準備功能合併或發佈。
+  - 你懷疑在行動端、深色主題或輔助使用下有隱藏的問題。
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">無障礙性</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">效能</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">主題化</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">響應式</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">反模式</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">五個維度評分 0 到 4，每個發現標記 P0（阻擋發佈）到 P3（打磨）。Audit 記錄問題，不修復。將發現路由到 <code>/impeccable harden</code>、<code>/impeccable polish</code> 或 <code>/impeccable optimize</code>。</p>
+</div>
+
+## 何時使用
+
+`/impeccable audit` 是 `/impeccable critique` 的技術對應。`/impeccable critique` 問「這感覺對嗎」，`/impeccable audit` 問「這撐得住嗎」。它對實作執行無障礙、效能、主題化、響應式設計和反模式檢查，為每個維度評分 0 到 4，並產出一份帶 P0 到 P3 嚴重程度分級的計畫。
+
+在交付前、品質衝刺期間，或任何技術負責人說「我們真的應該看看無障礙性」時使用。
+
+## 運作方式
+
+技能從五個維度掃描你的程式碼：
+
+1. **無障礙性**：WCAG 對比、ARIA、鍵盤導航、語意 HTML、表單標籤。
+2. **效能**：版面配置抖動、高成本動畫、缺少延遲載入、套件體積。
+3. **主題化**：硬編碼色彩、深色模式涵蓋、token 一致性。
+4. **響應式**：斷點行為、觸控目標、行動版 viewport 處理。
+5. **反模式**：與偵測器執行的相同 25 項確定性檢查。
+
+每個維度獲得 0 到 4 的評分。每個發現獲得一個嚴重程度：P0 阻擋發佈、P1 本衝刺應修、P2 下個週期、P3 是打磨。你得到一份可以直接貼入工單追蹤系統的文件。
+
+Audit 不修復任何東西。它只記錄。根據類別將發現路由到 `/impeccable polish`、`/impeccable harden` 或 `/impeccable optimize`。
+
+## 試試看
+
+```
+/impeccable audit the checkout flow
+```
+
+預期輸出：
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+將 P0 交給 `/impeccable harden`，主題化和字型 P1 交給 `/impeccable typeset` 和 `/impeccable polish`，其餘交給 `/impeccable polish`。
+
+## 注意事項
+
+- **與 `/impeccable critique` 混淆。** Audit 是實作品質。Critique 是設計品質。兩者都執行才能獲得完整全貌。
+- **在 P0 之前修復 P3。** 嚴重程度分級的存在是有原因的。從頂部開始。
+- **跳過你認為沒問題的維度。** 主題化和響應式是多數人假設沒問題，直到實際有問題的那些。

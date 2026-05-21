@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Soustraction impitoyable. Réduire les designs à leur essence.
+highlights:
+  - La page a trop d'idées en concurrence.
+  - Les utilisateurs ont besoin d'une compréhension plus rapide, pas de plus de fonctionnalités.
+  - La simplicité est l'amélioration, pas un compromis temporaire.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Quand l'utiliser
+
+`/impeccable distill` supprime ce qui ne devrait pas être là. Des boutons concurrents, des informations redondantes, des bordures décoratives, trois polices là où une suffit, six éléments de navigation là où trois suffisent. Utilisez-le quand une interface semble encombrée, chargée, ou comme si elle essayait d'en faire trop à la fois.
+
+Utilisez-le après que `/impeccable critique` a signalé « charge cognitive » ou « bruit visuel », ou à tout moment où une page a grandi par accumulation et où personne n'a fait le travail d'édition.
+
+## Comment ça marche
+
+La compétence part d'une seule question : quel est le travail unique que cette interface essaie d'accomplir ? Tout ce qui n'aide pas ce travail est sur la sellette.
+
+Elle travaille en deux passes :
+
+1. **Évaluer les sources de complexité**. Trop d'éléments, variation excessive, surcharge d'information, bruit visuel, hiérarchie confuse, dérive fonctionnelle. Nommer chacun.
+2. **Éditer impitoyablement**. Supprimer ce qui n'est pas essentiel. Combiner ce qui peut l'être. Masquer ce qui peut attendre. Consolider la variation en un traitement unique. S'engager dans un seul langage visuel.
+
+Le principe : chaque élément sur la page doit justifier son existence. Moins d'obstacles, pas moins de fonctionnalités.
+
+## Essayez
+
+```
+/impeccable distill this dashboard
+```
+
+Avant : quatre styles de cartes, trois variantes de boutons, deux traitements d'en-tête, une barre latérale avec 14 éléments groupés en 5 sections.
+
+Après une passe `/distill`, modifications typiques :
+
+- Réduction des quatre styles de cartes à un seul
+- Choix d'une variante de bouton, rétrogradation des autres en liens texte
+- Unification des en-têtes
+- Regroupement de la barre latérale en 3 sections au lieu de 5
+- Masquage des options avancées derrière un disclosure
+
+Moins de choses. Chacune plus claire.
+
+## Pièges courants
+
+- **Confondre distill et suppression.** Distill supprime les obstacles. Il ne supprime pas les fonctionnalités dont les utilisateurs ont besoin. Si un utilisateur s'appuie quotidiennement sur quelque chose, trouvez un moyen de le garder discrètement, pas un moyen de le couper.
+- **L'exécuter trop tôt.** Si la fonctionnalité est encore en croissance, la distiller maintenant signifie la distiller à nouveau la semaine prochaine. Attendez que la forme soit stable.
+- **S'attendre à ce qu'il remplace le travail de hiérarchie.** Parfois la bonne correction n'est pas de supprimer des choses, c'est de les arranger. Tournez-vous vers `/impeccable layout` quand le problème est la mise en page, pas la quantité.

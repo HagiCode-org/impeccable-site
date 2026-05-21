@@ -1,0 +1,54 @@
+---
+slug: harden
+title: Harden
+summary: Maak interfaces productieklaar. Edge cases, i18n, foutstatussen, overflow.
+highlights:
+  - Het happy path werkt, maar real-world statussen zien er nog breekbaar uit.
+  - Je moet leveringsgaten sluiten voor release.
+  - Foutafhandeling en veerkracht zijn belangrijker dan nieuwe flair toevoegen.
+related:
+  - audit
+  - optimize
+  - onboard
+---
+
+## Wanneer te gebruiken
+
+`/impeccable harden` is voor de dag dat je interface de realiteit ontmoet. Echte gebruikersdata is rommelig: namen van 60 tekens lang, producttitels in het Duits, prijzen in de miljarden, 500-fouten, offline-modi, recht-naar-links-tekst. Ontwerpen die alleen werken met perfecte data zijn niet productieklaar.
+
+Gebruik het voor lancering, voor het openstellen van een nieuwe markt, of wanneer een bugrapport begint met "onze gebruiker had een heel lange naam en". Voor first-run flows, lege-status-activatie en onboarding-ontwerp kun je beter `/impeccable onboard` gebruiken.
+
+## Hoe het werkt
+
+De skill werkt door vier dimensies van real-world veerkracht:
+
+1. **Tekst en data-extremen**. Lange tekst, korte tekst, speciale tekens, emoji, RTL, getallen in de miljarden, lijsten van 1000 items.
+2. **Foutscenario's**. Netwerkfouten, API 4xx/5xx, validatiefouten, toestemmingsfouten, rate limits, gelijktijdige bewerkingen.
+3. **Internationalisatie**. Lange vertalingen (Duits is vaak 30% langer dan Engels), RTL-talen, datum- en getalnotaties, valutasymbolen, tekensets.
+4. **Apparaat en context**. Aanraakdoelen, offline gedrag, trage verbindingen, energiebesparende modus.
+
+Voor elke dimensie identificeert het de faalmodus en past vervolgens de concrete reparatie toe: overflow-afhandeling, informatieve fout-UI, i18n-veilige lay-outs, pluralisatie, verstandige fallbacks.
+
+## Probeer het
+
+Begin met één pagina en één dimensie:
+
+```
+/impeccable harden the user profile page for long names
+```
+
+Verwachte output:
+
+- `.user-name` heeft nu `text-overflow: ellipsis` met een tooltip voor de volledige waarde
+- `.bio` gewisseld van vaste hoogte naar `max-height` met een "meer tonen" uitklapvenster
+- Lege status toegevoegd voor gebruikers zonder biografie
+- Skeleton-loader toegevoegd voor de asynchrone avatar-fetch
+- Getest op naamlengtes 1, 20, 60, 200 tekens
+
+Voer het per pagina uit, niet alles tegelijk. De eerste uitvoering is de grootste; daaropvolgende uitvoeringen vinden minder problemen naarmate patronen verstevigen.
+
+## Valkuilen
+
+- **Wachten op een bugrapport.** Harden is preventief. Als je merkt dat je dezelfde klasse bug twee keer reparaties, voer dan `/impeccable harden` uit over de functie.
+- **Fout- en lege statussen behandelen als bijzaak.** De meeste hardening is fout- en lege-status-UI. Budgetteer tijd ervoor, niet alleen een `catch`-blok.
+- **i18n overslaan omdat "we voorlopig alleen Engels zijn".** i18n-veilige lay-outs zijn nog steeds betere lay-outs. Flexibele containers, juiste tekstterugloop, royale line-height. Niets daarvan schaadt Engels.

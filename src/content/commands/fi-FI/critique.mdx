@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Suunnitteluarkeski pisteytyksen, persona-testien ja automaattisen tunnistuksen kanssa.
+highlights:
+  - Haluat havaintoja heikoista suunnitteluvalinnoista, ei uudelleenrakennusta alusta.
+  - Tarvitset pisteytystä, suunnitteluperusteluja ja todennäköisiä seuraavia askelia.
+  - Käyttöliittymä toimii mutta tuntuu silti oudolta.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">Tekoälyroskadiagnoosi</span>
+        <span class="docs-viz-critique-verdict-value">HYLÄTTY</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristiikat (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Järjestelmän tilan näkyvyys</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Vastaavuus todellisen maailman kanssa</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Johdonmukaisuus ja standardit</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Virheiden ehkäisy</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Tunnistaminen muistamisen sijaan</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personat</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Arvioija</span>
+              <span class="docs-viz-critique-persona-note">Vertaa meitä kahteen vaihtoehtoon tiistai-illalla.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Palaava käyttäjä</span>
+              <span class="docs-viz-critique-persona-note">Tuntee tuotteen, mobiilissa, kiireinen.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Skeptikko</span>
+              <span class="docs-viz-critique-persona-note">Nähnyt jokaisen SaaS-laskeutumissivun ja on tylsistynyt.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Kaksi läpikäyntiä (LLM-suunnitteluarkeskustelu plus deterministinen tunnistin) yhdistyvät yhdeksi priorisoiduksi listaksi. Mikä toimii, mitä korjata, ja provosoivat kysymykset, jotka kannattaa vastata ennen lähettämistä.</p>
+</div>
+
+## Milloin käyttää
+
+Turvaudu `/impeccable critique`-komentoon kun haluat rehellisen toisen mielipiteen jostain mitä olet jo rakentanut. Ei "toimiiko se" vaan "onko se hyvää". Taito pisteyttää käyttöliittymäsi Nielsenin 10 heuristiikkaa vasten, suorittaa kognitiivisen kuorman tarkistukset, testaa personalinssien läpi ja ristiinviittaa automaattista tunnistinta 25 konkreettisen anti-patternin varalta.
+
+Käytä sitä kun sivu on toiminnallisesti valmis ja haluat tietää, lukeutuuko se tarkoitukselliseksi vai tekoälyroskaksi.
+
+## Miten se toimii
+
+`/impeccable critique` suorittaa kaksi riippumatonta arviointia rinnakkain, jotta ne eivät vaikuta toisiinsa.
+
+Ensimmäinen on **LLM-suunnitteluarkeskustelu**: malli lukee lähdekoodisi, tarkistaa visuaalisesti live-sivun jos selainautomaatio on saatavilla, ja käy läpi impeccable-taidon täydellisen TEKE/ÄLÄ TEKE -luettelon. Se pisteyttää Nielsenin heuristiikat, laskee kognitiivisen kuorman epäonnistumiset, jäljittää emotionaalisen matkan läpi työnkulun ja merkitsee tekoälyroskan.
+
+Toinen on **automaattinen tunnistin** (`npx impeccable detect`), joka deterministisesti löytää liukuväritekstin, violetit paletit, sivuvalikkorajat, sisäkkäiset kortit, rivinpituusongelmat ja muut geneerisen tekoälyn tuotoksen näkyvät sormenjäljet.
+
+Kaksi raporttia yhdistyvät yhdeksi priorisoiduksi listaksi: mikä toimii, kolme viisi asiaa jotka tarvitsevat korjausta, ja provosoivat kysymykset, jotka kannattaa vastata ennen lähettämistä.
+
+## Kokeile
+
+Osoita se sivuun:
+
+```
+/impeccable critique the homepage hero
+```
+
+Saat takaisin pisteytetyn raportin. Tyypillinen muoto:
+
+- **Tekoälyroskadiagnoosi**: läpäisee / hylätty yksityiskohtaisine tunnusmerkkeineen
+- **Heuristiikkapisteet**: 10 numeroa, 0:sta 4:ään
+- **Kognitiivinen kuorma**: epäonnistumisten määrä 8:sta
+- **Prioriteettiongelmat**: kolme viisi kohdetta, kukin mitä, miksi ja korjaa -tiedoilla
+- **Vastattavat kysymykset**: ne joita käyttöliittymä ei voi päättää puolestasi
+
+Sieltä eteenpäin, yhdistä `/impeccable polish`- tai `/impeccable distill`-komentoon korjausten toteuttamiseksi.
+
+## Sudenkuopat
+
+- **Ajaminen keskeneräiselle työlle.** Critique on valmiille sivuille. Tyhjä tila kolmella TODO:lla pisteytyy huonosti koska se ei ole valmis, ei koska se on huono.
+- **Lopun kysymysten sivuuttaminen.** Ne ovat yleensä korjauksia, jotka muuttavat suunnittelua eniten.
+- **Heuristiikkapisteiden kohteleminen arvosanana.** Ne ovat diagnostisia, ei arvioivia. 3/4 heuristiikassa, joka on vähemmän merkittävä kontekstissasi, on ihan kunnossa.

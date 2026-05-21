@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Laat ontwerpen werken op verschillende schermen, apparaten en contexten zonder functies te amputeren.
+highlights:
+  - De huidige lay-out valt uit elkaar op kleinere schermen.
+  - Het product heeft een meer doordachte responsive-strategie nodig.
+  - Aanraakdoelen, dichtheid of inhoudsflow variëren per apparaat.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Wanneer te gebruiken
+
+`/impeccable adapt` is voor het nemen van een ontwerp dat voor één context is gebouwd en het laten werken in een andere. Mobiel vanuit desktop, tablet vanuit mobiel, print vanuit web, ingebed vanuit zelfstandig, e-mail vanuit dashboard. Gebruik het wanneer het bronontwerp solide is maar uit elkaar valt op andere breekpunten, bij aanraking, of in een andere container.
+
+Niet voor het bouwen van responsive vanaf nul. Daarvoor begin je met `/impeccable` en vorm je de lay-out responsive-first. Adapt is voor de "we hebben nooit aan mobiel gedacht" inhaalslag.
+
+## Hoe het werkt
+
+De skill werkt door vier dimensies van contextuele passing:
+
+1. **Breekpunten en fluïde lay-out**: multi-kolom naar enkellkolom samenvouwen, clamp-bereiken aanpassen, nieuwe breekpunten introduceren waar het ontwerp echt breekt.
+2. **Aanraakdoelen**: minimum 44px raakvlakken, voldoende spatiëring tussen aangrenzende doelen, grotere tapzones dan visuele grenzen waar nodig.
+3. **Navigatiepatronen**: desktop-zijbalken worden mobiele bottom-nav of slide-outs, dichte werkbalken vouwen samen tot menu's, hover-statussen krijgen aanraak-equivalenten.
+4. **Inhoudsprioriteit**: beslissen wat zichtbaar moet zijn, wat kan samenvouwen in uitklapvensters, wat volledig verwijderd kan worden voor die context.
+
+De niet-onderhandelbare regel: adapteer, amputeer niet. Kritieke functionaliteit kan niet verdwijnen op mobiel alleen omdat het onhandig is. Vind een manier om het te passen, herontwerp de interactie, of heroverweeg of het echt kritiek was op desktop.
+
+## Probeer het
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Verwachte wijzigingen:
+
+- Driekolomsgrid wordt enkellkolom met sectiekoppen als kleefverdelers
+- Zijbalknavigatie verplaatst naar een horizontale scroller boven de inhoud
+- Toggles krijgen 8px verticale padding zodat ze voldoen aan 44px aanraakdoelen
+- Inline-helptekst verplaatst naar tik-om-te-tonen, niet hover
+- De "Gevaarlijke zone"-sectie vouwt volledig uit op mobiel in plaats van samen te vouwen, omdat het onomkeerbare acties bevat en we willen dat gebruikers ze duidelijk zien
+
+## Valkuilen
+
+- **Functies amputeren.** Als de mobiele versie dingen verbergt die de desktopversie kan doen, is dat een regressie, geen adaptatie. Vecht voor de functie.
+- **Mobiel behandelen als " kleinere desktop".** Mobiel is een andere context: duimen, onderbrekingen, korte sessies. Pas je aan de context aan, niet aan de viewportbreedte.
+- **`/impeccable harden` achteraf overslaan.** Responsive lay-outs onthullen edge cases. Voer hardening uit na adapt om de gevallen te vangen die alleen op 320px verschijnen.

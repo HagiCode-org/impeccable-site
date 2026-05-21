@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Gondolkodj az építés előtt. Készíts tervezési rövidítést felfedezésen keresztül, nem találgatással.
+highlights:
+  - Tervezést szeretnél megvalósítás nélkül egyelőre.
+  - A megfelelő elrendezés vagy tónus még nem egyértelmű.
+  - Több érdekeltnek kell összehangolódnia a szándékról, mielőtt az építési munka elkezdődik.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Az /impeccable shape kimenete</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Cél</span>
+        <span class="docs-viz-file-v">Az elkötelezett feliratkozók megváltoztathassák, amit kapnak, anélkül, hogy leiratkozásra veszítenék őket.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Felhasználó</span>
+        <span class="docs-viz-file-v">Sietős, mobilon, értekezlet közben. Gyorsan olvas, alacsony türelmű.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Tartalom</span>
+        <span class="docs-viz-file-v">4 összefoglaló típus, 2 gyakoriság, egy mindentől-eliratkozás alul.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Érzés</span>
+        <span class="docs-viz-file-v">Nyugodt, megbízható, sötét minták nélkül.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Korlátozások</span>
+        <span class="docs-viz-file-v">Mobile-first. WCAG AA kontraszt. Egy oszlop, nincs modális ablak.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Add oda az <code>/impeccable</code>, <code>/impeccable craft</code> vagy bármilyen megvalósítási folyamatnak.</div>
+  </div>
+  <p class="docs-viz-caption">A shape rövidítés egy iránytű, nem specifikáció. Szándékot rögzít, nem felhasználói felületet. A megvalósítási skillek olvassák, mielőtt egyetlen sor kódot írnának.</p>
+</div>
+
+## Mikor használd
+
+Az `/impeccable shape` az, ahol egy funkció elkezdődik. Mielőtt bárki kódot írna, mielőtt bárki a hero kezelésen vitatkozna, mielőtt bárki betűtípust választana. Használd egy felfedező beszélgetés kikényszerítésére a célról, felhasználókról, tartalomról és korlátozásokról, majd rögzítsd a válaszokat tervezési rövidítésként, amelyre a megvalósítási skillek támaszkodhatnak.
+
+Nyúlj hozzá, valahányszor egy funkció indulni készül, egy ticket homályos, vagy rajtakapod magad, hogy JSX-t írsz, hogy kiderítsd, minek kellene lennie a terméknek.
+
+## Hogyan működik
+
+A legtöbb AI által generált felhasználói felület nem rossz kód miatt hiúság meg, hanem kihagyott gondolkodás miatt. A modell egyből a "itt egy kártyarács"hoz ugrik, anélkül, hogy megkérdezné, "mit próbál elérni a felhasználó". Az `/impeccable shape` megfordítja ezt a sorrendet.
+
+A skill strukturált felfedező interjút futtat beszélgetés formájában. Ebben a fázisban nem fog kódot írni. A kérdések a következőkre terjednek ki:
+
+- **Cél és kontextus**: mire való a funkció, ki használja, milyen lelkiállapotban van
+- **Tartalom és adatok**: mi jelenik meg, reális tartományok, szélsőséges esetek, mi dinamikus
+- **Tervezési célok**: az egyetlen legfontosabb dolog, a kívánt érzés, referencia példák
+- **Korlátozások**: technikai, tartalmi, akadálymentességi, lokalizációs
+
+Természetesen válaszolsz. A skill utánajáró kérdéseket tesz fel, nem űrlapot. A végén egy tervezési rövidítést állít elő: egy strukturált terméket, amelyet átadhatsz az `/impeccable` vagy bármely más megvalósítási skillnek.
+
+Megjegyzés: ha a teljes folyamatot akarod (felfedező interjú, aztán egyenesen az építésbe), használd az `/impeccable craft` parancsot. Belsőleg futtatja az `/impeccable shape` parancsot, majd vizuális iterációval folytatja a megvalósítást. Az `/impeccable shape` önállóan akkor való, ha csak a rövidítést akarod, hogy elvihesd bármilyen általad preferált megvalósítási megközelítéshez.
+
+## Próbáld ki
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Számíts egy 5-10 kérdéses beszélgetésre. A skill olyan dolgokat kérdez, mint "ki az a személy, aki ezt megnyitja, és már elkötelezett-e vagy még csak érdeklődik" és "mi történik, ha a felhasználó mindentől leiratkozott, elrejtjük a funkciót vagy mutatunk valamit". Válaszolsz, és a rövidítés kialakul.
+
+Onnan átadhatod a rövidítést az `/impeccable`, `/impeccable polish` vagy bármely más skillnek. Vagy csak referenciaként használod, miközben kézzel építed.
+
+## Csapdák
+
+- **Átugrani, mert lassúnak tűnik.** Az interjú talán 5 perc. Az elkerülhető újraírások órákban mérhetők.
+- **A rövidítést specifikációként kezelni.** Ez iránytű, nem ellenőrzőlista. Szándékot rögzít, nem felhasználói felületet.
+- **"Szabványos" vagy "normál" válaszokkal válaszolni.** A konkrétság az egész lényege. Ha egy felhasználó "sietős, mobilon, értekezletek között", mondd meg. Ez megváltoztat mindent lefelé a folyamatban.

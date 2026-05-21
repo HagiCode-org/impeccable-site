@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Reduce el tono de disen os que estan gritando sin perder su intencion.
+highlights:
+  - Las ideas fuertes estan presentes, pero la pagina es demasiado ruidosa.
+  - Necesitas contencion sin volverte soso.
+  - El tono actual abruma la lectura o el flujo de tareas.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Cuando usarlo
+
+`/impeccable quieter` es la contraparte de `/impeccable bolder`. Usalo cuando una interfaz es visualmente agresiva, sobrestimulante o intentando hacer demasiadas cosas a volumen maximo. Neon sobre oscuro, texto con gradiente por todas partes, 6 colores de acento, todo animado, sombras de 20px. Usa quieter cuando el diseno necesita respirar y quieres refinamiento sin perder el punto de vista.
+
+Tambien util cuando `/impeccable bolder` va un poco demasiado lejos.
+
+## Como funciona
+
+La habilidad trabaja por reduccion a traves de cuatro ejes:
+
+1. **Color**: desaturar, bajar cromancia en OKLCH, reducir acentos a un unico primario mas soporte amortiguado. No mas de dos colores intencionales.
+2. **Contraste**: suavizar oscuros y claros extremos, reducir el rango. Los fondos pasan de blanco puro y negro puro a papel y tinta.
+3. **Decoracion**: eliminar sombras que no estan haciendo trabajo, eliminar bordes que no llevan estructura, retirar gradientes que existen por energia mas que por jerarquia.
+4. **Movimiento y efecto**: ralentizar animaciones, eliminar lo que se reproduce automaticamente, descartar parallax y desenfoque a menos que sirvan a la legibilidad.
+
+La habilidad preserva la intencion del diseno. Si el original tenia un punto de vista, la version mas silenciosa tiene el mismo punto de vista con mas confianza. Refinamiento, no neutralizacion.
+
+## Probalo
+
+```
+/impeccable quieter the pricing page
+```
+
+Diff tipico:
+
+- Texto con gradiente en el precio eliminado, reemplazado con tinta solida a un peso mas pesado
+- Tres colores de acento reducidos a uno (magenta), los otros dos se convierten en variantes neutras
+- Sombras de tarjetas reducidas de `0 20px 40px rgba(0,0,0,0.2)` a `0 1px 0 var(--color-mist)` (una linea fina)
+- Fondo cambia de gradiente oscuro a papel con un lavado sutil de crema en la parte superior
+- Animacion hero de 1.2s easeOut con 3 elementos escalonados a un unico fundido de entrada de 260ms
+
+## Errores comunes
+
+- **Sobre-aplicar.** Quieter puede eliminar personalidad si lo ejecutas en algo que ya era mesurado. Usalo cuando el diseno es demasiado ruidoso, no cuando es correctamente asertivo.
+- **Confundir quieter con distill.** Quieter reduce intensidad. Distill elimina elementos. Son movimientos diferentes.
+- **Ejecutarlo en respuesta a una critica que dice "demasiado ocupado".** Ocupado usualmente significa demasiadas cosas, no demasiado ruidoso. Prueba `/impeccable distill` primero.

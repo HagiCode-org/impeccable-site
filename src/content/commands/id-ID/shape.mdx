@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Berpikir sebelum membangun. Hasilkan brief desain melalui discovery, bukan tebakan.
+highlights:
+  - Anda menginginkan perencanaan tanpa implementasi dulu.
+  - Tata letak atau nada yang tepat masih belum jelas.
+  - Berbagai pemangku kepentingan perlu menyelaraskan maksud sebelum pekerjaan build dimulai.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output dari /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Tujuan</span>
+        <span class="docs-viz-file-v">Biarkan pelanggan berkomitmen mengubah apa yang mereka dapatkan tanpa kehilangan mereka karena berhenti berlangganan.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Pengguna</span>
+        <span class="docs-viz-file-v">Terburu-buru, di ponsel, di tengah rapat. Membaca cepat, kesabaran rendah.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Konten</span>
+        <span class="docs-viz-file-v">4 jenis ringkasan, 2 frekuensi, satu berhenti-semua di bagian bawah.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Kesan</span>
+        <span class="docs-viz-file-v">Tenang, dapat dipercaya, tanpa pola gelap.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Batasan</span>
+        <span class="docs-viz-file-v">Mobile-first. Kontras WCAG AA. Satu kolom, tanpa modal.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Serahkan ke <code>/impeccable</code>, <code>/impeccable craft</code>, atau alur implementasi apa pun.</div>
+  </div>
+  <p class="docs-viz-caption">Brief shape adalah kompas, bukan spesifikasi. Ini menangkap maksud, bukan UI. Skill implementasi membacanya sebelum menulis satu baris kode pun.</p>
+</div>
+
+## Kapan menggunakannya
+
+`/impeccable shape` adalah tempat sebuah fitur dimulai. Sebelum ada yang menulis kode, sebelum ada yang berdebat tentang treatment hero, sebelum ada yang memilih font. Gunakan untuk memaksa percakapan discovery tentang tujuan, pengguna, konten, dan batasan, lalu tangkap jawabannya sebagai brief desain yang dapat diandalkan oleh skill implementasi.
+
+Gunakan ketika sebuah fitur akan dimulai, tiket masih samar, atau Anda menangkap diri sendiri menulis JSX untuk mencari tahu apa produknya seharusnya.
+
+## Cara kerjanya
+
+Sebagian besar UI yang dihasilkan AI gagal bukan karena kode yang buruk, tetapi karena pemikiran yang terlewat. Model melompat ke "ini grid kartu" tanpa bertanya "apa yang coba dicapai pengguna". `/impeccable shape` membalikkan urutan itu.
+
+Skill menjalankan wawancara discovery terstruktur dalam percakapan. Skill tidak akan menulis kode selama fase ini. Pertanyaannya mencakup:
+
+- **Tujuan dan konteks**: untuk apa fitur ini, siapa yang menggunakannya, kondisi mental apa mereka berada
+- **Konten dan data**: apa yang ditampilkan, rentang realistis, kasus tepi, apa yang dinamis
+- **Sasaran desain**: hal terpenting, kesan yang diinginkan, contoh referensi
+- **Batasan**: teknis, konten, aksesibilitas, lokalisasi
+
+Anda menjawab secara alami. Skill mengajukan pertanyaan lanjutan, bukan formulir. Pada akhirnya skill menghasilkan brief desain: artefak terstruktur yang dapat Anda serahkan ke `/impeccable` atau skill implementasi lainnya.
+
+Catatan: jika Anda menginginkan alur lengkap (wawancara discovery, lalu langsung membangun), gunakan `/impeccable craft`. Skill itu menjalankan `/impeccable shape` secara internal, lalu melanjutkan ke implementasi dengan iterasi visual. `/impeccable shape` mandiri untuk ketika Anda hanya menginginkan brief, sehingga Anda dapat membawanya ke pendekatan implementasi apa pun yang Anda sukai.
+
+## Cobalah
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Harapkan percakapan 5 hingga 10 pertanyaan. Skill bertanya hal-hal seperti "siapa orang yang membuka ini, dan apakah mereka sudah berkomitmen atau masih penasaran" dan "apa yang terjadi ketika pengguna berhenti berlangganan dari segalanya, apakah kami menyembunyikan fitur atau menampilkan sesuatu". Anda menjawab, dan brief terbentuk.
+
+Dari sana Anda dapat menyerahkan brief ke `/impeccable`, `/impeccable polish`, atau skill lainnya. Atau gunakan sebagai referensi sambil membangun secara manual.
+
+## Jebakan
+
+- **Melewatinya karena terasa lambat.** Wawancara mungkin 5 menit. Penulisan ulang yang Anda hindari diukur dalam hitungan jam.
+- **Memperlakukan brief sebagai spesifikasi.** Ini adalah kompas, bukan daftar periksa. Ini menangkap maksud, bukan UI.
+- **Menjawab dengan "standar" atau "normal".** Spesifisitas adalah intinya. Jika pengguna "terburu-buru, di ponsel, di antara rapat", katakan begitu. Itu mengubah segalanya di hilir.

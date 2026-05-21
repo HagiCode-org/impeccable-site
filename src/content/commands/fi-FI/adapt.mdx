@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Saata suunnittelut toimimaan eri näytöillä, laitteilla ja konteksteissa ominaisuuksia amputoimatta.
+highlights:
+  - Nykyinen asettelu romahtaa pienemmillä näytöillä.
+  - Tuote tarvitsee harkitumpaa responsiivista strategiaa.
+  - Kosketuskohteet, tiheys tai sisältövirta vaihtelevat laitteen mukaan.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Milloin käyttää
+
+`/impeccable adapt` on ottamaan suunnittelun joka on rakennettu yhteen kontekstiin ja saamaan se toimimaan toisessa. Mobiili työpöydästä, tabletti mobiilista, painettu webistä, sulautettu erilliseksi, sähköposti kojelaudasta. Turvaudu siihen kun lähdesuunnittelu on vakaa mutta hajoaa muilla keskeytyskohdilla, kosketuksella tai eri säiliössä.
+
+Ei responsiivisen rakentamiseen alusta asti. Siihen aloita `/impeccable`-komennolla ja muotoile asettelu responsiivisesti ensin. Adapt on "emme koskaan ajatelleet mobiilia" -takautumiseen.
+
+## Miten se toimii
+
+Taito käy läpi neljän kontekstuaalisen sopivuuden dimension:
+
+1. **Keskeytyskohdat ja neste-asettelu**: tiivistä monisarakkeinen yksisarakkeiseksi, säädä clamp-aluetta, esittele uusia keskeytyskohtia missä suunnittelu aidosti hajoaa.
+2. **Kosketuskohteet**: vähintään 44px osuma-alueet, riittävä välistys vierekkäisten kohteiden välillä, suuremmat naputusalueet kuin visuaaliset rajat tarpeen mukaan.
+3. **Navigointimallit**: työpöydän sivupalkit muuttuvat mobiilin alanavigaatioksi tai liukusäätimiksi, tiheät työkalupalkit tiivistyvät valikoiksi, hover-tilat saavat kosketusvastineet.
+4. **Sisällön prioriteetti**: päätä mikä täytyy näkyä, mikä voidaan tiivistää paljastuksiin, mikä voidaan poistaa kokonaan kyseisessä kontekstissa.
+
+Ei-neuvoteltava sääntö: sopeudu, älä amputoi. Kriittinen toiminnallisuus ei voi kadota mobiilissa vain koska se on epämukavaa. Löydä tapa sijoittaa se, suunnittele vuorovaikutus uudelleen tai harkitse uudelleen oliko se oikeasti kriittinen työpöydällä.
+
+## Kokeile
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Odotetut muutokset:
+
+- Kolmen sarakkeen ruudukko muuttuu yksisarakkeeksi osio-otsikoiden toimissa tahmeina jakajina
+- Sivupalkkinavigaatio siirtyy vaakasuuntaiseen vierittimeen sisällön yläpuolelle
+- Kytkimet saavat 8px pystytäytteen jotta ne täyttävät 44px kosketuskohteet
+- Sisäinen ohjeteksti siirtyy napauta-paljasta -tilaan, ei hoveriin
+- "Vaaravyöhyke"-osio laajenee kokonaan mobiilissa tiivistymisen sijaan, koska se sisältää peruuttamattomia toimintoja ja haluamme käyttäjien näkevän ne selkeästi
+
+## Sudenkuopat
+
+- **Ominaisuuksien amputointi.** Jos mobiiliversio piilottaa asioita joita työpöytäversio voi tehdä, se on regressio, ei sopeutuminen. Taistele ominaisuuden puolesta.
+- **Mobiilin kohteleminen "pienempänä työpöytänä".** Mobiili on eri konteksti: peukalot, keskeytykset, lyhyet istunnot. Sovpeudu kontekstiin, ei näkymän leveyteen.
+- **`/impeccable harden` -komennon ohittaminen sen jälkeen.** Responsiiviset asettelut paljastavat reuna-tapauksia. Suorita hardening adaptin jälkeen löytääksesi ne jotka näkyvät vasta 320px:ssä.

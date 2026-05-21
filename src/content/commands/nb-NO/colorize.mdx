@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Tilfør strategisk farge til monokrome grensesnitt uten å bli støyende.
+highlights:
+  - Grensesnittet ser kompetent ut, men er glemmbart.
+  - Du trenger tydeligere vektlegging uten å skrive om hele strukturen.
+  - Den nåværende paletten bærer ikke det tiltenkte stemningsleiet.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Når du skal bruke den
+
+`/impeccable colorize` er motvekten til "alt er grått". Dashbord som leses som en beige vegg, skjemaer uten aksent, innholdssider som kunne være et hvilket som helst SaaS-produkt. Bruk den når grensesnittet er funksjonelt, men emosjonelt flatt, og du vil ha varme uten å tippe over i AI-fargepaletten (lilla-til-rosa, cyan-neon, mørk modus-glow).
+
+## Hvordan det fungerer
+
+Ferdigheten starter med å lese din merkefarge hvis en finnes, og bestemmer deretter hvor farge tjener sin plass:
+
+1. **Primær handling** får den sterkeste uttrykket av merkefargen.
+2. **Sekundære aksenter** får dempede eller nyanserte varianter, ikke en andre full farge.
+3. **Nøytraler** får en fargetoning mot merkefargen ved lav kroma (rundt 0.005 til 0.01), noe som er nesten usynlig per piksel, men skaper underbevisst samhørighet.
+4. **Innholdskategorier** får et begrenset, bevisst aksentsystem, ikke en regnbue.
+
+Viktig: den bruker OKLCH fremfor HSL slik at like lyshetstrinn ser like ut. Etter hvert som lysheten beveger seg mot ekstremene, synker kroma automatisk. Slik får du farge som føles gjennomtenkt fremfor utregnet.
+
+## Prøv det
+
+```
+/impeccable colorize the dashboard
+```
+
+Forventet endring:
+
+- Merkefarge flyttet fra en hardkodet hex til `--color-accent: oklch(62% 0.18 240)`
+- Nøytraler fargetonet med 0.007 kroma mot merkefargen
+- Primærknapp får full aksent, sekundære knapper får ink/tåke
+- Diagramserie bruker 3 distinkte fargetoner, alle med tilpasset lyshet slik at ingen serie visuelt dominerer
+- Illustrasjon for tom tilstand plukker opp en myk aksentvask
+
+## Fallgruver
+
+- **Å kjøre den uten en merkefargetone.** Colorize trenger et startpunkt. Hvis `PRODUCT.md` ikke spesifiserer en, vil den spørre. Ikke la den velge fra AI-fargepalettens standarder.
+- **Å forvente at den fikser AI-fargepalettproblemet.** Hvis designet ditt allerede har lilla gradienter og cyan-neon, trenger du `/impeccable quieter` først, deretter kan colorize bygge opp på nytt.
+- **Å bruke den på allerede fargerike grensesnitt.** Det er en jobb for `/impeccable quieter`. Colorize legger til, den trekker ikke fra.

@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Ötdimenziós technikai minőségellenőrzés P0-tól P3 súlyosságig.
+highlights:
+  - Konkrét problémákra és súlyosságra van szükséged, nem csak ízlésen alapuló visszajelzésre.
+  - Egy funkciót készítesz elő merge-re vagy kiadásra.
+  - Rejtett hibát sejtesz mobilon, sötét témákban vagy kisegítő technológiák alatt.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Akadálymentesség</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Teljesítmény</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Témázás</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Reszponzivitás</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Antipattern-ek</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Öt dimenzió 0-tól 4-ig pontozva, minden találat P0 (kiadást blokkoló) és P3 (finomítás) között címkézve. Az Audit dokumentál; nem javít. Irányítsd a találatokat az <code>/impeccable harden</code>, <code>/impeccable polish</code> vagy <code>/impeccable optimize</code> felé.</p>
+</div>
+
+## Mikor használd
+
+Az `/impeccable audit` az `/impeccable critique` technikai párja. Ahol az `/impeccable critique` azt kérdezi, hogy "jól érzi-e magát", az `/impeccable audit` azt kérdezi, hogy "bírja-e a terhet". Akadálymentességi, teljesítmény-, témázási, reszponzív tervezési és antipattern-ellenőrzéseket futtat a megvalósítás ellen, 0-tól 4-ig pontozza az egyes dimenziókat, és P0-tól P3 súlyossági besorolású tervet készít.
+
+Használd szállítás előtt, egy minőségi sprint során, vagy bármikor, amikor egy tech lead azt mondja: "tényleg meg kellene néznünk az akadálymentességet".
+
+## Hogyan működik
+
+A skill öt dimenzióban vizsgálja át a kódodat:
+
+1. **Akadálymentesség**: WCAG kontraszt, ARIA, billentyűzetes navigáció, szemantikus HTML, űrlapcímkék.
+2. **Teljesítmény**: elrendezés-zúzás, drága animációk, hiányzó lazy loading, csomagméret.
+3. **Témázás**: hardcoded színek, sötét mód lefedettség, token konzisztencia.
+4. **Reszponzivitás**: töréspont-viselkedés, érintési célpontok, mobil viewport kezelés.
+5. **Antipattern-ek**: ugyanazok a determinisztikus 25 ellenőrzés, amelyeket a detektor futtat.
+
+Minden dimenzió 0-tól 4-ig kap pontszámot. Minden találat kap súlyosságot: P0 blokkolja a kiadást, P1 ebben a sprintben javítandó, P2 a következő ciklusban, P3 finomítás. Egyetlen dokumentumot kapsz vissza, amelyet beilleszthetsz egy ticket-követőbe.
+
+Az Audit nem javít semmit. Dokumentál. Irányítsd a találatokat az `/impeccable polish`, `/impeccable harden` vagy `/impeccable optimize` felé a kategóriától függően.
+
+## Próbáld ki
+
+```
+/impeccable audit the checkout flow
+```
+
+Várható kimenet:
+
+```
+Akadálymentesség: 2/4 (részleges)
+  P0: Hiányzó űrlapcímkék 4 beviteli mezőn
+  P1: Kontraszt 3.1:1 a letiltott gomb állapoton
+  P2: Nincs látható fókuszjelző az egyedi lenyíló menüben
+
+Teljesítmény: 3/4 (jó)
+  P1: Hero kép nincs lazy-olva (340KB)
+  ...
+```
+
+Add át a P0-okat az `/impeccable harden`, a témázási és tipográfiai P1-eket az `/impeccable typeset` és `/impeccable polish`, a többit az `/impeccable polish` felé.
+
+## Csapdák
+
+- **Összetéveszteni az `/impeccable critique`-tal.** Az Audit megvalósítási minőség. A Critique tervezési minőség. Futtasd mindkettőt a teljes képhez.
+- **P3-akat javítani P0-ok előtt.** A súlyossági skálála okból létezik. Kezdd felülről.
+- **Azon dimenziók átugrása, amelyeket jónak gondolsz.** A témázás és reszponzivitás azok, amiket a legtöbben jónak gondolnak, amíg nem válnak azzá.

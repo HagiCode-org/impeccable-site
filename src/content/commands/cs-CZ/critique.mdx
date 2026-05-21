@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Designovy review s bodovanim, testy person a automatickym detekce.
+highlights:
+  - Chcete nalezy o slabych designovych rozhodnutich, ne prestavbu od nuly.
+  - Potrebujete bodovani, designove duvody a pravdepodobne dalsi kroky.
+  - Rozhrani funguje, ale porad to nesedi.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop verdikt</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristiky (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Viditelnost stavu</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Shoda se skutecnym svetem</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Konzistence a standardy</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Prevence chyb</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Rozpoznani pred vzpominanim</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Persony</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Hodnotitel</span>
+              <span class="docs-viz-critique-persona-note">Porovnava nas se dvema alternativami v utorvecer.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Vracejici se uzivatel</span>
+              <span class="docs-viz-critique-persona-note">Zna produkt, na mobilu, spicha.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Skeptik</span>
+              <span class="docs-viz-critique-persona-note">Videl kazdy SaaS landing a je nudny.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Dva pruchody (LLM designovy review plus deterministicny detektor) se slouci do jednoho prioritizovaneho seznamu. Co funguje, co opravit a provokativni otazky, ktere stoji za odpoved pred odeslanim.</p>
+</div>
+
+## Kdy pouzit
+
+Siahnete po `/impeccable critique`, kdyz chcete uprimny druhy nazor na neco, co jste jiz sestavili. Ne "funguje to", ale "je to dobre". Dovednost ohodnoti vase rozhrani proti Nielsenovym 10 heuristikam, provede kontroly kognitivni zateze, otestuje pres linh persony a zkrizkove vyhleda automaticky detektor pro 25 konkretnich anti-patternu.
+
+Pouzijte jej, kdyz je stranka funkcne hotova a chcete vedet, zda pusobi jako umyslna nebo jako AI odpad.
+
+## Jak to funguje
+
+`/impeccable critique` provede dve nezavisla hodnoceni paralelne, aby se vzajemne neovlivnila.
+
+Prvni je **LLM designovy review**: model precte vas zdrojovy kod, vizualne prohlidi zivou stranku, pokud je k dispozici automatizace prohlizece, a projde kompletni katalog DO/DON'T dovednosti impeccable. Ohodnoti Nielsenovy heuristiky, spocita selhani kognitivni zateze, provede emocionalni cestu tokem a oznaci AI odpad.
+
+Druhe je **automaticky detektor** (`npx impeccable detect`), ktery deterministicky najde gradientovy text, fialove palety, bocni zalozky s oramovanim, vnorene karty, problemy s delkou radku a dalsi viditelne otisky obecneho AI vystupu.
+
+Dve zpravy se slouci do jednoho prioritizovaneho seznamu: co funguje, tri az peti veci, ktere potrebuji opravit, a provokativni otazky, ktere stoji za odpoved pred odeslanim.
+
+## Vyzkousejte to
+
+Namerste to na stranku:
+
+```
+/impeccable critique the homepage hero
+```
+
+Dostanete zpet ohodnoceny report. Typicky tvar:
+
+- **AI slop verdikt**: prosel / neselhalo se specifickymi ukazateli
+- **Skore heuristik**: 10 cisel, 0 az 4
+- **Kognitivni zatez**: pocet selhani z 8
+- **Prioritni problemy**: tri az peti polozek, kazda s tim co, proc a jak opravit
+- **Otazky k odpovedi**: ty, ktere rozhrani samo o sobe nerozhodne
+
+Odtud parujte s `/impeccable polish` nebo `/impeccable distill` pro provedeni oprav.
+
+## Na co si dat pozor
+
+- **Spusteni na nehotove praci.** Critique je pro hotove stranky. Prazdny stav se tremi TODOs skonci spatne, protoze neni hotovy, ne protoze je spatny.
+- **Ignorovani otazek na konci.** Obvykle jsou to opravy, ktere design zmeni nejvic.
+- **Zachazeni se skore heuristik jako znamkou.** Jsou diagnosticke, nikoli evaluacni. 3/4 na heuristice, ktera pro vas kontext znamena mene, je v poradku.

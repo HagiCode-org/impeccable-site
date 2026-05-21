@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: L'intelligenza di design dietro ogni comando.
+highlights:
+  - Vuoi un unico punto di accesso per layout, tipografia, colore, movimento e struttura UX insieme.
+  - Stai esplorando una direzione e vuoi che la skill scelga il sotto-flusso giusto.
+  - Hai bisogno del contesto di design più ampio anziché di un passaggio ristretto con un singolo comando.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Quando usarlo
+
+`/impeccable` è il comando principale. Chiamalo direttamente quando vuoi un lavoro di design libero con il manuale completo caricato, senza scegliere un comando specializzato. È il fallback a cui ricorri quando nessuno dei 23 specialisti (`audit`, `polish`, `critique` e gli altri) corrisponde chiaramente a ciò che stai cercando di fare.
+
+Ricorri a `/impeccable` direttamente quando:
+
+- **Non sei sicuro di quale comando sia più adatto.** Descrivi ciò che vuoi in parole semplici e lascia che la skill scelga l'approccio giusto.
+- **Il lavoro abbraccia più discipline.** "Rifai questa sezione hero" tocca layout, tipografia, colore e movimento. Un singolo comando non può gestirlo.
+- **Vuoi la piena intelligenza di design senza vincoli.** Ogni file di riferimento caricato, ogni anti-pattern verificato, nessun flusso preimpostato.
+
+Per flussi strutturati, usa i comandi specializzati nella barra laterale. Esegui prima `/impeccable teach` in ogni nuovo progetto per creare PRODUCT.md e DESIGN.md. `/impeccable craft` concatena un'intervista di scoperta in una costruzione completa con iterazione visiva dal vivo. `/impeccable shape` produce un brief di design senza toccare il codice. `/impeccable live` ti offre un selettore nel browser con tre varianti per elemento. I comandi di valutazione e rifinitura (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` e gli altri) gestiscono ciascuno una porzione specifica del lavoro.
+
+## Come funziona
+
+La maggior parte delle interfacce generate dall'IA fallisce allo stesso modo: font generici, gradienti viola, griglie di card su griglie di card, glassmorphism ovunque. `/impeccable` dà alla tua IA un forte punto di vista. Carica un manuale di design con opinioni e una lunga lista di anti-pattern, poi spinge il modello a impegnarsi in una direzione estetica specifica prima di scrivere una singola riga di codice.
+
+Due file nella root del tuo progetto definiscono tutto ciò che la skill fa:
+
+- **`PRODUCT.md`** contiene il registro (brand vs product), gli utenti target, la personalità del brand, gli anti-riferimenti, i principi di design. Risponde a "chi, cosa, perché".
+- **`DESIGN.md`** contiene colori, tipografia, elevazione, componenti, do's and don'ts, nel formato a sei sezioni di Google Stitch. Risponde a "come appare".
+
+Ogni comando legge entrambi i file prima di generare. Il **registro** decide quali valori predefiniti caricare. Brand (marketing, landing, portfolio, dove il design È il prodotto) e product (interfacce app, dashboard, strumenti, dove il design SERVE il prodotto) hanno valori predefiniti diversi per tipografia, movimento, colore e densità. Specificarlo una volta in PRODUCT.md significa che `/impeccable typeset` non applicherà font da rivista editoriale a una dashboard, e non applicherà i valori predefiniti da product a una pagina campagna. Consulta il [tutorial brand vs product](/tutorials/brand-vs-product) per capire come divergono.
+
+Al primo utilizzo in un progetto, la skill esegue automaticamente il flusso `teach`: una breve intervista che scrive PRODUCT.md e poi delega a `/impeccable document` per DESIGN.md. I comandi successivi leggeranno i file senza chiedere di nuovo.
+
+## Provalo
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Entrambi i prompt sono volutamente vaghi. `/impeccable` sceglierà una forte direzione estetica coerente con il tuo registro, si impegnerà su font non predefiniti, eviterà la palette colori IA e prenderà il tipo di decisioni specifiche che prenderebbe un designer. Nessun nome di comando da scegliere prima, nessun flusso passo-passo da seguire.
+
+Per l'iterazione visiva nel browser anziché nella chat:
+
+```
+/impeccable live
+```
+
+Seleziona qualsiasi elemento sul tuo dev server in esecuzione. Aggiungi un commento o un tratto. Ricevi tre varianti di qualità produzione scambiate a caldo tramite HMR. Accetta quella che vuoi e viene riscritta nel sorgente.
+
+## Fissa i comandi come scorciatoie
+
+La v3.0 ha consolidato 18 skill standalone in un singolo `/impeccable` con 23 sotto-comandi. Se ti manca la forma breve di un comando specifico, fissalo di nuovo:
+
+```
+/impeccable pin critique
+```
+
+Da ora in poi, `/critique` richiama `/impeccable critique` direttamente. Crea una skill di reindirizzamento leggera che delega al genitore, quindi gli aggiornamenti della skill passano senza dover rifissare.
+
+Scorciatoie utili da provare:
+
+- `/impeccable pin polish` per il lavoro di passaggio finale
+- `/impeccable pin audit` per controlli deterministici di accessibilità e performance
+- `/impeccable pin live` per il flusso di iterazione nel browser
+- `/impeccable pin critique` per la revisione del design
+
+Per rimuovere: `/impeccable unpin critique`. Le scorciatoie vivono come directory con prefisso `i-` nella cartella skills del tuo harness (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, ecc.), quindi puoi anche eliminarle manualmente.
+
+## Insidie
+
+- **Trattarlo come una guida di stile.** È un partner di design con opinioni, non un linter. I valori predefiniti esistono per alzare il livello minimo, non per sovrascrivere il tuo giudizio. Se hai un motivo valido per obiettare (linee guida del brand, vincoli di accessibilità, ricerca utente), obietta e spiega perché. La skill lavorerà con te. Ciò che produce risultati peggiori è ignorare l'opinione senza un motivo.
+- **Aspettarsi che corregga codice esistente.** `/impeccable` serve per la creazione. Per la rifinitura, usa `/impeccable polish`, `/impeccable distill` o `/impeccable critique`.
+- **Eseguirlo prima che `teach` abbia avuto il tempo di salvare il contesto.** In un progetto nuovo ti intervisterà a metà lavoro, il che va bene ma è più lento. Eseguire `/impeccable teach` esplicitamente come primissimo comando è leggermente più fluido.
+- **Saltare la domanda sul registro.** I valori predefiniti di brand e product divergono abbastanza che eseguire sul registro sbagliato produce risultati sottilmente fuori luogo. Se `PRODUCT.md` non ha un campo `## Register` (versione legacy), esegui `/impeccable teach` per aggiungerlo.

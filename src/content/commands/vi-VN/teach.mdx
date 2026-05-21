@@ -1,0 +1,80 @@
+---
+slug: teach
+title: Teach
+summary: Dạy Impeccable sản phẩm của bạn dành cho ai, một lần cho mỗi dự án.
+highlights:
+  - Dự án chưa có tệp ngữ cảnh thiết kế.
+  - Các đóng góp viên khác nhau cần một nguồn chân lý chung.
+  - Bạn muốn các lệnh tương lai kế thừa hướng thương hiệu và sản phẩm.
+related:
+  - document
+  - craft
+  - impeccable
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">PRODUCT.md</span>
+      <span class="docs-viz-file-status">Được tải trên mỗi lệnh</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Register</span>
+        <span class="docs-viz-file-v">Product. Thiết kế phục vụ tác vụ.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Users</span>
+        <span class="docs-viz-file-v">SRE trực班, đọc nhanh, thường trong bóng tối.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Brand voice</span>
+        <span class="docs-viz-file-v">Bình tĩnh, lâm sàng, không cường điệu.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Anti-references</span>
+        <span class="docs-viz-file-v">Gradient tím. Glassmorphism. "Boost your productivity."</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Mọi lệnh đọc tệp này trước khi viết một dòng code.</div>
+  </div>
+  <p class="docs-viz-caption">PRODUCT.md hoàn chỉnh. Chỉ chiến lược: ai, cái gì, tại sao. Không màu sắc, không font, không giá trị pixel, những thứ nằm trong DESIGN.md.</p>
+</div>
+
+## Khi nào nên sử dụng
+
+Chạy `/impeccable teach` một lần ở đầu dự án. Đây là đường dẫn vào. Không có nó, mọi lệnh khác sẽ tạo thiết kế có năng lực về mặt kỹ thuật nhưng chung chung về giọng điệu: giọng SaaS sẵn có, font an toàn mặc định, bảng màu AI. Có nó, mọi lệnh đọc câu trả lời của bạn trước khi tạo.
+
+Sử dụng khi:
+
+- **Bạn vừa cài Impeccable trong dự án mới.** Thứ đầu tiên cần chạy. Các lệnh khác sẽ nhắc bạn nếu bạn bỏ qua.
+- **Hướng thương hiệu của dự án đã thay đổi.** Định vị mới, đối tượng mới, giọng điệu mới. Chạy lại `teach` và ngữ cảnh cập nhật sẽ lan qua mọi lệnh.
+- **Một lệnh khác nói "không tìm thấy ngữ cảnh thiết kế"** và dừng lại. Đó là tín hiệu: chạy teach, rồi tiếp tục.
+
+## Cách hoạt động
+
+Teach ghi hai tệp bổ sung ở thư mục gốc dự án:
+
+- **`PRODUCT.md`** là tệp chiến lược. Register (thương hiệu hoặc sản phẩm), người dùng mục tiêu, mục đích sản phẩm, tính cách thương hiệu, phản-tham chiếu, nguyên tắc thiết kế, nhu cầu khả năng tiếp cận. Trả lời "ai, cái gì, tại sao".
+- **`DESIGN.md`** là tệp trực quan. Màu sắc, kiểu chữ, đổ bóng, thành phần, nên và không nên. Trả lời "trông như thế nào". Được ghi bởi lệnh `/impeccable document` được ủy quyền, mà teach gọi ở cuối.
+
+Luồng quét codebase trước (README, package.json, components, tokens, brand assets) và hình thành **giả thuyết register**: thương hiệu (landing, marketing, portfolio, nơi thiết kế CHÍNH LÀ sản phẩm) hoặc sản phẩm (giao diện ứng dụng, bảng điều khiển, công cụ, nơi thiết kế PHỤC VỤ sản phẩm). Register là câu hỏi đầu tiên, vì nó định hình mọi câu trả lời hạ lưu: mặc định kiểu chữ, năng lượng chuyển động, chiến lược màu sắc, tập tham chiếu mà các lệnh như `/impeccable typeset` kéo từ. Sau register, teach chỉ hỏi những gì nó không thể suy luận: người dùng, tính cách bằng ba từ thực, tham chiếu và phản-tham chiếu, yêu cầu khả năng tiếp cận.
+
+PRODUCT.md chỉ mang tính chiến lược. Không màu sắc, không font, không giá trị pixel. Những thứ đó nằm trong DESIGN.md. Giữ hai tệp riêng biệt là cố ý: chiến lược có thể ổn định trong khi hệ thống trực quan tiến hóa.
+
+## Thử ngay
+
+```
+/impeccable teach
+```
+
+Kỳ vọng một cuộc phỏng vấn kéo dài 5 đến 8 phút. Câu hỏi đầu tiên thường về register; các câu còn lại ngắn. Teach sẽ trích dẫn lại những gì nó suy luận từ code của bạn ("từ các route, đây có vẻ là bề mặt sản phẩm, đúng không?") để bạn đang xác nhận, không phải bắt đầu từ con số không.
+
+Cuối cùng, teach đề nghị chạy `/impeccable document` cho bạn. Đồng ý trừ khi bạn có lý do cụ thể để đợi. Một DESIGN.md thực sự là thứ giữ các biến thể, polish và audit đúng thương hiệu.
+
+## Những cạm bẫy cần tránh
+
+- **Bỏ qua để "chỉ thử một lệnh nhanh".** Mọi lệnh khác sẽ phỏng vấn bạn ngay giữa quá trình thay thế. Chạy teach trước nhanh hơn, không chậm hơn.
+- **Đưa ra câu trả lời chung chung.** "Hiện đại và sạch sẽ" không hữu ích. "Ấm áp, cơ khí, có quan điểm" thì có. Hãy cụ thể. Hãy sẵn sàng không đồng ý với mặc định an toàn.
+- **Coi PRODUCT.md là bất biến.** Tệp là của bạn. Nếu teach đặt thứ gì đó không khá đúng, hãy chỉnh sửa nó. Mọi lệnh đọc tệp hiện tại.
+- **Liệt kê chỉ tính từ cho tham chiếu.** Thương hiệu, sản phẩm, vật in ấn: có tên, không mô tả. "Trang specimen của Klim Type Foundry", không "kỹ thuật và sạch". Phản-tham chiếu cũng nên cụ thể tương đương.

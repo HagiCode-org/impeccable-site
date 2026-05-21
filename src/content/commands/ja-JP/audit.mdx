@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: P0からP3までの重大度による5次元の技術品質チェック。
+highlights:
+  - 好みに基づくフィードバックだけでなく、具体的な課題と重大度が必要。
+  - 機能のマージやリリースに向けて準備している。
+  - モバイル、ダークテーマ、支援技術での潜在的な問題を疑っている。
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Accessibility</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Performance</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Theming</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patterns</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">5つの次元を0〜4で採点し、各課題にP0（リリースブロッカー）からP3（仕上げ）のタグを付与。Auditは文書化し、修正は行いません。結果を <code>/impeccable harden</code>、<code>/impeccable polish</code>、<code>/impeccable optimize</code> に流してください。</p>
+</div>
+
+## いつ使うか
+
+`/impeccable audit` は `/impeccable critique` の技術的対応物です。`/impeccable critique` が「正しく感じるか」を問うのに対し、`/impeccable audit` は「耐えられるか」を問います。アクセシビリティ、パフォーマンス、テーマ、レスポンシブデザイン、アンチパターンチェックを実装に対して実行し、各次元を0〜4で採点し、P0〜P3の重大度評価付きの計画を作成します。
+
+出荷前、品質スプリント中、またはテックリードが「アクセシビリティを本当に見るべきだ」と言った時に使ってください。
+
+## 仕組み
+
+スキルはコードを5つの次元でスキャンします。
+
+1. **アクセシビリティ**：WCAGコントラスト、ARIA、キーボードナビゲーション、セマンティックHTML、フォームラベル。
+2. **パフォーマンス**：レイアウトスラッシング、重いアニメーション、遅延ロードの欠落、バンドル重量。
+3. **テーマ**：ハードコードされたカラー、ダークモードのカバレッジ、トークンの一貫性。
+4. **レスポンシブ**：ブレークポイントの動作、タッチターゲット、モバイルビューポートの扱い。
+5. **アンチパターン**：検出器が実行するのと同じ25の決定論的チェック。
+
+各次元は0〜4のスコアを取得します。各課題には重大度が付きます：P0はリリースをブロック、P1は今スプリントで修正すべき、P2は次サイクル、P3は仕上げ。チケットトラッカーに貼り付けられる単一のドキュメントが返されます。
+
+Auditは何も修正しません。文書化のみです。結果をカテゴリに応じて `/impeccable polish`、`/impeccable harden`、または `/impeccable optimize` に流してください。
+
+## 試してみる
+
+```
+/impeccable audit the checkout flow
+```
+
+期待される出力：
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+P0は `/impeccable harden` に、テーマとタイポグラフィのP1は `/impeccable typeset` と `/impeccable polish` に、残りは `/impeccable polish` に渡してください。
+
+## 注意点
+
+- **`/impeccable critique` と混同すること。** Auditは実装品質です。Critiqueはデザイン品質です。全体像を得るには両方を実行してください。
+- **P0より先にP3を修正すること。** 重大度スケールには理由があります。上から始めてください。
+- **問題ないと思っている次元をスキップすること。** テーマとレスポンシブは、ほとんどの人が大丈夫だと思っているのに大丈夫ではないことが最も多い次元です。

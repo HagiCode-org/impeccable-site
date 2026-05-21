@@ -1,0 +1,50 @@
+---
+slug: onboard
+title: Onboard
+summary: Első használati élmények, üres állapotok és az értékhez vezető utak megtervezése.
+highlights:
+  - Új felhasználók érkeznek kontextus nélkül.
+  - A terméknek jobb első sikeres műveletre van szüksége.
+  - Az üres állapotok és a beállítási lépések túl keveset tanítanak.
+related:
+  - clarify
+  - delight
+  - harden
+---
+
+## Mikor használd
+
+A `/impeccable onboard` azokhoz a pillanatokhoz való, amelyek eldöntik, hogy egy új felhasználó marad-e: az első képernyő, az üres állapot, a beállítási folyamat, a termékbemutató, a „mit csináljak most" űr. Nyúlj hozzá, amikor az aktiváció gyenge, amikor az új felhasználók elhagyják a terméket, mielőtt elérnék az értéket, vagy amikor az üres állapotaid csak annyit mondanak, hogy „még nincs elem", és ott megállnak.
+
+## Hogyan működik
+
+A parancs egyetlen kérdésből indul: mi az aha-pillanat, és milyen gyorsan juthat el oda egy új felhasználó. Minden tervezési döntés erre a pillanatra irányul.
+
+Azokon a felületeken dolgozik, amelyek formálják az első benyomást:
+
+1. **Első futtatási élmény**: a regisztráció utáni pillanatok. A felhasználó lásson-e bemutatót, üres vásznat, kitöltött példát vagy semmit. Válaszd az azt a megközelítést, amely illik a termékhez.
+2. **Üres állapotok**: minden nulla-adat képernyő tájékoztató lesz. Hol vagyok, miért üres ez, mit tegyek ezután, hogyan fog kinézni, ha tele van.
+3. **Beállítás és telepítés**: a kötelező konfiguráció minimalizálva, az alapértések okosak, minden lépés elmagyarázza, miért fontos.
+4. **Fokozatos felfedés**: a haladó funkciók útból maradnak, amíg meg nem érdemlik őket.
+5. **Aktivációs események**: az a pillanat, amikor a felhasználó először megtapasztalja az alapértéket, műszerezve és csendben megünneplésre kerül.
+
+A parancs két gyakori hibaformát ellenáll: a túltutorált bevezetés, ahol a felhasználók egy körhintán kattintanak keresztül, mielőtt megérinthetnének bármit is, és a nulla bevezetés, ahol a felhasználókat egy üres alkalmazásba dobják, és várták tőlük, hogy maguktól rájöjjenek.
+
+## Próbáld ki
+
+```
+/impeccable onboard the editor
+```
+
+Tipikus kimenet:
+
+- Első futtatás: az üres szerkesztőt egy kitöltött példadokumentum váltja fel, amelyet a felhasználó módosíthat. A Mégse gomb elveti a példát, a szerkesztés a tartalmat a felhasználó munkájára cseréli.
+- Üres állapot a dokumentumlistán: „Még nincs dokumentum. Hozd létre az elsőt, vagy importálj a Notionból, Google Docs-ból vagy Markdownból."
+- Beállítás: 6 kötelező mezőről 1-re csökkentve (munkaterület neve). Minden másnak okos alapértéke van, és később a beállításokban szerkeszthető.
+- Aktiváció: amikor a felhasználó először ment egy dokumentumot, egy csendes értesítés jelenik meg: „Mentve. A munkád most már a felhőben van." Egyszeri, nem ismétlődik.
+
+## Gyakori buktatók
+
+- **Termékbemutató hozzáadása alapértelmezett válaszként.** A legtöbb terméknek nincs szüksége bemutatóra. Jobb első képernyőre van szükségük. A bemutatók mankók.
+- **Bevezető tervezése az aha-pillanat meghatározása nélkül.** Ha nem tudod egy mondatban elmondani, mit érezzen a felhasználó az első 60 másodpercben, menj vissza a `/impeccable shape` parancshoz először.
+- **Az onboard futtatása egy hibás folyamaton.** Először javítsd meg a folyamatot. A bevezetés nem menthet meg egy terméket, ahol az alapművelet hibás.

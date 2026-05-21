@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Redakan desain yang berteriak tanpa kehilangan maksudnya.
+highlights:
+  - Ide-ide kuat ada, tetapi halaman terlalu berisik.
+  - Anda membutuhkan kendali tanpa menjadi hambar.
+  - Nada saat ini membanjiri pembacaan atau alur tugas.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Kapan menggunakannya
+
+`/impeccable quieter` adalah penyeimbang dari `/impeccable bolder`. Gunakan ketika antarmuka secara visual agresif, terlalu merangsang, atau mencoba melakukan terlalu banyak hal pada volume penuh. Neon pada gelap, teks gradien di mana-mana, 6 warna aksen, semuanya dianimasikan, bayangan 20px. Gunakan quieter ketika desain perlu bernapas dan Anda menginginkan penyempurnaan tanpa kehilangan sudut pandang.
+
+Juga berguna setelah `/impeccable bolder` terlalu jauh.
+
+## Cara kerjanya
+
+Skill bekerja melalui pengurangan pada empat sumbu:
+
+1. **Warna**: desaturasi, turunkan kroma di OKLCH, tarik aksen kembali ke satu primer ditambah dukungan yang diredam. Tidak lebih dari dua warna yang disengaja.
+2. **Kontras**: lunakkan gelap dan terang ekstrem, tarik rentang masuk. Latar belakang bergerak dari putih murni dan hitam murni ke kertas dan tinta.
+3. **Dekorasi**: hapus bayangan yang tidak melakukan pekerjaan, buang batas yang tidak membawa struktur, pensiunkan gradien yang ada untuk energi daripada hierarki.
+4. **Gerak dan efek**: perlambat animasi, hapus apa pun yang diputar otomatis, buang paralaks dan blur kecuali melayani keterbacaan.
+
+Skill mempertahankan maksud desain. Jika yang asli memiliki sudut pandang, versi quieter memiliki sudut pandang yang sama dengan lebih banyak kepercayaan diri. Penyempurnaan, bukan netralisasi.
+
+## Cobalah
+
+```
+/impeccable quieter the pricing page
+```
+
+Diff tipikal:
+
+- Teks gradien pada harga dihapus, diganti dengan tinta solid pada satu bobot lebih berat
+- Tiga warna aksen dikurangi menjadi satu (magenta), dua lainnya menjadi varian netral
+- Bayangan kartu dikurangi dari `0 20px 40px rgba(0,0,0,0.2)` ke `0 1px 0 var(--color-mist)` (garis halus)
+- Latar belakang berubah dari gradien gelap ke kertas dengan cuci krem halus di bagian atas
+- Animasi hero dari 1.2s easeOut dengan 3 elemen bertahap menjadi fade-in tunggal 260ms
+
+## Jebakan
+
+- **Penggunaan berlebihan.** Quieter dapat menghilangkan kepribadian jika Anda menjalankannya pada sesuatu yang sudah terukur. Gunakan ketika desain terlalu berisik, bukan ketika sudah tepat tegas.
+- **Membingungkan quieter dengan distill.** Quieter mengurangi intensitas. Distill menghapus elemen. Mereka adalah langkah yang berbeda.
+- **Menjalankannya sebagai respons terhadap kritik yang mengatakan "terlalu sibuk".** Sibuk biasanya berarti terlalu banyak hal, bukan terlalu berisik. Coba `/impeccable distill` dulu.

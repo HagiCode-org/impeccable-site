@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Pensa prima di costruire. Produci un brief di design attraverso la scoperta, non attraverso supposizioni.
+highlights:
+  - Vuoi pianificazione senza implementazione per il momento.
+  - Il layout o il tono giusto non sono ancora chiari.
+  - Più stakeholder devono allinearsi sull'intento prima che inizi il lavoro di costruzione.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">Output di /impeccable shape</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Scopo</span>
+        <span class="docs-viz-file-v">Permettere agli iscritti fedeli di cambiare ciò che ricevono senza perderli con la disiscrizione.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Utente</span>
+        <span class="docs-viz-file-v">Di fretta, su mobile, a metà riunione. Legge velocemente, poca pazienza.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Contenuto</span>
+        <span class="docs-viz-file-v">4 tipi di digest, 2 cadenze, un opt-out totale in fondo.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Sensazione</span>
+        <span class="docs-viz-file-v">Calmo, affidabile, nessun pattern ingannevole.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Vincoli</span>
+        <span class="docs-viz-file-v">Mobile-first. Contrasto WCAG AA. Una colonna, nessun modale.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Consegnalo a <code>/impeccable</code>, <code>/impeccable craft</code>, o qualsiasi flusso di implementazione.</div>
+  </div>
+  <p class="docs-viz-caption">Un brief di shape è una bussola, non una specifica. Cattura l'intento, non l'interfaccia. Le skill di implementazione lo leggono prima di scrivere una riga di codice.</p>
+</div>
+
+## Quando usarlo
+
+`/impeccable shape` è dove inizia una funzionalità. Prima che chiunque scriva codice, prima che chiunque discuta del trattamento hero, prima che chiunque scelga un font. Usalo per forzare una conversazione di scoperta su scopo, utenti, contenuti e vincoli, poi cattura le risposte come brief di design su cui le skill di implementazione possono basarsi.
+
+Ricorri a shape ogni volta che una funzionalità sta per iniziare, un ticket è vago, o ti trovi a scrivere JSX per capire cosa dovrebbe essere il prodotto.
+
+## Come funziona
+
+La maggior parte delle interfacce generate dall'IA fallisce non per codice sbagliato, ma per pensiero saltato. Il modello salta a "ecco una griglia di card" senza chiedere "cosa sta cercando di ottenere l'utente". `/impeccable shape` inverte quell'ordine.
+
+La skill esegue un'intervista di scoperta strutturata in conversazione. Non scriverà codice durante questa fase. Le domande coprono:
+
+- **Scopo e contesto**: a cosa serve la funzionalità, chi la usa, in che stato d'attività si trova
+- **Contenuto e dati**: cosa viene mostrato, range realistici, casi limite, cosa è dinamico
+- **Obiettivi di design**: la singola cosa più importante, la sensazione desiderata, esempi di riferimento
+- **Vincoli**: tecnici, di contenuto, di accessibilità, di localizzazione
+
+Rispondi in modo naturale. La skill fa domande di follow-up, non è un modulo. Alla fine produce un brief di design: un artefatto strutturato che puoi consegnare a `/impeccable` o qualsiasi altra skill di implementazione.
+
+Nota: se vuoi il flusso completo (intervista di scoperta, poi dritto alla costruzione), usa `/impeccable craft`. Esegue `/impeccable shape` internamente, poi continua nell'implementazione con iterazione visiva. `/impeccable shape` autonomo è per quando vuoi solo il brief, così puoi portarlo all'approccio di implementazione che preferisci.
+
+## Provalo
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Aspettati una conversazione di 5-10 domande. La skill chiede cose come "chi è la persona che apre questo, ed è già convinta o ancora curiosa" e "cosa succede quando l'utente ha disiscritto tutto, nascondiamo la funzionalità o mostriamo qualcosa". Rispondi, e un brief prende forma.
+
+Da lì puoi consegnare il brief a `/impeccable`, `/impeccable polish` o qualsiasi altra skill. O semplicemente usarlo come riferimento mentre costruisci a mano.
+
+## Insidie
+
+- **Saltarlo perché sembra lento.** L'intervista dura circa 5 minuti. Le riscritture che eviti si misurano in ore.
+- **Trattare il brief come una specifica.** È una bussola, non una checklist. Cattura l'intento, non l'interfaccia.
+- **Rispondere con "standard" o "normale".** La specificità è tutto il punto. Se un utente è "di fretta, su mobile, tra una riunione e l'altra", dillo. Questo cambia tutto a valle.

@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Layout, Abstände und visuellen Rhythmus reparieren.
+highlights:
+  - Der Seite fehlt ein klarer Schwerpunkt.
+  - Gute Inhalte sind vorhanden, aber die Komposition verbirgt sie.
+  - Sie möchten einen stärkeren Fluss, bevor Sie Farbe oder Bewegung anpassen.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Wann man es verwendet
+
+`/impeccable layout` ist für Seiten, bei denen technisch nichts falsch ist, aber auch nichts atmet. Überall gleiche Abstände, monotone Kartenraster, Inhalte die von Rand zu Rand laufen, Hierarchie die sich nur auf Größe verlässt. Greifen Sie zu ihm, wenn ein Layout „sich falsch anfühlt" und Sie nicht artikulieren können, warum.
+
+Gute Auslöser: „alles fühlt sich überfüllt an", „es liest sich wie eine Wand", „ich weiß nicht, wohin ich zuerst schauen soll".
+
+## Wie es funktioniert
+
+Der Skill durchläuft fünf Layout-Dimensionen:
+
+1. **Abstände**: ist die Abstands-Skala konsistent oder gibt es zufällige 13px-Lücken, sind verwandte Elemente eng mit großzügigen Abständen zwischen Gruppen gruppiert, gibt es überhaupt einen Rhythmus.
+2. **Visuelle Hierarchie**: landet das Auge innerhalb von 2 Sekunden auf der primären Aktion, macht die Hierarchie echte Arbeit oder schreit alles.
+3. **Raster und Struktur**: gibt es ein zugrundeliegendes Raster oder ist das Layout zufällig, sind Elemente an Grundlinien ausgerichtet.
+4. **Rhythmus**: wechselt die Seite zwischen engen und großzügigen Abständen, oder ist alles gleichförmig.
+5. **Dichte**: ist das Layout gequetscht oder verschwenderisch, passt die Dichte zum Inhaltstyp.
+
+Korrekturen umfassen meist den Neuaufbau der Abstands-Skala, die Einführung von Asymmetrie, das Zusammenbrechen monotoner Raster zu einem gemischten Layout mit Hero- und unterstützenden Elementen und das Gewähren von echtem Raum für die primäre Aktion.
+
+## Ausprobieren
+
+```
+/impeccable layout the settings page
+```
+
+Typische Änderungen:
+
+- Abstands-Skala vereinheitlicht auf 8 / 16 / 24 / 48 / 96px
+- Abschnittsumbrüche bei 48px, Zeilenabstände bei 16px, Formularfeld-Gruppen bei 8px
+- Primäre Aktionen mit 32px-Puffer aus dem Formularfluss herausgezogen
+- Dekorative Rahmen entfernt, durch abstandsbasierte Gruppierung ersetzt
+- Sidebar- und Hauptspalten-Proportionen neu ausbalanciert (280 / flex vs. 25 / 75)
+
+## Fallstricke
+
+- **Verwechslung mit distill.** Wenn das Problem zu viele Dinge sind, führen Sie zuerst `/impeccable distill` aus. Layout ist zum Anordnen des bereits richtigen Sets.
+- **Erwarten, dass es ein kaputtes Raster rettet.** Wenn die Seite gar kein Raster hat, wird arrange eines erstellen. Wissen Sie nur, dass das Diff größer ausfallen wird, als Sie erwarten.
+- **Das Hierarchie-Urteil ignorieren.** Wenn arrange sagt „nichts ist primär", kann keine Menge an Abstandsarbeit das beheben. Sie brauchen eine Inhalt-Entscheidung, keinen Layout-Tweak.

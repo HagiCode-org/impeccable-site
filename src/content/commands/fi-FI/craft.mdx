@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Muotoile suunnittelu, sitten rakenna se, kaikki yhdessä työnkulussa.
+highlights:
+  - Olet aloittamassa uutta ominaisuutta nollasta.
+  - Haluat löytämisen, toteutuksen ja visuaalisen hienosäädön yhdessä läpikäynnissä.
+  - Preferoit hitaampaa mutta harkitumpaa rakennussykliä.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Löytöhaastattelu. Tarkoitus, käyttäjät, rajoitteet, suunta.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Lataa viitteet</span>
+      <span class="docs-viz-flow-hint">Tilaa, typografia, liike, väri, vuorovaikutus.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Rakenna</span>
+      <span class="docs-viz-flow-hint">Rakenne, hierarkia, tyyppi, väri, tilat, liike, responsiivinen.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iteroi visuaalisesti</span>
+      <span class="docs-viz-flow-hint">Tarkista selaimessa, hienosäädä kunnes se vastaa briefiä.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Jokainen vaihe on ohittamaton. Löytövaihe on jossa useimmat tekoälyn tuotokset epäonnistuvat: siihen mennessä kun koodia on olemassa, ajattelu on lukittu.</p>
+</div>
+
+## Milloin käyttää
+
+`/impeccable craft` on päästä päähän -rakennuskomento. Anna sille ominaisuuden kuvaus ja se suorittaa koko putken: jäsennellyn löydön, viitelatauksen, toteutuksen, visuaalisen iteraation. Käytä sitä kun aloitat uuden ominaisuuden nollasta ja haluat koko työnkulun yhdessä kutsussa.
+
+Turvaudu siihen kun:
+
+- **Rakennat uutta ominaisuutta ja haluat täyden työnkulun.** Et halua hallita vaiheita itse.
+- **Tiedät mitä rakennat mutta et miten sen pitäisi näyttää.** Löytövaihe pakottaa suunnitteluajattelun ennen kuin toteutus lukitsee sen.
+- **Haluat visuaalisen iteraation oletuksena.** `craft` tarkistaa tuloksen selaimessa ja hienosäätää kunnes viimeistely on korkea, sen sijaan että lähettäisi ensimmäisen toimivan version.
+
+Jos haluat vain ajattelua ilman koodia, käytä `/impeccable shape`-komentoa erillään. Jos sinulla on jo selkeä visio ja haluat vain rakentaa, kutsu `/impeccable` suoraan ominaisuuskuvaauksellasi. `craft` on näiden välissä: jäsennelty, täydellinen, mielipiteellinen.
+
+## Miten se toimii
+
+`craft` suorittaa neljä vaihetta järjestyksessä:
+
+1. **Muotoile suunnittelu.** Suorittaa `/impeccable shape`-komennon sisäisesti: lyhyt löytökeskustelu tarkoituksesta, käyttäjistä, sisällöstä, rajoitteista ja tavoitteista. Tulos on suunnittelubriefi, jonka voit lukea ja johon voit vastata.
+2. **Lataa viitteet.** Briefin perusteella hakee oikeat viitetiedostot (tila, typografia, liike, väri, vuorovaikutus, responsiivinen, UX-teksti) niin että mallilla on oleelliset periaatteet ladattuna ennen koodin aloittamista.
+3. **Rakenna.** Toteuttaa ominaisuuden harkitussa järjestyksessä: rakenne ensin, sitten välistys ja hierarkia, sitten tyyppi ja väri, sitten tilat, sitten liike, sitten responsiivinen. Jokainen päätös jäljitettävissä briefiin.
+4. **Visuaalinen iteraatio.** Avaa tuloksen selaimessa, tarkistaa sen briefiä ja anti-pattern-luetteloa vasten ja hienosäätää kunnes se vastaa tarkoitusta. Tämä vaihe on kriittinen. Ensimmäinen toimiva versio ei ole koskaan lähetetty versio.
+
+Löytövaihe on ohittamaton ja se on juuri se pointti. Useimmat tekoälyn tuottamat käyttöliittymät epäonnistuvat koska kukaan ei kysynyt mitä käyttäjä yritti saavuttaa ennen kuin malli aloitti JSX:n kirjoittamisen. `craft` kääntää sen ympäri.
+
+## Kokeile
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Odota ensin 5-10 kysymyksen löytöhaastattelua. Kysymyksiä yleisösi, tuotteesi persoonallisuuden, haluamasi emotionaalisen sävyn, anti-viitteiden ja rajoitteista. Sitten suunnittelubriefi. Sitten toteutus, jossa selain tarkistetaan jokaisessa vaiheessa. Odota useita iteraatiokierroksia visuaalisen viimeistelyn vaiheessa.
+
+Koko ajo on pidempi kuin tyypillinen komento, koska se sisältää ajattelun, rakentamisen ja hienosäädön. Se on kompromissi: enemmän etupään rakennetta, vähemmän jälkipuolen siivousta.
+
+## Sudenkuopat
+
+- **Käyttö pieniin muutoksiin.** `craft` on uusia ominaisuuksia varten, ei kosketuksiin. Olemassa olevaan koodiin turvaudu `/impeccable polish`, `/impeccable critique` tai tiettyyn hienosäätökomentoon.
+- **Löytövaiheen kiirehtiminen.** Haastattelu tuntuu hitaalta verrattuna "aloita vain koodaaminen". Se ei ole. Kysymyksiin vastaaminen huolellisesti tuottaa terävämmän briefin, mikä tuottaa terävämmän rakennuksen, mikä tuottaa vähemmän uudelleenkirjoituksia.
+- **Visuaalisen iteraation ohittaminen.** Vaihe on olemassa syystä. Kuilu "teknisesti toimii" ja "tuntuu oikealta" suljetaan visuaalisella viimeistelyllä, ei koodikatselmoinnilla. Anna sen suorua.

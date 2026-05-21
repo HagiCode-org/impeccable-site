@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Viiden dimension tekninen laaduntarkistus P0-P3 vakavuusasteilla.
+highlights:
+  - Tarvitset konkreettisia ongelmia ja vakavuusasteita, ei vain makupohjaista palautetta.
+  - Valmistelet ominaisuutta yhdistämistä tai julkaisua varten.
+  - Epäilet piileviä rikkinäisyyksiä mobiilissa, tummissa teemoissa tai saavutettavuustarpeiden alla.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Saavutettavuus</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Suorituskyky</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Teemoitus</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsiivisuus</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Anti-patternit</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Viisi ulottuvuutta pisteytettynä 0-4, jokainen löytö merkitty P0 (estää julkaisun) -P3 (viimeistely). Audit dokumentoi; se ei korjaa. Reititä löydökset <code>/impeccable harden</code>-, <code>/impeccable polish</code>- tai <code>/impeccable optimize</code>-komennoille.</p>
+</div>
+
+## Milloin käyttää
+
+`/impeccable audit` on tekninen vastine `/impeccable critique`-komennolle. Missä `/impeccable critique` kysyy "tuntuuko tämä oikealta", `/impeccable audit` kysyy "kestääkö tämä". Se suorittaa saavutettavuus-, suorituskyky-, teemoitus-, responsiivinen suunnittelu- ja anti-pattern-tarkistukset toteutusta vasten, pisteyttää jokaisen dimension 0-4 ja tuottaa suunnitelman P0-P3 vakavuusluokituksilla.
+
+Käytä sitä ennen lähettämistä, laatusprintin aikana, tai aina kun tekninen johtaja sanoo "meidän pitäisi todella katsoa saavutettavuutta".
+
+## Miten se toimii
+
+Taito skannaa koodisi viiden dimension läpi:
+
+1. **Saavutettavuus**: WCAG-kontrasti, ARIA, näppäimistönavigointi, semanttinen HTML, lomaketunnisteet.
+2. **Suorituskyky**: asettelun takomiset, kalliit animaatiot, puuttuva laiska lataus, bundle-koko.
+3. **Teemoitus**: kovakoodatut värit, tumman tilan kattavuus, token-johdonmukaisuus.
+4. **Responsiivisuus**: keskeytyskohtien toiminta, kosketuskohteet, mobiilin näkymän käsittely.
+5. **Anti-patternit**: samat deterministiset 25 tarkistusta jotka tunnistin suorittaa.
+
+Jokainen dimension saa 0-4 pistettä. Jokainen löytö saa vakavuusasteen: P0 estää julkaisun, P1 pitäisi korjata tässä sprintissä, P2 on seuraava sykli, P3 on viimeistelyä. Saat takaisin yhden dokumentin jonka voit liittää tikittimeen.
+
+Audit ei korjaa mitään. Se dokumentoi. Reititä löydökset `/impeccable polish`-, `/impeccable harden`- tai `/impeccable optimize`-komennoille riippuen luokasta.
+
+## Kokeile
+
+```
+/impeccable audit the checkout flow
+```
+
+Odotettu tuloste:
+
+```
+Saavutettavuus: 2/4 (osittainen)
+  P0: Puuttuvat lomaketunnisteet 4 syötteessä
+  P1: Kontrasti 3.1:1 ei-käytössä olevassa painikkeen tilassa
+  P2: Ei näkyvää fokusointia osoitinta mukautetussa pudotusvalikossa
+
+Suorituskyky: 3/4 (hyvä)
+  P1: Hero-kuva ei ladattu laiskasti (340KB)
+  ...
+```
+
+Anna P0:t `/impeccable harden`-komennolle, teemoitus- ja typografia-P1:t `/impeccable typeset`- ja `/impeccable polish`-komennoille, loput `/impeccable polish`-komennolle.
+
+## Sudenkuopat
+
+- **Sekaannus `/impeccable critique`-komennon kanssa.** Audit on toteutuksen laatua. Critique on suunnittelun laatua. Suorita molemmat täydellisen kuvan saamiseksi.
+- **P3:sten korjaaminen ennen P0:sia.** Vakavuusasteikko on olemassa syystä. Aloita ylhäältä.
+- **Dimension ohittaminen, jotka luulet olevan kunnossa.** Teemoitus ja responsiivisuus ovat ne, joita useimmat olettavat kunnossa kunnes ne eivät ole.

@@ -1,0 +1,54 @@
+---
+slug: distill
+title: Distill
+summary: Acımasız çıkarma. Tasarımları özüne kadar soyun.
+highlights:
+  - Sayfada çok fazla rekabet eden fikir var.
+  - Kullanıcılar daha fazla özellik değil, daha hızlı kavrama gerekiyor.
+  - Basitlik iyileştirme, geçici bir ödün vermedir.
+related:
+  - layout
+  - quieter
+  - polish
+---
+
+## Ne zaman kullanılır
+
+`/impeccable distill` orada olmaması gereken şeyleri kaldırır. Rekabet eden butonlar, gereksiz bilgiler, dekoratif kenarlıklar, birinin yettiği yerde üç yazı tipi, üçün ait olduğu yerde altı navigasyon öğesi. Bir arayüz karmaşık, kalabalık veya aynı anda çok fazla şey yapmaya çalışıyor hissettirdiğinde kullanın.
+
+`/impeccable critique` "bilişsel yük" veya "görsel gürültü" işaret ettikten sonra veya bir sayfa birikerek büyüdüğünde ve kimse düzenleme yapmadığında kullanın.
+
+## Nasıl çalışır
+
+Yetenek tek bir sorudan başlar: bu arayüz yapmaya çalıştığı tek iş nedir? Bu işe yardımcı olmayan her şey kıyımdadır.
+
+İki geçişte çalışır:
+
+1. **Karmaşıklık kaynaklarını değerlendirin**. Çok fazla öğe, aşırı varyasyon, bilgi aşırı yükü, görsel gürültü, kafa karıştırıcı hiyerarşi, özellik kayması. Her birini adlandırın.
+2. **Acımasızca düzenleyin**. Gerekli olmayanı kaldırın. Birleştirilebileni birleştirin. Bekleyebileni gizleyin. Varyasyonu tek bir işlemeye birleştirin. Tek bir görsel dile commit olun.
+
+İlke: sayfadaki her öğe varlığını haklı çıkarmalıdır. Daha az özellik değil, daha az engel.
+
+## Deneyin
+
+```
+/impeccable distill this dashboard
+```
+
+Önce: dört kart stili, üç buton varyantı, iki başlık işlemesi, 5 bölüme gruplandırılmış 14 öğeli bir kenar çubuğu.
+
+Bir `/distill` geçişinden sonra, tipik değişiklikler:
+
+- Dört kart stilini birine düşürün
+- Bir buton varyantı seçin, diğerlerini metin bağlantılarına düşürün
+- Başlıkları birleştirin
+- Kenar çubuğunu 5 değil, 3 bölümde gruplayın
+- Gelişmiş seçenekleri bir açığın arkasına gizleyin
+
+Daha az şey. Her biri daha net.
+
+## Tuzaklar
+
+- **Distill ile silmeyi karıştırmak.** Distill engelleri kaldırır. Kullanıcıların ihtiyaç duyduğu özellikleri kaldırmaz. Bir kullanıcı bir şeye her gün güveniyorsa, kesmenin bir yolunu değil, sessizce tutmanın bir yolunu bulun.
+- **Çok erken çalıştırmak.** Özellik hala büyüyorsa, şimdi damıtmak gelecek hafta aynı şeyi tekrar damıtmak demektir. Şekil sabitlenene kadar bekleyin.
+- **Hiyerarşi çalışmasının yerini almasını beklemek.** Bazen doğru düzeltme şeyleri kaldırmak değil, düzenlemektir. Sorun düzen olduğunda, miktar değil, `/impeccable layout` komutunu kullanın.

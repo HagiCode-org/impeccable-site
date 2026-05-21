@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Buat desain bekerja di berbagai layar, perangkat, dan konteks tanpa memotong fitur.
+highlights:
+  - Tata letak saat ini runtuh pada layar yang lebih kecil.
+  - Produk membutuhkan strategi responsif yang lebih bijaksana.
+  - Target sentuh, kepadatan, atau aliran konten bervariasi per perangkat.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Kapan menggunakannya
+
+`/impeccable adapt` untuk mengambil desain yang dibangun untuk satu konteks dan membuatnya bekerja di konteks lain. Mobile dari desktop, tablet dari mobile, cetak dari web, tersemat dari mandiri, email dari dasbor. Gunakan ketika desain sumber solid tetapi hancur di breakpoint lain, pada sentuhan, atau dalam kontainer berbeda.
+
+Bukan untuk membangun responsif dari awal. Untuk itu, mulai dengan `/impeccable` dan bentuk tata letak responsif-pertama. Adapt untuk pengisian kembali "kami tidak pernah memikirkan mobile".
+
+## Cara kerjanya
+
+Skill bekerja melalui empat dimensi kesesuaian kontekstual:
+
+1. **Breakpoint dan tata letak fluid**: kollaps multi-kolom ke tunggal, sesuaikan rentang clamp, perkenalkan breakpoint baru di mana desain benar-benar rusak.
+2. **Target sentuh**: area sentuh minimum 44px, jarak yang cukup antara target yang bersebelahan, zona ketuk yang lebih besar dari batas visual jika diperlukan.
+3. **Pola navigasi**: sidebar desktop menjadi navigasi bawah mobile atau slide-out, toolbar padat kollaps menjadi menu, status hover mendapatkan padanan sentuh.
+4. **Prioritas konten**: putuskan apa yang harus terlihat, apa yang bisa kollaps ke disclosure, apa yang bisa dihapus sepenuhnya untuk konteks itu.
+
+Aturan yang tidak dapat dinegosiasikan: adaptasi, bukan amputasi. Fungsionalitas kritis tidak boleh hilang di mobile hanya karena tidak nyaman. Temukan cara memasukkannya, redesain interaksinya, atau pertimbangkan kembali apakah itu benar-benar kritis di desktop.
+
+## Cobalah
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Perubahan yang diharapkan:
+
+- Grid tiga kolom menjadi kolom tunggal dengan header bagian sebagai pembatas sticky
+- Navigasi sidebar bergerak ke penggulir horizontal di atas konten
+- Toggle mendapatkan padding vertikal 8px agar memenuhi target sentuh 44px
+- Teks bantuan inline bergerak ke ketuk-untuk-menampilkan, bukan hover
+- Bagian "Zona bahaya" meluas sepenuhnya di mobile alih-alih mengkollaps, karena berisi aksi irreversibel dan kami ingin pengguna melihatnya dengan jelas
+
+## Jebakan
+
+- **Memotong fitur.** Jika versi mobile menyembunyikan hal yang bisa dilakukan versi desktop, itu adalah kemunduran, bukan adaptasi. Perjuangkan untuk fitur tersebut.
+- **Memperlakukan mobile sebagai "desktop yang lebih kecil".** Mobile adalah konteks yang berbeda: ibu jari, gangguan, sesi singkat. Adaptasi ke konteksnya, bukan ke lebar viewport.
+- **Melewatkan `/impeccable harden` setelahnya.** Tata letak responsif mengungkapkan kasus tepi. Jalankan hardening setelah adapt untuk menangkap yang hanya muncul pada 320px.

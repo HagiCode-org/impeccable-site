@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: Formgi designet, og bygg det, alt i én flyt.
+highlights:
+  - Du starter en ny funksjon fra null.
+  - Du vil ha oppdagelse, implementering og visuell forbedring i én gjennomgang.
+  - Du foretrekker en tregere, men mer gjennomtenkt bygge-loop.
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">Oppdagelsesintervju. Formål, brukere, begrensninger, retning.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">Last referanser</span>
+      <span class="docs-viz-flow-hint">Romlig, typografi, bevegelse, farge, interaksjon.</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">Bygg</span>
+      <span class="docs-viz-flow-hint">Struktur, hierarki, typografi, farge, tilstander, bevegelse, responsivt.</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">Iterer visuelt</span>
+      <span class="docs-viz-flow-hint">Sjekk i nettleseren, forbedre til det stemmer med briefen.</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Hver fase er uunnværlig. Oppdagelsestrinnet er der de fleste AI-resultater feiler: når koden først eksisterer, er tenkningen låst.</p>
+</div>
+
+## Når du skal bruke den
+
+`/impeccable craft` er den ende-til-ende byggekommandoen. Gi den en funksjonsbeskrivelse, så kjører den hele pipelinen: strukturert oppdagelse, referanselasting, implementering, visuell iterasjon. Bruk den når du starter en ny funksjon fra null og vil ha hele arbeidsflyten i én aktivering.
+
+Bruk den når:
+
+- **Du bygger en ny funksjon og vil ha hele flyten.** Du vil ikke administrere trinnene selv.
+- **Du vet hva du bygger, men ikke hvordan det skal se ut.** Oppdagelsesfasen tvinger designtenkningen før implementeringen låser den fast.
+- **Du vil ha visuell iterasjon som standard.** `craft` sjekker resultatet i en nettleser og forbedrer det til kvaliteten er høy, i stedet for å levere den første fungerende versjonen.
+
+Hvis du bare vil ha tenkningen uten koden, bruk `/impeccable shape` frittstående. Hvis du allerede har en klar visjon og bare vil bygge, kall `/impeccable` direkte med din funksjonsbeskrivelse. `craft` befinner seg i mellom: strukturert, komplett, meningstull.
+
+## Hvordan det fungerer
+
+`craft` kjører fire faser i rekkefølge:
+
+1. **Formgi designet.** Kjører `/impeccable shape` internt: en kort oppdagelsessamtale om formål, brukere, innhold, begrensninger og mål. Utdataene er en designbrief du kan lese og dytte tilbake på.
+2. **Last referanser.** Basert på briefen hentes de riktige referansefilene (romlig, typografi, bevegelse, farge, interaksjon, responsivt, UX-skriving) slik at modellen har de relevante prinsippene lastet før den begynner å kode.
+3. **Bygg.** Implementerer funksjonen i en bevisst rekkefølge: struktur først, deretter avstand og hierarki, så typografi og farge, så tilstander, så bevegelse, så responsivt. Hver beslutning kan spores tilbake til briefen.
+4. **Visuell iterasjon.** Åpner resultatet i en nettleser, sjekker det mot briefen og antimønsterkatalogen, og forbedrer det til det stemmer med intensjonen. Dette trinnet er kritisk. Den første fungerende versjonen er aldri den leverte versjonen.
+
+Oppdagelsesfasen kan ikke hoppes over, og det er poenget. De fleste AI-genererte brukergrensesnitt feiler fordi ingen spurte hva brukeren prøvde å oppnå før modellen begynte å skrive JSX. `craft` snur det på hodet.
+
+## Prøv det
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+Forvent et oppdagelsesintervju med 5 til 10 spørsmål først. Spørsmål om publikummet ditt, produktets personlighet, den emosjonelle tonen du vil ha, antireferanser og begrensninger. Deretter en designbrief. Deretter implementering, med nettleseren sjekket ved hvert stadium. Forvent flere iterasjonsrunder i den visuelle poleringsfasen.
+
+Hele kjøringen er lengre enn en typisk kommando fordi den inkluderer tenkningen, byggingen og forbedringen. Det er avveiningen: mer forhåndsstruktur, mindre opprydding etterpå.
+
+## Fallgruver
+
+- **Å bruke den til små endringer.** `craft` er for nye funksjoner, ikke finpuss. For eksisterende kode, bruk `/impeccable polish`, `/impeccable critique` eller en spesifikk forbedringskommando i stedet.
+- **Å haste gjennom oppdagelsesfasen.** Intervjuet føles tregt sammenlignet med "bare begynn å kode". Det er det ikke. Å svare grundig på spørsmålene gir en skarpere brief, som gir et skarpere bygg, som gir færre omskrivninger.
+- **Å hoppe over visuell iterasjon.** Fasene finnes av en grunn. Gapet mellom "fungerer teknisk" og "føles riktig" lukkes med visuell polering, ikke kodereview. La den kjøre.

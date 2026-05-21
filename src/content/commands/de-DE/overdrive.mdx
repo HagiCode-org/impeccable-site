@@ -1,0 +1,40 @@
+---
+slug: overdrive
+title: Overdrive
+summary: Ein Interface über konventionelle Grenzen hinaustreiben. Shader, Physik, 60fps, filmische Übergänge.
+highlights:
+  - Die Erfahrung soll außergewöhnlich wirken, nicht nur ordentlich.
+  - Reichhaltige Bewegung oder Rendering ist Teil der Produktgeschichte.
+  - Das Team ist bereit, Komplexität zu bezahlen, wo es darauf ankommt.
+related:
+  - animate
+  - delight
+  - colorize
+---
+
+## Wann man es verwendet
+
+`/impeccable overdrive` ist für die Momente, in denen Sie beeindrucken wollen. Ein Hero, der WebGL nutzt. Eine Tabelle, die eine Million Zeilen verarbeitet. Ein Dialog, der aus seinem Auslöser-Element heraus morphed. Ein Formular, das in Echtzeit mit Streaming-Feedback validiert. Ein Seitenübergang, der sich filmisch anfühlt. Verwenden Sie es, wenn das Projektbudget technischen Ehrgeiz erlaubt und das Ergebnis außergewöhnlich wirken muss.
+
+Verwenden Sie es nicht für Operator-Tools, Dashboards oder irgendetwas, wo Zuverlässigkeit Spektakel schlägt. Overdrive verbrennt Komplexität für Wirkung, und dieser Kompromiss lohnt sich nur bei Momenten, die zählen.
+
+## Wie es funktioniert
+
+Der Skill wählt einen Moment aus, um ihn außergewöhnlich zu machen, und verpflichtet sich dazu, anstatt Aufwand über das gesamte Interface zu verteilen. Er greift dann auf Techniken zurück, die die meisten KI-generierten UIs nie berühren: WebGL-Shader, Feder-Physik, Scroll Timeline, View Transitions, Canvas-Animation, GPU-beschleunigte Filter. Alles wird budgetiert, profiliert und bei 60fps getestet, mit eingebauten Reduced-Motion-Fallbacks.
+
+Overdrive-Ausgabe wird mit `──── ⚡ OVERDRIVE ────` angekündigt, damit Sie wissen, dass Sie einen ambitionierteren Modus betreten. Erwarten Sie größere Diffs, neue Abhängigkeiten und Implementierungstiefe, die über das hinausgeht, was andere Skills produzieren.
+
+## Ausprobieren
+
+```
+/impeccable overdrive the landing hero
+```
+
+Ein konkreter Durchlauf könnte einen statischen Hero durch einen WebGL-Shader-Hintergrund ersetzen, gesteuert durch Mausposition, eine Display-Schlagzeile, die sich mit einer Maske beim Scrollen enthüllt unter Verwendung der Scroll Timeline API, und einen View Transition auf dem CTA, der zur nächsten Seite morphed. Plus einen Reduced-Motion-Fallback, der alles durch eine saubere statische Komposition ersetzt.
+
+## Fallstricke
+
+- **Überall verwenden.** Overdrive funktioniert, weil es selten ist. Wenn jede Seite filmische Momente hat, ist keiner davon filmisch.
+- - **Ohne Reduced-Motion-Fallbacks ausliefern.** Nicht verhandelbar. Overdrive fügt sie automatisch hinzu; entfernen Sie sie nicht.
+- **Performance ignorieren.** Außergewöhnliche Momente müssen trotzdem 60fps erreichen. Wenn der Effekt Frames fallen lässt, kürzen oder optimieren. Langsames Spektakel ist schlechter als einfaches gut gemachtes.
+- **Overdrive ausführen, bevor das Basis-Interface solide ist.** Spektakel auf einem kaputten Fundament wirkt wie Ablenkung, nicht wie Delight.

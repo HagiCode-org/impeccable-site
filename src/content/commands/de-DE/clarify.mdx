@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Verwirrende UX-Texte umschreiben, damit Interfaces sich selbst erklären.
+highlights:
+  - Nutzer zögern, weil die Formulierung vage ist.
+  - Das Interface braucht bessere Instruktions- oder Fehler-Texte.
+  - Der Produkt-Ablauf ist in Ordnung, aber die Sprache bremst die Leute aus.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Wann man es verwendet
+
+`/impeccable clarify` ist für Interface-Texte, die Menschen zum Nachdenken bringen. Verwirrende Beschriftungen, mehrdeutige Button-Texte, Fehlermeldungen die den Nutzer beschuldigen, Tooltips die die Beschriftung wiederholen, Empty States die nichts Nützliches sagen. Verwenden Sie es, wenn das Problem nicht das Layout oder die Farbe ist, sondern die Worte.
+
+Gute Auslöser: „Nutzer verstehen dieses Feld nicht", „die Fehlermeldung ist nicht hilfreich", „ich kann keinen guten Button-Text schreiben", „dieser Tooltip ist verschwendet".
+
+## Wie es funktioniert
+
+Der Skill schreibt Texte auf den Oberflächen um, wo die meisten UX-Text-Probleme leben:
+
+1. **Beschriftungen und Feld-Hinweise**: direkt, spezifisch, sagen was erwartet wird.
+2. **Button-Texte**: verb-zuerst, beschreibt das Ergebnis, nicht die Aktion. „Änderungen speichern" nicht „OK".
+3. **Fehlermeldungen**: erklären was schiefgelaufen ist, wessen Schuld es ist, und was als Nächstes zu tun ist. Niemals den Nutzer beschuldigen.
+4. **Empty States**: den Nutzer orientieren, erklären warum der Zustand leer ist, einen nächsten Schritt anbieten.
+5. **Tooltips und Hilfetexte**: Informationen hinzufügen, die die Beschriftung nicht tragen kann, sie niemals wiederholen.
+6. **Bestätigungsdialoge**: die Konsequenzen benennen, nicht die Aktion.
+
+Der Skill nutzt das Publikum und den mentalen Zustand aus `PRODUCT.md`, um die Stimme abzustimmen. Technisches Publikum bekommt präzise Sprache. Consumer-Publikum bekommt einfache Sprache. Eilige Nutzer bekommen kurze Texte. Ängstliche Nutzer (Zahlung, Löschen) bekommen Beruhigung.
+
+## Ausprobieren
+
+```
+/impeccable clarify the billing form
+```
+
+Vorher und nachher, typisch:
+
+- Beschriftung „Rechnungsadresse" → „Adresse auf Ihrer Karte"
+- Platzhalter „Geben Sie Ihre USt-ID ein" → „USt-ID (optional, für Unternehmen)"
+- Fehler „Ungültige Eingabe" → „Diese Kartennummer hat 15 Stellen. Sie haben 14 eingegeben."
+- Button „Absenden" → „29 € belasten und abonnieren"
+- Empty State „Noch keine Transaktionen" → „Ihre erste Belastung erscheint hier nach Ihrer ersten Bestellung."
+
+## Fallstricke
+
+- **Cleverer statt klarer schreiben.** Clarify ist nicht für Stimmen-Upgrades. Wenn der Text bereits klar ist, greifen Sie nicht zu diesem Skill. Verwenden Sie stattdessen `/impeccable delight`, wenn Sie Persönlichkeit möchten.
+- **Die Publikums-Frage überspringen.** Clarify muss wissen, wer liest. Wenn `PRODUCT.md` das technische Niveau des Publikums nicht angibt, werden die Umschreibungen generisch.
+- **Clarify auf Marketing-Texte anwenden.** Clarify ist für funktionale UX-Texte: Beschriftungen, Fehler, Anweisungen. Marketing-Texte brauchen einen anderen Satz von Maßnahmen und einen menschlichen Schreiber.

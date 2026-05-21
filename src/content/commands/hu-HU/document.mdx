@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Spec-kompatibilis DESIGN.md generálása, amely rögzíti a vizuális rendszert, hogy minden AI ügynök márkanak megfelelően dolgozzon.
+highlights:
+  - A kódbázis már tartalmaz egy valódi dizájnnyelvet.
+  - Szükség van egy hordozható összefoglalóra a színekről, tipográfiáról, térközökről és komponensekről.
+  - A jövőbeli tervezési munka sodródik, mert a rendszer implicit.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch formátum</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Áttekintés</span>
+      </div>
+      <p class="docs-viz-designmd-note">Kreatív Északi Csillag: <em>„A Szerkesztőségi Szentély."</em> Csendes tipográfia, bőséges tér, egy elkötelezett akcentus.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Színek</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Tipográfia</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Kiemelés</span>
+      </div>
+      <p class="docs-viz-designmd-note">Alapértelmezés szerint lapos. Az árnyékok csak állapotválaszként jelennek meg.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Komponensek</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Feliratkozás</span>
+        <span class="docs-viz-designmd-chip">szűrő</span>
+        <span class="docs-viz-designmd-card">kártya</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Tennivalók és Tilalmak</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">A semleges színeket az akcentus árnyalata felé tickeltsd.</span>
+        <span class="docs-viz-designmd-dont">Gradiens szöveg a kiemeléshez.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">A hat szakasz rögzített, rögzített sorrendben, rögzített nevekkel. Mellette a <code>DESIGN.json</code> gépileg olvasható mellékként kerül szállításra a Live Mode dizájn panelhez.</p>
+</div>
+
+## Mikor használd
+
+Futtasd a `/impeccable document` parancsot, ha már van annyi vizuális rendszered, hogy dokumentálni érdemes: színek, tipográfia, legalább egy gomb és egy kártya. A parancs átvizsgálja a kódbázist, kinyeri a talált tokeneket és komponensmintákat, és egy `DESIGN.md` fájlt ír a projekt gyökerébe, amely követi a [Google Stitch DESIGN.md formátumot](https://stitch.withgoogle.com/docs/design-md/format/), hat szakasz rögzített sorrendben, kompatibilis minden más DESIGN.md-tudó eszközzel.
+
+Nyúlj hozzá, amikor:
+
+- **Éppen futtattad a `/impeccable teach` parancsot** és a `PRODUCT.md` már létezik. A document az ehhez tartozó vizuális oldal fájl.
+- **Egy parancs felhívta a figyelmedet.** A Live, craft és polish parancsok mind olvassák a DESIGN.md-t. Ha hiányzik, a szakértelem javasolja, hogy előbb futtasd a document parancsot.
+- **A dizájn elcsúszott** egy régebbi DESIGN.md-hez képest, és a fájl már nem írja le az élő rendszert.
+- **Egy nagy átdizájn előtt**, hogy az aktuális állapot referenciaként rögzüljön a következő irányhoz.
+
+Olyan projekteknél, ahol még nincs kód (friss `teach` futtatás, semmi sincs felépítve), van egy vetési mód: az `/impeccable document --seed` öt gyors stratégiai kérdést tesz fel (színstratégia, tipográfiai irány, mozgásenergia, referenciák, anti-referenciák), és egy állványzatot ír. Futtasd újra vizsgálati módban, ha már van kód.
+
+## Hogyan működik
+
+A vizsgálati futás prioritási sorrendben keresi a dizájneszközöket: CSS egyéni tulajdonságok, Tailwind konfig, CSS-in-JS témák, dizájntoken fájlok, komponensforrás, a globális stíluslap, és végül a kiszámított stílusok az élő renderelt kimenetből, ha elérhető böngésző. Mindent automatikusan kinyer, amit tud, majd egyetlen csoportosított kérdést tesz fel azokról a részekről, amelyek kreatív bevitelt igényelnek: a **Kreatív Északi Csillag** (egyetlen elnevezett metafora az egész rendszerre, mint „A Szerkesztőségi Szentély"), leíró színnevek, a kiemelésfilozófia és a komponensjellemző.
+
+A kimenet egy DESIGN.md pontosan hat szakasszal: Áttekintés, Színek, Tipográfia, Kiemelés, Komponensek, Tennivalók és Tilalmak. A fejlécek karakterpontra rögzítettek, hogy a fájl más eszközök által elemezhető legyen. Mellette a `DESIGN.json` gépileg olvasható mellékként íródik. Ez a mellék az, amit a live-mode dizájn panel használ arra, hogy *ezen projekt* tényleges gomb-, bemenet-, navigációs és kártyacsempéit renderelje generikus közelítés helyett.
+
+Minden más parancs a meghíváskor beolvassa a DESIGN.md-t. A variánsok, polírozások, auditok és új funkciók a vizuális rendszert kapásból öröklik, anélkül, hogy meg kellene mondani.
+
+## Próbáld ki
+
+```
+/impeccable document
+```
+
+Egy olyan projektnél, ahol már definiáltak a tokenek, ez körülbelül két percet vesz igénybe: a vizsgálat megtalálja a palettát és a tipográfiai vermet, választasz egy Északi Csillagot 2 vagy 3 lehetőség közül, megerősíted a leíró színneveket („Mély tompa ciánkék", nem „blue-800"), és a fájl a projekt gyökerébe kerül.
+
+Egy friss projektnél:
+
+```
+/impeccable document --seed
+```
+
+Öt kérdés, körülbelül öt perc. A fájl egy állványzat, egy `<!-- SEED -->` kommenttel megjelölve, őszintén jelzi, mi is valójában. Futtasd újra a flag nélkül, miután implementáltad a tokeneket.
+
+## Gyakori buktatók
+
+- **Túl korai futtatás.** Olyan projektnél, ahol nincsenek implementált tokenek, a vetési mód a helyes választás. Ne gyárts teljes specifikációt, amit a kód nem tud alátámasztani. Egy hamis DESIGN.md rosszabb, mint egyáltalán nincs DESIGN.md.
+- **A DESIGN.md kezelése kizárólag emberi dokumentációként.** Elsősorban az AI-nak szól. Minden más parancs beolvassa. A formátum határozottsága („soha", „mindig", Elnevezett Szabályok) szándékos.
+- **Elrendezés / Mozgás / Reszponzív legfelső szintű szakasz hozzáadása.** A spec hat szakaszból áll, rögzített sorrendben, rögzített nevekkel. Az elrendezés vagy mozgás tartalmát csomagold az Áttekintésbe (filozófiai szintű szabályok) vagy a Komponensekbe (komponensenkénti viselkedés).
+- **Meglévő DESIGN.md csendes felülírása.** A document mindig megerősítést kér. Ha tiszta lappal akarsz indulni, nevezd át a meglévő fájlt, vagy mondd meg kifejezetten a szakértelemnek, hogy írja felül.

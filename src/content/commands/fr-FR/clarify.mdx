@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Réécrire la copie UX confuse pour que les interfaces s'expliquent d'elles-mêmes.
+highlights:
+  - Les utilisateurs hésitent parce que le libellé est vague.
+  - L'interface a besoin d'une meilleure copie d'instruction ou d'erreur.
+  - Le flux produit est bon, mais le langage ralentit les gens.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Quand l'utiliser
+
+`/impeccable clarify` est pour le texte d'interface qui fait s'arrêter et réfléchir. Des libellés confus, des boutons ambigus, des messages d'erreur qui blâment l'utilisateur, des infobulles qui répètent le libellé, des états vides qui ne disent rien d'utile. Utilisez-le quand le problème n'est pas la mise en page ni la couleur, ce sont les mots.
+
+Bons déclencheurs : « les utilisateurs ne comprennent pas ce champ », « le message d'erreur n'est pas utile », « je n'arrive pas à écrire un bon libellé de bouton », « cette infobulle est inutile ».
+
+## Comment ça marche
+
+La compétence réécrit le texte sur les surfaces où se trouvent la plupart des problèmes de copie UX :
+
+1. **Libellés et indices de champ** : directs, spécifiques, disent ce qui est attendu.
+2. **Copie de bouton** : verbe d'abord, décrit le résultat, pas l'action. « Enregistrer les modifications » pas « OK ».
+3. **Messages d'erreur** : expliquent ce qui s'est mal passé, de qui c'est la faute, et quoi faire ensuite. Ne blâment jamais l'utilisateur.
+4. **États vides** : orientent l'utilisateur, expliquent pourquoi l'état est vide, offrent une prochaine étape.
+5. **Infobulles et texte d'aide** : ajoutent de l'information que le libellé ne peut pas porter, ne la répètent jamais.
+6. **Boîtes de dialogue de confirmation** : nomment les conséquences, pas l'action.
+
+La compétence utilise l'audience et l'état mental de `PRODUCT.md` pour ajuster la voix. Une audience technique reçoit un langage précis. Une audience grand public reçoit un langage simple. Les utilisateurs pressés reçoivent du texte court. Les utilisateurs anxieux (paiement, suppression) reçoivent de la rassurance.
+
+## Essayez
+
+```
+/impeccable clarify the billing form
+```
+
+Avant et après, typique :
+
+- Libellé « Adresse de facturation » → « Adresse sur votre carte »
+- Placeholder « Entrez votre numéro de TVA » → « Numéro de TVA (optionnel, pour les entreprises) »
+- Erreur « Saisie invalide » → « Ce numéro de carte fait 15 chiffres. Vous en avez saisi 14. »
+- Bouton « Soumettre » → « Débiter 29 € et s'abonner »
+- État vide « Aucune transaction pour le moment » → « Votre premier débit apparaîtra ici après votre première commande. »
+
+## Pièges courants
+
+- **Écrire plus clever, pas plus clair.** Clarify n'est pas pour les améliorations de ton. Si la copie est déjà claire, ne faites pas appel à cette compétence. Utilisez `/impeccable delight` quand vous voulez de la personnalité.
+- **Sauter la question d'audience.** Clarify a besoin de savoir qui lit. Si `PRODUCT.md` ne spécifie pas le niveau technique de l'audience, les réécritures seront génériques.
+- **Exécuter clarify sur la copie marketing.** Clarify est pour le texte UX fonctionnel : libellés, erreurs, instructions. La copie marketing nécessite un ensemble de mouvements différent et un rédacteur humain.

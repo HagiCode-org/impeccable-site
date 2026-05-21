@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Et designreview med scoring, personatests og automatisk detektion.
+highlights:
+  - Du vil have fundatering om svage designvalg, ikke en genopbygning fra bunden.
+  - Du har brug for scoring, designbegrundelse og sandsynlige næste skridt.
+  - Grænsefladen virker, men føles stadig forkert.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">AI slop kendelse</span>
+        <span class="docs-viz-critique-verdict-value">FEJL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristikker (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Synlighed af status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Match med den virkelige verden</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Konsistens og standarder</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Fejlforebyggelse</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Genkendelse frem for huskning</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personaer</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Evaluatoren</span>
+              <span class="docs-viz-critique-persona-note">Sammenligner os med to alternativer en tirsdag aften.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Den tilbagevendende bruger</span>
+              <span class="docs-viz-critique-persona-note">Kender produktet, på mobil, har travlt.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Skeptikeren</span>
+              <span class="docs-viz-critique-persona-note">Har set enhver SaaS-landing og er keder sig.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">De to gennemgange (LLM-designreview plus den deterministiske detektor) flettes til én prioriteret liste. Hvad der virker, hvad der skal rettes, og de provokerende spørgsmål, det er værd at besvare inden udgivelse.</p>
+</div>
+
+## Hvornår du skal bruge den
+
+Grib efter `/impeccable critique`, når du vil have en ærlig second opinion på noget, du allerede har bygget. Ikke "virker det" men "er det godt". Færdigheden scorer din grænseflade mod Nielsens 10 heuristikker, kører kognitiv belastningskontrol, tester gennem personalinser og krydsrefererer en automatisk detektor for 25 konkrete anti-patterns.
+
+Brug den, når en side er funktionelt færdig, og du vil vide, om den læser som bevidst eller som AI-slop.
+
+## Hvordan det virker
+
+`/impeccable critique` kører to uafhængige vurderinger parallelt, så de ikke påvirker hinanden.
+
+Den første er et **LLM-designreview**: modellen læser din kildekode, inspicerer visuelt den live-side, hvis browserautomatisering er tilgængelig, og gennemgår impeccable-færdighedens fulde DO/DON'T-katalog. Den scorer Nielsens heuristikker, tæller kognitive belastningsfejl, sporer den emotionelle rejse gennem flowet og markerer AI-slop.
+
+Den anden er en **automatisk detektor** (`npx impeccable detect`), der deterministisk finder gradient-tekst, lilla paletter, side-fane-grænser, indlejrede kort, linjelængdeproblemer og de andre synlige fingeraftryk af generisk AI-output.
+
+De to rapporter flettes til én prioriteret liste: hvad der virker, de tre til fem ting der skal rettes, og de provokerende spørgsmål, det er værd at besvare inden udgivelse.
+
+## Prøv det
+
+Peg på en side:
+
+```
+/impeccable critique the homepage hero
+```
+
+Du får en scorerapport tilbage. Typisk udseende:
+
+- **AI slop kendelse**: bestået / ikke bestået med de specifikke kendetegn
+- **Heuristik-scores**: 10 tal, 0 til 4
+- **Kognitiv belastning**: fejltæller ud af 8
+- **Prioriterede problemer**: tre til fem punkter, hver med hvad, hvorfor og løsning
+- **Spørgsmål at besvare**: dem som grænsefladen selv ikke kan beslutte for dig
+
+Derfra, par med `/impeccable polish` eller `/impeccable distill` for at handle på rettelserne.
+
+## Faldgruber
+
+- **At køre den på ufærdigt arbejde.** Critique er til færdige sider. En tom tilstand med tre TODOs vil score dårligt, fordi den ikke er færdig, ikke fordi den er dårlig.
+- **At ignorere spørgsmålene til sidst.** De er normalt de rettelser, der ændrer designet mest.
+- **At behandle heuristik-scores som en karakter.** De er diagnostiske, ikke evaluerende. En 3/4 på en heuristik, der betyder mindre for din kontekst, er fint.

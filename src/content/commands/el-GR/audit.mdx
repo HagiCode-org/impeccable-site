@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Έλεγχος τεχνικής ποιότητας πέντε διαστάσεων με σοβαρότητα P0 έως P3.
+highlights:
+  - Χρειάζεστε συγκεκριμένα προβλήματα και σοβαρότητα, όχι μόνο ανατροφοδότηση βάσει γούστου.
+  - Προετοιμάζετε ένα feature για συγχώνευση ή κυκλοφορία.
+  - Υποψιάζεστε κρυφές βλάβες σε κινητά, σε σκοτεινά θέματα ή υπό ανάγκες υποβοήθησης.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Προσβασιμότητα</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Απόδοση</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Θεματολογία</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsive</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Анти-πρότυπα</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Πέντε διαστάσεις βαθμολογημένες 0 έως 4, κάθε εύρημα επισημασμένο P0 (μπλοκάρει κυκλοφορία) έως P3 (φινίρισμα). Το Audit τεκμηριώνει· δεν διορθώνει. Δρομολογήστε τα ευρήματα στο <code>/impeccable harden</code>, <code>/impeccable polish</code> ή <code>/impeccable optimize</code>.</p>
+</div>
+
+## Πότε να τη χρησιμοποιήσετε
+
+Το `/impeccable audit` είναι το τεχνικό αντίστοιχο του `/impeccable critique`. Όπου το `/impeccable critique` ρωτά «νιώθετε σωστά αυτό», το `/impeccable audit` ρωτά «αντέχει αυτό». Εκτελεί ελέγχους προσβασιμότητας, απόδοσης, θεματολογίας, responsive σχεδιασμού и αντι-προτύπων έναντι της υλοποίησης, βαθμολογεί κάθε διάσταση 0 έως 4, и παράγει ένα σχέδιο με κατατάξεις σοβαρότητας P0 έως P3.
+
+Χρησιμοποιήστε το πριν την αποστολή, κατά τη διάρκεια ενός sprint ποιότητας, ή όταν ένας tech lead λέει «πρέπει πραγματικά να κοιτάξουμε την προσβασιμότητα».
+
+## Πώς λειτουργεί
+
+Η δεξιότητα σαρώνει τον κώδικά σας σε πέντε διαστάσεις:
+
+1. **Προσβασιμότητα**: αντίθεση WCAG, ARIA, πλοήγηση πληκτρολογίου, σημασιολογικό HTML, ετικέτες φορμών.
+2. **Απόδοση**: ταλαιπωρία διάταξης, ακριβοί animations, έλλειψη lazy loading, μέγεθος bundle.
+3. **Θεματολογία**: hardcoded χρώματα, κάλυψη dark mode, συνοχή tokens.
+4. **Responsive**: συμπεριφορά breakpoints, touch targets, διαχείριση mobile viewport.
+5. **Анти-πρότυπα**: οι ίδιοι 25 ντετερμινιστικοί έλεγχοι που εκτελεί ο ανιχνευτής.
+
+Κάθε διάσταση παίρνει βαθμολογία 0 έως 4. Κάθε εύρημα παίρνει σοβαρότητα: P0 μπλοκάρει την κυκλοφορία, P1 πρέπει να διορθωθεί αυτό το sprint, P2 είναι για τον επόμενο κύκλο, P3 είναι φινίρισμα. Λαμβάνετε ένα έγγραφο που μπορείτε να επικολλήσετε σε ένα σύστημα παρακολούθησης tickets.
+
+Το Audit δεν διορθώνει τίποτα. Τεκμηριώνει. Δρομολογήστε τα ευρήματα στο `/impeccable polish`, `/impeccable harden` ή `/impeccable optimize` ανάλογα με την κατηγορία.
+
+## Δοκιμάστε το
+
+```
+/impeccable audit the checkout flow
+```
+
+Αναμενόμενο αποτέλεσμα:
+
+```
+Προσβασιμότητα: 2/4 (μερική)
+  P0: Λείπουν ετικέτες φορμών σε 4 πεδία
+  P1: Αντίθεση 3.1:1 στην κατάσταση απενεργοποιημένου κουμπιού
+  P2: Κανένας ορατός δείκτης εστίασης στο προσαρμοσμένο dropdown
+
+Απόδοση: 3/4 (καλή)
+  P1: Η εικόνα hero δεν έχει lazy-load (340KB)
+  ...
+```
+
+Δώστε τα P0 στο `/impeccable harden`, τα P1 θεματολογίας και τυπογραφίας στο `/impeccable typeset` και `/impeccable polish`, τα υπόλοιπα στο `/impeccable polish`.
+
+## Παγίδες
+
+- **Σύγχυση με το `/impeccable critique`.** Το Audit είναι ποιότητα υλοποίησης. Η Critique είναι ποιότητα σχεδιασμού. Εκτελέστε και τα δύο για πλήρη εικόνα.
+- **Διόρθωση P3 πριν P0.** Η κλίμακα σοβαρότητας υπάρχει για κάποιο λόγο. Ξεκινήστε από την κορυφή.
+- **Παράλειψη των διαστάσεων που νομίζετε ότι είναι εντάξει.** Η θεματολογία και το responsive είναι αυτές που οι περισσότεροι υποθέτουν ότι είναι εντάξει μέχρι να αποδειχθεί ότι δεν είναι.

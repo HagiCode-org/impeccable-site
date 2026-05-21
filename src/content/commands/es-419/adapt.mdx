@@ -1,0 +1,50 @@
+---
+slug: adapt
+title: Adapt
+summary: Haz que los disen os funcionen en diferentes pantallas, dispositivos y contextos sin amputar funcionalidades.
+highlights:
+  - El layout actual colapsa en pantallas mas pequenas.
+  - El producto necesita una estrategia responsive mas reflexiva.
+  - Los targets tactiles, la densidad o el flujo de contenido varian por dispositivo.
+related:
+  - layout
+  - clarify
+  - harden
+---
+
+## Cuando usarlo
+
+`/impeccable adapt` es para tomar un diseno construido para un contexto y hacerlo funcionar en otro. Mobil desde desktop, tablet desde movil, impresion desde web, embebido desde independiente, email desde dashboard. Usalo cuando el diseno fuente es solido pero se desmorona en otros breakpoints, en tactil, o en un contenedor diferente.
+
+No es para construir responsive desde cero. Para eso, comienza con `/impeccable` y da forma al layout responsive-first. Adapt es para el relleno de "nunca pensamos en movil".
+
+## Como funciona
+
+La habilidad trabaja a traves de cuatro dimensiones de ajuste contextual:
+
+1. **Breakpoints y layout fluido**: colapsar multi-columna a una sola, ajustar rangos de clamp, introducir nuevos breakpoints donde el diseno genuinamente se rompe.
+2. **Targets tactiles**: areas de toque minimo de 44px, espaciado suficiente entre targets adyacentes, zonas de toque mas grandes que los limites visuales donde sea necesario.
+3. **Patrones de navegacion**: las barras laterales de desktop se convierten en navegacion inferior movil o paneles deslizantes, las barras de herramientas densas colapsan en menus, los estados hover obtienen equivalentes tactiles.
+4. **Prioridad de contenido**: decidir que debe ser visible, que puede colapsar en desplegables, que puede eliminarse por completo para ese contexto.
+
+La regla innegociable: adapta, no amputes. La funcionalidad critica no puede desaparecer en movil solo porque es inconveniente. Encuentra una forma de ajustarla, redisena la interaccion, o reconsidera si realmente era critica en desktop.
+
+## Probalo
+
+```
+/impeccable adapt the settings page for mobile
+```
+
+Cambios esperados:
+
+- La grilla de tres columnas se convierte en una sola columna con encabezados de seccion actuando como divisores adhesivos
+- La navegacion lateral se mueve a un desplazador horizontal sobre el contenido
+- Los toggles ganan 8px de relleno vertical para cumplir los targets tactiles de 44px
+- El texto de ayuda en linea se mueve a tocar-para-revelar, no hover
+- La seccion "Zona de peligro" se expande completamente en movil en lugar de colapsar, porque contiene acciones irreversibles y queremos que los usuarios las vean claramente
+
+## Errores comunes
+
+- **Amputar funcionalidades.** Si la version movil oculta cosas que la version desktop puede hacer, eso es una regresion, no una adaptacion. Lucha por la funcionalidad.
+- **Tratar movil como "desktop mas pequeno".** Movil es un contexto diferente: pulgares, interrupciones, sesiones cortas. Adapta al contexto, no al ancho del viewport.
+- **Saltarse `/impeccable harden` despues.** Los layouts responsive revelan casos limite. Ejecuta hardening despues de adapt para atrapar los que solo aparecen a 320px.

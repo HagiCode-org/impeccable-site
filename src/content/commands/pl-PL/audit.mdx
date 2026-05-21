@@ -1,0 +1,109 @@
+---
+slug: audit
+title: Audit
+summary: Pięciowymiarowe sprawdzenie jakości technicznej z poziomami P0 do P3.
+highlights:
+  - Potrzebujesz konkretnych problemów i ich wagi, nie tylko opinii opartych na guście.
+  - Przygotowujesz funkcję do scalenia lub wydania.
+  - Podejrzewasz ukryte błędy na urządzeniach mobilnych, w ciemnych motywach lub przy potrzebach asystujących.
+related:
+  - critique
+  - harden
+  - optimize
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-report">
+    <div class="docs-viz-report-head">
+      <div>
+        <div class="docs-viz-report-title">/impeccable audit the checkout flow</div>
+        <div class="docs-viz-report-target">src/checkout/**</div>
+      </div>
+      <div class="docs-viz-report-score">
+        <span class="docs-viz-report-score-num">2.6</span>
+        <span class="docs-viz-report-score-out">/ 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-dims">
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Dostępność</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--fail" style="width:50%"></span></span>
+        <span class="docs-viz-report-dim-score">2 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Wydajność</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Motywy</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:62%"></span></span>
+        <span class="docs-viz-report-dim-score">2.5 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Responsywność</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill" style="width:75%"></span></span>
+        <span class="docs-viz-report-dim-score">3 / 4</span>
+      </div>
+      <div class="docs-viz-report-dim">
+        <span class="docs-viz-report-dim-name">Antywzorce</span>
+        <span class="docs-viz-report-dim-bar"><span class="docs-viz-report-dim-fill docs-viz-report-dim-fill--warn" style="width:70%"></span></span>
+        <span class="docs-viz-report-dim-score">2.8 / 4</span>
+      </div>
+    </div>
+    <div class="docs-viz-report-issues">
+      <span class="docs-viz-report-sev docs-viz-report-sev--p0">P0<span class="docs-viz-report-sev-n">2</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p1">P1<span class="docs-viz-report-sev-n">5</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p2">P2<span class="docs-viz-report-sev-n">8</span></span>
+      <span class="docs-viz-report-sev docs-viz-report-sev--p3">P3<span class="docs-viz-report-sev-n">14</span></span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Pięć wymiarów ocenionych od 0 do 4, każde ustalenie otagowane P0 (blokuje wydanie) do P3 (wykończenie). Audit dokumentuje; nie naprawia. Przekaż ustalenia do <code>/impeccable harden</code>, <code>/impeccable polish</code> lub <code>/impeccable optimize</code>.</p>
+</div>
+
+## Kiedy używać
+
+`/impeccable audit` to techniczny odpowiednik `/impeccable critique`. Tam gdzie `/impeccable critique` pyta "czy to wygląda dobrze", `/impeccable audit` pyta "czy to wytrzyma próbę". Uruchamia sprawdzenia dostępności, wydajności, motywów, responsywnego projektowania i antywzorców względem implementacji, ocenia każdy wymiar od 0 do 4 i tworzy plan z ocenami wagi od P0 do P3.
+
+Użyj przed wydaniem, podczas sprintu jakości lub kiedy tech lead mówi "naprawdę powinniśmy spojrzeć na dostępność".
+
+## Jak to działa
+
+Umiejętność skanuje twój kod w pięciu wymiarach:
+
+1. **Dostępność**: kontrast WCAG, ARIA, nawigacja klawiaturą, semantyczny HTML, etykiety formularzy.
+2. **Wydajność**: thrashing układu, kosztowne animacje, brak lazy loadingu, waga bundla.
+3. **Motywy**: zakodowane na sztywno kolory, pokrycie dark mode, spójność tokenów.
+4. **Responsywność**: zachowanie na punktach przełamania, obszary dotyku, obsługa viewportu mobilnego.
+5. **Antywzorce**: te same deterministyczne 25 sprawdzeń, co detektor.
+
+Każdy wymiar dostaje ocenę od 0 do 4. Każde ustalenie dostaje wagę: P0 blokuje wydanie, P1 powinno być naprawione w tym sprincie, P2 w następnym cyklu, P3 to wykończenie. Otrzymujesz z powrotem jeden dokument, który możesz wkleić do trackera zgłoszeń.
+
+Audit niczego nie naprawia. Dokumentuje. Przekaż ustalenia do `/impeccable polish`, `/impeccable harden` lub `/impeccable optimize` w zależności od kategorii.
+
+## Wypróbuj
+
+```
+/impeccable audit the checkout flow
+```
+
+Oczekiwany wynik:
+
+```
+Accessibility: 2/4 (partial)
+  P0: Missing form labels on 4 inputs
+  P1: Contrast 3.1:1 on disabled button state
+  P2: No visible focus indicator on custom dropdown
+
+Performance: 3/4 (good)
+  P1: Hero image not lazy-loaded (340KB)
+  ...
+```
+
+Przekaż P0 do `/impeccable harden`, P1 dotyczące motywów i typografii do `/impeccable typeset` i `/impeccable polish`, resztę do `/impeccable polish`.
+
+## Pułapki
+
+- **Mylenie z `/impeccable critique`.** Audit to jakość implementacji. Critique to jakość projektowa. Uruchom oba dla pełnego obrazu.
+- **Naprawianie P3 przed P0.** Skala wagi istnieje z powodu. Zacznij od góry.
+- **Pomijanie wymiarów, które wydaje ci się, że są w porządku.** Motywy i responsywność to te, które większość osób uważa za w porządku, dopóki nie okazują się nie w porządku.

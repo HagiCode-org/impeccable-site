@@ -1,0 +1,56 @@
+---
+slug: polish
+title: Polish
+summary: Der akribische finale Durchgang zwischen gut und großartig.
+highlights:
+  - Ausrichtung, Abstände und Mikro-Entscheidungen fühlen sich noch rau an.
+  - Das Feature ist kurz vor dem Launch.
+  - Kleine Inkonsistenzen ziehen die wahrgenommene Qualität nach unten.
+related:
+  - critique
+  - typeset
+  - harden
+---
+
+## Wann man es verwendet
+
+`/impeccable polish` ist das Letzte, was Sie vor dem Launch ausführen. Es jagt die kleinen Details, die ein geliefertes Feature von einem polierten trennen: halbe Pixel-Verschiebungen, inkonsistente Abstände, vergessene Focus-Zustände, Laden-Übergänge die aufblitzen, Texte die im Ton abdriften. Es richtet das Feature auch an Ihrem Design-System aus, ersetzt hartcodierte Werte durch Tokens, tauscht benutzerdefinierte Komponenten gegen gemeinsame aus und behebt jede Abweichung von etablierten Mustern.
+
+Greifen Sie zu ihm, wenn das Feature funktional vollständig ist, nichts kaputt ist und etwas sich immer noch falsch anfühlt. Auch greifen, wenn ein Feature vom Design-System abgedriftet ist und wieder in die Reihe gebracht werden muss.
+
+## Wie es funktioniert
+
+Polish beginnt mit der Entdeckung des Design-Systems (Tokens, Abstands-Skala, gemeinsame Komponenten) und arbeitet dann methodisch über sechs Dimensionen:
+
+1. **Visuelle Ausrichtung und Abstände**: pixelgenaue Raster-Einhaltung, konsistente Abstands-Skala, optische Ausrichtung bei Icons.
+2. **Typografie**: Hierarchie-Konsistenz, Zeilenlänge, Schusterjungen und Hurenkinder, Kerning bei Überschriften.
+3. **Farbe und Kontrast**: Token-Verwendung, Theme-Parität, WCAG-Verhältnisse, Fokus-Indikatoren.
+4. **Interaktions-Zustände**: Hover, Focus, Active, Disabled, Laden, Fehler, Erfolg. Jeder Zustand berücksichtigt.
+5. **Übergänge und Bewegung**: sanftes Easing, kein Layout-Ruckeln, Berücksichtigung von `prefers-reduced-motion`.
+6. **Texte**: konsistente Stimme, richtige Zeitform, keine Platzhalter-Strings, keine verwaisten TODOs.
+
+Der Skill ist explizit in einer Sache: Polish ist der letzte Schritt, nicht der erste. Wenn das Feature nicht funktional vollständig ist, ist Polieren verschwendete Arbeit.
+
+## Ausprobieren
+
+```
+/impeccable polish the pricing page
+```
+
+Ein gesunder Durchlauf sieht so aus:
+
+```
+Visuelle Ausrichtung: 3 außerhalb des Rasters liegende Elemente korrigiert (8px-Grundlinie)
+Typografie: h1-Kerning angezogen, Schusterjunge im Testimonial behoben
+Interaktion: Hover-Zustand bei FAQ-Elementen hinzugefügt, Focus-Ring bei E-Mail-Eingabe
+Bewegung: Modal-Eintritt weicher gemacht, Reduced-Motion-Fallback hinzugefügt
+Text: Ein zurückgebliebenes "Lorem ipsum" entfernt, Button-Stimme vereinheitlicht
+```
+
+Fünf kleine Korrekturen, keine Neu-Schreibvorgänge. Das ist die Form eines guten Polish-Durchgangs.
+
+## Fallstricke
+
+- **Arbeit polieren, die nicht fertig ist.** Wenn es TODOs im Code gibt, sind Sie nicht bereit. Führen Sie `/impeccable polish` nur an fertigen Features aus.
+- **Polish als Neudesign behandeln.** Polish verfeinert, was existiert. Wenn Sie sich dabei erwischen, ein Layout umzustrukturieren, hätten Sie stattdessen `/impeccable critique` oder `/impeccable layout` gebraucht.
+- **`/impeccable polish` ohne vorheriges `/impeccable audit` ausführen.** Polish erfasst gefühlte Probleme. Audit erfasst messbare. Verwenden Sie beide.

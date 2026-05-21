@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Создайте DESIGN.md по спецификации, который фиксирует вашу визуальную систему, чтобы каждый ИИ-агент оставался в рамках бренда.
+highlights:
+  - Кодовая база уже содержит реальный дизайн-язык.
+  - Вам нужен переносимый обзор цветов, типографики, интервалов и компонентов.
+  - Будущие дизайнерские работы дрейфуют, потому что система неявная.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Формат Google Stitch</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"Редакционное убежище."</em> Тихая типографика, щедрый воздух, один приверженный акцент.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Плоский по умолчанию. Тени появляются только как ответ на состояние.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Оттенять нейтральные в сторону акцентного оттенка.</span>
+        <span class="docs-viz-designmd-dont">Градиентный текст для акцента.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Шесть секций фиксированы, в фиксированном порядке, с фиксированными именами. Рядом <code>DESIGN.json</code> поставляется как машиночитаемый вкладыш для панели дизайна Live Mode.</p>
+</div>
+
+## Когда использовать
+
+Запустите `/impeccable document`, когда у вас достаточно визуальной системы для документирования: цвета, типографика, хотя бы кнопка и карточка. Команда сканирует вашу кодовую базу, извлекает найденные токены и паттерны компонентов и создаёт `DESIGN.md` в корне проекта, следующий [формату Google Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/format/), шесть секций в фиксированном порядке, совместимый с каждым другим DESIGN.md-осведомлённым инструментом.
+
+Обращайтесь к нему, когда:
+
+- **Вы только что запустили `/impeccable teach`** и `PRODUCT.md` уже существует. Document — соответствующий визуальный файл.
+- **Команда подтолкнула вас к нему.** Live, craft и polish читают DESIGN.md. Если он отсутствует, навык предлагает запустить document первым.
+- **Дизайн дрейфовал** от старого DESIGN.md, и файл больше не описывает живую систему.
+- **Перед масштабным редизайном**, чтобы зафиксировать текущее состояние как референс для следующего направления.
+
+Для проектов без кода (свежий запуск `teach`, ничего не создано), есть режим посева: `/impeccable document --seed` задаёт пять быстрых стратегических вопросов (цветовая стратегия, типографическое направление, энергия анимации, референсы, антиреференсы) и создаёт каркас. Перезапустите в режиме сканирования, когда появится код.
+
+## Как это работает
+
+Проход сканирования находит дизайнерские ассеты в порядке приоритета: CSS custom properties, конфигурация Tailwind, CSS-in-JS темы, файлы дизайн-токенов, исходный код компонентов, глобальная таблица стилей и наконец вычисленные стили из живого рендера, если доступен браузер. Он автоматически извлекает всё, что может, затем задаёт один сгруппированный вопрос для частей, требующих творческого ввода: **Creative North Star** (единственная именованная метафора для всей системы, например «Редакционное убежище»), описательные имена цветов, философия возвышения и характер компонентов.
+
+Результат — DESIGN.md ровно с шестью секциями: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Заголовки фиксированы посимвольно, чтобы файл был разбираем другими инструментами. Рядом записывается `DESIGN.json` как машиночитаемый вкладыш. Этот вкладыш использует панель дизайна live-mode для рендера *данного проекта* — реальных кнопок, полей ввода, навигации и карточек вместо универсальной аппроксимации.
+
+Каждая другая команда читает DESIGN.md при вызове. Варианты, полировки, аудиты и новые функции наследуют визуальную систему без инструкций.
+
+## Попробуйте
+
+```
+/impeccable document
+```
+
+На проекте с уже определёнными токенами это занимает около двух минут: сканирование находит вашу палитру и стек шрифтов, вы выбираете North Star из 2–3 вариантов, подтверждаете описательные имена цветов («Глубокий приглушённый сине-зелёный», а не «blue-800»), и файл появляется в корне проекта.
+
+На новом проекте:
+
+```
+/impeccable document --seed
+```
+
+Пять вопросов, около пяти минут. Файл — каркас, помеченный комментарием `<!-- SEED -->`, чтобы честно отражать свою природу. Перезапустите без флага, когда реализуете токены.
+
+## Подводные камни
+
+- **Слишком ранний запуск.** На проекте без реализованных токенов подходит режим seed. Не фабрикуйте полную спецификацию, которую код не может подтвердить. Фейковый DESIGN.md хуже, чем никакого DESIGN.md.
+- **Восприятие DESIGN.md как документации только для людей.** Он в первую очередь для ИИ. Каждая другая команда его читает. Категоричность формата («никогда», «всегда», именованные правила) намеренна.
+- **Добавление секции Layout / Motion / Responsive верхнего уровня.** Спецификация содержит шесть секций в фиксированном порядке с фиксированными именами. Вложите контент о макете или анимации в Overview (правила философского уровня) или Components (поведение на уровне компонента).
+- **Перезапись существующего DESIGN.md без предупреждения.** Document всегда подтверждает сначала. Если хотите начать заново, переименуйте существующий файл или явно скажите навыку перезаписать.

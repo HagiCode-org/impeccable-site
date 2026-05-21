@@ -1,0 +1,83 @@
+---
+slug: shape
+title: Shape
+summary: Ajattele ennen rakentamista. Tuota suunnittelubriefi löytämisen kautta, ei arvailun.
+highlights:
+  - Haluat suunnittelua ilman toteutusta vielä.
+  - Oikea asettelu tai sävy on yhä epäselvä.
+  - Useiden sidosryhmien on linjattava tavoitteet ennen rakennustyön aloittamista.
+related:
+  - craft
+  - critique
+  - document
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">brief.md</span>
+      <span class="docs-viz-file-status">/impeccable shape -komennon tulos</span>
+    </div>
+    <div class="docs-viz-file-body">
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Tarkoitus</span>
+        <span class="docs-viz-file-v">Anna sitoutuneille tilaajille mahdollisuus muuttaa saamaansa sisältöä menettämättä heitä peruutukseen.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Käyttäjä</span>
+        <span class="docs-viz-file-v">Kiireinen, mobiilissa, kokouksen keskellä. Lukee nopeasti, vähän kärsivällisyyttä.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Sisältö</span>
+        <span class="docs-viz-file-v">4 tiivistetyyppiä, 2 taajuutta, yksi poistu-kaikista -vaihtoehto alareunassa.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Tunne</span>
+        <span class="docs-viz-file-v">Rauhallinen, luotettava, ei tummia malleja.</span>
+      </div>
+      <div class="docs-viz-file-row">
+        <span class="docs-viz-file-k">Rajoitteet</span>
+        <span class="docs-viz-file-v">Mobiili ensin. WCAG AA-kontrasti. Yksi sarake, ei modaleita.</span>
+      </div>
+    </div>
+    <div class="docs-viz-file-footer">Anna se <code>/impeccable</code>-, <code>/impeccable craft</code> -komennolle tai mille tahansa toteutustyönkululle.</div>
+  </div>
+  <p class="docs-viz-caption">Shape-briefi on kompassi, ei määrittely. Se tallentaa tarkoituksen, ei käyttöliittymää. Toteutustaidot lukevat sen ennen yhdenkään koodirivin kirjoittamista.</p>
+</div>
+
+## Milloin käyttää
+
+`/impeccable shape` on jossa ominaisuus alkaa. Ennen kuin kukaan kirjoittaa koodia, ennen kuin kukaan väittelee hero-käsittelystä, ennen kuin kukaan valitsee fontin. Käytä sitä pakottaaksesi löytökeskustelun tarkoituksesta, käyttäjistä, sisällöstä ja rajoitteista, sitten tallenna vastaukset suunnittelubriefinä, johon toteutustaidot voivat tukeutua.
+
+Turvaudu siihen aina kun ominaisuus on alkamassa, tiketti on epäselvä, tai huomaat kirjoittavasi JSX:ää selvittääksesi mitä tuotteen pitäisi olla.
+
+## Miten se toimii
+
+Useimmat tekoälyn tuottamat käyttöliittymät epäonnistuvat ei huonon koodin, vaan ohitetun ajattelun vuoksi. Malli hyppää "tässä on korttirutska" ilman että se kysyy "mitä käyttäjä yrittää saavuttaa". `/impeccable shape` kääntää sen järjestyksen.
+
+Taito suorittaa jäsennellyn löytöhaastattelun keskustelussa. Se ei kirjoita koodia tässä vaiheessa. Kysymykset kattavat:
+
+- **Tarkoitus ja konteksti**: mitä ominaisuus on, kuka käyttää sitä, missä mielentilassa he ovat
+- **Sisältö ja data**: mitä näytetään, realistiset vaihteluvälit, reuna-tapaukset, mikä on dynaamista
+- **Suunnittelutavoitteet**: yksittäinen tärkein asia, tavoiteltu tunne, viite-esimerkit
+- **Rajoitteet**: tekniset, sisällölliset, saavutettavuus, lokalisointi
+
+Vastaat luonnollisesti. Taito kysyy jatkokysymyksiä, ei lomaketta. Lopuksi se tuottaa suunnittelubriefin: jäsennellyn artefaktin, jonka voit antaa `/impeccable`-komennolle tai mille tahansa muulle toteutustaidolle.
+
+Huomaa: jos haluat täyden työnkulun (löytöhaastattelu, sitten suoraan rakentamiseen), käytä `/impeccable craft`-komentoa. Se suorittaa `/impeccable shape`-komennon sisäisesti, sitten jatkaa toteutukseen visuaalisen iteraation kanssa. `/impeccable shape` erillään on silloin kun haluat vain briefin, jotta voit viedä sen mihin tahansa toteutuslähestymistapaan haluat.
+
+## Kokeile
+
+```
+/impeccable shape a daily digest email preferences page
+```
+
+Odota 5-10 kysymyksen keskustelu. Taito kysyy asioita kuten "kuka on henkilö joka avaa tämän, ja ovatko he jo sitoutuneita vai vasta uteliaita" ja "mitä tapahtuu kun käyttäjä on peruuttanut kaikki tilaukset, piilotammeko ominaisuuden vai näytämmeko jotain". Vastaat, ja briefi materialisoituu.
+
+Sieltä voit antaa briefin `/impeccable`-, `/impeccable polish`-komennolle tai mille tahansa muulle taidolle. Tai käytä sitä vain viitteenä kun rakennat käsin.
+
+## Sudenkuopat
+
+- **Ohittaminen koska se tuntuu hitaalta.** Haastattelu kestää ehkä 5 minuuttia. Välttämäsi uudelleenkirjoitukset mitataan tunneissa.
+- **Briefin kohteleminen määrittelynä.** Se on kompassi, ei tarkistuslista. Se tallentaa tarkoituksen, ei käyttöliittymää.
+- **Vastaaminen "standardilla" tai "normaalilla".** Yksityiskohtaisuus on koko pointti. Jos käyttäjä on "kiireinen, mobiilissa, kokousten välissä", sano niin. Se muuttaa kaikkea alaspäin.

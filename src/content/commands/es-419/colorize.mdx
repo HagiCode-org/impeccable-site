@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Agrega color estrategico a interfaces monocromaticas sin caer en lo estridente.
+highlights:
+  - La interfaz se ve competente pero olvidable.
+  - Necesitas un enfasis mas claro sin reescribir toda la estructura.
+  - La paleta actual no transmite el estado de animo pretendido.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Cuando usarlo
+
+`/impeccable colorize` es la contraparte de "todo es gris". Dashboards que se leen como un muro beige, formularios sin acento, paginas de contenido que podrian ser de cualquier producto SaaS. Usalo cuando la interfaz es funcional pero emocionalmente plana, y quieres calidez sin caer en la paleta de colores de IA (morado a rosa, cian neon, brillo de modo oscuro).
+
+## Como funciona
+
+La habilidad comienza leyendo tu color de marca si existe uno, luego decide donde el color gana su lugar:
+
+1. **La accion primaria** recibe la expresion mas fuerte del tono de marca.
+2. **Los acentos secundarios** reciben variantes amortiguadas o teNidas, no un segundo color completo.
+3. **Los neutros** reciben un tinte hacia el tono de marca a cromancia baja (alrededor de 0.005 a 0.01), que es casi invisible por pixel pero crea cohesion subconsciente.
+4. **Las categorias de contenido** reciben un sistema de acentos limitado e intencional, no un arcoiris.
+
+Importante, usa OKLCH en lugar de HSL para que los escalones de luminosidad iguales se vean iguales. A medida que la luminosidad se mueve hacia los extremos, la cromancia baja automaticamente. Asi obtienes color que se siente considerado en lugar de computado.
+
+## Probalo
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff esperado:
+
+- Color de marca movido de un hex hardcodeado a `--color-accent: oklch(62% 0.18 240)`
+- Neutros tenuidos con 0.007 de cromancia hacia el tono de marca
+- El boton primario recibe el acento completo, los botones secundarios reciben tinta/neblina
+- La serie del grafico usa 3 tonos distintos, todos a luminosidad equiparada para que ninguna serie domine visualmente
+- La ilustracion del estado vacio recibe un lavado suave de acento
+
+## Errores comunes
+
+- **Ejecutarlo sin un tono de marca.** Colorize necesita un punto de partida. Si `PRODUCT.md` no especifica uno, preguntara. No dejes que elija de los valores predeterminados de la paleta de IA.
+- **Esperar que corrija el problema de la paleta de colores de IA.** Si tu diseno ya tiene gradientes morados y cian neon, necesitas `/impeccable quieter` primero, luego colorize puede reconstruir.
+- **Usarlo en interfaces que ya son coloridas.** Eso es trabajo de `/impeccable quieter`. Colorize agrega, no resta.

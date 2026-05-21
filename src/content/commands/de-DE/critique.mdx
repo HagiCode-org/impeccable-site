@@ -1,0 +1,119 @@
+---
+slug: critique
+title: Critique
+summary: Ein Design-Review mit Scoring, Persona-Tests und automatischer Erkennung.
+highlights:
+  - Sie möchten Erkenntnisse über schwache Design-Entscheidungen, keinen kompletten Neuaufbau.
+  - Sie benötigen Scoring, Design-Argumentation und wahrscheinliche nächste Schritte.
+  - Das Interface funktioniert, fühlt sich aber noch falsch an.
+related:
+  - audit
+  - polish
+  - distill
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-critique">
+    <div class="docs-viz-critique-head">
+      <div class="docs-viz-critique-verdict">
+        <span class="docs-viz-critique-verdict-label">KI-Slop-Urteil</span>
+        <span class="docs-viz-critique-verdict-value">FAIL</span>
+      </div>
+      <span class="docs-viz-report-target">gradient-text &middot; ai-color-palette &middot; nested-cards</span>
+    </div>
+    <div class="docs-viz-critique-cols">
+      <div>
+        <div class="docs-viz-critique-col-title">Heuristiken (Nielsen)</div>
+        <div class="docs-viz-critique-heuristics">
+          <div class="docs-viz-critique-heur">
+            <span>Sichtbarkeit des Status</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Übereinstimmung mit der realen Welt</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Konsistenz und Standards</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--ok">2</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Fehlerprävention</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--good">3</span>
+          </div>
+          <div class="docs-viz-critique-heur">
+            <span>Erkennen statt Erinnern</span>
+            <span class="docs-viz-critique-heur-score docs-viz-critique-heur-score--bad">1</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="docs-viz-critique-col-title">Personas</div>
+        <div class="docs-viz-critique-personas">
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Der Evaluator</span>
+              <span class="docs-viz-critique-persona-note">Vergleicht uns an einem Dienstagabend mit zwei Alternativen.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">2 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Der wiederkehrende Nutzer</span>
+              <span class="docs-viz-critique-persona-note">Kennt das Produkt, auf dem Smartphone, in Eile.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">3 / 4</span>
+          </div>
+          <div class="docs-viz-critique-persona">
+            <div>
+              <span class="docs-viz-critique-persona-name">Der Skeptiker</span>
+              <span class="docs-viz-critique-persona-note">Hat jede SaaS-Landingpage gesehen und ist gelangweilt.</span>
+            </div>
+            <span class="docs-viz-critique-persona-score">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Die beiden Durchläufe (LLM-Design-Review plus der deterministische Detektor) verschmelzen zu einer priorisierten Liste. Was funktioniert, was zu beheben ist, und die provokativen Fragen, die vor dem Launch beantwortet werden sollten.</p>
+</div>
+
+## Wann man es verwendet
+
+Greifen Sie zu `/impeccable critique`, wenn Sie eine ehrliche zweite Meinung zu etwas möchten, das Sie bereits gebaut haben. Nicht „funktioniert es", sondern „ist es gut". Der Skill bewertet Ihr Interface anhand von Nielsens 10 Heuristiken, führt kognitive Belastungsprüfungen durch, testet durch Persona-Linsen und referenziert einen automatischen Detektor für 25 konkrete Anti-Patterns.
+
+Verwenden Sie es, wenn eine Seite funktional fertig ist und Sie wissen möchten, ob sie als intentional oder als KI-Slop wirkt.
+
+## Wie es funktioniert
+
+`/impeccable critique` führt zwei unabhängige Bewertungen parallel durch, damit sie sich nicht gegenseitig beeinflussen.
+
+Die erste ist ein **LLM-Design-Review**: das Modell liest Ihren Quellcode, inspiziert die Live-Seite visuell (falls Browser-Automatisierung verfügbar) und geht den vollständigen DO/DON'T-Katalog des impeccable-Skills durch. Es bewertet Nielsens Heuristiken, zählt Fehler bei der kognitiven Belastung, verfolgt die emotionale Reise durch den Ablauf und markiert KI-Slop.
+
+Die zweite ist ein **automatischer Detektor** (`npx impeccable detect`), der deterministisch Farbverlaufstext, lila Paletten, Side-Tab-Ränder, verschachtelte Karten, Zeilenlängen-Probleme und die anderen sichtbaren Fingerabdrücke generischer KI-Ausgabe findet.
+
+Die beiden Berichte verschmelzen zu einer priorisierten Liste: was funktioniert, die drei bis fünf Dinge, die behoben werden müssen, und die provokativen Fragen, die vor dem Launch beantwortet werden sollten.
+
+## Ausprobieren
+
+Richten Sie es auf eine Seite:
+
+```
+/impeccable critique the homepage hero
+```
+
+Sie erhalten einen bewerteten Bericht zurück. Typische Struktur:
+
+- **KI-Slop-Urteil**: bestanden / nicht bestanden mit den spezifischen Merkmalen
+- **Heuristik-Scores**: 10 Zahlen, 0 bis 4
+- **Kognitive Belastung**: Fehleranzahl von 8
+- **Prioritätsprobleme**: drei bis fünf Punkte, jeweils mit was, warum und Lösung
+- **Zu beantwortende Fragen**: diejenigen, die das Interface selbst nicht für Sie entscheiden kann
+
+Von dort aus kombinieren Sie es mit `/impeccable polish` oder `/impeccable distill`, um die Lösungen umzusetzen.
+
+## Fallstricke
+
+- **Ausführung an unfertiger Arbeit.** Critique ist für fertige Seiten. Ein Empty State mit drei TODOs wird schlecht bewertet, weil er nicht fertig ist, nicht weil er schlecht ist.
+- **Die Fragen am Ende ignorieren.** Sie sind meistens die Lösungen, die das Design am meisten verändern.
+- **Die Heuristik-Scores als Note behandeln.** Sie sind diagnostisch, nicht evaluativ. Eine 3/4 bei einer Heuristik, die in Ihrem Kontext weniger wichtig ist, ist in Ordnung.

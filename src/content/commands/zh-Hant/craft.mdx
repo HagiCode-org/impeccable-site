@@ -1,0 +1,78 @@
+---
+slug: craft
+title: Craft
+summary: 塑造設計，然後建構它，全部在一個流程中完成。
+highlights:
+  - 你正在從零開始建構一個新功能。
+  - 你想要在一次操作中完成探索、實作和視覺精煉。
+  - 你偏好較慢但更審慎的建構迴圈。
+related:
+  - shape
+  - polish
+  - live
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-flow">
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">01</span>
+      <span class="docs-viz-flow-name">Shape</span>
+      <span class="docs-viz-flow-hint">探索訪談。目的、使用者、限制、方向。</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">02</span>
+      <span class="docs-viz-flow-name">載入參考</span>
+      <span class="docs-viz-flow-hint">空間、字型、動態、色彩、互動。</span>
+    </div>
+    <div class="docs-viz-flow-step">
+      <span class="docs-viz-flow-num">03</span>
+      <span class="docs-viz-flow-name">建構</span>
+      <span class="docs-viz-flow-hint">結構、層次、字型、色彩、狀態、動態、響應式。</span>
+    </div>
+    <div class="docs-viz-flow-step docs-viz-flow-step--accent">
+      <span class="docs-viz-flow-num">04</span>
+      <span class="docs-viz-flow-name">視覺迭代</span>
+      <span class="docs-viz-flow-hint">在瀏覽器中檢查，反覆精煉直到符合簡報。</span>
+    </div>
+  </div>
+  <p class="docs-viz-caption">每個階段都不可跳過。探索步驟是大多數 AI 產出失敗的地方：等到程式碼存在時，思考已經定型了。</p>
+</div>
+
+## 何時使用
+
+`/impeccable craft` 是端到端的建構指令。給它一個功能描述，它會執行整個流程：結構化探索、參考載入、實作、視覺迭代。當你從零開始建構新功能，並希望在一次呼叫中完成整個工作流程時使用它。
+
+以下情況請使用：
+
+- **你正在建構新功能，想要完整流程。** 你不想自己管理各個步驟。
+- **你知道要建構什麼，但不確定該長什麼樣。** 探索階段在實作定型之前強制進行設計思考。
+- **你想要預設包含視覺迭代。** `craft` 會在瀏覽器中檢查結果並反覆精煉，直到達到高品質，而不是交付第一個能用的版本。
+
+如果你只想要思考過程而不需要程式碼，請單獨使用 `/impeccable shape`。如果你已經有明確的願景，只想建構，請直接用功能描述呼叫 `/impeccable`。`craft` 介於兩者之間：結構化、完整、有主見。
+
+## 運作方式
+
+`craft` 按順序執行四個階段：
+
+1. **塑造設計。** 在內部執行 `/impeccable shape`：一段關於目的、使用者、內容、限制和目標的簡短探索對話。產出是一份你可以閱讀和提出異議的設計簡報。
+2. **載入參考。** 根據簡報，載入正確的參考檔案（空間、字型、動態、色彩、互動、響應式、UX 文案），讓模型在開始寫程式碼之前就載入相關原則。
+3. **建構。** 按照審慎的順序實作功能：先結構，然後間距和層次，再字型和色彩，接著狀態，然後動態，最後響應式。每個決策都能追溯到簡報。
+4. **視覺迭代。** 在瀏覽器中開啟結果，對照簡報和反模式目錄進行檢查，反覆精煉直到符合意圖。這個步驟至關重要。第一個能用的版本絕不是最終交付的版本。
+
+探索階段不可跳過，這正是重點所在。大多數 AI 生成的 UI 之所以失敗，是因為在模型開始寫 JSX 之前，沒有人問過使用者想要達成什麼。`craft` 顛覆了這個順序。
+
+## 試試看
+
+```
+/impeccable craft a pricing page for a developer tool
+```
+
+預期會先有一段 5 到 10 題的探索訪談。問題涵蓋你的受眾、產品性格、你想要的情感調性、反面參考以及限制。然後是設計簡報。接著是實作，每個階段都會在瀏覽器中檢查。預期視覺打磨階段會有多輪迭代。
+
+整個執行過程比一般指令長，因為它包含了思考、建構和精煉。這就是代價：更多前置結構，更少事後清理。
+
+## 注意事項
+
+- **用於小改動。** `craft` 適用於新功能，不是修飾。對於現有程式碼，請改用 `/impeccable polish`、`/impeccable critique` 或特定的精煉指令。
+- **急著跳過探索階段。** 相比「直接開始寫程式碼」，訪談感覺很慢。其實不然。仔細回答問題能產生更精準的簡報，進而產生更精準的建構，最終減少重寫。
+- **跳過視覺迭代。** 這個階段的存在有其原因。「技術上能運作」和「感覺對了」之間的差距是透過視覺打磨來彌合的，不是程式碼審查。讓它完整執行。

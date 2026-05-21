@@ -1,0 +1,52 @@
+---
+slug: clarify
+title: Clarify
+summary: Reescreva texto UX confuso para que os interfaces se expliquem a si próprios.
+highlights:
+  - Os utilizadores estão a hesitar porque a redação é vaga.
+  - O interface precisa de melhor texto instrucional ou de erro.
+  - O fluxo do produto está bem, mas a linguagem está a atrasar as pessoas.
+related:
+  - adapt
+  - polish
+  - onboard
+---
+
+## Quando utilizar
+
+`/impeccable clarify` destina-se a texto de interface que faz as pessoas parar e pensar. Etiquetas confusas, texto de botões ambíguo, mensagens de erro que culpam o utilizador, tooltips que repetem a etiqueta, estados vazios que não dizem nada de útil. Utilize-o quando o problema não é o layout ou a cor, são as palavras.
+
+Bons indicadores: "os utilizadores não percebem este campo", "a mensagem de erro não é útil", "não consigo escrever bom texto para o botão", "este tooltip é um desperdício".
+
+## Como funciona
+
+A competência reescreve texto nas superfícies onde vivem a maioria dos problemas de copy UX:
+
+1. **Etiquetas e dicas de campos**: diretas, específicas, dizem o que é esperado.
+2. **Texto de botões**: verbo primeiro, descreve o resultado, não a ação. "Guardar alterações" não "OK".
+3. **Mensagens de erro**: explicam o que correu mal, de quem é a culpa, e o que fazer a seguir. Nunca culpam o utilizador.
+4. **Estados vazios**: orientam o utilizador, explicam por que razão o estado está vazio, oferecem um próximo passo.
+5. **Tooltips e texto de ajuda**: adicionam informação que a etiqueta não consegue transportar, nunca a reafirmam.
+6. **Diálogos de confirmação**: nomeiam as consequências, não a ação.
+
+A competência utiliza o público e o estado mental do `PRODUCT.md` para afinar a voz. Público técnico recebe linguagem precisa. Público consumidor recebe discurso simples. Utilizadores apressados recebem texto curto. Utilizadores ansiosos (pagamento, eliminação) recebem segurança.
+
+## Experimente
+
+```
+/impeccable clarify the billing form
+```
+
+Antes e depois, típico:
+
+- Etiqueta "Billing address" → "Address on your card"
+- Placeholder "Enter your VAT ID" → "VAT ID (optional, for business)"
+- Erro "Invalid input" → "This card number is 15 digits. You entered 14."
+- Botão "Submit" → "Charge $29 and subscribe"
+- Estado vazio "No transactions yet" → "Your first charge will show up here after your first order."
+
+## Armadilhas
+
+- **Escrever de forma mais inteligente, não mais clara.** Clarify não serve para melhorias de voz. Se o texto já é claro, não recorra a esta competência. Utilize `/impeccable delight` quando pretende personalidade.
+- **Saltar a questão do público.** Clarify precisa de saber quem está a ler. Se o `PRODUCT.md` não especifica o nível técnico do público, as reescritas serão genéricas.
+- **Executar clarify em copy de marketing.** Clarify destina-se a texto UX funcional: etiquetas, erros, instruções. Copy de marketing precisa de um conjunto diferente de técnicas e de um escritor humano.

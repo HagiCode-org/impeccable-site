@@ -1,0 +1,50 @@
+---
+slug: animate
+title: Animate
+summary: Målrettet bevegelse som formidler tilstand, ikke dekorasjon.
+highlights:
+  - Grensesnitt føles livløse eller brå mellom tilstander.
+  - Lasting, tilbakemelding eller overganger trenger bevegelse som forklarer hva som skjer.
+  - Du vil ha disiplinert animasjon med redusert-bevegelse-fallbacks.
+related:
+  - delight
+---
+
+## Når du skal bruke den
+
+`/impeccable animate` er for grensesnitt som føles livløse, der tilstandsendringer er umiddelbare og sjokkerende, der lasting bare dukker opp, der brukeren aldri helt stoler på at klikket ble registrert. Bruk den til å legge til de små bevegelsene som kommuniserer hva som skjer: innganger, utganger, tilbakemelding, overganger mellom tilstander.
+
+Ikke bruk den til å legge til sprett eller elastiske fjærer for moro skyld. Det er dekorasjon, og denne ferdigheten vil ikke gi deg det.
+
+## Hvordan det fungerer
+
+Ferdigheten identifiserer statiske øyeblikk som vil ha nytte av bevegelse, og bruker dem med streng disiplin:
+
+1. **Innganger og utganger**: elementer dukker opp og forsvinner med 200 til 300ms uttoning pluss subtil Y eller skalering, aldri layout-egenskaper.
+2. **Tilstandstilbakemelding**: hover, aktiv, fokus, lasting, suksess kommuniserer alle via bevegelse i stedet for brå bytter.
+3. **Overganger mellom visninger**: delte-element-overganger der det gir mening, uttoning-gjennom ellers.
+4. **Fremdrift og lasting**: skjelett-skjermer, determinerte linjer, bevegelse som sier "jobber fortsatt".
+5. **Redusert bevegelse**: hver animasjon har en `prefers-reduced-motion`-fallback.
+
+Easing er alltid eksponentiell (ease-out-quart, quint eller expo) fordi virkelige objekter bremser jevnt. Ingen sprett, ingen elastisk, ingen lineær for noe annet enn fremdriftsindikatorer.
+
+Ferdigheten animerer kun `transform` og `opacity`. Hvis du finner deg selv i å animere `width`, `height`, `top` eller `left`, gjør den noe feil. Bruk `grid-template-rows` for høydeoverganger.
+
+## Prøv det
+
+```
+/impeccable animate the sign-up flow
+```
+
+Typiske tillegg:
+
+- E-postinndatafelt får en fokusglow ved focus-visible (opacity + skygge, 180ms)
+- Send-knapp viser en spinner inni seg ved lasting-tilstand, ikke en egen spinner ved siden av
+- Suksessskjerm kommer inn med opacity + translateY(8px), 260ms, ease-out-quart
+- Feilmelding sklir ned med grid-template-rows (ikke height), 220ms
+- `@media (prefers-reduced-motion: reduce)` fallback for hver overgang
+
+## Fallgruver
+
+- **Å be om "mer animasjon".** Animate er ikke en dreiebryter. Den legger til der bevegelse kommuniserer, ikke overalt.
+- **Å fjerne redusert-bevegelse-fallbacks.** Ferdigheten legger dem til automatisk. Ikke-forhandsligbart for tilgjengelighet.

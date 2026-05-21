@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Ajouter de la couleur stratégique aux interfaces monochromes sans tomber dans le criard.
+highlights:
+  - L'interface paraît compétente mais oubliable.
+  - Vous avez besoin d'une emphase plus claire sans réécrire toute la structure.
+  - La palette actuelle ne porte pas l'ambiance souhaitée.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Quand l'utiliser
+
+`/impeccable colorize` est le contre-poids au « tout est gris ». Des tableaux de bord qui se lisent comme un mur beige, des formulaires sans accent, des pages de contenu qui pourraient être n'importe quel produit SaaS. Utilisez-le quand l'interface est fonctionnelle mais émotionnellement plate, et que vous voulez de la chaleur sans basculer dans la palette de couleurs IA (violet-rose, néon cyan, lueur mode sombre).
+
+## Comment ça marche
+
+La compétence commence par lire votre couleur de marque s'il en existe une, puis décide où la couleur mérite sa place :
+
+1. **L'action principale** reçoit l'expression la plus forte de la teinte de marque.
+2. **Les accents secondaires** reçoivent des variantes atténuées ou teintées, pas une deuxième couleur pleine.
+3. **Les neutres** sont teintés vers la teinte de marque à faible chroma (autour de 0.005 à 0.01), ce qui est presque invisible par pixel mais crée une cohésion subconsciente.
+4. **Les catégories de contenu** reçoivent un système d'accents limité et intentionnel, pas un arc-en-ciel.
+
+De manière importante, elle utilise OKLCH plutôt que HSL pour que les paliers de luminosité égaux paraissent égaux. Au fur et à mesure que la luminosité se rapproche des extrêmes, le chroma baisse automatiquement. C'est ainsi que vous obtenez une couleur qui semble réfléchie plutôt que calculée.
+
+## Essayez
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff attendu :
+
+- Couleur de marque passée d'un hex codé en dur à `--color-accent: oklch(62% 0.18 240)`
+- Neutres teintés avec un chroma de 0.007 vers la teinte de marque
+- Le bouton principal reçoit l'accent complet, les boutons secondaires reçoivent ink/mist
+- La série de graphiques utilise 3 teintes distinctes, toutes à luminosité égale pour qu'aucune série ne domine visuellement
+- L'illustration d'état vide reçoit un léger lavage d'accent
+
+## Pièges courants
+
+- **L'exécuter sans teinte de marque.** Colorize a besoin d'un point de départ. Si `PRODUCT.md` n'en spécifie pas une, il demandera. Ne le laissez pas choisir dans les valeurs par défaut de la palette IA.
+- **S'attendre à ce qu'il corrige le problème de palette IA.** Si votre design a déjà des dégradés violets et du néon cyan, vous avez d'abord besoin de `/impeccable quieter`, puis colorize pourra reconstruire.
+- **L'utiliser sur des interfaces déjà colorées.** C'est un travail pour `/impeccable quieter`. Colorize ajoute, il ne soustrait pas.

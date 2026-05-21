@@ -1,0 +1,50 @@
+---
+slug: quieter
+title: Quieter
+summary: Acalme designs que estão aos gritos sem perder a sua intenção.
+highlights:
+  - Existem ideias fortes, mas a página é demasiado ruidosa.
+  - Necessita de contenção sem se tornar insosso.
+  - O tom atual sobrecarrega a leitura ou o fluxo de tarefas.
+related:
+  - bolder
+  - distill
+  - polish
+---
+
+## Quando utilizar
+
+`/impeccable quieter` é o contrapeso a `/impeccable bolder`. Recorra a ele quando um interface é visualmente agressivo, superestimulante, ou tenta fazer demasiadas coisas em volume máximo. Néon sobre escuro, texto com gradiente por todo o lado, 6 cores de destaque, tudo animado, sombras de 20px. Utilize quieter quando o design precisa de respirar e pretende refinamento sem perder o ponto de vista.
+
+Também útil depois de `/impeccable bolder` ir um pouco longe demais.
+
+## Como funciona
+
+A competência trabalha por redução em quatro eixos:
+
+1. **Cor**: dessaturar, baixar crominância em OKLCH, recolher os destaques para um único primário mais suporte esbatido. No máximo duas cores intencionais.
+2. **Contraste**: suavizar extremos de escuro e claro, recolher o intervalo. Fundos passam de branco puro e preto puro para papel e tinta.
+3. **Decoração**: remover sombras que não estão a fazer trabalho, eliminar bordas que não transportam estrutura, aposentar gradientes que existem por energia em vez de hierarquia.
+4. **Movimento e efeito**: abrandar animações, remover tudo o que reproduz automaticamente, eliminar parallax e blur a menos que sirvam a legibilidade.
+
+A competência preserva a intenção do design. Se o original tinha um ponto de vista, a versão mais quieta tem o mesmo ponto de vista com mais confiança. Refinamento, não neutralização.
+
+## Experimente
+
+```
+/impeccable quieter the pricing page
+```
+
+Diff típico:
+
+- Texto com gradiente no preço removido, substituído por tinta sólida um peso mais pesado
+- Três cores de destaque reduzidas a uma (magenta), as outras duas tornam-se variantes neutras
+- Sombras das cartas reduzidas de `0 20px 40px rgba(0,0,0,0.2)` para `0 1px 0 var(--color-mist)` (uma linha de cabelo)
+- Fundo muda de gradiente escuro para papel com um banho creme subtil no topo
+- Animação hero de 1.2s easeOut com 3 elementos escalonados para um único fade-in de 260ms
+
+## Armadilhas
+
+- **Aplicar em excesso.** Quieter pode retirar personalidade se o executar em algo que já era contido. Utilize-o quando o design é demasiado ruidoso, não quando está corretamente assertivo.
+- **Confundir quieter com distill.** Quieter reduz intensidade. Distill remove elementos. São movimentos diferentes.
+- **Executá-lo em resposta a uma crítica que diz "demasiado ocupado".** Ocupado geralmente significa demasiadas coisas, não demasiado ruidoso. Experimente `/impeccable distill` primeiro.

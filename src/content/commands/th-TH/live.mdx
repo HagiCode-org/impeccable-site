@@ -1,0 +1,96 @@
+---
+slug: live
+title: Live
+summary: วนซ้ำ UI ในเบราว์เซอร์ เลือกอิลิเมนต์ วางความคิดเห็น รับสามตัวเลือก ยอมรับหนึ่งแล้วมันเขียนไปยังซอร์ส
+highlights:
+  - เดฟเซิร์ฟเวอร์มีอยู่แล้ว
+  - คุณต้องการเปรียบเทียบตัวเลือกโดยตรงบน UI ที่เรนเดอร์แล้ว
+  - ขั้นตอนถัดไปที่เร็วที่สุดคือการทดลองภาพแบบมีการแนะนำ
+related:
+  - craft
+  - polish
+  - delight
+---
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text">ดูมันทำงาน พร้อมเดโมแบบเคลื่อนไหว ที่ <a href="/live-mode">/live-mode</a> หน้านี้คือข้อมูลอ้างอิงสำหรับสิ่งที่ harness AI ของคุณอ่านเมื่อคำสั่งรัน</span>
+</div>
+
+<div class="docs-live-callout">
+  <span class="docs-live-callout-icon" aria-hidden="true">▸</span>
+  <span class="docs-live-callout-text"><strong>สถานะ: alpha.</strong> Live Mode ทำงานแบบ end-to-end และพร้อมลอง แต่ยังต้องการการทดสอบเพิ่มเติมกับ repo และการตั้งค่าเฟรมเวิร์กในโลกแห่งความจริง คาดหวังขอบที่ยังไม่สมบูรณ์บนการตั้งค่าที่ไม่ธรรมดา และโปรดรายงานสิ่งที่พัง</span>
+</div>
+
+<div class="docs-viz-hero docs-viz-hero--plain">
+  <div class="docs-viz-live-frame">
+    <div class="docs-viz-live-chrome">
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-dot"></span>
+      <span class="docs-viz-live-url">localhost:3000</span>
+    </div>
+    <div class="docs-viz-live-stage docs-viz-live-stage--tall">
+      <div class="docs-viz-live-target">
+        <span class="docs-viz-live-kicker">No. 04</span>
+        <h3 class="docs-viz-live-title">Letters, <em>occasionally</em>.</h3>
+        <p class="docs-viz-live-body">A postcard from the editor, about once a month. No tracking pixels, no "just checking in."</p>
+        <button class="docs-viz-live-btn" type="button">Send me one</button>
+      </div>
+      <div class="docs-viz-live-outline" aria-hidden="true"></div>
+      <div class="docs-viz-live-ctx" aria-hidden="true">
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Previous">‹</button>
+        <span class="docs-viz-live-ctx-counter">2 / 3</span>
+        <button class="docs-viz-live-ctx-nav" type="button" aria-label="Next">›</button>
+        <span class="docs-viz-live-ctx-divider"></span>
+        <button class="docs-viz-live-ctx-accept" type="button">Accept</button>
+      </div>
+      <div class="docs-viz-live-gbar" aria-hidden="true">
+        <span class="docs-viz-live-gbar-brand">/</span>
+        <span class="docs-viz-live-gbar-btn is-active">Pick</span>
+        <span class="docs-viz-live-gbar-divider"></span>
+        <span class="docs-viz-live-gbar-x">✕</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">Live Mode กลางวงจร: ตัวเลือกขอบเขตอิลิเมนต์ที่คุณเลือก แถบบริบทแสดงตัวเลือกที่คุณอยู่ และแถบส่วนกลางปักหมุดอยู่ด้านล่าง ยอมรับบนตัวเลือกนี้เขียน Variant 2 กลับไปยังซอร์ส</p>
+</div>
+
+## เมื่อไรควรใช้
+
+ใช้ `/impeccable live` เมื่อคุณต้องการวนซ้ำบางอย่างทางภาพเหมือนที่คุณทำในเครื่องมือออกแบบ แต่เก็บโค้ดการผลิตเป็นผลลัพธ์ โฟลว์แบบผืนผ้าใบของ Figma โดยไม่ต้องไปมาสู่ขั้นตอนการสร้าง
+
+ใช้สำหรับ:
+
+- **สำรวจทิศทางบนอิลิเมนต์จริง** ส่วน hero การ์ดจดหมายข่าว ระดับราคา สามแนวทางที่แตกต่างกันอย่างแท้จริง เคียงข้างกัน บนหน้าจริงพร้อมบริบทจริง
+- **ปรับแต่ง UI ที่เกือบถูกต้อง** คุณรู้ว่าอะไรรู้สึกแปลกแต่ไม่สามารถบอกได้ชัดเจน เลือกอิลิเมนต์ เขียน "มีบุคลิกมากขึ้น" หรือวาดเส้นผ่านส่วนที่รบกวนคุณ กด Go
+- **A/B เร็วระหว่างสองทิศทางที่ทีมของคุณถกเถียง** สร้างตัวแปร ไม่ต้องยอมรับอะไร เดินจากไป จุดประสงค์คือการเปรียบเทียบ
+
+ไม่ใช่สำหรับฟีเจอร์กรีนฟิลด์ใหม่ (ใช้ `/impeccable craft`) หรือการออกแบบหน้าใหม่ทั้งหน้า (ใช้ `/impeccable` หรือคำสั่งปรับปรุงเฉพาะทาง)
+
+## วิธีการทำงาน
+
+หนึ่งคำสั่งเปิดโอเวอร์เลย์ตัวเลือกบนเดฟเซิร์ฟเวอร์ที่กำลังรันของคุณ คุณเลือกอิลิเมนต์ใดๆ แถบบริบทเล็กๆ ปรากฏขึ้นข้างๆ มัน พิมพ์คำอธิบายอิสระหรือเลือกหนึ่งในชิปแอคชัน (`bolder`, `quieter`, `distill`, `polish`, `typeset`, `colorize`, `layout`, `animate`, `delight`, `overdrive`) หรือวางหมุดความคิดเห็นหรือวาดเส้นบนอิลิเมนต์ก่อน แล้วสกิลอ่านสิ่งเหล่านั้นเป็นเจตนา
+
+กด Go **ตัวแปรคุณภาพการผลิตสามตัว** ถูกสร้าง แต่ละตัวยึดกับอาร์คีไทป์การออกแบบที่แตกต่างกันอย่างแท้จริง (ไม่ใช่สามริฟฟ์บนสี) และสลับเข้ามาในหน้าผ่าน HMR ของเฟรมเวิร์ก วนระหว่างพวกมันด้วยปุ่มลูกศร ยอมรับหนึ่งแล้วตัวแปรถูกเขียนกลับไปยังซอร์ส ทิ้งทั้งสามแล้วต้นฉบับยังอยู่
+
+รองรับ Vite, Next.js (รวมถึง monorepo), SvelteKit, Astro, Nuxt และ HTML แบบคงที่ธรรมดา หากเดฟเซิร์ฟเวอร์ของคุณมี Content Security Policy เข้มงวด การตั้งค่าการรันครั้งแรกตรวจพบและเสนอแพตช์ dev-only ครั้งเดียวเพื่อให้ตัวเลือกโหลดได้ `DESIGN.md` ชนะในการตัดสินใจภาพ `PRODUCT.md` ชนะในเสียง: หากคุณมีทั้งสองอย่าง ตัวแปรอยู่ในแบรนด์โดยไม่ต้องบอก
+
+## ลองใช้งาน
+
+```
+/impeccable live
+```
+
+เปิด URL เดฟเซิร์ฟเวอร์ของคุณ เลือกการ์ดสมัครจดหมายข่าว คลิกชิป `delight` กด Go คุณจะได้สามตัวแปรที่แตกต่างข้ามมิติบุคลิก (ความรู้สึกแสตมป์และโพสต์การ์ด เวอร์ชันความเซอร์ไพรส์จากตัวอักษร ความเน้นภาพประกอบ) ไม่ใช่สามริฟฟ์ของการจัดการเดียวกัน
+
+หรือเลือก hero พิมพ์ "เป็นบรรณาธิการมากขึ้น ลด SaaS" กด Go สามตัวแปรยึดกับอาร์คีไทป์บรรณาธิการที่แตกต่างกัน (หัวมาสต์เฮดแบบบรอดชีต แถวสเปคแบบแคตตาล็อก โปสเตอร์กลิฟขนาดใหญ่เกินไป) แทนสามเฉดสีของไอเดียเดียวกัน
+
+หยุดโหมดไลฟ์เมื่อคุณเสร็จ: พูดว่า "stop live mode" ปิดแท็บ หรือกดปุ่มออกบนแถบตัวเลือก
+
+## ข้อควรระวัง
+
+- **รันบนหน้าที่ยังเขียนไม่เสร็จ** การสร้างตัวแปรไลฟ์ต้องการบริบท หากอิลิเมนต์มีข้อความตัวอย่าง Lorem ipsum ทั่วไป หรือการจัดรูปแบบดีฟอลต์ก่อนสไตล์ชีต ตัวแปรจะสะท้อนสิ่งนั้น กรอกเนื้อหาก่อน
+- **คาดหวังให้มันตัดสินใจระดับมหภาค** โหมดไลฟ์วนซ้ำบนอิลิเมนต์ที่เลือกเดียว สำหรับ "ทำหน้าราคาทั้งหน้าใหม่" ใช้ `/impeccable` หรือ `/impeccable craft` แทน
+- **เพิกเฉอข้อความ fallback** หากอิลิเมนต์อยู่ในไฟล์ที่สร้างขึ้น (เทมเพลตที่คอมไพล์แล้ว ผลลัพธ์บิวด์) ตัวเลือกบอกอย่างชัดเจนและเสนอให้ส่งการยอมรับเข้าไปในซอร์สจริง อย่าบังคับการยอมรับเข้าไปในไฟล์ที่สร้างขึ้น: บิวด์ถัดไปจะลบมัน
+- **รันโดยไม่มี PRODUCT.md หรือ DESIGN.md เมื่อคุณสนใจเรื่องความเหมาะสมกับแบรนด์** Live ยังสร้างได้ แต่ตัวแปรจะเอนเข้าหาค่าดีฟอลต์ทั่วไป รัน `/impeccable teach` และ `/impeccable document` ก่อนหากผลลัพธ์ต้องฟังดูเหมือนผลิตภัณฑ์ของคุณ

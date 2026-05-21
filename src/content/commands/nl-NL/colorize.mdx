@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Voeg strategische kleur toe aan monochrome interfaces zonder bont te worden.
+highlights:
+  - De interface ziet er bekwaam uit maar is onvergeetlijk.
+  - Je nodig hebt duidelijkere nadruk zonder de hele structuur te herschrijven.
+  - Het huidige palet brengt niet de bedoelde stemming over.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Wanneer te gebruiken
+
+`/impeccable colorize` is het tegengewicht voor "alles is grijs". Dashboards die als een beige muur lezen, formulieren zonder accent, contentpagina's die elk willekeurig SaaS-product konden zijn. Gebruik het wanneer de interface functioneel maar emotioneel vlak is, en je warmte wilt zonder in het AI-kleurenpalet te belanden (paars-naar-roze, cyaan-neon, dark mode-gloed).
+
+## Hoe het werkt
+
+De skill begint met het lezen van je merkkleur als die bestaat, en beslist dan waar kleur zijn plaats verdient:
+
+1. **Primaire actie** krijgt de sterkste uitdrukking van de merknuance.
+2. **Secundaire accenten** krijgen gedempte of getinte varianten, niet een tweede volledige kleur.
+3. **Neutralen** worden getint naar de merknuance bij lage chroma (rond 0.005 tot 0.01), wat bijna onzichtbaar is per pixel maar onderbewuste samenhang creëert.
+4. **Inhoudscategorieën** krijgen een beperkt, intentioneel accentsysteem, geen regenboog.
+
+Belangrijk: het gebruikt OKLCH in plaats van HSL zodat gelijke lichthidestappen er gelijk uitzien. Naarmate lichtheid naar de uitersten beweegt, daalt chroma automatisch. Zo krijg je kleur die overwogen aanvoelt in plaats van berekend.
+
+## Probeer het
+
+```
+/impeccable colorize the dashboard
+```
+
+Verwachte diff:
+
+- Merkkleur verplaatst van een hardcoded hex naar `--color-accent: oklch(62% 0.18 240)`
+- Neutralen getint met 0.007 chroma naar de merknuance
+- Primaire knop krijgt het volledige accent, secundaire knoppen krijgen inkt/mist
+- Diagramserie gebruikt 3 verschillende nuances, allemaal op gelijke lichtheid zodat geen serie visueel domineert
+- Lege status-illustratie krijgt een zachte accentwassing
+
+## Valkuilen
+
+- **Het uitvoeren zonder een merknuance.** Colorize heeft een startpunt nodig. Als `PRODUCT.md` er geen specificeert, zal het vragen. Laat het niet kiezen uit de AI-kleurenpalet-standaardwaarden.
+- **Verwachten dat het het AI-kleurenpaletprobleem oplost.** Als je ontwerp al paarse kleurovergangen en cyaan-neon heeft, heb je eerst `/impeccable quieter` nodig, dan kan colorize herbouwen.
+- **Het gebruiken op reeds kleurrijke interfaces.** Dat is een taak voor `/impeccable quieter`. Colorize voegt toe, het trekt niet af.

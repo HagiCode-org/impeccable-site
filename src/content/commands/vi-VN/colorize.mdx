@@ -1,0 +1,48 @@
+---
+slug: colorize
+title: Colorize
+summary: Thêm màu sắc chiến lược vào giao diện đơn sắc mà không trở nên sặc sỡ.
+highlights:
+  - Giao diện trông có năng lực nhưng dễ quên.
+  - Bạn cần nhấn mạnh rõ hơn mà không viết lại toàn bộ cấu trúc.
+  - Bảng màu hiện tại không mang theo tâm trạng dự định.
+related:
+  - bolder
+  - delight
+  - polish
+---
+
+## Khi nào nên sử dụng
+
+`/impeccable colorize` là đối trọng của "mọi thứ đều xám". Bảng điều khiển đọc như một bức tường be, biểu mẫu không có màu nhấn, trang nội dung có thể là bất kỳ sản phẩm SaaS nào. Sử dụng khi giao diện hoạt động về mặt chức năng nhưng phẳng về cảm xúc, và bạn muốn sự ấm áp mà không rơi vào bảng màu AI (tím-hồng, xanh neon phát sáng, dark mode phát sáng).
+
+## Cách hoạt động
+
+Kỹ năng bắt đầu bằng cách đọc màu thương hiệu nếu có, sau đó quyết định nơi màu sắc xứng đáng với vị trí của nó:
+
+1. **Hành động chính** nhận biểu hiện mạnh nhất của màu thương hiệu.
+2. **Màu nhấn phụ** nhận biến thể phai hoặc nhuộm, không phải màu thứ hai đầy đủ.
+3. **Màu trung tính** được nhuộm theo hướng màu thương hiệu ở chroma thấp (khoảng 0.005 đến 0.01), gần như không nhìn thấy trên mỗi pixel nhưng tạo sự gắn kết tiềm thức.
+4. **Danh mục nội dung** nhận một hệ thống nhấn giới hạn và có chủ đích, không phải cầu vồng.
+
+Điều quan trọng, nó sử dụng OKLCH thay vì HSL để các bước độ sáng bằng nhau trông bằng nhau. Khi độ sát di chuyển về phía các cực, chroma giảm tự động. Đây là cách bạn có màu sắc cảm thấy được cân nhắc thay vì được tính toán.
+
+## Thử ngay
+
+```
+/impeccable colorize the dashboard
+```
+
+Diff kỳ vọng:
+
+- Màu thương hiệu chuyển từ hex hardcoded sang `--color-accent: oklch(62% 0.18 240)`
+- Màu trung tính được nhuộm với 0.007 chroma theo hướng màu thương hiệu
+- Nút chính nhận accent đầy đủ, nút phụ nhận ink/mist
+- Chuỗi biểu đồ sử dụng 3 màu khác biệt, tất cả ở độ sáng khớp nhau nên không chuỗi nào chiếm ưu thế trực quan
+- Minh họa trạng thái trống nhận một lớp nhấn nhẹ
+
+## Những cạm bẫy cần tránh
+
+- **Chạy mà không có màu thương hiệu.** Colorize cần một điểm bắt đầu. Nếu `PRODUCT.md` không chỉ định, nó sẽ hỏi. Đừng để nó chọn từ bảng màu mặc định của AI.
+- **Kỳ vọng nó sửa vấn đề bảng màu AI.** Nếu thiết kế đã có gradient tím và xanh neon, bạn cần `/impeccable quieter` trước, sau đó colorize có thể xây dựng lại.
+- **Sử dụng trên giao diện đã nhiều màu.** Đó là việc của `/impeccable quieter`. Colorize thêm, không bớt.

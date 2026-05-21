@@ -1,0 +1,124 @@
+---
+slug: document
+title: Document
+summary: Generera en specifikationskompatibel DESIGN.md som fangar ditt visuella system sa att varje AI-agent haller sig till varumarket.
+highlights:
+  - Kodbasen innehaller redan ett riktigt designsystem.
+  - Du behovr en portabel sammanfattning av farger, typ, avstand och komponenter.
+  - Framtida designarbete driver for att systemet ar implicit.
+related:
+  - teach
+  - extract
+  - polish
+---
+
+<div class="docs-viz-hero">
+  <div class="docs-viz-file">
+    <div class="docs-viz-file-header">
+      <span class="docs-viz-file-name">DESIGN.md</span>
+      <span class="docs-viz-file-status">Google Stitch format</span>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">01</span>
+        <span class="docs-viz-designmd-title">Overview</span>
+      </div>
+      <p class="docs-viz-designmd-note">Creative North Star: <em>"The Editorial Sanctuary."</em> Quiet type, generous air, one committed accent.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">02</span>
+        <span class="docs-viz-designmd-title">Colors</span>
+      </div>
+      <div class="docs-viz-designmd-swatches" aria-hidden="true">
+        <span class="docs-viz-designmd-swatch" style="background:#1a1a1a"></span>
+        <span class="docs-viz-designmd-swatch" style="background:#f5f3ef"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(60% 0.22 30)"></span>
+        <span class="docs-viz-designmd-swatch" style="background:oklch(90% 0.02 30)"></span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">03</span>
+        <span class="docs-viz-designmd-title">Typography</span>
+      </div>
+      <div class="docs-viz-designmd-type">
+        <span class="docs-viz-designmd-type-display">Aa</span>
+        <span class="docs-viz-designmd-type-body">Cormorant Garamond &middot; Instrument Sans</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">04</span>
+        <span class="docs-viz-designmd-title">Elevation</span>
+      </div>
+      <p class="docs-viz-designmd-note">Flat by default. Shadows appear only as a response to state.</p>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">05</span>
+        <span class="docs-viz-designmd-title">Components</span>
+      </div>
+      <div class="docs-viz-designmd-comps" aria-hidden="true">
+        <span class="docs-viz-designmd-btn">Subscribe</span>
+        <span class="docs-viz-designmd-chip">filter</span>
+        <span class="docs-viz-designmd-card">card</span>
+      </div>
+    </div>
+    <div class="docs-viz-designmd-section">
+      <div class="docs-viz-designmd-head">
+        <span class="docs-viz-designmd-num">06</span>
+        <span class="docs-viz-designmd-title">Do's and Don'ts</span>
+      </div>
+      <div class="docs-viz-designmd-rules">
+        <span class="docs-viz-designmd-do">Tint neutrals toward the accent hue.</span>
+        <span class="docs-viz-designmd-dont">Gradient text for emphasis.</span>
+      </div>
+    </div>
+  </div>
+  <p class="docs-viz-caption">De sex sektionerna ar fasta, i en fast ordning, med fasta namn. Vid sidan av detta skickas <code>DESIGN.json</code> som en maskinlasbar sidofil for desigpanelen i Live Mode.</p>
+</div>
+
+## Nar du ska anvanda det
+
+Kor `/impeccable document` nar du har tillrackligt mycket av ett visuellt system for att dokumentera: farger, typografi, atminstone en knapp och ett kort. Kommandot skannar din kodbas, extraherar de tokens och komponentmonster den hittar, och skriver en `DESIGN.md` i projektroten som foljer [Google Stitch DESIGN.md-formatet](https://stitch.withgoogle.com/docs/design-md/format/), sex sektioner i en fast ordning, interoperabel med alla andra DESIGN.md-medvetna verktyg.
+
+Anvand det nar:
+
+- **Du precis korde `/impeccable teach`** och `PRODUCT.md` nu finns. Document ar den matchande visuella filen.
+- **Ett kommando halsade dig mot det.** Live, craft och polish laser alla DESIGN.md. Om den saknas foreslar fardigheten att kora document forst.
+- **Designen har drivit** fran en aldre DESIGN.md och filen langre inte beskriver det levande systemet.
+- **Infor en stor omdesign**, for att fanga nuvarande tillstand som en referens for nasta rikting.
+
+For projekt utan kod an (en fresh `teach`-körning, inget byggt), finns det ett saedlage: `/impeccable document --seed` staller fem snabba strategiska fragor (fargstrategi, typriktning, rorelseenergi, referenser, antireferenser) och skriver ett schelett. Kor igen i skanningslage nar det finns kod.
+
+## Hur det fungerar
+
+Skanningspasset hittar designtillgangar i prioritetsordning: CSS custom properties, Tailwind-konfiguration, CSS-in-JS-teman, designtoken-filer, komponentkallkod, den globala stilmallen, och slutligen beräknade stilar fran den levande renderade utmatningen om en webblasare ar tillganglig. Den auto-extraherar allt den kan, staller sedan en grupperad fraga for de delar som behovr kreativ inmatning: den **Creative North Star** (en enda namngiven metafor for hela systemet, som "The Editorial Sanctuary"), beskrivande fargnamn, hojdfilosofin och komponentkaraktaren.
+
+Utmatningen ar en DESIGN.md med exakt sex sektioner: Overview, Colors, Typography, Elevation, Components, Do's and Don'ts. Rubrikerna ar fasta tecken-for-tecken sa filen ar parsbar av andra verktyg. Vid sidan av den skrivs `DESIGN.json` som en maskinlasbar sidofil. Den sidofilen ar vad designpanelen i live-laget anvander for att rendera *detta projekts* faktiska knapp-, inmatnings-, navigerings- och kort-rutor istallet for en generisk approximation.
+
+Varje annat kommando laser DESIGN.md vid anrop. Varianter, poleringar, revisioner och nya funktioner ärver det visuella systemet utan att bli tillsagda.
+
+## Prova det
+
+```
+/impeccable document
+```
+
+Pa ett projekt med redan definierade tokens tar det ungefar tva minuter: skanningen hittar din palett och typstack, du valjer en North Star fran 2 eller 3 alternativ, bekräftar beskrivande fargnamn ("Deep Muted Teal-Navy", inte "blue-800"), och filen hamnar i projektroten.
+
+Pa ett nytt projekt:
+
+```
+/impeccable document --seed
+```
+
+Fem fragor, ungefar fem minuter. Filen ar ett schelett, markerad med en `<!-- SEED -->`-kommentar sa den ar ärlig om vad den ar. Kor igen utan flaggan nar du har implementerat tokens.
+
+## Fallgropar
+
+- **Att kora den for tidigt.** Pa ett projekt utan implementerade tokens ar saedlage ratt. Fabrikera inte en full spec som koden inte kan backa upp. En fejk DESIGN.md ar samre an ingen DESIGN.md.
+- **Att behandla DESIGN.md som dokumentation endast for manniskor.** Den ar primart for AI:n. Varje annat kommando laser den. Formatets bestammande ("never", "always", Named Rules) ar avsiktligt.
+- **Att lägga till en Layout / Motion / Responsive toppnivasektion.** Specifikationen har sex sektioner, i en fast ordning, med fasta namn. Vik in layout- eller rorelseinnehall i Overview (filosofi-niva-regler) eller Components (per-komponent-beteende).
+- **Att skriva over en befintlig DESIGN.md tyst.** Document bekräftar alltid forst. Om du vill borja om fran grunden, byt namn pa den befintliga filen eller be uttryckligen fardigheten att skriva over.

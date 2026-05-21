@@ -1,0 +1,84 @@
+---
+slug: impeccable
+title: Impeccable
+summary: A inteligência de design por trás de cada comando.
+highlights:
+  - Pretende um único ponto de entrada para layout, tipografia, cor, movimento e estrutura UX em conjunto.
+  - Está a explorar uma direção e quer que a competência escolha o sub-fluxo correto.
+  - Necessita do contexto de design mais amplo em vez de uma passagem estreita de um único comando.
+related:
+  - craft
+  - critique
+  - polish
+---
+
+## Quando utilizar
+
+`/impeccable` é o comando principal. Invoque-o diretamente quando pretende trabalho de design livre com o manual completo carregado, sem selecionar um comando especializado. É a alternativa para quando nenhum dos 23 especialistas (`audit`, `polish`, `critique` e os restantes) se encaixa claramente no que está a tentar fazer.
+
+Recorra ao `/impeccable` diretamente quando:
+
+- **Não tem a certeza de qual comando se adequa.** Descreva o que pretende em português corrente e deixe a competência escolher a abordagem certa.
+- **O trabalho abrange múltiplas disciplinas.** "Refazer esta secção hero" envolve layout, tipografia, cor e movimento. Um único comando não abrange tudo.
+- **Pretende a inteligência de design completa sem restrições.** Todos os ficheiros de referência carregados, todos os anti-padrões verificados, sem fluxo de trabalho predefinido.
+
+Para fluxos estruturados, recorra aos comandos especializados na barra lateral. Execute `/impeccable teach` primeiro em qualquer projeto novo para estabelecer o PRODUCT.md e o DESIGN.md. `/impeccable craft` encadeia uma entrevista de descoberta numa compilação completa com iteração visual em tempo real. `/impeccable shape` produz um briefing de design sem tocar no código. `/impeccable live` oferece um seletor no navegador com três variantes por elemento. Os comandos de avaliação e refinamento (`audit`, `critique`, `polish`, `typeset`, `layout`, `colorize` e os restantes) dedicam-se cada um a uma parte específica do trabalho.
+
+## Como funciona
+
+A maioria dos interfaces gerados por IA falham da mesma forma: tipos de letra genéricos, gradientes púrpura, grelhas de cartas sobre grelhas de cartas, glassmorphism por todo o lado. `/impeccable` dá à sua IA um ponto de vista forte. Carrega um manual de design opinativo juntamente com uma longa lista de anti-padrões, e depois impulsiona o modelo a comprometer-se com uma direção estética específica antes de escrever uma única linha de código.
+
+Dois ficheiros na raiz do projeto moldam tudo o que a competência faz:
+
+- **`PRODUCT.md`** transporta o registo (marca vs produto), utilizadores-alvo, personalidade da marca, anti-referências, princípios de design. Responde a "quem, o quê, porquê".
+- **`DESIGN.md`** transporta cores, tipografia, elevação, componentes, regras do que fazer e do que não fazer, no formato de seis secções do Google Stitch. Responde a "como se apresenta".
+
+Cada comando lê ambos os ficheiros antes de gerar. O **Registo** decide quais os padrões a carregar. Marca (marketing, landing, portfólio, onde o design É o produto) e produto (interface de aplicações, painéis, ferramentas, onde o design SERVE o produto) têm padrões diferentes para tipografia, movimento, cor e densidade. Especificá-lo uma vez no PRODUCT.md significa que `/impeccable typeset` não irá impor tipos de letra de revista editorial num painel de controlo, nem impor padrões de produto numa página de campanha. Consulte o [tutorial marca vs produto](/tutorials/brand-vs-product) para perceber como os dois divergem.
+
+Na primeira utilização num projeto, a competência executa o fluxo `teach` automaticamente: uma breve entrevista que escreve o PRODUCT.md e depois delega ao `/impeccable document` para o DESIGN.md. Os comandos seguintes leem os ficheiros sem voltar a perguntar.
+
+## Experimente
+
+```
+/impeccable redo this hero section
+```
+
+```
+/impeccable build me a pricing page for a developer tool
+```
+
+Ambos os pedidos são vagos propositadamente. `/impeccable` escolherá uma direção estética forte e consistente com o seu registo, comprometer-se-á com tipos de letra não predefinidos, evitará a paleta de cores da IA e fará o tipo de escolhas específicas que um designer faria. Sem necessidade de escolher primeiro um nome de comando, sem fluxo de trabalho passo a passo para seguir.
+
+Para iteração visual no navegador em vez de no chat:
+
+```
+/impeccable live
+```
+
+Selecione qualquer elemento no seu servidor de desenvolvimento em execução. Adicione um comentário ou traço. Receba três variantes de qualidade de produção trocadas em tempo real via HMR. Aceite a que pretende e a modificação é escrita no código-fonte.
+
+## Fixar comandos como atalhos
+
+A v3.0 consolidou 18 competências autónomas num único `/impeccable` com 23 sub-comandos. Se sente falta da forma abreviada de um comando específico, fixe-o novamente:
+
+```
+/impeccable pin critique
+```
+
+A partir de agora, `/critique` invoca `/impeccable critique` diretamente. Cria uma competência de redirecionamento leve que delega ao comando principal, pelo que as atualizações da competência são aplicadas sem necessidade de nova fixação.
+
+Atalhos úteis para experimentar:
+
+- `/impeccable pin polish` para trabalho de passagem final
+- `/impeccable pin audit` para verificações determinísticas de acessibilidade/desempenho
+- `/impeccable pin live` para o fluxo de iteração no navegador
+- `/impeccable pin critique` para revisão de design
+
+Para remover: `/impeccable unpin critique`. Os atalhos existem como diretórios prefixados com `i-` na pasta de competências do seu harness (`.claude/skills/i-critique/`, `.cursor/skills/i-critique/`, etc.), pelo que também os pode eliminar manualmente.
+
+## Armadilhas
+
+- **Tratá-lo como um guia de estilo.** É um parceiro de design opinativo, não um linter. Os padrões existem para elevar o nível base, não para se sobrepor ao seu julgamento. Se tem uma razão legítima para discordar (guia de marca, restrição de acessibilidade, investigação de utilizadores), discorde e explique porquê. A competência trabalhará consigo. O que produz piores resultados é ignorar a opinião sem uma razão.
+- **Esperar que corrija código existente.** `/impeccable` serve para criação. Para refinamento, recorra a `/impeccable polish`, `/impeccable distill` ou `/impeccable critique`.
+- **Executá-lo antes de `teach` ter tido oportunidade de guardar o contexto.** Num projeto novo, a entrevista será feita a meio da execução, o que é aceitável mas mais lento. Executar `/impeccable teach` explicitamente como primeiro comando é ligeiramente mais fluido.
+- **Saltar a questão do registo.** Os padrões de marca e produto divergem o suficiente para que executar no registo errado produza resultados subtilmente incorretos. Se o `PRODUCT.md` não tem o campo `## Register` (legado), execute `/impeccable teach` para adicioná-lo.

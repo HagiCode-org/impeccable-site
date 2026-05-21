@@ -1,0 +1,51 @@
+---
+slug: layout
+title: Layout
+summary: Corrija o layout, espaçamento e ritmo visual.
+highlights:
+  - A página carece de ênfase clara.
+  - Existe bom conteúdo, mas a composição esconde-o.
+  - Pretende um fluxo mais forte antes de tocar na cor ou no movimento.
+related:
+  - distill
+  - adapt
+  - typeset
+---
+
+## Quando utilizar
+
+`/impeccable layout` destina-se a páginas onde nada está tecnicamente errado mas nada respira. Espaçamento igual em todo o lado, grelhas de cartas monótonas, conteúdo que vai de borda a borda, hierarquia que depende apenas do tamanho. Recorra a ele quando um layout "parece errado" e não consegue articular porquê.
+
+Bons indicadores: "tudo parece apertado", "lê-se como uma parede", "não sei onde olhar primeiro".
+
+## Como funciona
+
+A competência analisa cinco dimensões de layout:
+
+1. **Espaçamento**: a escala de espaçamento é consistente ou existem espaços aleatórios de 13px, os elementos relacionados estão agrupados com espaço generoso entre grupos, existe algum ritmo.
+2. **Hierarquia visual**: o olhar pousa na ação principal em menos de 2 segundos, a hierarquia está a fazer trabalho real ou está tudo a gritar.
+3. **Grelha e estrutura**: existe uma grelha subjacente ou o layout é aleatório, os elementos estão alinhados a linhas de base.
+4. **Ritmo**: a página alterna entre espaçamento apertado e generoso, ou é tudo uniforme.
+5. **Densidade**: o layout está apertado ou é desperdiçado, a densidade corresponde ao tipo de conteúdo.
+
+As correções envolvem geralmente reconstruir a escala de espaçamento, introduzir assimetria, colapsar grelhas monótonas num layout misto com hero e elementos de suporte, e dar espaço real à ação principal.
+
+## Experimente
+
+```
+/impeccable layout the settings page
+```
+
+Alterações típicas:
+
+- Escala de espaçamento unificada para 8 / 16 / 24 / 48 / 96px
+- Separadores de secção a 48px, espaçamento entre linhas a 16px, grupos de campos de formulário a 8px
+- Ações principais retiradas do fluxo do formulário com buffer de 32px
+- Bordas decorativas removidas, substituídas por agrupamento orientado pelo espaçamento
+- Proporções da barra lateral e coluna principal reequilibradas (280 / flex vs 25 / 75)
+
+## Armadilhas
+
+- **Confundir arrange com distill.** Se o problema é demasiados elementos, execute `/impeccable distill` primeiro. Layout serve para organizar o que já é o conjunto certo.
+- **Esperar que recupere uma grelha partida.** Se a página não tem grelha nenhuma, arrange construirá uma. Apenas saiba que o diff será maior do que espera.
+- **Ignorar o veredicto de hierarquia.** Se arrange diz "nada é primário", nenhum trabalho de espaçamento resolve isso. Necessita de uma decisão de conteúdo, não de um ajuste de layout.
