@@ -79,6 +79,20 @@ env -u NPM_CONFIG_PREFIX npm run i18n:check
 
 Every upstream command slug must exist in both locale collections. The parity rules are enforced during catalog generation.
 
+For English source-of-truth syncing, you can pull the upstream skill body content into the local `en-US` MDX files with:
+
+```bash
+env -u NPM_CONFIG_PREFIX npm run content:sync:vendor
+```
+
+To sync a single command only:
+
+```bash
+env -u NPM_CONFIG_PREFIX node scripts/sync-vendor-command-content.mjs --slug animate
+```
+
+This sync copies the upstream command body and tagline-driven summary into `src/content/commands/en-US/*.mdx`. Local frontmatter fields such as `title`, `seoTitle`, `seoDescription`, `routeSlug`, `highlights`, and `related` are preserved directly inside each MDX file so the site can keep its own presentation layer.
+
 Add or update command docs in:
 
 - `src/content/commands/en-US/<slug>.mdx`
@@ -103,7 +117,7 @@ The generated catalog lives at `src/lib/generated/command-catalog.json`.
 ## Build pipeline summary
 
 1. `i18n:generate` converts YAML locale sources into JSON runtime resources.
-2. `catalog:generate` reads vendor metadata plus local MDX entries and emits a normalized command catalog.
+2. `catalog:generate` reads vendor metadata plus per-locale MDX frontmatter and emits a normalized command catalog.
 3. Astro routes consume the generated catalog and the localized command content collections.
 4. The site builds as static output only.
 
@@ -122,3 +136,16 @@ This should confirm:
 - Generated locale resources are fresh.
 - Generated command catalog is fresh.
 - Astro routes compile and static output builds successfully.
+
+## Production Deployment
+
+- Authoritative workflow: `.github/workflows/impeccable-site-deploy-gh-pages.yml`
+- Production source of truth: the `gh-pages` branch, published only by GitHub Actions
+- Published payload contract: branch root `esa.jsonc`, `wrangler.jsonc`, and `dist/` containing the validated Astro snapshot
+- Build prerequisite in CI: the workflow checks out `vendor/impeccable` recursively before running `npm run validate`
+- Manual dispatch path: `workflow_dispatch` rebuilds from the selected ref and republishes the validated payload to `gh-pages`
+- Direct Cloudflare publication is handled outside this workflow; keep `gh-pages/wrangler.jsonc` as the checked-in Wrangler contract for direct publish operations
+- Required GitHub permissions: the deploy job needs `contents: write`; the build job stays read-only
+- Required hosting setting: configure the production host to read `gh-pages/esa.jsonc`, treat `gh-pages/wrangler.jsonc` as the Wrangler source of truth for direct publication, and serve `gh-pages/dist/`
+- First deploy checks: confirm the workflow publishes `esa.jsonc`, `wrangler.jsonc`, and `dist/`, verify the hosting target still points at `gh-pages`, and load `https://impeccable.hagicode.com`
+- Rollback path: revert the source change or rerun deployment from an older commit so CI republishes the previous snapshot
