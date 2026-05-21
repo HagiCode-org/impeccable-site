@@ -2,35 +2,45 @@
 import { render } from 'astro:content';
 
 import DocsLayout from '@/layouts/DocsLayout.astro';
-import { getAllCommands, getCommandRecord, getCommandRouteKey, getCommandSections, getLocalizedCommandContent } from '@/lib/catalog/command-catalog';
+import {
+  getAllCommands,
+  getCommandAlternateLocalePaths,
+  getCommandPath,
+  getCommandRecord,
+  getCommandRecordByLocaleRoute,
+  getCommandRouteKey,
+  getCommandSections,
+  getLocalizedCommandContent,
+} from '@/lib/catalog/command-catalog';
 import type { CommandCatalogRecord } from '@/lib/vendor/impeccable-source';
 import { getLocalizedCommandEntry } from '@/lib/content/command-content';
-import { getLocalizedPath } from '@/lib/i18n/locale-routing';
 import { t } from '@/lib/i18n/ui';
 
 export function getStaticPaths() {
-  return getAllCommands().map((command) => ({ params: { slug: command.slug } }));
+  return getAllCommands().map((command) => ({
+    params: { slug: getLocalizedCommandContent(command, 'en-US').routeSlug },
+  }));
 }
 
 const locale = 'en-US';
-const slug = Astro.params.slug ?? '';
-const command = getCommandRecord(slug);
+const routeSlug = Astro.params.slug ?? '';
+const command = getCommandRecordByLocaleRoute(locale, routeSlug) ?? getCommandRecord(routeSlug);
 
 if (!command) {
-  throw new Error(`Unknown command slug: ${slug}`);
+  throw new Error(`Unknown command slug: ${routeSlug}`);
 }
 
-const entry = await getLocalizedCommandEntry(locale, slug);
+const entry = await getLocalizedCommandEntry(locale, command.slug);
 
 if (!entry) {
-  throw new Error(`Missing localized entry for ${locale}/${slug}`);
+  throw new Error(`Missing localized entry for ${locale}/${command.slug}`);
 }
 
 const localized = getLocalizedCommandContent(command, locale);
 const { Content } = await render(entry);
 const sections = getCommandSections(locale);
-const relatedSlugs = entry.data.related.length
-  ? entry.data.related
+const relatedSlugs = localized.relatedCommandIds.length
+  ? localized.relatedCommandIds
   : [
       ...(command.relationships.leadsTo ?? []),
       ...(command.relationships.combinesWith ?? []),
@@ -47,8 +57,9 @@ const description = localized.seoDescription ?? localized.summary;
   locale={locale}
   title={title}
   description={description}
-  routeKey={getCommandRouteKey(slug)}
-  activeSlug={slug}
+  routeKey={getCommandRouteKey(command, locale)}
+  alternateLocalePaths={getCommandAlternateLocalePaths(command)}
+  activeSlug={command.slug}
   sections={sections}
 >
   <article class="command-detail">
@@ -56,35 +67,9 @@ const description = localized.seoDescription ?? localized.summary;
       <p class="command-detail__command">{command.commandName}</p>
       <h1>{localized.title}</h1>
       <p class="command-detail__summary">{localized.summary}</p>
-      <p class="command-detail__tagline">{command.tagline}</p>
     </header>
 
-    <section class="detail-meta-grid">
-      <section class="detail-meta-card">
-        <h2>{t(locale, 'docs', 'detail.whatItDoes')}</h2>
-        <p>{command.description}</p>
-      </section>
-      <section class="detail-meta-card">
-        <h2>{t(locale, 'docs', 'detail.argumentHint')}</h2>
-        <p>{command.argumentHint || t(locale, 'docs', 'detail.noArgumentHint')}</p>
-      </section>
-      <section class="detail-meta-card">
-        <h2>{t(locale, 'docs', 'detail.sourceReference')}</h2>
-        <a class="text-link" href={`https://github.com/pbakaus/impeccable/blob/main/${command.sourcePath}`} rel="noreferrer" target="_blank">
-          {command.sourcePath}
-        </a>
-      </section>
-    </section>
-
-    <section class="detail-highlights">
-      <h2>{t(locale, 'docs', 'detail.highlights')}</h2>
-      <ul>
-        {entry.data.highlights.map((highlight) => <li>{highlight}</li>)}
-      </ul>
-    </section>
-
     <section class="detail-body">
-      <h2>{t(locale, 'docs', 'detail.body')}</h2>
       <div class="prose-shell">
         <Content />
       </div>
@@ -92,12 +77,11 @@ const description = localized.seoDescription ?? localized.summary;
 
     {relatedCommands.length > 0 && (
       <section class="detail-related">
-        <h2>{t(locale, 'docs', 'detail.related')}</h2>
+        <h2>Related commands</h2>
         <div class="related-links">
           {relatedCommands.map((relatedCommand) => (
-            <a class="related-links__item" href={getLocalizedPath(`/docs/${relatedCommand.slug}/`, locale)}>
-              <span>{relatedCommand.commandName}</span>
-              <strong>{getLocalizedCommandContent(relatedCommand, locale).title}</strong>
+            <a class="related-links__item" href={getCommandPath(relatedCommand, locale)}>
+              <span>{getLocalizedCommandContent(relatedCommand, locale).title}</span>
             </a>
           ))}
         </div>

@@ -6,16 +6,17 @@ import { t } from '@/lib/i18n/ui';
 interface Props {
   locale: SiteLocale;
   routeKey: string;
+  alternateLocalePaths?: Partial<Record<SiteLocale, string>>;
 }
 
-const { locale, routeKey } = Astro.props;
+const { locale, routeKey, alternateLocalePaths } = Astro.props;
 ---
 
 <nav class="language-switcher" aria-label={t(locale, 'common', 'language.label')}>
   {
     SUPPORTED_SITE_LOCALES.map((candidate) => (
       <a
-        href={getLocalizedPath(routeKey, candidate)}
+        href={alternateLocalePaths?.[candidate] ?? getLocalizedPath(routeKey, candidate)}
         class:list={['language-switcher__item', { 'is-active': candidate === locale }]}
         hreflang={candidate}
         lang={candidate}
