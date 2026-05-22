@@ -5,14 +5,14 @@ import {
   resolveSiteLocale,
   type SiteLocale,
 } from '@/i18n/locale-metadata';
+import {
+  COMMAND_COLLECTION_BY_LOCALE,
+  COMMAND_CONTENT_LOCALES,
+  type CommandCollectionName,
+} from '@/lib/content/command-source-locales';
 
-const collectionByLocale = {
-  'en-US': 'commandsEnUs',
-  'zh-CN': 'commandsZhCn',
-} as const;
-
-type CommandContentSourceLocale = keyof typeof collectionByLocale;
-const commandContentSourceLocales = new Set<SiteLocale>(Object.keys(collectionByLocale) as CommandContentSourceLocale[]);
+type CommandContentSourceLocale = SiteLocale;
+const commandContentSourceLocales = new Set<SiteLocale>(COMMAND_CONTENT_LOCALES);
 
 function resolveCommandContentSourceLocale(
   localeInput: SiteLocale | string | null | undefined,
@@ -31,7 +31,7 @@ function resolveCommandContentSourceLocale(
 
 export async function getLocalizedCommandEntries(localeInput: SiteLocale | string | null | undefined) {
   const locale = resolveCommandContentSourceLocale(localeInput);
-  return getCollection(collectionByLocale[locale]);
+  return getCollection(COMMAND_COLLECTION_BY_LOCALE[locale] as CommandCollectionName);
 }
 
 export async function getLocalizedCommandEntry(

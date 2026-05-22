@@ -1,10 +1,12 @@
+import { SUPPORTED_SITE_LOCALES, type SiteLocale } from '../../i18n/locale-metadata';
+
 export const VENDOR_SOURCE_ROOT = 'vendor/impeccable';
 export const VENDOR_COMMAND_CONTENT_ROOT = `${VENDOR_SOURCE_ROOT}/site/content/skills`;
 export const VENDOR_CATEGORY_DATA_PATH = `${VENDOR_SOURCE_ROOT}/site/data/sub-pages-data.ts`;
 export const VENDOR_COMMAND_METADATA_PATH = `${VENDOR_SOURCE_ROOT}/skill/scripts/command-metadata.json`;
-export const SUPPORTED_COMMAND_LOCALES = ['en-US', 'zh-CN'] as const;
+export const SUPPORTED_COMMAND_LOCALES = SUPPORTED_SITE_LOCALES;
 
-export type CommandLocale = typeof SUPPORTED_COMMAND_LOCALES[number];
+export type CommandLocale = SiteLocale;
 
 export type CommandCategoryId =
   | 'create'
