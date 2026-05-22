@@ -139,6 +139,7 @@ This should confirm:
 
 ## Production Deployment
 
+- Production command docs host: `https://impeccable.hagicode.com`
 - Authoritative workflow: `.github/workflows/impeccable-site-deploy-gh-pages.yml`
 - Production source of truth: the `gh-pages` branch, published only by GitHub Actions
 - Published payload contract: branch root `esa.jsonc`, `wrangler.jsonc`, and `dist/` containing the validated Astro snapshot
