@@ -12,7 +12,14 @@ const vendorCategoryDataPath = path.join(siteRoot, 'vendor/impeccable/site/data/
 const vendorMetadataPath = path.join(siteRoot, 'vendor/impeccable/skill/scripts/command-metadata.json');
 const localContentRoot = path.join(siteRoot, 'src/content/commands');
 const generatedCatalogPath = path.join(siteRoot, 'src/lib/generated/command-catalog.json');
-const supportedLocales = ['en-US', 'zh-CN'];
+
+async function readSupportedLocales() {
+  const entries = await fs.readdir(localContentRoot, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+}
 
 function isPlainObject(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -193,6 +200,7 @@ async function readLocalizedCommandEntry(locale, slug) {
 }
 
 async function readLocalizedCommandSource(vendorCommands) {
+  const supportedLocales = await readSupportedLocales();
   const commands = {};
 
   for (const command of vendorCommands) {
@@ -214,6 +222,7 @@ async function readLocalizedCommandSource(vendorCommands) {
 export async function buildCommandCatalog(options = {}) {
   const vendorSource = options.vendorSource ?? await readVendorCommandSource();
   const localizedContent = options.localizedContent ?? await readLocalizedCommandSource(vendorSource.commands);
+  const supportedLocales = options.supportedLocales ?? await readSupportedLocales();
 
   assert.deepEqual(localizedContent.locales, supportedLocales, 'Localized command locales must match supported locales');
 
