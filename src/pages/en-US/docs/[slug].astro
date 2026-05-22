@@ -1,0 +1,13 @@
+---
+import { getAllCommands, getLocalizedCommandContent } from '@/lib/catalog/command-catalog';
+
+export function getStaticPaths() {
+  return getAllCommands().map((command) => ({
+    params: { slug: getLocalizedCommandContent(command, 'en-US').routeSlug },
+  }));
+}
+
+const routeSlug = Astro.params.slug ?? '';
+
+return Astro.redirect(`/docs/${routeSlug}/`);
+---

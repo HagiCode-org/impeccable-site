@@ -8,7 +8,15 @@ export default defineConfig({
   site: 'https://impeccable.hagicode.com',
   output: 'static',
   trailingSlash: 'always',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return pathname !== '/en-US/' && !pathname.startsWith('/en-US/');
+      },
+    }),
+  ],
   vite: {
     resolve: {
       alias: {
