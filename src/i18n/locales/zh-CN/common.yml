@@ -5,6 +5,9 @@ navigation:
   overview: 总览
   commands: 命令
   source: 上游源码
+  productLabel: 主产品
+  productName: HagiCode
+  productSummary: 连接 OpenSpec 与多 Agent 执行的 AI 编码工作台
 language:
   label: 语言
   en-US: English

@@ -28,6 +28,7 @@ const alternateUrls = Object.fromEntries(
     new URL(alternateLocalePaths?.[candidate] ?? getLocalizedPath(routeKey, candidate), siteUrl).toString(),
   ]),
 );
+const hagicodeProductUrl = new URL(getLocalizedPath('/', locale), 'https://hagicode.com').toString();
 ---
 
 <!doctype html>
@@ -52,10 +53,21 @@ const alternateUrls = Object.fromEntries(
   </head>
   <body class="docs-page">
     <header class="site-header">
-      <a class="brand-lockup" href={getLocalizedPath('/docs/', locale)}>
-        <span class="brand-lockup__eyebrow">{t(locale, 'common', 'site.eyebrow')}</span>
-        <strong>{t(locale, 'common', 'site.name')}</strong>
-      </a>
+      <div class="site-header__identity">
+        <a class="brand-lockup" href={getLocalizedPath('/docs/', locale)}>
+          <span class="brand-lockup__eyebrow">{t(locale, 'common', 'site.eyebrow')}</span>
+          <strong>{t(locale, 'common', 'site.name')}</strong>
+        </a>
+
+        <a class="product-entry" href={hagicodeProductUrl} rel="noreferrer" target="_blank">
+          <span class="product-entry__mark" aria-hidden="true">H</span>
+          <span class="product-entry__copy">
+            <span class="product-entry__label">{t(locale, 'common', 'navigation.productLabel')}</span>
+            <strong>{t(locale, 'common', 'navigation.productName')}</strong>
+            <span>{t(locale, 'common', 'navigation.productSummary')}</span>
+          </span>
+        </a>
+      </div>
       <div class="site-header__actions">
         <a class="text-link" href="https://github.com/pbakaus/impeccable" rel="noreferrer" target="_blank">
           {t(locale, 'common', 'navigation.source')}

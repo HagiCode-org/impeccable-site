@@ -5,6 +5,9 @@ navigation:
   overview: Overview
   commands: Commands
   source: Upstream source
+  productLabel: Main product
+  productName: HagiCode
+  productSummary: AI coding workspace with OpenSpec and multi-agent execution
 language:
   label: Language
   en-US: English
