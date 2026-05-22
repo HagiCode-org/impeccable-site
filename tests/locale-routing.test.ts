@@ -18,12 +18,14 @@ describe('locale routing', () => {
   });
 
   it('strips supported locale prefixes and aliases', () => {
+    expect(stripLocalePrefix('/en-US/docs/craft/')).toBe('/docs/craft/');
     expect(stripLocalePrefix('/zh-CN/docs/craft/')).toBe('/docs/craft/');
     expect(stripLocalePrefix('/zh-TW/docs/craft/')).toBe('/docs/craft/');
   });
 
   it('resolves locale prefixes from the pathname', () => {
     expect(resolveLocaleFromPathname('/')).toBe('en-US');
+    expect(resolveLocaleFromPathname('/en-US/docs/')).toBe('en-US');
     expect(resolveLocaleFromPathname('/fr-FR/docs/')).toBe('fr-FR');
     expect(resolveLocaleFromPathname('/zh-TW/docs/')).toBe('zh-Hant');
   });

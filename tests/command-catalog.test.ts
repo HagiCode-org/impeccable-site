@@ -1,6 +1,10 @@
+import { readFileSync } from 'node:fs';
+
+import { load } from 'js-yaml';
 import { describe, expect, it } from 'vitest';
 
 import commandCatalog from '@/lib/generated/command-catalog.json';
+import { SUPPORTED_SITE_LOCALES } from '@/i18n/locale-metadata';
 import {
   getCommandAlternateLocalePaths,
   getCommandPath,
@@ -10,11 +14,29 @@ import {
 } from '@/lib/catalog/command-catalog';
 import { buildCommandCatalog } from '../scripts/build-command-catalog.mjs';
 
+function readFrontmatterSummary(relativePath: string): string {
+  const sourceText = readFileSync(new URL(`../${relativePath}`, import.meta.url), 'utf8');
+  const match = sourceText.match(/^---\n([\s\S]*?)\n---\n?/u);
+
+  if (!match) {
+    throw new Error(`Missing frontmatter in ${relativePath}`);
+  }
+
+  const frontmatter = load(match[1]) as { summary?: string };
+
+  if (!frontmatter.summary) {
+    throw new Error(`Missing summary in ${relativePath}`);
+  }
+
+  return frontmatter.summary;
+}
+
 describe('command catalog', () => {
-  it('contains both source locales for every command', () => {
+  it('contains every supported locale for every command', () => {
     for (const command of commandCatalog.commands) {
-      expect(command.locales['en-US']).toBeTruthy();
-      expect(command.locales['zh-CN']).toBeTruthy();
+      for (const locale of SUPPORTED_SITE_LOCALES) {
+        expect(command.locales[locale]).toBeTruthy();
+      }
     }
   });
 
@@ -24,14 +46,13 @@ describe('command catalog', () => {
 
   it('resolves locale route slugs back to canonical commands', () => {
     for (const command of commandCatalog.commands) {
-      expect(getCommandRecordByLocaleRoute('en-US', command.locales['en-US'].routeSlug)?.canonicalId).toBe(command.canonicalId);
-      expect(getCommandRecordByLocaleRoute('zh-CN', command.locales['zh-CN'].routeSlug)?.canonicalId).toBe(command.canonicalId);
-      expect(getCommandRecordByLocaleRoute('fr-FR', command.locales['en-US'].routeSlug)?.canonicalId).toBe(command.canonicalId);
-      expect(getCommandRecordByLocaleRoute('zh-Hant', command.locales['zh-CN'].routeSlug)?.canonicalId).toBe(command.canonicalId);
+      for (const locale of SUPPORTED_SITE_LOCALES) {
+        expect(getCommandRecordByLocaleRoute(locale, command.locales[locale].routeSlug)?.canonicalId).toBe(command.canonicalId);
+      }
     }
   });
 
-  it('exposes alternate locale paths and fallback content for command pages', () => {
+  it('exposes alternate locale paths and localized content for command pages', () => {
     const command = getCommandRecord(commandCatalog.commands[0].canonicalId);
     expect(command).toBeTruthy();
     if (!command) {
@@ -41,16 +62,24 @@ describe('command catalog', () => {
     const alternatePaths = getCommandAlternateLocalePaths(command.canonicalId);
 
     expect(getCommandPath(command.canonicalId, 'en-US')).toBe(command.locales['en-US'].routePath);
-    expect(getCommandPath(command.canonicalId, 'fr-FR')).toBe(`/fr-FR/docs/${command.locales['en-US'].routeSlug}/`);
-    expect(getLocalizedCommandContent(command, 'zh-Hant').title).toBe(command.locales['zh-CN'].title);
+    expect(getCommandPath(command.canonicalId, 'fr-FR')).toBe(command.locales['fr-FR'].routePath);
+    expect(getLocalizedCommandContent(command, 'zh-Hant').title).toBe(command.locales['zh-Hant'].title);
+    expect(getLocalizedCommandContent(command, 'fr-FR').title).toBe(command.locales['fr-FR'].title);
     expect(alternatePaths['en-US']).toBe(command.locales['en-US'].routePath);
-    expect(alternatePaths['fr-FR']).toBe(`/fr-FR/docs/${command.locales['en-US'].routeSlug}/`);
-    expect(Object.keys(alternatePaths)).toHaveLength(29);
+    expect(alternatePaths['fr-FR']).toBe(command.locales['fr-FR'].routePath);
+    expect(Object.keys(alternatePaths)).toHaveLength(SUPPORTED_SITE_LOCALES.length);
+  });
+
+  it('keeps localized MDX frontmatter for non-English and non-Chinese locales', () => {
+    expect(readFrontmatterSummary('src/content/commands/fr-FR/impeccable.mdx')).toBe(
+      "L'intelligence de conception derrière chaque commande.",
+    );
+    expect(readFrontmatterSummary('src/content/commands/zh-Hant/impeccable.mdx')).toBe('每個指令背後的設計智慧引擎。');
   });
 
   it('fails generation on per-locale route collisions', async () => {
     const collidedLocalizations = {
-      locales: ['en-US', 'zh-CN'],
+      locales: [...SUPPORTED_SITE_LOCALES],
       commands: Object.fromEntries(
         commandCatalog.commands.map((command) => [command.canonicalId, structuredClone(command.locales)]),
       ),
@@ -58,10 +87,10 @@ describe('command catalog', () => {
     const commandIds = Object.keys(collidedLocalizations.commands) as Array<keyof typeof collidedLocalizations.commands>;
     const [firstId, secondId] = commandIds;
 
-    collidedLocalizations.commands[secondId]['zh-CN'].routeSlug =
-      collidedLocalizations.commands[firstId]['zh-CN'].routeSlug;
+    collidedLocalizations.commands[secondId]['fr-FR'].routeSlug =
+      collidedLocalizations.commands[firstId]['fr-FR'].routeSlug;
 
-    await expect(buildCommandCatalog({ localizedContent: collidedLocalizations })).rejects.toThrow(
+    await expect(buildCommandCatalog({ localizedContent: collidedLocalizations, supportedLocales: [...SUPPORTED_SITE_LOCALES] })).rejects.toThrow(
       /Route collision/,
     );
   });
