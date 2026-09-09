@@ -1,5 +1,6 @@
 ---
 import Analytics51LA from '@/components/51LAAnalytics.astro';
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 import Footer from '@/components/docs/Footer.astro';
 import LanguageSwitcher from '@/components/docs/LanguageSwitcher.astro';
 import PromoteCard from '@/components/docs/PromoteCard.astro';
@@ -98,5 +99,6 @@ const hagicodeProductUrl = new URL(getLocalizedPath('/', locale), 'https://hagic
       <Footer locale={locale} />
     </footer>
     <Analytics51LA />
+    <GoogleAnalytics />
   </body>
 </html>
