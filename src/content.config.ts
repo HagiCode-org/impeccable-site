@@ -10,8 +10,19 @@ import { getStarlightCatalog, getStarlightDocId } from './lib/starlight/config';
 
 const commandCatalog = getStarlightCatalog();
 
+const SUPPORTED_LOCALES = commandCatalog.locales;
+const SUPPORTED_LOCALE_BRACE = SUPPORTED_LOCALES.join(',');
+const MARKDOWN_PATTERN = 'md,mdx,markdown,mdown,mkdn,mkd,mdwn';
+
+// Restrict loading to the English overview, the supported localized overview
+// sources, and the supported command source directories so a reintroduced
+// unsupported translation can never generate a public route.
 const commandContentLoader = glob({
-  pattern: '**/[^_]*.{md,mdx,markdown,mdown,mkdn,mkd,mdwn}',
+  pattern: [
+    `docs/[^_]*.{${MARKDOWN_PATTERN}}`,
+    `docs/{${SUPPORTED_LOCALE_BRACE}}/**/[^_]*.{${MARKDOWN_PATTERN}}`,
+    `commands/{${SUPPORTED_LOCALE_BRACE}}/**/[^_]*.{${MARKDOWN_PATTERN}}`,
+  ],
   base: './src/content',
   generateId: ({ entry }) => getStarlightDocId(entry),
 });

@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { load } from 'js-yaml';
+import { locales as hagilightLocales } from '@hagicode/hagilight-starlight/locales';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDirectory, '..');
@@ -14,10 +15,8 @@ const localContentRoot = path.join(siteRoot, 'src/content/commands');
 const generatedCatalogPath = path.join(siteRoot, 'src/lib/generated/command-catalog.json');
 
 async function readSupportedLocales() {
-  const entries = await fs.readdir(localContentRoot, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
+  return Object.values(hagilightLocales)
+    .map((definition) => definition.lang)
     .sort();
 }
 

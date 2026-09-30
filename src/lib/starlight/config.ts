@@ -1,3 +1,5 @@
+import assert from 'node:assert/strict';
+
 import commandCatalogData from '../generated/command-catalog.json';
 import { locales as hagilightLocales, type LocaleDefinition } from '@hagicode/hagilight-starlight/locales';
 
@@ -29,23 +31,18 @@ const categoryTranslations: Record<string, Record<string, string>> = {
   system: { 'zh-CN': '系统', 'zh-Hant': '系統' },
 };
 
-function getLocalizedLanguageLabel(locale: string): string {
-  return new Intl.DisplayNames([locale], { type: 'language' }).of(locale) ?? locale;
-}
-
 export function getStarlightLocales() {
   return Object.fromEntries(
     commandCatalog.locales.map((locale) => {
       const path = locale === defaultLocale ? 'root' : locale;
       const sharedLocale = hagilightLocalesByLanguage.get(locale);
 
-      return [
-        path,
-        sharedLocale ?? {
-          label: getLocalizedLanguageLabel(locale),
-          lang: locale,
-        },
-      ];
+      assert(
+        sharedLocale,
+        `Unsupported catalog locale ${locale}: it is not present in the published Hagilight locale map`,
+      );
+
+      return [path, sharedLocale];
     }),
   );
 }
