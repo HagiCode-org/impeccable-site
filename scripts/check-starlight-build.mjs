@@ -94,4 +94,6 @@ assert.equal((await fs.access(htmlPath('/docs/not-a-command/')).then(() => true)
 const sitemap = await fs.readFile(path.join(distRoot, 'sitemap-0.xml'), 'utf8');
 assert.ok(sitemap.includes(`${siteUrl}/docs/`), 'The default overview is missing from the sitemap');
 assert.ok(sitemap.includes(`${siteUrl}/zh-CN/docs/animate/`), 'A localized command is missing from the sitemap');
-assert.ok(!sitemap.includes(`${siteUrl}/en-US/`), 'Default-locale aliases must not be added to the sitemap');
+assert.ok(sitemap.includes(`${siteUrl}/en-US/`), 'The unfiltered sitemap must retain Starlight default-locale aliases');
+const robots = await fs.readFile(path.join(distRoot, 'robots.txt'), 'utf8');
+assert.ok(robots.includes(`Sitemap: ${siteUrl}/sitemap-index.xml`), 'Robots must reference the Starlight sitemap index');
