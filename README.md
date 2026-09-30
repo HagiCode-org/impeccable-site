@@ -10,12 +10,15 @@ This repository does not run the upstream `pbakaus/impeccable` site directly. In
 - Upstream command markdown reference: `vendor/impeccable/site/content/skills/`
 - Upstream category and relationship data: `vendor/impeccable/site/data/sub-pages-data.ts`
 - Upstream command metadata: `vendor/impeccable/skill/scripts/command-metadata.json`
-- Localized command body content:
-  - `src/content/commands/en-US/*.mdx`
-  - `src/content/commands/zh-CN/*.mdx`
+- Localized command body content: `src/content/commands/<locale>/*.mdx` for all 29 supported locale codes.
+- Localized overview entries: `src/content/docs/index.mdx` and the Chinese variants under `src/content/docs/`; the Astro content loader supplies the existing fallback locales without copying command bodies.
+- Starlight locale and sidebar configuration: `src/lib/starlight/config.ts`, projected from the generated command catalog.
+- HagiLight Starlight owns the documentation header, footer links, and promotion. RSS is disabled because this site has no feed of its own.
+- `/en-US/` and `/en-US/docs/*` remain redirect aliases, generated after the Astro build so they do not collide with Starlight's unprefixed default locale routes.
 - Shared UI locale source of truth:
   - `src/i18n/locales/en-US/*.yml`
   - `src/i18n/locales/zh-CN/*.yml`
+- Starlight UI overrides for Simplified and Traditional Chinese: `src/content/i18n/`.
 
 ## Initialize after clone
 
@@ -50,12 +53,14 @@ env -u NPM_CONFIG_PREFIX npm run validate
 
 ## Localization workflow
 
-Shared chrome strings live in YAML and are committed as the source of truth:
+Site-specific entry and overview/detail copy remains in YAML:
 
 - `src/i18n/locales/en-US/common.yml`
 - `src/i18n/locales/en-US/docs.yml`
 - `src/i18n/locales/zh-CN/common.yml`
 - `src/i18n/locales/zh-CN/docs.yml`
+
+Starlight supplies its own translated shell labels. This site overrides the navigation, search, and not-found labels for Simplified and Traditional Chinese in `src/content/i18n/`; other configured locales use their Starlight translations or English fallback.
 
 Generated runtime resources are written to `src/i18n/generated-locales/` by:
 
@@ -77,7 +82,7 @@ env -u NPM_CONFIG_PREFIX npm run i18n:check
 
 ## Command content workflow
 
-Every upstream command slug must exist in both locale collections. The parity rules are enforced during catalog generation.
+Every upstream command slug must exist in each of the 29 locale collections. The parity rules are enforced during catalog generation.
 
 For English source-of-truth syncing, you can pull the upstream skill body content into the local `en-US` MDX files with:
 
@@ -93,7 +98,7 @@ env -u NPM_CONFIG_PREFIX node scripts/sync-vendor-command-content.mjs --slug ani
 
 This sync copies the upstream command body and tagline-driven summary into `src/content/commands/en-US/*.mdx`. Local frontmatter fields such as `title`, `seoTitle`, `seoDescription`, `routeSlug`, `highlights`, and `related` are preserved directly inside each MDX file so the site can keep its own presentation layer.
 
-Add or update command docs in:
+Add or update command docs in the relevant locale directories, for example:
 
 - `src/content/commands/en-US/<slug>.mdx`
 - `src/content/commands/zh-CN/<slug>.mdx`
@@ -118,8 +123,9 @@ The generated catalog lives at `src/lib/generated/command-catalog.json`.
 
 1. `i18n:generate` converts YAML locale sources into JSON runtime resources.
 2. `catalog:generate` reads vendor metadata plus per-locale MDX frontmatter and emits a normalized command catalog.
-3. Astro routes consume the generated catalog and the localized command content collections.
-4. The site builds as static output only.
+3. The Starlight content loader projects the existing localized MDX and generated catalog route slugs to `/docs/<slug>/` and `/{locale}/docs/<slug>/`; no vendor command bodies are copied into a second collection.
+4. Starlight and the HagiLight adapter render the responsive docs shell and shared chrome as static HTML.
+5. The build emits the `/en-US/` and `/en-US/docs/*` redirect aliases, then checks all 29 locale routes, metadata, navigation, and shared-only chrome.
 
 ## Verification expectations
 
@@ -132,10 +138,11 @@ env -u NPM_CONFIG_PREFIX npm run validate
 This should confirm:
 
 - Vendor paths are present.
-- Every upstream command slug exists in both `en-US` and `zh-CN`.
+- Every upstream command slug exists in all 29 locale directories.
 - Generated locale resources are fresh.
 - Generated command catalog is fresh.
-- Astro routes compile and static output builds successfully.
+- All canonical docs routes and `/en-US/` aliases exist in static output.
+- Canonical/hreflang metadata, active/mobile navigation, language switching, the HagiLight footer/promotion, and RSS suppression are checked in the built pages.
 
 ## Production Deployment
 
