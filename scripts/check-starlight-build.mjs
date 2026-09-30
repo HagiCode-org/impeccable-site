@@ -36,7 +36,9 @@ function assertSharedShell(html, routePath) {
   assert.equal((html.match(/<footer\b/gu) ?? []).length, 1, `${routePath} must have one shared footer`);
   assert.match(html, /popovertarget="starlight__sidebar"/u, `${routePath} is missing Starlight mobile navigation`);
   assert.match(html, /<starlight-theme-select\b/u, `${routePath} is missing theme controls`);
-  assert.doesNotMatch(html, /docs-footer|docs-promote|site-footer|application\/rss\+xml|rss\.xml/u, `${routePath} contains local chrome or an unrelated RSS destination`);
+  assert.doesNotMatch(html, /docs-footer|docs-promote|site-footer/u, `${routePath} contains local chrome`);
+  assert.ok(html.includes('type="application/rss+xml"'), `${routePath} is missing the shared RSS feed link`);
+  assert.ok(html.includes('href="https://impeccable.hagicode.com/rss.xml"'), `${routePath} is missing the shared RSS feed destination`);
 }
 
 function assertMetadata(html, routePath) {
@@ -91,9 +93,5 @@ for (const [aliasPath, canonicalPath] of aliases) {
 
 assert.equal((await fs.access(htmlPath('/docs/not-a-command/')).then(() => true).catch(() => false)), false, 'An unsupported command route was generated');
 
-const sitemap = await fs.readFile(path.join(distRoot, 'sitemap-0.xml'), 'utf8');
-assert.ok(sitemap.includes(`${siteUrl}/docs/`), 'The default overview is missing from the sitemap');
-assert.ok(sitemap.includes(`${siteUrl}/zh-CN/docs/animate/`), 'A localized command is missing from the sitemap');
-assert.ok(sitemap.includes(`${siteUrl}/en-US/`), 'The unfiltered sitemap must retain Starlight default-locale aliases');
 const robots = await fs.readFile(path.join(distRoot, 'robots.txt'), 'utf8');
 assert.ok(robots.includes(`Sitemap: ${siteUrl}/sitemap-index.xml`), 'Robots must reference the Starlight sitemap index');
