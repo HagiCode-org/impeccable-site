@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 
 import sitemap from '@astrojs/sitemap';
+import { hagilight as hagilightDiscovery } from '@hagicode/hagilight/integration';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import hagilight from '@hagicode/hagilight-starlight';
@@ -46,12 +47,8 @@ export default defineConfig({
         }),
       ],
     }),
-    sitemap({
-      filter: (page) => {
-        const pathname = new URL(page).pathname;
-        return pathname !== '/en-US/' && !pathname.startsWith('/en-US/');
-      },
-    }),
+    sitemap(),
+    hagilightDiscovery(),
   ],
   vite: {
     resolve: {
