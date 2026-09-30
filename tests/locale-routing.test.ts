@@ -30,6 +30,11 @@ describe('locale routing', () => {
     expect(resolveLocaleFromPathname('/zh-TW/docs/')).toBe('zh-Hant');
   });
 
+  it('strips recognizable locale prefixes and leaves unrecognized ones untouched', () => {
+    expect(stripLocalePrefix('/pt-PT/docs/craft/')).toBe('/docs/craft/');
+    expect(stripLocalePrefix('/bg-BG/docs/craft/')).toBe('/bg-BG/docs/craft/');
+  });
+
   it('normalizes repeated slashes', () => {
     expect(normalizePathname('///fr-FR//docs//craft//')).toBe('/fr-FR/docs/craft');
   });

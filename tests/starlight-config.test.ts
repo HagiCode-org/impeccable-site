@@ -67,4 +67,23 @@ describe('Starlight docs configuration', () => {
       'Unsupported impeccable docs source path',
     );
   });
+
+  it('rejects removed-locale command sources rather than publishing a route', () => {
+    expect(() => getStarlightDocId('commands/bg-BG/impeccable.mdx')).toThrow(
+      'No localized command route for bg-BG/impeccable',
+    );
+    expect(() => getStarlightDocId('commands/pt-PT/impeccable.mdx')).toThrow(
+      'No localized command route for pt-PT/impeccable',
+    );
+  });
+
+  it('exposes only the supported Hagilight labels for the chooser', () => {
+    const locales = getStarlightLocales();
+
+    expect(Object.keys(locales)).toHaveLength(SUPPORTED_SITE_LOCALES.length);
+    expect(locales.root).toMatchObject({ label: 'English', lang: 'en-US' });
+    expect(locales['zh-CN']).toMatchObject({ label: '简体中文', lang: 'zh-CN' });
+    expect(locales['fr-FR']).toMatchObject({ label: 'Français', lang: 'fr-FR' });
+    expect(locales['ru-RU']).toMatchObject({ label: 'Русский', lang: 'ru-RU' });
+  });
 });

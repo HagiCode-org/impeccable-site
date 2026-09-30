@@ -94,4 +94,35 @@ describe('command catalog', () => {
       /Route collision/,
     );
   });
+
+  it('fails generation when a retained locale is missing command data', async () => {
+    const incompleteLocalizations = {
+      locales: [...SUPPORTED_SITE_LOCALES],
+      commands: Object.fromEntries(
+        commandCatalog.commands.map((command) => {
+          const allLocales = structuredClone(command.locales);
+          const { 'fr-FR': _removed, ...localesWithoutFr } = allLocales;
+          return [command.canonicalId, localesWithoutFr];
+        }),
+      ),
+    };
+
+    await expect(
+      buildCommandCatalog({ localizedContent: incompleteLocalizations, supportedLocales: [...SUPPORTED_SITE_LOCALES] }),
+    ).rejects.toThrow(/Missing command entry for fr-FR/);
+  });
+
+  it('builds sibling locale paths for every supported language', () => {
+    for (const command of commandCatalog.commands) {
+      expect(Object.keys(command.localePaths).sort()).toEqual([...SUPPORTED_SITE_LOCALES].sort());
+      expect(Object.keys(command.localeRouteSlugs).sort()).toEqual([...SUPPORTED_SITE_LOCALES].sort());
+
+      for (const locale of SUPPORTED_SITE_LOCALES) {
+        const expectedPath = locale === 'en-US'
+          ? `/docs/${command.localeRouteSlugs[locale]}/`
+          : `/${locale}/docs/${command.localeRouteSlugs[locale]}/`;
+        expect(command.localePaths[locale]).toBe(expectedPath);
+      }
+    }
+  });
 });
