@@ -6,7 +6,7 @@ product
 
 ## Users
 
-Developers, designers, and technical writers who need to browse the `impeccable` command surface quickly, compare canonical command intent with localized guidance, and move between English and Simplified Chinese without losing structure. They usually arrive from the upstream repository, HagiCode tooling, or an internal documentation workflow and want a stable command reference, not a marketing experience.
+Developers, designers, and technical writers who need to browse the `impeccable` command surface quickly, compare canonical command intent with localized guidance, and move between languages without losing structure. They usually arrive from the upstream repository, HagiCode tooling, or an internal documentation workflow and want a stable command reference, not a marketing experience.
 
 ## Product Purpose
 
@@ -31,7 +31,7 @@ The product should feel calm and intentional rather than toolish or sales-driven
 
 1. Command-first clarity. The command name, category, and route through the catalog should always be easier to scan than decorative UI.
 2. Editorial warmth for technical reading. Use typographic contrast and warm surfaces to make long-form command reference browsing feel considered, not generic.
-3. Stable bilingual structure. English and Simplified Chinese should share the same information architecture and navigational weight.
+3. Stable multilingual structure. The site publishes ten languages — `en-US`, `zh-CN`, `zh-Hant`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `ko-KR`, `pt-BR`, and `ru-RU` — and every one shares the same information architecture and navigational weight. English and Simplified Chinese ship dedicated UI translations; the other eight published languages reuse the English (and, for Traditional Chinese, Simplified Chinese) UI resources through the existing fallback chain rather than claiming full UI translations.
 4. Structure from source, design from here. Canonical command metadata stays aligned, but the site's UI, hierarchy, and brand decisions are independent.
 5. Lightweight static confidence. The experience should feel solid and polished without depending on app-like complexity.
 
