@@ -93,5 +93,57 @@ for (const [aliasPath, canonicalPath] of aliases) {
 
 assert.equal((await fs.access(htmlPath('/docs/not-a-command/')).then(() => true).catch(() => false)), false, 'An unsupported command route was generated');
 
+const REMOVED_LOCALES = [
+  'bg-BG',
+  'cs-CZ',
+  'da-DK',
+  'el-GR',
+  'es-419',
+  'fi-FI',
+  'hu-HU',
+  'id-ID',
+  'it-IT',
+  'nb-NO',
+  'nl-NL',
+  'pl-PL',
+  'pt-PT',
+  'ro-RO',
+  'sv-SE',
+  'th-TH',
+  'tr-TR',
+  'uk-UA',
+  'vi-VN',
+];
+
+assert.equal(catalog.locales.length, 10, 'The build must publish exactly ten supported languages');
+
+for (const locale of REMOVED_LOCALES) {
+  const removedLocaleRoot = path.join(distRoot, locale);
+  assert.equal(
+    await fs.access(removedLocaleRoot).then(() => true).catch(() => false),
+    false,
+    `A removed-locale directory was generated for ${locale}`,
+  );
+}
+
+const sitemapFiles = (await fs.readdir(distRoot))
+  .filter((entry) => /^sitemap-\d+\.xml$/u.test(entry));
+assert.ok(sitemapFiles.length > 0, 'Expected at least one Starlight sitemap file');
+
+const sitemapUrls = (
+  await Promise.all(
+    sitemapFiles.map(async (file) => {
+      const content = await fs.readFile(path.join(distRoot, file), 'utf8');
+      return [...content.matchAll(/<loc>([^<]+)<\/loc>/gu)].map((match) => match[1]);
+    }),
+  )
+).flat();
+
+for (const locale of REMOVED_LOCALES) {
+  for (const url of sitemapUrls) {
+    assert.doesNotMatch(url, new RegExp(`/${locale}/`, 'u'), `Sitemap entry advertises removed locale ${locale}: ${url}`);
+  }
+}
+
 const robots = await fs.readFile(path.join(distRoot, 'robots.txt'), 'utf8');
 assert.ok(robots.includes(`Sitemap: ${siteUrl}/sitemap-index.xml`), 'Robots must reference the Starlight sitemap index');
