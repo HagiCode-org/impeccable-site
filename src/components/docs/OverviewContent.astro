@@ -1,0 +1,44 @@
+---
+import CommandCard from '@/components/docs/CommandCard.astro';
+import { resolveSiteLocale } from '@/i18n/locale-metadata';
+import { getCommandCatalog, getCommandSections } from '@/lib/catalog/command-catalog';
+import { t } from '@/lib/i18n/ui';
+
+const locale = resolveSiteLocale(Astro.locals.starlightRoute?.locale);
+const catalog = getCommandCatalog();
+const sections = getCommandSections(locale);
+---
+
+<section class="docs-overview">
+  <div class="docs-overview__hero">
+    <p class="docs-overview__badge">{t(locale, 'docs', 'hero.badge')}</p>
+    <p>{t(locale, 'docs', 'hero.summary')}</p>
+    <dl class="docs-overview__stats">
+      <div>
+        <dt>{t(locale, 'docs', 'index.categoriesLabel')}</dt>
+        <dd>{catalog.categoryOrder.length}</dd>
+      </div>
+      <div>
+        <dt>{t(locale, 'docs', 'index.commandsLabel')}</dt>
+        <dd>{catalog.commands.length}</dd>
+      </div>
+    </dl>
+  </div>
+
+  <section class="docs-overview__commands">
+    <h2>{t(locale, 'docs', 'index.sectionLabel')}</h2>
+    {
+      sections.map((section) => (
+        <section class="docs-overview__category">
+          <header>
+            <h3>{catalog.categoryLabels[section.categoryId]}</h3>
+            <p>{catalog.categoryDescriptions[section.categoryId]}</p>
+          </header>
+          <div class="docs-overview__cards">
+            {section.commands.map((command) => <CommandCard locale={locale} command={command} />)}
+          </div>
+        </section>
+      ))
+    }
+  </section>
+</section>

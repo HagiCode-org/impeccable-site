@@ -1,0 +1,62 @@
+---
+import MarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro';
+import { resolveSiteLocale } from '@/i18n/locale-metadata';
+import {
+  getCommandPath,
+  getCommandRecord,
+  getLocalizedCommandContent,
+} from '@/lib/catalog/command-catalog';
+import { t } from '@/lib/i18n/ui';
+import type { CommandCatalogRecord } from '@/lib/vendor/impeccable-source';
+
+const route = Astro.locals.starlightRoute;
+const locale = resolveSiteLocale(route?.locale);
+const commandSlug = route?.entry.data.slug;
+const command = typeof commandSlug === 'string' ? getCommandRecord(commandSlug) : undefined;
+const localized = command ? getLocalizedCommandContent(command, locale) : undefined;
+const relatedSlugs = localized?.relatedCommandIds.length
+  ? localized.relatedCommandIds
+  : command
+    ? [
+        ...(command.relationships.leadsTo ?? []),
+        ...(command.relationships.combinesWith ?? []),
+        ...(command.relationships.pairs ? [command.relationships.pairs] : []),
+      ].slice(0, 3)
+    : [];
+const relatedCommands = relatedSlugs
+  .map((slug) => getCommandRecord(slug))
+  .filter((candidate): candidate is CommandCatalogRecord => Boolean(candidate));
+---
+
+<MarkdownContent>
+  {
+    command && localized && (
+      <section class="command-context">
+        <p class="command-context__name">{command.commandName}</p>
+        {localized.highlights.length > 0 ? (
+          <>
+            <p class="command-context__label">{t(locale, 'docs', 'detail.highlights')}</p>
+            <ul>{localized.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+          </>
+        ) : null}
+      </section>
+    )
+  }
+  <slot />
+  {
+    relatedCommands.length > 0 && (
+      <section class="command-related">
+        <h2>{t(locale, 'docs', 'detail.related')}</h2>
+        <ul>
+          {relatedCommands.map((relatedCommand) => (
+            <li>
+              <a href={getCommandPath(relatedCommand, locale)}>
+                {getLocalizedCommandContent(relatedCommand, locale).title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</MarkdownContent>
