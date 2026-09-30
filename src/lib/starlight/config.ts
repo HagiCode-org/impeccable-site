@@ -1,5 +1,5 @@
 import commandCatalogData from '../generated/command-catalog.json';
-import { locales as hagilightLocales } from '@hagicode/hagilight-starlight/locales';
+import { locales as hagilightLocales, type LocaleDefinition } from '@hagicode/hagilight-starlight/locales';
 
 interface StarlightCatalog {
   locales: string[];
@@ -16,6 +16,9 @@ interface StarlightCatalog {
 
 const commandCatalog = commandCatalogData as StarlightCatalog;
 const defaultLocale = 'en-US';
+const hagilightLocalesByLanguage: ReadonlyMap<string, LocaleDefinition> = new Map(
+  Object.values(hagilightLocales).map((locale) => [locale.lang, locale] as const),
+);
 
 const categoryTranslations: Record<string, Record<string, string>> = {
   create: { 'zh-CN': '创建', 'zh-Hant': '建立' },
@@ -34,7 +37,7 @@ export function getStarlightLocales() {
   return Object.fromEntries(
     commandCatalog.locales.map((locale) => {
       const path = locale === defaultLocale ? 'root' : locale;
-      const sharedLocale = hagilightLocales[path] ?? hagilightLocales[locale];
+      const sharedLocale = hagilightLocalesByLanguage.get(locale);
 
       return [
         path,

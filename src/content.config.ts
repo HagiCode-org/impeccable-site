@@ -2,9 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import type { Loader } from 'astro/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
-import { articlePromotionSchema } from '@hagicode/hagilight-starlight/article-promotion-schema';
-import { rssSchema } from '@hagicode/hagilight-starlight/rss-schema';
-import { seoSchema } from '@hagicode/hagilight-starlight/seo-schema';
+import { hagilightSchema } from '@hagicode/hagilight-starlight/schema';
 import { i18nLoader } from '@astrojs/starlight/loaders';
 import { z } from 'astro/zod';
 
@@ -52,9 +50,7 @@ const commandSchema = z.object({
 });
 
 const docsMetadataSchema = commandSchema
-  .extend(articlePromotionSchema.shape)
-  .extend(rssSchema.shape)
-  .extend(seoSchema.shape);
+  .extend(hagilightSchema.shape);
 
 export const collections = {
   docs: defineCollection({
