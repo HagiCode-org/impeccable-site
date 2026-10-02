@@ -24,6 +24,24 @@ async function readPage(routePath) {
   return fs.readFile(filePath, 'utf8');
 }
 
+async function readFeed(filename) {
+  const xml = await fs.readFile(path.join(distRoot, filename), 'utf8');
+  assert.match(xml, /^<\?xml/u, `${filename} must be XML`);
+  const channel = xml.match(/<channel>([\s\S]*?)<\/channel>/u)?.[1];
+  assert.ok(channel, `${filename} must contain an RSS channel`);
+  assert.match(channel, /<title>[^<]+<\/title>/u, `${filename} needs a title`);
+  assert.match(channel, /<description>[^<]+<\/description>/u, `${filename} needs a description`);
+  assert.ok(channel.includes(`<link>${siteUrl}/</link>`), `${filename} needs the site link`);
+  const language = channel.match(/<language>([^<]+)<\/language>/u)?.[1];
+  assert.ok(language, `${filename} needs a channel language`);
+  const itemLinks = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => {
+    const link = item.match(/<link>([^<]+)<\/link>/u)?.[1];
+    assert.ok(link && link.startsWith(`${siteUrl}/`), `${filename} contains a non-absolute or off-site item link`);
+    return link;
+  });
+  return { language, itemLinks };
+}
+
 function assertSharedShell(html, routePath) {
   const pathnameLocale = routePath.split('/').filter(Boolean)[0];
   const locale = catalog.locales.includes(pathnameLocale) ? pathnameLocale : 'en-US';
@@ -147,3 +165,17 @@ for (const locale of REMOVED_LOCALES) {
 
 const robots = await fs.readFile(path.join(distRoot, 'robots.txt'), 'utf8');
 assert.ok(robots.includes(`Sitemap: ${siteUrl}/sitemap-index.xml`), 'Robots must reference the Starlight sitemap index');
+
+const rootFeed = await readFeed('rss.xml');
+assert.equal(rootFeed.language, 'en-US');
+const englishAlias = await readFeed('rss.en.xml');
+assert.deepEqual(englishAlias, rootFeed, 'English alias must retain root-feed metadata and membership');
+
+for (const locale of catalog.locales) {
+  const filename = locale === 'en-US' ? 'rss.en.xml' : `rss.${locale}.xml`;
+  const feed = await readFeed(filename);
+  assert.equal(feed.language, locale, `${filename} has the wrong language`);
+  const expectedPath = locale === 'en-US' ? '/docs/' : `/${locale}/docs/`;
+  assert.ok(feed.itemLinks.length > 0, `${filename} should contain eligible localized documentation`);
+  assert.ok(feed.itemLinks.every((link) => new URL(link).pathname.startsWith(expectedPath)), `${filename} contains cross-locale content`);
+}
