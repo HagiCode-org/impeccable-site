@@ -13,7 +13,7 @@ This repository does not run the upstream `pbakaus/impeccable` site directly. In
 - Localized command body content: `src/content/commands/<locale>/*.mdx` for all 29 supported locale codes.
 - Localized overview entries: `src/content/docs/index.mdx` and the Chinese variants under `src/content/docs/`; the Astro content loader supplies the existing fallback locales without copying command bodies.
 - Starlight locale and sidebar configuration: `src/lib/starlight/config.ts`, projected from the generated command catalog.
-- HagiLight Starlight owns the documentation header, footer links, and promotion. RSS is disabled because this site has no feed of its own.
+- HagiLight Starlight owns documentation RSS and publishes content-aware root and locale feeds. The plain-Astro discovery integration defers to Starlight so it cannot replace those feeds with empty defaults.
 - `/en-US/` and `/en-US/docs/*` remain redirect aliases, generated after the Astro build so they do not collide with Starlight's unprefixed default locale routes.
 - Shared UI locale source of truth:
   - `src/i18n/locales/en-US/*.yml`
@@ -142,7 +142,7 @@ This should confirm:
 - Generated locale resources are fresh.
 - Generated command catalog is fresh.
 - All canonical docs routes and `/en-US/` aliases exist in static output.
-- Canonical/hreflang metadata, active/mobile navigation, language switching, the HagiLight footer/promotion, and RSS suppression are checked in the built pages.
+- Canonical/hreflang metadata, active/mobile navigation, language switching, the HagiLight footer/promotion, and generated RSS channel metadata and locale membership are checked in the built pages.
 
 ## Production Deployment
 
