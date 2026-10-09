@@ -53,7 +53,7 @@ function assertSharedShell(html, routePath) {
   assert.ok(html.includes(`data-locale="${switcherLocale}" data-href="${routePath}"`), `${routePath} is missing its language-switch destination`);
   assert.equal((html.match(/<footer\b/gu) ?? []).length, 1, `${routePath} must have one shared footer`);
   assert.match(html, /popovertarget="starlight__sidebar"/u, `${routePath} is missing Starlight mobile navigation`);
-  assert.match(html, /<starlight-theme-select\b/u, `${routePath} is missing theme controls`);
+  assert.match(html, /<hagilight-theme-select\b/u, `${routePath} is missing theme controls`);
   assert.doesNotMatch(html, /docs-footer|docs-promote|site-footer/u, `${routePath} contains local chrome`);
   assert.ok(html.includes('type="application/rss+xml"'), `${routePath} is missing the shared RSS feed link`);
   assert.ok(html.includes('href="https://impeccable.hagicode.com/rss.xml"'), `${routePath} is missing the shared RSS feed destination`);
