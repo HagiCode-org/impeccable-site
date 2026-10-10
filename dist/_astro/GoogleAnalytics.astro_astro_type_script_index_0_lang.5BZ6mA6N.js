@@ -1,0 +1,1 @@
+import{n as e}from"./analytics-events.C3-LQhcj.js";e();
