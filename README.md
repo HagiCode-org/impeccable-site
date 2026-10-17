@@ -1,5 +1,9 @@
 # impeccable-site
 
+[![license](https://img.shields.io/badge/license-Apache--2.0-ffd43b)](./LICENSE)
+[![last commit](https://img.shields.io/github/last-commit/HagiCode-org/impeccable-site)](https://github.com/HagiCode-org/impeccable-site/commits/main)
+[![website](https://img.shields.io/website?url=https%3A%2F%2Fimpeccable.hagicode.com&label=website)](https://impeccable.hagicode.com)
+
 Standalone Astro documentation site for the `impeccable` command surface.
 
 This repository does not run the upstream `pbakaus/impeccable` site directly. Instead, it pins the upstream repository as a vendor submodule, normalizes the upstream command catalog at build time, and renders localized HagiCode-owned docs content from this repository.
