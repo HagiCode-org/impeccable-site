@@ -24,12 +24,16 @@ npm run typecheck
 npm run i18n:check
 ```
 
+Requires Node.js 24+. Initialize the vendor submodule after clone with `git submodule update --init --recursive`.
+
 ## Key Paths
 
-- `src/content/commands/`: localized command body content (en-US, zh-CN)
+- `src/content/commands/<locale>/`: localized command body content for the ten supported locales; every upstream command slug must exist in each locale
 - `src/i18n/locales/`: shared UI locale source of truth
 - `vendor/impeccable/`: upstream git submodule
-- `scripts/`: command catalog generation
+- `scripts/`: command catalog generation, i18n resource generation, post-build checks (`check-starlight-build.mjs`)
+- `src/i18n/generated-locales/`, `src/lib/generated/`: generated and gitignored; regenerate with `npm run prepare` instead of editing
+- `.github/workflows/`: gh-pages deploy (runs `npm run validate` on Node 24 with submodules checked out)
 
 ## Agent Guidelines
 
@@ -37,6 +41,7 @@ npm run i18n:check
 - Edit localized content in `src/content/commands/`, not the vendor submodule.
 - Run `npm run validate` (full suite: i18n check + catalog check + typecheck + test + build) before committing.
 - Keep command catalog generation scripts aligned with upstream command metadata format changes.
+- Footer, language chooser, promotion banner, theme select and RSS come from the `@hagicode/hagilight` / `@hagicode/hagilight-starlight` packages; do not add local copies of that chrome (the build check fails on it).
 
 ## References
 
