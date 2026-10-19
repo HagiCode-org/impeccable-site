@@ -22,9 +22,11 @@ npm test
 npm run validate
 npm run typecheck
 npm run i18n:check
+npm run catalog:check        # regenerate and verify the command catalog
+npm run content:sync:vendor  # sync en-US command content from the vendor submodule
 ```
 
-Requires Node.js 24+. Initialize the vendor submodule after clone with `git submodule update --init --recursive`.
+Requires Node.js 24+. `npm run build` also runs `scripts/generate-default-locale-aliases.mjs` and `scripts/check-starlight-build.mjs`; `npm test` runs vitest over `tests/`. Initialize the vendor submodule after clone with `git submodule update --init --recursive`.
 
 ## Key Paths
 
@@ -33,7 +35,7 @@ Requires Node.js 24+. Initialize the vendor submodule after clone with `git subm
 - `vendor/impeccable/`: upstream git submodule
 - `scripts/`: command catalog generation, i18n resource generation, post-build checks (`check-starlight-build.mjs`)
 - `src/i18n/generated-locales/`, `src/lib/generated/`: generated and gitignored; regenerate with `npm run prepare` instead of editing
-- `.github/workflows/`: gh-pages deploy (runs `npm run validate` on Node 24 with submodules checked out)
+- `.github/workflows/`: gh-pages deploy (runs `npm run validate` on Node 24 with submodules checked out, then publishes `esa.jsonc`, `wrangler.jsonc` from `.github/gh-pages/` plus `dist/` to the `gh-pages` branch)
 
 ## Agent Guidelines
 
