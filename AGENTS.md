@@ -23,6 +23,7 @@ npm run validate
 npm run typecheck
 npm run i18n:check
 npm run catalog:check        # regenerate and verify the command catalog
+npm run i18n:audit           # hagi18n audit/report/doctor/sync/prune (config: hagi18n.yaml; sync/prune have :write variants)
 npm run content:sync:vendor  # sync en-US command content from the vendor submodule
 ```
 
