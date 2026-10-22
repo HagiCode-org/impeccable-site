@@ -1,34 +1,24 @@
 ---
-import { SUPPORTED_SITE_LOCALES } from '@/i18n/locale-metadata';
-import { getAbsoluteSiteUrl } from '@/lib/i18n/locale-routing';
-import '@/styles/entry.css';
+import RootTransit from '@hagicode/hagilight-core/RootTransit';
+import { SITE_LOCALES, SUPPORTED_SITE_LOCALES } from '@/i18n/locale-metadata';
+import { getAbsoluteSiteUrl, getLocalizedPath } from '@/lib/i18n/locale-routing';
+
+const siteUrl = Astro.site?.toString() ?? 'https://impeccable.hagicode.com';
+const links = SITE_LOCALES.filter((locale) => locale.code !== 'en-US').map((locale) => ({
+  destination: getLocalizedPath('/docs/', locale.code),
+  label: locale.nativeName,
+  lang: locale.code,
+}));
 ---
 
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Impeccable Commands</title>
-    <meta http-equiv="refresh" content="0; url=/docs/" />
-    <link rel="canonical" href="https://impeccable.hagicode.com/docs/" />
-    {
-      SUPPORTED_SITE_LOCALES.map((locale) => (
-        <link rel="alternate" hreflang={locale} href={getAbsoluteSiteUrl('/docs/', locale, 'https://impeccable.hagicode.com')} />
-      ))
-    }
-    <link rel="alternate" hreflang="x-default" href="https://impeccable.hagicode.com/docs/" />
-  </head>
-  <body class="landing-page">
-    <main class="landing-card">
-      <p>Redirecting to the command overview…</p>
-      <a href="/docs/">Continue to the docs</a>
-    </main>
-
-    <script>
-      import { redirectRootEntryToPreferredLocale } from '@/scripts/entry-locale-routing';
-
-      redirectRootEntryToPreferredLocale();
-    </script>
-  </body>
-</html>
+<RootTransit
+  destination={getLocalizedPath('/docs/', 'en-US')}
+  siteName="Impeccable Commands"
+  locale="en-US"
+  links={links}
+>
+  {SUPPORTED_SITE_LOCALES.map((locale) => (
+    <link slot="head" rel="alternate" hreflang={locale} href={getAbsoluteSiteUrl('/docs/', locale, siteUrl)} />
+  ))}
+  <link slot="head" rel="alternate" hreflang="x-default" href={getAbsoluteSiteUrl('/docs/', 'en-US', siteUrl)} />
+</RootTransit>
