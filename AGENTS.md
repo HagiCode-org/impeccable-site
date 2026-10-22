@@ -34,7 +34,7 @@ Requires Node.js 24+. `npm run build` also runs `scripts/generate-default-locale
 - `src/content/commands/<locale>/`: localized command body content for the ten supported locales; every upstream command slug must exist in each locale
 - `src/i18n/locales/`: shared UI locale source of truth
 - `vendor/impeccable/`: upstream git submodule
-- `scripts/`: command catalog generation, i18n resource generation, post-build checks (`check-starlight-build.mjs`)
+- `scripts/`: command catalog generation, i18n resource generation, post-build checks (`check-starlight-build.mjs`), and `warm-deployment-domains.mjs` (domain warm-up helper, covered by `tests/warm-deployment-domains.test.ts`, not wired into `npm run` scripts or the deploy workflow)
 - `src/i18n/generated-locales/`, `src/lib/generated/`: generated and gitignored; regenerate with `npm run prepare` instead of editing
 - `.github/workflows/`: gh-pages deploy (runs `npm run validate` on Node 24 with submodules checked out, then publishes `esa.jsonc`, `wrangler.jsonc` from `.github/gh-pages/` plus `dist/` to the `gh-pages` branch)
 
