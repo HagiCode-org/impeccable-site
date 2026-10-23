@@ -32,14 +32,8 @@ export default defineConfig({
             siteId: 'impeccable-site',
             siteUrl: 'https://impeccable.hagicode.com/',
           },
-          analytics: {
-            googleAnalytics: { measurementId: 'G-EN03FMT2Q4' },
-            fiftyOneLa: { siteId: 'L6b88a5yK4h2Xnci' },
-          },
           seo: {
             title: 'Impeccable Commands',
-            description: 'Localized command documentation for the impeccable workflow.',
-            organization: { name: 'HagiCode', url: 'https://www.hagicode.com/' },
           },
           contentComponents: {
             markdownContent: false,
