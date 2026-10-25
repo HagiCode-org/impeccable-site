@@ -6,11 +6,11 @@
   "packageManager": "npm@10.9.2",
   "scripts": {
     "dev": "npm run prepare && astro dev --host 0.0.0.0 --port ${PORT_IMPECCABLE_SITE:-31266}",
-    "build": "export NODE_ENV=\"${NODE_ENV:-production}\"; npm run prepare && astro build && node scripts/generate-default-locale-aliases.mjs && node scripts/check-starlight-build.mjs",
+    "build": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; export NODE_ENV=\"${NODE_ENV:-production}\"; npm run prepare && astro build && node scripts/generate-default-locale-aliases.mjs && node scripts/check-starlight-build.mjs",
     "preview": "astro preview --port ${PORT_IMPECCABLE_SITE:-31266}",
     "astro": "astro",
     "prepare": "npm run i18n:generate && npm run catalog:generate",
-    "typecheck": "npm run prepare && astro check",
+    "typecheck": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; npm run prepare && astro check",
     "test": "npm run prepare && vitest run",
     "validate": "npm run i18n:check && npm run catalog:check && npm run typecheck && npm run test && npm run build",
     "i18n:audit": "hagi18n audit --config hagi18n.yaml",
