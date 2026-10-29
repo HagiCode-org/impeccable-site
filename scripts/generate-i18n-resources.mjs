@@ -111,7 +111,7 @@ export async function verifyGeneratedI18nResources() {
       assert.equal(
         formatJson(generatedResources[locale][namespace]),
         formatJson(sourceResources[locale][namespace]),
-        `${locale}/${namespace}.json is stale; rerun npm run i18n:generate`,
+        `${locale}/${namespace}.json is stale; rerun pnpm run i18n:generate`,
       );
     }
   }

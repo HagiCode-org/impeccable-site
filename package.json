@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "packageManager": "npm@10.9.2",
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
-    "dev": "npm run prepare && astro dev --host 0.0.0.0 --port ${PORT_IMPECCABLE_SITE:-31266}",
-    "build": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; export NODE_ENV=\"${NODE_ENV:-production}\"; npm run prepare && astro build && node scripts/generate-default-locale-aliases.mjs && node scripts/check-starlight-build.mjs",
+    "dev": "pnpm run prepare && astro dev --host 0.0.0.0 --port ${PORT_IMPECCABLE_SITE:-31266}",
+    "build": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; export NODE_ENV=\"${NODE_ENV:-production}\"; pnpm run prepare && astro build && node scripts/generate-default-locale-aliases.mjs && node scripts/check-starlight-build.mjs",
     "preview": "astro preview --port ${PORT_IMPECCABLE_SITE:-31266}",
     "astro": "astro",
-    "prepare": "npm run i18n:generate && npm run catalog:generate",
-    "typecheck": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; npm run prepare && astro check",
-    "test": "npm run prepare && vitest run",
-    "validate": "npm run i18n:check && npm run catalog:check && npm run typecheck && npm run test && npm run build",
+    "prepare": "pnpm run i18n:generate && pnpm run catalog:generate",
+    "typecheck": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; pnpm run prepare && astro check",
+    "test": "pnpm run prepare && vitest run",
+    "validate": "pnpm run i18n:check && pnpm run catalog:check && pnpm run typecheck && pnpm run test && pnpm run build",
     "i18n:audit": "hagi18n audit --config hagi18n.yaml",
     "i18n:report": "hagi18n report --config hagi18n.yaml",
     "i18n:doctor": "hagi18n doctor --config hagi18n.yaml",
@@ -21,10 +21,12 @@
     "i18n:prune": "hagi18n prune --config hagi18n.yaml --from en-US",
     "i18n:prune:write": "hagi18n prune --config hagi18n.yaml --from en-US --write",
     "i18n:generate": "node scripts/generate-i18n-resources.mjs",
-    "i18n:check": "npm run i18n:audit && npm run i18n:doctor && npm run i18n:generate && node scripts/generate-i18n-resources.mjs --check",
+    "i18n:check": "pnpm run i18n:audit && pnpm run i18n:doctor && pnpm run i18n:generate && node scripts/generate-i18n-resources.mjs --check",
     "content:sync:vendor": "node scripts/sync-vendor-command-content.mjs",
     "catalog:generate": "node scripts/build-command-catalog.mjs",
-    "catalog:check": "npm run catalog:generate && node scripts/build-command-catalog.mjs --check"
+    "catalog:check": "pnpm run catalog:generate && node scripts/build-command-catalog.mjs --check",
+    "check:registry": "node scripts/check-registry-neutrality.mjs",
+    "test:registry": "node --test scripts/check-registry-neutrality.node-test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
@@ -41,11 +43,8 @@
     "typescript": "~6.0.3",
     "vitest": "^5.0.5"
   },
-  "overrides": {
-    "vite": "^8.0.1"
-  },
   "engines": {
     "node": ">=24.0.0",
-    "npm": ">=10.9.2"
+    "pnpm": ">=12.16.1"
   }
 }

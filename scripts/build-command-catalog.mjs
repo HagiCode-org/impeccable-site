@@ -324,7 +324,7 @@ export async function verifyCommandCatalog() {
   const existing = await fs.readFile(generatedCatalogPath, 'utf8').catch(() => '');
   const existingGeneratedAt = existing ? JSON.parse(existing).generatedAt : undefined;
   const catalog = await buildCommandCatalog({ generatedAt: existingGeneratedAt });
-  assert.equal(existing, formatJson(catalog), 'Generated command catalog is stale; rerun npm run catalog:generate');
+  assert.equal(existing, formatJson(catalog), 'Generated command catalog is stale; rerun pnpm run catalog:generate');
 }
 
 if (process.argv.includes('--check')) {
