@@ -1,0 +1,18 @@
+# Impeccable Commands
+
+> Browse the full command surface grouped by workflow phase. The order stays aligned with the upstream catalog while this site owns the localized explanations.
+
+## Docs
+
+- [Command overview](https://impeccable.hagicode.com/docs/): Browse the full command surface grouped by workflow phase. The order stays aligned with the upstream catalog while this site owns the localized explanations.
+- [Adapt](https://impeccable.hagicode.com/docs/adapt/): Make designs work across screens, devices, and contexts without amputating features.
+- [Animate](https://impeccable.hagicode.com/docs/animate/): Purposeful motion that conveys state, not decoration.
+- [Audit](https://impeccable.hagicode.com/docs/audit/): Five-dimension technical quality check with P0 to P3 severity.
+- [Bolder](https://impeccable.hagicode.com/docs/bolder/): Push safe designs toward impact without sliding into chaos.
+- [Clarify](https://impeccable.hagicode.com/docs/clarify/): Rewrite confusing UX copy so interfaces explain themselves.
+- [Colorize](https://impeccable.hagicode.com/docs/colorize/): Add strategic color to monochrome interfaces without going garish.
+- [Craft](https://impeccable.hagicode.com/docs/craft/): Shape the design, then build it, all in one flow.
+- [Critique](https://impeccable.hagicode.com/docs/critique/): A design review with scoring, persona tests, and automated detection.
+- [Delight](https://impeccable.hagicode.com/docs/delight/): Small moments of personality that turn functional into memorable.
+- [Distill](https://impeccable.hagicode.com/docs/distill/): Ruthless subtraction. Strip designs to their essence.
+- [Document](https://impeccable.hagicode.com/docs/document/): Generate a spec-compliant DESIGN.md that captures your visual system so every AI agent stays on-brand.
