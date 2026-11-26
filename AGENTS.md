@@ -27,7 +27,7 @@ pnpm run i18n:audit           # hagi18n audit/report/doctor/sync/prune (config: 
 pnpm run content:sync:vendor  # sync en-US command content from the vendor submodule
 ```
 
-Requires Node.js 24+. `pnpm run build` also runs `scripts/generate-default-locale-aliases.mjs` and `scripts/check-starlight-build.mjs`; `pnpm test` runs vitest over `tests/`. Initialize the vendor submodule after clone with `git submodule update --init --recursive`.
+Requires Node.js 24+. `pnpm run dev` and `pnpm run preview` listen on `PORT_IMPECCABLE_SITE` (default `31266`). `pnpm run build` also runs `scripts/generate-default-locale-aliases.mjs` and `scripts/check-starlight-build.mjs`; `pnpm test` runs vitest over `tests/`. Initialize the vendor submodule after clone with `git submodule update --init --recursive`.
 
 ## Key Paths
 
@@ -36,7 +36,7 @@ Requires Node.js 24+. `pnpm run build` also runs `scripts/generate-default-local
 - `vendor/impeccable/`: upstream git submodule
 - `scripts/`: command catalog generation, i18n resource generation, post-build checks (`check-starlight-build.mjs`), and `warm-deployment-domains.mjs` (domain warm-up helper, covered by `tests/warm-deployment-domains.test.ts`, not wired into `pnpm run` scripts or the deploy workflow)
 - `src/i18n/generated-locales/`, `src/lib/generated/`: generated and gitignored; regenerate with `pnpm run prepare` instead of editing
-- `.github/workflows/`: gh-pages deploy (runs `pnpm run validate` on Node 24 with submodules checked out, then publishes `esa.jsonc`, `wrangler.jsonc` from `.github/gh-pages/` plus `dist/` to the `gh-pages` branch)
+- `.github/workflows/`: gh-pages deploy (runs `pnpm run check:registry` and `pnpm run validate` on Node 24 with submodules checked out, then publishes `esa.jsonc`, `wrangler.jsonc` from `.github/gh-pages/` plus `dist/` to the `gh-pages` branch)
 
 ## Agent Guidelines
 
